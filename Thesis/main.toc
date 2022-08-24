@@ -1,0 +1,13 @@
+\babel@toc {UKenglish}{}\relax 
+\contentsline {chapter}{Introduction}{1}{chapter*.4}%
+\contentsline {chapter}{\numberline {1}Machine learning phenomenology}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Standard model}{9}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Implementation}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Results}{13}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Discussion}{15}{chapter.5}%
+\contentsline {chapter}{Conclusion}{17}{chapter*.8}%
+\contentsline {chapter}{Appendices}{19}{section*.9}%
+\contentsline {chapter}{Appendix A}{21}{appendix*.10}%
+\contentsline {chapter}{Appendix B}{23}{appendix*.11}%
+\contentsline {chapter}{Appendix C}{25}{appendix*.12}%
+\contentsline {chapter}{Appendix D}{27}{appendix*.13}%
