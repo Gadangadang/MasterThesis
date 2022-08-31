@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1661344830 "main.aux" "main.bbl" "main" 1661348531
+["bibtex main"] 1661881696 "main.aux" "main.bbl" "main" 1661882176
   "./JHEP.bst" 1635225418 19415 119cff932b2ee8773ea988cf488e8896 ""
   "bibliography.bib" 1635225418 44587 4c48073c61c784730d39ac8a98442b7a ""
-  "main.aux" 1661348531 3387 53acc2594c59ec1a8c956c87a1792dff "pdflatex"
+  "main.aux" 1661882175 3397 99781d1b802554e1a6e290b3dc327a10 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1661348529 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1661348531
-  "/Users/Sakarias/MasterThesis/Thesis/main.tex" 1661344878 2594 2a87607ca9bd1493307c265491a9fe2f ""
+["pdflatex"] 1661882174 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1661882176
+  "/Users/Sakarias/MasterThesis/Thesis/main.tex" 1661881494 2558 3ac84e209e754cd95d9767013f495fed ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc" 1202520719 2327 9d6df24f9c4f7368395224341a95523a ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc" 1254269338 2359 de53213020575850c8f8debc35095765 ""
@@ -275,17 +275,18 @@
   "Sections/Appendix/Appendix4.tex" 0 -1 0 ""
   "Sections/Conclusion/Conclusion.tex" 1661329036 137 d60cf5a845a1a97b9545933a9ec44b5c ""
   "Sections/Introduction/Introduction.tex" 1661328943 115 df32782da8ace46fd0b4120484711b44 ""
-  "Sections/Machinelearning/Autoencoder.tex" 1661348429 502 b2ca260805d3c36677a78b2e03664830 ""
-  "Sections/Machinelearning/Neuralnetworks.tex" 1661344811 27 f488572eebb3d03a1ee3ea43661deeb3 ""
+  "Sections/Machinelearning/Autoencoder.tex" 1661780404 981 4c2c922ab6f9c5068083956c78dc8381 ""
+  "Sections/Machinelearning/Neuralnetworks.tex" 1661881428 700 f1bbfb43e1f990c389354611e013172d ""
+  "Sections/SM_BSM/SM.tex" 1661882173 498 3a294d50282368a9cf49cf5f31db0694 ""
   "Setup/style.sty" 1635225418 5344 0be6a12a90c58b95cfd9ed2c3a18b77a ""
   "duoforside.tex" 1661329427 6729 d63ed9810f2605c0dd4142969031c2be ""
   "duomasterforside.sty" 1635225418 1245 0f0fdb32e432549cbffa5ff0a0493ca0 ""
   "jheppub.sty" 1635225418 11993 cd840ce60e85e99a4eccf7d2c59baa18 ""
-  "main.aux" 1661348531 3387 53acc2594c59ec1a8c956c87a1792dff "pdflatex"
-  "main.bbl" 1661344830 110 45a49a2c91184cd9298df1dd4f9fe39a "bibtex main"
-  "main.out" 1661348531 1290 f5e4ae46005113cb814417c703041723 "pdflatex"
-  "main.tex" 1661344878 2594 2a87607ca9bd1493307c265491a9fe2f ""
-  "main.toc" 1661348531 770 93e3e26da4ea5129284b7204a5c5dd69 "pdflatex"
+  "main.aux" 1661882175 3397 99781d1b802554e1a6e290b3dc327a10 "pdflatex"
+  "main.bbl" 1661881696 110 45a49a2c91184cd9298df1dd4f9fe39a "bibtex main"
+  "main.out" 1661882175 1315 02cb8ee836d0b959897e6f3ba1c1ff5f "pdflatex"
+  "main.tex" 1661881494 2558 3ac84e209e754cd95d9767013f495fed ""
+  "main.toc" 1661882175 776 efeec9afbf0062a7abd1437b23368405 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

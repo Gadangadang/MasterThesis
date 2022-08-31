@@ -1,8 +1,15 @@
 \chapter*{Autoencoders}
-Autoencoders are a subset of neural networks. Where as a general neural network in principle can take any shape, autoencoders are more restrictive.
-This restrictiveness can in its most general sence we condensed into the following points:
+Autoencoders are a subset of neural networks. Whereas a general neural network
+ in principle can take any shape, autoencoders are more restrictive.
+This restrictiveness can in its most general sence we condensed 
+into the following points:
 \begin{itemize}
     \item Same number of output categories as input categories  
     \item A latent space with smaller dimensionality than the input/output layer  
 \end{itemize}
-What we end up with two funnel shaped parts linked together. 
+What we end up with two funnel shaped parts linked together. The two funnels are 
+called the encoder (left funnel) and decoder (right funnel) respectively. This architecture is not 
+accidental, but rather designed with a very specific solution of ploblems in mind, reconstruction. 
+A good example to illustrate this is image denoising. Suppose you have a noised image, 
+and want to denoise it. By feeding the encoder a noised image, and comparing the decoder output 
+to the actual image, the autoencoder can tune itself to denoise images. 
