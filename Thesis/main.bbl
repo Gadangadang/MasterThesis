@@ -1,3 +1,8 @@
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{}
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+
+\bibitem{anom_detec}
+V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
+  \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
+  {\bf 41} (07, 2009) }.
 
 \end{thebibliography}\endgroup

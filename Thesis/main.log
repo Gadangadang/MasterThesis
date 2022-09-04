@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.24)  30 AUG 2022 19:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.8.24)  4 SEP 2022 13:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1284,77 +1284,63 @@ Package hyperref Info: Option `pageanchor' set `true' on input line 28.
 
 ]
 Chapter 1.
-(./Sections/Machinelearning/Neuralnetworks.tex [3] [4
-
-]) (./Sections/Machinelearning/Autoencoder.tex [5] [6
-
-]) [7] [8
+(./Sections/Machinelearning/AnomalyDetection.tex) (./Sections/Machinelearning/Neuralnetworks.tex) (./Sections/Machinelearning/Autoencoder.tex) [3] [4
 
 ]
 Chapter 2.
-(./Sections/SM_BSM/SM.tex [9] [10
-
-] [11] [12
-
-] [13] [14
-
-]) [15] [16
+(./Sections/SM_BSM/SM.tex) (./Sections/SM_BSM/BSM.tex) [5] [6
 
 ]
 Chapter 3.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) [17] [18
+(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) [7] [8
 
 ]
 Chapter 4.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) [19] [20
+(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) [9] [10
 
 ]
 Chapter 5.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) (./Sections/Conclusion/Conclusion.tex [21] [22
+(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) (./Sections/Conclusion/Conclusion.tex [11] [12
 
-]) [23] [24
+]) [13] [14
 
-] [25
+] [15
 
 
-] [26] (./Sections/Appendix/Appendix1.tex) [27
+] [16] (./Sections/Appendix/Appendix1.tex) [17
 
-] [28
+] [18
 
-] (./Sections/Appendix/Appendix2.tex) [29] [30
+] (./Sections/Appendix/Appendix2.tex) [19] [20
 
-] (./Sections/Appendix/Appendix3.tex) [31] [32
+] (./Sections/Appendix/Appendix3.tex) [21] [22
 
-] (./Sections/Appendix/Appendix4.tex) (./main.bbl [33] [34
+] (./Sections/Appendix/Appendix4.tex) (./main.bbl [23] [24
 
-]
-
-Package natbib Warning: Empty `thebibliography' environment on input line 3.
-
-)
+])
 \tf@thm=\write7
 \openout7 = `main.thm'.
 
- [35] (./main.aux)
+ [25] (./main.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 02CB8EE836D0B959897E6F3BA1C1FF5F;1315.
+(rerunfilecheck)             Checksum: F9AB3A5D291E9AB4EEB9CB806C7C3F32;1315.
  ) 
 Here is how much of TeX's memory you used:
- 42508 strings out of 478268
- 859867 string characters out of 5846347
- 1250675 words of memory out of 5000000
- 59805 multiletter control sequences out of 15000+600000
- 537782 words of font info for 115 fonts, out of 8000000 for 9000
+ 42550 strings out of 478268
+ 860711 string characters out of 5846347
+ 1254675 words of memory out of 5000000
+ 59824 multiletter control sequences out of 15000+600000
+ 551713 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,5n,103p,1037b,959s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on main.pdf (47 pages, 253927 bytes).
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rmtt.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmro10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
+Output written on main.pdf (37 pages, 312772 bytes).
 PDF statistics:
- 342 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 43634 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 323 PDF objects out of 1000 (max. 8388607)
+ 256 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 51826 words of extra memory for PDF output out of 61914 (max. 10000000)
 

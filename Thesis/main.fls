@@ -1789,6 +1789,15 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT Sections/Machinelearning/AnomalyDetection.tex
+INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT Sections/Machinelearning/AnomalyDetection.tex
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT ./Sections/Machinelearning/Neuralnetworks.tex
 INPUT ./Sections/Machinelearning/Neuralnetworks.tex
 INPUT ./Sections/Machinelearning/Neuralnetworks.tex
@@ -1807,6 +1816,10 @@ INPUT ./Sections/SM_BSM/SM.tex
 INPUT Sections/SM_BSM/SM.tex
 INPUT ./Sections/SM_BSM/SM.tex
 INPUT Sections/SM_BSM/SM.tex
+INPUT ./Sections/SM_BSM/BSM.tex
+INPUT Sections/SM_BSM/BSM.tex
+INPUT ./Sections/SM_BSM/BSM.tex
+INPUT Sections/SM_BSM/BSM.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
@@ -1856,6 +1869,8 @@ INPUT main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri9.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx9.tfm
 OUTPUT main.thm
 INPUT main.aux
 INPUT ./main.out
@@ -1866,8 +1881,11 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr17.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri9.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmro10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmtt10.pfb
