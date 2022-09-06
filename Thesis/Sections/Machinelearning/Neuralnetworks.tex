@@ -6,5 +6,17 @@ these models are used extensively. \par
 Neural networks, or feed forward neural networks (FFNN), are based on a few principles.
 First, the data is feeded forward through the network. The end output is evaluated in some fashion, 
 and corrections are then back propagated through the network, updating the weights and biases. 
-This "training" is done until a sufficient threshold is met. 
+This "training" is done until a sufficient threshold is met. A general layout of a neural network is displayed in
+figure \ref{fig:nndiagram}.
 
+\begin{figure}
+    \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
+    \caption{Simple neural network diagram.}
+    \label{fig:nndiagram}
+\end{figure}
+
+The input layer has the same shape of the dataset one uses to train or predict on, with one node for each feature in the dataset.
+The next layer is the hidden layers. For a given network, the amount of hidden layers can be tuned, as well as the number of 
+nodes per layer. Finally, the last hidden layer is connected to the ouput layer, which is determined by the aim of the problem. 
+In the case of figure \ref{fig:nndiagram}, this neural netork would represent a binary classification problem. The nodes in the
+network interacts through so called weights $w$ and biases $b$. 
