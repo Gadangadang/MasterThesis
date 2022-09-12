@@ -92,7 +92,6 @@ double getSF(VecF_t& sf);
 int flavourComp3L(VecI_t& fllep);
 bool deltaRlepjet(float lpt, float leta, float lphi, float le, VecF_t& jpt, VecF_t& jeta, VecF_t& jphi, VecF_t& je);
 float ComputeInvariantMass(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e);
-float calcMT2(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi, int idx1 = 0, int idx2 = 1);
 float ptllboost(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi);
 float costhetastar(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e);
 float deltaPhi_ll(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e);
@@ -107,8 +106,11 @@ int getWlep1(){return Wlep1;}
 Float_t getLumiSF(Int_t randrnum);
 float getET(float pt, float m);
 float delta_e_T(VecF_t& lepPt, VecF_t& lepM, int i);
-float h_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i);
-float h(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j);
+float geth_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i);
+float geth(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j);
 float getRapidity(float pt, float eta, float phi, float e);
+float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j);
+float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i);
+
 
 #endif

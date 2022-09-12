@@ -2,7 +2,6 @@
 
 
 #include <ROOT/RVec.hxx>
-#include "../CalcGenericMT2/CalcGenericMT2/MT2_ROOT.h"
 
 using VecF_t = const ROOT::RVec<float>&;
 using VecI_t = const ROOT::RVec<int>&;
@@ -238,21 +237,7 @@ float ComputeInvariantMass(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e) {
 }
 
 
-float calcMT2(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi, int idx1, int idx2) {
 
-  const auto size = int(pt.size());
-  if(idx1 > size || idx2 > size){
-    printf("calcMT2::ERROR \t Indices %i and %i are higher than size of vector %i\n",idx1,idx2,size);
-    return -1;
-  }
-  TLorentzVector p1;
-  TLorentzVector p2;
-  TLorentzVector met;
-  p1.SetPtEtaPhiM(pt[idx1], eta[idx1], phi[idx1], e[idx1]);
-  p2.SetPtEtaPhiM(pt[idx2], eta[idx2], phi[idx2], e[idx2]);
-  met.SetPtEtaPhiM(met_et, 0.0, met_phi, 0.0);
-  return ComputeMT2(p1,p2,met,0.,0.).Compute();
-}
 
 float ptllboost(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi) {
 
@@ -364,24 +349,84 @@ float getRapidity(float pt, float eta, float phi, float e){
     
 }
 
-float h_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i) {
+float geth_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i) {
     /* h_L is proportional to Lorentz factor, and can reflect on longitudal directions */
+    
+    const auto size = int(pt.size());
+      if(i > size){
+        printf("geth_L::ERROR \t Indices %i is higher than size of vector %i\n",i,size);
+        return 0;
+      }
     
     float y = getRapidity(pt[i], eta[i], phi[i], e[i]);
     
     return C*(cosh(y) - 1);
 }
 
-float h(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
+float geth(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
     
     /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
     
+    const auto size_i = int(pt_i.size());
+    const auto size_j = int(pt_j.size());
+      if(i > size_i){
+        printf("geth::ERROR \t Indices %i is higher than size of vector %i\n",j,size_j);
+        return 0;
+      }
+      if(j > size_j){
+        printf("geth::ERROR \t Indices %i is higher than size of vector %i\n",j,size_j);
+        return 0;
+      }
+    
+    
     float y_i = getRapidity(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
-    float y_j = getRapidity(pt_j[i], eta_j[i], phi_j[i], e_j[i]);
+    float y_j = getRapidity(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
     
     float delta_y = y_i - y_j;
     return C*(cosh(delta_y/2) - 1);
 }
 
+float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i){
+    /* Calculates the rapidity based on the pseudorapidity via Lorentz vector */
+    
+    /* Remember to scale with 1/sqrt(s) to get value in range [0,1] */
+    
+    const auto size = int(pt.size());
+      if(i > size){
+        printf("getM_T::ERROR \t Indices %i is higher than size of vector %i\n",i,size);
+        return 0;
+      }
+    TLorentzVector p1;
+    
+    p1.SetPtEtaPhiM(pt[i], eta[i], phi[i], e[i]);
+    
+    
+    return p1.Mt();
+    
+}
 
 
+float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
+    
+    /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
+    const auto size_i = int(pt_i.size());
+    const auto size_j = int(pt_j.size());
+      if(i > size_i){
+        printf("getM::ERROR \t Indices %i is higher than size of vector %i\n",j,size_j);
+        return 0;
+      }
+      if(j > size_j){
+        printf("getM::ERROR \t Indices %i is higher than size of vector %i\n",j,size_j);
+        return 0;
+      }
+    
+    TLorentzVector p1;
+    TLorentzVector p2;
+    
+    
+    p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
+    p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
+    
+    
+    return (p1 + p2).M();
+}
