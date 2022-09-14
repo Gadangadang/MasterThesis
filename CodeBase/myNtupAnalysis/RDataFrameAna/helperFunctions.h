@@ -111,6 +111,7 @@ float geth(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j
 float getRapidity(float pt, float eta, float phi, float e);
 float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j);
 float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i);
+float getET_part(VecF_t& Pt, VecF_t& M, int i);
 
 
 #endif

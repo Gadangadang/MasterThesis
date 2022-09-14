@@ -409,12 +409,16 @@ def runANA(mypath_mc, mypath_data, everyN, fldic, histo, allhisto, nEvents = 0, 
 
             df[k] = df[k].Define("nlep_BL","ROOT::VecOps::Sum(ele_BL)+ROOT::VecOps::Sum(muo_BL)")
 
+            
+            
             # Signal leptons
             df[k] = df[k].Define("ele_SG","ele_BL && lepIsoLoose_VarRad && lepTight && (lepD0Sig <= 5 && lepD0Sig >= -5)") #&& lepTight && (lepD0Sig <= 5 && lepD0Sig >= -5)
             df[k] = df[k].Define("muo_SG","muo_BL && lepIsoLoose_VarRad && (lepD0Sig <= 3 && lepD0Sig >= -3)") #&& (lepD0Sig <= 3 && lepD0Sig >= -3)
 
             df[k] = df[k].Define("nlep_SG","ROOT::VecOps::Sum(ele_SG)+ROOT::VecOps::Sum(muo_SG)")
 
+            
+            
             if not isData:
 
                 df[k] = df[k].Define("is2015","RandomRunNumber <= 284500")
@@ -475,242 +479,146 @@ def runANA(mypath_mc, mypath_data, everyN, fldic, histo, allhisto, nEvents = 0, 
 
             #histo["nlep_BL_%s"%k] = df[k].Histo1D(("nlep_BL_%s"%k,"nlep_BL_%s"%k,10,0,10),"nlep_BL","wgt_SG")
             if create_histogram == True:
-                histo["nlep_SG_%s"%k] = df[k].Histo1D(("nlep_SG_%s"%k,"nlep_SG_%s"%k,10,0,10),"nlep_SG","wgt_SG")
-
-            #return df[k]
-
-            #return df[k]
+                #histo["nlep_SG_%s"%k] = df[k].Histo1D(("nlep_SG_%s"%k,"nlep_SG_%s"%k,10,0,10),"nlep_SG","wgt_SG")
+                   pass
             
             df[k] = df[k].Filter("nlep_BL == 3","3 BL leptons")
             df[k] = df[k].Filter("nlep_SG == 3","3 SG leptons")
 
-
-
-            #p = df[k].Display(("EventNumber","DatasetNumber","genWeight","eventWeight","jvtWeight","bTagWeight","pileupWeight","scaletolumi","lepwgt_BL","lepwgt_SG","trgwgt_BL","trgwgt_SG","scaletolumi","wgt_BL","wgt_SG")).AsString()
-            #print(p)
-
-
-            #Display(("eventWeight","jvtWeight","bTagWeight","pileupWeight","scaletolumi","lepwgt_BL","trgwgt_BL")).Print()
-
-            df[k] = df[k].Define("Zcand_mass","getLeptonsFromZ(lepCharge[ele_SG > 0 || muo_SG > 0], lepFlavor[ele_SG > 0 || muo_SG > 0], lepPt[ele_SG > 0 || muo_SG > 0], lepEta[ele_SG > 0 || muo_SG > 0], lepPhi[ele_SG > 0 || muo_SG > 0], lepM[ele_SG > 0 || muo_SG > 0], met_Et, met_Phi).first")
-            df[k] = df[k].Define("Wcand_mass","getLeptonsFromZ(lepCharge[ele_SG > 0 || muo_SG > 0], lepFlavor[ele_SG > 0 || muo_SG > 0], lepPt[ele_SG > 0 || muo_SG > 0], lepEta[ele_SG > 0 || muo_SG > 0], lepPhi[ele_SG > 0 || muo_SG > 0], lepM[ele_SG > 0 || muo_SG > 0], met_Et, met_Phi).second")
-
             df[k] = df[k].Define("isZlep1","getZlep1()")
             df[k] = df[k].Define("isZlep2","getZlep2()")
             df[k] = df[k].Define("isWlep1","getWlep1()")
-
-            #p = df[k].Display(("isZlep1","isZlep2","isWlep1")).AsString()
-            #print(p)
-            #break
-
             
             # Jets
             df[k] = df[k].Define("jet_BL","jetPt >= 20 && (jetEta <= 2.8 && jetEta >= -2.8)")
             df[k] = df[k].Define("jet_SG","jet_BL && (jetPt > 60 || (jetPt <=60 && jetJVT <= 0.91 && jetJVT >= -0.91))")
 
-            df[k] = df[k].Define("bjet85","jet_BL && jetdl1r>=0.665")
-            df[k] = df[k].Define("bjet77","jet_BL && jetdl1r>=2.195")
-
-            df[k] = df[k].Define("jet_BL_pT","jetPt[jet_BL > 0]")
-            df[k] = df[k].Define("jet_SG_pT","jetPt[jet_SG > 0]")
-
-            df[k] = df[k].Define("jet_BL_eta","jetEta[jet_BL > 0]")
-            df[k] = df[k].Define("jet_SG_eta","jetEta[jet_SG > 0]")
-
-            df[k] = df[k].Define("minDR_jetlep1","deltaRlepjet(lepPt[0],lepEta[0],lepPhi[0],lepM[0],jetPt[jet_BL > 0],jetEta[jet_BL > 0],jetPhi[jet_BL > 0],jetM[jet_BL > 0])")
-
             
-            df[k] = df[k].Define("lep_BL_pT","lepPt[ele_BL > 0 || muo_BL > 0]")
-            df[k] = df[k].Define("lep_SG_pT","lepPt[ele_SG > 0 || muo_SG > 0]")
-
-            df[k] = df[k].Define("ele_BL_pT","lepPt[ele_BL > 0]")
-            df[k] = df[k].Define("ele_SG_pT","lepPt[ele_SG > 0]")
-
-            df[k] = df[k].Define("ele_BL_eta","lepEta[ele_BL > 0]")
-            df[k] = df[k].Define("ele_SG_eta","lepEta[ele_SG > 0]")
-
-            df[k] = df[k].Define("muo_BL_pT","lepPt[muo_BL > 0]")
-            df[k] = df[k].Define("muo_SG_pT","lepPt[muo_SG > 0]")
-
-            df[k] = df[k].Define("muo_BL_eta","lepEta[muo_BL > 0]")
-            df[k] = df[k].Define("muo_SG_eta","lepEta[muo_SG > 0]")
-
-            df[k] = df[k].Define("njet_BL","ROOT::VecOps::Sum(jet_BL)")
-            df[k] = df[k].Define("njet_SG","ROOT::VecOps::Sum(jet_SG)")
-
-            #histo["njet_BL_%s"%k] = df[k].Histo1D(("njet_BL_%s"%k,"njet_BL_%s"%k,10,0,10),"njet_BL","wgt_BL")
             
-
-            df[k] = df[k].Define("nbjet85","ROOT::VecOps::Sum(bjet85)")
-            df[k] = df[k].Define("nbjet77","ROOT::VecOps::Sum(bjet77)")
-
-            df[k] = df[k].Define("flcomp","flavourComp3L(lepFlavor[ele_BL || muo_BL])")
             
             
             """
-            RMM matrix feature calculations
+            RMM matrix feature calculations with histogram creation
             
             """
             
-            # Trying delta_e_T for second and third jet
-            for i in range(1,3):
-                name_lep = f"delta_e_T_lep_{i}"
-                func_call = f"delta_e_T(lepPt[ele_SG > 0 || muo_SG > 0], lepM[ele_SG > 0 || muo_SG > 0], {i})"
-                df[k] = df[k].Define(name_lep, func_call)
-                
-                name_jet = f"delta_e_T_jet_{i}"
-                func_call = f"delta_e_T(jetPt[jet_SG > 0], jetM[jet_SG > 0], {i})"
-                df[k] = df[k].Define(name_jet, func_call)
-                
-            for i in range(3):
-                name_lep = f"M_T_lep_{i}"
-                func_call = f"getM_T(lepPt[ele_SG > 0 || muo_SG > 0], lepEta[ele_SG > 0 || muo_SG > 0], lepPhi[ele_SG > 0 || muo_SG > 0], lepM[ele_SG > 0 || muo_SG > 0], {i})"
-                df[k] = df[k].Define(name_lep, func_call)
-                
-                #name_jet = f"M_T_jet_{i}"
-                #func_call = f"getM_T(jetPt[jet_SG > 0], jetEta[jet_SG > 0 ], jetPhi[jet_SG > 0], jetM[jet_SG > 0], {i})"
-                #df[k] = df[k].Define(name_jet, func_call)
-                
-            
+            for row in range(N_row):
+                if row == 0: # Calculate e_T^miss and m_T for all objects
+                    
+                    for column in range(N_col):
+                        if column == 0: 
+                            # Set e_T_miss
+                            df[k] = df[k].Define("e_T_miss", "met_Et")
+                            histo[f"e_T_miss_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"e_T_miss",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"e_T_miss",k),200,0,1000),f"e_T_miss","wgt_SG")
+                        else:
+                            # Set m_T for all particles
+                            particle_info = rmm_structure[column]
+                            name = particle_info[0]
+                            pt = particle_info[1]
+                            eta = particle_info[2]
+                            phi = particle_info[3]
+                            m = particle_info[4]
+                            index = particle_info[5]
+                            df[k] = df[k].Define(f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})")
+                            histo[f"m_T_{name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"m_T_{name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"e_T_miss",k),200,0,1000),f"m_T_{name}","wgt_SG")
+                else:
+                    for column in range(N_col):
+                        if column == 0:
+                            # Set h_L for all particles
+                            particle_info = rmm_structure[row]
+                            name = particle_info[0]
+                            pt = particle_info[1]
+                            eta = particle_info[2]
+                            phi = particle_info[3]
+                            m = particle_info[4]
+                            index = particle_info[5]
+                            df[k] = df[k].Define(f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})")
+                            histo[f"h_L_{name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"h_L_{name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"h_L_{name}",k),50,0,1),f"h_L_{name}","wgt_SG")
+                           
+                            
+                        elif column == row:
+                            particle_info = rmm_structure[column]
+                            name = particle_info[0]
+                            pt = particle_info[1]
+                            eta = particle_info[2]
+                            phi = particle_info[3]
+                            m = particle_info[4]
+                            index = particle_info[5]
+                            if index == 0:
+                                # If particle is the first of its type, calculate e_T of particle
+                                df[k] = df[k].Define(f"e_T_{name}", f"getET_part({pt},{m},{index})")
+                                histo[f"e_T_{name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"e_T_{name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"e_T_{name}",k),200,0,1000),f"e_T_{name}","wgt_SG")
+                            
+                            else:
+                                # If particle is not the first of its type, calculate the difference in e_T
+                                df[k] = df[k].Define(f"delta_e_t_{name}", f"delta_e_T({pt},{m},{index})")
+                                histo[f"delta_e_t_{name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"delta_e_t_{name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"delta_e_t_{name}",k),200,0,1),f"delta_e_t_{name}","wgt_SG")
+                                
+                                
+                            
+                        elif column > row:
+                            # For invariant mass
+                            
+                            # Particle 1
+                            particle_info1 = rmm_structure[row]
+                            name1 = particle_info1[0]
+                            pt1 = particle_info1[1]
+                            eta1 = particle_info1[2]
+                            phi1 = particle_info1[3]
+                            m1 = particle_info1[4]
+                            index1 = particle_info1[5]
+                            
+                            # Particle 2
+                            particle_info2 = rmm_structure[column]
+                            name2 = particle_info2[0]
+                            pt2 = particle_info2[1]
+                            eta2 = particle_info2[2]
+                            phi2 = particle_info2[3]
+                            m2 = particle_info2[4]
+                            index2 = particle_info2[5]
+                            
+                            histo_name = f"m_{name1}_{name2}"
+                            
+                            df[k] = df[k].Define(histo_name, f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})")
+                            histo[f"{histo_name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"{histo_name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"{histo_name}",k),200,0,1000),f"{histo_name}","wgt_SG")
+                                
+                                
+                            
+                            
+                        elif row > column:
+                            # For h longitudal stuff
+                            
+                            # Particle 1
+                            particle_info1 = rmm_structure[row]
+                            name1 = particle_info1[0]
+                            pt1 = particle_info1[1]
+                            eta1 = particle_info1[2]
+                            phi1 = particle_info1[3]
+                            m1 = particle_info1[4]
+                            index1 = particle_info1[5]
+                            
+                            # Particle 2
+                            particle_info2 = rmm_structure[column]
+                            name2 = particle_info2[0]
+                            pt2 = particle_info2[1]
+                            eta2 = particle_info2[2]
+                            phi2 = particle_info2[3]
+                            m2 = particle_info2[4]
+                            index2 = particle_info2[5]
+                            
+                            histo_name = f"h_{name1}_{name2}"
+                            
+                            df[k] = df[k].Define(f"{histo_name}", f"geth({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})")
+                            histo[f"{histo_name}_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%(f"{histo_name}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"{histo_name}",k),200,0,1000),f"{histo_name}","wgt_SG")
+                                
             
            
             
 
             
-
-            #return df[k]
-            #if not isData:
-            #    histo["wgt_SG_BL_%s"%k] = df[k].Histo2D(("wgt_SG_BL_%s"%k,"wgt_SG_BL_%s"%k,2000,-1,1,2000,-1,1),"wgt_EV_BL","wgt_EV_SG")
-            #histo["wgt_SG_%s"%k] = df[k].Histo1D(("wgt_SG_%s"%k,"wgt_SG_%s"%k,2000,-1,1),"wgt_EV_SG","1.0")
-            #histo["wgt_PU_%s"%k] = df[k].Histo1D(("wgt_PU_%s"%k,"wgt_PU_%s"%k,2000,-1,1),"pileupWeight")
-
             
             
-            if create_histogram == True:
-                etabins = array.array('f',[-2.7,-2.0,-1.8,-1.52,-1.37,-1.2,-1.0,-0.8,-0.6,-0.4,0.0,0.4,0.6,0.8,1.0,1.2,1.37,1.52,1.8,2.0,2.7])
-
-                xbins = array.array('f',[0,10,20,25,30,40,50,60,80,100,200])
-                ybins = array.array('f',[0,10,20,25,30,40,50,60,80,100,200])
-
-                histo["flcomp_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%("flcomp",k),"h_%s_%s"%("flcomp",k),len(fldic.keys()),0,len(fldic.keys())),"flcomp","wgt_SG")
                 
-                histo["njet_SG_%s"%k] = df[k].Histo1D(("njet_SG_%s"%k,"njet_SG_%s"%k,10,0,10),"njet_SG","wgt_SG")
-                
-                histo["minDR_jetlep1_%s"%k] = df[k].Histo1D(("h_%s_%s"%("minDR_jetlep1",k),"h_%s_%s;min #DeltaR(lep1,jet);Entries"%("minDR_jetlep1",k),200,0,20),"minDR_jetlep1","wgt_SG") 
-                
-                
-                """
-                
-                RMM histograms
-                
-                """
-                for delta_indx in range(1,3):
-                    histo[f"delta_e_T_lep_{delta_indx}_%s_%s"%(nlep,k)] = df[k].Histo1D(("h_%s_%s"%(f"delta_e_T_lep_{delta_indx}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"delta_e_T_lep_{delta_indx}",k),500,0,1),f"delta_e_T_lep_{delta_indx}","wgt_SG")
-                    histo[f"delta_e_T_jet_{delta_indx}_%s_%s"%(nlep,k)] = df[k].Histo1D(("h_%s_%s"%(f"delta_e_T_jet_{delta_indx}",k),"h_%s_%s;m_{T}^{2}(23) [GeV];Entries"%(f"delta_e_T_jet_{delta_indx}",k),500,0,1),f"delta_e_T_jet_{delta_indx}","wgt_SG")
-                    
-                
-                for part in range(3):
-                    
-                    histo[f"M_T_lep_{part}_%s"%k] = df[k].Histo1D((f"M_T_lep_{part}_%s"%k,f"M_T_lep_{part}_%s"%k,500,0,1000),f"M_T_lep_{part}","wgt_SG")
-                    #histo[f"M_T_jet_{part}_%s"%k] = df[k].Histo1D((f"M_T_jet_{part}_%s"%k,f"M_T_jet_{part}_%s"%k,500,0,1000),f"M_T_jet_{part}","wgt_SG")
-
-                for nlep in ["3L"]:#,"2L"]:#,"2L"]:
-                    trigs = "(1"#(eventIsTriggered_%s"%nlep# && ROOT::VecOps::Sum(lepIsTrigMatched_%s[ele_BL || muo_BL]) > 0"%(nlep,nlep)
-                    for flk in ["eee", "eem", "emm", "mmm", "all"]:#fldic.keys(): "eee", "eem", "emm", "mmm"
-                        comp = fldic[flk]
-                        if comp <= 8:
-                            filterstr = "%s && flcomp == %i)"%(trigs,comp)
-                        else:
-                            filterstr = "%s)"%(trigs)
-
-
-                        histo["minDR_jetlep1_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("minDR_jetlep1",nlep,flk,k),"h_%s_%s_%s_%s;min #DeltaR(lep1,jet);Entries"%("minDR_jetlep1",nlep,flk,k),11,-1,10),"minDR_jetlep1","wgt_SG") 
-
-
-                        histo["Zlep1_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("Zlep1",nlep,flk,k),"h_%s_%s_%s_%s;Lepton number;Entries"%("Zlep1",nlep,flk,k),11,-1,10),"isZlep1","wgt_SG")
-                        histo["Zlep2_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("Zlep2",nlep,flk,k),"h_%s_%s_%s_%s;Lepton number;Entries"%("Zlep2",nlep,flk,k),11,-1,10),"isZlep2","wgt_SG")
-                        histo["Wlep1_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("Wlep1",nlep,flk,k),"h_%s_%s_%s_%s;Lepton number;Entries"%("Wlep1",nlep,flk,k),11,-1,10),"isWlep1","wgt_SG")
-
-                        histo["Zcand_mass_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("Zcand_mass",nlep,flk,k),"h_%s_%s_%s_%s;m_{ll}^{Z-cand} [GeV];Entries"%("Zcand_mass",nlep,flk,k),101,-10,1000),"Zcand_mass","wgt_SG")
-                        histo["Wcand_mass_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("Wcand_mass",nlep,flk,k),"h_%s_%s_%s_%s;m_{T}^{W-cand} [GeV];Entries"%("Wcand_mass",nlep,flk,k),101,-10,1000),"Wcand_mass","wgt_SG")
-
-                        histo["MET_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("MET",nlep,flk,k),"h_%s_%s_%s_%s;Missing Transverse Energy [GeV]; Entries"%("MET",nlep,flk,k),500,0,1000),"met_Et","wgt_SG")
-
-
-                        histo["lepZ0SinTheta_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepZ0SinTheta",nlep,flk,k),"h_%s_%s_%s_%s;Z_{0}#sin#theta;Entries"%("lepZ0SinTheta",nlep,flk,k),1500,-5,10),"lepZ0SinTheta","wgt_SG")
-                        histo["lepD0Sig_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepD0Sig",nlep,flk,k),"h_%s_%s_%s_%s;d_{0}/#sigma(d_{0});Entries"%("lepD0Sig",nlep,flk,k),400,-20,20),"lepD0Sig","wgt_SG")
-
-                        #histo["lepPt_ele_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_ele_BL",nlep,flk,k),"h_%s_%s_%s_%s;p_{T}^{BL leptons} [GeV];Entries"%("lepPt_ele_BL",nlep,flk,k),len(xbins)-1,xbins),"ele_BL_pT","wgt_SG")
-                        histo["lepPt_ele_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_ele_SG",nlep,flk,k),"h_%s_%s_%s_%s;p_{T}^{SG leptons} [GeV];Entries"%("lepPt_ele_SG",nlep,flk,k),len(xbins)-1,xbins),"ele_SG_pT","wgt_SG")
-
-                        #histo["lepPt_ele_BL_BLwgt_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_ele_BL_SGwgt",nlep,flk,k),"h_%s_%s_%s_%s"%("lepPt_ele_BL_SGwgt",nlep,flk,k),len(xbins)-1,xbins),"ele_BL_pT","wgt_BL")
-
-                        if nh == 1: continue
-
-
-
-                        #histo["lepEta_ele_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepEta_ele_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("lepEta_ele_BL",nlep,flk,k),len(etabins)-1,etabins),"ele_BL_eta","wgt_SG")
-                        histo["lepEta_ele_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepEta_ele_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("lepEta_ele_SG",nlep,flk,k),len(etabins)-1,etabins),"ele_SG_eta","wgt_SG")
-
-                        histo["lepEta_muo_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepEta_muo_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("lepEta_muo_BL",nlep,flk,k),len(etabins)-1,etabins),"muo_BL_eta","wgt_SG")
-                        histo["lepEta_muo_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepEta_muo_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("lepEta_muo_SG",nlep,flk,k),len(etabins)-1,etabins),"muo_SG_eta","wgt_SG")
-
-
-                        if nh == 2: continue
-
-                        #histo["lepPt_muo_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_muo_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("lepPt_muo_BL",nlep,flk,k),len(xbins)-1,xbins),"muo_BL_pT","wgt_SG")
-                        histo["lepPt_muo_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_muo_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("lepPt_muo_SG",nlep,flk,k),len(xbins)-1,xbins),"muo_SG_pT","wgt_SG")
-
-                        #histo["lepPt_muo_BL_BLwgt_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("lepPt_muo_BL_SGwgt",nlep,flk,k),"h_%s_%s_%s_%s"%("lepPt_muo_BL_SGwgt",nlep,flk,k),len(xbins)-1,xbins),"muo_BL_pT","wgt_BL")
-
-                        if nh == 3: continue
-
-
-                        histo["nbjet85_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("nbjet85",nlep,flk,k),"h_%s_%s_%s_%s"%("nbjet85",nlep,flk,k),20,0,20),"nbjet85","wgt_SG")
-
-                        histo["nbjet77_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("nbjet77",nlep,flk,k),"h_%s_%s_%s_%s"%("nbjet77",nlep,flk,k),20,0,20),"nbjet77","wgt_SG")
-
-                        histo["njet_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("njet_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("njet_SG",nlep,flk,k),20,0,20),"njet_SG","wgt_SG")
-                        #histo["njet_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("njet_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("njet_BL",nlep,flk,k),20,0,20),"njet_BL","wgt_SG")
-
-                        if nh == 4: continue
-
-                        #histo["jetPt_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("jetPt_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("jetPt_BL",nlep,flk,k),len(xbins)-1,xbins),"jet_BL_pT","wgt_SG")
-                        histo["jetPt_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("jetPt_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("jetPt_SG",nlep,flk,k),len(xbins)-1,xbins),"jet_SG_pT","wgt_SG")
-
-                        if nh == 5: continue
-
-                        #histo["jetEta_BL_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("jetEta_BL",nlep,flk,k),"h_%s_%s_%s_%s"%("jetEta_BL",nlep,flk,k),len(etabins)-1,etabins),"jet_BL_eta","wgt_SG")
-                        #histo["jetEta_SG_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Histo1D(("h_%s_%s_%s_%s"%("jetEta_SG",nlep,flk,k),"h_%s_%s_%s_%s"%("jetEta_SG",nlep,flk,k),len(etabins)-1,etabins),"jet_SG_eta","wgt_SG")
-
-                        if nh == 6: continue
-
-                        #df[k] = df[k].Filter("njet_SG > 0")
-
-                        #df[k] = df[k].Define("lep1_pT","ROOT::VecOps::Max(lep_SG_pT)") #.Filter("(ROOT::VecOps::Sum(ele_SG)+ROOT::VecOps::Sum(muo_SG)) > 0")
-                        #df[k] = df[k].Define("jet1_pT","ROOT::VecOps::Max(jet_SG_pT)") #.Filter("ROOT::VecOps::Sum(jet_SG) > 0")
-
-                        #df[k] = df[k].Filter("njet_SG > 0").Define("lep1_pT","ROOT::VecOps::Max(lep_SG_pT)").Define("jet1_pT","ROOT::VecOps::Max(jet_SG_pT)").Define("r_j1_l1","lep1_pT/jet1_pT") 
-
-                        histo["lep1Pt_jet1Pt_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter("njet_SG > 0").Define("lep1_pT","ROOT::VecOps::Max(lep_SG_pT)").Define("jet1_pT","ROOT::VecOps::Max(jet_SG_pT)").Filter(filterstr).Histo2D(("h_%s_%s_%s_%s"%("lep1Pt_jet1Pt",nlep,flk,k),"h_%s_%s_%s_%s"%("lep1Pt_jet1Pt",nlep,flk,k),100,0,1000,100,0,1000),"lep1_pT","jet1_pT") 
-                        #len(xbins)-1,xbins,len(xbins)-1,xbins)
-
-                        if nh == 7: continue
-
-                        histo["r_j1_l1_%s_%s_%s"%(nlep,flk,k)] = df[k].Filter(filterstr).Filter("njet_SG > 0").Define("lep1_pT","ROOT::VecOps::Max(lep_SG_pT)").Define("jet1_pT","ROOT::VecOps::Max(jet_SG_pT)").Define("r_j1_l1","lep1_pT/jet1_pT").Histo1D(("h_%s_%s_%s_%s"%("r_j1_l1",nlep,flk,k),"h_%s_%s_%s_%s"%("r_j1_l1",nlep,flk,k),100,0,20),"r_j1_l1","wgt_SG")
-
-                        #c = df[k].Filter('if(rdfentry_ == 0) {cout << "Running evtloop" << endl; return true; } return false; ').Count()
-                        #print(c.GetValue())
-
-
-
-                #print("Making skim of %s"%k)
-                #df[k].Snapshot(k,"./skimmed/%s.root"%k)
-                #return df[k]
-
-            #R.setRunParameters(nEvents,everyN)
-            #histo['nlep_BL_%s'%"lowMassDY"].OnPartialResult(everyN,R.printProgressBar);
-            #histo['events_processed'].Draw()
 
 
 
@@ -737,6 +645,57 @@ def runANA(mypath_mc, mypath_data, everyN, fldic, histo, allhisto, nEvents = 0, 
     return df, histo
 
 if __name__ == "__main__":
+    
+    N_j = 0
+    N_l = 3
+    
+    N_col = N_j + N_l + 1
+    N_row = N_col
+    """
+        1: [  "jet_0", 
+             "jetPt[jet_SG > 0]", 
+             "jetEta[jet_SG > 0]", 
+             "jetPhi[jet_SG > 0]", 
+             "jetM[jet_SG > 0]", 
+             0],
+
+         2: ["jet_1", 
+             "jetPt[jet_SG > 0]", 
+             "jetEta[jet_SG > 0]", 
+             "jetPhi[jet_SG > 0]", 
+             "jetM[jet_SG > 0]", 
+             1],
+    """
+    
+    rmm_structure = {
+        
+
+         1: ["lep_0", 
+             "lepPt[ele_SG > 0 || muo_SG > 0]", 
+             "lepEta[ele_SG > 0 || muo_SG > 0]", 
+             "lepPhi[ele_SG > 0 || muo_SG > 0]", 
+             "lepM[ele_SG > 0 || muo_SG > 0]", 
+             0],
+
+         2: ["lep_1", 
+             "lepPt[ele_SG > 0 || muo_SG > 0]", 
+             "lepEta[ele_SG > 0 || muo_SG > 0]", 
+             "lepPhi[ele_SG > 0 || muo_SG > 0]", 
+             "lepM[ele_SG > 0 || muo_SG > 0]", 
+             1],
+
+         3: ["lep_2", 
+             "lepPt[ele_SG > 0 || muo_SG > 0]", 
+             "lepEta[ele_SG > 0 || muo_SG > 0]", 
+             "lepPhi[ele_SG > 0 || muo_SG > 0]", 
+             "lepM[ele_SG > 0 || muo_SG > 0]", 
+             2]
+                    
+                    
+    }
+    
+    
+    
     good_runs = []
 
     

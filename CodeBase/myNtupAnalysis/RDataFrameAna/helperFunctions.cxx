@@ -310,7 +310,11 @@ bool checkPt(VecF_t& pt, float cut1, float cut2){
 }
 
 
-
+float getET_part(VecF_t& Pt, VecF_t& M, int i){
+    /* Calculates E_T for a given event */
+    
+    return sqrt(Pt[i]*Pt[i] + M[i]*M[i]);
+}
 
 
 
