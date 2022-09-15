@@ -453,7 +453,7 @@ def runANA(
 
         for k in df.keys():
 
-            if k not in ["higgs", "ttbar"]:
+            if k not in ["higgs"]:#, "ttbar"]:
                 continue
 
             print(df[k].GetColumnNames())
@@ -615,6 +615,11 @@ def runANA(
                 "jet_BL && (jetPt > 60 || (jetPt <=60 && jetJVT <= 0.91 && jetJVT >= -0.91))",
             )
 
+            df[k] = df[k].Define("njet_BL","ROOT::VecOps::Sum(jet_BL)")
+            df[k] = df[k].Define("njet_SG","ROOT::VecOps::Sum(jet_SG)")
+
+            
+
             """
             RMM matrix feature calculations with histogram creation
             
@@ -650,22 +655,61 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-
-                            df[k] = df[k].Define(
+                            if name[:3] == "jet":
+                                df[k] = df[k].Filter("njet_SG > 0").Define(
                                 f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
-                            )
-                            histo[f"m_T_{name}_%s" % (k)] = df[k].Histo1D(
-                                (
-                                    "h_%s_%s" % (f"m_T_{name}", k),
-                                    "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                    % (f"e_T_miss", k),
-                                    200,
-                                    0,
-                                    1000,
-                                ),
-                                f"m_T_{name}",
-                                "wgt_SG",
-                            )
+                                )
+
+                                histo[f"m_T_{name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"m_T_{name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"e_T_miss", k),
+                                        200,
+                                        0,
+                                        1000,
+                                    ),
+                                    f"m_T_{name}",
+                                    "wgt_SG",
+                                )
+
+
+                            else:
+
+                                if name[:3] == "jet":
+                                    df[k] = df[k].Filter("njet_SG > 0").Define(
+                                        f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
+                                    )
+                                    histo[f"m_T_{name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"m_T_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"e_T_miss", k),
+                                            200,
+                                            0,
+                                            1000,
+                                        ),
+                                        f"m_T_{name}",
+                                        "wgt_SG",
+                                    )
+
+                                else:
+
+                                    df[k] = df[k].Define(
+                                        f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
+                                    )
+                                    histo[f"m_T_{name}_%s" % (k)] = df[k].Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"m_T_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"e_T_miss", k),
+                                            200,
+                                            0,
+                                            1000,
+                                        ),
+                                        f"m_T_{name}",
+                                        "wgt_SG",
+                                    )
                 else:
 
                     # Calculate rest of matrix
@@ -681,21 +725,41 @@ def runANA(
                             m = particle_info[4]
                             index = particle_info[5]
 
-                            df[k] = df[k].Define(
+
+                            if name[:3] == "jet":
+                                df[k] = df[k].Filter("njet_SG > 0").Define(
                                 f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
-                            )
-                            histo[f"h_L_{name}_%s" % (k)] = df[k].Histo1D(
-                                (
-                                    "h_%s_%s" % (f"h_L_{name}", k),
-                                    "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                    % (f"h_L_{name}", k),
-                                    50,
-                                    0,
-                                    1,
-                                ),
-                                f"h_L_{name}",
-                                "wgt_SG",
-                            )
+                                )
+                                histo[f"h_L_{name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"h_L_{name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"h_L_{name}", k),
+                                        50,
+                                        0,
+                                        1,
+                                    ),
+                                    f"h_L_{name}",
+                                    "wgt_SG",
+                                )
+
+                            else:
+
+                                df[k] = df[k].Define(
+                                    f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
+                                )
+                                histo[f"h_L_{name}_%s" % (k)] = df[k].Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"h_L_{name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"h_L_{name}", k),
+                                        50,
+                                        0,
+                                        1,
+                                    ),
+                                    f"h_L_{name}",
+                                    "wgt_SG",
+                                )
 
                         elif column == row:
                             particle_info = rmm_structure[column]
@@ -708,39 +772,77 @@ def runANA(
 
                             if index == 0:
                                 # If particle is the first of its type, calculate e_T of particle
-                                df[k] = df[k].Define(
-                                    f"e_T_{name}", f"getET_part({pt},{m},{index})"
-                                )
-                                histo[f"e_T_{name}_%s" % (k)] = df[k].Histo1D(
-                                    (
-                                        "h_%s_%s" % (f"e_T_{name}", k),
-                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                        % (f"e_T_{name}", k),
-                                        200,
-                                        0,
-                                        1000,
-                                    ),
-                                    f"e_T_{name}",
-                                    "wgt_SG",
-                                )
+
+                                if name[:3] == "jet":
+                                    df[k] = df[k].Filter("njet_SG > 0").Define(
+                                        f"e_T_{name}", f"getET_part({pt},{m},{index})"
+                                    )
+                                    histo[f"e_T_{name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"e_T_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"e_T_{name}", k),
+                                            200,
+                                            0,
+                                            1000,
+                                        ),
+                                        f"e_T_{name}",
+                                        "wgt_SG",
+                                    )
+                                else:
+                                    df[k] = df[k].Define(
+                                        f"e_T_{name}", f"getET_part({pt},{m},{index})"
+                                    )
+                                    histo[f"e_T_{name}_%s" % (k)] = df[k].Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"e_T_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"e_T_{name}", k),
+                                            200,
+                                            0,
+                                            1000,
+                                        ),
+                                        f"e_T_{name}",
+                                        "wgt_SG",
+                                    )
 
                             else:
                                 # If particle is not the first of its type, calculate the difference in e_T
-                                df[k] = df[k].Define(
+
+                                if name[:3] == "jet":
+                                  
+                                    df[k] = df[k].Filter("njet_SG > 0").Define(
                                     f"delta_e_t_{name}", f"delta_e_T({pt},{m},{index})"
-                                )
-                                histo[f"delta_e_t_{name}_%s" % (k)] = df[k].Histo1D(
-                                    (
-                                        "h_%s_%s" % (f"delta_e_t_{name}", k),
-                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                        % (f"delta_e_t_{name}", k),
-                                        200,
-                                        0,
-                                        1,
-                                    ),
-                                    f"delta_e_t_{name}",
-                                    "wgt_SG",
-                                )
+                                    )
+                                    histo[f"delta_e_t_{name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"delta_e_t_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"delta_e_t_{name}", k),
+                                            200,
+                                            0,
+                                            1,
+                                        ),
+                                        f"delta_e_t_{name}",
+                                        "wgt_SG",
+                                    )
+
+                                else:
+                                    df[k] = df[k].Define(
+                                        f"delta_e_t_{name}", f"delta_e_T({pt},{m},{index})"
+                                    )
+                                    histo[f"delta_e_t_{name}_%s" % (k)] = df[k].Histo1D(
+                                        (
+                                            "h_%s_%s" % (f"delta_e_t_{name}", k),
+                                            "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                            % (f"delta_e_t_{name}", k),
+                                            200,
+                                            0,
+                                            1,
+                                        ),
+                                        f"delta_e_t_{name}",
+                                        "wgt_SG",
+                                    )
 
                         elif column > row:
                             # For invariant mass
@@ -765,22 +867,42 @@ def runANA(
 
                             histo_name = f"m_{name1}_{name2}"
 
-                            df[k] = df[k].Define(
+                            if name1[:3] == "jet" or name2[:3] == "jet":
+                                df[k] = df[k].Filter("njet_SG > 0").Define(
                                 histo_name,
                                 f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
-                            )
-                            histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
-                                (
-                                    "h_%s_%s" % (f"{histo_name}", k),
-                                    "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                    % (f"{histo_name}", k),
-                                    200,
-                                    0,
-                                    1000,
-                                ),
-                                f"{histo_name}",
-                                "wgt_SG",
-                            )
+                                )
+                                histo[f"{histo_name}_%s" % (k)] = df[k].Filter("njet_SG > 0").Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"{histo_name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"{histo_name}", k),
+                                        200,
+                                        0,
+                                        1000,
+                                    ),
+                                    f"{histo_name}",
+                                    "wgt_SG",
+                                )
+
+                            else:
+
+                                df[k] = df[k].Define(
+                                    histo_name,
+                                    f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
+                                )
+                                histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"{histo_name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"{histo_name}", k),
+                                        200,
+                                        0,
+                                        1000,
+                                    ),
+                                    f"{histo_name}",
+                                    "wgt_SG",
+                                )
 
                         elif row > column:
                             # For h longitudal stuff
@@ -805,22 +927,42 @@ def runANA(
 
                             histo_name = f"h_{name1}_{name2}"
 
-                            df[k] = df[k].Define(
+                            if name1[:3] == "jet" or name2[:3] == "jet":
+                                df[k] = df[k].Filter("njet_SG > 0").Define(
                                 f"{histo_name}",
                                 f"geth({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
-                            )
-                            histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
-                                (
-                                    "h_%s_%s" % (f"{histo_name}", k),
-                                    "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
-                                    % (f"{histo_name}", k),
-                                    200,
-                                    0,
-                                    1000,
-                                ),
-                                f"{histo_name}",
-                                "wgt_SG",
-                            )
+                                )
+                                histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"{histo_name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"{histo_name}", k),
+                                        200,
+                                        0,
+                                        1000,
+                                    ),
+                                    f"{histo_name}",
+                                    "wgt_SG",
+                                )
+
+                            else:
+
+                                df[k] = df[k].Filter("njet_SG > 0").Define(
+                                    f"{histo_name}",
+                                    f"geth({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
+                                )
+                                histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
+                                    (
+                                        "h_%s_%s" % (f"{histo_name}", k),
+                                        "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                        % (f"{histo_name}", k),
+                                        200,
+                                        0,
+                                        1000,
+                                    ),
+                                    f"{histo_name}",
+                                    "wgt_SG",
+                                )
 
     for k in histo.keys():
         allhisto.append(histo[k])
@@ -847,8 +989,9 @@ if __name__ == "__main__":
 
     N_col = N_j + N_l + 1
     N_row = N_col
+    
     """
-        1: [  "jet_0", 
+    1: [  "jet_0", 
              "jetPt[jet_SG > 0]", 
              "jetEta[jet_SG > 0]", 
              "jetPhi[jet_SG > 0]", 
@@ -861,9 +1004,11 @@ if __name__ == "__main__":
              "jetPhi[jet_SG > 0]", 
              "jetM[jet_SG > 0]", 
              1],
+    
     """
-
+    
     rmm_structure = {
+         
         1: [
             "lep_0",
             "lepPt[ele_SG > 0 || muo_SG > 0]",
@@ -932,3 +1077,34 @@ if __name__ == "__main__":
             p.can.SaveAs(f"../../../Figures/histo_var_check/{key}.pdf")
         except:
             print(f"Could not make plot for name {key}")
+
+    """
+    all_cols = []
+    for c in df["higgs"].GetColumnNames()[-N_row**2:]:
+        all_cols.append(str(c))
+    
+    print(all_cols)
+
+    choice = input("y/n: ")
+    if choice == "y":
+        pass
+    else:
+        exit()
+
+    dfs = []
+    cols = df.keys()
+    for k in cols:
+        print(f"Transforming {k}.ROOT to numpy")
+        numpy = df[k].AsNumpy(all_cols)
+        print(f"Numpy conversion done for {k}.ROOT")
+        df1 = pd.DataFrame(data=numpy)
+        print(f"Transformation done")
+
+        #print("        ")
+        #dfs.append(df1)
+        #del df1
+        #df.to_hdf(f"/storage/shared/data/master_students/William_Sakarias/data/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5","mini")
+
+    print(df1)
+
+    """

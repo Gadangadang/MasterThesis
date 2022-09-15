@@ -311,6 +311,8 @@ bool checkPt(VecF_t& pt, float cut1, float cut2){
 
 
 float getET_part(VecF_t& Pt, VecF_t& M, int i){
+
+  
     /* Calculates E_T for a given event */
     
     return sqrt(Pt[i]*Pt[i] + M[i]*M[i]);
@@ -327,6 +329,8 @@ float getET(float pt, float m){
 
 float delta_e_T(VecF_t& Pt, VecF_t& M, int i){
     /* Calculates the transverse energy inbalance for two particles, either two leptons or two jets */
+
+    
     
     const auto size = int(Pt.size());
       if(i > size){
@@ -355,6 +359,8 @@ float getRapidity(float pt, float eta, float phi, float e){
 
 float geth_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i) {
     /* h_L is proportional to Lorentz factor, and can reflect on longitudal directions */
+
+    
     
     const auto size = int(pt.size());
       if(i > size){
@@ -370,6 +376,8 @@ float geth_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i) {
 float geth(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
     
     /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
+
+    
     
     const auto size_i = int(pt_i.size());
     const auto size_j = int(pt_j.size());
@@ -394,6 +402,8 @@ float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i){
     /* Calculates the rapidity based on the pseudorapidity via Lorentz vector */
     
     /* Remember to scale with 1/sqrt(s) to get value in range [0,1] */
+
+    
     
     const auto size = int(pt.size());
       if(i > size){
@@ -413,6 +423,9 @@ float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i){
 float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
     
     /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
+
+    
+
     const auto size_i = int(pt_i.size());
     const auto size_j = int(pt_j.size());
       if(i > size_i){
