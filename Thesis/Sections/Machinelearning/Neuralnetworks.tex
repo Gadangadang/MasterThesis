@@ -11,12 +11,13 @@ figure \ref{fig:nndiagram}.
 
 \begin{figure}
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
-    \caption{Simple neural network diagram.}
+    \caption{Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, and the red dots are the output layer. The arrows shows the connections between each node. }
     \label{fig:nndiagram}
 \end{figure}
 
 The input layer has the same shape of the dataset one uses to train or predict on, with one node for each feature in the dataset.
 The next layer is the hidden layers. For a given network, the amount of hidden layers can be tuned, as well as the number of 
 nodes per layer. Finally, the last hidden layer is connected to the ouput layer, which is determined by the aim of the problem. 
-In the case of figure \ref{fig:nndiagram}, this neural netork would represent a binary classification problem. The nodes in the
-network interacts through so called weights $w$ and biases $b$. 
+In the case of figure \ref{fig:nndiagram}, this neural network would represent a binary classification problem, in other words, two categories. 
+The nodes in the network interacts through so called weights $w$ and biases $b$. These are known as tunable parameters, 
+which needs to be trained on the dataset before any prediction can be made. 

@@ -1,13 +1,13 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {chapter}{Introduction}{1}{chapter*.4}%
 \contentsline {chapter}{\numberline {1}Machine learning phenomenology}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}The Standard model}{7}{chapter.2}%
+\contentsline {chapter}{\numberline {2}The Standard model and beyond}{7}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Implementation}{9}{chapter.3}%
 \contentsline {chapter}{\numberline {4}Results}{11}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{13}{chapter.5}%
-\contentsline {chapter}{Conclusion}{15}{chapter*.14}%
-\contentsline {chapter}{Appendices}{17}{section*.15}%
-\contentsline {chapter}{Appendix A}{19}{appendix*.16}%
-\contentsline {chapter}{Appendix B}{21}{appendix*.17}%
-\contentsline {chapter}{Appendix C}{23}{appendix*.18}%
-\contentsline {chapter}{Appendix D}{25}{appendix*.19}%
+\contentsline {chapter}{Conclusion}{15}{chapter*.15}%
+\contentsline {chapter}{Appendices}{17}{section*.16}%
+\contentsline {chapter}{Appendix A}{19}{appendix*.17}%
+\contentsline {chapter}{Appendix B}{21}{appendix*.18}%
+\contentsline {chapter}{Appendix C}{23}{appendix*.19}%
+\contentsline {chapter}{Appendix D}{25}{appendix*.20}%
