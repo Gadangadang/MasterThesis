@@ -8,6 +8,7 @@ from samples import configure_samples
 import numpy as np
 import pandas as pd
 import plottingTool as pt
+from typing import Tuple
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
@@ -20,9 +21,12 @@ R.gInterpreter.Declare(
 )  # Header with the definition of the myFilter function
 R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
 
-from IPython.display import display, HTML
+#from IPython.display import display, HTML
 
-display(HTML("<style>.container { width:100% !important; }</style>"))
+#display(HTML("<style>.container { width:100% !important; }</style>"))
+
+
+
 
 hname = "MET_2L_mm"
 
@@ -413,7 +417,7 @@ def runANA(
     allhisto: list,
     nEvents=0,
     create_histogram=False,
-) -> tuple[dict, list]:
+) -> Tuple[dict, dict]:
     
     
     
@@ -449,7 +453,7 @@ def runANA(
 
         for k in df.keys():
 
-            if k != "higgs":
+            if k not in ["higgs", "ttbar"]:
                 continue
 
             print(df[k].GetColumnNames())
