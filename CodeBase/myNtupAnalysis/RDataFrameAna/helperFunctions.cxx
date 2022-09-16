@@ -12,7 +12,7 @@ using VecB_t = const ROOT::VecOps::RVec<bool>;
 
 
 
-int C = 0.15; 
+float C = 0.15; 
 
 bool myfilter(float x) {
    return x > 5;
@@ -315,7 +315,7 @@ float getET_part(VecF_t& Pt, VecF_t& M, int i){
   
     /* Calculates E_T for a given event */
     
-    return sqrt(Pt[i]*Pt[i] + M[i]*M[i]);
+    return Pt[i]/13000.0;
 }
 
 
@@ -323,7 +323,7 @@ float getET_part(VecF_t& Pt, VecF_t& M, int i){
 float getET(float pt, float m){
     /* Calculates E_T for a given event */
     
-    return sqrt(pt*pt + m*m);
+    return pt;
 }
 
 
@@ -353,6 +353,7 @@ float getRapidity(float pt, float eta, float phi, float e){
     p1.SetPtEtaPhiM(pt, eta, phi, e);
     
     float y = p1.Rapidity();
+    
     return y;
     
 }
@@ -369,8 +370,8 @@ float geth_L(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i) {
       }
     
     float y = getRapidity(pt[i], eta[i], phi[i], e[i]);
-    
-    return C*(cosh(y) - 1);
+    //printf("Cosh Rapidity: %f , h_L: %f\n", cosh(y), C*(cosh(y) - 1.));
+    return C*(cosh(y) - 1.);
 }
 
 float geth(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j, VecF_t& eta_j, VecF_t& phi_j, VecF_t& e_j, int i, int j){
@@ -415,7 +416,7 @@ float getM_T(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, int i){
     p1.SetPtEtaPhiM(pt[i], eta[i], phi[i], e[i]);
     
     
-    return p1.Mt();
+    return p1.Mt()/13000.0;
     
 }
 
@@ -445,5 +446,5 @@ float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j
     p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
     
     
-    return (p1 + p2).M();
+    return (p1 + p2).M()/13000.0;
 }
