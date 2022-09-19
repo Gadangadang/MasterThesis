@@ -1,8 +1,17 @@
-trigmatch_2018_2L = "((lepHLT_2e17_lhvloose_nod0_L12EM15VHI[ele_SG || muo_SG] && lepPt[ele_SG || muo_SG] > 17) || (lepHLT_2e24_lhvloose_nod0[ele_SG || muo_SG] && lepPt[ele_SG || muo_SG] > 24) || (lepHLT_mu22_mu8noL1[ele_SG || muo_SG] && lepPt[ele_SG || muo_SG] > 22) || (lepHLT_e17_lhloose_nod0_mu14[ele_SG || muo_SG] && lepPt[ele_SG || muo_SG] > 17))"
-triggered_2018_2L = "(trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_2e24_lhvloose_nod0 || trigMatch_HLT_mu22_mu8noL1 || trigMatch_HLT_e17_lhloose_nod0_mu14)"
-
-
-triggers = {"2018": [trigmatch_2018_2L, triggered_2018_2L]}
+triggers = {
+    "2015": {
+        "trig": "trigMatch_HLT_mu18_mu8noL1 || trigMatch_HLT_2e12_lhloose_L12EM10VH || trigMatch_HLT_e17_lhloose_mu14  || is2016 || is2017 || is2018", 
+        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12  || lepHLT_mu18_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 18  || lepHLT_e17_lhloose_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || is2016 || is2017 || is2018"
+    },
+    "2016": {
+        "trig": "trigMatch_HLT_2e17_lhvloose_nod0 || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1  || is2017 || is2018",
+        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || is2017 || is2018"
+    },
+    "2017/18": {
+        "trig": "trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1",
+        "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22 >= 2) " 
+    }
+}
 
 columns = {
     "lepHLT_e24_lhvloose_nod0_2e12_lhvloose_nod0_L1EM20VH_3EM10VH",

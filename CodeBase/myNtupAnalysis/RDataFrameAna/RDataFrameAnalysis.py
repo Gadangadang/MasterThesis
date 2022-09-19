@@ -13,12 +13,12 @@ from pyHelperFuncs import *
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
-from div_dicts import triggers 
+from div_dicts import triggers
 
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-#R.EnableImplicitMT(200)
+R.EnableImplicitMT(200)
 
 R.gROOT.ProcessLine(".L helperFunctions.cxx+")
 R.gSystem.AddDynamicPath("-I/home/sgfrette/myNtupAnalysis/RDataFrameAna")
@@ -70,22 +70,15 @@ def runANA(
 
         df = {**df_mc, **df_data}
 
-        # print(df.keys())
-
-
-        isGoodLep  = "ele_SG || muo_SG"
-
-        
-
 
         for k in df.keys():
 
-            """if k not in ["higgs"]:  # , "ttbar"]:
-                continue"""
+            """if k not in ["Wjets"]:  # , "ttbar"]:
+                continue
+            """
+            print(df[k].GetColumnNames())
 
-            #print(df[k].GetColumnNames())
-
-            print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
+            #print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
             # if not k in ["data18"]: continue
 
@@ -96,12 +89,7 @@ def runANA(
                     "scaletolumi",
                     "(RandomRunNumber) < 320000 ? 36207.65 : (((RandomRunNumber) > 320000 && (RandomRunNumber) < 348000) ? 44307.4 : 58450.1)",
                 )
-            # else:
-            #    run_cutstr = ""
-            #    for rn in good_runs:
-            #        run_cutstr += "(RunNumber == %s ||" %rn
-            #    run_cutstr = run_cutstr[:-2]+")"
-            #    print(run_cutstr)
+            
 
             df[k] = df[k].Define(
                 "new_xsec", "(DatasetNumber == 308981) ? (0.30649*69.594)/80000. : 0.0"
@@ -243,32 +231,30 @@ def runANA(
 
             # 2015 only triggers
 
+            trigs2015 = triggers["2015"]
+            trig2015 = trigs2015["trig"]
+            trigmatch2015 = trigs2015["trigmatch"]
 
-            df[k] = df[k].Define("trig", "ROOT::VecOps::Sum((lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12))")
-
-            p = df[k].Display(("trig")).AsString()
-            print(p)
-
-
-            exit()
-            
-
-            df[k] = df[k].Filter("trigMatch_HLT_2e12_lhloose_L12EM10VH || is2016 || is2017 || is2018")
-            df[k] = df[k].Filter("((ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep]) >= 2)) || is2016 || is2017 || is2018")
-        
-            df[k] = df[k].Filter("trigMatch_HLT_e17_lhloose_mu14 || is2016 || is2017 || is2018")
-            df[k] = df[k].Filter("((ROOT::VecOps::Sum(lepHLT_e17_lhloose_mu14[isGoodLep]) >= 2)) || is2016 || is2017 || is2018")
+            df[k] = df[k].Filter(trig2015)
+            df[k] = df[k].Filter(trigmatch2015)
             
             # 2016 only triggers
-
-            # 2017 only triggers
-
-            # 2018 only triggers
-          
             
+            trigs2016 = triggers["2015"]
+            trig2016 = trigs2016["trig"]
+            trigmatch2016 = trigs2016["trigmatch"]
 
+            df[k] = df[k].Filter(trig2016)
+            df[k] = df[k].Filter(trigmatch2016)
             
+            # 2017 and 2018 only triggers
 
+            trigs201718 = triggers["2017/18"]
+            trig201718 = trigs201718["trig"]
+            trigmatch201718 = trigs201718["trigmatch"]
+
+            df[k] = df[k].Filter(trig201718)
+            df[k] = df[k].Filter(trigmatch201718)
             
 
 
@@ -443,7 +429,7 @@ def runANA(
 
                             df[k] = df[k].Define(
                                 histo_name,
-                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
+                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2})",
                             )
                             histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
                                 (
@@ -498,8 +484,15 @@ def runANA(
                                 "wgt_SG",
                             )
 
+
+            print("Number of events in %s = %i after filtering" % (k, df[k].Count().GetValue())) 
+
+
     for k in histo.keys():
         allhisto.append(histo[k])
+
+
+    
 
     print("Calculating %i histograms" % len(allhisto))
     # sys.exit()
@@ -628,6 +621,9 @@ if __name__ == "__main__":
 
     numpy_dfs = get_numpy_df(df, all_cols)
 
+    
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
+
+    
