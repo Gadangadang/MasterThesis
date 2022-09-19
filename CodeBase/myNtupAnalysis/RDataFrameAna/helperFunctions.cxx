@@ -448,3 +448,13 @@ float getM(VecF_t& pt_i, VecF_t& eta_i, VecF_t& phi_i, VecF_t& e_i, VecF_t& pt_j
     
     return (p1 + p2).M()/13000.0;
 }
+
+int printfunc(VecB_t trigger, VecB_t cond)
+{
+
+  bool val = ROOT::VecOps::Sum(trigger[cond]) ;
+  
+  std::cout << "val = " << val << std::endl;
+
+  return 0;
+}

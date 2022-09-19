@@ -13,11 +13,12 @@ from pyHelperFuncs import *
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
+from div_dicts import triggers 
 
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-R.EnableImplicitMT(200)
+#R.EnableImplicitMT(200)
 
 R.gROOT.ProcessLine(".L helperFunctions.cxx+")
 R.gSystem.AddDynamicPath("-I/home/sgfrette/myNtupAnalysis/RDataFrameAna")
@@ -71,12 +72,18 @@ def runANA(
 
         # print(df.keys())
 
+
+        isGoodLep  = "ele_SG || muo_SG"
+
+        
+
+
         for k in df.keys():
 
-            if k not in ["higgs"]:  # , "ttbar"]:
-                continue
+            """if k not in ["higgs"]:  # , "ttbar"]:
+                continue"""
 
-            # print(df[k].GetColumnNames())
+            #print(df[k].GetColumnNames())
 
             print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -128,6 +135,8 @@ def runANA(
                 "nlep_SG", "ROOT::VecOps::Sum(ele_SG)+ROOT::VecOps::Sum(muo_SG)"
             )
 
+            df[k] = df[k].Define("isGoodLep", "ele_SG || muo_SG")
+
             if not isData:
 
                 df[k] = df[k].Define("is2015", "RandomRunNumber <= 284500")
@@ -140,10 +149,10 @@ def runANA(
                 df[k] = df[k].Define("is2018", "RandomRunNumber > 348000")
 
                 # df[k] = df[k].Define("lepwgt_BL","getSF(lepBLRecoSF[ele_BL || muo_BL])")
-                df[k] = df[k].Define("lepwgt_SG", "getSF(lepRecoSF[ele_SG || muo_SG])")
+                df[k] = df[k].Define("lepwgt_SG", "getSF(lepRecoSF[isGoodLep])")
 
                 # df[k] = df[k].Define("trgwgt_BL","getSF(lepBLTrigSF[ele_BL || muo_BL])")
-                df[k] = df[k].Define("trgwgt_SG", "getSF(lepTrigSF[ele_SG || muo_SG])")
+                df[k] = df[k].Define("trgwgt_SG", "getSF(lepTrigSF[isGoodLep])")
 
                 # df[k] = df[k].Define("wgt_BL","(new_xsec ? (new_xsec) : (genWeight))*eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL")
                 df[k] = df[k].Define(
@@ -225,6 +234,45 @@ def runANA(
             df[k] = df[k].Define("isZlep1", "getZlep1()")
             df[k] = df[k].Define("isZlep2", "getZlep2()")
             df[k] = df[k].Define("isWlep1", "getWlep1()")
+
+            
+
+            """
+            Trigger filtering
+            """
+
+            # 2015 only triggers
+
+
+            df[k] = df[k].Define("trig", "ROOT::VecOps::Sum((lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12))")
+
+            p = df[k].Display(("trig")).AsString()
+            print(p)
+
+
+            exit()
+            
+
+            df[k] = df[k].Filter("trigMatch_HLT_2e12_lhloose_L12EM10VH || is2016 || is2017 || is2018")
+            df[k] = df[k].Filter("((ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep]) >= 2)) || is2016 || is2017 || is2018")
+        
+            df[k] = df[k].Filter("trigMatch_HLT_e17_lhloose_mu14 || is2016 || is2017 || is2018")
+            df[k] = df[k].Filter("((ROOT::VecOps::Sum(lepHLT_e17_lhloose_mu14[isGoodLep]) >= 2)) || is2016 || is2017 || is2018")
+            
+            # 2016 only triggers
+
+            # 2017 only triggers
+
+            # 2018 only triggers
+          
+            
+
+            
+
+            
+
+
+
 
             # Jets
             df[k] = df[k].Define(
@@ -486,21 +534,22 @@ def create_histograms_pdfs(histo, new_feats):
 def get_numpy_df(df, all_cols):
     cols = df.keys()
 
+    dfs = []
     for k in cols:
-        if k != "higgs":
-            continue
+        
         print(f"Transforming {k}.ROOT to numpy")
         numpy = df[k].AsNumpy(all_cols)
         print(f"Numpy conversion done for {k}.ROOT")
         df1 = pd.DataFrame(data=numpy)
         print(f"Transformation done")
+        dfs.append(df1)
 
         # print("        ")
         # dfs.append(df1)
         # del df1
         # df.to_hdf(f"/storage/shared/data/master_students/William_Sakarias/data/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5","mini")
 
-    return df1
+    return dfs
 
 
 if __name__ == "__main__":
@@ -554,6 +603,8 @@ if __name__ == "__main__":
         ],
     }
 
+    
+
     good_runs = []
 
     histo = {}
@@ -575,6 +626,8 @@ if __name__ == "__main__":
 
     all_cols = get_column_names(df, histo)
 
-    numpy_df = get_numpy_df(df, all_cols)
+    numpy_dfs = get_numpy_df(df, all_cols)
 
-    plot_rmm_matrix(numpy_df, rmm_structure, N_row)
+    names = list(df.keys())
+    for index, df in enumerate(numpy_dfs):
+        plot_rmm_matrix(df, names[index], rmm_structure, N_row)

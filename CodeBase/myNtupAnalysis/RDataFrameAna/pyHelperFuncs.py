@@ -344,13 +344,14 @@ def getRatio1D(hT, hL, vb=0):
     return hR
 
 
-def plot_rmm_matrix(df: pd.DataFrame, rmm_structure: dict, N_row: int) -> None:
+def plot_rmm_matrix(df: pd.DataFrame, process:str, rmm_structure: dict, N_row: int) -> None:
 
     col = len(df.columns)
     row = len(df)
 
-    print(df.columns)
-
+    print("")
+    print(f"Size: {row}")
+    print("")
     df2 = df.mean()
 
     tot = len(df2)
@@ -383,7 +384,7 @@ def plot_rmm_matrix(df: pd.DataFrame, rmm_structure: dict, N_row: int) -> None:
 
     fig.tight_layout()
 
-    plt.savefig("../../../Figures/histo_var_check/rmm_avg.pdf")
+    plt.savefig(f"../../../Figures/histo_var_check/rmm_avg_{process}.pdf")
     plt.show()
 
 
