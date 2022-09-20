@@ -13,7 +13,7 @@ from pyHelperFuncs import *
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
-from div_dicts import triggers
+from div_dicts import triggers, rmm_structure
 
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
@@ -70,13 +70,15 @@ def runANA(
 
         df = {**df_mc, **df_data}
 
+        
 
         for k in df.keys():
 
-            """if k not in ["Wjets"]:  # , "ttbar"]:
+            """if k not in ["singletop"]:  # , "ttbar"]:
                 continue
             """
-            print(df[k].GetColumnNames())
+            
+            #print(df[k].GetColumnNames())
 
             #print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -89,7 +91,6 @@ def runANA(
                     "scaletolumi",
                     "(RandomRunNumber) < 320000 ? 36207.65 : (((RandomRunNumber) > 320000 && (RandomRunNumber) < 348000) ? 44307.4 : 58450.1)",
                 )
-            
 
             df[k] = df[k].Define(
                 "new_xsec", "(DatasetNumber == 308981) ? (0.30649*69.594)/80000. : 0.0"
@@ -223,8 +224,6 @@ def runANA(
             df[k] = df[k].Define("isZlep2", "getZlep2()")
             df[k] = df[k].Define("isWlep1", "getWlep1()")
 
-            
-
             """
             Trigger filtering
             """
@@ -237,16 +236,16 @@ def runANA(
 
             df[k] = df[k].Filter(trig2015)
             df[k] = df[k].Filter(trigmatch2015)
-            
+
             # 2016 only triggers
-            
+
             trigs2016 = triggers["2015"]
             trig2016 = trigs2016["trig"]
             trigmatch2016 = trigs2016["trigmatch"]
 
             df[k] = df[k].Filter(trig2016)
             df[k] = df[k].Filter(trigmatch2016)
-            
+
             # 2017 and 2018 only triggers
 
             trigs201718 = triggers["2017/18"]
@@ -255,10 +254,6 @@ def runANA(
 
             df[k] = df[k].Filter(trig201718)
             df[k] = df[k].Filter(trigmatch201718)
-            
-
-
-
 
             # Jets
             df[k] = df[k].Define(
@@ -272,8 +267,15 @@ def runANA(
             df[k] = df[k].Define("njet_BL", "ROOT::VecOps::Sum(jet_BL)")
             df[k] = df[k].Define("njet_SG", "ROOT::VecOps::Sum(jet_SG)")
 
+            """
+            p = df[k].Display("jetPt", 100).AsString()
+            print(p)
+            """
+            
             # Special case where is atleast one jet
-            df[k] = df[k].Filter("njet_SG > 0")
+            #df[k] = df[k].Filter("njet_SG > 0")
+
+            
 
             """
             RMM matrix feature calculations with histogram creation
@@ -310,6 +312,8 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
+                            part_SG = particle_info[6]
+                            n_part = particle_info[7]
 
                             df[k] = df[k].Define(
                                 f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
@@ -321,7 +325,7 @@ def runANA(
                                     % (f"e_T_miss", k),
                                     200,
                                     0,
-                                    1,
+                                    500,
                                 ),
                                 f"m_T_{name}",
                                 "wgt_SG",
@@ -329,6 +333,7 @@ def runANA(
                 else:
 
                     # Calculate rest of matrix
+
 
                     for column in range(N_col):
                         if column == 0:
@@ -340,6 +345,8 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
+                            part_SG = particle_info[6]
+                            n_part = particle_info[7]
 
                             df[k] = df[k].Define(
                                 f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
@@ -365,6 +372,8 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
+                            part_SG = particle_info[6]
+                            n_part = particle_info[7]
 
                             if index == 0:
                                 # If particle is the first of its type, calculate e_T of particle
@@ -415,6 +424,8 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
+                            part_SG1 = particle_info[6]
+                            n_part1 = particle_info[7]
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -424,6 +435,8 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
+                            part_SG2 = particle_info[6]
+                            n_part2 = particle_info[7]
 
                             histo_name = f"m_{name1}_{name2}"
 
@@ -438,7 +451,7 @@ def runANA(
                                     % (f"{histo_name}", k),
                                     200,
                                     0,
-                                    1,
+                                    500,
                                 ),
                                 f"{histo_name}",
                                 "wgt_SG",
@@ -455,6 +468,8 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
+                            part_SG1 = particle_info[6]
+                            n_part1 = particle_info[7]
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -464,12 +479,14 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
+                            part_SG2 = particle_info[6]
+                            n_part2 = particle_info[7]
 
                             histo_name = f"h_{name1}_{name2}"
 
                             df[k] = df[k].Define(
                                 f"{histo_name}",
-                                f"geth({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m}, {index1}, {index2})",
+                                f"geth({pt1},{eta1}, {phi1}, {m1},  {pt2}, {eta2}, {phi2}, {m2},  {index1}, {index2})",
                             )
                             histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
                                 (
@@ -484,15 +501,13 @@ def runANA(
                                 "wgt_SG",
                             )
 
-
-            print("Number of events in %s = %i after filtering" % (k, df[k].Count().GetValue())) 
-
+            print(
+                "Number of events in %s = %i after filtering"
+                % (k, df[k].Count().GetValue())
+            )
 
     for k in histo.keys():
         allhisto.append(histo[k])
-
-
-    
 
     print("Calculating %i histograms" % len(allhisto))
     # sys.exit()
@@ -529,7 +544,7 @@ def get_numpy_df(df, all_cols):
 
     dfs = []
     for k in cols:
-        
+
         print(f"Transforming {k}.ROOT to numpy")
         numpy = df[k].AsNumpy(all_cols)
         print(f"Numpy conversion done for {k}.ROOT")
@@ -553,51 +568,7 @@ if __name__ == "__main__":
     N_col = N_j + N_l + 1
     N_row = N_col
 
-    rmm_structure = {
-        1: [
-            "jet_0",
-            "jetPt[jet_SG > 0]",
-            "jetEta[jet_SG > 0]",
-            "jetPhi[jet_SG > 0]",
-            "jetM[jet_SG > 0]",
-            0,
-        ],
-        2: [
-            "jet_1",
-            "jetPt[jet_SG > 0]",
-            "jetEta[jet_SG > 0]",
-            "jetPhi[jet_SG > 0]",
-            "jetM[jet_SG > 0]",
-            1,
-        ],
-        3: [
-            "lep_0",
-            "lepPt[ele_SG > 0 || muo_SG > 0]",
-            "lepEta[ele_SG > 0 || muo_SG > 0]",
-            "lepPhi[ele_SG > 0 || muo_SG > 0]",
-            "lepM[ele_SG > 0 || muo_SG > 0]",
-            0,
-        ],
-        4: [
-            "lep_1",
-            "lepPt[ele_SG > 0 || muo_SG > 0]",
-            "lepEta[ele_SG > 0 || muo_SG > 0]",
-            "lepPhi[ele_SG > 0 || muo_SG > 0]",
-            "lepM[ele_SG > 0 || muo_SG > 0]",
-            1,
-        ],
-        5: [
-            "lep_2",
-            "lepPt[ele_SG > 0 || muo_SG > 0]",
-            "lepEta[ele_SG > 0 || muo_SG > 0]",
-            "lepPhi[ele_SG > 0 || muo_SG > 0]",
-            "lepM[ele_SG > 0 || muo_SG > 0]",
-            2,
-        ],
-    }
-
     
-
     good_runs = []
 
     histo = {}
@@ -617,13 +588,14 @@ if __name__ == "__main__":
         create_histogram=True,
     )
 
+    
+
     all_cols = get_column_names(df, histo)
+
+    create_histograms_pdfs(histo, all_cols)
 
     numpy_dfs = get_numpy_df(df, all_cols)
 
-    
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
-
-    

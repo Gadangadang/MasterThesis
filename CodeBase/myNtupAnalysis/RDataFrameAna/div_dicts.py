@@ -13,6 +13,79 @@ triggers = {
     }
 }
 
+rmm_structure = {
+        1: [
+            "jet_0",
+            "jetPt[jet_SG]",
+            "jetEta[jet_SG]",
+            "jetPhi[jet_SG]",
+            "jetM[jet_SG]",
+            0,
+            "jet_SG",
+            "njet_SG"
+        ],
+        2: [
+            "jet_1",
+            "jetPt[jet_SG]",
+            "jetEta[jet_SG]",
+            "jetPhi[jet_SG]",
+            "jetM[jet_SG]",
+            1,
+            "jet_SG",
+            "njet_SG"
+        ],
+        3: [
+            "lep_0",
+            "lepPt[isGoodLep]",
+            "lepEta[isGoodLep]",
+            "lepPhi[isGoodLep]",
+            "lepM[isGoodLep]",
+            0,
+            "isGoodLep",
+            "nlep_SG"
+        ],
+        4: [
+            "lep_1",
+            "lepPt[isGoodLep]",
+            "lepEta[isGoodLep]",
+            "lepPhi[isGoodLep]",
+            "lepM[isGoodLep]",
+            1,
+            "isGoodLep",
+            "nlep_SG"
+        ],
+        5: [
+            "lep_2",
+            "lepPt[isGoodLep]",
+            "lepEta[isGoodLep]",
+            "lepPhi[isGoodLep]",
+            "lepM[isGoodLep]",
+            2,
+            "isGoodLep",
+            "nlep_SG"
+        ],
+    }
+
+
+column_creation = {
+    "jet_0": {
+        "jet_0_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][0]: 0.",
+        "jet_0_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][0]: 0.",
+        "jet_0_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][0]: 0.",
+        "jet_0_M": "(jet_SG > 0) ? jetM[jet_SG > 0][0]: 0."
+    }, 
+   "jet_1": {
+        "jet_1_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][1]: 0.",
+        "jet_1_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][1]: 0.",
+        "jet_1_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][1]: 0.",
+        "jet_1_M": "(jet_SG > 0) ? jetM[jet_SG > 0][1]: 0."
+    }
+      
+            
+}
+
+
+
 columns = {
     "lepHLT_e24_lhvloose_nod0_2e12_lhvloose_nod0_L1EM20VH_3EM10VH",
     "lepHLT_e12_lhloose_nod0_2mu10",
