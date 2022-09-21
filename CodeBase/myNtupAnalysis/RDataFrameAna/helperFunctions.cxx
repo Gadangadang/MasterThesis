@@ -318,13 +318,13 @@ float getET_part(VecF_t &Pt, VecF_t &M, int i)
   if (size == 0)
   {
     ////printf("getET_part::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size);
-    return 0;
+    return 0.;
   }
 
   if (i > size)
   {
     ////printf("getET_part::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
   return Pt[i] ;
@@ -347,13 +347,13 @@ float delta_e_T(VecF_t &Pt, VecF_t &M, int i)
   if (size == 0 )
   {
     ////printf("delta_e_T::ERROR \t  Returns 0; Size of vector i is %i\n", size);
-    return 0;
+    return 0.;
   }
 
   if (i > size)
   {
     ////printf("delta_e_T::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
   float delta_e_T_j = (getET(Pt[i - 1], M[i - 1]) - getET(Pt[i], M[i])) /
@@ -386,13 +386,13 @@ float geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
   if (size == 0)
   {
     //printf("geth_L::ERROR \t  Returns 0; Size of vector i is %i \n", size);
-    return 0;
+    return 0.;
   }
 
   if (i > size)
   {
     //printf("geth_L::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
   float y = getRapidity(pt[i], eta[i], phi[i], e[i]);
@@ -415,18 +415,18 @@ float geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   if (size_i == 0 || size_j == 0)
   {
     //printf("geth::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0;
+    return 0.;
   }
 
   if (i > size_i)
   {
     //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
   if (j > size_j)
   {
     //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
 
   float y_i = getRapidity(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
@@ -446,13 +446,13 @@ float getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
   if (size == 0 )
   {
     //printf("getM_T::ERROR \t Returns 0; Size of vector i is %i \n", size);
-    return 0;
+    return 0.;
   }
 
   if (i > size)
   {
     //printf("getM_T::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
   TLorentzVector p1;
 
@@ -475,18 +475,18 @@ float getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
 
   if (size_i == 0 || size_j == 0){
     ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0;
+    return 0.;
   }
 
   if (i > size_i)
   {
     ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
   if (j > size_j)
   {
     //////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
 
   TLorentzVector p1;

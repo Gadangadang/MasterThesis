@@ -299,7 +299,7 @@ def runANA(
                                     "h_%s_%s" % (f"e_T_miss", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"e_T_miss", k),
-                                    200,
+                                    100,
                                     0,
                                     500,
                                 ),
@@ -315,8 +315,7 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            part_SG = particle_info[6]
-                            n_part = particle_info[7]
+                            
 
                             df[k] = df[k].Define(
                                 f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
@@ -326,7 +325,7 @@ def runANA(
                                     "h_%s_%s" % (f"m_T_{name}", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"e_T_miss", k),
-                                    200,
+                                    100,
                                     0,
                                     500,
                                 ),
@@ -348,8 +347,7 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            part_SG = particle_info[6]
-                            n_part = particle_info[7]
+                            
 
                             df[k] = df[k].Define(
                                 f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
@@ -375,8 +373,7 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            part_SG = particle_info[6]
-                            n_part = particle_info[7]
+                            
 
                             if index == 0:
                                 # If particle is the first of its type, calculate e_T of particle
@@ -389,7 +386,7 @@ def runANA(
                                         "h_%s_%s" % (f"e_T_{name}", k),
                                         "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                         % (f"e_T_{name}", k),
-                                        200,
+                                        50,
                                         0,
                                         1,
                                     ),
@@ -408,7 +405,7 @@ def runANA(
                                         "h_%s_%s" % (f"delta_e_t_{name}", k),
                                         "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                         % (f"delta_e_t_{name}", k),
-                                        200,
+                                        50,
                                         0,
                                         1,
                                     ),
@@ -427,8 +424,7 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
-                            part_SG1 = particle_info[6]
-                            n_part1 = particle_info[7]
+                            
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -438,8 +434,7 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
-                            part_SG2 = particle_info[6]
-                            n_part2 = particle_info[7]
+                            
 
                             histo_name = f"m_{name1}_{name2}"
 
@@ -452,7 +447,7 @@ def runANA(
                                     "h_%s_%s" % (f"{histo_name}", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"{histo_name}", k),
-                                    200,
+                                    100,
                                     0,
                                     500,
                                 ),
@@ -471,8 +466,7 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
-                            part_SG1 = particle_info[6]
-                            n_part1 = particle_info[7]
+                            
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -482,8 +476,7 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
-                            part_SG2 = particle_info[6]
-                            n_part2 = particle_info[7]
+                            
 
                             histo_name = f"h_{name1}_{name2}"
 
@@ -496,7 +489,7 @@ def runANA(
                                     "h_%s_%s" % (f"{histo_name}", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"{histo_name}", k),
-                                    200,
+                                    50,
                                     0,
                                     1,
                                 ),
@@ -585,7 +578,7 @@ def get_numpy_df(df:dict, all_cols:list) -> Tuple[dict, ...]:
 if __name__ == "__main__":
 
     N_j = 2
-    N_l = 3
+    N_l = 6
 
     N_col = N_j + N_l + 1
     N_row = N_col

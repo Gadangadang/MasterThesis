@@ -20,9 +20,7 @@ rmm_structure = {
             "jetEta[jet_SG]",
             "jetPhi[jet_SG]",
             "jetM[jet_SG]",
-            0,
-            "jet_SG",
-            "njet_SG"
+            0
         ],
         2: [
             "jet_1",
@@ -30,59 +28,59 @@ rmm_structure = {
             "jetEta[jet_SG]",
             "jetPhi[jet_SG]",
             "jetM[jet_SG]",
-            1,
-            "jet_SG",
-            "njet_SG"
+            1
         ],
         3: [
-            "lep_0",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            0,
-            "isGoodLep",
-            "nlep_SG"
+            "ele_0",
+            "lepPt[ele_SG]",
+            "lepEta[ele_SG]",
+            "lepPhi[ele_SG]",
+            "lepM[ele_SG]",
+            0
         ],
         4: [
-            "lep_1",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            1,
-            "isGoodLep",
-            "nlep_SG"
+            "ele_1",
+            "lepPt[ele_SG]",
+            "lepEta[ele_SG]",
+            "lepPhi[ele_SG]",
+            "lepM[ele_SG]",
+            1
         ],
         5: [
-            "lep_2",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            2,
-            "isGoodLep",
-            "nlep_SG"
+            "ele_2",
+            "lepPt[ele_SG]",
+            "lepEta[ele_SG]",
+            "lepPhi[ele_SG]",
+            "lepM[ele_SG]",
+            2
+        ],
+        6: [
+            "muo_0",
+            "lepPt[muo_SG]",
+            "lepEta[muo_SG]",
+            "lepPhi[muo_SG]",
+            "lepM[muo_SG]",
+            0
+        ],
+        7: [
+            "muo_1",
+            "lepPt[muo_SG]",
+            "lepEta[muo_SG]",
+            "lepPhi[muo_SG]",
+            "lepM[muo_SG]",
+            1
+        ],
+        8: [
+            "muo_2",
+            "lepPt[muo_SG]",
+            "lepEta[muo_SG]",
+            "lepPhi[muo_SG]",
+            "lepM[muo_SG]",
+            2
         ],
     }
 
 
-column_creation = {
-    "jet_0": {
-        "jet_0_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][0]: 0.",
-        "jet_0_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][0]: 0.",
-        "jet_0_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][0]: 0.",
-        "jet_0_M": "(jet_SG > 0) ? jetM[jet_SG > 0][0]: 0."
-    }, 
-   "jet_1": {
-        "jet_1_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][1]: 0.",
-        "jet_1_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][1]: 0.",
-        "jet_1_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][1]: 0.",
-        "jet_1_M": "(jet_SG > 0) ? jetM[jet_SG > 0][1]: 0."
-    }
-      
-            
-}
 
 
 
