@@ -268,13 +268,16 @@ def runANA(
             df[k] = df[k].Define("njet_SG", "ROOT::VecOps::Sum(jet_SG)")
 
             """
-            p = df[k].Display("jetPt", 100).AsString()
+            p = df[k].Display("channel").AsString()
             print(p)
+            print(k)
+            exit()
             """
             
-            # Special case where is atleast one jet
-            #df[k] = df[k].Filter("njet_SG > 0")
 
+            # Adding column for type of channel
+
+            # df[k] = df[k].Define("channeltype", k)
             
 
             """
@@ -290,7 +293,7 @@ def runANA(
                     for column in range(N_col):
                         if column == 0:
                             # Set e_T_miss
-                            df[k] = df[k].Define("e_T_miss", "met_Et/13000.0")
+                            df[k] = df[k].Define("e_T_miss", "met_Et")
                             histo[f"e_T_miss_%s" % (k)] = df[k].Histo1D(
                                 (
                                     "h_%s_%s" % (f"e_T_miss", k),
@@ -298,7 +301,7 @@ def runANA(
                                     % (f"e_T_miss", k),
                                     200,
                                     0,
-                                    1,
+                                    500,
                                 ),
                                 f"e_T_miss",
                                 "wgt_SG",
@@ -525,6 +528,15 @@ def runANA(
 
 
 def create_histograms_pdfs(histo, new_feats):
+    """
+    Takes the list of features in the histo dict, and creates 
+    histograms of those features. 
+
+    Args:
+        histo (dict): dictionary containing all the histograms
+        new_feats (list): list of features to make histograms out of
+    """
+
     writeHistsToFile(histo, d_samp, False)
 
     toplot = []
@@ -539,7 +551,17 @@ def create_histograms_pdfs(histo, new_feats):
             print(f"Could not make plot for name {key}")
 
 
-def get_numpy_df(df, all_cols):
+def get_numpy_df(df:dict, all_cols:list) -> Tuple[dict, ...]:
+    """_summary_
+
+    Args:
+        df (dict): _description_
+        all_cols (list): list of columns to use in pandas dataframe
+
+    Returns:
+        _type_: _description_
+    """
+
     cols = df.keys()
 
     dfs = []
@@ -555,7 +577,7 @@ def get_numpy_df(df, all_cols):
         # print("        ")
         # dfs.append(df1)
         # del df1
-        # df.to_hdf(f"/storage/shared/data/master_students/William_Sakarias/data/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5","mini")
+        df1.to_hdf(f"/storage/William_Sakarias/Sakarias_Data/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5","mini")
 
     return dfs
 
