@@ -7,6 +7,7 @@ import matplotlib
 import numpy as np
 import pandas as pd
 from os import listdir
+from pathlib import Path
 from typing import Tuple
 import plottingTool as pt
 from pyHelperFuncs import *
@@ -299,7 +300,7 @@ def runANA(
                                     "h_%s_%s" % (f"e_T_miss", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"e_T_miss", k),
-                                    100,
+                                    70,
                                     0,
                                     500,
                                 ),
@@ -325,7 +326,7 @@ def runANA(
                                     "h_%s_%s" % (f"m_T_{name}", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"e_T_miss", k),
-                                    100,
+                                    70,
                                     0,
                                     500,
                                 ),
@@ -447,7 +448,7 @@ def runANA(
                                     "h_%s_%s" % (f"{histo_name}", k),
                                     "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                     % (f"{histo_name}", k),
-                                    100,
+                                    70,
                                     0,
                                     500,
                                 ),
@@ -577,8 +578,13 @@ def get_numpy_df(df:dict, all_cols:list) -> Tuple[dict, ...]:
 
 if __name__ == "__main__":
 
+    """ Remove old images from histo_var_check """ 
+    de = [f.unlink() for f in Path("../../../Figures/histo_var_check/").glob("*") if f.is_file()] 
+
+
+    """ Actual analysis """ 
     N_j = 2
-    N_l = 6
+    N_l = 4
 
     N_col = N_j + N_l + 1
     N_row = N_col

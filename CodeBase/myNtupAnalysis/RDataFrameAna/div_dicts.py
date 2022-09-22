@@ -46,15 +46,8 @@ rmm_structure = {
             "lepM[ele_SG]",
             1
         ],
+        
         5: [
-            "ele_2",
-            "lepPt[ele_SG]",
-            "lepEta[ele_SG]",
-            "lepPhi[ele_SG]",
-            "lepM[ele_SG]",
-            2
-        ],
-        6: [
             "muo_0",
             "lepPt[muo_SG]",
             "lepEta[muo_SG]",
@@ -62,7 +55,7 @@ rmm_structure = {
             "lepM[muo_SG]",
             0
         ],
-        7: [
+        6: [
             "muo_1",
             "lepPt[muo_SG]",
             "lepEta[muo_SG]",
@@ -70,17 +63,26 @@ rmm_structure = {
             "lepM[muo_SG]",
             1
         ],
-        8: [
-            "muo_2",
-            "lepPt[muo_SG]",
-            "lepEta[muo_SG]",
-            "lepPhi[muo_SG]",
-            "lepM[muo_SG]",
+        
+}
+
+"""
+5: [
+            "ele_2",
+            "lepPt[ele_SG]",
+            "lepEta[ele_SG]",
+            "lepPhi[ele_SG]",
+            "lepM[ele_SG]",
             2
         ],
-    }
 
-
+8: [
+"muo_2",
+"lepPt[muo_SG]",
+"lepEta[muo_SG]",
+"lepPhi[muo_SG]",
+"lepM[muo_SG]",
+2"""
 
 
 
