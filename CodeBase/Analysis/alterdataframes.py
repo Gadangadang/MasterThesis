@@ -1,9 +1,12 @@
+import matplotlib
 import numpy as np
 import pandas as pd
 from os import listdir
 from pathlib import Path
 from typing import Tuple
+import matplotlib.pyplot as plt 
 from os.path import isfile, join
+
 
 
 class Data:
@@ -74,6 +77,33 @@ class Data:
 
             self.addColumnToDf(df_name=file, column_name=column_name, value=value)
             self.printDf(file)
+
+
+    def dfAlterOverflow(self, df):
+
+        threshold  = 7000
+
+        cols = df.columns
+
+        for column in cols:
+            df[column] = df[column].apply(lambda x: x if x < threshold else 0)
+
+
+        return df
+
+    def alterOverflowValues(self):
+        print("*** Overflow Removal ***")
+
+        for idx, file in enumerate(self.onlyfiles):
+            df = pd.read_hdf(self.path/file)
+            df = self.dfAlterOverflow(df)
+            df.to_hdf(self.path / file, "mini")
+
+        print("*** Overflow Removal Done ***")
+
+
+
+
 
 
 if __name__ == "__main__":

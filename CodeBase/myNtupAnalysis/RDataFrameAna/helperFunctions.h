@@ -104,17 +104,22 @@ int getZlep1(){return Zlep1;}
 int getZlep2(){return Zlep2;}
 int getWlep1(){return Wlep1;}
 Float_t getLumiSF(Int_t randrnum);
-float getET(float pt, float m);
-float delta_e_T(VecF_t &Pt, VecF_t &M, int i);
-float geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i);
-float geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i, 
+double getET(double pt, double m);
+double delta_e_T(VecF_t &Pt, VecF_t &M, int i);
+double geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i);
+double geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i, 
            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j, 
            int i, int j);
-float getRapidity(float pt, float eta, float phi, float e);
-float getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i, 
-           VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j, 
-           int i, int j);
-float getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i);
-float getET_part(VecF_t &Pt, VecF_t &M, int i);
+double getRapidity(double pt, double eta, double phi, double e);
+double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
+            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
+            int i, int j,  int a, int b);
+double getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i);
+double getET_part(VecF_t &Pt, VecF_t &M, int i);
+
+double getP_T(VecF_t &pt, int i);
+double getEta(VecF_t &eta, int i);
+double getPhi(VecF_t &phi, int i);
+double getm(VecF_t &m, int i);
 
 #endif

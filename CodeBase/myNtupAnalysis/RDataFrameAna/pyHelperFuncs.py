@@ -521,4 +521,12 @@ def get_column_names(df, histo):
             all_cols.append(str(c))
 
     all_cols.append("wgt_SG")
+    all_cols.append("ele3_pt")
+    all_cols.append("ele3_eta")
+    all_cols.append("ele3_phi")
+    all_cols.append("ele3_m")
+    all_cols.append("muo3_pt")
+    all_cols.append("muo3_eta")
+    all_cols.append("muo3_phi")
+    all_cols.append("muo3_m")
     return all_cols

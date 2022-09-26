@@ -7,6 +7,7 @@ import matplotlib
 import numpy as np
 import pandas as pd
 from os import listdir
+from usedPaths import *
 from pathlib import Path
 from typing import Tuple
 import plottingTool as pt
@@ -22,7 +23,7 @@ d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 R.EnableImplicitMT(200)
 
 R.gROOT.ProcessLine(".L helperFunctions.cxx+")
-R.gSystem.AddDynamicPath("-I/home/sgfrette/myNtupAnalysis/RDataFrameAna")
+R.gSystem.AddDynamicPath(str(dynamic_path))
 R.gInterpreter.Declare(
     '#include "helperFunctions.h"'
 )  # Header with the definition of the myFilter function
@@ -71,17 +72,15 @@ def runANA(
 
         df = {**df_mc, **df_data}
 
-        
-
         for k in df.keys():
-
-            """if k not in ["singletop"]:  # , "ttbar"]:
+            """
+            if k not in ["Wjets"]:  # , "ttbar"]:
                 continue
             """
-            
-            #print(df[k].GetColumnNames())
 
-            #print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
+            # print(df[k].GetColumnNames())
+
+            # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
             # if not k in ["data18"]: continue
 
@@ -221,10 +220,6 @@ def runANA(
             df[k] = df[k].Filter("nlep_BL == 3", "3 BL leptons")
             df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
 
-            df[k] = df[k].Define("isZlep1", "getZlep1()")
-            df[k] = df[k].Define("isZlep2", "getZlep2()")
-            df[k] = df[k].Define("isWlep1", "getWlep1()")
-
             """
             Trigger filtering
             """
@@ -274,17 +269,17 @@ def runANA(
             print(k)
             exit()
             """
-            
 
             # Adding column for type of channel
 
             # df[k] = df[k].Define("channeltype", k)
-            
 
             """
             RMM matrix feature calculations with histogram creation
             
             """
+
+            #df_test = df[k].Range(43, 45)
 
             for row in range(N_row):
                 if row == 0:
@@ -316,7 +311,6 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            
 
                             df[k] = df[k].Define(
                                 f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
@@ -337,7 +331,6 @@ def runANA(
 
                     # Calculate rest of matrix
 
-
                     for column in range(N_col):
                         if column == 0:
                             # Set h_L for all particles
@@ -348,7 +341,6 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            
 
                             df[k] = df[k].Define(
                                 f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
@@ -374,7 +366,6 @@ def runANA(
                             phi = particle_info[3]
                             m = particle_info[4]
                             index = particle_info[5]
-                            
 
                             if index == 0:
                                 # If particle is the first of its type, calculate e_T of particle
@@ -425,7 +416,6 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
-                            
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -435,13 +425,13 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
-                            
 
                             histo_name = f"m_{name1}_{name2}"
+                           
 
                             df[k] = df[k].Define(
                                 histo_name,
-                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2})",
+                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2}, {row}, {column})",
                             )
                             histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
                                 (
@@ -467,7 +457,6 @@ def runANA(
                             phi1 = particle_info1[3]
                             m1 = particle_info1[4]
                             index1 = particle_info1[5]
-                            
 
                             # Particle 2
                             particle_info2 = rmm_structure[column]
@@ -477,7 +466,6 @@ def runANA(
                             phi2 = particle_info2[3]
                             m2 = particle_info2[4]
                             index2 = particle_info2[5]
-                            
 
                             histo_name = f"h_{name1}_{name2}"
 
@@ -497,6 +485,50 @@ def runANA(
                                 f"{histo_name}",
                                 "wgt_SG",
                             )
+
+            df[k] = df[k].Define("ele3_pt", "getP_T(lepPt[ele_SG], 2)")
+            df[k] = df[k].Define("ele3_eta", "getEta(lepEta[ele_SG], 2)" )
+            df[k] = df[k].Define("ele3_phi", "getPhi(lepPhi[ele_SG], 2)" )
+            df[k] = df[k].Define("ele3_m", "getm(lepM[ele_SG], 2)")
+
+            df[k] = df[k].Define("muo3_pt", "getP_T(lepPt[muo_SG], 2)")
+            df[k] = df[k].Define("muo3_eta", "getEta(lepEta[muo_SG], 2)")
+            df[k] = df[k].Define("muo3_phi", "getPhi(lepPhi[muo_SG], 2)")
+            df[k] = df[k].Define("muo3_m", "getm(lepM[muo_SG], 2)")
+
+            
+            
+            
+            """
+            p = df_test.Display(("m_ele_0_ele_2", "m_jet_0_muo_2")).AsString()
+            print(p)"""
+
+
+            """
+            p = df[k].Display(("m_jet_0_ele_2","m_jet_0_muo_2")).AsString()
+            print(p)
+
+            p = df[k].Display(("m_jet_1_ele_2","m_jet_1_muo_0")).AsString()
+            print(p)
+            p = df[k].Display(("m_jet_1_muo_2","m_ele_0_muo_2")).AsString()
+            
+            print(p)
+            p = df[k].Display(("m_ele_0_ele_2","m_ele_0_muo_0")).AsString()
+            print(p)
+            p = df[k].Display(("m_ele_1_ele_2","m_ele_1_muo_2")).AsString()
+            print(p)
+            p = df[k].Display(("m_ele_2_muo_1","m_ele_2_muo_2")).AsString()
+            print(p)
+            p = df[k].Display(("m_muo_0_muo_2","m_muo_1_muo_2")).AsString()
+            print(p)
+
+            p = df[k].Display(("m_ele_2_muo_0")).AsString()
+            print(p)
+            
+            """
+            
+
+
 
             print(
                 "Number of events in %s = %i after filtering"
@@ -521,10 +553,10 @@ def runANA(
     return df, histo
 
 
-def create_histograms_pdfs(histo, new_feats):
+def create_histograms_pdfs(histo:dict, new_feats:list) -> None:
     """
-    Takes the list of features in the histo dict, and creates 
-    histograms of those features. 
+    Takes the list of features in the histo dict, and creates
+    histograms of those features.
 
     Args:
         histo (dict): dictionary containing all the histograms
@@ -540,20 +572,20 @@ def create_histograms_pdfs(histo, new_feats):
     for key in new_feats:
         try:
             p = pt.Plot(histo, key, toplot)
-            p.can.SaveAs(f"../../../Figures/histo_var_check/{key}.pdf")
+            p.can.SaveAs(str(histo_var) +f"/{key}.pdf")
         except:
             print(f"Could not make plot for name {key}")
 
 
-def get_numpy_df(df:dict, all_cols:list) -> Tuple[dict, ...]:
+def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
     """_summary_
 
     Args:
         df (dict): _description_
-        all_cols (list): list of columns to use in pandas dataframe
+        all_cols (list): _description_
 
     Returns:
-        _type_: _description_
+        Tuple[dict, ...]: _description_
     """
 
     cols = df.keys()
@@ -571,25 +603,23 @@ def get_numpy_df(df:dict, all_cols:list) -> Tuple[dict, ...]:
         # print("        ")
         # dfs.append(df1)
         # del df1
-        df1.to_hdf(f"/storage/William_Sakarias/Sakarias_Data/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5","mini")
+        df1.to_hdf(str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini")
 
     return dfs
 
 
 if __name__ == "__main__":
 
-    """ Remove old images from histo_var_check """ 
-    de = [f.unlink() for f in Path("../../../Figures/histo_var_check/").glob("*") if f.is_file()] 
+    """Remove old images from histo_var_check"""
+    de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
 
-
-    """ Actual analysis """ 
+    """ Actual analysis """
     N_j = 2
-    N_l = 4
+    N_l = 6
 
     N_col = N_j + N_l + 1
     N_row = N_col
 
-    
     good_runs = []
 
     histo = {}
@@ -600,8 +630,8 @@ if __name__ == "__main__":
     everyN = int(100 * nSlots)
 
     df, histo = runANA(
-        "/storage/shared/data/master_students/William_Sakarias/data/PHYS_3LBkgs_mc16e/",
-        "/storage/shared/data/master_students/William_Sakarias/data/data18/",
+        str(bkg_sample),
+        str(data_sample),
         everyN,
         fldic,
         histo,
@@ -609,9 +639,8 @@ if __name__ == "__main__":
         create_histogram=True,
     )
 
-    
-
     all_cols = get_column_names(df, histo)
+    print(all_cols)
 
     create_histograms_pdfs(histo, all_cols)
 
