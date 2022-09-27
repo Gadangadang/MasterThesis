@@ -378,9 +378,9 @@ def runANA(
                                         "h_%s_%s" % (f"e_T_{name}", k),
                                         "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
                                         % (f"e_T_{name}", k),
-                                        50,
+                                        70,
                                         0,
-                                        1,
+                                        500,
                                     ),
                                     f"e_T_{name}",
                                     "wgt_SG",

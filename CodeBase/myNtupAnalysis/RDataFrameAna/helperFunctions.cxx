@@ -458,8 +458,6 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   const auto size_i = int(pt_i.size());
   const auto size_j = int(pt_j.size());
 
-  std::string input1;
-  std::string input2;
 
   if (size_i == 0 || size_j == 0)
   {
