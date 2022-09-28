@@ -5,4 +5,11 @@ V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
   {\bf 41} (07, 2009) }.
 
+\bibitem{Chekanov_2019}
+S.~Chekanov, \emph{Imaging particle collision data for event classification
+  using machine learning},
+  \href{http://dx.doi.org/10.1016/j.nima.2019.04.031}{\emph{Nuclear Instruments
+  and Methods in Physics Research Section A: Accelerators, Spectrometers,
+  Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
+
 \end{thebibliography}\endgroup
