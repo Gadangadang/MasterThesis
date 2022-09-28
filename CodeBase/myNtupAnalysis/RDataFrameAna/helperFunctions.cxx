@@ -314,7 +314,7 @@ double getET_part(VecF_t &Pt, VecF_t &M, int i)
     return 0.;
   }
 
-  return Pt[i] ;
+  return sqrt(Pt[i]*Pt[i] + M[i]*M[i] ) ;
 }
 
 double getET(double pt, double m){
