@@ -1,21 +1,20 @@
-import numpy as np 
-import pandas as pd 
+import matplotlib
+import numpy as np
+import pandas as pd
 from os import listdir
 from pathlib import Path
 from typing import Tuple
+import matplotlib.pyplot as plt 
 from os.path import isfile, join
 
 
 
-
-
 class Data:
-    def __init__(self, path:str) -> None:
+    def __init__(self, path: str) -> None:
         self.path = path
         self.onlyfiles = self.getDfNames()
 
-
-    def getDfNames(self)-> Tuple[str, ...]:
+    def getDfNames(self) -> Tuple[str, ...]:
         """
         Fetches all objects in a directory
 
@@ -24,7 +23,7 @@ class Data:
         """
         return [f for f in listdir(self.path) if isfile(join(self.path, f))]
 
-    def addColumnToDf(self, df_name:str, column_name:str, value:list) -> None:
+    def addColumnToDf(self, df_name: str, column_name: str, value: list) -> None:
         """
         Adds a column to the dataframe.
         if only single entry in vlaue, it is assumed that this value is for all rows in df.
@@ -32,7 +31,7 @@ class Data:
         Args:
             df_name (str): name + filetype for the given dataframe file, must be .hdf5
             column_name (str): name of the column
-            value (list): list of value or values. 
+            value (list): list of value or values.
 
         """
 
@@ -41,32 +40,29 @@ class Data:
 
         except ValueError:
             print("Dataframe is not in directory, check for typos")
-            
 
-        df = pd.read_hdf(self.path/df_name)
-        
+        df = pd.read_hdf(self.path / df_name)
+
         try:
             df[column_name]
-        
+
         except:
 
             if len(value) != len(df):
                 value = value * len(df)
-            
+
             df[column_name] = value
-            df.to_hdf(self.path/df_name,"mini")
+            df.to_hdf(self.path / df_name, "mini")
 
-
-    def printDf(self, df_name:str)-> None:
+    def printDf(self, df_name: str) -> None:
         """prints the first 5 entries in the dataframe, and the length of its columns
 
         Args:
             df_name (str): name of a given dataframe
         """
 
-        df = pd.read_hdf(self.path/df_name)
+        df = pd.read_hdf(self.path / df_name)
         print(df.head(), len(df.columns))
-
 
     def addChannelType(self):
         """
@@ -74,13 +70,36 @@ class Data:
         """
 
         column_name = "Channeltype"
-       
+
         for idx, file in enumerate(self.onlyfiles):
             name_idx = file.find("_3lep")
             value = [f"{file[:name_idx]}"]
 
             self.addColumnToDf(df_name=file, column_name=column_name, value=value)
             self.printDf(file)
+
+
+    def dfAlterOverflow(self, df):
+
+        threshold  = 7000
+
+        cols = df.columns
+
+        for column in cols:
+            df[column] = df[column].apply(lambda x: x if x < threshold else 0)
+
+
+        return df
+
+    def alterOverflowValues(self):
+        print("*** Overflow Removal ***")
+
+        for idx, file in enumerate(self.onlyfiles):
+            df = pd.read_hdf(self.path/file)
+            df = self.dfAlterOverflow(df)
+            df.to_hdf(self.path / file, "mini")
+
+        print("*** Overflow Removal Done ***")
 
 
 
@@ -92,11 +111,3 @@ if __name__ == "__main__":
 
     data = Data(path)
     data.addChannelType()
-    
-   
-
-    
-
-    
-    
-    

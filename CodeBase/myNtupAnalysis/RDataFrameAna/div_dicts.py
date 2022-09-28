@@ -1,89 +1,84 @@
 triggers = {
     "2015": {
-        "trig": "trigMatch_HLT_mu18_mu8noL1 || trigMatch_HLT_2e12_lhloose_L12EM10VH || trigMatch_HLT_e17_lhloose_mu14  || is2016 || is2017 || is2018", 
-        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12  || lepHLT_mu18_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 18  || lepHLT_e17_lhloose_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || is2016 || is2017 || is2018"
+        "trig": "trigMatch_HLT_mu18_mu8noL1 || trigMatch_HLT_2e12_lhloose_L12EM10VH || trigMatch_HLT_e17_lhloose_mu14  || is2016 || is2017 || is2018",
+        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12  || lepHLT_mu18_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 18  || lepHLT_e17_lhloose_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || is2016 || is2017 || is2018",
     },
     "2016": {
         "trig": "trigMatch_HLT_2e17_lhvloose_nod0 || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1  || is2017 || is2018",
-        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || is2017 || is2018"
+        "trigmatch": "ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || is2017 || is2018",
     },
     "2017/18": {
         "trig": "trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1",
-        "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22 >= 2) " 
-    }
+        "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22 >= 2) ",
+    },
 }
 
 rmm_structure = {
-        1: [
-            "jet_0",
-            "jetPt[jet_SG]",
-            "jetEta[jet_SG]",
-            "jetPhi[jet_SG]",
-            "jetM[jet_SG]",
-            0,
-            "jet_SG",
-            "njet_SG"
-        ],
-        2: [
-            "jet_1",
-            "jetPt[jet_SG]",
-            "jetEta[jet_SG]",
-            "jetPhi[jet_SG]",
-            "jetM[jet_SG]",
-            1,
-            "jet_SG",
-            "njet_SG"
-        ],
-        3: [
-            "lep_0",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            0,
-            "isGoodLep",
-            "nlep_SG"
-        ],
-        4: [
-            "lep_1",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            1,
-            "isGoodLep",
-            "nlep_SG"
-        ],
-        5: [
-            "lep_2",
-            "lepPt[isGoodLep]",
-            "lepEta[isGoodLep]",
-            "lepPhi[isGoodLep]",
-            "lepM[isGoodLep]",
-            2,
-            "isGoodLep",
-            "nlep_SG"
-        ],
-    }
-
-
-column_creation = {
-    "jet_0": {
-        "jet_0_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][0]: 0.",
-        "jet_0_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][0]: 0.",
-        "jet_0_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][0]: 0.",
-        "jet_0_M": "(jet_SG > 0) ? jetM[jet_SG > 0][0]: 0."
-    }, 
-   "jet_1": {
-        "jet_1_pt": "(jet_SG > 0) ? jetPt[jet_SG > 0][1]: 0.",
-        "jet_1_eta": "(jet_SG > 0) ? jetEta[jet_SG > 0][1]: 0.",
-        "jet_1_phi": "(jet_SG > 0) ? jetPhi[jet_SG > 0][1]: 0.",
-        "jet_1_M": "(jet_SG > 0) ? jetM[jet_SG > 0][1]: 0."
-    }
-      
-            
+    1: [
+        "jet_0",
+        "jetPt[jet_SG]",
+        "jetEta[jet_SG]",
+        "jetPhi[jet_SG]",
+        "jetM[jet_SG]",
+        0,
+    ],
+    2: [
+        "jet_1",
+        "jetPt[jet_SG]",
+        "jetEta[jet_SG]",
+        "jetPhi[jet_SG]",
+        "jetM[jet_SG]",
+        1,
+    ],
+    3: [
+        "ele_0",
+        "lepPt[ele_SG]",
+        "lepEta[ele_SG]",
+        "lepPhi[ele_SG]",
+        "lepM[ele_SG]",
+        0,
+    ],
+    4: [
+        "ele_1",
+        "lepPt[ele_SG]",
+        "lepEta[ele_SG]",
+        "lepPhi[ele_SG]",
+        "lepM[ele_SG]",
+        1,
+    ],
+    5: [
+        "ele_2",
+        "lepPt[ele_SG]",
+        "lepEta[ele_SG]",
+        "lepPhi[ele_SG]",
+        "lepM[ele_SG]",
+        2,
+    ],
+    6: [
+        "muo_0",
+        "lepPt[muo_SG]",
+        "lepEta[muo_SG]",
+        "lepPhi[muo_SG]",
+        "lepM[muo_SG]",
+        0,
+    ],
+    7: [
+        "muo_1",
+        "lepPt[muo_SG]",
+        "lepEta[muo_SG]",
+        "lepPhi[muo_SG]",
+        "lepM[muo_SG]",
+        1,
+    ],
+    8: [
+        "muo_2",
+        "lepPt[muo_SG]",
+        "lepEta[muo_SG]",
+        "lepPhi[muo_SG]",
+        "lepM[muo_SG]",
+        2,
+    ],
 }
-
 
 
 columns = {
@@ -295,3 +290,6 @@ columns = {
     "LHE3Weights",
     "LHE3WeightNames",
 }
+
+
+

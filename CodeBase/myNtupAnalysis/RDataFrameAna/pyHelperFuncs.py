@@ -377,7 +377,7 @@ def plot_rmm_matrix(df: pd.DataFrame, process:str, rmm_structure: dict, N_row: i
 
     fig, ax = plt.subplots()
 
-    im, cbar = heatmap(rmm_mat, names, names, ax=ax, cmap="YlGn", cbarlabel="Intensity")
+    im, cbar = heatmap(rmm_mat, names, names, ax=ax, cbarlabel="Intensity")
     texts = annotate_heatmap(im, valfmt="{x:.3f}")
 
     im = ax.imshow(rmm_mat)
@@ -520,5 +520,13 @@ def get_column_names(df, histo):
         if c in new_feats:
             all_cols.append(str(c))
 
-   
+    all_cols.append("wgt_SG")
+    all_cols.append("ele3_pt")
+    all_cols.append("ele3_eta")
+    all_cols.append("ele3_phi")
+    all_cols.append("ele3_m")
+    all_cols.append("muo3_pt")
+    all_cols.append("muo3_eta")
+    all_cols.append("muo3_phi")
+    all_cols.append("muo3_m")
     return all_cols

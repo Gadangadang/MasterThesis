@@ -23,19 +23,6 @@ auto sum = [](int a, int b) {
     };
 
 
-// int num_baseline_lep(VecF_t& pt, VecF_t& eta, VecI_t& fllep, VecB_t passOR, VecB_t passLOOSE, VecB_t passMEDIUM, VecB_t passBL, VecF_t z0sinth){
-//   int nbl = 0;
-//   for(unsigned int i=0; i<fllep.size(); i++)
-//     {
-//       if(pt[i] < 9)continue;
-//       if((fllep[i] == 1 && fabs(eta[i])>2.47) || ((fllep[i] == 2 && fabs(eta[i])>2.6)))continue;
-//       if(!passOR[i])continue
-//       if((fllep[i] == 1 && (!passLOOSE[i] || !passBL[i])) || (fllep[i] == 22 && !passMEDIUM[i]))continue;
-//       if(fabs(z0sinth)<0.5)continue;
-//       nbl += 1;
-//     }
-//   return nbl;
-// }
 
 Double_t getMetRel(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi){
   TLorentzVector l;
@@ -309,7 +296,7 @@ bool checkPt(VecF_t& pt, float cut1, float cut2){
     return kFALSE;
 }
 
-float getET_part(VecF_t &Pt, VecF_t &M, int i)
+double getET_part(VecF_t &Pt, VecF_t &M, int i)
 {
 
   /* Calculates E_T for a given event */
@@ -318,25 +305,25 @@ float getET_part(VecF_t &Pt, VecF_t &M, int i)
   if (size == 0)
   {
     ////printf("getET_part::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size);
-    return 0;
+    return 0.;
   }
 
-  if (i > size)
+  if (i > size-1)
   {
     ////printf("getET_part::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
   return Pt[i] ;
 }
 
-float getET(float pt, float m){
+double getET(double pt, double m){
     /* Calculates E_T for a given event */
     
     return pt;
 }
 
-float delta_e_T(VecF_t &Pt, VecF_t &M, int i)
+double delta_e_T(VecF_t &Pt, VecF_t &M, int i)
 {
   /* Calculates the transverse energy inbalance for two particles, either two leptons or two jets */
 
@@ -347,35 +334,35 @@ float delta_e_T(VecF_t &Pt, VecF_t &M, int i)
   if (size == 0 )
   {
     ////printf("delta_e_T::ERROR \t  Returns 0; Size of vector i is %i\n", size);
-    return 0;
+    return 0.;
   }
 
-  if (i > size)
+  if (i > size-1)
   {
     ////printf("delta_e_T::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
-  float delta_e_T_j = (getET(Pt[i - 1], M[i - 1]) - getET(Pt[i], M[i])) /
+  double delta_e_T_j = (getET(Pt[i - 1], M[i - 1]) - getET(Pt[i], M[i])) /
                       (getET(Pt[i - 1], M[i - 1]) + getET(Pt[i], M[i]));
 
   return delta_e_T_j;
 }
 
-float getRapidity(float pt, float eta, float phi, float e){
+double getRapidity(double pt, double eta, double phi, double e){
     /* Calculates the rapidity based on the pseudorapidity via Lorentz vector */
 
     TLorentzVector p1;
     
     p1.SetPtEtaPhiM(pt, eta, phi, e);
     
-    float y = p1.Rapidity();
+    double y = p1.Rapidity();
     
     return y;
     
 }
 
-float geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
+double geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
 {
   /* h_L is proportional to Lorentz factor, and can reflect on longitudal directions */
 
@@ -386,21 +373,21 @@ float geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
   if (size == 0)
   {
     //printf("geth_L::ERROR \t  Returns 0; Size of vector i is %i \n", size);
-    return 0;
+    return 0.;
   }
 
-  if (i > size)
+  if (i > size-1)
   {
     //printf("geth_L::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
 
-  float y = getRapidity(pt[i], eta[i], phi[i], e[i]);
+  double y = getRapidity(pt[i], eta[i], phi[i], e[i]);
   // //printf("Cosh Rapidity: %f , h_L: %f\n", cosh(y), C*(cosh(y) - 1.));
   return C * (cosh(y) - 1.);
 }
 
-float geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
+double geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
            int i, int j)
 {
@@ -415,28 +402,28 @@ float geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   if (size_i == 0 || size_j == 0)
   {
     //printf("geth::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0;
+    return 0.;
   }
 
-  if (i > size_i)
+  if (i > size_i-1)
   {
     //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
-  if (j > size_j)
+  if (j > size_j-1)
   {
     //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
 
-  float y_i = getRapidity(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
-  float y_j = getRapidity(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
+  double y_i = getRapidity(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
+  double y_j = getRapidity(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
 
-  float delta_y = y_i - y_j;
+  double delta_y = y_i - y_j;
   return C * (cosh(delta_y / 2) - 1);
 }
 
-float getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
+double getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
 {
   /* Calculates the rapidity based on the pseudorapidity via Lorentz vector */
 
@@ -445,14 +432,12 @@ float getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
   const auto size = int(pt.size());
   if (size == 0 )
   {
-    //printf("getM_T::ERROR \t Returns 0; Size of vector i is %i \n", size);
-    return 0;
+    return 0.;
   }
 
-  if (i > size)
+  if (i > size-1)
   {
-    //printf("getM_T::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0;
+    return 0.;
   }
   TLorentzVector p1;
 
@@ -461,9 +446,9 @@ float getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
   return p1.Mt() ;
 }
 
-float getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
-           VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j, 
-           int i, int j)
+double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
+            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
+            int i, int j, int a, int b)
 {
 
   /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
@@ -473,21 +458,21 @@ float getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   const auto size_i = int(pt_i.size());
   const auto size_j = int(pt_j.size());
 
-  if (size_i == 0 || size_j == 0){
-    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0;
+
+  if (size_i == 0 || size_j == 0)
+  {
+    return 0.;
   }
 
-  if (i > size_i)
+  if (i > size_i-1)
   {
-    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
-  if (j > size_j)
+  if (j > size_j-1)
   {
-    //////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0;
+    return 0.;
   }
+
 
   TLorentzVector p1;
   TLorentzVector p2;
@@ -495,5 +480,78 @@ float getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
   p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
 
-  return (p1 + p2).M();
+  double inv_mass = (p1 + p2).M();
+
+  return inv_mass;
+}
+
+double getP_T(VecF_t &pt, int i){
+  const auto size = int(pt.size());
+  if (size == 0)
+  {
+    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
+    return 0.;
+  }
+
+  if (i > size-1)
+  {
+    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
+    return 0.;
+  }
+
+  return pt[i];
+}
+
+double getEta(VecF_t &eta, int i)
+{
+  const auto size = int(eta.size());
+  if (size == 0)
+  {
+    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
+    return 0.;
+  }
+
+  if (i > size-1)
+  {
+    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
+    return 0.;
+  }
+
+  return eta[i];
+}
+
+double getPhi(VecF_t &phi, int i)
+{
+  const auto size = int(phi.size());
+  if (size == 0)
+  {
+    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
+    return 0.;
+  }
+
+  if (i > size-1)
+  {
+    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
+    return 0.;
+  }
+
+  return phi[i];
+}
+
+double getm(VecF_t &m, int i)
+{
+  const auto size = int(m.size());
+  if (size == 0)
+  {
+    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
+    return 0.;
+  }
+
+  if (i > size-1)
+  {
+    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
+    return 0.;
+  }
+
+  return m[i];
 }
