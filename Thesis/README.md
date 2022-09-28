@@ -8,8 +8,10 @@ The structure of this thesis is layed out as follows:
 - Standard model phenomenology w/ bsm physics, limitations etc
 - Implementation
   - Root
+  - Dataset features
+    - RMM matrix
+    - Feature check
   - Atlas
   - datascience in hep
   - Rdataframe
-  - RMM matrix
   - Code implementation w/ tensorflow,keras,scikitlearn etc
