@@ -79,27 +79,6 @@ class Data:
             self.printDf(file)
 
 
-    def dfAlterOverflow(self, df):
-
-        threshold  = 7000
-
-        cols = df.columns
-
-        for column in cols:
-            df[column] = df[column].apply(lambda x: x if x < threshold else 0)
-
-
-        return df
-
-    def alterOverflowValues(self):
-        print("*** Overflow Removal ***")
-
-        for idx, file in enumerate(self.onlyfiles):
-            df = pd.read_hdf(self.path/file)
-            df = self.dfAlterOverflow(df)
-            df.to_hdf(self.path / file, "mini")
-
-        print("*** Overflow Removal Done ***")
 
 
 
