@@ -11,4 +11,17 @@ Anomalies are typically classified in three categories \cite{anom_detec}:
     \item Collective anomalies
 \end{enumerate}
 
-Point anomalies are singular or few outliers from a larger contect or group. 
+Point anomalies are singular or few outliers from a larger contect or group. These anomalies can occur in many situations, are 
+indeed quite important to detect. One such example is Michael Phelps. Phelps is famous for being one of the best swimmers of all time. 
+Along with extensive training, planning and dedication, he has another tool that has helped him, he does not produce much lactic acid. 
+In fact, his body produces so little that he can swim continously and much more intensive than most other top swimmers. This ability 
+is not common, infact it is very rare amongst humans, and can be considered a point anomaly. It is important to understand that point anomalies
+does not have to be singular occurances. Rather they are extremly rare events that deviate alot from the expected behavior. \par
+Contextual anomalies are another kind of anomalies, and are defined based on the context of the anomaly and data, rather than as a whole. 
+Suppose you have have data on continous stream of gas in a pipe. The extraction of this gas is day dependent, to the point where the delivery 
+on saturdays might oscillate between half and 3/4 of that of monday through friday, due to shorter work day. Should there one saturday 
+suddenly flow the same amount as friday, an analyst think nothing of this, but due to this being a saturday, the context of this behavior 
+dictates that this be categorized as a contextual anomaly. \par 
+The last type of anomaly described by Chandola, Banerjee and Kumar \cite{anom_detec} are the collective anomalies. The collective anomalies 
+are anomalies that as a group deviate from the expected behavior of the dataset. In particle physics these anomalies are the only type that 
+are of interest. This is because there are so many sources for anomalous behavior in an experiment that only collective one are worth investigating. 

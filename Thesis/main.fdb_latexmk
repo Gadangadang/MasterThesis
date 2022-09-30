@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1664286983 "main.aux" "main.bbl" "main" 1664287003
+["bibtex main"] 1664477997 "main.aux" "main.bbl" "main" 1664478121
   "./JHEP.bst" 1635225418 19415 119cff932b2ee8773ea988cf488e8896 ""
   "bibliography.bib" 1664282016 815 75251642be85c3ff47be493b489a0411 ""
-  "main.aux" 1664287003 5490 ab59655c1445e23edf6058d5c9bb1bab "pdflatex"
+  "main.aux" 1664478121 5482 f0fbd5cd983ac5bfb7fee24e4662c949 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1664287002 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1664287003
-  "/Users/Sakarias/MasterThesis/Thesis/main.tex" 1664286981 2902 6454eb2ae210ae0abd7b7a9d9d7ef553 ""
+["pdflatex"] 1664478120 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1664478121
+  "/Users/Sakarias/MasterThesis/Thesis/main.tex" 1664477144 2887 8dd8437a492c63fbe68cb5f4e36f345d ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -305,8 +305,8 @@
   "Sections/Implementation/features.tex" 1664286931 2571 70a861c5d6bb3c085cefccd3b35d5853 ""
   "Sections/Implementation/root.tex" 1664287001 28 95c71090520326877abd189f14dc7ff7 ""
   "Sections/Introduction/Introduction.tex" 1661328943 115 df32782da8ace46fd0b4120484711b44 ""
-  "Sections/Machinelearning/AnomalyDetection.tex" 1662451962 667 f01d2b8ad5d28fd8c1a75ac9645f63ce ""
-  "Sections/Machinelearning/Autoencoder.tex" 1664272747 2248 cd4aa5d152f0b7ec9a8350f15a45192d ""
+  "Sections/Machinelearning/AnomalyDetection.tex" 1664478119 2451 7e62921e2c44310116f28635d208b34a ""
+  "Sections/Machinelearning/Autoencoder.tex" 1664473855 2250 63f8ce5b05bb95ae13ea24b3b84023bf ""
   "Sections/Machinelearning/Neuralnetworks.tex" 1664272268 1937 bfa07daaecfb0cad7d8831358af8e2de ""
   "Sections/SM_BSM/BSM.tex" 1662290067 25 b78946e293d9394c9add8501fe3870ef ""
   "Sections/SM_BSM/SM.tex" 1662726306 463 e97eb1d4ebe0f3e261e8029ba576835f ""
@@ -314,11 +314,11 @@
   "duoforside.tex" 1661329427 6729 d63ed9810f2605c0dd4142969031c2be ""
   "duomasterforside.sty" 1635225418 1245 0f0fdb32e432549cbffa5ff0a0493ca0 ""
   "jheppub.sty" 1635225418 11993 cd840ce60e85e99a4eccf7d2c59baa18 ""
-  "main.aux" 1664287003 5490 ab59655c1445e23edf6058d5c9bb1bab "pdflatex"
-  "main.bbl" 1664286984 660 cfcbcaab708666465935dce01ebf7f0c "bibtex main"
-  "main.out" 1664287003 1376 12246c5aacb3ed381674a62722d35147 "pdflatex"
-  "main.tex" 1664286981 2902 6454eb2ae210ae0abd7b7a9d9d7ef553 ""
-  "main.toc" 1664287003 786 ecccaaa8df908082088bf58348f1319f "pdflatex"
+  "main.aux" 1664478121 5482 f0fbd5cd983ac5bfb7fee24e4662c949 "pdflatex"
+  "main.bbl" 1664477997 660 cfcbcaab708666465935dce01ebf7f0c "bibtex main"
+  "main.out" 1664478121 1292 3e202e9f3330b1f530270ad8d8766f46 "pdflatex"
+  "main.tex" 1664477144 2887 8dd8437a492c63fbe68cb5f4e36f345d ""
+  "main.toc" 1664478121 771 3c59e0242a652198495d315aea57fa13 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

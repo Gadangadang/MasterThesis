@@ -1,7 +1,7 @@
 \babel@toc {UKenglish}{}\relax 
 \contentsline {chapter}{Introduction}{1}{chapter*.4}%
-\contentsline {chapter}{\numberline {1}Machine learning phenomenology}{3}{chapter.1}%
-\contentsline {chapter}{\numberline {2}The Standard model and beyond}{7}{chapter.2}%
+\contentsline {chapter}{\numberline {1}Machine learning}{3}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Standard model phenomenology}{7}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Implementation}{9}{chapter.3}%
 \contentsline {chapter}{\numberline {4}Results}{11}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{13}{chapter.5}%

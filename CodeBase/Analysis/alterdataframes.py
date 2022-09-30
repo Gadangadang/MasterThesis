@@ -4,9 +4,8 @@ import pandas as pd
 from os import listdir
 from pathlib import Path
 from typing import Tuple
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 from os.path import isfile, join
-
 
 
 class Data:
@@ -77,12 +76,6 @@ class Data:
 
             self.addColumnToDf(df_name=file, column_name=column_name, value=value)
             self.printDf(file)
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
