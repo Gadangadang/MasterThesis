@@ -73,12 +73,12 @@ def runANA(
         df = {**df_mc, **df_data}
 
         for k in df.keys():
-            """
+
             if k not in ["Wjets"]:  # , "ttbar"]:
                 continue
-            """
 
-            # print(df[k].GetColumnNames())
+            print(df[k].GetColumnNames())
+            exit()
 
             # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -279,7 +279,7 @@ def runANA(
             
             """
 
-            #df_test = df[k].Range(43, 45)
+            # df_test = df[k].Range(43, 45)
 
             for row in range(N_row):
                 if row == 0:
@@ -427,7 +427,6 @@ def runANA(
                             index2 = particle_info2[5]
 
                             histo_name = f"m_{name1}_{name2}"
-                           
 
                             df[k] = df[k].Define(
                                 histo_name,
@@ -487,8 +486,8 @@ def runANA(
                             )
 
             df[k] = df[k].Define("ele3_pt", "getP_T(lepPt[ele_SG], 2)")
-            df[k] = df[k].Define("ele3_eta", "getEta(lepEta[ele_SG], 2)" )
-            df[k] = df[k].Define("ele3_phi", "getPhi(lepPhi[ele_SG], 2)" )
+            df[k] = df[k].Define("ele3_eta", "getEta(lepEta[ele_SG], 2)")
+            df[k] = df[k].Define("ele3_phi", "getPhi(lepPhi[ele_SG], 2)")
             df[k] = df[k].Define("ele3_m", "getm(lepM[ele_SG], 2)")
 
             df[k] = df[k].Define("muo3_pt", "getP_T(lepPt[muo_SG], 2)")
@@ -496,13 +495,9 @@ def runANA(
             df[k] = df[k].Define("muo3_phi", "getPhi(lepPhi[muo_SG], 2)")
             df[k] = df[k].Define("muo3_m", "getm(lepM[muo_SG], 2)")
 
-            
-            
-            
             """
             p = df_test.Display(("m_ele_0_ele_2", "m_jet_0_muo_2")).AsString()
             print(p)"""
-
 
             """
             p = df[k].Display(("m_jet_0_ele_2","m_jet_0_muo_2")).AsString()
@@ -526,9 +521,6 @@ def runANA(
             print(p)
             
             """
-            
-
-
 
             print(
                 "Number of events in %s = %i after filtering"
@@ -553,7 +545,7 @@ def runANA(
     return df, histo
 
 
-def create_histograms_pdfs(histo:dict, new_feats:list) -> None:
+def create_histograms_pdfs(histo: dict, new_feats: list) -> None:
     """
     Takes the list of features in the histo dict, and creates
     histograms of those features.
@@ -572,7 +564,7 @@ def create_histograms_pdfs(histo:dict, new_feats:list) -> None:
     for key in new_feats:
         try:
             p = pt.Plot(histo, key, toplot)
-            p.can.SaveAs(str(histo_var) +f"/{key}.pdf")
+            p.can.SaveAs(str(histo_var) + f"/{key}.pdf")
         except:
             print(f"Could not make plot for name {key}")
 
@@ -603,7 +595,9 @@ def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
         # print("        ")
         # dfs.append(df1)
         # del df1
-        df1.to_hdf(str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini")
+        df1.to_hdf(
+            str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+        )
 
     return dfs
 
@@ -611,7 +605,7 @@ def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
 if __name__ == "__main__":
 
     """Remove old images from histo_var_check"""
-    de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
+    # de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
 
     """ Actual analysis """
     N_j = 2
