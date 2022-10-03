@@ -5,6 +5,16 @@ V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
   {\bf 41} (07, 2009) }.
 
+\bibitem{FYSSTK}
+S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
+  dense feed forward neural network for regression and classification type
+  problems in comparison to regression methods}}, .
+
+\bibitem{ROOT}
+R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
+  \emph{root-project/root: v6.18/02},  Aug., 2019.
+\newblock 10.5281/zenodo.3895860.
+
 \bibitem{Chekanov_2019}
 S.~Chekanov, \emph{Imaging particle collision data for event classification
   using machine learning},
