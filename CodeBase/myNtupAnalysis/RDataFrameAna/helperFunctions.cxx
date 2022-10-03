@@ -555,3 +555,64 @@ double getm(VecF_t &m, int i)
 
   return m[i];
 }
+
+int checkFlavorCombo(VecI_t &lepFlavor, int tag){
+  const auto size = int(lepFlavor.size());
+  if (size > 3 || size < 3){
+    return 0;
+  }
+
+  int sum = 0;
+  for (int i = 0; i < size; i++ ){
+    sum += lepFlavor[i];
+  }
+
+  if (sum == 3 && tag == 1){
+    return 1;
+  }
+  else if (sum == 4 && tag == 2){
+    return 1;
+  }
+  else if (sum == 5 && tag == 3)
+  {
+    return 1;
+  }
+  else if (sum == 6 && tag == 4)
+  {
+    return 1;
+  }
+  else {
+    return 0;
+  }
+    
+}
+
+int getLepCharge(VecI_t &lepCharge, VecI_t &lepFlavor, int i, int type)
+{
+  const auto sizeF = int(lepFlavor.size());
+  if (sizeF > 3 || sizeF < 3)
+  {
+    return 0;
+  }
+
+  const auto sizeC = int(lepCharge.size());
+  if (sizeC > 3 || sizeC < 3)
+  {
+    return 0;
+  }
+
+  if (i > sizeF-1 || i > sizeC-1 ){
+    return 0;
+  }
+
+  int flav = lepFlavor[i];
+  int charge = lepCharge[i];
+
+  
+  if (flav == type){
+    return charge;
+  }
+  else {
+    return 0;
+  }
+}

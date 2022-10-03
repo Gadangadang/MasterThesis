@@ -22,10 +22,6 @@ fldic = {
     "mmm": 3,
     "mme": 4,
     "mee": 5,
-    "ee": 6,
-    "mm": 7,
-    "em": 8,
-    "all": 9,
 }
 
 
@@ -344,7 +340,9 @@ def getRatio1D(hT, hL, vb=0):
     return hR
 
 
-def plot_rmm_matrix(df: pd.DataFrame, process:str, rmm_structure: dict, N_row: int) -> None:
+def plot_rmm_matrix(
+    df: pd.DataFrame, process: str, rmm_structure: dict, N_row: int
+) -> None:
 
     col = len(df.columns)
     row = len(df)
@@ -450,7 +448,7 @@ def annotate_heatmap(
     valfmt="{x:.2f}",
     textcolors=("black", "white"),
     threshold=None,
-    **textkw
+    **textkw,
 ):
     """
     A function to annotate a heatmap.
@@ -520,13 +518,17 @@ def get_column_names(df, histo):
         if c in new_feats:
             all_cols.append(str(c))
 
-    all_cols.append("wgt_SG")
-    all_cols.append("ele3_pt")
-    all_cols.append("ele3_eta")
-    all_cols.append("ele3_phi")
-    all_cols.append("ele3_m")
-    all_cols.append("muo3_pt")
-    all_cols.append("muo3_eta")
-    all_cols.append("muo3_phi")
-    all_cols.append("muo3_m")
+    extra = [
+        "wgt_SG",
+        "flcomp",
+        "ele_0_charge",
+        "ele_1_charge",
+        "ele_2_charge",
+        "muo_0_charge",
+        "muo_1_charge",
+        "muo_2_charge",
+    ]
+    for col in extra:
+        all_cols.append(col)
+
     return all_cols

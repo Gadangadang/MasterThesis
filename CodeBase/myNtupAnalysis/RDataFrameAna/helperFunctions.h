@@ -122,4 +122,7 @@ double getEta(VecF_t &eta, int i);
 double getPhi(VecF_t &phi, int i);
 double getm(VecF_t &m, int i);
 
+int checkFlavorCombo(VecI_t &lepFlavor, int tag);
+int getLepCharge(VecI_t &lepCharge, VecI_t &lepFlavor, int i, int type);
+
 #endif

@@ -141,7 +141,13 @@ class Plot:
 
         # Legend
         if not p.isEff:
-          p.leg = R.TLegend(0.60,0.56,0.91,0.90)
+          if hname in ["ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge" ]:
+            p.leg = R.TLegend(0.4,0.70,0.67,0.90)
+
+          elif hname in ["flcomp"]:
+            p.leg = R.TLegend(0.60,0.60,0.91,0.90)
+          else:
+            p.leg = R.TLegend(0.60,0.56,0.91,0.90)
         else:
           p.leg = R.TLegend(0.55,0.77,0.91,0.94)
         p.leg.SetBorderSize(0)
@@ -205,7 +211,12 @@ class Plot:
         
 
         if not p.isEff:
-          myText(0.77, 0.47, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
+          if hname in ["flcomp"]:
+            myText(0.3, 0.80, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
+          elif hname in ["ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge" ]:
+            myText(0.450, 0.65, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
+          else:
+            myText(0.77, 0.47, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
 
         
         p.ratio = R.TH1D()

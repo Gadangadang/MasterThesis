@@ -73,12 +73,11 @@ def runANA(
         df = {**df_mc, **df_data}
 
         for k in df.keys():
+            """
+            if k not in ["higgs"]:  # , "ttbar"]:
+                continue"""
 
-            if k not in ["Wjets"]:  # , "ttbar"]:
-                continue
-
-            print(df[k].GetColumnNames())
-            exit()
+            
 
             # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -212,10 +211,8 @@ def runANA(
             else:
                 print("Loading %s" % (k))
 
-            # histo["nlep_BL_%s"%k] = df[k].Histo1D(("nlep_BL_%s"%k,"nlep_BL_%s"%k,10,0,10),"nlep_BL","wgt_SG")
-            if create_histogram == True:
-                # histo["nlep_SG_%s"%k] = df[k].Histo1D(("nlep_SG_%s"%k,"nlep_SG_%s"%k,10,0,10),"nlep_SG","wgt_SG")
-                pass
+            
+            
 
             df[k] = df[k].Filter("nlep_BL == 3", "3 BL leptons")
             df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
@@ -263,12 +260,10 @@ def runANA(
             df[k] = df[k].Define("njet_BL", "ROOT::VecOps::Sum(jet_BL)")
             df[k] = df[k].Define("njet_SG", "ROOT::VecOps::Sum(jet_SG)")
 
-            """
-            p = df[k].Display("channel").AsString()
-            print(p)
-            print(k)
-            exit()
-            """
+            
+
+            
+            
 
             # Adding column for type of channel
 
@@ -475,7 +470,7 @@ def runANA(
                             histo[f"{histo_name}_%s" % (k)] = df[k].Histo1D(
                                 (
                                     "h_%s_%s" % (f"{histo_name}", k),
-                                    "h_%s_%s;m_{T}^{2}(23) [GeV];Entries"
+                                    "h_%s_%s;;Entries"
                                     % (f"{histo_name}", k),
                                     50,
                                     0,
@@ -485,42 +480,48 @@ def runANA(
                                 "wgt_SG",
                             )
 
-            df[k] = df[k].Define("ele3_pt", "getP_T(lepPt[ele_SG], 2)")
-            df[k] = df[k].Define("ele3_eta", "getEta(lepEta[ele_SG], 2)")
-            df[k] = df[k].Define("ele3_phi", "getPhi(lepPhi[ele_SG], 2)")
-            df[k] = df[k].Define("ele3_m", "getm(lepM[ele_SG], 2)")
-
-            df[k] = df[k].Define("muo3_pt", "getP_T(lepPt[muo_SG], 2)")
-            df[k] = df[k].Define("muo3_eta", "getEta(lepEta[muo_SG], 2)")
-            df[k] = df[k].Define("muo3_phi", "getPhi(lepPhi[muo_SG], 2)")
-            df[k] = df[k].Define("muo3_m", "getm(lepM[muo_SG], 2)")
-
-            """
-            p = df_test.Display(("m_ele_0_ele_2", "m_jet_0_muo_2")).AsString()
-            print(p)"""
-
-            """
-            p = df[k].Display(("m_jet_0_ele_2","m_jet_0_muo_2")).AsString()
-            print(p)
-
-            p = df[k].Display(("m_jet_1_ele_2","m_jet_1_muo_0")).AsString()
-            print(p)
-            p = df[k].Display(("m_jet_1_muo_2","m_ele_0_muo_2")).AsString()
             
-            print(p)
-            p = df[k].Display(("m_ele_0_ele_2","m_ele_0_muo_0")).AsString()
-            print(p)
-            p = df[k].Display(("m_ele_1_ele_2","m_ele_1_muo_2")).AsString()
-            print(p)
-            p = df[k].Display(("m_ele_2_muo_1","m_ele_2_muo_2")).AsString()
-            print(p)
-            p = df[k].Display(("m_muo_0_muo_2","m_muo_1_muo_2")).AsString()
-            print(p)
 
-            p = df[k].Display(("m_ele_2_muo_0")).AsString()
-            print(p)
-            
+
+
+            df[k] = df[k].Define("flcomp","flavourComp3L(lepFlavor[ele_SG || muo_SG])")
+            histo["flcomp_%s"%(k)] = df[k].Histo1D(("h_%s_%s"%("flcomp",k),"h_%s_%s"%("flcomp",k),len(fldic.keys()),0,len(fldic.keys())),"flcomp","wgt_SG")
+
+
+
+            df[k] = df[k].Define("ele_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 1)")
+            histo_name = "ele_0_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("ele_0_charge < 0 || ele_0_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG") 
+
+            df[k] = df[k].Define("ele_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 1)")
+            histo_name = "ele_1_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("ele_1_charge < 0 || ele_1_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG") 
+
+            df[k] = df[k].Define("ele_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 1)")
+            histo_name = "ele_2_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("ele_2_charge < 0 || ele_2_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG") 
+
+            df[k] = df[k].Define("muo_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 2)")
+            histo_name = "muo_0_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("muo_0_charge < 0 || muo_0_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG")  
+
+            df[k] = df[k].Define("muo_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 2)")
+            histo_name = "muo_1_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("muo_1_charge < 0 || muo_1_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG")  
+
+            df[k] = df[k].Define("muo_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 2)")
+            histo_name = "muo_2_charge"
+            histo[f"{histo_name}_%s"%(k)] = df[k].Filter("muo_2_charge < 0 || muo_2_charge > 0").Histo1D(("h_%s_%s" % (f"{histo_name}", k), "h_%s_%s;;Entries"% (f"{histo_name}", k),3,-2,2),f"{histo_name}","wgt_SG") 
+
             """
+            k = df[k].Range(5, 30)  
+            k.Filter("ele_0_charge < 0 || ele_0_charge > 0")
+            p = k.Display("flcomp").AsString()#df[k].Display("lepFlavor").AsString()
+            print(p)
+            p = k.Display(("ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge")).AsString()#df[k].Display("lepFlavor").AsString()
+            print(p)
+            exit()"""
+          
 
             print(
                 "Number of events in %s = %i after filtering"
@@ -602,10 +603,12 @@ def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
     return dfs
 
 
+
+
 if __name__ == "__main__":
 
     """Remove old images from histo_var_check"""
-    # de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
+    de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
 
     """ Actual analysis """
     N_j = 2
@@ -638,8 +641,13 @@ if __name__ == "__main__":
 
     create_histograms_pdfs(histo, all_cols)
 
+    """
     numpy_dfs = get_numpy_df(df, all_cols)
 
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
+    
+    """
+
+
