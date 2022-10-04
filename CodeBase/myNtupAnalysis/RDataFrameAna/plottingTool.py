@@ -448,12 +448,12 @@ class Plot:
             if IsLogY:
                 if enlargeYaxis:
                     ymax *= 2 * 10 ** 10
-                    ymin = 0.01
+                    ymin = 0.1
                 else:
                     # ymax = 3 * 10 ** 4
                     # ymin = 0.5
                     ymax *= 10*10 #Changed ymax and ymin to check new axis for histograms. 
-                    ymin = 0.01
+                    ymin = 0.1
                 #if scaling:
                 #    hist.SetMaximum(1.0)
                 #else:

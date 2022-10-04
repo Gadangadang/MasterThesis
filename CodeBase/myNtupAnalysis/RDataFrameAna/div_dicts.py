@@ -9,7 +9,7 @@ triggers = {
     },
     "2017/18": {
         "trig": "trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1",
-        "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22 >= 2) ",
+        "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17  || lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 ",
     },
 }
 
