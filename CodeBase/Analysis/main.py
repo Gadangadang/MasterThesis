@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE_tune import *
-from scaling import *
+from CodeBase.Analysis.analysis import *
 from alterdataframes import *
 
 check_cols = [

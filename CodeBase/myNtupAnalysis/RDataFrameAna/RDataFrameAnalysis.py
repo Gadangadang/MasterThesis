@@ -410,7 +410,7 @@ def runANA(
 
                             df[k] = df[k].Define(
                                 histo_name,
-                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2}, {row}, {column})",
+                                f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2})",
                             )
                             histo[f"{histo_name}_{k}"] = df[k].Histo1D(
                                 (

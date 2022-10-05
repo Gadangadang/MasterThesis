@@ -302,17 +302,8 @@ double getET_part(VecF_t &Pt, VecF_t &M, int i)
   /* Calculates E_T for a given event */
   const auto size = int(Pt.size());
 
-  if (size == 0)
-  {
-    ////printf("getET_part::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("getET_part::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0.;
-  }
+  if (size == 0) return 0.;
+  if (i > size-1) return 0.;
 
   return sqrt(Pt[i]*Pt[i] + M[i]*M[i] ) ;
 }
@@ -331,17 +322,8 @@ double delta_e_T(VecF_t &Pt, VecF_t &M, int i)
 
   const auto size = int(Pt.size());
 
-  if (size == 0 )
-  {
-    ////printf("delta_e_T::ERROR \t  Returns 0; Size of vector i is %i\n", size);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("delta_e_T::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0.;
-  }
+  if (size == 0 ) return 0.;
+  if (i > size - 1) return 0.;
 
   double delta_e_T_j = (getET(Pt[i - 1], M[i - 1]) - getET(Pt[i], M[i])) /
                       (getET(Pt[i - 1], M[i - 1]) + getET(Pt[i], M[i]));
@@ -370,20 +352,11 @@ double geth_L(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
 
   const auto size = int(pt.size());
 
-  if (size == 0)
-  {
-    //printf("geth_L::ERROR \t  Returns 0; Size of vector i is %i \n", size);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    //printf("geth_L::ERROR \t Indices %i is higher than size of vector %i\n", i, size);
-    return 0.;
-  }
+  if (size == 0) return 0.;
+  if (i > size-1) return 0.;
 
   double y = getRapidity(pt[i], eta[i], phi[i], e[i]);
-  // //printf("Cosh Rapidity: %f , h_L: %f\n", cosh(y), C*(cosh(y) - 1.));
+
   return C * (cosh(y) - 1.);
 }
 
@@ -393,28 +366,12 @@ double geth(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
 {
 
   /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
-
-  
-
   const auto size_i = int(pt_i.size());
   const auto size_j = int(pt_j.size());
 
-  if (size_i == 0 || size_j == 0)
-  {
-    //printf("geth::ERROR \t Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0.;
-  }
-
-  if (i > size_i-1)
-  {
-    //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
-  if (j > size_j-1)
-  {
-    //printf("geth::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
+  if (size_i == 0 || size_j == 0) return 0.;
+  if (i > size_i - 1) return 0.;
+  if (j > size_j - 1) return 0.;
 
   double y_i = getRapidity(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
   double y_j = getRapidity(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
@@ -427,18 +384,10 @@ double getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
 {
   /* Calculates the rapidity based on the pseudorapidity via Lorentz vector */
 
-  
-
   const auto size = int(pt.size());
-  if (size == 0 )
-  {
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    return 0.;
-  }
+  if (size == 0) return 0.;
+  if (i > size - 1) return 0.;
+  
   TLorentzVector p1;
 
   p1.SetPtEtaPhiM(pt[i], eta[i], phi[i], e[i]);
@@ -448,31 +397,18 @@ double getM_T(VecF_t &pt, VecF_t &eta, VecF_t &phi, VecF_t &e, int i)
 
 double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
             VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
-            int i, int j, int a, int b)
+            int i, int j)
 {
-
-  /* Similar to h_L but looks at rapidity differences between two particles, be it jets or leptons */
-
-  
+  /* Gets he invariant mass between two particles, be it jets or leptons */
 
   const auto size_i = int(pt_i.size());
   const auto size_j = int(pt_j.size());
 
-
-  if (size_i == 0 || size_j == 0)
-  {
-    return 0.;
-  }
-
-  if (i > size_i-1)
-  {
-    return 0.;
-  }
-  if (j > size_j-1)
-  {
-    return 0.;
-  }
-
+  if (size_i == 0 || size_j == 0) return 0.;
+  
+  if (i > size_i-1) return 0.;
+  if (j > size_j - 1) return 0.;
+  
 
   TLorentzVector p1;
   TLorentzVector p2;
@@ -485,125 +421,17 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
   return inv_mass;
 }
 
-double getP_T(VecF_t &pt, int i){
-  const auto size = int(pt.size());
-  if (size == 0)
-  {
-    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
-
-  return pt[i];
-}
-
-double getEta(VecF_t &eta, int i)
-{
-  const auto size = int(eta.size());
-  if (size == 0)
-  {
-    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
-
-  return eta[i];
-}
-
-double getPhi(VecF_t &phi, int i)
-{
-  const auto size = int(phi.size());
-  if (size == 0)
-  {
-    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
-
-  return phi[i];
-}
-
-double getm(VecF_t &m, int i)
-{
-  const auto size = int(m.size());
-  if (size == 0)
-  {
-    ////printf("getM::ERROR \t  Returns 0; Size of vector i is %i, size of vector j is %i \n", size_i, size_j);
-    return 0.;
-  }
-
-  if (i > size-1)
-  {
-    ////printf("getM::ERROR \t Indices %i is higher than size of vector %i\n", j, size_j);
-    return 0.;
-  }
-
-  return m[i];
-}
-
-int checkFlavorCombo(VecI_t &lepFlavor, int tag){
-  const auto size = int(lepFlavor.size());
-  if (size > 3 || size < 3){
-    return 0;
-  }
-
-  int sum = 0;
-  for (int i = 0; i < size; i++ ){
-    sum += lepFlavor[i];
-  }
-
-  if (sum == 3 && tag == 1){
-    return 1;
-  }
-  else if (sum == 4 && tag == 2){
-    return 1;
-  }
-  else if (sum == 5 && tag == 3)
-  {
-    return 1;
-  }
-  else if (sum == 6 && tag == 4)
-  {
-    return 1;
-  }
-  else {
-    return 0;
-  }
-    
-}
 
 int getLepCharge(VecI_t &lepCharge, VecI_t &lepFlavor, int i, int type)
 {
   const auto sizeF = int(lepFlavor.size());
   if (sizeF > 3 || sizeF < 3)
-  {
     return 0;
-  }
-
   const auto sizeC = int(lepCharge.size());
   if (sizeC > 3 || sizeC < 3)
-  {
     return 0;
-  }
-
-  if (i > sizeF-1 || i > sizeC-1 ){
+  if (i > sizeF - 1 || i > sizeC - 1)
     return 0;
-  }
 
   int flav = lepFlavor[i];
   int charge = lepCharge[i];
