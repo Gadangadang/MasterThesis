@@ -584,7 +584,7 @@ class RunAE:
         tuner = kt.Hyperband(
             self.AE_model_builder,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=15,
+            max_epochs=50,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -593,7 +593,7 @@ class RunAE:
         print(tuner.search_space_summary())
 
         tuner.search(
-            X_b, X_b, epochs=15, batch_size=8192, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
+            X_b, X_b, epochs=50, batch_size=8192, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
         print(
@@ -632,11 +632,12 @@ class RunAE:
                 print("Model not saved")
 
 
-    def AE_model_builder(self, hp):
+    def AE_model_builder(self, hp:kt.engine.hyperparameters.HyperParameters):
+      
         """_summary_
 
         Args:
-            hp (_type_): _description_
+            hp (kt.engine.hyperparameters.HyperParameters): _description_
 
         Returns:
             _type_: _description_
