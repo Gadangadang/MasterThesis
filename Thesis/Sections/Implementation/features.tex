@@ -3,7 +3,7 @@
 \subsection*{RMM matrix}
 Most of the features in the analysis are elements in the so called Rapidity-Mass (RMM) matrix inspired by the work of Chekanov \cite{Chekanov_2019}.
 \par
-!! Motivation for using such a matrix in machine learning -> hint to highly uncorrolated feats!!
+!! Motivation for using such a matrix in machine learning $\to$ hint to highly uncorrolated feats!!
 \par
 Its composition is determined as a square matrix of $1 + \sum_{i=1}^{T}N_i$ columns and rows, where T is the total number of objects (i.e jets, electrons etc.),
 and $N_i$ is the multiplicity of a given object. In the case of the same number of a given object for all objects, we can denote the RMM matrix as a 
@@ -13,24 +13,24 @@ either single og two particle properties. An example is shown in matrix \ref{eq:
 
 \begin{equation}\label{eq:rmmmatrix}
 \begin{pmatrix}
-    \bf{e}_{T}^{miss} & m_T(j_1) & m_T(j_2) &  m_T(e_1) &  m_T(e_2)\\
-    h_L(j_1) & \bf{e_T}(j_1) & m(j_1, j_2) & m(j_1, e_1) & m(j_1, e_2)\\
-    h_L(j_2) & h(j_2, j_1) & \delta \bf{e_T}(j_2)& m(j_2, e_1) & m(j_2, e_2)\\
-    h_L(e_1) & h(e_1, j_1) & h(e_1, j_2) & \bf{e_T}(e_1) & m(e_1, e_2)\\
-    h_L(e_2) & h(e_2, j_1) & h(e_2, j_2) & h(e_2, e_1) & \delta \bf{e_T}(j_2)\\
+    \boldsymbol{e}_{T}^{miss} & m_T(j_1) & m_T(j_2) &  m_T(e_1) &  m_T(e_2)\\
+    h_L(j_1) & \boldsymbol{e_T}(j_1) & m(j_1, j_2) & m(j_1, e_1) & m(j_1, e_2)\\
+    h_L(j_2) & h(j_2, j_1) & \delta \boldsymbol{e_T}(j_2)& m(j_2, e_1) & m(j_2, e_2)\\
+    h_L(e_1) & h(e_1, j_1) & h(e_1, j_2) & \boldsymbol{e_T}(e_1) & m(e_1, e_2)\\
+    h_L(e_2) & h(e_2, j_1) & h(e_2, j_2) & h(e_2, e_1) & \delta \boldsymbol{e_T}(j_2)\\
 \end{pmatrix}
 \end{equation}
 
 In matrix \ref{eq:rmmmatrix} we have the RMM matrix for a T2N2 system, in other words we have two types of particles, jets and electrons, where each type has
 two particles. The matrix itself is partitioned into three parts. The diagonal represents energy properties, the upper triangular represents mass properties, 
-and the lower triangular represents longitudal properties. The diagonal has three different properties, $\bf{e_T^{miss}}$, $\bf{e_T}$ and $\delta\bf{e_T}$. 
-$\bf{e_T^{miss}}$ is placed in the $(0,0)$ in the matrix. It accounts for the missing energy for the system, which is of high interest for this analysis due to
-the search for heavy neutrinos. $\bf{e_T}$ is the transverse energy defined as 
+and the lower triangular represents longitudal properties. The diagonal has three different properties, $\boldsymbol{e_T^{miss}}$, $\boldsymbol{e_T}$ and $\delta\boldsymbol{e_T}$. 
+$\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ in the matrix. It accounts for the missing energy for the system, which is of high interest for this analysis due to
+the search for heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
 \begin{equation*}
-    \bf{e_T} = \sqrt{m^2 + p_T^2}
+    \boldsymbol{e_T} = \sqrt{m^2 + p_T^2}
 \end{equation*}
-but for light particles such as electrons, this can be approximated to $\bf{e_T} \approx p_T$. $\delta\bf{e_T}$ is the transverse energy imbalance.
+but for light particles such as electrons, this can be approximated to $\boldsymbol{e_T} \approx p_T$. $\delta\boldsymbol{e_T}$ is the transverse energy imbalance.
 It is defined as 
 \begin{equation*}
-    \delta\bf{e_T} = \frac{E_T(i_n-1) - E_T(i_n)}{E_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N
+    \delta\boldsymbol{e_T} = \frac{E_T(i_n-1) - E_T(i_n)}{E_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N
 \end{equation*}

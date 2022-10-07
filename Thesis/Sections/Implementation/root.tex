@@ -1,2 +1,97 @@
 \section*{ROOT}
 It is a lot. \cite{ROOT}
+\subsection*{ROOT, memory management etc.}
+
+
+\subsection*{N tuples}
+
+The main datastructure of ROOT is the so called N tuple structure. This datastructure contains each property for each type of particle in a given event, yeilding
+a ragged structure. 
+
+\begin{table}[]
+    \begin{tabular}{|l|l|l|l|l|l|l|}
+    \cline{1-5} \cline{7-7}
+        & $jetP_T$      & $jetPhi$     & $lepP_T$             & $lepPhi$             &  & Rowlength \\ \cline{1-5} \cline{7-7} 
+    $0$ & $[120.2, 57]$ & $[1.2, 0.5]$ & $[223.3, 57.5, 9.7]$ & $[0.545, 0.2, -0.3]$ &  & 10        \\ \cline{1-5} \cline{7-7} 
+    $1$ & $[, ]$          & $[, ]$         & $[121.343, 89.323]$  & $[0.886, -0.855]$    &  & 4         \\ \cline{1-5} \cline{7-7} 
+    $2$ & $[86.112]$    & $[86.112]$   & $[57.75, 34.5]$      & $[0.33, 0.255]$      &  & 6         \\ \cline{1-5} \cline{7-7} 
+    \end{tabular}
+\end{table}
+
+\subsection*{RDataFrame}
+RDataFrame is a 
+
+In the codelisting we see an example of a C++ function used by RDataFrame.
+
+\begin{lstlisting}[language=C++, style=cppstyle, label={code:cpp_func_example}]
+double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
+            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
+            int i, int j)
+{
+/* Gets he invariant mass between two particles, be it jets or leptons */
+
+const auto size_i = int(pt_i.size());
+const auto size_j = int(pt_j.size());
+
+if (size_i == 0 || size_j == 0){return 0.;}
+if (i > size_i-1){return 0.;}
+if (j > size_j-1){return 0.;}
+
+TLorentzVector p1;
+TLorentzVector p2;
+
+p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
+p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
+
+double inv_mass = (p1 + p2).M();
+
+return inv_mass;
+}
+\end{lstlisting}
+
+
+In the codelisting below we see a simple implementation of RDataFrame in python. 
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
+import ROOT as R
+
+R.EnableImplicitMT(200)
+R.gROOT.ProcessLine(".L helperFunctions.cxx+")
+R.gSystem.AddDynamicPath(str(dynamic_path))
+R.gInterpreter.Declare(
+    '#include "helperFunctions.h"'
+)  # Header with the definition of the myFilter function
+R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
+
+df_mc = getDataFrames(mypath_mc)
+df_data = getDataFrames(mypath_data)
+df = {**df_mc, **df_data}
+
+for k in df.keys():
+
+    # Signal leptons
+    df[k] = df[k].Define(
+        "ele_SG",
+        "ele_BL && lepIsoLoose_VarRad && lepTight && (lepD0Sig <= 5 && lepD0Sig >= -5)",
+    )  
+    df[k] = df[k].Define(
+        "muo_SG",
+        "muo_BL && lepIsoLoose_VarRad && (lepD0Sig <= 3 && lepD0Sig >= -3)",
+    )  
+    df[k] = df[k].Define("isGoodLep", "ele_SG || muo_SG")
+
+    # Define flavor combination based on 
+    df[k] = df[k].Define("flcomp", "flavourComp3L(lepFlavor[ele_SG || muo_SG])")
+    histo[f"flcomp_{k}" ] = df[k].Histo1D(
+        (
+            f"h_flcomp_{k}",
+            f"h_flcomp_{k}",
+            len(fldic.keys()),
+            0,
+            len(fldic.keys()),
+        ),
+        "flcomp",
+        "wgt_SG",
+    )
+    \end{lstlisting}
+

@@ -10,6 +10,14 @@ S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
   problems in comparison to regression methods}}, .
 
+\bibitem{backprop}
+D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
+  back-propagating errors}, {\emph{Nature} (1986) }.
+
+\bibitem{Goodfellow-et-al-2016}
+I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
+\newblock MIT Press, 2016.
+
 \bibitem{ROOT}
 R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
   \emph{root-project/root: v6.18/02},  Aug., 2019.

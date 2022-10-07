@@ -21,7 +21,46 @@ The next layer is the hidden layers. For a given network, the amount of hidden l
 nodes per layer. Finally, the last hidden layer is connected to the ouput layer, which is determined by the aim of the problem. 
 In the case of figure \ref{fig:nndiagram}, this neural network would represent a binary classification problem, in other words, two categories. 
 The nodes in the network interacts through so called weights $w$ and biases $b$. These are known as tunable parameters, 
-which needs to be trained on the dataset before any prediction can be made. 
+which needs to be trained on the dataset before any prediction can be made. \par 
+In order to avoid confusion, we will adhere to table \ref{tab:notation} for the notation used in the following sections.
+
+% Define new columns types 
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % left fixed width
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % center fixed width
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % flush right fixed width
+\begin{table}[H]
+    % \setlength{\tabcolsep}{15pt}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{center}
+    \caption{Notation}
+    \begin{tabular}{|C{1.5cm}|L{4cm}|C{2cm}|} \hline
+    \multicolumn{3}{|c|}{Matrices and vectors}  \\ \hline
+    Notation & \multicolumn{1}{c|}{Description} & Type \\ \hline
+    $X$ & Design Matrix (input data). & $\mathbb{R}^{N\times \text{\#features}}$ \\ \hline
+    $t$ & Target values. & $\mathbb{R}^{N\times \text{\#categories}}$ \\ \hline
+    $y$ & Model output, the prediction from our network. &  $\mathbb{R}^{N\times \text{\#categories}}$\\ \hline
+    $W^l$ & The weight matrix associated with layer $l$ which handles the connections between layer $l-1$ and $l$ . & $\mathbb{R}^{n_{l-1} \times n_l}$ \\ \hline
+     $B^l$ & The bias vector associated with layer $l$ which handles the biases for all nodes in layer $l$.  & $\mathbb{R}^{n_{l} \times 1}$ \\ \hline
+   
+    \multicolumn{3}{|c|}{Elements}  \\ \hline
+    $w^l_{ij}$ & The weight connecting node $i$ in layer $l-1$ to node $k$ in layer $l$. & $\mathbb{R}$ \\ \hline
+    $b^l_j$ & Bias acting on node $j$ in layer $l$.  & $\mathbb{R}$ \\ \hline
+    $z^l_j$ & Node output before activation on node $j$ on layer $l$. & \\ \hline
+    $a^l_j$ & Activated node output on node $j$ on layer $l$. & $\mathbb{R}$ \\ \hline
+    \multicolumn{3}{|c|}{Functions}  \\ \hline
+    $C$ & \multicolumn{2}{l|}{Cost function} \\ \hline
+    $\sigma^l$ & \multicolumn{2}{l|}{Activation function associated with layer $l$.} \\ \hline
+    \multicolumn{3}{|c|}{Quantities }  \\ \hline
+    $n_l$ & \multicolumn{2}{l|}{The number of nodes in layer $l$.} \\ \hline
+    $L$ & \multicolumn{2}{l|}{Number of layers in total with $L-2$ hidden layers.} \\ \hline
+    $N$ & \multicolumn{2}{l|}{Total number of data points.} \\ \hline
+    \multicolumn{3}{|l|}{All indexing starts from 1: $i,j,k,l = 1, 2, \hdots$}  \\ \hline
+    \end{tabular}
+    \label{tab:notation}
+    \caption{Table containing notation used for deriving the mathematical formulas for the neural network \cite{FYSSTK}}
+  \end{center}
+\end{table}
+   
 
 \subsection*{Gradient descent}
 Let us now consider a general n-dimansional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. We want the set of $\boldsymbol{\theta}$
@@ -58,8 +97,123 @@ getting stuck in local minima. To circumvent this issue, mini batches are introd
 
 
 
+\subsection*{Feed forwarding}
+Inference (prediction) and training both use the same feed-forward algorithm. The procedure is to send the data through the network, weighting each connection according to the networks architecture,
+and produce an output. The procedure can be summarized in the following steps \cite{FYSSTK}:
+ \begin{itemize}
+    \item The data is recieved by the input nodes in teh network for each feature.
+    \item Each input node weights the data value according to the connection of each node in the next layer.
+    \item Every node in the hidden layers sums the weighted data values, and adds the bias associated to the given node, denoted as z. 
+    \item This value z is then sent through an activation function $\sigma$, which produces the output of the node, denoted as $a = \sigma(z)$.
+    \item This process is repeated for each hidden layer, and it is important to note that the number of nodes in the hidden layers is not dependent on the number of features in the original dataset. 
+    \item The last hidden layer then sends the activated values to the output layer, where the number of nodes and choice of activation function depends on the problem to solve.
+ \end{itemize}
+
+Mathematically this is expressed as follows:
+\begin{equation}
+    z_j^l = \sum_{i=1}^{n_{l-1}} w_{ij}^l a_i^{l-1} + b_j^l, \quad a_j^l = \sigma^l(z_j^l),
+\end{equation}
+where $l$ is the layer index, $j$ is the node index, and $i$ is the index of the node in the previous layer, and $l \neq 1$, as it is not used on the input layer.
 
 
 \subsection*{Backpropagation}
+The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by Rumelhart et al\cite{backprop}. This is a bit misleading, 
+as the backprop algorithm actually only refers to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and biases such that
+we get an ideal output. Assuming a costfunction $C$, we can calculate the gradient $\nabla_{w, b}C$, and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of 
+two derivatives:
 
-\subsection*{Feed forwarding}
+\begin{equation*}
+    \nabla_{w, b}C = \left(\frac{\partial C}{\partial w_{i,j}^l}, \frac{\partial C}{\partial b_j^l}\right).
+\end{equation*}
+
+We have to use the chain rule to calculate the derivatives, and using that the last layer is $l=L$, we get the derivative with respect to the weights as 
+
+\begin{equation*}
+    \frac{\partial C}{\partial w_{i,j}^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}\frac{\partial z_j^L}{\partial w_{i,j}^L},
+\end{equation*}
+where 
+\begin{equation*}
+    a_j^L = \sigma(z_j^L), \quad z_j^L = \sum_{i=1}^{n_L-1} w_{i,j}^La_i^{L-1} + b_j^L.
+\end{equation*}
+
+This then gives us 
+\begin{equation*}
+    \frac{\partial C}{\partial w_{i,j}^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L)a_i^{L-1}.
+\end{equation*}
+
+This derivative is very easy to calculate given a specific cost function and activation function. The derivative with respect to the bias is given as follows:
+
+\begin{equation*}
+    \frac{\partial C}{\partial b_k^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}\frac{\partial z_j^L}{\partial b_{j}^L},
+\end{equation*}
+which gives us the final expression as 
+
+\begin{equation*}
+    \frac{\partial C}{\partial b_k^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L). 
+\end{equation*}
+
+We will now introduce a new notation, a local gradient commonly called the "error". It reflects how the rate of change of the cost function depends on the j'th node in the l'th layer.
+
+\begin{equation*}
+    \delta_j^l \equiv \frac{\partial C}{\partial z_j^l}.  
+\end{equation*}
+Using this we get the following expression:
+
+\begin{equation*}
+    \delta_j^L=  \frac{\partial C}{\partial z_j^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L),
+\end{equation*}
+
+giving us the more compact forms of the derivatives with respect to the weights and biases:
+
+\begin{equation*}
+    \frac{\partial C}{\partial w_{i,j}^L} = \delta_j^La_i^{L-1}, \quad \frac{\partial C}{\partial b_j^L} = \delta_j^L.
+\end{equation*}
+
+We can now let $\boldsymbol{\delta^l}$ be the vector of all the errors in the l'th layer, and $\boldsymbol{\delta^L}$ be the vector of all the errors in the last layer. 
+The error in the l'th layer can then be expressed as a matrix equation for the last layer as follows:
+
+\begin{equation*}
+    \boldsymbol{\delta^l} = \nabla_aC \odot \frac{\partial \sigma}{\partial z^L}, \quad \nabla_aC = \left[\frac{\partial C}{\partial a_1^L}, \frac{\partial C}{\partial a_1^L}, ..., \frac{\partial C}{\partial a_{n_L}^L} \right]^T.
+\end{equation*}
+
+Here $\odot$ is the Hadamard product (element wise product). This local gradient can now be defined recursively for the j'th node in a layer l as a function of the local error in the next layer:
+
+\begin{equation}
+    \label{eq:localgradient}
+    \delta_j^l \equiv \frac{\partial C}{\partial z_j^l} = \sum_k \frac{\partial C}{\partial z_k^{l+1}}\frac{\partial z_k^{l+1}}{\partial z_j^l} = \sum_k \frac{\partial z_k^{l+1}}{\partial z_j^l} \delta_k^{l+1}.
+\end{equation}
+
+We also note that 
+\begin{equation*}
+    z_k^{l+1} = \sum_{j=1}^{n_l} w_{j,k}^{l+1}a_j^l + b_k^{l+1} = \sum_{j=1}^{n_l} w_{j,k}^{l+1}\sigma(z_j^l) + b_k^{l+1},
+\end{equation*} 
+thus the partial derivative is given as 
+
+\begin{equation}
+    \label{eq:dzl1dz}
+    \frac{\partial z_k^{l+1}}{\partial z_j^l} = w_{j,k}^{l+1}\sigma'(z_j^l).
+\end{equation}
+
+This allows us to substitute equation into equation  to get the following expression:
+
+
+\begin{equation}
+    \label{eq:localgradient2}
+    \delta_j^l = \sum_k w_{j,k}^{l+1}\sigma'(z_j^l)\delta_k^{l+1}.
+\end{equation}
+
+Using this we can derive a three step formula for the backprop algorithm:
+\begin{itemize}
+    \item Compute the local gradient for the last layer, $\delta^L$.
+    \item Recursively compute the local gradient for the remaining layers, $\delta^l$ for $l=L-1, L-2, ..., 1$.
+    \item Update the weights and biases for all layers, $l=1, 2, ..., L$. as shown below: 
+\end{itemize}
+
+\begin{equation*}
+    w_{i,j}^{l} \leftarrow w_{i,j}^{l} - \eta \delta_j^l a_i^{l-1},
+\end{equation*}
+
+
+\begin{equation*}
+    b_j^l \leftarrow b_j^l - \eta \delta_j^l.
+\end{equation*}
