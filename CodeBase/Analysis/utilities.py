@@ -8,6 +8,7 @@ import tensorflow as tf
 import keras_tuner as kt
 from pathlib import Path
 from typing import Tuple
+import plotly.express as px
 import matplotlib.pyplot as plt
 from os.path import isfile, join
 
@@ -17,6 +18,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 seed = tf.random.set_seed(1)
+
+tf.keras.utils.get_custom_objects()['leaky_relu'] = tf.keras.layers.LeakyReLU()
 
 rmm_structure = {
     1: [
@@ -121,14 +124,12 @@ class plotRMM:
         col = len(df.columns)
         row = len(df)
 
-        print("")
-        print(f"Size: {row}")
-        print("")
+        
         df2 = df.mean()
 
         tot = len(df2)
         row = int(np.sqrt(tot))
-        print(row)
+       
 
         rmm_mat = np.zeros((row, row))
 
@@ -146,18 +147,46 @@ class plotRMM:
         for i in range(1, self.N_row):
             name = self.rmm_structure[i][0]
             names.append(name)
+            
+        #rmm_mat[rmm_mat < 0.00009] = np.nan
 
+        """
         fig, ax = plt.subplots()
-
+        
         im, cbar = self.heatmap(rmm_mat, names, names, ax=ax, cbarlabel="Intensity")
         texts = self.annotateHeatmap(im, valfmt="{x:.3f}")
+        
+        def func(x, pos):
+            return "{:.2f}"
+        
+        texts = self.annotateHeatmap(im)#valfmt="{:.2f}""
 
-        im = ax.imshow(rmm_mat)
+        
+        
+        
+        im = ax.imshow(rmm_mat, interpolation = 'none', vmin = 0.00009)
 
         fig.tight_layout()
+       
 
         plt.savefig(f"../../Figures/testing/rmm_avg_{process}.pdf")
-        plt.close()
+        plt.close()"""
+        
+        rmm_mat[rmm_mat == 0] = np.nan
+        
+
+        fig = px.imshow(rmm_mat,
+                        labels=dict(x="Particles", y="Particles", color="Intensity"),
+                        x=names,
+                        y=names,
+                        aspect="auto",
+                        color_continuous_scale='Viridis',
+                        text_auto=".3f"
+               )
+        fig.update_xaxes(side="top")
+        
+        fig.write_image(f"../../Figures/testing/rmm_avg_{process}.pdf")
+        
 
     def heatmap(
         self, data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs
@@ -450,7 +479,7 @@ class ScaleAndPrep:
 
         with strategy.scope():
 
-            scaler_ae = MinMaxScaler()  # StandardScaler()#MinMaxScaler()
+            scaler_ae = MinMaxScaler()
             self.X_b_train = scaler_ae.fit_transform(X_b_train)
             self.X_b_val = scaler_ae.transform(X_b_val)
 
@@ -584,7 +613,7 @@ class RunAE:
         tuner = kt.Hyperband(
             self.AE_model_builder,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=50,
+            max_epochs=20,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -593,7 +622,7 @@ class RunAE:
         print(tuner.search_space_summary())
 
         tuner.search(
-            X_b, X_b, epochs=50, batch_size=8192, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
+            X_b, X_b, epochs=20, batch_size=8192, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
         print(
@@ -620,7 +649,7 @@ class RunAE:
         while state == True:
             answ = input("Do you want to save model? (y/n) ")
             if answ == "y":
-                name = input("name: ")
+                name = input("name: model_ ")
                 self.modelname = f"model_{name}.h5"
                 tuner.hypermodel.build(best_hps).save("tf_models/"+self.modelname)
                 state = False
@@ -751,6 +780,10 @@ class RunAE:
             else:
                 print("reg trained_model")
                 self.AE_model = self.trainModel()
+                
+        
+        tf.keras.utils.plot_model(self.AE_model, to_file=self.path +"/ae_model_plot.pdf",
+                          show_shapes=True, show_layer_names=True, expand_nested=True)
 
         with tf.device("/GPU:0"):
             self.pred_back = self.AE_model.predict(self.X_val, batch_size=8192)
@@ -888,6 +921,7 @@ class RunAE:
         )
         x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
 
+        sns.set_style("darkgrid")
         plt.rcParams["figure.figsize"] = (12, 9)
 
         fig, ax = plt.subplots()
@@ -918,7 +952,7 @@ class RunAE:
 
         print(np.asarray(labels, dtype=object)[sort_w])
 
-        sns.set_style("darkgrid")
+        
         ax.hist(
             np.asarray(histo_atlas, dtype=object)[sort_w],
             n_bins,

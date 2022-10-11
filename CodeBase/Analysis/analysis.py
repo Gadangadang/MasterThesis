@@ -34,7 +34,7 @@ def main():
 
 if __name__ == "__main__":
     print("Num GPUs Available: ", len(tf.config.list_physical_devices("GPU")))
-    tf.keras.utils.get_custom_objects()['leaky_relu'] = tf.keras.layers.LeakyReLU()
+    
     
     
     

@@ -9,7 +9,7 @@ import pandas as pd
 from os import listdir
 from typing import Tuple
 import plottingTool as pt
-from pyHelperFuncs import *
+import plotly.express as px
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
@@ -373,7 +373,7 @@ def plot_rmm_matrix(
         name = rmm_structure[i][0]
         names.append(name)
 
-    fig, ax = plt.subplots()
+    """fig, ax = plt.subplots()
 
     im, cbar = heatmap(rmm_mat, names, names, ax=ax, cbarlabel="Intensity")
     texts = annotate_heatmap(im, valfmt="{x:.3f}")
@@ -383,7 +383,22 @@ def plot_rmm_matrix(
     fig.tight_layout()
 
     plt.savefig(f"../../../Figures/histo_var_check/rmm_avg_{process}.pdf")
-    plt.show()
+    plt.show()"""
+    
+    rmm_mat[rmm_mat == 0] = np.nan
+    
+
+    fig = px.imshow(rmm_mat,
+                    labels=dict(x="Particles", y="Particles", color="Intensity"),
+                    x=names,
+                    y=names,
+                    aspect="auto",
+                    color_continuous_scale='Viridis',
+                    text_auto=".3f"
+            )
+    fig.update_xaxes(side="top")
+    
+    fig.write_image(f"../../../Figures/histo_var_check/rmm_avg_{process}.pdf")
 
 
 def heatmap(data, row_labels, col_labels, ax=None, cbar_kw={}, cbarlabel="", **kwargs):
@@ -532,3 +547,8 @@ def get_column_names(df, histo):
         all_cols.append(col)
 
     return all_cols
+
+
+def Merge(dict1, dict2):
+    res = {**dict1, **dict2}
+    return res

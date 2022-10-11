@@ -35,8 +35,8 @@ R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
 
 
 def runANA(
-    mypath_mc: str,
-    mypath_data: str,
+    mypath_mc: list,
+    mypath_data: list,
     everyN: int,
     fldic: dict,
     histo: dict,
@@ -51,31 +51,44 @@ def runANA(
         return
     else:
         # mypath = "/storage/eirikgr/ANAntuples/PHYS_3LBkgs_mc16e/HNL3L_NOV03/merged/"
-        if isdir(mypath_mc):
-            df_mc = getDataFrames(mypath_mc)
-            print(
-                "Loading %s into dataframe with keys %s"
-                % (mypath_mc, ",".join(df_mc.keys()))
-            )
-        else:
-            df_mc = {}
+        
+        df_mc_tot = {}
+        df_data_tot = {}
+        for idx, path in enumerate(mypath_mc):
+            if isdir(path):
+                df_mc = getDataFrames(path)
+                print(
+                    "Loading %s into dataframe with keys %s"
+                    % (path, ",".join(df_mc.keys()))
+                )
+                df_mc_tot = Merge(df_mc_tot, df_mc)
+                
+            else:
+                print("ERROR: Dir not found")
+                exit()
 
-        # mypath = "/storage/eirikgr/ANAntuples/PHYS_Data/"
-        if isdir(mypath_data):
-            df_data = getDataFrames(mypath_data)
-            print(
-                "Loading %s into dataframe with keys %s"
-                % (mypath_data, ",".join(df_data.keys()))
-            )
-        else:
-            df_data = {}
+        for idx, path in enumerate(mypath_data):
+            if isdir(path):
+                df_data = getDataFrames(path)
+                print(
+                    "Loading %s into dataframe with keys %s"
+                    % (path, ",".join(df_data.keys()))
+                )
+                df_data_tot = Merge(df_data_tot, df_data)
+            else:
+                print("ERROR: Dir not found")
+                exit()
 
-        df = {**df_mc, **df_data}
-
+        df = {**df_mc_tot, **df_data_tot}
+        
+        
         for k in df.keys():
-            """
-            if k not in ["higgs"]:  # , "ttbar"]:
-                continue"""
+            
+            """if k not in ["higgs"]:  # , "ttbar"]:
+                continue
+                """
+            
+            
 
             # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -211,19 +224,23 @@ def runANA(
 
             df[k] = df[k].Filter("nlep_BL == 3", "3 BL leptons")
             df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
+            
+            print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
             """
             Trigger filtering
             """
-
+            """
             # 2015 only triggers
 
             trigs2015 = triggers["2015"]
             trig2015 = trigs2015["trig"]
             trigmatch2015 = trigs2015["trigmatch"]
 
-            df[k] = df[k].Filter(trig2015)
-            df[k] = df[k].Filter(trigmatch2015)
+            df[k] = df[k].Filter(trig2015, "2015trig")
+            df[k] = df[k].Filter(trigmatch2015, "2015trigmatch")
+            
+          
 
             # 2016 only triggers
 
@@ -231,8 +248,10 @@ def runANA(
             trig2016 = trigs2016["trig"]
             trigmatch2016 = trigs2016["trigmatch"]
 
-            df[k] = df[k].Filter(trig2016)
-            df[k] = df[k].Filter(trigmatch2016)
+            df[k] = df[k].Filter(trig2016, "2016trig")
+            df[k] = df[k].Filter(trigmatch2016, "2016trigmatch")
+            
+          
 
             # 2017 and 2018 only triggers
 
@@ -240,8 +259,14 @@ def runANA(
             trig201718 = trigs201718["trig"]
             trigmatch201718 = trigs201718["trigmatch"]
 
-            df[k] = df[k].Filter(trig201718)
-            df[k] = df[k].Filter(trigmatch201718)
+            df[k] = df[k].Filter(trig201718, "2018trig")
+            
+            df[k] = df[k].Filter(trigmatch201718, "2018trigmatch")
+            
+            print("Filtering done.")
+            """
+            
+            df[k] = df[k].Filter("ROOT::VecOps::Sum(lepPt[isGoodLep] > 20) >= 2", "pt cut 20")
 
             # Jets
             df[k] = df[k].Define(
@@ -258,6 +283,13 @@ def runANA(
             # Adding column for type of channel
 
             # df[k] = df[k].Define("channeltype", k)
+            
+         
+            #print(df[k].Display("lepPt").AsString())
+            
+            
+            
+            
 
             """
             RMM matrix feature calculations with histogram creation
@@ -605,10 +637,8 @@ def runANA(
             print(p)
             exit()"""
 
-            print(
-                "Number of events in %s = %i after filtering"
-                % (k, df[k].Count().GetValue())
-            )
+            a = df[k].Report().Print()
+            print(a)
 
     for k in histo.keys():
         allhisto.append(histo[k])
@@ -688,7 +718,7 @@ def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
 if __name__ == "__main__":
 
     """Remove old images from histo_var_check"""
-    de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
+    #de = [f.unlink() for f in Path(histo_var).glob("*") if f.is_file()]
 
     """ Actual analysis """
     N_j = 2
@@ -705,17 +735,37 @@ if __name__ == "__main__":
     nSlots = R.GetThreadPoolSize()
     print("Number of slots = %i" % nSlots)
     everyN = int(100 * nSlots)
+    
+    
+    mc_paths = [
+        str(BKG_SAMPLE1516),
+        str(BKG_SAMPLE17), 
+        str(BKG_SAMPLE18)
+    ]
+    data_paths = [
+        str(DATA_SAMPLE15), 
+        str(DATA_SAMPLE16), 
+        str(DATA_SAMPLE17), 
+        str(DATA_SAMPLE18)
+    ]
+    
+    
+
+
+    
+    
+    
 
     df, histo = runANA(
-        str(bkg_sample),
-        str(data_sample),
+        mc_paths,
+        data_paths,
         everyN,
         fldic,
         histo,
         allhisto,
         create_histogram=True,
     )
-
+    
     all_cols = get_column_names(df, histo)
     print(all_cols)
 
@@ -726,3 +776,4 @@ if __name__ == "__main__":
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
+    
