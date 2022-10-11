@@ -5,45 +5,53 @@ The style file: JHEP.bst
 Database file #1: bibliography.bib
 Warning--entry type for "ROOT" isn't style-file defined
 --line 36 of file bibliography.bib
-You've used 6 entries,
+Warning--entry type for "hdf5" isn't style-file defined
+--line 154 of file bibliography.bib
+Warning--entry type for "reback2020pandas" isn't style-file defined
+--line 285 of file bibliography.bib
+Warning--entry type for "plotly" isn't style-file defined
+--line 296 of file bibliography.bib
+Warning--entry type for "chollet2015keras" isn't style-file defined
+--line 305 of file bibliography.bib
+You've used 23 entries,
             2188 wiz_defined-function locations,
-            559 strings with 4997 characters,
-and the built_in function-call counts, 1297 in all, are:
-= -- 109
-> -- 91
+            660 strings with 8794 characters,
+and the built_in function-call counts, 4982 in all, are:
+= -- 444
+> -- 308
 < -- 0
-+ -- 26
-- -- 20
-* -- 104
-:= -- 214
-add.period$ -- 8
-call.type$ -- 6
-change.case$ -- 5
++ -- 91
+- -- 68
+* -- 341
+:= -- 757
+add.period$ -- 27
+call.type$ -- 23
+change.case$ -- 22
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 52
-empty$ -- 118
-format.name$ -- 20
-if$ -- 317
+cite$ -- 23
+duplicate$ -- 198
+empty$ -- 464
+format.name$ -- 68
+if$ -- 1245
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 17
-newline$ -- 23
-num.names$ -- 6
-pop$ -- 23
+int.to.str$ -- 23
+missing$ -- 52
+newline$ -- 76
+num.names$ -- 23
+pop$ -- 98
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 20
+skip$ -- 131
 stack$ -- 0
-substring$ -- 24
-swap$ -- 10
+substring$ -- 184
+swap$ -- 61
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 9
-width$ -- 7
-write$ -- 55
-(There was 1 warning)
+while$ -- 39
+width$ -- 25
+write$ -- 190
+(There were 5 warnings)

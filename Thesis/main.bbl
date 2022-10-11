@@ -1,4 +1,4 @@
-\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{1}
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
 \bibitem{anom_detec}
 V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
@@ -18,10 +18,35 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
 
+\bibitem{collaboration_2020}
+{The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
+  2}, \href{http://dx.doi.org/10.1088/1748-0221/15/10/p10004}{\emph{Journal of
+  Instrumentation} {\bf 15} (oct, 2020) P10004--P10004}.
+
+\bibitem{Owen:2302730}
+{\scshape ATLAS} collaboration, R.~E. Owen, \emph{{The ATLAS Trigger System}},
+  .
+
+\bibitem{Wang:2707056}
+S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
+  Software Tutorial}}, .
+
+\bibitem{Bernius:2707054}
+C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
+  Software Tutorial}}, .
+
 \bibitem{ROOT}
 R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
   \emph{root-project/root: v6.18/02},  Aug., 2019.
 \newblock 10.5281/zenodo.3895860.
+
+\bibitem{Manca:2694107}
+E.~Manca and E.~Guiraud, \emph{{Using RDataFrame, ROOT’s declarative analysis
+  tool, in a CMS physics study. Using RDataFrame, ROOT’s declarative analysis
+  tool, in a CMS physics study}}, .
+
+\bibitem{hdf5}
+{The HDF Group}, \emph{{Hierarchical Data Format, version 5}},  1997-2022.
 
 \bibitem{Chekanov_2019}
 S.~Chekanov, \emph{Imaging particle collision data for event classification
@@ -29,5 +54,55 @@ S.~Chekanov, \emph{Imaging particle collision data for event classification
   \href{http://dx.doi.org/10.1016/j.nima.2019.04.031}{\emph{Nuclear Instruments
   and Methods in Physics Research Section A: Accelerators, Spectrometers,
   Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
+
+\bibitem{tensorflow2015-whitepaper}
+M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
+  \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
+  2015.
+
+\bibitem{chollet2015keras}
+F.~Chollet et~al., \emph{Keras},  2015.
+
+\bibitem{omalley2019kerastuner}
+T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
+  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
+
+\bibitem{hyperband:opt}
+L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
+  \emph{Hyperband: A novel bandit-based approach to hyperparameter
+  optimization}, .
+
+\bibitem{ADAM:opti}
+D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
+  2014.
+\newblock 10.48550/ARXIV.1412.6980.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
+  et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of
+  Machine Learning Research} {\bf 12} (2011) 2825--2830}.
+
+\bibitem{Hunter:2007}
+J.~D. Hunter, \emph{Matplotlib: A 2d graphics environment},
+  \href{http://dx.doi.org/10.1109/MCSE.2007.55}{\emph{Computing in Science \&
+  Engineering} {\bf 9} (2007) 90--95}.
+
+\bibitem{Waskom2021}
+M.~L. Waskom, \emph{seaborn: statistical data visualization},
+  \href{http://dx.doi.org/10.21105/joss.03021}{\emph{Journal of Open Source
+  Software} {\bf 6} (2021) 3021}.
+
+\bibitem{plotly}
+{Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
+
+\bibitem{harris2020array}
+C.~R. Harris, K.~J. Millman, S.~J. van~der Walt, R.~Gommers, P.~Virtanen,
+  D.~Cournapeau et~al., \emph{Array programming with {NumPy}},
+  \href{http://dx.doi.org/10.1038/s41586-020-2649-2}{\emph{Nature} {\bf 585}
+  (Sept., 2020) 357--362}.
+
+\bibitem{reback2020pandas}
+{The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.
+\newblock 10.5281/zenodo.3509134.
 
 \end{thebibliography}\endgroup

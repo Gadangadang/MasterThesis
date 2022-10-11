@@ -1,4 +1,5 @@
 \section*{ROOT}
+
 It is a lot. \cite{ROOT}
 \subsection*{ROOT, memory management etc.}
 
@@ -19,38 +20,18 @@ a ragged structure.
 \end{table}
 
 \subsection*{RDataFrame}
-RDataFrame is a 
 
-In the codelisting we see an example of a C++ function used by RDataFrame.
+\cite{Manca:2694107}
 
-\begin{lstlisting}[language=C++, style=cppstyle, label={code:cpp_func_example}]
-double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
-            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
-            int i, int j)
-{
-/* Gets he invariant mass between two particles, be it jets or leptons */
+RDataFrame's main purpose is to make reading and handling of root files easier, especially in relation to modern machine learning tools and their framework. 
+This is done by creating a dataframe like structure of the root n-tuples, and then lazily\footnotetext{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
+apply contraints to the data. Using PyROOT, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is an example of how
+to create a RDataFrame object, apply a cut and then create a column for later use. Here, good leptons are defined first, denoted as "ele\_SG" and "muo\_SG". 
+A cut is then applied where we require that the number of good leptons is always 3. Finally, a column is created where the combination of type of leptons in the 3 lepton system 
+is stored, as well as creating a histogram containing the results for that given channel k. Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be 
+applied directly using those columns to create new one. More complicated information, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
+found or calculated using C++ functions. An example of such a function is shown below the python code listing. 
 
-const auto size_i = int(pt_i.size());
-const auto size_j = int(pt_j.size());
-
-if (size_i == 0 || size_j == 0){return 0.;}
-if (i > size_i-1){return 0.;}
-if (j > size_j-1){return 0.;}
-
-TLorentzVector p1;
-TLorentzVector p2;
-
-p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
-p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
-
-double inv_mass = (p1 + p2).M();
-
-return inv_mass;
-}
-\end{lstlisting}
-
-
-In the codelisting below we see a simple implementation of RDataFrame in python. 
 
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
 import ROOT as R
@@ -79,6 +60,11 @@ for k in df.keys():
         "muo_BL && lepIsoLoose_VarRad && (lepD0Sig <= 3 && lepD0Sig >= -3)",
     )  
     df[k] = df[k].Define("isGoodLep", "ele_SG || muo_SG")
+    df[k] = df[k].Define(
+                "nlep_SG", "ROOT::VecOps::Sum(ele_SG)+ROOT::VecOps::Sum(muo_SG)"
+            )
+
+    df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
 
     # Define flavor combination based on 
     df[k] = df[k].Define("flcomp", "flavourComp3L(lepFlavor[ele_SG || muo_SG])")
@@ -95,3 +81,59 @@ for k in df.keys():
     )
     \end{lstlisting}
 
+
+
+
+\begin{lstlisting}[language=C++, style=cppstyle, label={code:cpp_func_example}]
+double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
+            VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
+            int i, int j)
+{
+/* Gets he invariant mass between two particles, be it jets or leptons */
+
+const auto size_i = int(pt_i.size());
+const auto size_j = int(pt_j.size());
+
+if (size_i == 0 || size_j == 0){return 0.;}
+if (i > size_i-1){return 0.;}
+if (j > size_j-1){return 0.;}
+
+TLorentzVector p1;
+TLorentzVector p2;
+
+p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
+p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
+
+double inv_mass = (p1 + p2).M();
+
+return inv_mass;
+}
+\end{lstlisting}
+Using ROOT we can create Lorentzvectors to calculate a number of properties, such as the invariant mass of two particles.
+
+
+
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
+import pandas as pd 
+
+cols = df.keys()
+
+for k in cols:
+
+    print(f"Transforming {k}.ROOT to numpy")
+    numpy = df[k].AsNumpy(DATAFRAME_COLS)
+    print(f"Numpy conversion done for {k}.ROOT")
+    df1 = pd.DataFrame(data=numpy)
+    print(f"Transformation done")
+    
+
+    df1.to_hdf(
+        PATH_TO_STORE + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+    )
+
+\end{lstlisting}
+
+
+Once a dataframe has been created, the columns chosen and histograms are drawn, the dataframe can be converted to a pandas dataframe, which is a very popular choice
+for data structure when doing data analysis in python. Here the new pandas dataframe is stored as hdf5\cite{hdf5} files, for later use. 
