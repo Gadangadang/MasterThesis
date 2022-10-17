@@ -1,5 +1,5 @@
-import ROOT as R
 import sys
+import ROOT as R
 from samples import configure_samples
 
 d_samp,d_type,d_reg = configure_samples()#False,False,True,False,False)
@@ -38,15 +38,33 @@ def findKey(histname):
       return s
   return ""
 
+def getRebin(hname):
+        if "MET_" in hname:
+            return 4
+        if "mymll_" in hname:
+            return 5
+        if "ptllboost" in hname:
+            return 4
+        if "lepPt" in hname:
+            return 2
+        if "jetPt" in hname:
+            return 2
+        return 0
+
 class Plot:
 
     def __init__(p,hdic,hname = "lepPt_ele_hT", bkgs = [], is1D = True, doscale = False):
 
-      print(hname)
+      print("Plotting %s" %hname)
 
       p.doscale = doscale
       p.is1D = is1D
       p.is2D = not is1D
+      p.rebin = 0
+      p.xtit = ""
+      p.intlumi = 0.0
+      p.sqrts = ""
+      p.datasumh = -1
 
       if p.is1D: p.plot1D(hdic,hname,bkgs)
       else: p.plot2D(hdic,hname,bkgs)
@@ -61,9 +79,9 @@ class Plot:
       
       #p.doScale(hdic,hname,["WmuHNL50_30G"],1.0/80000.)
       # Legend
-      p.leg = R.TLegend(0.60,0.56,0.91,0.90)
+      p.leg = R.TLegend(0.60,0.76,0.91,0.90)
       p.leg.SetBorderSize(0)
-      p.leg.SetTextSize(0.02)
+      p.leg.SetTextSize(0.04)
       p.leg.SetNColumns(2)
 
         
@@ -118,7 +136,10 @@ class Plot:
         p.isEff = False
         if "_EF_" in hname:
           p.isEff = True
-      
+
+        p.rebin = getRebin(hname)
+        
+        
         # Define canvas and pads
         p.can  = R.TCanvas('','',1000,1000)
         p.customise_gPad()
@@ -137,21 +158,15 @@ class Plot:
         if not p.isEff:
           p.pad1.Draw()
           p.pad1.cd()
-          p.customise_gPad(top=0.08, bot=0.04, left=gpLeft, right=gpRight)
+          p.customise_gPad(top=0.08, bot=0.01, left=gpLeft, right=gpRight)
 
         # Legend
         if not p.isEff:
-          if hname in ["ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge" ]:
-            p.leg = R.TLegend(0.4,0.70,0.67,0.90)
-
-          elif hname in ["flcomp"]:
-            p.leg = R.TLegend(0.60,0.60,0.91,0.90)
-          else:
-            p.leg = R.TLegend(0.60,0.56,0.91,0.90)
+          p.leg = R.TLegend(0.45,0.71,0.91,0.90)
         else:
-          p.leg = R.TLegend(0.55,0.77,0.91,0.94)
+          p.leg = R.TLegend(0.45,0.71,0.91,0.90)
         p.leg.SetBorderSize(0)
-        p.leg.SetTextSize(0.02)
+        p.leg.SetTextSize(0.03)
         p.leg.SetNColumns(2)
 
         p.nTotBkg = 0.0
@@ -172,16 +187,16 @@ class Plot:
         p.signalstack = R.THStack()
         p.getSignal(hdic,hname,bkgs)
 
-        print("-->",p.hstack.GetNhists())
+        #print("-->",p.hstack.GetNhists())
         if p.hstack.GetNhists() > 0:
           if not p.isEff: p.hstack.Draw("hist")
           else: p.hstack.Draw("nostack")
           if p.datastack.GetNhists() > 0:
-            p.datastack.Draw("same ep")
+            p.datasumh.Draw("same ep")
           if p.signalstack.GetNhists() > 0:
             p.signalstack.Draw("nostack same hist")
         elif p.datastack.GetNhists() > 0:
-          p.datastack.Draw("ep")
+          p.datasumh.Draw("ep")
           if p.signalstack.GetNhists() > 0: p.signalstack.Draw("nostack same hist")
         elif p.signalstack.GetNhists() > 0:
           p.signalstack.Draw("nostack hist")
@@ -190,9 +205,34 @@ class Plot:
         
         p.leg.Draw()
 
+        # Text for ATLAS, energy, lumi, region, ntuple status
+        ATL_status = "Internal"
+        #lumi = 1258.27/1000.
+        text_size = 0.045
+        sig_reg = "Region: "
+        if "_2L_" in hname:
+          sig_reg += "2L"
+          if "_ee" in hname:
+            sig_reg += " ee"
+          elif "_mm" in hname:
+            sig_reg += " #mu#mu"
+          elif "_em" in hname:
+            sig_reg += " e#mu"
+          elif "_em" in hname:
+            sig_reg += " all"
+        
+        print(p.nTotBkg)
+        myText(0.22, 0.87, '#bf{#it{ATLAS}} ' + ATL_status, text_size*1.2, R.kBlack)
+        myText(0.22, 0.81, '%s TeV, %.1f  fb^{#minus1}'%(p.sqrts,float(p.intlumi)/1000.), text_size*1.1, R.kBlack) 
+        myText(0.22, 0.77, sig_reg, text_size*0.7, R.kBlack) 
+        #myText(0.22, 0.73, NTUP_status, text_size*0.7, kGray+1) 
+
+        if not p.isEff:
+            myText(0.22, 0.69, p.nTotBkg, 0.025, R.kBlack)
        
 
-        xtitle = "--"
+        #print(p.hstack.GetXaxis().GetTitle())
+        xtitle = p.xtit
         ytitle = 'Events' if not p.isEff else 'Efficieny'
         IsLogY = True
         enlargeYaxis = False
@@ -210,13 +250,8 @@ class Plot:
         
         
 
-        if not p.isEff:
-          if hname in ["flcomp"]:
-            myText(0.3, 0.80, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
-          elif hname in ["ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge" ]:
-            myText(0.450, 0.65, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
-          else:
-            myText(0.77, 0.47, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
+        #if not p.isEff:
+        #  myText(0.77, 0.47, 'N(Bkg) = %.1f'%(p.nTotBkg), 0.025, R.kBlack)
 
         
         p.ratio = R.TH1D()
@@ -239,7 +274,7 @@ class Plot:
           p.pad2.SetGridy()
           p.ratio.Draw("e0p")
 
-          xtitle = hname
+          xtitle = p.xtit
           ytitle = 'Ratio'
           IsLogY = True
           enlargeYaxis = False
@@ -250,6 +285,8 @@ class Plot:
           p.customise_axes(p.ratio, xtitle, ytitle, 1.1, IsLogY, enlargeYaxis, maxbin, scaling == 'True')
 
           p.can.Update()
+
+          #p.can.SaveAs("plots/%s.pdf"%hname)
 
     def scaleToUnity(p,histo,hkey,procs):
       for k in procs:
@@ -262,11 +299,13 @@ class Plot:
 
     def getYields(p,histo,hkey,procs):
         for k in procs:
-            print(k)
-            newkey = hkey+"_%s"%k
+            newkey = (hkey+"_%s"%k)
+            #print("newkey",newkey)
             if p.isEff:
               newkey = hkey.replace("_EF_","_SG_")+"_%s"%k
+            #print(histo.keys())
             if not newkey in histo.keys():
+                print("continuing getYields")
                 continue
             if p.is1D:
               p.dyield[k] = histo[newkey].Integral(0,histo[newkey].GetNbinsX()+1)
@@ -286,6 +325,7 @@ class Plot:
             if not maxkey: break
             if maxkey in p.stackorder:
                 break
+            #print("maxkey = ",maxkey)
             p.stackorder.append(maxkey)
             ret = newdict.pop(maxkey,None)
             if ret == None:
@@ -296,22 +336,32 @@ class Plot:
             if d_samp[k]["type"] == "data": continue
             histo[hkey+"_%s"%k].Scale(fac)
 
+
     def getRatio(p,h1,h2):
         p.ratio = h2.Clone("hRatio")
         p.ratio.Sumw2() 
         p.ratio.Divide(h1) 
         #p.ratio.SetLineColor(R.kGray+2)
+        for ibin in range(1,p.ratio.GetNbinsX()+1):
+          if p.ratio.GetBinContent(ibin) == 0:
+            p.ratio.SetBinContent(ibin,-10)
         p.ratio.SetLineWidth(2)
         p.ratio.SetMarkerStyle(21)
         
     def fillStack(p,histo,hkey,procs):
+        #print("fillstack")
         for k in procs:
-            if p.is1D and not d_samp[k]["type"] == "bkg": continue
+            #print(k)
+            if p.is1D and not d_samp[k]["type"] == "bkg":
+                print("continue")
+                continue
             if not hkey+"_%s"%k in histo.keys():
                 print("Could not find key %s in histo dctionary"%(hkey+"_%s"%k ))
                 continue
-            
-            if float(p.nTotBkg) != 0: pc_yield = 100 * ( p.dyield[k] / float(p.nTotBkg) )
+
+            pc_yield = 0.0
+            if float(p.nTotBkg) != 0:
+              pc_yield = 100 * ( p.dyield[k] / float(p.nTotBkg) )
             if not p.isEff:
               leg_txt = '{0} ({1:.1f}%)'.format( d_samp[k]["leg"], pc_yield )
             else:
@@ -319,9 +369,15 @@ class Plot:
               if pc_yield < 10: continue
               leg_txt = '{0}'.format( d_samp[k]["leg"] )
             try:
+                #print("Adding %s_%s"%(hkey,k))
+                if p.rebin:
+                    histo[hkey+"_%s"%k] = histo[hkey+"_%s"%k].Rebin(p.rebin)
                 p.hstack.Add(histo[hkey+"_%s"%k])
                 p.leg.AddEntry(histo[hkey+"_%s"%k],leg_txt,"lpf")
+                p.xtit = histo[hkey+"_%s"%k].GetXaxis().GetTitle()
+                #print("xtitle = %s"%p.xtit)
             except:
+                #print("Adding %s_%s"%(hkey,k))
                 p.hstack.Add(histo[hkey+"_%s"%k].GetValue())
                 p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lpf")
 
@@ -332,15 +388,26 @@ class Plot:
             if not hkey+"_%s"%k in histo.keys():
                 continue
             if not p.isEff:
-              leg_txt = '{0} ({1:.0f} Events)'.format(d_samp[k]["leg"], p.dyield[k])
+              leg_txt = '{0}'.format(d_samp[k]["leg"])
+              #leg_txt = '{0} ({1:.0f} Events)'.format(d_samp[k]["leg"], p.dyield[k])
             else:
               leg_txt = '{0})'.format(d_samp[k]["leg"])
-            try:
-                p.datastack.Add(histo[hkey+"_%s"%k])
-                p.leg.AddEntry(histo[hkey+"_%s"%k],leg_txt,"lp")
-            except:
-                p.datastack.Add(histo[hkey+"_%s"%k].GetValue())
-                p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
+            #try:
+            if p.rebin:
+              histo[hkey+"_%s"%k] = histo[hkey+"_%s"%k].Rebin(p.rebin)
+         
+            p.datastack.Add(histo[hkey+"_%s"%k].GetValue())
+            if not type(p.datasumh) is R.TH1D:
+              p.datasumh = histo[hkey+"_%s"%k].Clone(hkey+"_%s_SUM"%k)
+            else:
+              p.datasumh.Add(histo[hkey+"_%s"%k].GetValue())
+              #p.leg.AddEntry(histo[hkey+"_%s"%k],leg_txt,"lp")
+              #except:
+              #    p.datastack.Add(histo[hkey+"_%s"%k].GetValue())
+              #p.datasumh.Add(histo[hkey+"_%s"%k].GetValue()))
+              #p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
+            p.intlumi += d_samp[k]["lumi"]
+            p.sqrts = str(d_samp[k]["sqrts"])
 
     def getSignal(p,histo,hkey,procs):
         for k in procs:
@@ -378,6 +445,7 @@ class Plot:
     # Funcion for customising axes
     def customise_axes(p,hist, xtitle, ytitle, scaleFactor=1.1, IsLogY=False, enlargeYaxis=False, maxbin = 10, scaling=False):
 
+        #print(type(hist))
         # Set a universal text size
         text_size = 45
 
@@ -401,14 +469,15 @@ class Plot:
         if 'Events' in ytitle:
             xax.SetLabelSize(0)
             xax.SetLabelOffset(0.02)
-            xax.SetTitleOffset(2.0)
+            xax.SetTitleOffset(1.4)
             xax.SetTickSize(0.04)
         # Bottom panel
         else:
             xax.SetLabelSize(text_size - 7)
             xax.SetLabelOffset(0.03)
-            xax.SetTitleOffset(3.5)
+            xax.SetTitleOffset(3.0)
             xax.SetTickSize(0.08)
+            
 
         # xax.SetRangeUser(0,2000)
         # xax.SetNdivisions(-505)
@@ -445,20 +514,20 @@ class Plot:
         # Top events panel
         if 'Events' in ytitle:
             yax.SetNdivisions(505)
+            yax.SetTitleOffset(1.4)
             if IsLogY:
                 if enlargeYaxis:
                     ymax *= 2 * 10 ** 10
-                    ymin = 0.1
+                    ymin = 1
                 else:
                     # ymax = 3 * 10 ** 4
                     # ymin = 0.5
-                    ymax *= 10*10 #Changed ymax and ymin to check new axis for histograms. 
-                    ymin = 0.1
+                    ymax *= 10*10
+                    ymin = 1
                 #if scaling:
                 #    hist.SetMaximum(1.0)
                 #else:
                 hist.SetMaximum(ymax)
-                
                 hist.SetMinimum(ymin)
             else:
                 #if scaling:
@@ -473,19 +542,18 @@ class Plot:
         # Bottom panel
         elif 'Ratio' in ytitle:
             yax.SetNdivisions(505)
+            yax.SetTitleOffset(1.2)
             # Dynamic 
-            if ymax*scaleFactor > 5:
-                hist.SetMaximum(5)
-            else: hist.SetMaximum(ymax*scaleFactor)
-            if ymin*0.9 < -1:
-                hist.SetMinimum(-2)#ymin*0.9)
-            else: hist.SetMinimum(ymin*0.9)
+            #if ymax*scaleFactor > 10:
+            #    hist.SetMaximum(5)
+            #else: hist.SetMaximum(ymax*scaleFactor)
+            #if ymin*0.9 < -1:
+            #    hist.SetMinimum(-2)#ymin*0.9)
+            #else: hist.SetMinimum(ymin*0.9)
             # Fixed
-            #hist.SetMinimum(-0.5) 
-            #hist.SetMaximum(2.5)  
+            hist.SetMinimum(-0.5) 
+            hist.SetMaximum(2.5)  
 
         R.gPad.SetTicky()
 
         R.gPad.Update()
-
-        
