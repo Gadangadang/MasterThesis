@@ -228,7 +228,7 @@ class Plot:
         #myText(0.22, 0.73, NTUP_status, text_size*0.7, kGray+1) 
 
         if not p.isEff:
-            myText(0.22, 0.69, p.nTotBkg, 0.025, R.kBlack)
+            myText(0.22, 0.69, "N_bkg: {:.0f}".format(p.nTotBkg), 0.040, R.kBlack)
        
 
         #print(p.hstack.GetXaxis().GetTitle())
@@ -384,12 +384,13 @@ class Plot:
                 
     def getData(p,histo,hkey,procs):
         for k in procs:
+            print(k)
             if not d_samp[k]["type"] == "data": continue
             if not hkey+"_%s"%k in histo.keys():
                 continue
             if not p.isEff:
               leg_txt = '{0}'.format(d_samp[k]["leg"])
-              #leg_txt = '{0} ({1:.0f} Events)'.format(d_samp[k]["leg"], p.dyield[k])
+              
             else:
               leg_txt = '{0})'.format(d_samp[k]["leg"])
             #try:
@@ -400,14 +401,16 @@ class Plot:
             if not type(p.datasumh) is R.TH1D:
               p.datasumh = histo[hkey+"_%s"%k].Clone(hkey+"_%s_SUM"%k)
             else:
+              leg_txt = '{0} ({1:.0f} Events)'.format(d_samp[k]["leg"], p.dyield[k])
               p.datasumh.Add(histo[hkey+"_%s"%k].GetValue())
-              #p.leg.AddEntry(histo[hkey+"_%s"%k],leg_txt,"lp")
+              p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
               #except:
               #    p.datastack.Add(histo[hkey+"_%s"%k].GetValue())
               #p.datasumh.Add(histo[hkey+"_%s"%k].GetValue()))
               #p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
             p.intlumi += d_samp[k]["lumi"]
             p.sqrts = str(d_samp[k]["sqrts"])
+        
 
     def getSignal(p,histo,hkey,procs):
         for k in procs:
@@ -544,15 +547,15 @@ class Plot:
             yax.SetNdivisions(505)
             yax.SetTitleOffset(1.2)
             # Dynamic 
-            #if ymax*scaleFactor > 10:
-            #    hist.SetMaximum(5)
-            #else: hist.SetMaximum(ymax*scaleFactor)
-            #if ymin*0.9 < -1:
-            #    hist.SetMinimum(-2)#ymin*0.9)
-            #else: hist.SetMinimum(ymin*0.9)
+            if ymax*scaleFactor > 10:
+                hist.SetMaximum(5)
+            else: hist.SetMaximum(ymax*scaleFactor)
+            if ymin*0.9 < -1:
+                hist.SetMinimum(-2)#ymin*0.9)
+            else: hist.SetMinimum(ymin*0.9)
             # Fixed
-            hist.SetMinimum(-0.5) 
-            hist.SetMaximum(2.5)  
+            #hist.SetMinimum(-0.5) 
+            #hist.SetMaximum(2.5)  
 
         R.gPad.SetTicky()
 
