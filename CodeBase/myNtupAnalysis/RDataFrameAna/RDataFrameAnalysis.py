@@ -280,7 +280,8 @@ def runANA(
         """
         Remove Z overlap
         """
-        df[k] = df[k].Filter("((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))","Z overlap")
+        if k in ["Zeejets", "Zmmjets", "Zttjets"]:
+            df[k] = df[k].Filter("((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))","Z overlap")
 
         # Jets
         df[k] = df[k].Define(

@@ -341,54 +341,70 @@ class ScaleAndPrep:
         files = self.onlyfiles.copy()
 
         self.dfs = []
-
+        self.datas = []
+        self.signals = []
         
+        data_names = ["data15", "data16", "data17", "data18"]
+        signal_names = ["LRSMWR2400NR50", "LRSMWR4500NR400", "WeHNL5040Glt01ddlepfiltch1", 
+                        "WeHNL5060Glt01ddlepfiltch1", "WeHNL5070Glt01ddlepfiltch1", "WmuHNL5040Glt01ddlepfiltch1", 
+                        "WmuHNL5060Glt01ddlepfiltch1", "WmuHNL5070Glt01ddlepfiltch1" ]
+        
+        charge_df_data = []
 
+        self.tot_mc_events = 0
+        self.tot_data_events = 0 
+        self.tot_signal_events = 0
         for file in files:
             
 
-            exl = [file.find(exl) for exl in exlude]
+            
 
             df = pd.read_hdf(self.path / file)
+            
+            
 
             name = file[: file.find("_3lep")]
             
+           
             
-            
-            if name == "data18":
-                continue
+            if name in data_names:
+                name = "data"
 
-            count = len(df)
-            names = [name] * count
-            names = np.asarray(names)
             
-            if name == "singletop":
-                print(np.shape(df))
-
             try:
+
                 df.drop(
-                    [
+                [
+                    'nlep_BL', 
+                    'nlep_SG',
                     'ele_0_charge', 
                     'ele_1_charge', 
                     'ele_2_charge', 
                     'muo_0_charge',
                     'muo_1_charge', 
                     'muo_2_charge'
-                    ],
-                    axis=1,
-                    inplace=True,
+                ],
+                axis=1,
+                inplace=True,
                 )
             except:
                 pass
-
-            if sum(exl) > -1 :
-                self.data = df
-                self.data["Category"] = names
-                continue
-
+            
+            count = len(df)
+            names = [name] * count
+            names = np.asarray(names)
+            
             df["Category"] = names
-
-            self.dfs.append(df)
+            
+            if name == "data":
+                self.datas.append(df)
+                self.tot_data_events += len(df)
+            elif name in signal_names:
+                self.signals.append(df)
+                self.tot_signal_events += len(df)
+            else:
+                self.dfs.append(df)
+                self.tot_mc_events += len(df)
 
         
 
@@ -422,6 +438,7 @@ class ScaleAndPrep:
             train_categories = x_b_train["Category"]
             val_categories = x_b_val["Category"]
             
+            
             df_train.append(x_b_train)
             df_train_w.append(weights_train)
             df_val.append(x_b_val)
@@ -429,6 +446,9 @@ class ScaleAndPrep:
             
             df_train_cat.append(train_categories)
             df_val_cat.append(val_categories)
+            
+            print(train_categories.unique())
+            print(np.sum(weights_val))
             
         X_b_train = pd.concat(df_train)
         X_b_val = pd.concat(df_val)
@@ -439,13 +459,20 @@ class ScaleAndPrep:
         self.weights_train = pd.concat(df_train_w)
         self.weights_val = pd.concat(df_val_w)
         
+        self.data = pd.concat(self.datas)
+        
+        
+        
         self.data_categories = self.data["Category"]
             
         self.data_weights = self.data["wgt_SG"]
         
         self.idx = np.where(X_b_val[X_b_val["Category"] == "singletop"])[0]
             
-        channels = ["Zjets2",
+        channels = [
+            "Zeejets",
+            "Zmmjets",
+            "Zttjets",
             "diboson2L",
             "diboson3L",
             "diboson4L",
@@ -498,6 +525,14 @@ class ScaleAndPrep:
             val = pd.DataFrame(data=val, columns=cols)
             plot_df = pd.concat([train, val])
             plotRMMMatrix.plotDfRmmMatrix(plot_df, channel)
+            
+        datapoint_string = f"""
+Total MC events: {self.tot_mc_events} \n
+Total Data events: {self.tot_data_events} \n
+Total Signal events: {self.tot_signal_events} \n
+            """
+        print(datapoint_string)
+        
 
 class RunAE:
     def __init__(self, data_structure, path:str):
@@ -587,7 +622,7 @@ class RunAE:
                 self.X_train,
                 self.X_train,
                 epochs=epochs,
-                batch_size=8192,
+                batch_size=2048,
                 validation_split=0.2,
                 sample_weight=self.data_structure.weights_train,
             )
@@ -613,7 +648,7 @@ class RunAE:
         tuner = kt.Hyperband(
             self.AE_model_builder,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=20,
+            max_epochs=5,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -622,7 +657,7 @@ class RunAE:
         print(tuner.search_space_summary())
 
         tuner.search(
-            X_b, X_b, epochs=20, batch_size=8192, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
+            X_b, X_b, epochs=5, batch_size=2048, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
         print(
@@ -650,8 +685,8 @@ class RunAE:
             answ = input("Do you want to save model? (y/n) ")
             if answ == "y":
                 name = input("name: model_ ")
-                self.modelname = f"model_{name}.h5"
-                tuner.hypermodel.build(best_hps).save("tf_models/"+self.modelname)
+                self.modelname = f"model_{name}"
+                tuner.hypermodel.build(best_hps).save("tf_models/"+self.modelname+".h5")
                 state = False
                 print(f"Model {self.modelname} saved")
                 
@@ -786,14 +821,14 @@ class RunAE:
                           show_shapes=True, show_layer_names=True, expand_nested=True)
 
         with tf.device("/GPU:0"):
-            self.pred_back = self.AE_model.predict(self.X_val, batch_size=8192)
+            self.pred_back = self.AE_model.predict(self.X_val, batch_size=2048)
             print("Background done")
             """
-            pred_sig = self.AE_model.predict(test_set, batch_size=8192)
+            pred_sig = self.AE_model.predict(test_set, batch_size=2048)
             print("Signal done")
             """
 
-            self.pred_data = self.AE_model.predict(self.data, batch_size=8192)
+            self.pred_data = self.AE_model.predict(self.data, batch_size=2048)
             print("ATLAS data done")
 
         self.recon_err_back = self.reconstructionError(self.pred_back, self.X_val)
@@ -824,10 +859,16 @@ class RunAE:
        
 
         # self.recon_err_back = self.recon_err_back.to_numpy()
-        self.data_structure.weights_val = self.data_structure.weights_train.to_numpy()
+        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
 
-        Zjets2 = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "Zjets2")[0]
+        Zeejets = self.recon_err_back[
+            np.where(self.data_structure.val_categories == "Zeejets")[0]
+        ]
+        Zmmjets = self.recon_err_back[
+            np.where(self.data_structure.val_categories == "Zmmjets")[0]
+        ]
+        Zttjets = self.recon_err_back[
+            np.where(self.data_structure.val_categories == "Zttjets")[0]
         ]
         diboson2L = self.recon_err_back[
             np.where(self.data_structure.val_categories == "diboson2L")[0]
@@ -856,8 +897,14 @@ class RunAE:
             np.where(self.data_structure.val_categories == "ttbar")[0]
         ]
 
-        Zjets2_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "Zjets2")[0]
+        Zeejets_w = self.data_structure.weights_val[
+            np.where(self.data_structure.val_categories == "Zeejets")[0]
+        ]
+        Zmmjets_w = self.data_structure.weights_val[
+            np.where(self.data_structure.val_categories == "Zmmjets")[0]
+        ]
+        Zttjets_w = self.data_structure.weights_val[
+            np.where(self.data_structure.val_categories == "Zttjets")[0]
         ]
         diboson2L_w = self.data_structure.weights_val[
             np.where(self.data_structure.val_categories == "diboson2L")[0]
@@ -888,7 +935,9 @@ class RunAE:
         ]
 
         histo_atlas = [
-            Zjets2,
+            Zeejets,
+            Zmmjets,
+            Zttjets,
             diboson2L,
             diboson3L,
             diboson4L,
@@ -897,9 +946,12 @@ class RunAE:
             topOther,
             Wjets,
             triboson,
+            
         ] #ttbar,
         weight_atlas_data = [
-            Zjets2_w,
+            Zeejets_w,
+            Zmmjets_w,
+            Zttjets_w,
             diboson2L_w,
             diboson3L_w,
             diboson4L_w,
@@ -908,19 +960,25 @@ class RunAE:
             topOther_w,
             Wjets_w,
             triboson_w,
+            
         ] #ttbar_w,
         
       
 
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
+        
+        print(sum_w, sort_w)
 
-   
-        N, bins = np.histogram(
+        
+        """N, bins = np.histogram(
             self.recon_data, bins=25, weights=self.data_structure.data_weights
+        )"""
+        N, bins = np.histogram(
+            ttbar, bins=25, weights=ttbar_w
         )
         x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-
+        
         sns.set_style("darkgrid")
         plt.rcParams["figure.figsize"] = (12, 9)
 
@@ -928,7 +986,9 @@ class RunAE:
 
         n_bins = bins
         colors = [
-            "green",
+            "mediumspringgreen",
+            "darkgreen",
+            "lime",
             "magenta",
             "blue",
             "red",
@@ -937,9 +997,12 @@ class RunAE:
             "cyan",
             "mediumorchid",
             "gold",
-        ]
+            
+        ]#"darkgoldenrod"
         labels = [
-            "Zjets2",
+            'Zeejets',
+            'Zmmjets',
+            'Zttjets',
             "diboson2L",
             "diboson3L",
             "diboson4L",
@@ -948,8 +1011,10 @@ class RunAE:
             "topOther",
             "Wjets",
             "triboson",
-        ] #ttbar
+            
+        ] # "ttbar"
 
+        
         print(np.asarray(labels, dtype=object)[sort_w])
 
         

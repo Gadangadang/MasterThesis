@@ -61,7 +61,7 @@ class Plot:
       p.is1D = is1D
       p.is2D = not is1D
       p.rebin = 0
-      p.xtit = ""
+      p.xtit = hname
       p.intlumi = 0.0
       p.sqrts = ""
       p.datasumh = -1
@@ -204,6 +204,8 @@ class Plot:
           print("Sorry there's nothing there to plot")
         
         p.leg.Draw()
+        
+        #p.datastack.GetXaxis().SetTitle(hname)
 
         # Text for ATLAS, energy, lumi, region, ntuple status
         ATL_status = "Internal"
@@ -225,6 +227,7 @@ class Plot:
         myText(0.22, 0.87, '#bf{#it{ATLAS}} ' + ATL_status, text_size*1.2, R.kBlack)
         myText(0.22, 0.81, '%s TeV, %.1f  fb^{#minus1}'%(p.sqrts,float(p.intlumi)/1000.), text_size*1.1, R.kBlack) 
         myText(0.22, 0.77, sig_reg, text_size*0.7, R.kBlack) 
+        #myText()
         #myText(0.22, 0.73, NTUP_status, text_size*0.7, kGray+1) 
 
         if not p.isEff:
@@ -383,8 +386,9 @@ class Plot:
 
                 
     def getData(p,histo,hkey,procs):
+        tot_data = 0
         for k in procs:
-            print(k)
+            
             if not d_samp[k]["type"] == "data": continue
             if not hkey+"_%s"%k in histo.keys():
                 continue
@@ -401,9 +405,12 @@ class Plot:
             if not type(p.datasumh) is R.TH1D:
               p.datasumh = histo[hkey+"_%s"%k].Clone(hkey+"_%s_SUM"%k)
             else:
-              leg_txt = '{0} ({1:.0f} Events)'.format(d_samp[k]["leg"], p.dyield[k])
+              tot_data += p.dyield[k]
+              
               p.datasumh.Add(histo[hkey+"_%s"%k].GetValue())
-              p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
+              if k in ["data18"]:
+                leg_txt = '{0} ({1:.0f} Events)'.format("Data", tot_data)
+                p.leg.AddEntry(histo[hkey+"_%s"%k].GetValue(),leg_txt,"lp")
               #except:
               #    p.datastack.Add(histo[hkey+"_%s"%k].GetValue())
               #p.datasumh.Add(histo[hkey+"_%s"%k].GetValue()))

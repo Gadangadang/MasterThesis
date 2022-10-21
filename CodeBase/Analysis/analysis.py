@@ -20,6 +20,8 @@ def main():
  
     rae = RunAE(sp, STORE_IMG_PATH)
     
+
+    
     if args.tune:
         rae.hyperParamSearch()
     
