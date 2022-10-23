@@ -15,7 +15,7 @@ def main():
     
     
     
-    sp = ScaleAndPrep(DATA_PATH)
+    sp = ScaleAndPrep(DATA_PATH, True)
     sp.MergeScaleAndSplit()
  
     rae = RunAE(sp, STORE_IMG_PATH)

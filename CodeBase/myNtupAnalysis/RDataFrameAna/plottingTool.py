@@ -226,7 +226,7 @@ class Plot:
         print(p.nTotBkg)
         myText(0.22, 0.87, '#bf{#it{ATLAS}} ' + ATL_status, text_size*1.2, R.kBlack)
         myText(0.22, 0.81, '%s TeV, %.1f  fb^{#minus1}'%(p.sqrts,float(p.intlumi)/1000.), text_size*1.1, R.kBlack) 
-        myText(0.22, 0.77, sig_reg, text_size*0.7, R.kBlack) 
+        #myText(0.22, 0.77, sig_reg, text_size*0.7, R.kBlack) 
         #myText()
         #myText(0.22, 0.73, NTUP_status, text_size*0.7, kGray+1) 
 
