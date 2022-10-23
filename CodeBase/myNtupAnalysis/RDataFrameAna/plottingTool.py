@@ -211,20 +211,10 @@ class Plot:
         ATL_status = "Internal"
         #lumi = 1258.27/1000.
         text_size = 0.045
-        sig_reg = "Region: "
-        if "_2L_" in hname:
-          sig_reg += "2L"
-          if "_ee" in hname:
-            sig_reg += " ee"
-          elif "_mm" in hname:
-            sig_reg += " #mu#mu"
-          elif "_em" in hname:
-            sig_reg += " e#mu"
-          elif "_em" in hname:
-            sig_reg += " all"
+        
         
         print(p.nTotBkg)
-        myText(0.22, 0.87, '#bf{#it{ATLAS}} ' + ATL_status, text_size*1.2, R.kBlack)
+        #myText(0.22, 0.87, '#bf{#it{ATLAS}} ' + ATL_status, text_size*1.2, R.kBlack)
         myText(0.22, 0.81, '%s TeV, %.1f  fb^{#minus1}'%(p.sqrts,float(p.intlumi)/1000.), text_size*1.1, R.kBlack) 
         #myText(0.22, 0.77, sig_reg, text_size*0.7, R.kBlack) 
         #myText()
@@ -278,7 +268,7 @@ class Plot:
           p.ratio.Draw("e0p")
 
           xtitle = p.xtit
-          ytitle = 'Ratio'
+          ytitle = 'Ratio Data/MC'
           IsLogY = True
           enlargeYaxis = False
           scaling = "False"

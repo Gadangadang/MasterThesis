@@ -357,13 +357,13 @@ def getDataFrames(mypath, nev=0):
     return df
 
 def getDataFrames1(mypath, nev = 0):
-    print(mypath)
+    
     onlyfiles = []
     for path,dirs,files in walk(mypath):
         #print(path,dirs,files)
         for f in files:
             if isfile(join(path, f)) and f.endswith("_merged_processed.root"):
-                print(join(path,f))
+                #print(join(path,f))
                 onlyfiles.append(join(path, f))
                 
     df = {}
@@ -414,14 +414,12 @@ def plot_rmm_matrix(
     col = len(df.columns)
     row = len(df)
 
-    print("")
-    print(f"Size: {row}")
-    print("")
+    
     df2 = df.mean()
 
     tot = len(df2)
     row = int(np.sqrt(tot))
-    print(row)
+  
 
     rmm_mat = np.zeros((row, row))
 
