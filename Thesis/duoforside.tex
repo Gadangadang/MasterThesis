@@ -91,6 +91,12 @@
     \else
       \duo@fac\par
       \vspace{0.1cm}
+
+    \ifx \duo@in@eng = \duo@empty
+    \else
+      \duo@in@eng\par
+      \vspace{0.1cm}
+      
     \fi
     \csname duo@uio@\duo@lang\endcsname\par
     \vspace{1\baselineskip}
@@ -172,6 +178,10 @@
 \newcommand{\duo@fac@eng}{Faculty of Mathematics and Natural Sciences}
 \newcommand{\duo@fac@bm}{Det matematisk-naturvitenskapelige fakultet}
 \newcommand{\duo@fac@nn}{Det matematisk-naturvitenskaplege fakultet}
+
+\newcommand{\duo@in@eng}{Department of Physics}
+\newcommand{\duo@in@bm}{Fysisk institutt}
+\newcommand{\duo@in@nn}{Fysisk institutt}
 
 \def \duo@author {\@author}
 \def \duo@authorr {\@authorr}

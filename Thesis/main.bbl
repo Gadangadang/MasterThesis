@@ -18,6 +18,11 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
 
+\bibitem{ADAM:opti}
+D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
+  2014.
+\newblock 10.48550/ARXIV.1412.6980.
+
 \bibitem{collaboration_2020}
 {The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
   2}, \href{http://dx.doi.org/10.1088/1748-0221/15/10/p10004}{\emph{Journal of
@@ -62,47 +67,5 @@ M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
 
 \bibitem{chollet2015keras}
 F.~Chollet et~al., \emph{Keras},  2015.
-
-\bibitem{omalley2019kerastuner}
-T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
-  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
-
-\bibitem{hyperband:opt}
-L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
-  \emph{Hyperband: A novel bandit-based approach to hyperparameter
-  optimization}, .
-
-\bibitem{ADAM:opti}
-D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
-  2014.
-\newblock 10.48550/ARXIV.1412.6980.
-
-\bibitem{scikit-learn}
-F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
-  et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of
-  Machine Learning Research} {\bf 12} (2011) 2825--2830}.
-
-\bibitem{Hunter:2007}
-J.~D. Hunter, \emph{Matplotlib: A 2d graphics environment},
-  \href{http://dx.doi.org/10.1109/MCSE.2007.55}{\emph{Computing in Science \&
-  Engineering} {\bf 9} (2007) 90--95}.
-
-\bibitem{Waskom2021}
-M.~L. Waskom, \emph{seaborn: statistical data visualization},
-  \href{http://dx.doi.org/10.21105/joss.03021}{\emph{Journal of Open Source
-  Software} {\bf 6} (2021) 3021}.
-
-\bibitem{plotly}
-{Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
-
-\bibitem{harris2020array}
-C.~R. Harris, K.~J. Millman, S.~J. van~der Walt, R.~Gommers, P.~Virtanen,
-  D.~Cournapeau et~al., \emph{Array programming with {NumPy}},
-  \href{http://dx.doi.org/10.1038/s41586-020-2649-2}{\emph{Nature} {\bf 585}
-  (Sept., 2020) 357--362}.
-
-\bibitem{reback2020pandas}
-{The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.
-\newblock 10.5281/zenodo.3509134.
 
 \end{thebibliography}\endgroup
