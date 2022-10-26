@@ -498,46 +498,72 @@ class RunAE:
         Returns:
             tf.python.keras.engine.functional.Functional: Model to use
         """
-        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+        # Input layer
+        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input") 
+        
+        # First hidden layer
         x = tf.keras.layers.Dense(
             units=70,
             activation="tanh",
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(inputs)
+        
+        # Second hidden layer
         x_ = tf.keras.layers.Dense(units=45, activation="linear")(inputs)
+        
+        # Third hidden layer
         x1 = tf.keras.layers.Dense(
             units=20,
             activation="linear",
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(x_)
+        
         val = 7
+        
+        # Forth hidden layer
         x2 = tf.keras.layers.Dense(
             units=val, activation=tf.keras.layers.LeakyReLU(alpha=1)
         )(x1)
+        
+        # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
+        # Latent space 
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+        
+        # Fifth hidden layer
         x = tf.keras.layers.Dense(
             units=22,
             activation="relu",
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(latent_input)
+        
+        # Sixth hidden layer
         x_ = tf.keras.layers.Dense(
             units=50, activation=tf.keras.layers.LeakyReLU(alpha=1)
         )(x)
+        
+        # Seventh hidden layer
         x1 = tf.keras.layers.Dense(
             units=73,
             activation="tanh",
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(x_)
+        
+        # Output layer
         output = tf.keras.layers.Dense(self.data_shape, activation="linear")(x1)
+        
+        # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
 
+        # Output definition
         outputs = decoder(encoder(inputs))
+        
+        # Model definition
         AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
 
         hp_learning_rate = 0.0015
@@ -715,14 +741,19 @@ class RunAE:
         act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
 
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
-        # get_custom_objects().update({"leakyrelu": tf.keras.layers.LeakyReLU(alpha=alpha_choice)})
+        
+        # Activation functions 
         activations = {
             "relu": tf.nn.relu,
             "tanh": tf.nn.tanh,
             "leakyrelu": "leaky_relu",
             "linear": tf.keras.activations.linear,
         }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
+        
+        # Input layer
         inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+        
+        # First hidden layer
         x = tf.keras.layers.Dense(
             units=hp.Int(
                 "num_of_neurons1", min_value=60, max_value=self.data_shape - 1, step=1
@@ -733,12 +764,16 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
+        
+        # Second hidden layer
         x_ = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons2", min_value=30, max_value=59, step=1),
             activation=activations.get(
                 hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x)
+        
+        # Third hidden layer
         x1 = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons3", min_value=10, max_value=29, step=1),
             activation=activations.get(
@@ -747,16 +782,25 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(x_)
+        
+        
         val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
+        
+        # Forth hidden layer
         x2 = tf.keras.layers.Dense(
             units=val,
             activation=activations.get(
                 hp.Choice("4_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
+        
+        # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
+        # Latent space 
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+        
+        # Fifth hidden layer
         x = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons5", min_value=10, max_value=29, step=1),
             activation=activations.get(
@@ -766,6 +810,7 @@ class RunAE:
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(latent_input)
 
+        # Sixth hidden layer
         x_ = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons6", min_value=30, max_value=59, step=1),
             activation=activations.get(
@@ -773,6 +818,7 @@ class RunAE:
             ),
         )(x)
 
+        # Seventh hidden layer
         x1 = tf.keras.layers.Dense(
             units=hp.Int(
                 "num_of_neurons7", min_value=60, max_value=self.data_shape - 1, step=1
@@ -783,22 +829,29 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(x_)
+        
+        # Output layer
         output = tf.keras.layers.Dense(
             self.data_shape,
             activation=activations.get(
                 hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
+        
+        # Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
 
+        # Output definition
         outputs = decoder(encoder(inputs))
+        
+        # Model definition
         AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
 
         hp_learning_rate = hp.Choice(
             "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
         )
         optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
-        # optimizer = tf.keras.mixed_precision.LossScaleOptimizer(optimizer)
+        
         AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
 
         return AE_model
