@@ -120,7 +120,9 @@ where $l$ is the layer index, $j$ is the node index, and $i$ is the index of the
 The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by Rumelhart et al\cite{backprop}. This is a bit misleading, 
 as the backprop algorithm actually only refers to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and biases such that
 we get an ideal output. Assuming a costfunction $C$, we can calculate the gradient $\nabla_{w, b}C$, and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of 
-two derivatives:
+two derivatives:\par \par
+
+$\bf{Note that this calculation is not a generalized algorithm for backpropagation, but rather for a special case using MSE.!!!!}$. \par
 
 \begin{equation*}
     \nabla_{w, b}C = \left(\frac{\partial C}{\partial w_{i,j}^l}, \frac{\partial C}{\partial b_j^l}\right).
