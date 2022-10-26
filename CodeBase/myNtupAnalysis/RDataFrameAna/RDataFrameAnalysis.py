@@ -47,36 +47,37 @@ def runANA(
 ) -> Tuple[dict, dict]:
 
     nh = 100
-    
-        # mypath = "/storage/eirikgr/ANAntuples/PHYS_3LBkgs_mc16e/HNL3L_NOV03/merged/"
-        
+
+    # mypath = "/storage/eirikgr/ANAntuples/PHYS_3LBkgs_mc16e/HNL3L_NOV03/merged/"
+
     if isdir(mypath_mc):
         df_mc = getDataFrames1(mypath_mc)
-        print("Loading %s into dataframe with keys %s" %(mypath_mc,",".join(df_mc.keys())))
+        print(
+            "Loading %s into dataframe with keys %s"
+            % (mypath_mc, ",".join(df_mc.keys()))
+        )
     else:
         df_mc = {}
-    
-    #mypath = "/storage/eirikgr/ANAntuples/PHYS_Data/"
+
+    # mypath = "/storage/eirikgr/ANAntuples/PHYS_Data/"
     if isdir(mypath_data):
         df_data = getDataFrames1(mypath_data)
-        print("Loading %s into dataframe with keys %s" %(mypath_data,",".join(df_data.keys())))
+        print(
+            "Loading %s into dataframe with keys %s"
+            % (mypath_data, ",".join(df_data.keys()))
+        )
     else:
         df_data = {}
 
-
     df = {**df_mc, **df_data}
-    
-   
-    
-    
-    
+
     for k in df.keys():
-        
+
         """if k not in ["data15"]:  # , "ttbar"]:
-            continue
-            """
-        
-        #df[k] = df[k].Range(0,100)    
+        continue
+        """
+
+        # df[k] = df[k].Range(0,100)
 
         # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -89,9 +90,14 @@ def runANA(
                 "scaletolumi",
                 "(RandomRunNumber) < 320000 ? 36207.65 : (((RandomRunNumber) > 320000 && (RandomRunNumber) < 348000) ? 44307.4 : 58450.1)",
             )"""
-            df[k] = df[k].Define("scaletolumi","(RandomRunNumber) < 320000 ? 36207.65 : (((RandomRunNumber) > 320000 && (RandomRunNumber) < 348000) ? 44307.4 : (((RandomRunNumber) > 348000 && (RandomRunNumber) < 400000) ? 58450.1 : 1258.27))")
+            df[k] = df[k].Define(
+                "scaletolumi",
+                "(RandomRunNumber) < 320000 ? 36207.65 : (((RandomRunNumber) > 320000 && (RandomRunNumber) < 348000) ? 44307.4 : (((RandomRunNumber) > 348000 && (RandomRunNumber) < 400000) ? 58450.1 : 1258.27))",
+            )
 
-        df[k] = df[k].Define("new_xsec","(DatasetNumber == 308981) ? (0.30649*69.594)/80000. : 0.0")
+        df[k] = df[k].Define(
+            "new_xsec", "(DatasetNumber == 308981) ? (0.30649*69.594)/80000. : 0.0"
+        )
 
         # Baseline leptons
         df[k] = df[k].Define(
@@ -125,50 +131,81 @@ def runANA(
 
         if not isData:
 
-            df[k] = df[k].Define("is2015","RandomRunNumber <= 284500")
-            df[k] = df[k].Define("is2016","(RandomRunNumber > 284500 && RandomRunNumber < 320000)")
-            df[k] = df[k].Define("is2017","(RandomRunNumber > 320000 && RandomRunNumber < 348000)")
-            df[k] = df[k].Define("is2018","(RandomRunNumber > 348000 && RandomRunNumber < 400000)")
-            df[k] = df[k].Define("is2022","(RandomRunNumber <= 427882)")
+            df[k] = df[k].Define("is2015", "RandomRunNumber <= 284500")
+            df[k] = df[k].Define(
+                "is2016", "(RandomRunNumber > 284500 && RandomRunNumber < 320000)"
+            )
+            df[k] = df[k].Define(
+                "is2017", "(RandomRunNumber > 320000 && RandomRunNumber < 348000)"
+            )
+            df[k] = df[k].Define(
+                "is2018", "(RandomRunNumber > 348000 && RandomRunNumber < 400000)"
+            )
+            df[k] = df[k].Define("is2022", "(RandomRunNumber <= 427882)")
 
-            #df[k] = df[k].Define("lepwgt_BL","getSF(lepBLRecoSF[ele_BL || muo_BL])")
-            df[k] = df[k].Define("lepwgt_SG","getSF(lepRecoSF[ele_SG || muo_SG])")
+            # df[k] = df[k].Define("lepwgt_BL","getSF(lepBLRecoSF[ele_BL || muo_BL])")
+            df[k] = df[k].Define("lepwgt_SG", "getSF(lepRecoSF[ele_SG || muo_SG])")
 
-            #df[k] = df[k].Define("trgwgt_BL","getSF(lepBLTrigSF[ele_BL || muo_BL])")
-            df[k] = df[k].Define("trgwgt_SG","getSF(lepTrigSF[ele_SG || muo_SG])")
+            # df[k] = df[k].Define("trgwgt_BL","getSF(lepBLTrigSF[ele_BL || muo_BL])")
+            df[k] = df[k].Define("trgwgt_SG", "getSF(lepTrigSF[ele_SG || muo_SG])")
 
-            #df[k] = df[k].Define("wgt_BL","(new_xsec ? (new_xsec) : (genWeight))*eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL")
-            #df[k] = df[k].Define("wgt_SG","(new_xsec ? (new_xsec) : (genWeight))*eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG") #*pileupWeight
-            #df[k] = df[k].Define("wgt_SG","(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight") #*pileupWeight
+            # df[k] = df[k].Define("wgt_BL","(new_xsec ? (new_xsec) : (genWeight))*eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL")
+            # df[k] = df[k].Define("wgt_SG","(new_xsec ? (new_xsec) : (genWeight))*eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG") #*pileupWeight
+            # df[k] = df[k].Define("wgt_SG","(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight") #*pileupWeight
             if "data22" in k or "mc21a" in mypath_mc:
-                df[k] = df[k].Define("wgt_SG","(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*beamSpotWeight") #*pileupWeight
-                
-                #df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
-                #df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
-                df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*beamSpotWeight)") #*pileupWeight
-            elif 'Z' in k and 'jets' in k:
-                df[k] = df[k].Define("wgt_SG","((genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)*1000.") #*pileupWeight
-                
-                #df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
-                #df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
-                df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)*1000.") #*pileupWeight
+                df[k] = df[k].Define(
+                    "wgt_SG",
+                    "(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*beamSpotWeight",
+                )  # *pileupWeight
+
+                # df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
+                # df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
+                df[k] = df[k].Define(
+                    "wgt_EV_SG",
+                    "(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*beamSpotWeight)",
+                )  # *pileupWeight
+            elif "Z" in k and "jets" in k:
+                df[k] = df[k].Define(
+                    "wgt_SG",
+                    "((genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)*1000.",
+                )  # *pileupWeight
+
+                # df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
+                # df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
+                df[k] = df[k].Define(
+                    "wgt_EV_SG",
+                    "(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)*1000.",
+                )  # *pileupWeight
             else:
-                df[k] = df[k].Define("wgt_SG","(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight") #*pileupWeight
-                
-                #df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
-                #df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
-                df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)") #*pileupWeight
+                df[k] = df[k].Define(
+                    "wgt_SG",
+                    "(genWeight)*eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight",
+                )  # *pileupWeight
+
+                # df[k] = df[k].Define("wgt_EV_BL","(eventWeight*jvtWeight*bTagWeight*pileupWeight*scaletolumi*lepwgt_BL*trgwgt_BL)")
+                # df[k] = df[k].Define("wgt_EV_SG","(eventWeight*jvtWeight*bTagWeight*scaletolumi*lepwgt_SG*trgwgt_SG*beamSpotWeight)") #*pileupWeight
+                df[k] = df[k].Define(
+                    "wgt_EV_SG",
+                    "(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)",
+                )  # *pileupWeight
         else:
-            df[k] = df[k].Define("is2015","(RunNumber >= 276262 && RunNumber <= 284484)")
-            df[k] = df[k].Define("is2016","(RunNumber >= 297730 && RunNumber <= 311481)")
-            df[k] = df[k].Define("is2017","(RunNumber >= 325713 && RunNumber <= 340453)")
-            df[k] = df[k].Define("is2018","(RunNumber >= 348885 && RunNumber <  370000)")
-            df[k] = df[k].Define("is2022","(RunNumber >= 427882)")
+            df[k] = df[k].Define(
+                "is2015", "(RunNumber >= 276262 && RunNumber <= 284484)"
+            )
+            df[k] = df[k].Define(
+                "is2016", "(RunNumber >= 297730 && RunNumber <= 311481)"
+            )
+            df[k] = df[k].Define(
+                "is2017", "(RunNumber >= 325713 && RunNumber <= 340453)"
+            )
+            df[k] = df[k].Define(
+                "is2018", "(RunNumber >= 348885 && RunNumber <  370000)"
+            )
+            df[k] = df[k].Define("is2022", "(RunNumber >= 427882)")
 
-            #df[k] = df[k].Define("wgt_BL","1.0")
-            df[k] = df[k].Define("wgt_SG","1.0")
-            df[k] = df[k].Define("wgt_EV","1.0")
-
+            # df[k] = df[k].Define("wgt_BL","1.0")
+            df[k] = df[k].Define("wgt_SG", "1.0")
+            df[k] = df[k].Define("wgt_EV", "1.0")
 
         # df[k].Define("lepIsTrigMatched_2L","is2015 ? trigmatch_2015_2L : (is2016 ? trigmatch_2016_2L : (is2017 ? trigmatch_2017_2L : trigmatch_2018_2L))")
         # df[k].Define("lepIsTrigMatched_3L","is2015 ? trigmatch_2015_3L : (is2016 ? trigmatch_2016_3L : (is2017 ? trigmatch_2017_3L : trigmatch_2018_3L))")
@@ -176,39 +213,57 @@ def runANA(
         # print("Nev(pileupWeight == 0) : ",df[k].Filter("pileupWeight == 0").Count().GetValue())
         # Check trigger matching!
         for tr in trigstr.keys():
-            if tr == "3L": continue
+            if tr == "3L":
+                continue
             for yr in trigstr[tr].keys():
-                if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
-                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
-                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
-                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
-                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue
-                #print("trigmatch_%s_%s = %s"%(yr,tr,trigstr[tr][yr]))
-                df[k] = df[k].Define("trigmatch_%s_%s"%(yr,tr),trigstr[tr][yr])
-                df[k] = df[k].Define("triggered_%s_%s"%(yr,tr),evtrigstr[tr][yr])
+                if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc:
+                    continue
+                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc:
+                    continue
+                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc:
+                    continue
+                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc:
+                    continue
+                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc:
+                    continue
+                # print("trigmatch_%s_%s = %s"%(yr,tr,trigstr[tr][yr]))
+                df[k] = df[k].Define("trigmatch_%s_%s" % (yr, tr), trigstr[tr][yr])
+                df[k] = df[k].Define("triggered_%s_%s" % (yr, tr), evtrigstr[tr][yr])
 
-            for nlep in ["2L"]:#,"1L"]: #"1L"
-                #print(nlep)
-                #print("trigmatched")
+            for nlep in ["2L"]:  # ,"1L"]: #"1L"
+                # print(nlep)
+                # print("trigmatched")
                 for yr in trigstr[tr].keys():
-                    if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
-                    if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
-                    if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
-                    if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
-                    if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue
-                    df[k] = df[k].Define("lepIsTrigMatched_%s_%s"%(yr,nlep),"trigmatch_%s_%s"%(yr,nlep))
-                    #df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
-                    #print("trig")
-                    df[k] = df[k].Define("eventIsTriggered_%s_%s"%(yr,nlep),"triggered_%s_%s"%(yr,nlep))#"is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
-                    
-        #df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
-        #df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
+                    if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc:
+                        continue
+                    if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc:
+                        continue
+                    if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc:
+                        continue
+                    if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc:
+                        continue
+                    if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc:
+                        continue
+                    df[k] = df[k].Define(
+                        "lepIsTrigMatched_%s_%s" % (yr, nlep),
+                        "trigmatch_%s_%s" % (yr, nlep),
+                    )
+                    # df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
+                    # print("trig")
+                    df[k] = df[k].Define(
+                        "eventIsTriggered_%s_%s" % (yr, nlep),
+                        "triggered_%s_%s" % (yr, nlep),
+                    )  # "is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
 
-           
+        # df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
+        # df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
 
-        histo["nlep_BL_%s"%k] = df[k].Histo1D(("nlep_BL_%s"%k,"nlep_BL_%s"%k,10,0,10),"nlep_BL","wgt_SG")
-        histo["nlep_SG_%s"%k] = df[k].Histo1D(("nlep_SG_%s"%k,"nlep_SG_%s"%k,10,0,10),"nlep_SG","wgt_SG")
-
+        histo["nlep_BL_%s" % k] = df[k].Histo1D(
+            ("nlep_BL_%s" % k, "nlep_BL_%s" % k, 10, 0, 10), "nlep_BL", "wgt_SG"
+        )
+        histo["nlep_SG_%s" % k] = df[k].Histo1D(
+            ("nlep_SG_%s" % k, "nlep_SG_%s" % k, 10, 0, 10), "nlep_SG", "wgt_SG"
+        )
 
         # df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
         # df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
@@ -225,7 +280,7 @@ def runANA(
 
         df[k] = df[k].Filter("nlep_BL == 3", "3 BL leptons")
         df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
-        
+
         print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
         """
@@ -266,17 +321,22 @@ def runANA(
         
         print("Filtering done.")
         """
-        
+
         """
         pT cut for two highest pT leptons above 20 GeV
         """
-        df[k] = df[k].Filter("ROOT::VecOps::Sum(lepPt[isGoodLep] > 20) >= 2", "pt cut 20")
-        
+        df[k] = df[k].Filter(
+            "ROOT::VecOps::Sum(lepPt[isGoodLep] > 20) >= 2", "pt cut 20"
+        )
+
         """
         Remove Z overlap
         """
         if k in ["Zeejets", "Zmmjets", "Zttjets"]:
-            df[k] = df[k].Filter("((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))","Z overlap")
+            df[k] = df[k].Filter(
+                "((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))",
+                "Z overlap",
+            )
 
         # Jets
         df[k] = df[k].Define(
@@ -293,13 +353,8 @@ def runANA(
         # Adding column for type of channel
 
         # df[k] = df[k].Define("channeltype", k)
-        
-        
-        #print(df[k].Display("lepPt").AsString())
-        
-        
-        
-        
+
+        # print(df[k].Display("lepPt").AsString())
 
         """
         RMM matrix feature calculations with histogram creation
@@ -320,14 +375,14 @@ def runANA(
                         histo[f"e_T_miss_{k}"] = df[k].Histo1D(
                             (
                                 f"h_e_T_miss_{k}",
-                                f"h_e_T_miss_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                f"h_e_T_miss_{k};m_" + "{T}^{2}(23) [GeV];Entries",
                                 70,
                                 0,
                                 500,
                             ),
                             f"e_T_miss",
                             "wgt_SG",
-                            )
+                        )
                     else:
                         # Set m_T for all particles
                         particle_info = rmm_structure[column]
@@ -344,7 +399,7 @@ def runANA(
                         histo[f"m_T_{name}_{k}"] = df[k].Histo1D(
                             (
                                 f"h_m_T_{name}_{k}",
-                                f"h_e_T_miss_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                f"h_e_T_miss_{k};m_" + "{T}^{2}(23) [GeV];Entries",
                                 70,
                                 0,
                                 500,
@@ -373,7 +428,7 @@ def runANA(
                         histo[f"h_L_{name}_{k}"] = df[k].Histo1D(
                             (
                                 f"h_h_L_{name}_{k}",
-                                f"h_h_L_{name}_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                f"h_h_L_{name}_{k};m_" + "{T}^{2}(23) [GeV];Entries",
                                 50,
                                 0,
                                 1,
@@ -400,7 +455,8 @@ def runANA(
                             histo[f"e_T_{name}_{k}"] = df[k].Histo1D(
                                 (
                                     f"h_e_T_{name}_{k}",
-                                    f"h_e_T_{name}_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                    f"h_e_T_{name}_{k};m_"
+                                    + "{T}^{2}(23) [GeV];Entries",
                                     70,
                                     0,
                                     500,
@@ -418,7 +474,8 @@ def runANA(
                             histo[f"delta_e_t_{name}_{k}"] = df[k].Histo1D(
                                 (
                                     f"h_delta_e_t_{name}_{k}",
-                                    f"h_delta_e_t_{name}_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                    f"h_delta_e_t_{name}_{k};m_"
+                                    + "{T}^{2}(23) [GeV];Entries",
                                     50,
                                     0,
                                     1,
@@ -457,7 +514,7 @@ def runANA(
                         histo[f"{histo_name}_{k}"] = df[k].Histo1D(
                             (
                                 f"h_{histo_name}_{k}",
-                                f"h_{histo_name}_{k};m_"+"{T}^{2}(23) [GeV];Entries",
+                                f"h_{histo_name}_{k};m_" + "{T}^{2}(23) [GeV];Entries",
                                 70,
                                 0,
                                 500,
@@ -495,7 +552,7 @@ def runANA(
                         )
                         histo[f"{histo_name}_{k}"] = df[k].Histo1D(
                             (
-                                f"h_{histo_name}_{k}" ,
+                                f"h_{histo_name}_{k}",
                                 f"h_{histo_name}_{k};;Entries",
                                 50,
                                 0,
@@ -506,7 +563,7 @@ def runANA(
                         )
 
         df[k] = df[k].Define("flcomp", "flavourComp3L(lepFlavor[ele_SG || muo_SG])")
-        histo[f"flcomp_{k}" ] = df[k].Histo1D(
+        histo[f"flcomp_{k}"] = df[k].Histo1D(
             (
                 f"h_flcomp_{k}",
                 f"h_flcomp_{k}",
@@ -518,9 +575,7 @@ def runANA(
             "wgt_SG",
         )
 
-        df[k] = df[k].Define(
-            "ele_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 1)"
-        )
+        df[k] = df[k].Define("ele_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 1)")
         histo_name = "ele_0_charge"
         histo[f"{histo_name}_{k}"] = (
             df[k]
@@ -538,9 +593,7 @@ def runANA(
             )
         )
 
-        df[k] = df[k].Define(
-            "ele_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 1)"
-        )
+        df[k] = df[k].Define("ele_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 1)")
         histo_name = "ele_1_charge"
         histo[f"{histo_name}_%s" % (k)] = (
             df[k]
@@ -558,9 +611,7 @@ def runANA(
             )
         )
 
-        df[k] = df[k].Define(
-            "ele_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 1)"
-        )
+        df[k] = df[k].Define("ele_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 1)")
         histo_name = "ele_2_charge"
         histo[f"{histo_name}_%s" % (k)] = (
             df[k]
@@ -578,9 +629,7 @@ def runANA(
             )
         )
 
-        df[k] = df[k].Define(
-            "muo_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 2)"
-        )
+        df[k] = df[k].Define("muo_0_charge", "getLepCharge(lepCharge, lepFlavor, 0, 2)")
         histo_name = "muo_0_charge"
         histo[f"{histo_name}_%s" % (k)] = (
             df[k]
@@ -598,9 +647,7 @@ def runANA(
             )
         )
 
-        df[k] = df[k].Define(
-            "muo_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 2)"
-        )
+        df[k] = df[k].Define("muo_1_charge", "getLepCharge(lepCharge, lepFlavor, 1, 2)")
         histo_name = "muo_1_charge"
         histo[f"{histo_name}_%s" % (k)] = (
             df[k]
@@ -618,9 +665,7 @@ def runANA(
             )
         )
 
-        df[k] = df[k].Define(
-            "muo_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 2)"
-        )
+        df[k] = df[k].Define("muo_2_charge", "getLepCharge(lepCharge, lepFlavor, 2, 2)")
         histo_name = "muo_2_charge"
         histo[f"{histo_name}_%s" % (k)] = (
             df[k]
@@ -668,8 +713,9 @@ def runANA(
     return df, histo
 
 
-
-def create_histograms_pdfs(histo: dict, all_cols:list, histo_var:Path, d_samp:dict) -> None:
+def create_histograms_pdfs(
+    histo: dict, all_cols: list, histo_var: Path, d_samp: dict
+) -> None:
     """
     Takes the list of features in the histo dict, and creates
     histograms of those features.
@@ -686,19 +732,16 @@ def create_histograms_pdfs(histo: dict, all_cols:list, histo_var:Path, d_samp:di
         toplot.append(bkg)
 
     for hname in all_cols:
-        
-        
-       
+
         try:
-         
+
             p = pt.Plot(histo, hname, toplot)
-        
+
             p.can.SaveAs(str(histo_var) + f"/{hname}.pdf")
-        
+
         except:
             print(f"Could not make plot for name {hname}")
 
-    
 
 def get_numpy_df(df: dict, all_cols: list) -> list:
     """_summary_
@@ -734,19 +777,18 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
 
 
 if __name__ == "__main__":
-    
+
     rerun = 1
     if len(sys.argv) > 2:
         rerun = int(sys.argv[2])
     if rerun:
-        files = glob.glob('*')
+        files = glob.glob("*")
         for f in files:
             if f in ["histograms.root"]:
                 remove(f)
 
-    
     """Remove old images from histo_var_check"""
-    #de = [f.unlink() for f in Path(HISTO_VAR).glob("*") if f.is_file()]
+    # de = [f.unlink() for f in Path(HISTO_VAR).glob("*") if f.is_file()]
 
     """ Actual analysis """
     N_j = 2
@@ -763,10 +805,9 @@ if __name__ == "__main__":
     nSlots = R.GetThreadPoolSize()
     print("Number of slots = %i" % nSlots)
     everyN = int(100 * nSlots)
-    
+
     tot_lumi = 0.0
 
-    
     hfiles = glob.glob("./histograms_*.root")
     histo = {}
     """name_allhisto_1D = []
@@ -787,10 +828,9 @@ if __name__ == "__main__":
                 histo.update(d)
     else:"""
 
-      
     df, histo = runANA(
         str(MC_AND_DATA_PATH),
-        str(MC_AND_DATA_PATH)+"/data18",
+        str(MC_AND_DATA_PATH) + "/data18",
         everyN,
         fldic,
         histo,
@@ -799,12 +839,11 @@ if __name__ == "__main__":
     )
 
     all_cols = get_column_names(df, histo)
-    
-    #print(all_cols)
 
-     
+    # print(all_cols)
+
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
-   
+
     """
     numpy_dfs = get_numpy_df(df, all_cols)
 
@@ -812,4 +851,3 @@ if __name__ == "__main__":
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
     """
-   
