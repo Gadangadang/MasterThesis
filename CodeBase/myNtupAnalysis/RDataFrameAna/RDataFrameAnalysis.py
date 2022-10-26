@@ -36,8 +36,8 @@ R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
 
 
 def runANA(
-    mypath_mc: list,
-    mypath_data: list,
+    mypath_mc: str,
+    mypath_data: str,
     everyN: int,
     fldic: dict,
     histo: dict,
@@ -187,22 +187,22 @@ def runANA(
                 df[k] = df[k].Define("trigmatch_%s_%s"%(yr,tr),trigstr[tr][yr])
                 df[k] = df[k].Define("triggered_%s_%s"%(yr,tr),evtrigstr[tr][yr])
 
-        for nlep in ["2L"]:#,"1L"]: #"1L"
-            #print(nlep)
-            #print("trigmatched")
-            for yr in trigstr[tr].keys():
-                if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
-                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
-                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
-                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
-                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue
-                df[k] = df[k].Define("lepIsTrigMatched_%s_%s"%(yr,nlep),"trigmatch_%s_%s"%(yr,nlep))
-                #df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
-                #print("trig")
-                df[k] = df[k].Define("eventIsTriggered_%s_%s"%(yr,nlep),"triggered_%s_%s"%(yr,nlep))#"is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
-                
-    #df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
-    #df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
+            for nlep in ["2L"]:#,"1L"]: #"1L"
+                #print(nlep)
+                #print("trigmatched")
+                for yr in trigstr[tr].keys():
+                    if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
+                    if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
+                    if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
+                    if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
+                    if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue
+                    df[k] = df[k].Define("lepIsTrigMatched_%s_%s"%(yr,nlep),"trigmatch_%s_%s"%(yr,nlep))
+                    #df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
+                    #print("trig")
+                    df[k] = df[k].Define("eventIsTriggered_%s_%s"%(yr,nlep),"triggered_%s_%s"%(yr,nlep))#"is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
+                    
+        #df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
+        #df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
 
            
 
@@ -698,8 +698,9 @@ def create_histograms_pdfs(histo: dict, all_cols:list, histo_var:Path, d_samp:di
         except:
             print(f"Could not make plot for name {hname}")
 
+    
 
-def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
+def get_numpy_df(df: dict, all_cols: list) -> list:
     """_summary_
 
     Args:
@@ -707,7 +708,7 @@ def get_numpy_df(df: dict, all_cols: list) -> Tuple[dict, ...]:
         all_cols (list): _description_
 
     Returns:
-        Tuple[dict, ...]: _description_
+        list: _description_
     """
 
     cols = df.keys()
@@ -768,7 +769,7 @@ if __name__ == "__main__":
     
     hfiles = glob.glob("./histograms_*.root")
     histo = {}
-    name_allhisto_1D = []
+    """name_allhisto_1D = []
     name_allhisto_2D = []
     if not rerun:
         all_histo = []
@@ -784,25 +785,26 @@ if __name__ == "__main__":
                     #print(this_hname)
             for d in all_histo:
                 histo.update(d)
-    else:
+    else:"""
 
       
-        df, histo = runANA(
-            str(MC_AND_DATA_PATH),
-            str(MC_AND_DATA_PATH)+"/data18",
-            everyN,
-            fldic,
-            histo,
-            allhisto[:],
-            create_histogram=True,
-        )
-    
-        all_cols = get_column_names(df, histo)
+    df, histo = runANA(
+        str(MC_AND_DATA_PATH),
+        str(MC_AND_DATA_PATH)+"/data18",
+        everyN,
+        fldic,
+        histo,
+        allhisto[:],
+        create_histogram=True,
+    )
+
+    all_cols = get_column_names(df, histo)
     
     #print(all_cols)
 
-       
+     
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
+   
     """
     numpy_dfs = get_numpy_df(df, all_cols)
 

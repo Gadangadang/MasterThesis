@@ -466,7 +466,7 @@ def plot_rmm_matrix(
     fig.write_image(f"../../../Figures/histo_var_check/rmm_avg_{process}.pdf")
 
 
-def get_column_names(df, histo):
+def get_column_names(df: dict, histo: dict) -> list:
     names = histo.keys()
 
     new_feats = []

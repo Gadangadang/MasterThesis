@@ -105,7 +105,7 @@ class plotRMM:
         Returns:
             Tuple[str, ...]: list of pathnames
         """
-        return [f for f in listdir(self.path) if isfile(join(self.path, f))]
+        return [f for f in listdir(self.path) if isfile(join(self.path, f))]  # type: ignore
 
     def plotRMM(self):
         """_summary_
@@ -218,7 +218,7 @@ class plotRMM:
             number = name[-1]
             part_type = name[:-2]
             name = rf"${part_type}_{number}$"
-            print(name)
+            
             names.append(name)
        
         #rmm_mat[rmm_mat < 0.00009] = np.nan
@@ -240,12 +240,8 @@ class plotRMM:
         
         fig.write_image(f"../../Figures/testing/rmm_event_{idx}_{process}.pdf")
         
-
-    
-    
-
 class ScaleAndPrep:
-    def __init__(self, path: str, event_rmm=False) -> None:
+    def __init__(self, path: Path, event_rmm=False) -> None:
         """_summary_
 
         Args:
@@ -265,7 +261,7 @@ class ScaleAndPrep:
         Returns:
             Tuple[str, ...]: list of pathnames
         """
-        return [f for f in listdir(self.path) if isfile(join(self.path, f))]
+        return [f for f in listdir(self.path) if isfile(join(self.path, f))]  # type: ignore
 
     def fetchDfs(self, exlude=["ttbar"]) -> None: #exlude=["data18", "ttbar"]
         """
@@ -276,7 +272,7 @@ class ScaleAndPrep:
         Args:
             exlude (list, optional): _description_. Defaults to ["data18"].
         """
-        files = self.onlyfiles.copy()
+        files = self.onlyfiles.copy()  # type: ignore
 
         self.dfs = []
         self.datas = []
@@ -357,7 +353,7 @@ class ScaleAndPrep:
         
         
         try:
-            self.df
+            self.df  # type: ignore
         except:
             self.fetchDfs()
             
@@ -369,13 +365,28 @@ class ScaleAndPrep:
         
         df_train_cat = []
         df_val_cat = []
+        
 
         for df in self.dfs:
-            x_b_train, x_b_val = train_test_split(df, test_size=0.2, random_state=seed)
+            weight = df["wgt_SG"]
+            print(df["Category"].unique())
             
+            print(np.sum(weight))
+            flag = 1
+            while flag:
+                x_b_train, x_b_val = train_test_split(df, test_size=0.2, random_state=seed)
 
-            weights_train = x_b_train["wgt_SG"]
-            weights_val = x_b_val["wgt_SG"]
+                weights_train = x_b_train["wgt_SG"]
+                weights_val = x_b_val["wgt_SG"]
+                
+                ratio = np.sum(weights_train)/np.sum(weight)*100
+                
+                if ratio < 81 and ratio > 79:
+                    print(np.sum(weights_train))
+                    print(f"Ratio: {ratio:.2f}%")
+                    break
+                
+                
             
             train_categories = x_b_train["Category"]
             val_categories = x_b_val["Category"]
@@ -389,9 +400,10 @@ class ScaleAndPrep:
             df_train_cat.append(train_categories)
             df_val_cat.append(val_categories)
             
-            print(train_categories.unique())
-            print(np.sum(weights_val))
+        
             
+            
+       
         X_b_train = pd.concat(df_train)
         X_b_val = pd.concat(df_val)
         
@@ -399,13 +411,14 @@ class ScaleAndPrep:
         self.val_categories = pd.concat(df_val_cat)
         
         
-        # Indentifying Zeejets events for rmm single event plotting
-        idxs_zee = np.where(self.train_categories == "Zeejets")[0]
+        
         
         
         
         self.weights_train = pd.concat(df_train_w)
         self.weights_val = pd.concat(df_val_w)
+        
+        
         
         self.data = pd.concat(self.datas)
         
@@ -414,8 +427,6 @@ class ScaleAndPrep:
         self.data_categories = self.data["Category"]
             
         self.data_weights = self.data["wgt_SG"]
-        
-        self.idx = np.where(X_b_val[X_b_val["Category"] == "singletop"])[0]
             
         channels = [
             "Zeejets",
@@ -428,17 +439,27 @@ class ScaleAndPrep:
             "singletop",
             "topOther",
             "Wjets",
-            "triboson"
+            "triboson",
+            "ttbar"
         ]
         
-        idxs = []
+        # Indentifying Zeejets events for rmm single event plotting
+        idx_rmm = []
+        choices = random.sample(channels, 4)
+        for choice in choices:
+            
+            id_rmm = np.where(self.train_categories == choice)[0]
+        
+            idx_rmm.append((choice, id_rmm))
+        
+        self.idxs = []
         
         
         for channel in channels:
             
             idx_val = np.where(X_b_val["Category"] == channel)[0]
             idx_train = np.where(X_b_train["Category"] == channel)[0]
-            idxs.append((idx_train, idx_val))
+            self.idxs.append((channel, idx_train, idx_val))
         
         
 
@@ -462,16 +483,17 @@ class ScaleAndPrep:
             
         
         if self.event_rmm:
-            for event in random.sample(list(idxs_zee), 4):
-                plotRMMMatrix.plotDfRmmMatrixNoMean(self.X_b_train, "Zeejets", event)
+            for choice, idxss in idx_rmm:
+                event = random.sample(list(idxss), 1)[0]
+                #print(event, choice)
+                plotRMMMatrix.plotDfRmmMatrixNoMean(self.X_b_train, choice, event)
 
         
         ### Plot RMM for each channel
         
         
-        for idxss, channel in zip(idxs, channels):
+        for channel, idx_train, idx_val in self.idxs:
             cols = X_b_train.columns
-            idx_train, idx_val = idxss
             train = self.X_b_train[idx_train]
             val = self.X_b_val[idx_val]
             train = pd.DataFrame(data=train, columns=cols)
@@ -502,6 +524,15 @@ class RunAE:
         self.X_val = self.data_structure.X_b_val
         self.data = self.data_structure.data
         self.data_shape = np.shape(self.X_train)[1]
+        self.idxs = self.data_structure.idxs
+        
+        self.sample_weight = self.data_structure.weights_train
+        
+        self.channels = [channel for channel, _, __ in self.idxs]
+        
+        self.name = "test"
+        
+        self.b_size = 8192
 
     def getModel(self):
         """_summary_
@@ -559,39 +590,107 @@ class RunAE:
 
         return AE_model
 
-    def trainModel(self):
+    def trainModel(self, X_train, X_val, sample_weight):
         """_summary_
         """
         
-        epochs = 5
+        epochs = 1
         try:
             self.AE_model
         except:
             self.AE_model = self.getModel()
 
         with tf.device("/GPU:0"):
+            
             tf.config.optimizer.set_jit("autoclustering")
+            
+            
+            
             self.AE_model.fit(
-                self.X_train,
-                self.X_train,
+                X_train,
+                X_train,
                 epochs=epochs,
-                batch_size=2048,
-                validation_split=0.2,
-                sample_weight=self.data_structure.weights_train,
+                batch_size=self.b_size,
+                validation_data=(X_val, X_val),
+                sample_weight=sample_weight,
             )
             
-        self.AE_model.save(f"tf_models/{epochs}_current_v.h5")
+            print("Fitting complete")
+
+        self.modelname = f"model_{self.name}"
+        self.AE_model.save("tf_models/" + self.modelname +".h5")
+        
+        print(f"{self.modelname} saved")
+        
+    def channelTrainings(self):
+        
+        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
+        
+        for channel, idx_train, idx_val in self.idxs:
             
-    def hyperParamSearch(self):
+            channels = self.channels.copy()
+            channels.remove(channel)
+            
+            
+            
+            new_index = np.delete(np.asarray(range(len(self.X_train))), idx_train)
+            new_index_val = np.delete(np.asarray(range(len(self.X_val))), idx_val)
+         
+            
+            self.val_cats = self.data_structure.val_categories.to_numpy().copy()[new_index_val]
+
+            self.err_val = self.data_structure.weights_val.copy()[new_index_val]
+            
+            
+            
+            X_train_reduced = self.X_train.copy()[new_index]
+            X_val_reduced = self.X_val.copy()[new_index_val]
+            
+            sample_weight = self.data_structure.weights_train.to_numpy().copy()[new_index]
+            sample_weight = pd.DataFrame(sample_weight)
+     
+            
+            channel_train_set = self.X_train.copy()[idx_train]
+            channel_val_set = self.X_val.copy()[idx_val]
+            
+            signal = channel_val_set #np.concatenate((channel_train_set, channel_val_set), axis=0)
+            
+            
+            sig_err_t = self.data_structure.weights_train.to_numpy()[
+                np.where(self.data_structure.train_categories == channel)[0]
+            ]
+            
+            sig_err_v = self.data_structure.weights_val[
+                np.where(self.data_structure.val_categories == channel)[0]
+            ]
+            
+            self.sig_err = sig_err_v #np.concatenate((sig_err_t, sig_err_v), axis=0)
+            
+            
+            self.name = "no_"+channel
+            
+            
+            self.hyperParamSearch(X_train_reduced, X_val_reduced, sample_weight)
+            
+            #self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+  
+            self.runInference(X_val_reduced, signal, True)
+            
+            self.checkReconError(channels, sig_name=channel)
+            
+            
+            
+            
+    def hyperParamSearch(self, X_train, X_val, sample_weight):
         """_summary_
         """
         
         device_lib.list_local_devices()
         tf.config.optimizer.set_jit("autoclustering")
         with tf.device("/GPU:0"):
-            self.gridautoencoder(self.X_train, self.X_val)
+            self.gridautoencoder(X_train, X_val, sample_weight)
             
-    def gridautoencoder(self, X_b:np.ndarray, X_back_test:np.ndarray) -> None:
+    def gridautoencoder(self, X_b:np.ndarray, X_back_test:np.ndarray, sample_weight:np.ndarray) -> None:
         """_summary_
 
         Args:
@@ -610,7 +709,7 @@ class RunAE:
         print(tuner.search_space_summary())
 
         tuner.search(
-            X_b, X_b, epochs=5, batch_size=2048, validation_data=(X_back_test, X_back_test), sample_weight=self.data_structure.weights_train
+            X_b, X_b, epochs=5, batch_size=self.b_size, validation_data=(X_back_test, X_back_test), sample_weight=sample_weight
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
         print(
@@ -635,19 +734,20 @@ class RunAE:
 
         state = True
         while state == True:
-            answ = input("Do you want to save model? (y/n) ")
-            if answ == "y":
-                name = input("name: model_ ")
-                self.modelname = f"model_{name}"
-                tuner.hypermodel.build(best_hps).save("tf_models/"+self.modelname+".h5")
-                state = False
-                print(f"Model {self.modelname} saved")
+            #answ = input("Do you want to save model? (y/n) ")
+            #if answ == "y":
+                #name = input("name: model_ ")
+            self.modelname = f"model_{self.name}"
+            tuner.hypermodel.build(best_hps).save("tf_models/"+self.modelname+".h5")
+            state = False
+            print(f"Model {self.modelname} saved")
                 
-                
+            #   
+            """
             elif answ == "n":
                 state = False
                 print("Model not saved")
-
+            """
 
     def AE_model_builder(self, hp:kt.engine.hyperparameters.HyperParameters):
       
@@ -745,8 +845,7 @@ class RunAE:
 
         return AE_model
 
-
-    def runInference(self, tuned_model=False):
+    def runInference(self, X_val, test_set, tuned_model=False):
         """_summary_
 
         Args:
@@ -774,18 +873,20 @@ class RunAE:
                           show_shapes=True, show_layer_names=True, expand_nested=True)
 
         with tf.device("/GPU:0"):
-            self.pred_back = self.AE_model.predict(self.X_val, batch_size=2048)
+            self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
+            self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
             print("Background done")
-            """
-            pred_sig = self.AE_model.predict(test_set, batch_size=2048)
-            print("Signal done")
-            """
+            
+            
+            if len(test_set) > 0:
+                self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
+                self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
+                print("Signal done")
+            
 
-            self.pred_data = self.AE_model.predict(self.data, batch_size=2048)
+            self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
+            self.recon_data = self.reconstructionError(self.pred_data, self.data)
             print("ATLAS data done")
-
-        self.recon_err_back = self.reconstructionError(self.pred_back, self.X_val)
-        self.recon_data = self.reconstructionError(self.pred_data, self.data)
 
     def reconstructionError(self, pred:np.ndarray, real:np.ndarray) -> np.ndarray:
         """_summary_
@@ -805,139 +906,54 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self):
+    def checkReconError(self, channels, sig_name="ttbar"):
         """_summary_
         """
-        
-       
+  
+        histo_atlas = []
+        weight_atlas_data = []
+        for channel in channels:
 
-        # self.recon_err_back = self.recon_err_back.to_numpy()
-        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
-
-        Zeejets = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "Zeejets")[0]
-        ]
-        Zmmjets = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "Zmmjets")[0]
-        ]
-        Zttjets = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "Zttjets")[0]
-        ]
-        diboson2L = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "diboson2L")[0]
-        ]
-        diboson3L = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "diboson3L")[0]
-        ]
-        diboson4L = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "diboson4L")[0]
-        ]
-        triboson = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "triboson")[0]
-        ]
-        higgs = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "higgs")[0]
-        ]
-        singletop = self.recon_err_back[np.where(self.data_structure.val_categories == "singletop")[0]]
-        
-        topOther = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "topOther")[0]
-        ]
-        Wjets = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "Wjets")[0]
-        ]
-        ttbar = self.recon_err_back[
-            np.where(self.data_structure.val_categories == "ttbar")[0]
-        ]
-
-        Zeejets_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "Zeejets")[0]
-        ]
-        Zmmjets_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "Zmmjets")[0]
-        ]
-        Zttjets_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "Zttjets")[0]
-        ]
-        diboson2L_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "diboson2L")[0]
-        ]
-        diboson3L_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "diboson3L")[0]
-        ]
-        diboson4L_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "diboson4L")[0]
-        ]
-        triboson_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "triboson")[0]
-        ]
-        higgs_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "higgs")[0]
-        ]
-        singletop_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "singletop")[0]
-        ]
-        topOther_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "topOther")[0]
-        ]
-        Wjets_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "Wjets")[0]
-        ]
-        ttbar_w = self.data_structure.weights_val[
-            np.where(self.data_structure.val_categories == "ttbar")[0]
-        ]
-
-        histo_atlas = [
-            Zeejets,
-            Zmmjets,
-            Zttjets,
-            diboson2L,
-            diboson3L,
-            diboson4L,
-            higgs,
-            singletop,
-            topOther,
-            Wjets,
-            triboson,
+            err = self.recon_err_back[
+                np.where(self.val_cats == channel)[0]
+            ]
             
-        ] #ttbar,
-        weight_atlas_data = [
-            Zeejets_w,
-            Zmmjets_w,
-            Zttjets_w,
-            diboson2L_w,
-            diboson3L_w,
-            diboson4L_w,
-            higgs_w,
-            singletop_w,
-            topOther_w,
-            Wjets_w,
-            triboson_w,
+            histo_atlas.append(err)
             
-        ] #ttbar_w,
+            err_w = self.err_val[
+                np.where(self.val_cats == channel)[0]
+            ]
+            
+            weight_atlas_data.append(err_w)
+            
         
-      
+        sig_err = self.recon_sig
+        sig_err_w = self.sig_err
 
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
         
-        print(sum_w, sort_w)
+     
 
+      
         
-        """N, bins = np.histogram(
-            self.recon_data, bins=25, weights=self.data_structure.data_weights
-        )"""
-        N, bins = np.histogram(
-            ttbar, bins=25, weights=ttbar_w
-        )
-        x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
         
         sns.set_style("darkgrid")
         plt.rcParams["figure.figsize"] = (12, 9)
 
         fig, ax = plt.subplots()
-
+        
+        N, bins = np.histogram(
+            sig_err, bins=25, weights=sig_err_w
+        )
+        x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
+        
+        ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
+        
         n_bins = bins
+       
+
+        
         colors = [
             "mediumspringgreen",
             "darkgreen",
@@ -952,23 +968,9 @@ class RunAE:
             "gold",
             
         ]#"darkgoldenrod"
-        labels = [
-            'Zeejets',
-            'Zmmjets',
-            'Zttjets',
-            "diboson2L",
-            "diboson3L",
-            "diboson4L",
-            "higgs",
-            "singletop",
-            "topOther",
-            "Wjets",
-            "triboson",
-            
-        ] # "ttbar"
-
         
-        print(np.asarray(labels, dtype=object)[sort_w])
+
+     
 
         
         ax.hist(
@@ -979,11 +981,11 @@ class RunAE:
             alpha=0.5,
             histtype="bar",
             color=np.asarray(colors, dtype=object)[sort_w],
-            label=np.asarray(labels, dtype=object)[sort_w],
+            label=np.asarray(channels, dtype=object)[sort_w],
             weights=np.asarray(weight_atlas_data, dtype=object)[sort_w],
         )
 
-        ax.scatter(x, N, marker="+", label="ttbar", color="black")
+        
 
         ax.legend(prop={"size": 20})
         ax.set_title(
@@ -992,9 +994,9 @@ class RunAE:
         ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
         # ax.set_xlim([0, 3.5])
-        ax.set_ylim([0.1, 5e6])
+        ax.set_ylim([0.1, 5e6])  # type: ignore
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
-        plt.savefig(self.path + "/b_data_recon_big_rm3_feats.pdf")
+        plt.savefig(self.path + f"/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
