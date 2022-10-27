@@ -166,7 +166,7 @@ class plotRMM:
         )
         fig.update_xaxes(side="top")
 
-        fig.write_image(f"../../Figures/testing/rmm_avg_{process}.pdf")
+        fig.write_image(f"../../Figures/testing/rmm/rmm_avg_{process}.pdf")
 
     def plotDfRmmMatrixNoMean(self, df: pd.DataFrame, process: str, idx: int) -> None:
         """
@@ -224,7 +224,7 @@ class plotRMM:
         )
         fig.update_xaxes(side="top")
 
-        fig.write_image(f"../../Figures/testing/rmm_event_{idx}_{process}.pdf")
+        fig.write_image(f"../../Figures/testing/rmm/rmm_event_{idx}_{process}.pdf")
 
 
 class ScaleAndPrep:
@@ -881,13 +881,7 @@ class RunAE:
                 print("reg trained_model")
                 self.AE_model = self.trainModel()
 
-        tf.keras.utils.plot_model(
-            self.AE_model,
-            to_file=self.path + "/ae_model_plot.pdf",
-            show_shapes=True,
-            show_layer_names=True,
-            expand_nested=True,
-        )
+        
 
         with tf.device("/GPU:0"):
             self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
@@ -990,5 +984,5 @@ class RunAE:
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
-        plt.savefig(self.path + f"/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
