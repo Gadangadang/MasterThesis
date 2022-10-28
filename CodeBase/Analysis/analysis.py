@@ -24,7 +24,7 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
 
-    args.exclude = True
+    
 
     if args.tune:
         rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight)

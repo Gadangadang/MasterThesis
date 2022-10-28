@@ -483,6 +483,11 @@ class RunAE:
         self.data = self.data_structure.data
         self.data_shape = np.shape(self.X_train)[1]
         self.idxs = self.data_structure.idxs
+        self.val_cats = self.data_structure.val_categories.to_numpy()
+        self.err_val = self.data_structure.weights_val.to_numpy()
+        
+        print(len(self.X_val), len(self.val_cats))
+
 
         self.sample_weight = self.data_structure.weights_train
 
@@ -491,6 +496,8 @@ class RunAE:
         self.name = "test"
 
         self.b_size = 8192
+        
+        self.epochs = 1
 
     def getModel(self):
         """_summary_
@@ -577,7 +584,7 @@ class RunAE:
     def trainModel(self, X_train, X_val, sample_weight):
         """_summary_"""
 
-        epochs = 1
+        
         try:
             self.AE_model
         except:
@@ -590,7 +597,7 @@ class RunAE:
             self.AE_model.fit(
                 X_train,
                 X_train,
-                epochs=epochs,
+                epochs=self.epochs,
                 batch_size=self.b_size,
                 validation_data=(X_val, X_val),
                 sample_weight=sample_weight,
@@ -606,6 +613,7 @@ class RunAE:
     def channelTrainings(self):
 
         self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
+        
 
         for channel, idx_train, idx_val in self.idxs:
 
@@ -914,7 +922,7 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self, channels, sig_name="ttbar"):
+    def checkReconError(self, channels, sig_name="nosig"):
         """_summary_"""
 
         histo_atlas = []
@@ -929,9 +937,12 @@ class RunAE:
 
             weight_atlas_data.append(err_w)
 
-        sig_err = self.recon_sig
-        sig_err_w = self.sig_err
-
+        try:
+            sig_err = self.recon_sig
+            sig_err_w = self.sig_err
+        except:
+            print("No signal")
+            
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
 
@@ -940,13 +951,16 @@ class RunAE:
 
         fig, ax = plt.subplots()
 
-        N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
-        x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
+        try:
+            N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
+            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
 
-        ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
+            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
 
-        n_bins = bins
-
+            n_bins = bins
+        except:
+            n_bins = 25
+            
         colors = [
             "mediumspringgreen",
             "darkgreen",
@@ -960,6 +974,22 @@ class RunAE:
             "mediumorchid",
             "gold",
         ]  # "darkgoldenrod"
+        if len(channels) != len(colors):
+            colors = [
+                "mediumspringgreen",
+                "darkgreen",
+                "lime",
+                "magenta",
+                "blue",
+                "red",
+                "orange",
+                "brown",
+                "cyan",
+                "mediumorchid",
+                "gold",
+                "darkgoldenrod"
+            ]  # 
+            
 
         ax.hist(
             np.asarray(histo_atlas, dtype=object)[sort_w],

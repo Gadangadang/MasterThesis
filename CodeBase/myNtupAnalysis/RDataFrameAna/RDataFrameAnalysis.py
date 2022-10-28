@@ -212,52 +212,7 @@ def runANA(
 
         # print("Nev(pileupWeight == 0) : ",df[k].Filter("pileupWeight == 0").Count().GetValue())
         # Check trigger matching!
-        for tr in trigstr.keys():
-            if tr == "3L":
-                continue
-            for yr in trigstr[tr].keys():
-                if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc:
-                    continue
-                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc:
-                    continue
-                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc:
-                    continue
-                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc:
-                    continue
-                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc:
-                    continue
-                # print("trigmatch_%s_%s = %s"%(yr,tr,trigstr[tr][yr]))
-                df[k] = df[k].Define("trigmatch_%s_%s" % (yr, tr), trigstr[tr][yr])
-                df[k] = df[k].Define("triggered_%s_%s" % (yr, tr), evtrigstr[tr][yr])
-
-            for nlep in ["2L"]:  # ,"1L"]: #"1L"
-                # print(nlep)
-                # print("trigmatched")
-                for yr in trigstr[tr].keys():
-                    if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc:
-                        continue
-                    if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc:
-                        continue
-                    if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc:
-                        continue
-                    if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc:
-                        continue
-                    if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc:
-                        continue
-                    df[k] = df[k].Define(
-                        "lepIsTrigMatched_%s_%s" % (yr, nlep),
-                        "trigmatch_%s_%s" % (yr, nlep),
-                    )
-                    # df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
-                    # print("trig")
-                    df[k] = df[k].Define(
-                        "eventIsTriggered_%s_%s" % (yr, nlep),
-                        "triggered_%s_%s" % (yr, nlep),
-                    )  # "is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
-
-        # df[k] = df[k].Filter("eventIsTriggered_1L","1L trigger")
-        # df[k] = df[k].Filter("ROOT::VecOps::Sum(lepIsTrigMatched_1L[ele_BL || muo_BL]) > 0","Trigger Matched")
-
+       
         histo["nlep_BL_%s" % k] = df[k].Histo1D(
             ("nlep_BL_%s" % k, "nlep_BL_%s" % k, 10, 0, 10), "nlep_BL", "wgt_SG"
         )
@@ -844,10 +799,10 @@ if __name__ == "__main__":
 
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
 
-    """
+    
     numpy_dfs = get_numpy_df(df, all_cols)
 
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
-    """
+    
