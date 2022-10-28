@@ -11,6 +11,7 @@ from typing import Tuple
 import plotly.express as px
 import matplotlib.pyplot as plt
 from os.path import isfile, join
+from objsize import get_deep_size
 
 from sklearn import preprocessing
 from tensorflow.python.client import device_lib
@@ -486,7 +487,9 @@ class RunAE:
         self.val_cats = self.data_structure.val_categories.to_numpy()
         self.err_val = self.data_structure.weights_val.to_numpy()
         
-        print(len(self.X_val), len(self.val_cats))
+        print(" ")
+        print(get_deep_size(self.X_train) + get_deep_size(self.X_val), "bytes")
+        print(" ")
 
 
         self.sample_weight = self.data_structure.weights_train

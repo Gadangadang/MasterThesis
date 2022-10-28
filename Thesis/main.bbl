@@ -60,12 +60,12 @@ S.~Chekanov, \emph{Imaging particle collision data for event classification
   and Methods in Physics Research Section A: Accelerators, Spectrometers,
   Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
 
+\bibitem{chollet2015keras}
+F.~Chollet et~al., \emph{Keras},  2015.
+
 \bibitem{tensorflow2015-whitepaper}
 M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
   2015.
-
-\bibitem{chollet2015keras}
-F.~Chollet et~al., \emph{Keras},  2015.
 
 \end{thebibliography}\endgroup

@@ -1907,13 +1907,6 @@ INPUT Sections/SM_BSM/BSM.tex
 INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Sections/SM_BSM/BSM.tex
 INPUT Sections/SM_BSM/BSM.tex
-INPUT ./Sections/Implementation/McBack.tex
-INPUT ./Sections/Implementation/McBack.tex
-INPUT ./Sections/Implementation/McBack.tex
-INPUT Sections/Implementation/McBack.tex
-INPUT ./Sections/Implementation/McBack.tex
-INPUT ./Sections/Implementation/McBack.tex
-INPUT Sections/Implementation/McBack.tex
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Sections/Implementation/atlas.tex
