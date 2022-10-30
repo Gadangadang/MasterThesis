@@ -488,7 +488,7 @@ class RunAE:
         self.err_val = self.data_structure.weights_val.to_numpy()
         
         print(" ")
-        print(get_deep_size(self.X_train) + get_deep_size(self.X_val), "bytes")
+        print(f"{(self.X_train.nbytes + self.X_val.nbytes)/1000000000} Gbytes")
         print(" ")
 
 
