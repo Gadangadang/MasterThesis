@@ -14,6 +14,7 @@ from os.path import isfile, join
 from objsize import get_deep_size
 
 from sklearn import preprocessing
+from sklearn.compose import ColumnTransformer 
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -435,13 +436,37 @@ class ScaleAndPrep:
 
         strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
 
+        
+        #print(X_b_train.columns)
+          
+        
+        cols = ['e_T_miss', 'm_T_jet_0', 'm_T_jet_1', 'm_T_ele_0', 'm_T_ele_1',
+                'm_T_ele_2', 'm_T_muo_0', 'm_T_muo_1', 'm_T_muo_2', 'e_T_jet_0',
+                'm_jet_0_jet_1', 'm_jet_0_ele_0', 'm_jet_0_ele_1', 'm_jet_0_ele_2', 
+                'm_jet_0_muo_0', 'm_jet_0_muo_1', 'm_jet_0_muo_2', 'm_jet_1_ele_0',
+                'm_jet_1_ele_1', 'm_jet_1_ele_2', 'm_jet_1_muo_0', 'm_jet_1_muo_1',
+                'm_jet_1_muo_2', 'e_T_ele_0', 'm_ele_0_ele_1', 'm_ele_0_ele_2', 
+                'm_ele_0_muo_0', 'm_ele_0_muo_1', 'm_ele_0_muo_2', 'm_ele_1_ele_2',
+                'm_ele_1_muo_0', 'm_ele_1_muo_1', 'm_ele_1_muo_2', 'm_ele_2_muo_0', 
+                'm_ele_2_muo_1', 'm_ele_2_muo_2','e_T_muo_0', 'm_muo_0_muo_1',
+                'm_muo_0_muo_2',  'm_muo_1_muo_2',  'flcomp']
+        
+        scaler = MinMaxScaler()
+        """
+        column_trans = ColumnTransformer(
+                [('scaler_ae', scaler, cols)],
+                remainder='passthrough'
+            )
+        """
+        column_trans = scaler
         with strategy.scope():
+             
+            
+            
+            self.X_b_train = column_trans.fit_transform(X_b_train)
+            self.X_b_val = column_trans.transform(X_b_val)
 
-            scaler_ae = MinMaxScaler()
-            self.X_b_train = scaler_ae.fit_transform(X_b_train)
-            self.X_b_val = scaler_ae.transform(X_b_val)
-
-            self.data = scaler_ae.transform(self.data)
+            self.data = column_trans.transform(self.data)
 
         if self.event_rmm:
             for choice, idxss in idx_rmm:
@@ -592,11 +617,11 @@ class RunAE:
             self.AE_model
         except:
             self.AE_model = self.getModel()
-
+        
         with tf.device("/GPU:0"):
 
             tf.config.optimizer.set_jit("autoclustering")
-
+            
             self.AE_model.fit(
                 X_train,
                 X_train,
@@ -607,7 +632,7 @@ class RunAE:
             )
 
             print("Fitting complete")
-
+        
         self.modelname = f"model_{self.name}"
         self.AE_model.save("tf_models/" + self.modelname + ".h5")
 

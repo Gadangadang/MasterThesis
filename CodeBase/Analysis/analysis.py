@@ -34,7 +34,7 @@ def main():
 
     if args.run:
         rae.runInference(rae.X_val, [], True)
-        rae.checkReconError(rae.channels)
+        rae.checkReconError(rae.channels, sig_name="no_sig_no_train")
 
     if args.exclude:
         rae.channelTrainings()
