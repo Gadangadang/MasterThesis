@@ -27,17 +27,17 @@ def main():
     
 
     if args.tune:
-        rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight)
-
+        rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
+        
     if args.train:
         rae.trainModel(rae.X_train, rae.X_val, rae.sample_weight)
 
     if args.run:
         rae.runInference(rae.X_val, [], True)
-        rae.checkReconError(rae.channels, sig_name="no_sig_no_train")
+        rae.checkReconError(rae.channels, sig_name="no_sig_10epoch")
 
     if args.exclude:
-        rae.channelTrainings()
+        rae.channelTrainings(small=False)
 
 
 if __name__ == "__main__":

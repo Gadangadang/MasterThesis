@@ -1,3 +1,6 @@
 kaleido
 plotly==5.10.0
 keras-tuner
+objsize
+seaborn
+tables

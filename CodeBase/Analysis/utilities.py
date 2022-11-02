@@ -2,6 +2,7 @@ import random
 import matplotlib
 import numpy as np
 import pandas as pd
+from config import *
 import seaborn as sns
 from os import listdir
 import tensorflow as tf
@@ -88,6 +89,11 @@ rmm_structure = {
         "lepM[muo_SG]",
         2,
     ],
+}
+
+scalers = {
+    "Standard": StandardScaler(),
+    "MinMax": MinMaxScaler()
 }
 
 
@@ -451,7 +457,7 @@ class ScaleAndPrep:
                 'm_ele_2_muo_1', 'm_ele_2_muo_2','e_T_muo_0', 'm_muo_0_muo_1',
                 'm_muo_0_muo_2',  'm_muo_1_muo_2',  'flcomp']
         
-        scaler = MinMaxScaler()
+        scaler = scalers[SCALER]
         """
         column_trans = ColumnTransformer(
                 [('scaler_ae', scaler, cols)],
@@ -522,10 +528,12 @@ class RunAE:
         self.channels = [channel for channel, _, __ in self.idxs]
 
         self.name = "test"
-
-        self.b_size = 8192
         
-        self.epochs = 1
+        
+
+        self.b_size = BACTH_SIZE
+        
+        self.epochs = EPOCHS
 
     def getModel(self):
         """_summary_
@@ -638,15 +646,20 @@ class RunAE:
 
         print(f"{self.modelname} saved")
 
-    def channelTrainings(self):
+    def channelTrainings(self, small=False):
 
         self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
         
 
         for channel, idx_train, idx_val in self.idxs:
+            
+            if channel == "Zeejets":
+                continue
 
             channels = self.channels.copy()
             channels.remove(channel)
+            
+            print(f"Channel: {channel}  started")
 
             new_index = np.delete(np.asarray(range(len(self.X_train))), idx_train)
             new_index_val = np.delete(np.asarray(range(len(self.X_val))), idx_val)
@@ -681,22 +694,35 @@ class RunAE:
             self.sig_err = sig_err_v  # np.concatenate((sig_err_t, sig_err_v), axis=0)
 
             self.name = "no_" + channel
+            
+            
 
-            self.hyperParamSearch(X_train_reduced, X_val_reduced, sample_weight)
+            self.hyperParamSearch(X_train_reduced, X_val_reduced, sample_weight, small=small)
 
             # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-
+            print(" ")
+            print("Hyperparam search done")
+            print(" ")
+            
+            
+            self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+            
             self.runInference(X_val_reduced, signal, True)
 
             self.checkReconError(channels, sig_name=channel)
+            
+            
 
-    def hyperParamSearch(self, X_train, X_val, sample_weight):
+    def hyperParamSearch(self, X_train, X_val, sample_weight, small=False):
         """_summary_"""
 
         device_lib.list_local_devices()
         tf.config.optimizer.set_jit("autoclustering")
         with tf.device("/GPU:0"):
-            self.gridautoencoder(X_train, X_val, sample_weight)
+            if small:
+                self.gridautoencoder_small(X_train, X_val, sample_weight)
+            else:
+                self.gridautoencoder(X_train, X_val, sample_weight)
 
     def gridautoencoder(
         self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: np.ndarray
@@ -710,7 +736,7 @@ class RunAE:
         tuner = kt.Hyperband(
             self.AE_model_builder,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=5,
+            max_epochs=20,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -721,7 +747,7 @@ class RunAE:
         tuner.search(
             X_b,
             X_b,
-            epochs=5,
+            epochs=20,
             batch_size=self.b_size,
             validation_data=(X_back_test, X_back_test),
             sample_weight=sample_weight,
@@ -745,14 +771,68 @@ class RunAE:
         with learning rate = {best_hps.get('learning_rate')} and alpha = {best_hps.get('alpha')}
         """
         )
+        
+        
 
         state = True
         while state == True:
             # answ = input("Do you want to save model? (y/n) ")
             # if answ == "y":
             # name = input("name: model_ ")
+            
+            self.AE_model = tuner.hypermodel.build(best_hps)
             self.modelname = f"model_{self.name}"
-            tuner.hypermodel.build(best_hps).save("tf_models/" + self.modelname + ".h5")
+            self.AE_model.save("tf_models/" + self.modelname + ".h5")
+            state = False
+            print(f"Model {self.modelname} saved")
+
+            #
+            """
+            elif answ == "n":
+                state = False
+                print("Model not saved")
+            """
+            
+        
+            
+    def gridautoencoder_small(
+        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: np.ndarray
+    ) -> None:
+        """_summary_
+
+        Args:
+            X_b (np.ndarray): _description_
+            X_back_test (np.ndarray): _description_
+        """
+        tuner = kt.Hyperband(
+            self.AE_model_builder,
+            objective=kt.Objective("val_mse", direction="min"),
+            max_epochs=20,
+            factor=3,
+            directory="GridSearches",
+            project_name="AE",
+            overwrite=True,
+        )
+        print(tuner.search_space_summary())
+
+        tuner.search(
+            X_b,
+            X_b,
+            epochs=20,
+            batch_size=self.b_size,
+            validation_data=(X_back_test, X_back_test),
+            sample_weight=sample_weight,
+        )
+        best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
+        
+        state = True
+        while state == True:
+            # answ = input("Do you want to save model? (y/n) ")
+            # if answ == "y":
+            # name = input("name: model_ ")
+            self.AE_model = tuner.hypermodel.build(best_hps)
+            self.modelname = f"model_{self.name}"
+            self.AE_model.save("tf_models/" + self.modelname + ".h5")
             state = False
             print(f"Model {self.modelname} saved")
 
@@ -873,6 +953,89 @@ class RunAE:
                 hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
+        
+        # Encoder definition
+        decoder = tf.keras.Model(latent_input, output, name="decoder")
+
+        # Output definition
+        outputs = decoder(encoder(inputs))
+        
+        # Model definition
+        AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
+
+        hp_learning_rate = hp.Choice(
+            "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
+        )
+        optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
+        
+        AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
+
+        return AE_model
+    
+    def AE_model_builder_small(self, hp: kt.engine.hyperparameters.HyperParameters):
+
+        """_summary_
+
+        Args:
+            hp (kt.engine.hyperparameters.HyperParameters): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        ker_choice = hp.Choice("Kernel_reg", values=[0.5, 0.1, 0.05, 0.01])
+        act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
+
+        alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
+        
+        # Activation functions 
+        activations = {
+            "relu": tf.nn.relu,
+            "tanh": tf.nn.tanh,
+            "leakyrelu": "leaky_relu",
+            "linear": tf.keras.activations.linear,
+        }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
+        
+        # Input layer
+        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+        
+        
+        
+        # Third hidden layer
+        x1 = tf.keras.layers.Dense(
+            units=hp.Int("num_of_neurons1", min_value=10, max_value=29, step=1),
+            activation=activations.get(
+                hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
+            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+        )(inputs)
+        
+        
+        val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
+        
+        # Forth hidden layer
+        x2 = tf.keras.layers.Dense(
+            units=val,
+            activation=activations.get(
+                hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(x1)
+        
+        # Encoder definition
+        encoder = tf.keras.Model(inputs, x2, name="encoder")
+
+        # Latent space 
+        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+        
+        
+        
+        # Output layer
+        output = tf.keras.layers.Dense(
+            self.data_shape,
+            activation=activations.get(
+                hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(latent_input)
         
         # Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
