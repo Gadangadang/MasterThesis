@@ -653,7 +653,7 @@ class RunAE:
 
         for channel, idx_train, idx_val in self.idxs:
             
-            if channel == "Zeejets":
+            if channel not in ["ttbar"]:
                 continue
 
             channels = self.channels.copy()
