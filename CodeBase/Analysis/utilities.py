@@ -1,10 +1,14 @@
+import csv
+import ast
 import random
 import matplotlib
 import numpy as np
 import pandas as pd
 from config import *
 import seaborn as sns
+from pathfile import *
 from os import listdir
+from numpy import array
 import tensorflow as tf
 import keras_tuner as kt
 from pathlib import Path
@@ -236,7 +240,7 @@ class plotRMM:
 
 
 class ScaleAndPrep:
-    def __init__(self, path: Path, event_rmm=False) -> None:
+    def __init__(self, path: Path, event_rmm=False, save = False, load = False) -> None:
         """_summary_
 
         Args:
@@ -246,7 +250,8 @@ class ScaleAndPrep:
         self.path = path
         self.onlyfiles = self.getDfNames()
         self.event_rmm = event_rmm
-
+        self.load = load
+        self.save = save
         # self.scaleAndSplit()
 
     def getDfNames(self) -> Tuple[str, ...]:
@@ -256,16 +261,16 @@ class ScaleAndPrep:
         Returns:
             Tuple[str, ...]: list of pathnames
         """
-        return [f for f in listdir(self.path) if isfile(join(self.path, f))]  # type: ignore
+        
+        files = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-4:] != ".npy" and f[-4:] != ".csv" and f[-5:] != "_b.h5" and f[-4:] != ".txt"]
+       
+        return files # type: ignore
 
-    def fetchDfs(self, exlude=["ttbar"]) -> None:  # exlude=["data18", "ttbar"]
+    def fetchDfs(self) -> None:  # exlude=["data18", "ttbar"]
         """
         This function takes all dataframes stored as hdf5 files and adds them to a list,
         where this list later is used for scaling, splitting and merging of dataframes.
 
-
-        Args:
-            exlude (list, optional): _description_. Defaults to ["data18"].
         """
         files = self.onlyfiles.copy()  # type: ignore
 
@@ -337,166 +342,219 @@ class ScaleAndPrep:
 
     def MergeScaleAndSplit(self):
         """_summary_"""
-        plotRMMMatrix = plotRMM(self.path, rmm_structure, 9)
-
-        try:
-            self.df  # type: ignore
-        except:
-            self.fetchDfs()
-
-        df_train = []
-        df_val = []
-
-        df_train_w = []
-        df_val_w = []
-
-        df_train_cat = []
-        df_val_cat = []
-
-        for df in self.dfs:
-            weight = df["wgt_SG"]
-            print(df["Category"].unique())
-
-            print(np.sum(weight))
-            flag = 1
-            while flag:
-                x_b_train, x_b_val = train_test_split(
-                    df, test_size=0.2, random_state=seed
-                )
-
-                weights_train = x_b_train["wgt_SG"]
-                weights_val = x_b_val["wgt_SG"]
-
-                ratio = np.sum(weights_train) / np.sum(weight) * 100
-
-                if ratio < 81 and ratio > 79:
-                    print(np.sum(weights_train))
-                    print(f"Ratio: {ratio:.2f}%")
-                    break
-
-            train_categories = x_b_train["Category"]
-            val_categories = x_b_val["Category"]
-
-            df_train.append(x_b_train)
-            df_train_w.append(weights_train)
-            df_val.append(x_b_val)
-            df_val_w.append(weights_val)
-
-            df_train_cat.append(train_categories)
-            df_val_cat.append(val_categories)
-
-        X_b_train = pd.concat(df_train)
-        X_b_val = pd.concat(df_val)
-
-        self.train_categories = pd.concat(df_train_cat)
-        self.val_categories = pd.concat(df_val_cat)
-
-        self.weights_train = pd.concat(df_train_w)
-        self.weights_val = pd.concat(df_val_w)
-
-        self.data = pd.concat(self.datas)
-
-        self.data_categories = self.data["Category"]
-
-        self.data_weights = self.data["wgt_SG"]
-
-        channels = [
-            "Zeejets",
-            "Zmmjets",
-            "Zttjets",
-            "diboson2L",
-            "diboson3L",
-            "diboson4L",
-            "higgs",
-            "singletop",
-            "topOther",
-            "Wjets",
-            "triboson",
-            "ttbar",
-        ]
-
-        # Indentifying Zeejets events for rmm single event plotting
-        idx_rmm = []
-        choices = random.sample(channels, 4)
-        for choice in choices:
-
-            id_rmm = np.where(self.train_categories == choice)[0]
-
-            idx_rmm.append((choice, id_rmm))
-
-        self.idxs = []
-
-        for channel in channels:
-
-            idx_val = np.where(X_b_val["Category"] == channel)[0]
-            idx_train = np.where(X_b_train["Category"] == channel)[0]
-            self.idxs.append((channel, idx_train, idx_val))
-
-        X_b_train.drop("Category", axis=1, inplace=True)
-        X_b_val.drop("Category", axis=1, inplace=True)
-        self.data.drop("Category", axis=1, inplace=True)
-
-        X_b_train.drop("wgt_SG", axis=1, inplace=True)
-        X_b_val.drop("wgt_SG", axis=1, inplace=True)
-        self.data.drop("wgt_SG", axis=1, inplace=True)
-
-        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
-
         
-        #print(X_b_train.columns)
-          
-        
-        cols = ['e_T_miss', 'm_T_jet_0', 'm_T_jet_1', 'm_T_ele_0', 'm_T_ele_1',
-                'm_T_ele_2', 'm_T_muo_0', 'm_T_muo_1', 'm_T_muo_2', 'e_T_jet_0',
-                'm_jet_0_jet_1', 'm_jet_0_ele_0', 'm_jet_0_ele_1', 'm_jet_0_ele_2', 
-                'm_jet_0_muo_0', 'm_jet_0_muo_1', 'm_jet_0_muo_2', 'm_jet_1_ele_0',
-                'm_jet_1_ele_1', 'm_jet_1_ele_2', 'm_jet_1_muo_0', 'm_jet_1_muo_1',
-                'm_jet_1_muo_2', 'e_T_ele_0', 'm_ele_0_ele_1', 'm_ele_0_ele_2', 
-                'm_ele_0_muo_0', 'm_ele_0_muo_1', 'm_ele_0_muo_2', 'm_ele_1_ele_2',
-                'm_ele_1_muo_0', 'm_ele_1_muo_1', 'm_ele_1_muo_2', 'm_ele_2_muo_0', 
-                'm_ele_2_muo_1', 'm_ele_2_muo_2','e_T_muo_0', 'm_muo_0_muo_1',
-                'm_muo_0_muo_2',  'm_muo_1_muo_2',  'flcomp']
-        
-        scaler = scalers[SCALER]
-        """
-        column_trans = ColumnTransformer(
-                [('scaler_ae', scaler, cols)],
-                remainder='passthrough'
-            )
-        """
-        column_trans = scaler
-        with strategy.scope():
-             
+        if not self.load:
+            plotRMMMatrix = plotRMM(self.path, rmm_structure, 9)
+
+            try:
+                self.df  # type: ignore
+            except:
+                self.fetchDfs()
+
+            df_train = []
+            df_val = []
+
+            df_train_w = []
+            df_val_w = []
+
+            df_train_cat = []
+            df_val_cat = []
+
+            for df in self.dfs:
+                weight = df["wgt_SG"]
+                print(df["Category"].unique())
+
+                print(np.sum(weight))
+                flag = 1
+                while flag:
+                    x_b_train, x_b_val = train_test_split(
+                        df, test_size=0.2, random_state=seed
+                    )
+
+                    weights_train = x_b_train["wgt_SG"]
+                    weights_val = x_b_val["wgt_SG"]
+
+                    ratio = np.sum(weights_train) / np.sum(weight) * 100
+
+                    if ratio < 81 and ratio > 79:
+                        print(np.sum(weights_train))
+                        print(f"Ratio: {ratio:.2f}%")
+                        break
+
+                train_categories = x_b_train["Category"]
+                val_categories = x_b_val["Category"]
+
+                df_train.append(x_b_train)
+                df_train_w.append(weights_train)
+                df_val.append(x_b_val)
+                df_val_w.append(weights_val)
+
+                df_train_cat.append(train_categories)
+                df_val_cat.append(val_categories)
+
+            X_b_train = pd.concat(df_train)
+            X_b_val = pd.concat(df_val)
+
+            self.train_categories = pd.concat(df_train_cat)
+            self.val_categories = pd.concat(df_val_cat)
+
+            self.weights_train = pd.concat(df_train_w)
+            self.weights_val = pd.concat(df_val_w)
+
+            self.data = pd.concat(self.datas)
+
+            self.data_categories = self.data["Category"]
+
+            self.data_weights = self.data["wgt_SG"]
+
+            channels = [
+                "Zeejets",
+                "Zmmjets",
+                "Zttjets",
+                "diboson2L",
+                "diboson3L",
+                "diboson4L",
+                "higgs",
+                "singletop",
+                "topOther",
+                "Wjets",
+                "triboson",
+                "ttbar",
+            ]
+
+            # Indentifying Zeejets events for rmm single event plotting
+            idx_rmm = []
+            choices = random.sample(channels, 4)
+            for choice in choices:
+
+                id_rmm = np.where(self.train_categories == choice)[0]
+
+                idx_rmm.append((choice, id_rmm))
+
+            self.idxs = []
+
+            for channel in channels:
+                
+                idx_val = np.where(X_b_val["Category"] == channel)[0]
+                idx_train = np.where(X_b_train["Category"] == channel)[0]
+                id = (channel, idx_train, idx_val)
+                
+                self.idxs.append(id)
+
+            X_b_train.drop("Category", axis=1, inplace=True)
+            X_b_val.drop("Category", axis=1, inplace=True)
+            self.data.drop("Category", axis=1, inplace=True)
+
+            X_b_train.drop("wgt_SG", axis=1, inplace=True)
+            X_b_val.drop("wgt_SG", axis=1, inplace=True)
+            self.data.drop("wgt_SG", axis=1, inplace=True)
+
+            
+
+            
+            #print(X_b_train.columns)
             
             
-            self.X_b_train = column_trans.fit_transform(X_b_train)
-            self.X_b_val = column_trans.transform(X_b_val)
-
-            self.data = column_trans.transform(self.data)
-
-        if self.event_rmm:
-            for choice, idxss in idx_rmm:
-                event = random.sample(list(idxss), 1)[0]
-                # print(event, choice)
-                plotRMMMatrix.plotDfRmmMatrixNoMean(self.X_b_train, choice, event)
-
-        ### Plot RMM for each channel
-
-        for channel, idx_train, idx_val in self.idxs:
-            cols = X_b_train.columns
-            train = self.X_b_train[idx_train]
-            val = self.X_b_val[idx_val]
-            train = pd.DataFrame(data=train, columns=cols)
-            val = pd.DataFrame(data=val, columns=cols)
-            plot_df = pd.concat([train, val])
-            plotRMMMatrix.plotDfRmmMatrix(plot_df, channel)
-
-        datapoint_string = f"""
-Total MC events: {self.tot_mc_events} \n
-Total Data events: {self.tot_data_events} \n
-Total Signal events: {self.tot_signal_events} \n
+            cols = ['e_T_miss', 'm_T_jet_0', 'm_T_jet_1', 'm_T_ele_0', 'm_T_ele_1',
+                    'm_T_ele_2', 'm_T_muo_0', 'm_T_muo_1', 'm_T_muo_2', 'e_T_jet_0',
+                    'm_jet_0_jet_1', 'm_jet_0_ele_0', 'm_jet_0_ele_1', 'm_jet_0_ele_2', 
+                    'm_jet_0_muo_0', 'm_jet_0_muo_1', 'm_jet_0_muo_2', 'm_jet_1_ele_0',
+                    'm_jet_1_ele_1', 'm_jet_1_ele_2', 'm_jet_1_muo_0', 'm_jet_1_muo_1',
+                    'm_jet_1_muo_2', 'e_T_ele_0', 'm_ele_0_ele_1', 'm_ele_0_ele_2', 
+                    'm_ele_0_muo_0', 'm_ele_0_muo_1', 'm_ele_0_muo_2', 'm_ele_1_ele_2',
+                    'm_ele_1_muo_0', 'm_ele_1_muo_1', 'm_ele_1_muo_2', 'm_ele_2_muo_0', 
+                    'm_ele_2_muo_1', 'm_ele_2_muo_2','e_T_muo_0', 'm_muo_0_muo_1',
+                    'm_muo_0_muo_2',  'm_muo_1_muo_2',  'flcomp']
+            
+            scaler = scalers[SCALER]
             """
-        print(datapoint_string)
+            column_trans = ColumnTransformer(
+                    [('scaler_ae', scaler, cols)],
+                    remainder='passthrough'
+                )
+            """
+            column_trans = scaler
+            
+            strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+            with strategy.scope():
+                
+                self.X_b_train = column_trans.fit_transform(X_b_train)
+                self.X_b_val = column_trans.transform(X_b_val)
+                self.data = column_trans.transform(self.data)
+
+            if self.event_rmm:
+                for choice, idxss in idx_rmm:
+                    event = random.sample(list(idxss), 1)[0]
+                    # print(event, choice)
+                    plotRMMMatrix.plotDfRmmMatrixNoMean(self.X_b_train, choice, event)
+
+            ### Plot RMM for each channel
+
+            for channel, idx_train, idx_val in self.idxs:
+                cols = X_b_train.columns
+                train = self.X_b_train[idx_train]
+                val = self.X_b_val[idx_val]
+                train = pd.DataFrame(data=train, columns=cols)
+                val = pd.DataFrame(data=val, columns=cols)
+                plot_df = pd.concat([train, val])
+                plotRMMMatrix.plotDfRmmMatrix(plot_df, channel)
+
+            datapoint_string = f"""
+    Total MC events: {self.tot_mc_events} \n
+    Total Data events: {self.tot_data_events} \n
+    Total Signal events: {self.tot_signal_events} \n
+                """
+            print(datapoint_string)
+            
+            if self.save:
+                np.save(DATA_PATH/"X_train.npy", self.X_b_train)
+                np.save(DATA_PATH/"X_val.npy", self.X_b_val)
+                np.save(DATA_PATH/"Data.npy", self.data)
+                
+                np.save(DATA_PATH/"channel_names.npy", np.asarray(channels))
+                for row in self.idxs:
+                    name = row[0]
+                    np.save(DATA_PATH/f"{name}_train_idxs.npy", row[1])
+                    np.save(DATA_PATH/f"{name}_val_idxs.npy", row[2])
+                
+                # Using _b to separate these hdf5 files from the sample files
+                self.train_categories.to_hdf(DATA_PATH/"train_cat_b.h5","mini")
+                self.val_categories.to_hdf(DATA_PATH/"val_cat_b.h5","mini")
+
+                self.weights_train.to_hdf(DATA_PATH/"train_weight_b.h5","mini")
+                self.weights_val.to_hdf(DATA_PATH/"val_weight_b.h5","mini")
+
+                self.data_categories.to_hdf(DATA_PATH/"data_cat_b.h5","mini")
+                self.data_weights.to_hdf(DATA_PATH/"data_weight_b.h5","mini")
+                
+        else:
+            self.X_b_train = np.load(DATA_PATH/"X_train.npy")
+            self.X_b_val = np.load(DATA_PATH/"X_val.npy")
+            self.data = np.load(DATA_PATH/"Data.npy")
+            
+            self.idxs = []
+            channels = np.load(DATA_PATH/"channel_names.npy")
+            for name in channels:
+                
+                train = np.load(DATA_PATH/f"{name}_train_idxs.npy")
+                val = np.load(DATA_PATH/f"{name}_val_idxs.npy")
+                self.idxs.append((name, train, val))
+                    
+            #print(self.idxs)
+            
+        
+            
+            # Using _b to separate these hdf5 files from the sample files
+            self.train_categories = pd.read_hdf(DATA_PATH/"train_cat_b.h5")
+            self.val_categories = pd.read_hdf(DATA_PATH/"val_cat_b.h5")
+
+            self.weights_train = pd.read_hdf(DATA_PATH/"train_weight_b.h5")
+            self.weights_val = pd.read_hdf(DATA_PATH/"val_weight_b.h5")
+
+            self.data_categories = pd.read_hdf(DATA_PATH/"data_cat_b.h5")
+            self.data_weights = pd.read_hdf(DATA_PATH/"data_weight_b.h5")
+
+        
 
 
 class RunAE:
@@ -617,8 +675,14 @@ class RunAE:
 
         return AE_model
 
-    def trainModel(self, X_train, X_val, sample_weight):
-        """_summary_"""
+    def trainModel(self, X_train:np.ndarray, X_val:np.ndarray, sample_weight: dict):
+        """_summary_
+
+        Args:
+            X_train (_type_): _description_
+            X_val (_type_): _description_
+            sample_weight (_type_): _description_
+        """
 
         
         try:
@@ -647,7 +711,12 @@ class RunAE:
         print(f"{self.modelname} saved")
 
     def channelTrainings(self, small=False):
+        """_summary_
 
+        Args:
+            small (bool, optional): _description_. Defaults to False.
+        """
+        
         self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
         
 
@@ -713,7 +782,7 @@ class RunAE:
             
             
 
-    def hyperParamSearch(self, X_train, X_val, sample_weight, small=False):
+    def hyperParamSearch(self, X_train:np.ndarray, X_val:np.ndarray, sample_weight:dict, small=False):
         """_summary_"""
 
         device_lib.list_local_devices()
@@ -725,7 +794,7 @@ class RunAE:
                 self.gridautoencoder(X_train, X_val, sample_weight)
 
     def gridautoencoder(
-        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: np.ndarray
+        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict
     ) -> None:
         """_summary_
 
@@ -796,7 +865,7 @@ class RunAE:
         
             
     def gridautoencoder_small(
-        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: np.ndarray
+        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict
     ) -> None:
         """_summary_
 
@@ -1055,10 +1124,12 @@ class RunAE:
 
         return AE_model
 
-    def runInference(self, X_val, test_set, tuned_model=False):
+    def runInference(self, X_val:np.ndarray, test_set:np.ndarray, tuned_model=False):
         """_summary_
 
         Args:
+            X_val (np.ndarray): _description_
+            test_set (np.ndarray): _description_
             tuned_model (bool, optional): _description_. Defaults to False.
         """
         try:
@@ -1113,8 +1184,13 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self, channels, sig_name="nosig"):
-        """_summary_"""
+    def checkReconError(self, channels:list, sig_name="nosig"):
+        """_summary_
+
+        Args:
+            channels (list): _description_
+            sig_name (str, optional): _description_. Defaults to "nosig".
+        """
 
         histo_atlas = []
         weight_atlas_data = []
@@ -1207,3 +1283,6 @@ class RunAE:
         fig.tight_layout()
         plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
+
+        
+        

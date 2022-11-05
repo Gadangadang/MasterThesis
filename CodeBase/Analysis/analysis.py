@@ -19,7 +19,7 @@ def main():
 
     args = parser.parse_args()
 
-    sp = ScaleAndPrep(DATA_PATH, True)
+    sp = ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR)
     sp.MergeScaleAndSplit()
 
     rae = RunAE(sp, STORE_IMG_PATH)
