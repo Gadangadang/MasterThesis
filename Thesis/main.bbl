@@ -60,6 +60,13 @@ S.~Chekanov, \emph{Imaging particle collision data for event classification
   and Methods in Physics Research Section A: Accelerators, Spectrometers,
   Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
 
+\bibitem{DBLP:journals/corr/abs-2107-02278}
+R.~S. Geiger, D.~Cope, J.~Ip, M.~Lotosh, A.~Shah, J.~Weng et~al.,
+  \emph{"garbage in, garbage out" revisited: What do machine learning
+  application papers report about human-labeled training data?}, {\emph{CoRR}
+  {\bf abs/2107.02278} (2021) }, [\href{http://arxiv.org/abs/2107.02278}{{\tt
+  2107.02278}}].
+
 \bibitem{chollet2015keras}
 F.~Chollet et~al., \emph{Keras},  2015.
 

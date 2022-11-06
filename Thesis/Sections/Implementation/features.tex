@@ -50,7 +50,15 @@ where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference for particle $i_
 
 \subsection*{MonteCarlo and data comparison}\label{sec:mcdatacomp}
 
-Before we can start the analysis, we need to compare the MonteCarlo and data. This is done by comparing the distributions of the features in the MonteCarlo and data.
+Before we can start the analysis, we need to compare the MonteCarlo and data. This is done to ensure that the training samples we use are actually useful. As described by R. Stuart 
+Geiger et al. \cite{DBLP:journals/corr/abs-2107-02278}, the concept of "Garbage in, garbage out" is of key importance in computer science, and indeed important in high energy physics. 
+To ensure that the models we train actually learns physical processes, the training set must represent the physics "status quo". If the training samples do not match the physical reality,
+we regard it, in the context of high energy physics, as garbage in, which will in turn give garbage out. The Monte Carlo standard model simulations are indeed very good, but the are 
+numerical approximations, and can sometimes be off. Thus, every feature that well be used for training have to be checked before being used. This is done by comparing the distributions 
+of the features in the MonteCarlo and ATLAS data. Assuming that there are no issues with the data collection from ATLAS, we then assume that the data from ATLAS is the "ground truth", as it 
+is the only dataset we can analyze, and the only dataset we can compare to. The MonteCarlo is then compared to the data, and if the distributions are similar, we can assume that the 
+training samples are good enough. 
+
 
 \begin{figure}
     \centering
@@ -74,3 +82,6 @@ Before we can start the analysis, we need to compare the MonteCarlo and data. Th
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between Monte Carlo and ATLAS data, $e_T^{miss}$ and $flcomp$. 
 We see that both $e_T^{miss}$ and $flcomp$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely move forward with the analysis. 
 All features were checked, and can be found in appendix B.
+\par \par
+
+\subsection*{Tabular data}

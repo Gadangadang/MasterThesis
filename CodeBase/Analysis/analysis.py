@@ -24,11 +24,9 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
 
-    
-
     if args.tune:
         rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
-        
+
     if args.train:
         rae.trainModel(rae.X_train, rae.X_val, rae.sample_weight)
 

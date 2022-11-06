@@ -19,7 +19,7 @@ from os.path import isfile, join
 from objsize import get_deep_size
 
 from sklearn import preprocessing
-from sklearn.compose import ColumnTransformer 
+from sklearn.compose import ColumnTransformer
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -95,10 +95,7 @@ rmm_structure = {
     ],
 }
 
-scalers = {
-    "Standard": StandardScaler(),
-    "MinMax": MinMaxScaler()
-}
+scalers = {"Standard": StandardScaler(), "MinMax": MinMaxScaler()}
 
 
 class plotRMM:
@@ -240,7 +237,7 @@ class plotRMM:
 
 
 class ScaleAndPrep:
-    def __init__(self, path: Path, event_rmm=False, save = False, load = False) -> None:
+    def __init__(self, path: Path, event_rmm=False, save=False, load=False) -> None:
         """_summary_
 
         Args:
@@ -261,10 +258,18 @@ class ScaleAndPrep:
         Returns:
             Tuple[str, ...]: list of pathnames
         """
-        
-        files = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-4:] != ".npy" and f[-4:] != ".csv" and f[-5:] != "_b.h5" and f[-4:] != ".txt"]
-       
-        return files # type: ignore
+
+        files = [
+            f
+            for f in listdir(self.path)
+            if isfile(join(self.path, f))
+            and f[-4:] != ".npy"
+            and f[-4:] != ".csv"
+            and f[-5:] != "_b.h5"
+            and f[-4:] != ".txt"
+        ]
+
+        return files  # type: ignore
 
     def fetchDfs(self) -> None:  # exlude=["data18", "ttbar"]
         """
@@ -342,7 +347,7 @@ class ScaleAndPrep:
 
     def MergeScaleAndSplit(self):
         """_summary_"""
-        
+
         if not self.load:
             plotRMMMatrix = plotRMM(self.path, rmm_structure, 9)
 
@@ -434,11 +439,11 @@ class ScaleAndPrep:
             self.idxs = []
 
             for channel in channels:
-                
+
                 idx_val = np.where(X_b_val["Category"] == channel)[0]
                 idx_train = np.where(X_b_train["Category"] == channel)[0]
                 id = (channel, idx_train, idx_val)
-                
+
                 self.idxs.append(id)
 
             X_b_train.drop("Category", axis=1, inplace=True)
@@ -449,23 +454,52 @@ class ScaleAndPrep:
             X_b_val.drop("wgt_SG", axis=1, inplace=True)
             self.data.drop("wgt_SG", axis=1, inplace=True)
 
-            
+            # print(X_b_train.columns)
 
-            
-            #print(X_b_train.columns)
-            
-            
-            cols = ['e_T_miss', 'm_T_jet_0', 'm_T_jet_1', 'm_T_ele_0', 'm_T_ele_1',
-                    'm_T_ele_2', 'm_T_muo_0', 'm_T_muo_1', 'm_T_muo_2', 'e_T_jet_0',
-                    'm_jet_0_jet_1', 'm_jet_0_ele_0', 'm_jet_0_ele_1', 'm_jet_0_ele_2', 
-                    'm_jet_0_muo_0', 'm_jet_0_muo_1', 'm_jet_0_muo_2', 'm_jet_1_ele_0',
-                    'm_jet_1_ele_1', 'm_jet_1_ele_2', 'm_jet_1_muo_0', 'm_jet_1_muo_1',
-                    'm_jet_1_muo_2', 'e_T_ele_0', 'm_ele_0_ele_1', 'm_ele_0_ele_2', 
-                    'm_ele_0_muo_0', 'm_ele_0_muo_1', 'm_ele_0_muo_2', 'm_ele_1_ele_2',
-                    'm_ele_1_muo_0', 'm_ele_1_muo_1', 'm_ele_1_muo_2', 'm_ele_2_muo_0', 
-                    'm_ele_2_muo_1', 'm_ele_2_muo_2','e_T_muo_0', 'm_muo_0_muo_1',
-                    'm_muo_0_muo_2',  'm_muo_1_muo_2',  'flcomp']
-            
+            cols = [
+                "e_T_miss",
+                "m_T_jet_0",
+                "m_T_jet_1",
+                "m_T_ele_0",
+                "m_T_ele_1",
+                "m_T_ele_2",
+                "m_T_muo_0",
+                "m_T_muo_1",
+                "m_T_muo_2",
+                "e_T_jet_0",
+                "m_jet_0_jet_1",
+                "m_jet_0_ele_0",
+                "m_jet_0_ele_1",
+                "m_jet_0_ele_2",
+                "m_jet_0_muo_0",
+                "m_jet_0_muo_1",
+                "m_jet_0_muo_2",
+                "m_jet_1_ele_0",
+                "m_jet_1_ele_1",
+                "m_jet_1_ele_2",
+                "m_jet_1_muo_0",
+                "m_jet_1_muo_1",
+                "m_jet_1_muo_2",
+                "e_T_ele_0",
+                "m_ele_0_ele_1",
+                "m_ele_0_ele_2",
+                "m_ele_0_muo_0",
+                "m_ele_0_muo_1",
+                "m_ele_0_muo_2",
+                "m_ele_1_ele_2",
+                "m_ele_1_muo_0",
+                "m_ele_1_muo_1",
+                "m_ele_1_muo_2",
+                "m_ele_2_muo_0",
+                "m_ele_2_muo_1",
+                "m_ele_2_muo_2",
+                "e_T_muo_0",
+                "m_muo_0_muo_1",
+                "m_muo_0_muo_2",
+                "m_muo_1_muo_2",
+                "flcomp",
+            ]
+
             scaler = scalers[SCALER]
             """
             column_trans = ColumnTransformer(
@@ -474,10 +508,10 @@ class ScaleAndPrep:
                 )
             """
             column_trans = scaler
-            
+
             strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
             with strategy.scope():
-                
+
                 self.X_b_train = column_trans.fit_transform(X_b_train)
                 self.X_b_val = column_trans.transform(X_b_val)
                 self.data = column_trans.transform(self.data)
@@ -505,56 +539,52 @@ class ScaleAndPrep:
     Total Signal events: {self.tot_signal_events} \n
                 """
             print(datapoint_string)
-            
+
             if self.save:
-                np.save(DATA_PATH/"X_train.npy", self.X_b_train)
-                np.save(DATA_PATH/"X_val.npy", self.X_b_val)
-                np.save(DATA_PATH/"Data.npy", self.data)
-                
-                np.save(DATA_PATH/"channel_names.npy", np.asarray(channels))
+                np.save(DATA_PATH / "X_train.npy", self.X_b_train)
+                np.save(DATA_PATH / "X_val.npy", self.X_b_val)
+                np.save(DATA_PATH / "Data.npy", self.data)
+
+                np.save(DATA_PATH / "channel_names.npy", np.asarray(channels))
                 for row in self.idxs:
                     name = row[0]
-                    np.save(DATA_PATH/f"{name}_train_idxs.npy", row[1])
-                    np.save(DATA_PATH/f"{name}_val_idxs.npy", row[2])
-                
+                    np.save(DATA_PATH / f"{name}_train_idxs.npy", row[1])
+                    np.save(DATA_PATH / f"{name}_val_idxs.npy", row[2])
+
                 # Using _b to separate these hdf5 files from the sample files
-                self.train_categories.to_hdf(DATA_PATH/"train_cat_b.h5","mini")
-                self.val_categories.to_hdf(DATA_PATH/"val_cat_b.h5","mini")
+                self.train_categories.to_hdf(DATA_PATH / "train_cat_b.h5", "mini")
+                self.val_categories.to_hdf(DATA_PATH / "val_cat_b.h5", "mini")
 
-                self.weights_train.to_hdf(DATA_PATH/"train_weight_b.h5","mini")
-                self.weights_val.to_hdf(DATA_PATH/"val_weight_b.h5","mini")
+                self.weights_train.to_hdf(DATA_PATH / "train_weight_b.h5", "mini")
+                self.weights_val.to_hdf(DATA_PATH / "val_weight_b.h5", "mini")
 
-                self.data_categories.to_hdf(DATA_PATH/"data_cat_b.h5","mini")
-                self.data_weights.to_hdf(DATA_PATH/"data_weight_b.h5","mini")
-                
+                self.data_categories.to_hdf(DATA_PATH / "data_cat_b.h5", "mini")
+                self.data_weights.to_hdf(DATA_PATH / "data_weight_b.h5", "mini")
+
         else:
-            self.X_b_train = np.load(DATA_PATH/"X_train.npy")
-            self.X_b_val = np.load(DATA_PATH/"X_val.npy")
-            self.data = np.load(DATA_PATH/"Data.npy")
-            
+            self.X_b_train = np.load(DATA_PATH / "X_train.npy")
+            self.X_b_val = np.load(DATA_PATH / "X_val.npy")
+            self.data = np.load(DATA_PATH / "Data.npy")
+
             self.idxs = []
-            channels = np.load(DATA_PATH/"channel_names.npy")
+            channels = np.load(DATA_PATH / "channel_names.npy")
             for name in channels:
-                
-                train = np.load(DATA_PATH/f"{name}_train_idxs.npy")
-                val = np.load(DATA_PATH/f"{name}_val_idxs.npy")
+
+                train = np.load(DATA_PATH / f"{name}_train_idxs.npy")
+                val = np.load(DATA_PATH / f"{name}_val_idxs.npy")
                 self.idxs.append((name, train, val))
-                    
-            #print(self.idxs)
-            
-        
-            
+
+            # print(self.idxs)
+
             # Using _b to separate these hdf5 files from the sample files
-            self.train_categories = pd.read_hdf(DATA_PATH/"train_cat_b.h5")
-            self.val_categories = pd.read_hdf(DATA_PATH/"val_cat_b.h5")
+            self.train_categories = pd.read_hdf(DATA_PATH / "train_cat_b.h5")
+            self.val_categories = pd.read_hdf(DATA_PATH / "val_cat_b.h5")
 
-            self.weights_train = pd.read_hdf(DATA_PATH/"train_weight_b.h5")
-            self.weights_val = pd.read_hdf(DATA_PATH/"val_weight_b.h5")
+            self.weights_train = pd.read_hdf(DATA_PATH / "train_weight_b.h5")
+            self.weights_val = pd.read_hdf(DATA_PATH / "val_weight_b.h5")
 
-            self.data_categories = pd.read_hdf(DATA_PATH/"data_cat_b.h5")
-            self.data_weights = pd.read_hdf(DATA_PATH/"data_weight_b.h5")
-
-        
+            self.data_categories = pd.read_hdf(DATA_PATH / "data_cat_b.h5")
+            self.data_weights = pd.read_hdf(DATA_PATH / "data_weight_b.h5")
 
 
 class RunAE:
@@ -575,22 +605,19 @@ class RunAE:
         self.idxs = self.data_structure.idxs
         self.val_cats = self.data_structure.val_categories.to_numpy()
         self.err_val = self.data_structure.weights_val.to_numpy()
-        
+
         print(" ")
         print(f"{(self.X_train.nbytes + self.X_val.nbytes)/1000000000} Gbytes")
         print(" ")
-
 
         self.sample_weight = self.data_structure.weights_train
 
         self.channels = [channel for channel, _, __ in self.idxs]
 
         self.name = "test"
-        
-        
 
         self.b_size = BACTH_SIZE
-        
+
         self.epochs = EPOCHS
 
     def getModel(self):
@@ -600,8 +627,8 @@ class RunAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         # Input layer
-        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input") 
-        
+        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+
         # First hidden layer
         x = tf.keras.layers.Dense(
             units=70,
@@ -609,10 +636,10 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(inputs)
-        
+
         # Second hidden layer
         x_ = tf.keras.layers.Dense(units=45, activation="linear")(inputs)
-        
+
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
             units=20,
@@ -620,20 +647,20 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(x_)
-        
+
         val = 7
-        
+
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
             units=val, activation=tf.keras.layers.LeakyReLU(alpha=1)
         )(x1)
-        
+
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
-        # Latent space 
+        # Latent space
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
-        
+
         # Fifth hidden layer
         x = tf.keras.layers.Dense(
             units=22,
@@ -641,12 +668,12 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(latent_input)
-        
+
         # Sixth hidden layer
         x_ = tf.keras.layers.Dense(
             units=50, activation=tf.keras.layers.LeakyReLU(alpha=1)
         )(x)
-        
+
         # Seventh hidden layer
         x1 = tf.keras.layers.Dense(
             units=73,
@@ -654,16 +681,16 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(0.05),
             activity_regularizer=tf.keras.regularizers.L2(0.5),
         )(x_)
-        
+
         # Output layer
         output = tf.keras.layers.Dense(self.data_shape, activation="linear")(x1)
-        
+
         # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
 
         # Output definition
         outputs = decoder(encoder(inputs))
-        
+
         # Model definition
         AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
 
@@ -675,7 +702,7 @@ class RunAE:
 
         return AE_model
 
-    def trainModel(self, X_train:np.ndarray, X_val:np.ndarray, sample_weight: dict):
+    def trainModel(self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict):
         """_summary_
 
         Args:
@@ -684,16 +711,15 @@ class RunAE:
             sample_weight (_type_): _description_
         """
 
-        
         try:
             self.AE_model
         except:
             self.AE_model = self.getModel()
-        
+
         with tf.device("/GPU:0"):
 
             tf.config.optimizer.set_jit("autoclustering")
-            
+
             self.AE_model.fit(
                 X_train,
                 X_train,
@@ -704,7 +730,7 @@ class RunAE:
             )
 
             print("Fitting complete")
-        
+
         self.modelname = f"model_{self.name}"
         self.AE_model.save("tf_models/" + self.modelname + ".h5")
 
@@ -716,18 +742,17 @@ class RunAE:
         Args:
             small (bool, optional): _description_. Defaults to False.
         """
-        
+
         self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
-        
 
         for channel, idx_train, idx_val in self.idxs:
-            
+
             if channel not in ["ttbar"]:
                 continue
 
             channels = self.channels.copy()
             channels.remove(channel)
-            
+
             print(f"Channel: {channel}  started")
 
             new_index = np.delete(np.asarray(range(len(self.X_train))), idx_train)
@@ -763,26 +788,25 @@ class RunAE:
             self.sig_err = sig_err_v  # np.concatenate((sig_err_t, sig_err_v), axis=0)
 
             self.name = "no_" + channel
-            
-            
 
-            self.hyperParamSearch(X_train_reduced, X_val_reduced, sample_weight, small=small)
+            self.hyperParamSearch(
+                X_train_reduced, X_val_reduced, sample_weight, small=small
+            )
 
             # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
             print(" ")
             print("Hyperparam search done")
             print(" ")
-            
-            
+
             self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-            
+
             self.runInference(X_val_reduced, signal, True)
 
             self.checkReconError(channels, sig_name=channel)
-            
-            
 
-    def hyperParamSearch(self, X_train:np.ndarray, X_val:np.ndarray, sample_weight:dict, small=False):
+    def hyperParamSearch(
+        self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict, small=False
+    ):
         """_summary_"""
 
         device_lib.list_local_devices()
@@ -840,15 +864,13 @@ class RunAE:
         with learning rate = {best_hps.get('learning_rate')} and alpha = {best_hps.get('alpha')}
         """
         )
-        
-        
 
         state = True
         while state == True:
             # answ = input("Do you want to save model? (y/n) ")
             # if answ == "y":
             # name = input("name: model_ ")
-            
+
             self.AE_model = tuner.hypermodel.build(best_hps)
             self.modelname = f"model_{self.name}"
             self.AE_model.save("tf_models/" + self.modelname + ".h5")
@@ -861,9 +883,7 @@ class RunAE:
                 state = False
                 print("Model not saved")
             """
-            
-        
-            
+
     def gridautoencoder_small(
         self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict
     ) -> None:
@@ -893,7 +913,7 @@ class RunAE:
             sample_weight=sample_weight,
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
-        
+
         state = True
         while state == True:
             # answ = input("Do you want to save model? (y/n) ")
@@ -926,18 +946,18 @@ class RunAE:
         act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
 
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
-        
-        # Activation functions 
+
+        # Activation functions
         activations = {
             "relu": tf.nn.relu,
             "tanh": tf.nn.tanh,
             "leakyrelu": "leaky_relu",
             "linear": tf.keras.activations.linear,
         }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
-        
+
         # Input layer
         inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
-        
+
         # First hidden layer
         x = tf.keras.layers.Dense(
             units=hp.Int(
@@ -949,7 +969,7 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
-        
+
         # Second hidden layer
         x_ = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons2", min_value=30, max_value=59, step=1),
@@ -957,7 +977,7 @@ class RunAE:
                 hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x)
-        
+
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons3", min_value=10, max_value=29, step=1),
@@ -967,10 +987,9 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(x_)
-        
-        
+
         val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
-        
+
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
             units=val,
@@ -978,13 +997,13 @@ class RunAE:
                 hp.Choice("4_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
-        
+
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
-        # Latent space 
+        # Latent space
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
-        
+
         # Fifth hidden layer
         x = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons5", min_value=10, max_value=29, step=1),
@@ -1014,7 +1033,7 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(x_)
-        
+
         # Output layer
         output = tf.keras.layers.Dense(
             self.data_shape,
@@ -1022,13 +1041,13 @@ class RunAE:
                 hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
-        
+
         # Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
 
         # Output definition
         outputs = decoder(encoder(inputs))
-        
+
         # Model definition
         AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
 
@@ -1036,11 +1055,11 @@ class RunAE:
             "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
         )
         optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
-        
+
         AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
 
         return AE_model
-    
+
     def AE_model_builder_small(self, hp: kt.engine.hyperparameters.HyperParameters):
 
         """_summary_
@@ -1055,20 +1074,18 @@ class RunAE:
         act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
 
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
-        
-        # Activation functions 
+
+        # Activation functions
         activations = {
             "relu": tf.nn.relu,
             "tanh": tf.nn.tanh,
             "leakyrelu": "leaky_relu",
             "linear": tf.keras.activations.linear,
         }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
-        
+
         # Input layer
         inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
-        
-        
-        
+
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
             units=hp.Int("num_of_neurons1", min_value=10, max_value=29, step=1),
@@ -1078,10 +1095,9 @@ class RunAE:
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
-        
-        
+
         val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
-        
+
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
             units=val,
@@ -1089,15 +1105,13 @@ class RunAE:
                 hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(x1)
-        
+
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
-        # Latent space 
+        # Latent space
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
-        
-        
-        
+
         # Output layer
         output = tf.keras.layers.Dense(
             self.data_shape,
@@ -1105,13 +1119,13 @@ class RunAE:
                 hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
         )(latent_input)
-        
+
         # Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
 
         # Output definition
         outputs = decoder(encoder(inputs))
-        
+
         # Model definition
         AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
 
@@ -1119,12 +1133,12 @@ class RunAE:
             "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
         )
         optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
-        
+
         AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
 
         return AE_model
 
-    def runInference(self, X_val:np.ndarray, test_set:np.ndarray, tuned_model=False):
+    def runInference(self, X_val: np.ndarray, test_set: np.ndarray, tuned_model=False):
         """_summary_
 
         Args:
@@ -1150,8 +1164,6 @@ class RunAE:
             else:
                 print("reg trained_model")
                 self.AE_model = self.trainModel()
-
-        
 
         with tf.device("/GPU:0"):
             self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
@@ -1184,7 +1196,7 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self, channels:list, sig_name="nosig"):
+    def checkReconError(self, channels: list, sig_name="nosig"):
         """_summary_
 
         Args:
@@ -1209,7 +1221,7 @@ class RunAE:
             sig_err_w = self.sig_err
         except:
             print("No signal")
-            
+
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
 
@@ -1227,7 +1239,7 @@ class RunAE:
             n_bins = bins
         except:
             n_bins = 25
-            
+
         colors = [
             "mediumspringgreen",
             "darkgreen",
@@ -1254,9 +1266,8 @@ class RunAE:
                 "cyan",
                 "mediumorchid",
                 "gold",
-                "darkgoldenrod"
-            ]  # 
-            
+                "darkgoldenrod",
+            ]  #
 
         ax.hist(
             np.asarray(histo_atlas, dtype=object)[sort_w],
@@ -1283,6 +1294,3 @@ class RunAE:
         fig.tight_layout()
         plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
-
-        
-        
