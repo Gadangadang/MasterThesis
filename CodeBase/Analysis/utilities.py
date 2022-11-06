@@ -1,7 +1,4 @@
-import csv
-import ast
 import random
-import matplotlib
 import numpy as np
 import pandas as pd
 from config import *
@@ -16,10 +13,6 @@ from typing import Tuple
 import plotly.express as px
 import matplotlib.pyplot as plt
 from os.path import isfile, join
-from objsize import get_deep_size
-
-from sklearn import preprocessing
-from sklearn.compose import ColumnTransformer
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
