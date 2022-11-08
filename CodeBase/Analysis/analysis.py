@@ -16,6 +16,7 @@ def main():
         action="store_true",
         help="Train and inference excluding every channel one at the time",
     )
+    parser.add_argument("-L", "--dummy", action="store_true", help="Run only on dummy data")
 
     args = parser.parse_args()
 
@@ -24,6 +25,12 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
 
+    if args.exclude:
+        rae.channelTrainings(small=False)
+        
+    if args.dummy:
+        rae.dummySample()
+        
     if args.tune:
         rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
 
@@ -34,8 +41,7 @@ def main():
         rae.runInference(rae.X_val, [], True)
         rae.checkReconError(rae.channels, sig_name="no_sig_10epoch")
 
-    if args.exclude:
-        rae.channelTrainings(small=False)
+    
 
 
 if __name__ == "__main__":
