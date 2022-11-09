@@ -614,16 +614,7 @@ class RunAE:
 
         self.epochs = EPOCHS
         
-    def dummySample(self):
-        
-        
-        #* Fetch events from the data
-        nr_data_events = len(self.data) 
-        indices = range(nr_data_events)
-        one_percent_no_events = int(nr_data_events/100)
-        
-        new_indices = np.random.choice(indices, size=one_percent_no_events, replace=False)        
-        
+    def onePercentData(self):
         
         
         #* Fetch events from the MC set
@@ -659,11 +650,7 @@ class RunAE:
                 if np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)) < 1:
                     flag = False
             
-            print(np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)), np.sum(weights)/100, np.sum(one_percent_weights))
             self.tot_set_train_idxs_list.append(new_indices_train)
-            
-            print("Train indices found")
-            print(" ")
                         
             nr_channel_events_val= len(idx_val)
             one_percent_no_events_v = int(nr_channel_events_val/100)
@@ -690,14 +677,42 @@ class RunAE:
                 if np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)) < 1:
                     flag2 = False
             
-            print(np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)), np.sum(weights_val)/100, np.sum(one_percent_weights))
             self.tot_set_val_idxs_list.append(new_indices_val)
             
-            print("Val indices found")
-            print(" ")
+        print(f"Number of selected events: {one_percent_no_events_t + one_percent_no_events_v}")    
             
         self.tot_set_train_idxs = np.concatenate(self.tot_set_train_idxs_list, axis=0)
         self.tot_set_val_idxs = np.concatenate(self.tot_set_val_idxs_list, axis=0)
+        
+        self.tot_weights_per_channel = []
+        self.tot_data = []
+        
+        self.act_weights = []
+        start = 0
+        
+        for id, idx_train  in enumerate(self.tot_set_train_idxs_list):
+            idx_val = self.tot_set_val_idxs_list[id]
+            
+            x_tot = np.concatenate((self.X_train[idx_train], self.X_val[idx_val]), axis = 0)
+            self.tot_data.append(x_tot)
+            
+            act = np.concatenate((self.data_structure.weights_train.to_numpy().copy()[idx_train], 
+             self.data_structure.weights_val.to_numpy().copy()[idx_val]), axis=0)
+            
+            self.act_weights.append(act)
+            idxs = np.concatenate((idx_train, idx_val), axis=0)
+            
+            end = start + len(idxs)
+            
+            print(len(x_tot), len(idxs))
+            
+            self.tot_weights_per_channel.append(np.asarray(range(start, end)))
+            
+            start = end
+            
+        
+        X_tot = np.concatenate(self.tot_data, axis=0)
+        self.act_weights = np.concatenate(self.act_weights, axis=0)
         
         X_train = self.X_train[self.tot_set_train_idxs]
         X_val = self.X_val[self.tot_set_val_idxs]
@@ -714,37 +729,41 @@ class RunAE:
         
         
         
-        X_tot = np.concatenate((X_train, X_val), axis = 0)
-        self.err_val = np.concatenate((sample_weight_n, self.err_val), axis = 0)
+        
+        
+        self.err_val = self.act_weights
+        
+        
+        #* Fetch events from the data
+        nr_data_events = len(self.data) 
+        indices = range(nr_data_events)
+        one_percent_no_events = int(nr_data_events/100)
+        new_indices = np.random.choice(indices, size=one_percent_no_events, replace=False)        
         
         self.dummysample_dataset = self.data[new_indices]
         self.sig_err = np.ones(len(self.dummysample_dataset))
         
-        print("****************")
-        print(np.sum(self.sig_err), np.sum(self.err_val))
-        print("****************")
+        #* Check weight comparison
+        print(" ")
+        print("*****************************************")
+        print(f"Data weights: {np.sum(self.sig_err):.1f} | MC weights: {np.sum(self.err_val):.1f}")
+        print("*****************************************")
         print(" ")
         
-        print("****************")
-        print(np.sum(np.ones(len(self.data))), np.sum(self.data_structure.weights_train.to_numpy().copy())+ np.sum(self.data_structure.weights_val.to_numpy().copy()))
-        print("****************")
-        print(" ")
         
+        #* Tuning, training, and inference
+
         self.hyperParamSearch(
             X_train, X_val, sample_weight, small=False
         )
-
-        # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-        print(" ")
-        print("Hyperparam search done")
-        print(" ")
+        
 
         self.trainModel(X_train, X_val, sample_weight)
 
         
         self.runInference(X_tot, self.dummysample_dataset, True)
 
-        self.checkReconError(self.channels, sig_name="Dummy sample")
+        self.checkReconError(self.channels, sig_name="1%_ATLAS_Data")
         
         
 
@@ -1041,6 +1060,8 @@ class RunAE:
             sample_weight=sample_weight,
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
+        
+        print(tuner.search_space_summary())
 
         state = True
         while state == True:
@@ -1336,16 +1357,16 @@ class RunAE:
         weight_atlas_data = []
         try:
     
-            
+            for id, channel in enumerate(channels):
+                
+                idxs = self.tot_weights_per_channel[id]
+                err = self.recon_err_back[idxs]
 
-            err = self.recon_err_back
-            print("histo ")
-            histo_atlas.append(err)
+                histo_atlas.append(err)
 
-            err_w = self.err_val
-            print("weights ")
+                err_w = self.err_val[idxs]
 
-            weight_atlas_data.append(err_w)
+                weight_atlas_data.append(err_w)
         except:
             for channel in channels:
 
@@ -1394,7 +1415,9 @@ class RunAE:
             "cyan",
             "mediumorchid",
             "gold",
-        ]  # "darkgoldenrod"
+            "darkgoldenrod"
+        ]
+        
         
         colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
         
@@ -1424,9 +1447,9 @@ class RunAE:
             weights=we,
         )
 
-        ax.legend(prop={"size": 20})
+        ax.legend(prop={"size": 15})
         ax.set_title(
-            "Reconstruction error histogram with background and ATLAS data", fontsize=25
+            "Reconstruction error histogram with MC and ATLAS data", fontsize=25
         )
         ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
