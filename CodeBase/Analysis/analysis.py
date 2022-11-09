@@ -29,7 +29,7 @@ def main():
         rae.channelTrainings(small=False)
         
     if args.OneP:
-        rae.donePercentData()
+        rae.onePercentData()
         
     if args.tune:
         rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
