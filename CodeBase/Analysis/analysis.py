@@ -16,7 +16,7 @@ def main():
         action="store_true",
         help="Train and inference excluding every channel one at the time",
     )
-    parser.add_argument("-L", "--dummy", action="store_true", help="Run only on dummy data")
+    parser.add_argument("-L", "--OneP", action="store_true", help="Run only on dummy data")
 
     args = parser.parse_args()
 
@@ -28,8 +28,8 @@ def main():
     if args.exclude:
         rae.channelTrainings(small=False)
         
-    if args.dummy:
-        rae.dummySample()
+    if args.OneP:
+        rae.donePercentData()
         
     if args.tune:
         rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
