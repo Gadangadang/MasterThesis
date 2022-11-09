@@ -21,72 +21,6 @@ seed = tf.random.set_seed(1)
 
 tf.keras.utils.get_custom_objects()["leaky_relu"] = tf.keras.layers.LeakyReLU()
 
-rmm_structure = {
-    1: [
-        "jet_0",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
-        0,
-    ],
-    2: [
-        "jet_1",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
-        1,
-    ],
-    3: [
-        "ele_0",
-        "lepPt[ele_SG]",
-        "lepEta[ele_SG]",
-        "lepPhi[ele_SG]",
-        "lepM[ele_SG]",
-        0,
-    ],
-    4: [
-        "ele_1",
-        "lepPt[ele_SG]",
-        "lepEta[ele_SG]",
-        "lepPhi[ele_SG]",
-        "lepM[ele_SG]",
-        1,
-    ],
-    5: [
-        "ele_2",
-        "lepPt[ele_SG]",
-        "lepEta[ele_SG]",
-        "lepPhi[ele_SG]",
-        "lepM[ele_SG]",
-        2,
-    ],
-    6: [
-        "muo_0",
-        "lepPt[muo_SG]",
-        "lepEta[muo_SG]",
-        "lepPhi[muo_SG]",
-        "lepM[muo_SG]",
-        0,
-    ],
-    7: [
-        "muo_1",
-        "lepPt[muo_SG]",
-        "lepEta[muo_SG]",
-        "lepPhi[muo_SG]",
-        "lepM[muo_SG]",
-        1,
-    ],
-    8: [
-        "muo_2",
-        "lepPt[muo_SG]",
-        "lepEta[muo_SG]",
-        "lepPhi[muo_SG]",
-        "lepM[muo_SG]",
-        2,
-    ],
-}
 
 scalers = {"Standard": StandardScaler(), "MinMax": MinMaxScaler()}
 
@@ -581,7 +515,7 @@ class ScaleAndPrep:
 
 
 class RunAE:
-    def __init__(self, data_structure, path: str):
+    def __init__(self, data_structure:object, path: str):
         """
         Class to run training, inference and plotting
 
@@ -613,159 +547,6 @@ class RunAE:
         self.b_size = BACTH_SIZE
 
         self.epochs = EPOCHS
-        
-    def onePercentData(self):
-        
-        
-        #* Fetch events from the MC set
-        
-        self.tot_set_train_idxs_list = []
-        self.tot_set_val_idxs_list = []
-        
-        for channel, idx_train, idx_val in self.idxs:
-            print(f"Channel: {channel}")
-            
-            nr_channel_events_train = len(idx_train)
-            one_percent_no_events_t = int(nr_channel_events_train/100)
-            new_indices_train = np.random.choice(idx_train, size=one_percent_no_events_t, replace=False)  
-            
-            weights = self.err_train[idx_val].copy()
-            
-            one_percent_weights = self.err_train[new_indices_train].copy()
-            flag = True
-            while flag:
-                nr_channel_events_train = len(idx_train)
-                one_percent_no_events_t = one_percent_no_events_t + 15
-                print(one_percent_no_events_t)
-                new_indices_train = np.random.choice(idx_train, size=one_percent_no_events_t, replace=False)  
-                
-                weights = self.err_train[idx_train].copy()
-                
-                one_percent_weights = self.err_train[new_indices_train].copy()
-                
-                
-                
-                if np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)) > 100:
-                    one_percent_no_events_t = int(nr_channel_events_train/100)
-                if np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)) < 1:
-                    flag = False
-            
-            self.tot_set_train_idxs_list.append(new_indices_train)
-                        
-            nr_channel_events_val= len(idx_val)
-            one_percent_no_events_v = int(nr_channel_events_val/100)
-            weights_val = self.err_val[idx_val].copy()
-            
-            new_indices_val = np.random.choice(idx_val, size=one_percent_no_events_v, replace=False) 
-            
-            one_percent_weights = self.err_train[new_indices_val].copy()
-            
-            flag2 = True
-            while flag2:
-                nr_channel_events_val = len(idx_val)
-                one_percent_no_events_v = one_percent_no_events_v + 1
-                new_indices_val = np.random.choice(idx_val, size=one_percent_no_events_v, replace=False)  
-                
-                weights_val = self.err_val[idx_val].copy()
-                
-                one_percent_weights = self.err_val[new_indices_val].copy()
-                
-                
-                if np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)) > 50:
-                    one_percent_no_events_v = int(nr_channel_events_val/100)
-                    
-                if np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)) < 1:
-                    flag2 = False
-            
-            self.tot_set_val_idxs_list.append(new_indices_val)
-            
-        print(f"Number of selected events: {one_percent_no_events_t + one_percent_no_events_v}")    
-            
-        self.tot_set_train_idxs = np.concatenate(self.tot_set_train_idxs_list, axis=0)
-        self.tot_set_val_idxs = np.concatenate(self.tot_set_val_idxs_list, axis=0)
-        
-        self.tot_weights_per_channel = []
-        self.tot_data = []
-        
-        self.act_weights = []
-        start = 0
-        
-        for id, idx_train  in enumerate(self.tot_set_train_idxs_list):
-            idx_val = self.tot_set_val_idxs_list[id]
-            
-            x_tot = np.concatenate((self.X_train[idx_train], self.X_val[idx_val]), axis = 0)
-            self.tot_data.append(x_tot)
-            
-            act = np.concatenate((self.data_structure.weights_train.to_numpy().copy()[idx_train], 
-             self.data_structure.weights_val.to_numpy().copy()[idx_val]), axis=0)
-            
-            self.act_weights.append(act)
-            idxs = np.concatenate((idx_train, idx_val), axis=0)
-            
-            end = start + len(idxs)
-            
-            print(len(x_tot), len(idxs))
-            
-            self.tot_weights_per_channel.append(np.asarray(range(start, end)))
-            
-            start = end
-            
-        
-        X_tot = np.concatenate(self.tot_data, axis=0)
-        self.act_weights = np.concatenate(self.act_weights, axis=0)
-        
-        X_train = self.X_train[self.tot_set_train_idxs]
-        X_val = self.X_val[self.tot_set_val_idxs]
-        
-        sample_weight_n = self.data_structure.weights_train.to_numpy().copy()[
-            self.tot_set_train_idxs
-        ]
-        
-        self.err_val = self.data_structure.weights_val.to_numpy().copy()[
-            self.tot_set_val_idxs
-        ]
-        
-        sample_weight = pd.DataFrame(sample_weight_n)
-        
-        
-        
-        
-        
-        self.err_val = self.act_weights
-        
-        
-        #* Fetch events from the data
-        nr_data_events = len(self.data) 
-        indices = range(nr_data_events)
-        one_percent_no_events = int(nr_data_events/100)
-        new_indices = np.random.choice(indices, size=one_percent_no_events, replace=False)        
-        
-        self.dummysample_dataset = self.data[new_indices]
-        self.sig_err = np.ones(len(self.dummysample_dataset))
-        
-        #* Check weight comparison
-        print(" ")
-        print("*****************************************")
-        print(f"Data weights: {np.sum(self.sig_err):.1f} | MC weights: {np.sum(self.err_val):.1f}")
-        print("*****************************************")
-        print(" ")
-        
-        
-        #* Tuning, training, and inference
-
-        self.hyperParamSearch(
-            X_train, X_val, sample_weight, small=False
-        )
-        
-
-        self.trainModel(X_train, X_val, sample_weight)
-
-        
-        self.runInference(X_tot, self.dummysample_dataset, True)
-
-        self.checkReconError(self.channels, sig_name="1%_ATLAS_Data")
-        
-        
 
     def getModel(self):
         """_summary_
@@ -883,75 +664,188 @@ class RunAE:
 
         print(f"{self.modelname} saved")
 
-    def channelTrainings(self, small=False):
+
+      
+
+    def runInference(self, X_val: np.ndarray, test_set: np.ndarray, tuned_model=False):
         """_summary_
 
         Args:
-            small (bool, optional): _description_. Defaults to False.
+            X_val (np.ndarray): _description_
+            test_set (np.ndarray): _description_
+            tuned_model (bool, optional): _description_. Defaults to False.
+        """
+        try:
+            self.AE_model
+        except:
+            if tuned_model:
+                try:
+                    self.modelname
+                except:
+                    self.modelname = input("Modelname: ")
+                    ending = self.modelname.find(".h5")
+                    if ending > -1:
+                        self.modelname = self.modelname[:ending]
+
+                self.AE_model = tf.keras.models.load_model(
+                    "tf_models/" + self.modelname + ".h5"
+                )
+            else:
+                print("reg trained_model")
+                self.AE_model = self.trainModel()
+
+        with tf.device("/GPU:0"):
+            self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
+            self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
+            print("Background done")
+
+            if len(test_set) > 0:
+                self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
+                self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
+                print("Signal done")
+
+            self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
+            self.recon_data = self.reconstructionError(self.pred_data, self.data)
+            print("ATLAS data done")
+
+    def reconstructionError(self, pred: np.ndarray, real: np.ndarray) -> np.ndarray:
+        """_summary_
+
+        Args:
+            pred (np.ndarray): _description_
+            real (np.ndarray): _description_
+
+        Returns:
+            np.ndarray: _description_
         """
 
-        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
+        diff = pred - real
+        err = np.power(diff, 2)
+        err = np.sum(err, 1)
+        err = np.log10(err)
+        return err
 
-        for channel, idx_train, idx_val in self.idxs:
+    def checkReconError(self, channels: list, sig_name="nosig"):
+        """_summary_
 
-            if channel not in ["ttbar"]:
-                continue
+        Args:
+            channels (list): _description_
+            sig_name (str, optional): _description_. Defaults to "nosig".
+        """
 
-            channels = self.channels.copy()
-            channels.remove(channel)
+        histo_atlas = []
+        weight_atlas_data = []
+        try:
+    
+            for id, channel in enumerate(channels):
+                
+                idxs = self.tot_weights_per_channel[id]
+                err = self.recon_err_back[idxs]
 
-            print(f"Channel: {channel}  started")
+                histo_atlas.append(err)
 
-            new_index = np.delete(np.asarray(range(len(self.X_train))), idx_train)
-            new_index_val = np.delete(np.asarray(range(len(self.X_val))), idx_val)
+                err_w = self.err_val[idxs]
 
-            self.val_cats = self.data_structure.val_categories.to_numpy().copy()[
-                new_index_val
-            ]
+                weight_atlas_data.append(err_w)
+        except:
+            for channel in channels:
 
-            self.err_val = self.data_structure.weights_val.copy()[new_index_val]
+                err = self.recon_err_back[np.where(self.val_cats == channel)[0]]
 
-            X_train_reduced = self.X_train.copy()[new_index]
-            X_val_reduced = self.X_val.copy()[new_index_val]
+                histo_atlas.append(err)
 
-            sample_weight = self.data_structure.weights_train.to_numpy().copy()[
-                new_index
-            ]
-            sample_weight = pd.DataFrame(sample_weight)
+                err_w = self.err_val[np.where(self.val_cats == channel)[0]]
 
-            channel_train_set = self.X_train.copy()[idx_train]
-            channel_val_set = self.X_val.copy()[idx_val]
+                weight_atlas_data.append(err_w)
+            
+            
+        try:
+            sig_err = self.recon_sig
+            sig_err_w = self.sig_err
+        except:
+            print("No signal")
 
-            signal = channel_val_set  # np.concatenate((channel_train_set, channel_val_set), axis=0)
+        sum_w = [np.sum(weight) for weight in weight_atlas_data]
+        sort_w = np.argsort(sum_w, kind="mergesort")
 
-            sig_err_t = self.data_structure.weights_train.to_numpy()[
-                np.where(self.data_structure.train_categories == channel)[0]
-            ]
+        sns.set_style("darkgrid")
+        plt.rcParams["figure.figsize"] = (12, 9)
 
-            sig_err_v = self.data_structure.weights_val[
-                np.where(self.data_structure.val_categories == channel)[0]
-            ]
+        fig, ax = plt.subplots()
 
-            self.sig_err = sig_err_v  # np.concatenate((sig_err_t, sig_err_v), axis=0)
+        try:
+            N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
+            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
 
-            self.name = "no_" + channel
+            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
 
-            self.hyperParamSearch(
-                X_train_reduced, X_val_reduced, sample_weight, small=small
-            )
+            n_bins = bins
+        except:
+            n_bins = 25
 
-            # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-            print(" ")
-            print("Hyperparam search done")
-            print(" ")
+        colors = [
+            "mediumspringgreen",
+            "darkgreen",
+            "lime",
+            "magenta",
+            "blue",
+            "red",
+            "orange",
+            "brown",
+            "cyan",
+            "mediumorchid",
+            "gold",
+            "darkgoldenrod"
+        ]
+        
+        
+        colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
+        
+        if len(histo_atlas) < 2:
+            channels = ["Monte Carlo"]
+            
+        print(colors, len(histo_atlas), channels)
+        if len(histo_atlas) != 1:
+            data_histo = np.asarray(histo_atlas, dtype=object)[sort_w]
+            we = np.asarray(weight_atlas_data, dtype=object)[sort_w]
+            colors = np.asarray(colors, dtype=object)[sort_w]
+            labels = np.asarray(channels, dtype=object)[sort_w]
+        else:
+            data_histo = histo_atlas
+            we = weight_atlas_data
+            labels = channels
+        
+        ax.hist(
+            data_histo,
+            n_bins,
+            density=False,
+            stacked=True,
+            alpha=0.5,
+            histtype="bar",
+            color=colors,
+            label=labels,
+            weights=we,
+        )
 
-            self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+        ax.legend(prop={"size": 15})
+        ax.set_title(
+            "Reconstruction error histogram with MC and ATLAS data", fontsize=25
+        )
+        ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
+        ax.set_ylabel("#Events", fontsize=25)
+        # ax.set_xlim([0, 3.5])
+        ax.set_ylim([0.1, 5e6])  # type: ignore
+        ax.set_yscale("log")
+        ax.tick_params(axis="both", labelsize=25)
+        fig.tight_layout()
+        plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.close()
 
-            self.runInference(X_val_reduced, signal, True)
-
-            self.checkReconError(channels, sig_name=channel)
-
-    def hyperParamSearch(
+class HyperParameterTuning(RunAE):
+    def __init__(self, data_structure: object, path: str):
+        super().__init__(data_structure, path)
+        
+    def runHpSearch(
         self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict, small=False
     ):
         """_summary_"""
@@ -1210,12 +1104,9 @@ class RunAE:
         return AE_model
 
     def AE_model_builder_small(self, hp: kt.engine.hyperparameters.HyperParameters):
-
         """_summary_
-
         Args:
             hp (kt.engine.hyperparameters.HyperParameters): _description_
-
         Returns:
             _type_: _description_
         """
@@ -1287,176 +1178,232 @@ class RunAE:
 
         return AE_model
 
-    def runInference(self, X_val: np.ndarray, test_set: np.ndarray, tuned_model=False):
+
+class ChannelTraining(RunAE):
+    def __init__(self,data_structure:object, path:str):
+        super().__init__(data_structure, path)
+        
+    def run(self, small=False):
         """_summary_
 
         Args:
-            X_val (np.ndarray): _description_
-            test_set (np.ndarray): _description_
-            tuned_model (bool, optional): _description_. Defaults to False.
-        """
-        try:
-            self.AE_model
-        except:
-            if tuned_model:
-                try:
-                    self.modelname
-                except:
-                    self.modelname = input("Modelname: ")
-                    ending = self.modelname.find(".h5")
-                    if ending > -1:
-                        self.modelname = self.modelname[:ending]
-
-                self.AE_model = tf.keras.models.load_model(
-                    "tf_models/" + self.modelname + ".h5"
-                )
-            else:
-                print("reg trained_model")
-                self.AE_model = self.trainModel()
-
-        with tf.device("/GPU:0"):
-            self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
-            self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
-            print("Background done")
-
-            if len(test_set) > 0:
-                self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
-                self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
-                print("Signal done")
-
-            self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
-            self.recon_data = self.reconstructionError(self.pred_data, self.data)
-            print("ATLAS data done")
-
-    def reconstructionError(self, pred: np.ndarray, real: np.ndarray) -> np.ndarray:
-        """_summary_
-
-        Args:
-            pred (np.ndarray): _description_
-            real (np.ndarray): _description_
-
-        Returns:
-            np.ndarray: _description_
+            small (bool, optional): _description_. Defaults to False.
         """
 
-        diff = pred - real
-        err = np.power(diff, 2)
-        err = np.sum(err, 1)
-        err = np.log10(err)
-        return err
+        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
 
-    def checkReconError(self, channels: list, sig_name="nosig"):
-        """_summary_
+        for channel, idx_train, idx_val in self.idxs:
 
-        Args:
-            channels (list): _description_
-            sig_name (str, optional): _description_. Defaults to "nosig".
-        """
+            channels = self.channels.copy()
+            channels.remove(channel)
 
-        histo_atlas = []
-        weight_atlas_data = []
-        try:
+            print(f"Channel: {channel}  started")
+
+            new_index = np.delete(np.asarray(range(len(self.X_train))), idx_train)
+            new_index_val = np.delete(np.asarray(range(len(self.X_val))), idx_val)
+
+            self.val_cats = self.data_structure.val_categories.to_numpy().copy()[
+                new_index_val
+            ]
+
+            self.err_val = self.data_structure.weights_val.copy()[new_index_val]
+
+            X_train_reduced = self.X_train.copy()[new_index]
+            X_val_reduced = self.X_val.copy()[new_index_val]
+
+            sample_weight = self.data_structure.weights_train.to_numpy().copy()[
+                new_index
+            ]
+            sample_weight = pd.DataFrame(sample_weight)
+
+            channel_train_set = self.X_train.copy()[idx_train]
+            channel_val_set = self.X_val.copy()[idx_val]
+
+            signal = channel_val_set  # np.concatenate((channel_train_set, channel_val_set), axis=0)
+
+            sig_err_t = self.data_structure.weights_train.to_numpy()[
+                np.where(self.data_structure.train_categories == channel)[0]
+            ]
+
+            sig_err_v = self.data_structure.weights_val[
+                np.where(self.data_structure.val_categories == channel)[0]
+            ]
+
+            self.sig_err = sig_err_v  # np.concatenate((sig_err_t, sig_err_v), axis=0)
+
+            self.name = "no_" + channel
+
+            self.hyperParamSearch(
+                X_train_reduced, X_val_reduced, sample_weight, small=small
+            )
+
+            # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+            print(" ")
+            print("Hyperparam search done")
+            print(" ")
+
+            self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+
+            self.runInference(X_val_reduced, signal, True)
+
+            self.checkReconError(channels, sig_name=channel)
+
+
+class OnePercentData(RunAE):
+    def __init__(self, data_structure:object, path: str):
+        super().__init__(data_structure, path)
     
-            for id, channel in enumerate(channels):
+    def run(self):
+        
+        
+        #* Fetch events from the MC set
+        
+        self.tot_set_train_idxs_list = []
+        self.tot_set_val_idxs_list = []
+        
+        for channel, idx_train, idx_val in self.idxs:
+            print(f"Channel: {channel}")
+            
+            nr_channel_events_train = len(idx_train)
+            one_percent_no_events_t = int(nr_channel_events_train/100)
+            new_indices_train = np.random.choice(idx_train, size=one_percent_no_events_t, replace=False)  
+            
+            weights = self.err_train[idx_val].copy()
+            
+            one_percent_weights = self.err_train[new_indices_train].copy()
+            
+            #* Fetch randomly selected events for training
+            flag = True
+            while flag:
+                nr_channel_events_train = len(idx_train)
+                one_percent_no_events_t = one_percent_no_events_t + 15
+                print(one_percent_no_events_t)
+                new_indices_train = np.random.choice(idx_train, size=one_percent_no_events_t, replace=False)  
                 
-                idxs = self.tot_weights_per_channel[id]
-                err = self.recon_err_back[idxs]
-
-                histo_atlas.append(err)
-
-                err_w = self.err_val[idxs]
-
-                weight_atlas_data.append(err_w)
-        except:
-            for channel in channels:
-
-                err = self.recon_err_back[np.where(self.val_cats == channel)[0]]
-
-                histo_atlas.append(err)
-
-                err_w = self.err_val[np.where(self.val_cats == channel)[0]]
-
-                weight_atlas_data.append(err_w)
+                weights = self.err_train[idx_train].copy()
+                
+                one_percent_weights = self.err_train[new_indices_train].copy()
+                
+                
+                
+                if np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)) > 100:
+                    one_percent_no_events_t = int(nr_channel_events_train/100)
+                if np.abs(np.sum(one_percent_weights) - (np.sum(weights)/100)) < 1:
+                    flag = False
             
+            self.tot_set_train_idxs_list.append(new_indices_train)
+                        
+            nr_channel_events_val= len(idx_val)
+            one_percent_no_events_v = int(nr_channel_events_val/100)
+            weights_val = self.err_val[idx_val].copy()
             
-        try:
-            sig_err = self.recon_sig
-            sig_err_w = self.sig_err
-        except:
-            print("No signal")
-
-        sum_w = [np.sum(weight) for weight in weight_atlas_data]
-        sort_w = np.argsort(sum_w, kind="mergesort")
-
-        sns.set_style("darkgrid")
-        plt.rcParams["figure.figsize"] = (12, 9)
-
-        fig, ax = plt.subplots()
-
-        try:
-            N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
-            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-
-            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
-
-            n_bins = bins
-        except:
-            n_bins = 25
-
-        colors = [
-            "mediumspringgreen",
-            "darkgreen",
-            "lime",
-            "magenta",
-            "blue",
-            "red",
-            "orange",
-            "brown",
-            "cyan",
-            "mediumorchid",
-            "gold",
-            "darkgoldenrod"
+            new_indices_val = np.random.choice(idx_val, size=one_percent_no_events_v, replace=False) 
+            
+            one_percent_weights = self.err_train[new_indices_val].copy()
+            
+            #* Fetch randomly selected events for validation
+            flag2 = True
+            while flag2:
+                nr_channel_events_val = len(idx_val)
+                one_percent_no_events_v = one_percent_no_events_v + 1
+                new_indices_val = np.random.choice(idx_val, size=one_percent_no_events_v, replace=False)  
+                
+                weights_val = self.err_val[idx_val].copy()
+                
+                one_percent_weights = self.err_val[new_indices_val].copy()
+                
+                
+                if np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)) > 50:
+                    one_percent_no_events_v = int(nr_channel_events_val/100)
+                    
+                if np.abs(np.sum(one_percent_weights) - (np.sum(weights_val)/100)) < 1:
+                    flag2 = False
+            
+            self.tot_set_val_idxs_list.append(new_indices_val)
+            
+        print(f"Number of selected events: {one_percent_no_events_t + one_percent_no_events_v}")    
+            
+        self.tot_set_train_idxs = np.concatenate(self.tot_set_train_idxs_list, axis=0)
+        self.tot_set_val_idxs = np.concatenate(self.tot_set_val_idxs_list, axis=0)
+        
+        self.tot_weights_per_channel = []
+        self.tot_data = []
+        
+        self.act_weights = []
+        start = 0
+        
+        for id, idx_train  in enumerate(self.tot_set_train_idxs_list):
+            idx_val = self.tot_set_val_idxs_list[id]
+            
+            x_tot = np.concatenate((self.X_train[idx_train], self.X_val[idx_val]), axis = 0)
+            self.tot_data.append(x_tot)
+            
+            act = np.concatenate((self.data_structure.weights_train.to_numpy().copy()[idx_train], 
+             self.data_structure.weights_val.to_numpy().copy()[idx_val]), axis=0)
+            
+            self.act_weights.append(act)
+            idxs = np.concatenate((idx_train, idx_val), axis=0)
+            
+            end = start + len(idxs)
+            
+            print(len(x_tot), len(idxs))
+            
+            self.tot_weights_per_channel.append(np.asarray(range(start, end)))
+            
+            start = end
+            
+        
+        X_tot = np.concatenate(self.tot_data, axis=0)
+        self.act_weights = np.concatenate(self.act_weights, axis=0)
+        
+        X_train = self.X_train[self.tot_set_train_idxs]
+        X_val = self.X_val[self.tot_set_val_idxs]
+        
+        sample_weight_n = self.data_structure.weights_train.to_numpy().copy()[
+            self.tot_set_train_idxs
         ]
         
-        
-        colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
-        
-        if len(histo_atlas) < 2:
-            channels = ["Monte Carlo"]
-            
-        print(colors, len(histo_atlas), channels)
-        if len(histo_atlas) != 1:
-            data_histo = np.asarray(histo_atlas, dtype=object)[sort_w]
-            we = np.asarray(weight_atlas_data, dtype=object)[sort_w]
-            colors = np.asarray(colors, dtype=object)[sort_w]
-            labels = np.asarray(channels, dtype=object)[sort_w]
-        else:
-            data_histo = histo_atlas
-            we = weight_atlas_data
-            labels = channels
-        
-        ax.hist(
-            data_histo,
-            n_bins,
-            density=False,
-            stacked=True,
-            alpha=0.5,
-            histtype="bar",
-            color=colors,
-            label=labels,
-            weights=we,
-        )
+        sample_weight = pd.DataFrame(sample_weight_n)
 
-        ax.legend(prop={"size": 15})
-        ax.set_title(
-            "Reconstruction error histogram with MC and ATLAS data", fontsize=25
+        self.err_val = self.act_weights
+        
+        
+        #* Fetch events from the data
+        nr_data_events = len(self.data) 
+        indices = range(nr_data_events)
+        one_percent_no_events = int(nr_data_events/100)
+        new_indices = np.random.choice(indices, size=one_percent_no_events, replace=False)        
+        
+        self.dummysample_dataset = self.data[new_indices]
+        self.sig_err = np.ones(len(self.dummysample_dataset))
+        
+        #* Check weight comparison
+        print(" ")
+        print("*****************************************")
+        print(f"Data weights: {np.sum(self.sig_err):.1f} | MC weights: {np.sum(self.err_val):.1f}")
+        print("*****************************************")
+        print(" ")
+        
+        
+        #* Tuning, training, and inference
+        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+        HPT.runHpSearch(
+            X_train, X_val, sample_weight, small=False
         )
-        ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
-        ax.set_ylabel("#Events", fontsize=25)
-        # ax.set_xlim([0, 3.5])
-        ax.set_ylim([0.1, 5e6])  # type: ignore
-        ax.set_yscale("log")
-        ax.tick_params(axis="both", labelsize=25)
-        fig.tight_layout()
-        plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
-        plt.close()
+        
+
+        self.trainModel(X_train, X_val, sample_weight)
+
+        
+        self.runInference(X_tot, self.dummysample_dataset, True)
+
+        self.checkReconError(self.channels, sig_name="1%_ATLAS_Data")
+        
+        
+        
+        
+class DummyData(RunAE):
+    def __init__(self, data_structure:object, path:str):
+        super().__init__(data_structure, path)
+        
+    

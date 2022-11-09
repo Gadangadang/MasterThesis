@@ -26,13 +26,16 @@ def main():
     rae = RunAE(sp, STORE_IMG_PATH)
 
     if args.exclude:
-        rae.channelTrainings(small=False)
+        CT = ChannelTraining(sp, STORE_IMG_PATH)
+        CT.run(small=False)
         
     if args.OneP:
-        rae.onePercentData()
+        OPD = OnePercentData(sp, STORE_IMG_PATH)
+        OPD.run()
         
     if args.tune:
-        rae.hyperParamSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
+        HPT = HyperParameterTuning(sp, STORE_IMG_PATH)
+        HPT.runHpSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
 
     if args.train:
         rae.trainModel(rae.X_train, rae.X_val, rae.sample_weight)
