@@ -1,4 +1,4 @@
-\documentclass[UKenglish]{book}  
+\documentclass[a4paper, UKenglish]{book}  
 \newcommand\hmmax{0}
 \newcommand\bmmax{0}
 
@@ -7,14 +7,8 @@
 \DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
 \raggedbottom %%reduces the gaps between the paragraphs
 \usepackage{jheppub}
+\usepackage[UKenglish]{uiomasterfp}
 
-\title{Deployment of unsupervised learning in the search for new physics at the LHC with the ATLAS detector}       
-\subtitle{Search for heavy neutrinos at the LHC with the ATLAS detector}
-\subsubtitle{by}
-\author{Sakarias Garcia de Presno Frette}              
-\thesistext{THESIS}
-\thesistextt{for the degree of}
-\thesistexttt{MASTER OF SCIENCE}
 
 
 
@@ -23,7 +17,19 @@
 %\DeclareUnicodeCharacter{03B1}{-}
 
 \begin{document}
-\duoforside[dept={Department of Physics}, program={Master's Program Name}, long]                                         
+%\duoforside[dept={Department of Physics}, program={Master's Program Name}, long]  
+\uiomasterfp[author=Sakarias Garcia de Presno Frette,
+colour=green,
+date=\today,
+dept=Department of Physics,
+fac=Faculty of Mathematics and Natural Sciences,
+long,
+subtitle=Search for heavy neutrinos at the LHC with the ATLAS detector,
+supervisors={Professor Farid Ould-Saada \and Dr. Eirik Gramstad \and Dr. James Catmore},
+title=Deployment of unsupervised learning in the search for new physics at the LHC with the ATLAS detector,
+program={Computational Science: Physics}]    
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \frontmatter{}
