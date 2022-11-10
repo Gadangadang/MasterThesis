@@ -16,7 +16,8 @@ def main():
         action="store_true",
         help="Train and inference excluding every channel one at the time",
     )
-    parser.add_argument("-L", "--OneP", action="store_true", help="Run only on dummy data")
+    parser.add_argument("-L", "--onep", action="store_true", help="Run only on 1% of data")
+    parser.add_argument("-D", "--dummy", action="store_true", help="Run only dummy sample in validation")
 
     args = parser.parse_args()
 
@@ -25,24 +26,35 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
 
+
+
     if args.exclude:
         CT = ChannelTraining(sp, STORE_IMG_PATH)
         CT.run(small=False)
+    
+    if args.dummy:
+        DD = DummyData(sp, STORE_IMG_PATH)
+        DD.swapEventsInChannels(0.4, 0.01)
         
-    if args.OneP:
+    if args.onep:
         OPD = OnePercentData(sp, STORE_IMG_PATH)
         OPD.run()
         
     if args.tune:
+        
         HPT = HyperParameterTuning(sp, STORE_IMG_PATH)
         HPT.runHpSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
 
     if args.train:
+        
         rae.trainModel(rae.X_train, rae.X_val, rae.sample_weight)
 
     if args.run:
+        
         rae.runInference(rae.X_val, [], True)
         rae.checkReconError(rae.channels, sig_name="no_sig_10epoch")
+        
+    
 
     
 

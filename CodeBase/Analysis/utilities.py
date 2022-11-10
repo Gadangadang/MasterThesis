@@ -1,4 +1,6 @@
+import time
 import random
+import requests
 import numpy as np
 import pandas as pd
 from config import *
@@ -515,7 +517,7 @@ class ScaleAndPrep:
 
 
 class RunAE:
-    def __init__(self, data_structure:object, path: str):
+    def __init__(self, data_structure:object, path: str)->None:
         """
         Class to run training, inference and plotting
 
@@ -630,7 +632,7 @@ class RunAE:
 
         return AE_model
 
-    def trainModel(self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict):
+    def trainModel(self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict)->None:
         """_summary_
 
         Args:
@@ -667,7 +669,7 @@ class RunAE:
 
       
 
-    def runInference(self, X_val: np.ndarray, test_set: np.ndarray, tuned_model=False):
+    def runInference(self, X_val: np.ndarray, test_set: np.ndarray, tuned_model=False)->None:
         """_summary_
 
         Args:
@@ -725,7 +727,7 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self, channels: list, sig_name="nosig"):
+    def checkReconError(self, channels: list, sig_name="nosig")->None:
         """_summary_
 
         Args:
@@ -795,11 +797,12 @@ class RunAE:
             "cyan",
             "mediumorchid",
             "gold",
-            "darkgoldenrod"
+            "darkgoldenrod",
+            
         ]
         
-        
-        colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
+        if len(colors) != len(histo_atlas):
+            colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
         
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]
@@ -842,24 +845,24 @@ class RunAE:
         plt.close()
 
 class HyperParameterTuning(RunAE):
-    def __init__(self, data_structure: object, path: str):
+    def __init__(self, data_structure: object, path: str)->None:
         super().__init__(data_structure, path)
         
     def runHpSearch(
-        self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict, small=False
-    ):
+        self, X_train: np.ndarray, X_val: np.ndarray, sample_weight: dict, small=False, epochs=20
+    )->None:
         """_summary_"""
 
         device_lib.list_local_devices()
         tf.config.optimizer.set_jit("autoclustering")
         with tf.device("/GPU:0"):
             if small:
-                self.gridautoencoder_small(X_train, X_val, sample_weight)
+                self.gridautoencoder_small(X_train, X_val, sample_weight, epochs=epochs)
             else:
-                self.gridautoencoder(X_train, X_val, sample_weight)
+                self.gridautoencoder(X_train, X_val, sample_weight, epochs=epochs)
 
     def gridautoencoder(
-        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict
+        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict, epochs=20
     ) -> None:
         """_summary_
 
@@ -870,7 +873,7 @@ class HyperParameterTuning(RunAE):
         tuner = kt.Hyperband(
             self.AE_model_builder,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=20,
+            max_epochs=epochs,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -881,7 +884,7 @@ class HyperParameterTuning(RunAE):
         tuner.search(
             X_b,
             X_b,
-            epochs=20,
+            epochs=epochs,
             batch_size=self.b_size,
             validation_data=(X_back_test, X_back_test),
             sample_weight=sample_weight,
@@ -1180,16 +1183,17 @@ class HyperParameterTuning(RunAE):
 
 
 class ChannelTraining(RunAE):
-    def __init__(self,data_structure:object, path:str):
+    def __init__(self,data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
-    def run(self, small=False):
+    def run(self, small=False)->None:
         """_summary_
 
         Args:
             small (bool, optional): _description_. Defaults to False.
         """
-
+        st = time.time()
+        
         self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
 
         for channel, idx_train, idx_val in self.idxs:
@@ -1233,8 +1237,9 @@ class ChannelTraining(RunAE):
 
             self.name = "no_" + channel
 
-            self.hyperParamSearch(
-                X_train_reduced, X_val_reduced, sample_weight, small=small
+            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+            HPT.runHpSearch(
+                X_train_reduced, X_val_reduced, sample_weight, small=small, epochs=2
             )
 
             # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
@@ -1247,14 +1252,23 @@ class ChannelTraining(RunAE):
             self.runInference(X_val_reduced, signal, True)
 
             self.checkReconError(channels, sig_name=channel)
+            
+            et = time.time()
 
+            img_path = Path(f"histo/b_data_recon_big_rm3_feats_sig_{channel}.pdf")
+            path = STORE_IMG_PATH/img_path
+
+            files = {"photo":open(path, "rb")}
+            message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+            resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
+            print(resp.status_code)
 
 class OnePercentData(RunAE):
-    def __init__(self, data_structure:object, path: str):
+    def __init__(self, data_structure:object, path: str)->None:
         super().__init__(data_structure, path)
-    
-    def run(self):
         
+    def run(self)->None:
+        st = time.time()
         
         #* Fetch events from the MC set
         
@@ -1399,11 +1413,117 @@ class OnePercentData(RunAE):
 
         self.checkReconError(self.channels, sig_name="1%_ATLAS_Data")
         
+        et = time.time()
         
+        img_path = Path("histo/b_data_recon_big_rm3_feats_sig_1%_ATLAS_Data.pdf")
+        path = STORE_IMG_PATH/img_path
+
+        files = {"photo":open(path, "rb")}
+        message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+        resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
+        print(resp.status_code)
         
         
 class DummyData(RunAE):
-    def __init__(self, data_structure:object, path:str):
+    def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
-    
+    def swapEventsInChannels(self, fraction_cols:float, fraction_swap:float)->None:
+        st = time.time()
+        
+        rows, cols = np.shape(self.X_val)
+        
+        nr_rows_swap = int(rows*fraction_swap)
+        
+        nr_cols_swap = int(cols*fraction_cols)
+        
+        cols_to_swap = np.random.choice(range(cols), size=nr_cols_swap, replace=False)
+        
+        rows_to_swap = np.random.choice(range(rows), size=nr_rows_swap, replace=False)
+        
+        old_row = rows_to_swap.copy()
+        
+        np.random.shuffle(rows_to_swap)
+        
+        pairs = []
+        
+        train_cat = self.data_structure.train_categories.to_numpy()
+        val_cat = self.data_structure.val_categories.to_numpy()
+        
+        for i in range(0, len(rows_to_swap), 2):
+            
+            col = np.random.choice(cols_to_swap, size=1, replace=False)[0]
+            #print(col)
+            pairs.append((col, rows_to_swap[i], rows_to_swap[i+1]))   
+        
+        X_val_dummy = self.X_val.copy()
+        
+        for column_number in cols_to_swap:
+            
+            np.random.shuffle(rows_to_swap)
+        
+            X_val_dummy[old_row, column_number] = X_val_dummy[rows_to_swap, column_number]
+            
+        val_cat[old_row] = "Signal" 
+            
+        
+
+            #print(X_val_dummy[row_1, column_number], X_val_dummy[row_2, column_number])
+        
+        val_cat = np.concatenate((train_cat, val_cat), axis=0)
+      
+        
+        X_tot = np.concatenate((self.X_train, X_val_dummy), axis=0)
+        
+      
+        
+        
+        signal = X_tot[np.where(val_cat == "Signal")]
+        X_tot = X_tot[np.where(val_cat != "Signal")]
+        
+        
+        
+        sample_weight_t = self.data_structure.weights_train.to_numpy().copy()
+        sample_weight_v = self.data_structure.weights_val.to_numpy().copy()
+        
+        sample_weight = pd.DataFrame(sample_weight_t)
+        
+        self.err_val = np.concatenate((sample_weight_t, sample_weight_v), axis=0)
+        
+        self.sig_err = self.err_val[np.where(val_cat == "Signal")]
+        self.err_val = self.err_val[np.where(val_cat != "Signal")]
+        
+        self.val_cats = np.concatenate((train_cat, val_cat), axis=0)
+        self.val_cats = self.val_cats[np.where(val_cat != "Signal")]
+        
+         #* Tuning, training, and inference
+        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+        HPT.runHpSearch(
+            self.X_train, X_val_dummy, sample_weight, small=False, epochs=3
+        )
+        
+
+        self.trainModel(self.X_train, X_val_dummy, sample_weight)
+
+        
+        self.runInference(X_tot, signal,True)
+
+       
+        self.checkReconError(self.channels, sig_name="Dummydata")   
+        
+        et = time.time()
+        
+        img_path = Path("histo/b_data_recon_big_rm3_feats_sig_Dummydata.pdf")
+        path = STORE_IMG_PATH/img_path
+
+        files = {"photo":open(path, "rb")}
+        message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+        resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
+        print(resp.status_code)
+                    
+            
+            
+            
+          
+            
+      

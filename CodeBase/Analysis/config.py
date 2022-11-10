@@ -4,6 +4,9 @@ SCALER = "MinMax" # or "MinMax"
 BACTH_SIZE = 8192        
 EPOCHS = 10
 
+TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
+chat_id = "5733209220"
+
 rmm_structure = {
     1: [
         "jet_0",
