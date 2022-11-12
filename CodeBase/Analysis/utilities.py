@@ -15,6 +15,7 @@ from typing import Tuple
 import plotly.express as px
 import matplotlib.pyplot as plt
 from os.path import isfile, join
+from sklearn.compose import ColumnTransformer
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
@@ -430,13 +431,13 @@ class ScaleAndPrep:
             ]
 
             scaler = scalers[SCALER]
-            """
+            
             column_trans = ColumnTransformer(
                     [('scaler_ae', scaler, cols)],
                     remainder='passthrough'
                 )
-            """
-            column_trans = scaler
+            
+            #column_trans = scaler
 
             strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
             with strategy.scope():
@@ -1192,12 +1193,13 @@ class ChannelTraining(RunAE):
         Args:
             small (bool, optional): _description_. Defaults to False.
         """
-        st = time.time()
         
-        self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
+        
+        #self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
 
         for channel, idx_train, idx_val in self.idxs:
 
+            st = time.time()
             channels = self.channels.copy()
             channels.remove(channel)
 
@@ -1210,7 +1212,7 @@ class ChannelTraining(RunAE):
                 new_index_val
             ]
 
-            self.err_val = self.data_structure.weights_val.copy()[new_index_val]
+            self.err_val = self.data_structure.weights_val.to_numpy().copy()[new_index_val]
 
             X_train_reduced = self.X_train.copy()[new_index]
             X_val_reduced = self.X_val.copy()[new_index_val]
@@ -1229,7 +1231,7 @@ class ChannelTraining(RunAE):
                 np.where(self.data_structure.train_categories == channel)[0]
             ]
 
-            sig_err_v = self.data_structure.weights_val[
+            sig_err_v = self.data_structure.weights_val.to_numpy()[
                 np.where(self.data_structure.val_categories == channel)[0]
             ]
 
@@ -1259,7 +1261,7 @@ class ChannelTraining(RunAE):
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}
-            message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+            message = f"Done calculating sig: {channel} plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
             resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
             print(resp.status_code)
 
