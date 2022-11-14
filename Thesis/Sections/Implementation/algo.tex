@@ -3,7 +3,8 @@
 The machine learning analysis was written with Keras\cite{chollet2015keras} using the Tensorflow api\cite{tensorflow2015-whitepaper} . 
 The machine learning structure was written using a functional structure\footnote{Functional structure uses a function call for layers, i.e for layers a,b, then b(a) will connect the two layers, and equals a sequential link a $\to$ b. This allows for more flexible structures. More on the functional api can be found \href{https://www.tensorflow.org/guide/keras/functional}{here}.}
 In practise, this model could just as well have been written as a Sequential model\footnote{Sequential structure adds layers in sequence, i.e for layers a, b, c we have that a $\to$ b $\to$ c, with a strict structure. This allows for more organized code. More on sequential models can be found \href{https://www.tensorflow.org/guide/keras/sequential_model}{here}.}, 
-but at a cost of flexibility and lack of potential non-linear structure in the architecture.\par
+but at a cost of flexibility and lack of potential non-linear structure in the architecture. The code consists of one general class for
+ the autoencoder, where the different testing cases are different classes inheriting from the parent class.\par
 
 
 %Tuning \cite{omalley2019kerastuner}, \par 
