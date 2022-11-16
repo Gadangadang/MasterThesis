@@ -3,7 +3,8 @@
 The machine learning analysis was written with Keras\cite{chollet2015keras} using the Tensorflow api\cite{tensorflow2015-whitepaper} . 
 The machine learning structure was written using a functional structure\footnote{Functional structure uses a function call for layers, i.e for layers a,b, then b(a) will connect the two layers, and equals a sequential link a $\to$ b. This allows for more flexible structures. More on the functional api can be found \href{https://www.tensorflow.org/guide/keras/functional}{here}.}
 In practise, this model could just as well have been written as a Sequential model\footnote{Sequential structure adds layers in sequence, i.e for layers a, b, c we have that a $\to$ b $\to$ c, with a strict structure. This allows for more organized code. More on sequential models can be found \href{https://www.tensorflow.org/guide/keras/sequential_model}{here}.}, 
-but at a cost of flexibility and lack of potential non-linear structure in the architecture.\par
+but at a cost of flexibility and lack of potential non-linear structure in the architecture. The code consists of one general class for
+ the autoencoder, where the different testing cases are different classes inheriting from the parent class.\par
 
 
 %Tuning \cite{omalley2019kerastuner}, \par 
@@ -15,3 +16,202 @@ but at a cost of flexibility and lack of potential non-linear structure in the a
 %Even more plotting \cite{plotly}, \par
 %Arrays \cite{harris2020array}, \par 
 %Dataframe structure \cite{reback2020pandas}, \par
+
+
+\subsection*{Construction of a neural network in Tensorflow}
+
+Using the functional structure, a general neural network in the Tensorflow API can be constructed as shown below. 
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_general}]
+import tensorflow as tf
+
+
+inputs = tf.keras.layers.Input(shape=data_shape, name="input")
+
+# First hidden layer
+First_layer = tf.keras.layers.Dense(
+    units=30,
+    activation="relu"
+)(inputs)
+
+# Second hidden layer
+Second_layer = tf.keras.layers.Dense(
+    units=45, 
+    activation="relu"
+)(First_layer)
+
+# Second hidden layer
+output_layer = tf.keras.layers.Dense(
+    units=1, 
+    activation="sigmoid"
+)(Second_layer)
+
+
+# Model definition
+nn_model = tf.keras.Model(inputs, output_layer, name="nn_model")
+
+hp_learning_rate = 0.0015
+optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
+nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
+\end{lstlisting}
+The neural network here contains one input layer, two hidden layers, and an output layer. The choice of nodes and activation functions are 
+arbitrary here as the use case has not been defined. Note that this is exactly the same as this example, using a sequential structure.
+
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_seq_example}]
+import tensorflow as tf
+
+nn_model = tf.keras.Sequential(
+    [
+        tf.keras.layers.Dense(30, activation="relu", input_shape=data_shape),
+        tf.keras.layers.Dense(45, activation="relu"),
+        tf.keras.layers.Dense(1, activation="sigmoid"),
+    ]
+)
+
+hp_learning_rate = 0.0015
+optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
+nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
+\end{lstlisting}
+
+In the case of this project, we want to create an autoencoder, as shown in figure \ref{fig:ae_denoise}. A general network archtitecture is proposed below, 
+where the nodes, activation functions, and other hyperparameters can be tuned. 
+
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:ae_code_arch}]
+import tensorflow as tf
+
+class HyperParameterTuning(RunAE):
+    def __init__(self, data_structure: object, path: str)->None:
+        super().__init__(data_structure, path)
+
+    def AE_model_builder(self, hp: kt.engine.hyperparameters.HyperParameters):
+
+        """_summary_
+
+        Args:
+            hp (kt.engine.hyperparameters.HyperParameters): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        ker_choice = hp.Choice("Kernel_reg", values=[0.5, 0.1, 0.05, 0.01])
+        act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
+
+        alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
+
+        # Activation functions
+        activations = {
+            "relu": tf.nn.relu,
+            "tanh": tf.nn.tanh,
+            "leakyrelu": "leaky_relu",
+            "linear": tf.keras.activations.linear,
+        }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
+
+        # Input layer
+        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+
+        # First hidden layer
+        x = tf.keras.layers.Dense(
+            units=hp.Int(
+                "num_of_neurons1", min_value=60, max_value=self.data_shape - 1, step=1
+            ),
+            activation=activations.get(
+                hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
+            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+        )(inputs)
+
+        # Second hidden layer
+        x_ = tf.keras.layers.Dense(
+            units=hp.Int("num_of_neurons2", min_value=30, max_value=59, step=1),
+            activation=activations.get(
+                hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(x)
+
+        # Third hidden layer
+        x1 = tf.keras.layers.Dense(
+            units=hp.Int("num_of_neurons3", min_value=10, max_value=29, step=1),
+            activation=activations.get(
+                hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
+            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+        )(x_)
+
+        val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
+
+        # Forth hidden layer
+        x2 = tf.keras.layers.Dense(
+            units=val,
+            activation=activations.get(
+                hp.Choice("4_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(x1)
+
+        # Encoder definition
+        encoder = tf.keras.Model(inputs, x2, name="encoder")
+
+        # Latent space
+        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+
+        # Fifth hidden layer
+        x = tf.keras.layers.Dense(
+            units=hp.Int("num_of_neurons5", min_value=10, max_value=29, step=1),
+            activation=activations.get(
+                hp.Choice("5_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
+            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+        )(latent_input)
+
+        # Sixth hidden layer
+        x_ = tf.keras.layers.Dense(
+            units=hp.Int("num_of_neurons6", min_value=30, max_value=59, step=1),
+            activation=activations.get(
+                hp.Choice("6_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(x)
+
+        # Seventh hidden layer
+        x1 = tf.keras.layers.Dense(
+            units=hp.Int(
+                "num_of_neurons7", min_value=60, max_value=self.data_shape - 1, step=1
+            ),
+            activation=activations.get(
+                hp.Choice("7_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
+            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+        )(x_)
+
+        # Output layer
+        output = tf.keras.layers.Dense(
+            self.data_shape,
+            activation=activations.get(
+                hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
+            ),
+        )(x1)
+
+        # Encoder definition
+        decoder = tf.keras.Model(latent_input, output, name="decoder")
+
+        # Output definition
+        outputs = decoder(encoder(inputs))
+
+        # Model definition
+        AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
+
+        hp_learning_rate = hp.Choice(
+            "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
+        )
+        optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
+
+        AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
+
+        return AE_model
+    \end{lstlisting}
+
+This function creates a tensorflow.keras model that has tuneable structure, thus allowing for optimized tuning with the Keras-Tuner 
+library\cite{omalley2019kerastuner}.

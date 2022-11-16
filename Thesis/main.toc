@@ -3,11 +3,11 @@
 \contentsline {chapter}{\numberline {1}Machine learning}{3}{chapter.1}%
 \contentsline {chapter}{\numberline {2}Standard model phenomenology}{11}{chapter.2}%
 \contentsline {chapter}{\numberline {3}Implementation}{13}{chapter.3}%
-\contentsline {chapter}{\numberline {4}Results}{19}{chapter.4}%
-\contentsline {chapter}{\numberline {5}Discussion}{21}{chapter.5}%
-\contentsline {chapter}{Conclusion}{23}{chapter*.40}%
-\contentsline {chapter}{Appendices}{25}{section*.41}%
-\contentsline {chapter}{Appendix A}{27}{appendix*.42}%
-\contentsline {chapter}{Appendix B}{29}{appendix*.43}%
-\contentsline {chapter}{Appendix C}{51}{appendix*.66}%
-\contentsline {chapter}{Appendix D}{53}{appendix*.67}%
+\contentsline {chapter}{\numberline {4}Results}{23}{chapter.4}%
+\contentsline {chapter}{\numberline {5}Discussion}{25}{chapter.5}%
+\contentsline {chapter}{Conclusion}{27}{chapter*.40}%
+\contentsline {chapter}{Appendices}{29}{section*.41}%
+\contentsline {chapter}{Appendix A}{31}{appendix*.42}%
+\contentsline {chapter}{Appendix B}{33}{appendix*.43}%
+\contentsline {chapter}{Appendix C}{55}{appendix*.66}%
+\contentsline {chapter}{Appendix D}{57}{appendix*.67}%

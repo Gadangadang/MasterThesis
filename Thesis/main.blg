@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: jhep.bst
+Database file #1: bibliography.bib
+Warning--entry type for "ROOT" isn't style-file defined
+--line 36 of file bibliography.bib
+Warning--entry type for "hdf5" isn't style-file defined
+--line 154 of file bibliography.bib
+Warning--entry type for "chollet2015keras" isn't style-file defined
+--line 305 of file bibliography.bib
+You've used 20 entries,
+            2188 wiz_defined-function locations,
+            640 strings with 7796 characters,
+and the built_in function-call counts, 3766 in all, are:
+= -- 313
+> -- 256
+< -- 0
++ -- 76
+- -- 56
+* -- 252
+:= -- 590
+add.period$ -- 25
+call.type$ -- 20
+change.case$ -- 17
+chr.to.int$ -- 0
+cite$ -- 20
+duplicate$ -- 149
+empty$ -- 368
+format.name$ -- 56
+if$ -- 933
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 44
+newline$ -- 68
+num.names$ -- 20
+pop$ -- 88
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 74
+stack$ -- 0
+substring$ -- 80
+swap$ -- 28
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 26
+width$ -- 22
+write$ -- 164
+(There were 3 warnings)

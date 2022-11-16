@@ -1,0 +1,95 @@
+\providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
+
+\bibitem{anom_detec}
+V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
+  \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
+  {\bf 41} (07, 2009) }.
+
+\bibitem{FYSSTK}
+S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
+  dense feed forward neural network for regression and classification type
+  problems in comparison to regression methods}}, .
+
+\bibitem{backprop}
+D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
+  back-propagating errors}, {\emph{Nature} (1986) }.
+
+\bibitem{Goodfellow-et-al-2016}
+I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
+\newblock MIT Press, 2016.
+
+\bibitem{ADAM:opti}
+D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
+  2014.
+\newblock 10.48550/ARXIV.1412.6980.
+
+\bibitem{Pich:819632}
+A.~Pich, \emph{{The Standard Model of Electroweak Interactions; rev. version}},
+  .
+
+\bibitem{Peskin:1995ev}
+M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to Quantum Field
+  Theory}}.
+\newblock Westview Press, 1995.
+
+\bibitem{Thomson:2013zua}
+M.~Thomson, \emph{{Modern particle physics}}.
+\newblock Cambridge University Press, New York, 2013.
+
+\bibitem{collaboration_2020}
+{The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
+  2}, \href{http://dx.doi.org/10.1088/1748-0221/15/10/p10004}{\emph{Journal of
+  Instrumentation} {\bf 15} (oct, 2020) P10004--P10004}.
+
+\bibitem{Owen:2302730}
+{\scshape ATLAS} collaboration, R.~E. Owen, \emph{{The ATLAS Trigger System}},
+  .
+
+\bibitem{Wang:2707056}
+S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
+  Software Tutorial}}, .
+
+\bibitem{Bernius:2707054}
+C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
+  Software Tutorial}}, .
+
+\bibitem{ROOT}
+R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
+  \emph{root-project/root: v6.18/02},  Aug., 2019.
+\newblock 10.5281/zenodo.3895860.
+
+\bibitem{Manca:2694107}
+E.~Manca and E.~Guiraud, \emph{{Using RDataFrame, ROOT’s declarative analysis
+  tool, in a CMS physics study. Using RDataFrame, ROOT’s declarative analysis
+  tool, in a CMS physics study}}, .
+
+\bibitem{hdf5}
+{The HDF Group}, \emph{{Hierarchical Data Format, version 5}},  1997-2022.
+
+\bibitem{Chekanov_2019}
+S.~Chekanov, \emph{Imaging particle collision data for event classification
+  using machine learning},
+  \href{http://dx.doi.org/10.1016/j.nima.2019.04.031}{\emph{Nuclear Instruments
+  and Methods in Physics Research Section A: Accelerators, Spectrometers,
+  Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
+
+\bibitem{DBLP:journals/corr/abs-2107-02278}
+R.~S. Geiger, D.~Cope, J.~Ip, M.~Lotosh, A.~Shah, J.~Weng et~al.,
+  \emph{"garbage in, garbage out" revisited: What do machine learning
+  application papers report about human-labeled training data?}, {\emph{CoRR}
+  {\bf abs/2107.02278} (2021) }, [\href{http://arxiv.org/abs/2107.02278}{{\tt
+  2107.02278}}].
+
+\bibitem{chollet2015keras}
+F.~Chollet et~al., \emph{Keras},  2015.
+
+\bibitem{tensorflow2015-whitepaper}
+M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
+  \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
+  2015.
+
+\bibitem{omalley2019kerastuner}
+T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
+  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
+
+\end{thebibliography}\endgroup

@@ -9,7 +9,7 @@ It is a lot. \cite{ROOT}
 The main datastructure of ROOT is the so called N tuple structure. This datastructure contains each property for each type of particle in a given event, yeilding
 a ragged structure. 
 
-\begin{table}[]
+\begin{table}[h!]
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \cline{1-5} \cline{7-7}
         & $jetP_T$      & $jetPhi$     & $lepP_T$             & $lepPhi$             &  & Rowlength \\ \cline{1-5} \cline{7-7} 
@@ -23,13 +23,14 @@ a ragged structure.
 
 \cite{Manca:2694107}
 
-RDataFrame's main purpose is to make reading and handling of root files easier, especially in relation to modern machine learning tools and their framework. 
-This is done by creating a dataframe like structure of the root n-tuples, and then lazily\footnotetext{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
+RDataFrame's main purpose is to make reading and handling of root files easier, especially in relation to modern machine learning tools and their respective frameworks and environments. 
+This is done by creating a dataframe like structure of the root n-tuples, and then lazily\footnote{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
 apply contraints to the data. Using PyROOT, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is an example of how
 to create a RDataFrame object, apply a cut and then create a column for later use. Here, good leptons are defined first, denoted as "ele\_SG" and "muo\_SG". 
 A cut is then applied where we require that the number of good leptons is always 3. Finally, a column is created where the combination of type of leptons in the 3 lepton system 
-is stored, as well as creating a histogram containing the results for that given channel k. Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be 
-applied directly using those columns to create new one. More complicated information, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
+is stored, as well as creating a histogram containing the results for that given channel \footnote{A channel here refers to a certain decay channel. The standard model has several, and some look more alike than others. One example is the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. } k. 
+Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be 
+applied directly using those columns to create new one. More complicated variables, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
 found or calculated using C++ functions. An example of such a function is shown below the python code listing. 
 
 
@@ -89,24 +90,24 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
             VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
             int i, int j)
 {
-/* Gets he invariant mass between two particles, be it jets or leptons */
+    /* Gets he invariant mass between two particles, be it jets or leptons */
 
-const auto size_i = int(pt_i.size());
-const auto size_j = int(pt_j.size());
+    const auto size_i = int(pt_i.size());
+    const auto size_j = int(pt_j.size());
 
-if (size_i == 0 || size_j == 0){return 0.;}
-if (i > size_i-1){return 0.;}
-if (j > size_j-1){return 0.;}
+    if (size_i == 0 || size_j == 0){return 0.;}
+    if (i > size_i-1){return 0.;}
+    if (j > size_j-1){return 0.;}
 
-TLorentzVector p1;
-TLorentzVector p2;
+    TLorentzVector p1;
+    TLorentzVector p2;
 
-p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
-p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
+    p1.SetPtEtaPhiM(pt_i[i], eta_i[i], phi_i[i], e_i[i]);
+    p2.SetPtEtaPhiM(pt_j[j], eta_j[j], phi_j[j], e_j[j]);
 
-double inv_mass = (p1 + p2).M();
+    double inv_mass = (p1 + p2).M();
 
-return inv_mass;
+    return inv_mass;
 }
 \end{lstlisting}
 Using ROOT we can create Lorentzvectors to calculate a number of properties, such as the invariant mass of two particles.
