@@ -40,6 +40,22 @@ rmm_structure = {
         1,
     ],
     3: [
+        "jet_2",
+        "jetPt[jet_SG]",
+        "jetEta[jet_SG]",
+        "jetPhi[jet_SG]",
+        "jetM[jet_SG]",
+        2,
+    ],
+    4: [
+        "jet_3",
+        "jetPt[jet_SG]",
+        "jetEta[jet_SG]",
+        "jetPhi[jet_SG]",
+        "jetM[jet_SG]",
+        3,
+    ],
+    5: [
         "ele_0",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -47,7 +63,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         0,
     ],
-    4: [
+    6: [
         "ele_1",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -55,7 +71,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         1,
     ],
-    5: [
+    7: [
         "ele_2",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -63,7 +79,23 @@ rmm_structure = {
         "lepM[ele_SG]",
         2,
     ],
-    6: [
+    8: [
+        "ele_3",
+        "lepPt[ele_SG]",
+        "lepEta[ele_SG]",
+        "lepPhi[ele_SG]",
+        "lepM[ele_SG]",
+        3,
+    ],
+    9: [
+        "ele_4",
+        "lepPt[ele_SG]",
+        "lepEta[ele_SG]",
+        "lepPhi[ele_SG]",
+        "lepM[ele_SG]",
+        4,
+    ],
+    10: [
         "muo_0",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -71,7 +103,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         0,
     ],
-    7: [
+    11: [
         "muo_1",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -79,13 +111,29 @@ rmm_structure = {
         "lepM[muo_SG]",
         1,
     ],
-    8: [
+    12: [
         "muo_2",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
         "lepPhi[muo_SG]",
         "lepM[muo_SG]",
         2,
+    ],
+    13: [
+        "muo_3",
+        "lepPt[muo_SG]",
+        "lepEta[muo_SG]",
+        "lepPhi[muo_SG]",
+        "lepM[muo_SG]",
+        3,
+    ],
+    14: [
+        "muo_4",
+        "lepPt[muo_SG]",
+        "lepEta[muo_SG]",
+        "lepPhi[muo_SG]",
+        "lepM[muo_SG]",
+        4,
     ],
 }
 

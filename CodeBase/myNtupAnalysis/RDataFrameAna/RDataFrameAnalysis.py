@@ -751,6 +751,8 @@ if __name__ == "__main__":
 
     N_col = N_j + N_l + 1
     N_row = N_col
+    
+    
 
     good_runs = []
 
