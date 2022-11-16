@@ -2,7 +2,7 @@ LOAD_VAR = True #False
 SAVE_VAR = False #True
 SCALER = "Standard" # or "MinMax"
 BACTH_SIZE = 8192        
-EPOCHS = 10
+EPOCHS = 50
 
 SMALL = True
 

@@ -405,11 +405,17 @@ def getDataFrames1(mypath, nev=0):
         if not "merged" in of or not of.endswith(".root"):
             continue
         sp = of.split("/")[-1].split("_")
+        print(sp)
         typ = ""
         for s in sp:
             if "merged" in s or s.isnumeric():
                 break
             typ += s
+        
+        if "HNLfullLep" in sp:
+            num = sp[4]
+            typ += str(num)
+        
         if not typ in files.keys():
             files[typ] = {"files": [], "treename": ""}
         treename = getTreeName(of)
@@ -418,6 +424,7 @@ def getDataFrames1(mypath, nev=0):
             continue
         files[typ]["treename"] = treename
         files[typ]["files"].append(of)
+        print(typ, treename)
 
         # print(typ)
         # if not typ == "singleTop": continue

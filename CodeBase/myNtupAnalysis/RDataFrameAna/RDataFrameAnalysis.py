@@ -3,6 +3,7 @@ import sys
 import time
 import glob
 import array
+import requests
 import ROOT as R
 import matplotlib
 import numpy as np
@@ -17,6 +18,7 @@ import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
 from div_dicts import triggers, rmm_structure
+
 
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
@@ -58,7 +60,8 @@ def runANA(
         )
     else:
         df_mc = {}
-
+    
+    #exit()
     # mypath = "/storage/eirikgr/ANAntuples/PHYS_Data/"
     if isdir(mypath_data):
         df_data = getDataFrames1(mypath_data)
@@ -70,6 +73,8 @@ def runANA(
         df_data = {}
 
     df = {**df_mc, **df_data}
+    print(df.keys())
+   
 
     for k in df.keys():
 
@@ -808,3 +813,9 @@ if __name__ == "__main__":
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
     
+    
+    TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
+    chat_id = "5733209220"
+    message = "Hello Sakarias, Event selection is done!"
+    resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}")
+    print(resp.status_code)

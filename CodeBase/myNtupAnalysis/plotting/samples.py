@@ -206,8 +206,8 @@ def configure_samples():
             "type": "data",
             "leg": "Data (2016)",
             "f_color": kBlack,
-            "l_color": kBlack,
             "path": "data" + data_suffix,
+            "l_color": kBlack,
             "m_type": 24,
             "lumi": 32988.1,
             "sqrts": 13,
@@ -236,8 +236,8 @@ def configure_samples():
             "type": "data",
             "leg": "Data (2018)",
             "f_color": kBlack,
-            "l_color": kBlack,
             "path": "data" + data_suffix,
+            "l_color": kBlack,
             "m_type": 26,
             "lumi": 58450.1,
             "sqrts": 13,
@@ -296,6 +296,42 @@ def configure_samples():
             "leg": "W' #rightarrow N ",
             "f_color": kRed,
             "path": "WmuHNL50_60G_lt01dd_lepfilt_ch" + bkg_suffix,
+            "l_color": kBlack,
+            "m_type": 26,
+            "lumi": 58450.1,
+            "sqrts": 13,
+        },
+        "ttbarHNLfullLepMLm15": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+11,
+            "path": "ttbar_HNLfullLep_ML_m_15" + bkg_suffix,
+            "l_color": kRed+11,
+            
+        },
+        "ttbarHNLfullLepMLm75": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+14,
+            "path": "ttbar_HNLfullLep_ML_m_75" + bkg_suffix,
+            "l_color": kRed+14,
+           
+        },
+        "ttbarHNLfullLepMLp15": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+12,
+            "path": "ttbar_HNLfullLep_ML_p_15" + bkg_suffix,
+            "l_color": kRed+12,
+            
+        },
+        "ttbarHNLfullLepMLp75": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+13,
+            "path": "ttbar_HNLfullLep_ML_p_75" + bkg_suffix,
+            "l_color": kRed+13,
+            
         },
         # 'Zeejets1'    :{'type':'bkg', 'leg':'Z(ee)+jets1',                   'f_color':kOrange+10,  'path':'Zeejets'+bkg_suffix},
         # 'Zeejets2'    :{'type':'bkg', 'leg':'Z(ee)+jets2',                    'f_color':kOrange+9,  'path':'Zeejets'+bkg_suffix},
@@ -347,6 +383,7 @@ def configure_samples():
             "leg": "Diboson4L",
             "f_color": myLighterOrange,
             "path": "diboson" + bkg_suffix,
+            
         },
         #'dibosonPOWHEG'  :{'type':'bkg', 'leg':'Diboson (PH)',        'f_color':kAzure-3, 'path':'diboson (PH)'+bkg_suffix},
         "PHZZ": {
