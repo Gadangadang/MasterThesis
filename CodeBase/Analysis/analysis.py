@@ -25,12 +25,10 @@ def main():
     sp.MergeScaleAndSplit()
 
     rae = RunAE(sp, STORE_IMG_PATH)
-
-
-
+    
     if args.exclude:
         CT = ChannelTraining(sp, STORE_IMG_PATH)
-        CT.run(small=False)
+        CT.run(small=SMALL)
     
     if args.dummy:
         DD = DummyData(sp, STORE_IMG_PATH)
@@ -43,7 +41,7 @@ def main():
     if args.tune:
         
         HPT = HyperParameterTuning(sp, STORE_IMG_PATH)
-        HPT.runHpSearch(rae.X_train, rae.X_val, rae.sample_weight, small=False)
+        HPT.runHpSearch(rae.X_train, rae.X_val, rae.sample_weight, small=SMALL)
 
     if args.train:
         

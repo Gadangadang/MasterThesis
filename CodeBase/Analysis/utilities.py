@@ -26,7 +26,12 @@ tf.keras.utils.get_custom_objects()["leaky_relu"] = tf.keras.layers.LeakyReLU()
 
 
 scalers = {"Standard": StandardScaler(), "MinMax": MinMaxScaler()}
+scaler = scalers[SCALER]
 
+if SMALL:
+    arc = "small"
+else:
+    arc = "big"
 
 class plotRMM:
     def __init__(self, path: Path, rmm_structure: dict, N_row: int):
@@ -92,7 +97,7 @@ class plotRMM:
 
         # rmm_mat[rmm_mat < 0.00009] = np.nan
 
-        rmm_mat[rmm_mat == 0] = np.nan
+        #rmm_mat[rmm_mat == 0] = np.nan
 
         fig = px.imshow(
             rmm_mat,
@@ -180,6 +185,7 @@ class ScaleAndPrep:
         self.load = load
         self.save = save
         # self.scaleAndSplit()
+        
 
     def getDfNames(self) -> Tuple[str, ...]:
         """
@@ -430,12 +436,14 @@ class ScaleAndPrep:
                 "flcomp",
             ]
 
-            scaler = scalers[SCALER]
+            if scaler == "MinMax":
             
-            column_trans = ColumnTransformer(
-                    [('scaler_ae', scaler, cols)],
-                    remainder='passthrough'
-                )
+                column_trans = ColumnTransformer(
+                        [('scaler_ae', scaler, cols)],
+                        remainder='passthrough'
+                    )
+            else:
+                column_trans = scaler
             
             #column_trans = scaler
 
@@ -742,7 +750,9 @@ class RunAE:
     
             for id, channel in enumerate(channels):
                 
+                
                 idxs = self.tot_weights_per_channel[id]
+                print(len(idxs), len(self.recon_err_back))
                 err = self.recon_err_back[idxs]
 
                 histo_atlas.append(err)
@@ -842,7 +852,8 @@ class RunAE:
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
-        plt.savefig(self.path + f"histo/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        
+        plt.savefig(self.path + f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
 
 class HyperParameterTuning(RunAE):
@@ -854,10 +865,12 @@ class HyperParameterTuning(RunAE):
     )->None:
         """_summary_"""
 
+        print(small)
         device_lib.list_local_devices()
         tf.config.optimizer.set_jit("autoclustering")
         with tf.device("/GPU:0"):
             if small:
+                print("Small network enabled")
                 self.gridautoencoder_small(X_train, X_val, sample_weight, epochs=epochs)
             else:
                 self.gridautoencoder(X_train, X_val, sample_weight, epochs=epochs)
@@ -930,7 +943,7 @@ class HyperParameterTuning(RunAE):
             """
 
     def gridautoencoder_small(
-        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict
+        self, X_b: np.ndarray, X_back_test: np.ndarray, sample_weight: dict, epochs=20
     ) -> None:
         """_summary_
 
@@ -939,9 +952,9 @@ class HyperParameterTuning(RunAE):
             X_back_test (np.ndarray): _description_
         """
         tuner = kt.Hyperband(
-            self.AE_model_builder,
+            self.AE_model_builder_small,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=20,
+            max_epochs=epochs,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -952,14 +965,14 @@ class HyperParameterTuning(RunAE):
         tuner.search(
             X_b,
             X_b,
-            epochs=20,
+            epochs=epochs,
             batch_size=self.b_size,
             validation_data=(X_back_test, X_back_test),
             sample_weight=sample_weight,
         )
         best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
         
-        print(tuner.search_space_summary())
+        #print(tuner.search_space_summary())
 
         state = True
         while state == True:
@@ -1132,7 +1145,7 @@ class HyperParameterTuning(RunAE):
 
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons1", min_value=10, max_value=29, step=1),
+            units=self.data_shape,#hp.Int("num_of_neurons1", min_value=20, max_value=self.data_shape, step=5),
             activation=activations.get(
                 hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
@@ -1140,7 +1153,7 @@ class HyperParameterTuning(RunAE):
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
 
-        val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
+        val = hp.Int("lat_num", min_value=int(np.sqrt(self.data_shape)), max_value=self.data_shape-1, step=3)
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
@@ -1187,7 +1200,7 @@ class ChannelTraining(RunAE):
     def __init__(self,data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
-    def run(self, small=False)->None:
+    def run(self, small=SMALL)->None:
         """_summary_
 
         Args:
@@ -1256,8 +1269,9 @@ class ChannelTraining(RunAE):
             self.checkReconError(channels, sig_name=channel)
             
             et = time.time()
+            
 
-            img_path = Path(f"histo/b_data_recon_big_rm3_feats_sig_{channel}.pdf")
+            img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{channel}.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}
@@ -1351,16 +1365,15 @@ class OnePercentData(RunAE):
         for id, idx_train  in enumerate(self.tot_set_train_idxs_list):
             idx_val = self.tot_set_val_idxs_list[id]
             
-            x_tot = np.concatenate((self.X_train[idx_train], self.X_val[idx_val]), axis = 0)
+            x_tot = self.X_val[idx_val]
             self.tot_data.append(x_tot)
             
-            act = np.concatenate((self.data_structure.weights_train.to_numpy().copy()[idx_train], 
-             self.data_structure.weights_val.to_numpy().copy()[idx_val]), axis=0)
+            act = self.data_structure.weights_val.to_numpy().copy()[idx_val]
             
             self.act_weights.append(act)
             idxs = np.concatenate((idx_train, idx_val), axis=0)
             
-            end = start + len(idxs)
+            end = start + len(idxs)-1
             
             print(len(x_tot), len(idxs))
             
@@ -1404,7 +1417,7 @@ class OnePercentData(RunAE):
         #* Tuning, training, and inference
         HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
         HPT.runHpSearch(
-            X_train, X_val, sample_weight, small=False
+            X_train, X_val, sample_weight, small=SMALL
         )
         
 
@@ -1416,12 +1429,13 @@ class OnePercentData(RunAE):
         self.checkReconError(self.channels, sig_name="1%_ATLAS_Data")
         
         et = time.time()
+       
         
-        img_path = Path("histo/b_data_recon_big_rm3_feats_sig_1%_ATLAS_Data.pdf")
+        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_1%_ATLAS_Data.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}
-        message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+        message = f"Done calculating 1% data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
         resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
         print(resp.status_code)
         
@@ -1472,16 +1486,16 @@ class DummyData(RunAE):
 
             #print(X_val_dummy[row_1, column_number], X_val_dummy[row_2, column_number])
         
-        val_cat = np.concatenate((train_cat, val_cat), axis=0)
+        #val_cat = np.concatenate((train_cat, val_cat), axis=0)
       
         
-        X_tot = np.concatenate((self.X_train, X_val_dummy), axis=0)
+        #X_tot = np.concatenate((self.X_train, X_val_dummy), axis=0)
         
       
         
         
-        signal = X_tot[np.where(val_cat == "Signal")]
-        X_tot = X_tot[np.where(val_cat != "Signal")]
+        signal = X_val_dummy[np.where(val_cat == "Signal")]
+        X_tot = X_val_dummy[np.where(val_cat != "Signal")]
         
         
         
@@ -1490,18 +1504,18 @@ class DummyData(RunAE):
         
         sample_weight = pd.DataFrame(sample_weight_t)
         
-        self.err_val = np.concatenate((sample_weight_t, sample_weight_v), axis=0)
+        self.err_val = sample_weight_v#np.concatenate((sample_weight_t, sample_weight_v), axis=0)
         
         self.sig_err = self.err_val[np.where(val_cat == "Signal")]
         self.err_val = self.err_val[np.where(val_cat != "Signal")]
         
-        self.val_cats = np.concatenate((train_cat, val_cat), axis=0)
+        #self.val_cats = np.concatenate((train_cat, val_cat), axis=0)
         self.val_cats = self.val_cats[np.where(val_cat != "Signal")]
         
          #* Tuning, training, and inference
         HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
         HPT.runHpSearch(
-            self.X_train, X_val_dummy, sample_weight, small=False, epochs=3
+            self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
         )
         
 
@@ -1515,7 +1529,8 @@ class DummyData(RunAE):
         
         et = time.time()
         
-        img_path = Path("histo/b_data_recon_big_rm3_feats_sig_Dummydata.pdf")
+        
+        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_Dummydata.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}

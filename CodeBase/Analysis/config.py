@@ -1,8 +1,10 @@
 LOAD_VAR = True #False
 SAVE_VAR = False #True
-SCALER = "MinMax" # or "Standard"
+SCALER = "Standard" # or "MinMax"
 BACTH_SIZE = 8192        
 EPOCHS = 10
+
+SMALL = True
 
 TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
 chat_id = "5733209220"

@@ -746,8 +746,8 @@ if __name__ == "__main__":
     # de = [f.unlink() for f in Path(HISTO_VAR).glob("*") if f.is_file()]
 
     """ Actual analysis """
-    N_j = 2
-    N_l = 6
+    N_j = 4
+    N_l = 10
 
     N_col = N_j + N_l + 1
     N_row = N_col
