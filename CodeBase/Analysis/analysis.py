@@ -18,6 +18,8 @@ def main():
     )
     parser.add_argument("-L", "--onep", action="store_true", help="Run only on 1% of data")
     parser.add_argument("-D", "--dummy", action="store_true", help="Run only dummy sample in validation")
+    parser.add_argument("-F", "--fake", action="store_true", help="Run with fake mc samples, i.e unphysical systems")
+    
 
     args = parser.parse_args()
 
@@ -37,6 +39,10 @@ def main():
     if args.onep:
         OPD = OnePercentData(sp, STORE_IMG_PATH)
         OPD.run()
+        
+    if args.fake:
+        FP = FakeParticles(sp, STORE_IMG_PATH)
+        FP.run([[1,5], [2,5], [3,5], [4,5]], 0.1)
         
     if args.tune:
         

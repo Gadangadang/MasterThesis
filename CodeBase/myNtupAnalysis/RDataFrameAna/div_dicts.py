@@ -22,6 +22,23 @@ triggers = {
     },
 }
 
+particle_placement = {
+            1: "jet0",
+            2: "jet1",
+            3: "jet2",
+            4: "jet3",
+            5: "ele0",
+            6: "ele1",
+            7: "ele2",
+            8: "ele3",
+            9: "ele4",
+            10: "muo0",
+            11: "muo1",
+            12: "muo2",
+            13: "muo3",
+            14: "muo4",                    
+        }
+
 rmm_structure = {
     1: [
         "jet_0",

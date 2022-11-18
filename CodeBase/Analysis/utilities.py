@@ -97,7 +97,7 @@ class plotRMM:
 
         # rmm_mat[rmm_mat < 0.00009] = np.nan
 
-        #rmm_mat[rmm_mat == 0] = np.nan
+        rmm_mat[rmm_mat == 0] = np.nan
 
         fig = px.imshow(
             rmm_mat,
@@ -112,13 +112,14 @@ class plotRMM:
 
         fig.write_image(f"../../Figures/testing/rmm/rmm_avg_{process}.pdf")
 
-    def plotDfRmmMatrixNoMean(self, df: pd.DataFrame, process: str, idx: int) -> None:
-        """
+    def plotDfRmmMatrixNoMean(self, df: pd.DataFrame, process: str, idx: int, additional_info="", fake=False) -> None:
+        """_summary_
 
         Args:
             df (pd.DataFrame): _description_
             process (str): _description_
             idx (int): _description_
+            fake (bool, optional): _description_. Defaults to False.
         """
 
         try:  # In case pandas dataframe is passed
@@ -132,6 +133,8 @@ class plotRMM:
 
         tot = len(df2)
         row = int(np.sqrt(tot))
+        
+        print(row)
 
         rmm_mat = np.zeros((row, row))
 
@@ -149,8 +152,10 @@ class plotRMM:
             number = name[-1]
             part_type = name[:-2]
             name = rf"${part_type}_{number}$"
-
+            
             names.append(name)
+            
+        
 
         # rmm_mat[rmm_mat < 0.00009] = np.nan
 
@@ -167,8 +172,13 @@ class plotRMM:
             title=f"Event {idx} channel {process}",
         )
         fig.update_xaxes(side="top")
-
-        fig.write_image(f"../../Figures/testing/rmm/rmm_event_{idx}_{process}.pdf")
+        if fake:
+            if additional_info:
+                fig.write_image(f"../../Figures/testing/rmm/rmm_event_{idx}_{process}_{additional_info}_fake_event.pdf")
+            else:
+               fig.write_image(f"../../Figures/testing/rmm/rmm_event_{idx}_{process}_fake_event.pdf") 
+        else:
+            fig.write_image(f"../../Figures/testing/rmm/rmm_event_{idx}_{process}.pdf")
 
 
 class ScaleAndPrep:
@@ -214,7 +224,7 @@ class ScaleAndPrep:
 
         """
         files = self.onlyfiles.copy()  # type: ignore
-
+      
         self.dfs = []
         self.datas = []
         self.signals = []
@@ -229,6 +239,10 @@ class ScaleAndPrep:
             "WmuHNL5040Glt01ddlepfiltch1",
             "WmuHNL5060Glt01ddlepfiltch1",
             "WmuHNL5070Glt01ddlepfiltch1",
+            "ttbarHNLfullLepMLm15",
+            "ttbarHNLfullLepMLm75",
+            "ttbarHNLfullLepMLp15",
+            "ttbarHNLfullLepMLp75",
         ]
 
         charge_df_data = []
@@ -240,12 +254,14 @@ class ScaleAndPrep:
         for file in files:
 
             df = pd.read_hdf(self.path / file)
+            
 
             name = file[: file.find("_3lep")]
 
             if name in data_names:
                 name = "data"
-
+            if name in signal_names:
+                continue
             try:
 
                 df.drop(
@@ -285,7 +301,7 @@ class ScaleAndPrep:
         """_summary_"""
 
         if not self.load:
-            plotRMMMatrix = plotRMM(self.path, rmm_structure, 9)
+            plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
 
             try:
                 self.df  # type: ignore
@@ -335,7 +351,27 @@ class ScaleAndPrep:
 
             X_b_train = pd.concat(df_train)
             X_b_val = pd.concat(df_val)
+            
+            all_cols = X_b_train.columns
+            cols = []
+            for col in all_cols:
+                if col == "Category":
+                    continue
+                try:
+                    
+                    print(col, np.mean(X_b_train[col]), np.max(X_b_train[col]), np.min(X_b_train[col]))
+                    if np.min(X_b_train[col]) < -3 or np.max(X_b_train[col]) > 3:
+                        cols.append(col)
+                        print(f"{col} added to be scaled later ")
+                except:
+                    continue
+            
+            print("Col to be scaled found")
 
+
+            print(" ")
+            print("Concatination started")
+            print(" ")
             self.train_categories = pd.concat(df_train_cat)
             self.val_categories = pd.concat(df_val_cat)
 
@@ -343,6 +379,10 @@ class ScaleAndPrep:
             self.weights_val = pd.concat(df_val_w)
 
             self.data = pd.concat(self.datas)
+            
+            print(" ")
+            print("Concatination done for dfs")
+            print(" ")
 
             self.data_categories = self.data["Category"]
 
@@ -362,7 +402,10 @@ class ScaleAndPrep:
                 "triboson",
                 "ttbar",
             ]
-
+            
+            print(" ")
+            print("Random event sampling")
+            print(" ")
             # Indentifying Zeejets events for rmm single event plotting
             idx_rmm = []
             choices = random.sample(channels, 4)
@@ -392,49 +435,9 @@ class ScaleAndPrep:
 
             # print(X_b_train.columns)
 
-            cols = [
-                "e_T_miss",
-                "m_T_jet_0",
-                "m_T_jet_1",
-                "m_T_ele_0",
-                "m_T_ele_1",
-                "m_T_ele_2",
-                "m_T_muo_0",
-                "m_T_muo_1",
-                "m_T_muo_2",
-                "e_T_jet_0",
-                "m_jet_0_jet_1",
-                "m_jet_0_ele_0",
-                "m_jet_0_ele_1",
-                "m_jet_0_ele_2",
-                "m_jet_0_muo_0",
-                "m_jet_0_muo_1",
-                "m_jet_0_muo_2",
-                "m_jet_1_ele_0",
-                "m_jet_1_ele_1",
-                "m_jet_1_ele_2",
-                "m_jet_1_muo_0",
-                "m_jet_1_muo_1",
-                "m_jet_1_muo_2",
-                "e_T_ele_0",
-                "m_ele_0_ele_1",
-                "m_ele_0_ele_2",
-                "m_ele_0_muo_0",
-                "m_ele_0_muo_1",
-                "m_ele_0_muo_2",
-                "m_ele_1_ele_2",
-                "m_ele_1_muo_0",
-                "m_ele_1_muo_1",
-                "m_ele_1_muo_2",
-                "m_ele_2_muo_0",
-                "m_ele_2_muo_1",
-                "m_ele_2_muo_2",
-                "e_T_muo_0",
-                "m_muo_0_muo_1",
-                "m_muo_0_muo_2",
-                "m_muo_1_muo_2",
-                "flcomp",
-            ]
+            print(" ")
+            print("Scaling initiated ... ")
+            print(" ")
 
             if scaler == "MinMax":
             
@@ -453,6 +456,10 @@ class ScaleAndPrep:
                 self.X_b_train = column_trans.fit_transform(X_b_train)
                 self.X_b_val = column_trans.transform(X_b_val)
                 self.data = column_trans.transform(self.data)
+                
+            print(" ")
+            print("Scaling done")
+            print(" ")
 
             if self.event_rmm:
                 for choice, idxss in idx_rmm:
@@ -655,6 +662,7 @@ class RunAE:
         except:
             self.AE_model = self.getModel()
 
+        #print(self.AE_model.layers[1].weights)
         with tf.device("/GPU:0"):
 
             tf.config.optimizer.set_jit("autoclustering")
@@ -752,7 +760,7 @@ class RunAE:
                 
                 
                 idxs = self.tot_weights_per_channel[id]
-                print(len(idxs), len(self.recon_err_back))
+                print(id, len(idxs), len(self.recon_err_back))
                 err = self.recon_err_back[idxs]
 
                 histo_atlas.append(err)
@@ -1163,11 +1171,11 @@ class HyperParameterTuning(RunAE):
             ),
         )(x1)
 
-        # Encoder definition
+        """# Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
 
         # Latent space
-        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")"""
 
         # Output layer
         output = tf.keras.layers.Dense(
@@ -1175,16 +1183,16 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-        )(latent_input)
+        )(x2)
 
-        # Encoder definition
+        """# Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
-
+        """
         # Output definition
-        outputs = decoder(encoder(inputs))
+        #outputs = output(encoder(inputs))
 
         # Model definition
-        AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
+        AE_model = tf.keras.Model(inputs, output, name="AE_model")
 
         hp_learning_rate = hp.Choice(
             "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
@@ -1211,6 +1219,9 @@ class ChannelTraining(RunAE):
         #self.data_structure.weights_val = self.data_structure.weights_val.to_numpy()
 
         for channel, idx_train, idx_val in self.idxs:
+            
+            if channel in ["Zeejets", "Zmmjets", "Zttjets", "diboson2L", "diboson3L"]:
+                continue
 
             st = time.time()
             channels = self.channels.copy()
@@ -1262,8 +1273,11 @@ class ChannelTraining(RunAE):
             print("Hyperparam search done")
             print(" ")
 
+
+            
             self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
 
+            #print(self.AE_model.layers[1].weights)
             self.runInference(X_val_reduced, signal, True)
 
             self.checkReconError(channels, sig_name=channel)
@@ -1373,13 +1387,13 @@ class OnePercentData(RunAE):
             self.act_weights.append(act)
             idxs = np.concatenate((idx_train, idx_val), axis=0)
             
-            end = start + len(idxs)-1
+            end = start + len(idx_val)
             
-            print(len(x_tot), len(idxs))
+            print(len(x_tot), len(idx_val))
             
             self.tot_weights_per_channel.append(np.asarray(range(start, end)))
             
-            start = end
+            start = end - 1
             
         
         X_tot = np.concatenate(self.tot_data, axis=0)
@@ -1524,6 +1538,7 @@ class DummyData(RunAE):
         
         self.runInference(X_tot, signal,True)
 
+        
        
         self.checkReconError(self.channels, sig_name="Dummydata")   
         
@@ -1539,8 +1554,136 @@ class DummyData(RunAE):
         print(resp.status_code)
                     
             
+class FakeParticles(RunAE):
+    def __init__(self, data_structure:object, path:str)->None:
+        super().__init__(data_structure, path)     
+        
+    
+    def split(self, a, n):
+        k, m = divmod(len(a), n)
+        return (a[i*k+min(i, m):(i+1)*k+min(i+1, m)] for i in range(n))
+        
+    def run(self, cols_swap_keys:list, fraction_events: float) -> None:
+        st = time.time()
+        
+        plotRMMMatrix = plotRMM(DATA_PATH, rmm_structure, 15)
+        
+        
+        
+        rows, cols = np.shape(self.X_val)
+        
+        nr_rows_swap = int(rows*fraction_events)
+        
+        print(nr_rows_swap)
+        
+        #nr_cols_swap = int(cols*fraction_cols)
+        
+        rows_to_swap = np.random.choice(range(rows), size=nr_rows_swap, replace=False)
+        
+        print(len(rows_to_swap))
+        
+        subset_partitioning = int(len(rows_to_swap)/len(cols_swap_keys))
+        print(f"subset {subset_partitioning}")
+        
+        rows_split_up = list(self.split(rows_to_swap, len(cols_swap_keys)))
+        rows_split_up = np.asarray(rows_split_up)
+        
+        
+       
+        
+        print(len(rows_split_up), rows_split_up)
+        
+        val_cat = self.data_structure.val_categories.to_numpy()
+        
+        X_val_dummy = self.X_val.copy()
+        
+        event_list = np.random.choice(rows_split_up, size=1, replace=False)[0]
+        event = np.random.choice(event_list, size=1, replace=False)[0]
+            
+        print(event)
+        channel_test = val_cat[event]
+        print(channel_test)
+        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, additional_info="preswap", fake=True)
+        
+        print(" ")
+        print(" loop ")
+        for idx, pair in enumerate(cols_swap_keys):
+            rows = rows_split_up[idx]
+            old_col = pair[0]
+            new_col = pair[1]
+            print(rows, old_col, new_col)
             
             
+            for column in range(old_col, cols, 15):
+                if column > cols:
+                    break
+                
+                old_val = X_val_dummy[rows, column]
+                new_val = X_val_dummy[rows, column + new_col-1]
+                
+                
+
+                X_val_dummy[rows, column] = new_val
+                X_val_dummy[rows, column + new_col-1] = old_val
+                
+                #print(X_val_dummy[rows, column], X_val_dummy[rows, column + new_col-1])
+            
+            val_cat[rows] = "Signal" 
+            print(idx, len(rows))
+        
+        print(" loop end ")     
+        print(" ")
           
             
-      
+        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, fake=True)
+
+        
+        print("  ")
+        print(np.where(val_cat == "Signal"))
+        signal = X_val_dummy[np.where(val_cat == "Signal")]
+        print(np.shape(signal))
+        X_tot = X_val_dummy[np.where(val_cat != "Signal")]
+        print(np.shape(X_tot))
+        sample_weight_t = self.data_structure.weights_train.to_numpy().copy()
+        sample_weight_v = self.data_structure.weights_val.to_numpy().copy()
+        
+        sample_weight = pd.DataFrame(sample_weight_t)
+        
+        self.err_val = sample_weight_v#np.concatenate((sample_weight_t, sample_weight_v), axis=0)
+        
+        self.sig_err = self.err_val[np.where(val_cat == "Signal")]
+        self.err_val = self.err_val[np.where(val_cat != "Signal")]
+        
+        
+        print(np.where(val_cat == "Signal"), np.shape(self.sig_err) , np.shape(self.err_val))
+        
+        #self.val_cats = np.concatenate((train_cat, val_cat), axis=0)
+        self.val_cats = self.val_cats[np.where(val_cat != "Signal")]
+        
+        
+         #* Tuning, training, and inference
+        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+        HPT.runHpSearch(
+            self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
+        )
+        self.trainModel(self.X_train, X_val_dummy, sample_weight)
+        self.runInference(X_tot, signal,True)
+        self.checkReconError(self.channels, sig_name="FakeMC")     
+
+        
+        
+        
+        et = time.time()
+            
+        try:
+            img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_fakedata.pdf")
+            path = STORE_IMG_PATH/img_path
+
+            files = {"photo":open(path, "rb")}
+            message = f"Done calculating dummy data plot, took {et-st:.1f}s or {(et-st)/60:.1f}m"
+            resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
+            print(resp.status_code)
+        except:
+            pass
+            
+        
