@@ -1,6 +1,17 @@
+import sys 
+sys.path.insert(1, "../")
+
 import argparse
-from pathfile import *
-from utilities import *
+
+from AE import *
+from DummyData import DummyData
+from Utilities.pathfile import *
+from ScaleAndPrep import ScaleAndPrep
+from FakeParticles import FakeParticles
+from OnePercentData import OnePercentData
+from ChannelTraining import ChannelTraining
+from HyperParameterTuning import HyperParameterTuning
+
 
 
 def main():

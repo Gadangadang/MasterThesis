@@ -1,5 +1,5 @@
 import tensorflow as tf 
-from pathfile import *
+from CodeBase.Analysis.Utilities.pathfile import *
 from os.path import isfile, join
 from os import listdir
 
