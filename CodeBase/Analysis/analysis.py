@@ -11,6 +11,7 @@ from FakeParticles import FakeParticles
 from OnePercentData import OnePercentData
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
+from Noise import NoiseTrial
 
 
 
@@ -30,6 +31,7 @@ def main():
     parser.add_argument("-L", "--onep", action="store_true", help="Run only on 1% of data")
     parser.add_argument("-D", "--dummy", action="store_true", help="Run only dummy sample in validation")
     parser.add_argument("-F", "--fake", action="store_true", help="Run with fake mc samples, i.e unphysical systems")
+    parser.add_argument("-N", "--noise", action="store_true", help="Run with noise, to test")
     
 
     args = parser.parse_args()
@@ -54,6 +56,10 @@ def main():
     if args.fake:
         FP = FakeParticles(sp, STORE_IMG_PATH)
         FP.run([[1,5], [2,5], [3,5], [4,5]], 0.1)
+        
+    if args.noise:
+        N = NoiseTrial(sp, STORE_IMG_PATH)
+        N.run()
         
     if args.tune:
         

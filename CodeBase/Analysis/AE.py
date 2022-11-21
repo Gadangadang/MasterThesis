@@ -222,12 +222,12 @@ class RunAE:
         with tf.device("/GPU:0"):
             self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
             self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
-            print("Background done")
+            print(f"Background done, lenght: {len(self.recon_err_back)}")
 
             if len(test_set) > 0:
                 self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
                 self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
-                print("Signal done")
+                print(f"Signal done, lenght: {len(self.recon_sig)}")
 
             self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
             self.recon_data = self.reconstructionError(self.pred_data, self.data)
@@ -250,7 +250,7 @@ class RunAE:
         err = np.log10(err)
         return err
 
-    def checkReconError(self, channels: list, sig_name="nosig")->None:
+    def checkReconError(self, channels: list, sig_name="nosig", Noise=False)->None:
         """_summary_
 
         Args:
@@ -291,6 +291,10 @@ class RunAE:
             sig_err_w = self.sig_err
         except:
             print("No signal")
+            
+            
+        
+        
 
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
@@ -301,13 +305,18 @@ class RunAE:
         fig, ax = plt.subplots()
 
         try:
+            
             N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
 
             ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
 
             n_bins = bins
+            print("Bins: ",n_bins)
         except:
+            n_bins = 25
+    
+        if Noise:
             n_bins = 25
 
         colors = [
