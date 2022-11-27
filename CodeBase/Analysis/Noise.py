@@ -44,6 +44,10 @@ class NoiseTrial(RunAE):
         super().__init__(data_structure, path)    
         
     def run(self):
+        """
+        [Summary]
+        
+        """
         st = time.time()
         
         rows, cols = np.shape(self.X_val)
@@ -66,15 +70,15 @@ class NoiseTrial(RunAE):
         
         
         #* Tuning, training, and inference
-        """
+        
         HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
         HPT.runHpSearch(
             X_train, X_val, sample_weight, small=SMALL
         )
-        """
-        self.AE_model = tf.keras.models.load_model(
+       
+        """self.AE_model = tf.keras.models.load_model(
                     "tf_models/" + "model_test.h5"
-                )
+                )"""
         
 
         self.trainModel(X_train, X_val, sample_weight)

@@ -145,7 +145,7 @@ class FakeParticles(RunAE):
         self.val_cats = self.val_cats[np.where(val_cat != "Signal")]
         
         
-         #* Tuning, training, and inference
+        #* Tuning, training, and inference
         HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
         HPT.runHpSearch(
             self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3

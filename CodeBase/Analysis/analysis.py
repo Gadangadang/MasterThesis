@@ -6,6 +6,7 @@ import argparse
 from AE import *
 from DummyData import DummyData
 from Utilities.pathfile import *
+from ptaltering import pTAltering
 from ScaleAndPrep import ScaleAndPrep
 from FakeParticles import FakeParticles
 from OnePercentData import OnePercentData
@@ -32,6 +33,7 @@ def main():
     parser.add_argument("-D", "--dummy", action="store_true", help="Run only dummy sample in validation")
     parser.add_argument("-F", "--fake", action="store_true", help="Run with fake mc samples, i.e unphysical systems")
     parser.add_argument("-N", "--noise", action="store_true", help="Run with noise, to test")
+    parser.add_argument("-A", "--altering", action="store_true", help="Run with different pt scaling")
     
 
     args = parser.parse_args()
@@ -60,6 +62,10 @@ def main():
     if args.noise:
         N = NoiseTrial(sp, STORE_IMG_PATH)
         N.run()
+    
+    if args.altering:
+        pTA = pTAltering(sp, STORE_IMG_PATH)
+        pTA.run([1.5, 3, 5, 7, 10])
         
     if args.tune:
         

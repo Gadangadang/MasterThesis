@@ -46,7 +46,8 @@ class ChannelTraining(RunAE):
         """_summary_
 
         Args:
-            small (bool, optional): _description_. Defaults to False.
+            small (bool, optional): Choice to use big or small network, True -> small network. 
+                                    Defaults to False.
         """
         
         

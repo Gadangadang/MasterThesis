@@ -41,6 +41,8 @@ class OnePercentData(RunAE):
         super().__init__(data_structure, path)
         
     def run(self)->None:
+        """_summary_
+        """
         st = time.time()
         
         #* Fetch events from the MC set
