@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1669561000 "main.aux" "main.bbl" "main" 1669562370
+["bibtex main"] 1669644771 "main.aux" "main.bbl" "main" 1669645222
   "./jhep.bst" 1635225418 19415 119cff932b2ee8773ea988cf488e8896 ""
   "bibliography.bib" 1668510352 13243 9ebd9b96fd3e4548c92d778d346e0728 ""
-  "main.aux" 1669562369 49954 e0fa51500269e3ee88e631554da7e7ac "pdflatex"
+  "main.aux" 1669645222 51659 eb0f76d4e8d51561707d266d7b737a89 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1669562366 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1669562370
+["pdflatex"] 1669645219 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1669645222
   "/Users/Sakarias/MasterThesis/Thesis/main.tex" 1669558480 3171 a93194fe43ddd39737a8c4f9bd2b3c0b ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -442,6 +442,8 @@
   "Figures/Machinelearning/nn_diagram.jpeg" 1662451397 53809 e4b0ed8ade640dee6c2a03649398babe ""
   "Figures/SM/Standard_Model_of_Elementary_Particles.svg.png" 1665148282 339100 66dbe28c027257d1123b5e3f1457435d ""
   "Figures/atlas/data_col_phys.png" 1665402871 675082 be23daf1da562783cfca3abedfd5b7e7 ""
+  "Figures/rmms/rmm_event_11772211_higgs.pdf" 1669643768 47377 0d05c9d1d8a85131ecb99f29741895be ""
+  "Figures/rmms/rmm_event_16832549_Zeejets.pdf" 1669643748 48135 5aa54975dc454fc6f8f99cc9d13f5c88 ""
   "Sections/Abstract/Abstract.tex" 1661329203 21 d52cfdf44d6dff53dee525149252999f ""
   "Sections/Acknow.tex" 1664800878 123 0c313dbb1181b8db7a5f4a172808ccb8 ""
   "Sections/Appendix/Appendix1.tex" 0 -1 0 ""
@@ -451,7 +453,7 @@
   "Sections/Conclusion/Conclusion.tex" 1661329036 137 d60cf5a845a1a97b9545933a9ec44b5c ""
   "Sections/Implementation/algo.tex" 1668420344 8536 600f84fd72a26941305fdb335ab91105 ""
   "Sections/Implementation/atlas.tex" 1665409221 1056 a27bdcb66f96c5be27acfedf3bfc1ec5 ""
-  "Sections/Implementation/features.tex" 1667293225 6235 f97bdaacdbe7fc55a8245345dd998120 ""
+  "Sections/Implementation/features.tex" 1669645219 8054 2fbc545509a7fd0c265a76fdf74932da ""
   "Sections/Implementation/root.tex" 1668421146 5816 34fea54f0c66869e3035072ccbb3b0a7 ""
   "Sections/Introduction/Introduction.tex" 1667293640 864 42afe263f55aa0ef97dbefcc77d4e4c8 ""
   "Sections/Machinelearning/AnomalyDetection.tex" 1664795808 2890 1a2216520e667128be0059c8c3b736e0 ""
@@ -459,15 +461,15 @@
   "Sections/Machinelearning/Neuralnetworks.tex" 1666613821 13898 1b77bf6b259389267316023d3a28ef0e ""
   "Sections/Machinelearning/optimizer.tex" 1666609495 60 5e009d59bf76536cf75790447af2e66f ""
   "Sections/SM_BSM/BSM.tex" 1662290067 25 b78946e293d9394c9add8501fe3870ef ""
-  "Sections/SM_BSM/SM.tex" 1669562366 8026 3bc71c2ae2c0e8506e780bc8900615a2 ""
+  "Sections/SM_BSM/SM.tex" 1669563148 8026 3bc71c2ae2c0e8506e780bc8900615a2 ""
   "Setup/style.sty" 1668505554 6795 4f014ccea6034de0812bc83733dde457 ""
   "duoforside.tex" 1668088642 6776 628e9d1c9dd0d96721373bf5891ec22c ""
   "duomasterforside.sty" 1635225418 1245 0f0fdb32e432549cbffa5ff0a0493ca0 ""
   "jheppub.sty" 1666616765 11379 0879f95863e3001c773fd5825cb90a2a ""
-  "main.aux" 1669562369 49954 e0fa51500269e3ee88e631554da7e7ac "pdflatex"
-  "main.bbl" 1669561000 3685 4d5f88b5890ef0f8c02a641962236eb3 "bibtex main"
+  "main.aux" 1669645222 51659 eb0f76d4e8d51561707d266d7b737a89 "pdflatex"
+  "main.bbl" 1669644771 3920 8d16cb3e7ae0d263ac997b708fd72da6 "bibtex main"
   "main.tex" 1669558480 3171 a93194fe43ddd39737a8c4f9bd2b3c0b ""
-  "main.toc" 1669562369 773 b82eb7b2f45e405a20837fe47897bd3a "pdflatex"
+  "main.toc" 1669645222 773 a46b60a919f5f7a2bbabfa79d0d76d52 "pdflatex"
   "uio-fp-navn-eng.pdf" 1643568008 9896 3790f54969705c4284148bf62f780187 ""
   "uio-fp-segl.pdf" 1643566874 64936 89441810db60f45a672971bad5b14ed1 ""
   "uiomasterfp.sty" 1659081738 8559 bdb302d543dc750f296610cabe9cfc0a ""

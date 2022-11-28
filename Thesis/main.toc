@@ -5,9 +5,9 @@
 \contentsline {chapter}{\numberline {3}Implementation}{15}{chapter.3}%
 \contentsline {chapter}{\numberline {4}Results}{25}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{27}{chapter.5}%
-\contentsline {chapter}{Conclusion}{29}{chapter*.43}%
-\contentsline {chapter}{Appendices}{31}{section*.44}%
-\contentsline {chapter}{Appendix A}{33}{appendix*.45}%
-\contentsline {chapter}{Appendix B}{35}{appendix*.46}%
-\contentsline {chapter}{Appendix C}{57}{appendix*.69}%
-\contentsline {chapter}{Appendix D}{59}{appendix*.70}%
+\contentsline {chapter}{Conclusion}{29}{chapter*.45}%
+\contentsline {chapter}{Appendices}{31}{section*.46}%
+\contentsline {chapter}{Appendix A}{33}{appendix*.47}%
+\contentsline {chapter}{Appendix B}{35}{appendix*.48}%
+\contentsline {chapter}{Appendix C}{57}{appendix*.71}%
+\contentsline {chapter}{Appendix D}{59}{appendix*.72}%
