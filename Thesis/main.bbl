@@ -36,6 +36,10 @@ M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to Quantum Field
 M.~Thomson, \emph{{Modern particle physics}}.
 \newblock Cambridge University Press, New York, 2013.
 
+\bibitem{feynrules}
+K.~Kumericki, \emph{Feynman diagrams for beginners},  2016.
+\newblock 10.48550/ARXIV.1602.04182.
+
 \bibitem{collaboration_2020}
 {The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
   2}, \href{http://dx.doi.org/10.1088/1748-0221/15/10/p10004}{\emph{Journal of
