@@ -13,7 +13,7 @@ from OnePercentData import OnePercentData
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
 from Noise import NoiseTrial
-
+from corr import CorrCheck
 
 
 def main():
@@ -34,6 +34,7 @@ def main():
     parser.add_argument("-F", "--fake", action="store_true", help="Run with fake mc samples, i.e unphysical systems")
     parser.add_argument("-N", "--noise", action="store_true", help="Run with noise, to test")
     parser.add_argument("-A", "--altering", action="store_true", help="Run with different pt scaling")
+    parser.add_argument("-C", "--corr", action="store_true", help="Check correlation")
     
 
     args = parser.parse_args()
@@ -42,6 +43,10 @@ def main():
     sp.MergeScaleAndSplit()
 
     rae = RunAE(sp, STORE_IMG_PATH)
+    
+    if args.corr:
+        C = CorrCheck(sp, STORE_IMG_PATH)
+        C.checkCorr()
     
     if args.exclude:
         CT = ChannelTraining(sp, STORE_IMG_PATH)

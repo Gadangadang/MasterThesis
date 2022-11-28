@@ -338,11 +338,17 @@ class ScaleAndPrep:
     Total Signal events: {self.tot_signal_events} \n
                 """
             print(datapoint_string)
+            
+            self.columns = np.asarray(X_b_train.columns, dtype=str)
+            
+            print(type(self.columns), self.columns.dtype)
+            
 
             if self.save:
                 np.save(DATA_PATH / "X_train.npy", self.X_b_train)
                 np.save(DATA_PATH / "X_val.npy", self.X_b_val)
                 np.save(DATA_PATH / "Data.npy", self.data)
+                np.save(DATA_PATH / "cols.npy", self.columns)
 
                 np.save(DATA_PATH / "channel_names.npy", np.asarray(channels))
                 for row in self.idxs:
@@ -359,12 +365,17 @@ class ScaleAndPrep:
 
                 self.data_categories.to_hdf(DATA_PATH / "data_cat_b.h5", "mini")
                 self.data_weights.to_hdf(DATA_PATH / "data_weight_b.h5", "mini")
+                
+                #self.columns.to_hdf(DATA_PATH / "cols.h5", "mini")
 
         else:
             self.X_b_train = np.load(DATA_PATH / "X_train.npy")
             self.X_b_val = np.load(DATA_PATH / "X_val.npy")
             self.data = np.load(DATA_PATH / "Data.npy")
-
+          
+            self.cols = np.load(DATA_PATH / "cols.npy")#pd.read_hdf(DATA_PATH / "cols.h5")
+            
+            
             self.idxs = []
             channels = np.load(DATA_PATH / "channel_names.npy")
             for name in channels:
@@ -384,4 +395,6 @@ class ScaleAndPrep:
 
             self.data_categories = pd.read_hdf(DATA_PATH / "data_cat_b.h5")
             self.data_weights = pd.read_hdf(DATA_PATH / "data_weight_b.h5")
+            
+            
 
