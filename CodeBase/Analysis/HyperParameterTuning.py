@@ -139,7 +139,7 @@ class HyperParameterTuning(RunAE):
         tuner = kt.Hyperband(
             self.AE_model_builder_small,
             objective=kt.Objective("val_mse", direction="min"),
-            max_epochs=epochs,
+            max_epochs=1,#epochs,
             factor=3,
             directory="GridSearches",
             project_name="AE",
@@ -150,7 +150,7 @@ class HyperParameterTuning(RunAE):
         tuner.search(
             X_b,
             X_b,
-            epochs=epochs,
+            epochs=1,#epochs,
             batch_size=self.b_size,
             validation_data=(X_back_test, X_back_test),
             sample_weight=sample_weight,
@@ -337,8 +337,10 @@ class HyperParameterTuning(RunAE):
             kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
             activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
-
-        val = hp.Int("lat_num", min_value=int(np.sqrt(self.data_shape)), max_value=self.data_shape-1, step=3)
+        
+        drop = tf.keras.layers.Dropout(.2)(x1)
+        
+        val = hp.Int("lat_num", min_value=2, max_value=int(self.data_shape/2), step=3)
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
@@ -346,7 +348,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-        )(x1)
+        )(drop)
 
         """# Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")

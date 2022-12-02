@@ -108,6 +108,7 @@ class ChannelTraining(RunAE):
             print("Hyperparam search done")
             print(" ")
 
+            self.AE_model = HPT.AE_model
 
             
             self.trainModel(X_train_reduced, X_val_reduced, sample_weight)

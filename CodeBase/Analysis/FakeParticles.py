@@ -150,6 +150,8 @@ class FakeParticles(RunAE):
         HPT.runHpSearch(
             self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
         )
+        self.AE_model = HPT.AE_model
+        
         self.trainModel(self.X_train, X_val_dummy, sample_weight)
         self.runInference(X_tot, signal,True)
         self.checkReconError(self.channels, sig_name="FakeMC")     

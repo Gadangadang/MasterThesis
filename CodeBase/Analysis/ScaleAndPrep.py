@@ -24,8 +24,6 @@ from Utilities.pathfile import *
 
 seed = tf.random.set_seed(1)
 
-tf.keras.utils.get_custom_objects()["leaky_relu"] = tf.keras.layers.LeakyReLU()
-
 
 scalers = {"Standard": StandardScaler(), "MinMax": MinMaxScaler()}
 scaler = scalers[SCALER]
@@ -286,6 +284,15 @@ class ScaleAndPrep:
             X_b_train.drop("wgt_SG", axis=1, inplace=True)
             X_b_val.drop("wgt_SG", axis=1, inplace=True)
             self.data.drop("wgt_SG", axis=1, inplace=True)
+            
+            X_b_train["flcomp"].to_hdf(DATA_PATH / "flcomp_train.h5", "mini")
+            X_b_train["flcomp"].to_hdf(DATA_PATH / "flcomp_val.h5", "mini")
+            X_b_train["flcomp"].to_hdf(DATA_PATH / "flcomp_data.h5", "mini")
+            
+            
+            X_b_train.drop("flcomp", axis=1, inplace=True)
+            X_b_val.drop("flcomp", axis=1, inplace=True)
+            self.data.drop("flcomp", axis=1, inplace=True)
 
             # print(X_b_train.columns)
 
@@ -372,6 +379,8 @@ class ScaleAndPrep:
             self.X_b_train = np.load(DATA_PATH / "X_train.npy")
             self.X_b_val = np.load(DATA_PATH / "X_val.npy")
             self.data = np.load(DATA_PATH / "Data.npy")
+            
+            
           
             self.cols = np.load(DATA_PATH / "cols.npy")#pd.read_hdf(DATA_PATH / "cols.h5")
             
@@ -397,4 +406,6 @@ class ScaleAndPrep:
             self.data_weights = pd.read_hdf(DATA_PATH / "data_weight_b.h5")
             
             
-
+            self.flcomp_train = pd.read_hdf(DATA_PATH / "flcomp_train.h5", "mini")
+            self.flcomp_val = pd.read_hdf(DATA_PATH / "flcomp_val.h5", "mini")
+            self.flcomp_data = pd.read_hdf(DATA_PATH / "flcomp_data.h5", "mini")

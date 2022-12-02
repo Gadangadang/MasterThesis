@@ -178,7 +178,7 @@ class OnePercentData(RunAE):
         HPT.runHpSearch(
             X_train, X_val, sample_weight, small=SMALL
         )
-        
+        self.AE_model = HPT.AE_model
 
         self.trainModel(X_train, X_val, sample_weight)
 

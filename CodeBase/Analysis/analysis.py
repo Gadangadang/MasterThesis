@@ -4,16 +4,20 @@ sys.path.insert(1, "../")
 import argparse
 
 from AE import *
+from corr import CorrCheck
+from Noise import NoiseTrial
 from DummyData import DummyData
+from GradNoise import GradNoise
 from Utilities.pathfile import *
 from ptaltering import pTAltering
 from ScaleAndPrep import ScaleAndPrep
 from FakeParticles import FakeParticles
 from OnePercentData import OnePercentData
+from PlotScaledFeats import VizualizeFeats
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
-from Noise import NoiseTrial
-from corr import CorrCheck
+
+
 
 
 def main():
@@ -35,7 +39,8 @@ def main():
     parser.add_argument("-N", "--noise", action="store_true", help="Run with noise, to test")
     parser.add_argument("-A", "--altering", action="store_true", help="Run with different pt scaling")
     parser.add_argument("-C", "--corr", action="store_true", help="Check correlation")
-    
+    parser.add_argument("-V", "--vizfeat", action="store_true", help="Plot distributions")
+    parser.add_argument("-G", "--gradnoise", action="store_true", help="Plot distributions")
 
     args = parser.parse_args()
 
@@ -47,6 +52,14 @@ def main():
     if args.corr:
         C = CorrCheck(sp, STORE_IMG_PATH)
         C.checkCorr()
+        
+    if args.vizfeat:
+        VF = VizualizeFeats(sp, STORE_IMG_PATH)
+        VF.plotfeats()
+        
+    if args.gradnoise:
+        GN = GradNoise(sp, STORE_IMG_PATH)
+        GN.run()
     
     if args.exclude:
         CT = ChannelTraining(sp, STORE_IMG_PATH)

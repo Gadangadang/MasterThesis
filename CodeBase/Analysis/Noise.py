@@ -48,6 +48,8 @@ class NoiseTrial(RunAE):
         [Summary]
         
         """
+        plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
+        
         st = time.time()
         
         rows, cols = np.shape(self.X_val)
@@ -62,11 +64,13 @@ class NoiseTrial(RunAE):
         sigma = 0.1
         mu = 0.5
         s = np.abs(np.random.normal(mu, sigma, (rows, cols)))
-        
+           
         print(" ")
         print(f"{(s.nbytes)/1000000000} GBytes")
         print(" ")
         signal = s
+        
+        plotRMMMatrix.plotDfRmmMatrixNoMean(s, "Noise", 0)
         
         
         #* Tuning, training, and inference
@@ -79,7 +83,9 @@ class NoiseTrial(RunAE):
         """self.AE_model = tf.keras.models.load_model(
                     "tf_models/" + "model_test.h5"
                 )"""
+                
         
+        self.AE_model = HPT.AE_model
 
         self.trainModel(X_train, X_val, sample_weight)
 

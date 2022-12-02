@@ -162,7 +162,7 @@ class plotRMM:
 
         # rmm_mat[rmm_mat < 0.00009] = np.nan
 
-        rmm_mat[rmm_mat == 0] = np.nan
+        rmm_mat[rmm_mat == 0.] = np.nan
 
         fig = px.imshow(
             rmm_mat,

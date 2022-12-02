@@ -165,8 +165,10 @@ class RunAE:
 
         try:
             self.AE_model
+            print("Model loaded")
         except:
             self.AE_model = self.getModel()
+            print("New model created")
 
         #print(self.AE_model.layers[1].weights)
         with tf.device("/GPU:0"):
