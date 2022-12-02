@@ -77,6 +77,11 @@ S.~Chekanov, \emph{Imaging particle collision data for event classification
   and Methods in Physics Research Section A: Accelerators, Spectrometers,
   Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
 
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
+  et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of
+  Machine Learning Research} {\bf 12} (2011) 2825--2830}.
+
 \bibitem{DBLP:journals/corr/abs-2107-02278}
 R.~S. Geiger, D.~Cope, J.~Ip, M.~Lotosh, A.~Shah, J.~Weng et~al.,
   \emph{"garbage in, garbage out" revisited: What do machine learning

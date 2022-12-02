@@ -1,6 +1,6 @@
 \section*{The dataset features}
 
-\subsection*{RMM matrix}
+\subsection*{The RMM matrix}
 Most of the features in the analysis are elements in the so called Rapidity-Mass (RMM) matrix inspired by the work of Chekanov \cite{Chekanov_2019}.
 \par
 !! Motivation for using such a matrix in machine learning $\to$ hint to highly uncorrolated feats!!
@@ -45,7 +45,33 @@ this property is defined as
 \begin{equation*}
     h(i_n, j_k) = C(\cosh{(\Delta y)} - 1),
 \end{equation*}
-where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference for particle $i_n$ and $j_k$.
+where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference for particle $i_n$ and $j_k$. 
+
+\subsection*{Implementation of the RMM matrix}
+An example of the RMM matrices used in this thesis is shown in figure \ref{fig:rmm_singular_events} below:
+
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.7\textwidth}
+        \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_16832549_Zeejets.pdf}
+        \caption{RMM matrix for event number 16832549 from the MonteCarlo Zeejets sample. Each feature is scaled based on a fit for that feature for all events in the training set ($\approx 80\%$ of total MC)}
+        \label{fig:rmm_zee_event}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.7\textwidth}
+        \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_11772211_higgs.pdf}
+        \caption{ RMM matrix for event number 11772211 from the MonteCarlo Higgs sample. Each feature is scaled based on a fit for that feature for all events in the training set ($\approx 80\%$ of total MC)}
+        \label{fig:rmm_higgs_event}
+    \end{subfigure}
+    \hfill        
+    \caption{}
+    \label{fig:rmm_singular_events}
+\end{figure}
+
+In figure \ref{fig:rmm_singular_events} we see two RMM matrices created from two different channels in the MonteCarlo samples. This RMM is of type T3N5\footnote{T3 $\to$ 3 particle types: jets, electrons and muons. N5 $\to$ 5 particles per particle type. Note here that we have 5 particles only for the leptons, and 4 particles for the jets.}. 
+These RMM matrices have scaled the features that a minimum value less than $-3$ and or a maximum value of above $3$. These scalers were fitted to the specific value using the "$.fit\_transform()$" and "$.transform()$" 
+functions from the Scikit-learn library\cite{scikit-learn}. For easier interpretability, the gray area corresponds to a missing value, leading to so called "islands" in the RMM matrix.
 
 
 \subsection*{MonteCarlo and data comparison}\label{sec:mcdatacomp}
@@ -60,7 +86,7 @@ is the only dataset we can analyze, and the only dataset we can compare to. The 
 training samples are good enough. 
 
 
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/e_T_miss.pdf}
