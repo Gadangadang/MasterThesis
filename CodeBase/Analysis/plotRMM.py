@@ -72,18 +72,29 @@ class plotRMM:
             df (pd.DataFrame): _description_
             process (str): _description_
         """
+        
+        try:  # In case pandas dataframe is passed
+            col = len(df.columns)
+            df2 = df.mean()
+            df2 = df2.to_numpy()
+            
+        except:  # In case regular numpy array is passed
+            col = len(df)
+            df2 = np.mean(df, axis=0)
+            
+           
 
-        col = len(df.columns)
+    
         row = len(df)
 
-        df2 = df.mean()
+    
 
         tot = len(df2)
         row = int(np.sqrt(tot))
 
         rmm_mat = np.zeros((row, row))
 
-        df2 = df2.to_numpy()
+        
 
         p = 0
 
@@ -130,7 +141,7 @@ class plotRMM:
             df2 = df.iloc[idx].to_numpy()
         except:  # In case regular numpy array is passed
             col = len(df)
-            df2 = df[idx]
+            df2 = df[idx, :]
 
         row = len(df)
 

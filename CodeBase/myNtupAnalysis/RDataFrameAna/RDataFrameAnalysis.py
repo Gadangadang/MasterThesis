@@ -814,7 +814,7 @@ if __name__ == "__main__":
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
     
     
-    TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
+    TOKEN = "5789363537:AAF0SErRfZ07yWrzjppg9oCCO6H8BfFLHw"
     chat_id = "5733209220"
     message = "Hello Sakarias, Event selection is done!"
     resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}")

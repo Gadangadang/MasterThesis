@@ -1,5 +1,5 @@
-LOAD_VAR = False #True
-SAVE_VAR = True #False
+LOAD_VAR = True #False 
+SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
 BACTH_SIZE = int(8192*2)      
 EPOCHS = 2

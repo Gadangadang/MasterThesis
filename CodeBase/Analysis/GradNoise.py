@@ -44,6 +44,7 @@ class GradNoise(RunAE):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)  
         
+        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
         
     def createMuonLikeEvents(self, amount:int)-> np.ndarray:
         pass
@@ -54,9 +55,16 @@ class GradNoise(RunAE):
     
         
     def run(self, tune=False, train=False, choice="sigAVG"):
+        """_summary_
+
+        Args:
+            tune (bool, optional): _description_. Defaults to False.
+            train (bool, optional): _description_. Defaults to False.
+            choice (str, optional): _description_. Defaults to "sigAVG".
+        """
         st = time.time()
         
-        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
+        
         
         rows, cols = np.shape(self.X_val)
         
@@ -89,17 +97,7 @@ class GradNoise(RunAE):
         if train:  
             self.trainModel(X_train, X_val, sample_weight)
         
-        
-        
-        """
-        plt.plot(mu)
-        plt.savefig(self.path + f"feat_scaled/{SCALER}/Average_dist.pdf")
-        plt.close()
-        
-        plt.plot(sigma)
-        plt.savefig(self.path + f"feat_scaled/{SCALER}/std_dist.pdf") 
-        plt.close()
-        """
+       
            
         
         
@@ -123,24 +121,86 @@ class GradNoise(RunAE):
         resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
         print(resp.status_code)
         
+    
+    def genRmmEvent(self):
+        flcomp_val = self.data_structure.flcomp_val.to_numpy()
+        flcomp_train = self.data_structure.flcomp_train.to_numpy()
         
+        self.mu = np.mean(self.X_train, axis=0)
+        self.sigma = np.std(self.X_train, axis=0)
+        
+        
+        distributions = ["Weird", "eee", "eem", "emm", "mmm", "mme", "mee"]
+        choice = [-1, 0, 1, 2, 3, 4, 5]
+        """
+        for choice, dist in zip(choice, distributions):
+            print(choice, dist)
+            indices = np.where(flcomp_val == choice)[0]
+            self.plotRMMMatrix.plotDfRmmMatrix(self.X_val[indices,:], dist)
+        """ 
+        
+        non_weird = np.where(flcomp_val != -1)[0]
+        new = flcomp_val[non_weird]
+
+        distributions_percent = [
+            len(np.where(new == 0)[0])/len(new),
+            len(np.where(new == 1)[0])/len(new),
+            len(np.where(new == 2)[0])/len(new),
+            len(np.where(new == 3)[0])/len(new),
+            len(np.where(new == 4)[0])/len(new),
+            len(np.where(new == 5)[0])/len(new)
+        ]
+        
+        print(np.sum(distributions_percent))
+       
+        
+        
+        print(self.data_structure.cols[:15])
+        
+        jets_sampling_choices = [0,1,2,3,4]
+        
+        lep_combo = {
+           "eee" : [5,6,7],
+           "eem" : [5,6,10],
+           "emm" : [5,10,11],
+           "mmm" : [10,11,12],
+           "mme" : [10,11,5],
+           "mee" : [10,5,6]
+        }
+        
+        lep_combo_choice =["eee", "eem", "emm", "mmm", "mme", "mee"]
+        choice = np.random.choice(lep_combo_choice, len(self.X_val), p=distributions_percent)
+        
+        sample_gen_data = np.zeros_like(self.X_val)
+        print(np.shape(sample_gen_data), np.shape(self.X_val))
+
+
         
         
         
         
     def sigAvgBasedOnMC(self, X_train, X_val):
-        mu = np.mean(X_train, axis=0)
-        sigma = np.std(X_train, axis=0)
+        """_summary_
+
+        Args:
+            X_train (_type_): _description_
+            X_val (_type_): _description_
+
+        Returns:
+            _type_: _description_
+        """
+        self.mu = np.mean(X_train, axis=0)
+        self.sigma = np.std(X_train, axis=0)
         
         signal = []
         
         Feat = 0
-        for sigma, m in zip(sigma, mu):
+        for si, m in zip(self.sigma, self.mu):
             if m == 0:
-                print(f"mu 0 for feat nr {Feat}")
+                print(f"self.mu 0 for feat nr {Feat}")
                 sig_val = np.zeros(np.shape(X_val)[0])
             else:
-                sig_val = np.abs(np.random.normal(m, sigma, np.shape(X_val)[0]))
+                sig_val = np.abs(np.random.normal(m, si, np.shape(X_val)[0]))
             signal.append(sig_val)
             
             Feat += 1
@@ -153,7 +213,7 @@ class GradNoise(RunAE):
         
         #print(len(np.where(signal < 0.0001)[0]), len(np.where(signal < 0.001)[0]))
         
-        signal[:, np.where(mu == 0.)] = 0.
+        signal[:, np.where(self.mu == 0.)] = 0.
         
         signame = "AVG_MCBased_Noise"
         

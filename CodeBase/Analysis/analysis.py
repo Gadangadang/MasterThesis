@@ -59,7 +59,8 @@ def main():
         
     if args.gradnoise:
         GN = GradNoise(sp, STORE_IMG_PATH)
-        GN.run()
+        GN.genRmmEvent()
+        #GN.run()
     
     if args.exclude:
         CT = ChannelTraining(sp, STORE_IMG_PATH)
