@@ -307,12 +307,13 @@ class RunAE:
         fig, ax = plt.subplots()
 
         try:
-            
+            print("in try 1")
             N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
+            print("in try 2")
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-
+            print("in try 3")
             ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
-
+            print("in try 4")
             n_bins = bins
             print("Bins: ",n_bins)
         except:

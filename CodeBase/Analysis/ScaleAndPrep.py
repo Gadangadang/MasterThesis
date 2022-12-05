@@ -321,6 +321,8 @@ class ScaleAndPrep:
                 column_trans = scaler
             
             #column_trans = scaler
+            
+            self.noscale_X_b_train = X_b_train.copy().to_numpy()
 
             strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
             with strategy.scope():
@@ -359,7 +361,7 @@ class ScaleAndPrep:
             
             self.columns = np.asarray(X_b_train.columns, dtype=str)
             
-           
+            self.scalecols = np.asarray(cols, dtype=str)
             
 
             if self.save:
@@ -367,6 +369,7 @@ class ScaleAndPrep:
                 np.save(DATA_PATH / "X_val.npy", self.X_b_val)
                 np.save(DATA_PATH / "Data.npy", self.data)
                 np.save(DATA_PATH / "cols.npy", self.columns)
+                np.save(DATA_PATH / "scalecols.npy", self.scalecols)
 
                 np.save(DATA_PATH / "channel_names.npy", np.asarray(channels))
                 for row in self.idxs:
@@ -375,6 +378,7 @@ class ScaleAndPrep:
                     np.save(DATA_PATH / f"{name}_val_idxs.npy", row[2])
 
                 # Using _b to separate these hdf5 files from the sample files
+                X_b_train.to_hdf(DATA_PATH / "X_b_train.h5", "mini")
                 self.train_categories.to_hdf(DATA_PATH / "train_cat_b.h5", "mini")
                 self.val_categories.to_hdf(DATA_PATH / "val_cat_b.h5", "mini")
 
@@ -390,6 +394,7 @@ class ScaleAndPrep:
             self.X_b_train = np.load(DATA_PATH / "X_train.npy")
             self.X_b_val = np.load(DATA_PATH / "X_val.npy")
             self.data = np.load(DATA_PATH / "Data.npy")
+            self.scalecols = np.load(DATA_PATH / "scalecols.npy")
             
             
           
@@ -420,3 +425,5 @@ class ScaleAndPrep:
             self.flcomp_train = pd.read_hdf(DATA_PATH / "flcomp_train.h5")
             self.flcomp_val = pd.read_hdf(DATA_PATH / "flcomp_val.h5")
             self.flcomp_data = pd.read_hdf(DATA_PATH / "flcomp_data.h5")
+            self.noscale_X_b_train = pd.read_hdf(DATA_PATH / "X_b_train.h5")
+            
