@@ -1,6 +1,8 @@
+import sys
 import time
 import random
 import requests
+import scipy.stats
 import numpy as np
 import pandas as pd
 from tqdm import tqdm
@@ -46,16 +48,13 @@ class GradNoise(RunAE):
         super().__init__(data_structure, path)  
         
         self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
-        
-    def createMuonLikeEvents(self, amount:int)-> np.ndarray:
-        pass
+        self.lower = 0
+        self.upper = 1
     
-    def createElectronLikeEvents(self, amount:int)-> np.ndarray:
-        pass
     
     
         
-    def run(self, tune=False, train=False, choice="sigAVG"):
+    def run(self, tune=False, train=False, choice="sigAVG")->None:
         """_summary_
 
         Args:
@@ -106,7 +105,7 @@ class GradNoise(RunAE):
         if choice == "sigAVG":
             signal, signame = self.sigAvgBasedOnMC(X_train, X_val)
         elif choice == "sample":
-            signal, signame = self.sampledRMMS()
+            signal, signame = self.sampledRMMS(num_events=1000, X_val=X_val)
             
         self.sig_err = np.ones(np.shape(signal)[0])
         
@@ -128,12 +127,23 @@ class GradNoise(RunAE):
         print(resp.status_code)
         
     
-    def sampledRMMS(self):
-        flcomp_val = self.data_structure.flcomp_val.to_numpy()
-        flcomp_train = self.data_structure.flcomp_train.to_numpy()
+    def sampledRMMS(self, num_events:int, X_val:np.ndarray)->Tuple[np.ndarray, str]:
+        """
+        Create events based on the mean and std of the validation set. 
+
+        Args:
+            num_events (int): Number of events to create
+            X_val (np.ndarray): Validation set to 
+
+        Returns:
+            Tuple[np.ndarray, str]: Sampled events for inference and the name of the set
+        """
         
         
         
+        
+        
+        """ #* Scaling the features with each other, not correct I think
         if scaler == "MinMax":
             
             column_trans = ColumnTransformer(
@@ -153,9 +163,79 @@ class GradNoise(RunAE):
         
         self.mu = np.concatenate(self.mu)
         self.sigma = np.concatenate(self.sigma)
+        """
         
-        """ 
         
+        
+        
+        val_cats = self.data_structure.val_categories.to_numpy()
+        ttbar_events = np.where(val_cats=="ttbar")[0]
+        
+        test_samples_events = np.random.choice(ttbar_events, num_events, replace=False)
+        test_samples = X_val[test_samples_events, :]
+        self.mu = np.mean(test_samples, axis=0)
+        self.sigma = np.std(test_samples, axis=0)
+        
+        sample_gen_data = np.zeros((np.shape(test_samples)))
+        
+        
+        p = 0
+        samples = np.zeros((len(test_samples), len(self.mu)))
+        for m, s in zip(self.mu, self.sigma):
+            
+            
+            
+            choice_m = np.random.choice([-1, 1], 1)
+            choice_s = np.random.choice([-1, 1], 1)
+            
+            m += choice_m*0.2
+            m = np.abs(m)
+            if s == 0:
+                s = 2*sys.float_info.epsilon
+                s += choice_s*2e-17
+            
+            dist = scipy.stats.truncnorm.rvs((self.lower-m)/s,(self.upper-m)/s,loc=m,scale=s,size=len(test_samples)) #np.abs(np.random.normal(m, s))
+            samples[:, p] = dist
+            p+=1
+        
+        #samples = scipy.stats.truncnorm.rvs((self.lower-self.mu)/self.sigma,(self.upper-self.mu)/self.sigma,loc=self.mu,scale=self.sigma,size=np.shape(sample_gen_data)) #np.abs(np.random.normal(m, s))
+            
+        for index in tqdm(range(len(test_samples))):
+            
+            mask = np.where(test_samples[index, :] == 0)[0]
+            samples[index, mask] = 0
+            sample_gen_data[index, :] = samples[index, :]
+            #self.plotRMMMatrix.plotDfRmmMatrixNoMean(sample_gen_data, f"ttbar", index)
+            
+            
+            
+        self.plotRMMMatrix.plotDfRmmMatrix(sample_gen_data, "masking")
+    
+               #print(data)
+        return sample_gen_data, "Sampled_MC"
+        
+        
+        
+        
+
+ 
+
+
+    def create_event(self, lep_combo:np.ndarray, average_features:np.ndarray, std_features:np.ndarray)-> np.ndarray:
+        """_summary_
+
+        Args:
+            lep_combo (np.ndarray): _description_
+            average_features (np.ndarray): _description_
+            std_features (np.ndarray): _description_
+
+        Returns:
+            np.ndarray: _description_
+        """
+        
+        
+        flcomp_val = self.data_structure.flcomp_val.to_numpy()
+        flcomp_train = self.data_structure.flcomp_train.to_numpy()
         
         distributions = ["Weird", "eee", "eem", "emm", "mmm", "mme", "mee"]
         choice = [-1, 0, 1, 2, 3, 4, 5]
@@ -185,48 +265,7 @@ class GradNoise(RunAE):
         lep_combo_choice = ["eee", "eem", "emm", "mmm", "mme", "mee"]
         choice = np.random.choice(lep_combo_choice, len(self.X_val), p=distributions_percent)
     
-        """
-        test_samples = np.random.choice(range(len(self.X_val)), 1000, replace=False)
-        test_samples = self.X_val[test_samples, :]
-        sample_gen_data = np.zeros((1000, np.shape(self.X_val)[1]))
         
-        for index, row in enumerate(test_samples):
-            samples = []
-            for m, s in zip(self.mu, self.sigma):
-                dist = np.abs(np.random.normal(m, 2*s))
-                samples.append(dist)
-                
-            samples = np.asarray(samples)
-            
-            mask = np.where(row == 0)
-            
-            samples[mask] = 0
-            
-            sample_gen_data[index, :] = samples
-            
-            
-            
-        self.plotRMMMatrix.plotDfRmmMatrix(sample_gen_data, "masking")
-    
-        """dataset = []
-        for combo in lep_combo_choice:
-            
-            combos = choice[np.where(choice == combo)]
-            dataset.append(self.create_event(combos, self.mu, self.sigma))
-            
-        data = np.concatenate(dataset)
-        """
-               #print(data)
-        return sample_gen_data, "Sampled_MC"
-        
-        
-        
-        
-
- 
-
-
-    def create_event(self, lep_combo:np.ndarray, average_features:np.ndarray, std_features:np.ndarray)-> np.ndarray:
         
         dataset = np.zeros((2, len(average_features))) #int(len(lep_combo)/5e5)
         print(np.shape(dataset))
@@ -261,10 +300,17 @@ class GradNoise(RunAE):
         
         
         
+        dataset = []
+        for combo in lep_combo_choice:
+            
+            combos = choice[np.where(choice == combo)]
+            dataset.append(self.create_event(combos, self.mu, self.sigma))
+            
+        data = np.concatenate(dataset)
+    
         
         
         
-        """
         
         for index in tqdm(range(len(dataset))):
             flag = True
@@ -331,7 +377,7 @@ class GradNoise(RunAE):
                   
                     lep_sampling = np.abs(np.random.normal(average_features[lep_idx], std_features[lep_idx]))
                     dataset[index, lep_idx] = lep_sampling #np.random.choice(lep_sampling, 1)
-        """       
+   
                        
         
         print(f"{lep_combo_choice} done!")
@@ -342,15 +388,15 @@ class GradNoise(RunAE):
         
         
         
-    def sigAvgBasedOnMC(self, X_train, X_val):
+    def sigAvgBasedOnMC(self, X_train:np.ndarray, X_val:np.ndarray)->Tuple[np.ndarray, str]:
         """_summary_
 
         Args:
-            X_train (_type_): _description_
-            X_val (_type_): _description_
+            X_train (np.ndarray): _description_
+            X_val (np.ndarray): _description_
 
         Returns:
-            _type_: _description_
+            Tuple[np.ndarray, str]: _description_
         """
         self.mu = np.mean(X_train, axis=0)
         self.sigma = np.std(X_train, axis=0)
