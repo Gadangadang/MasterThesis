@@ -36,6 +36,11 @@ M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to Quantum Field
 M.~Thomson, \emph{{Modern particle physics}}.
 \newblock Cambridge University Press, New York, 2013.
 
+\bibitem{weinberg_1995}
+S.~Weinberg, \emph{The Quantum Theory of Fields}, vol.~1.
+\newblock Cambridge University Press, 1995,
+  \href{http://dx.doi.org/10.1017/CBO9781139644167}{10.1017/CBO9781139644167}.
+
 \bibitem{feynrules}
 K.~Kumericki, \emph{Feynman diagrams for beginners},  2016.
 \newblock 10.48550/ARXIV.1602.04182.
