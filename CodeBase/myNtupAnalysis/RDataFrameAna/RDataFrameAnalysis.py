@@ -23,7 +23,7 @@ from div_dicts import triggers, rmm_structure
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-R.EnableImplicitMT(200)
+R.EnableImplicitMT(400)
 
 R.gROOT.ProcessLine(".L helperFunctions.cxx+")
 R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))
@@ -73,17 +73,19 @@ def runANA(
         df_data = {}
 
     df = {**df_mc, **df_data}
-    print(df.keys())
+    
+    print(" ")
    
-
+    
     for k in df.keys():
 
         """if k not in ["data15"]:  # , "ttbar"]:
         continue
         """
-
+        #print(df[k].GetColumnNames())
+        
         # df[k] = df[k].Range(0,100)
-
+            
         # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
         # if not k in ["data18"]: continue
@@ -136,6 +138,8 @@ def runANA(
 
         if not isData:
 
+            
+            
             df[k] = df[k].Define("is2015", "RandomRunNumber <= 284500")
             df[k] = df[k].Define(
                 "is2016", "(RandomRunNumber > 284500 && RandomRunNumber < 320000)"
@@ -309,6 +313,25 @@ def runANA(
 
         df[k] = df[k].Define("njet_BL", "ROOT::VecOps::Sum(jet_BL)")
         df[k] = df[k].Define("njet_SG", "ROOT::VecOps::Sum(jet_SG)")
+        
+        df[k] = df[k].Define("ljet","jet_SG && jetdl1r<0.665")
+        
+        
+        df[k] = df[k].Define("bjet85","jet_SG && jetdl1r>=0.665")
+        df[k] = df[k].Define("bjet77","jet_SG && jetdl1r>=2.195")
+
+        df[k] = df[k].Define("nbjet85","ROOT::VecOps::Sum(bjet85)")
+        df[k] = df[k].Define("nbjet77","ROOT::VecOps::Sum(bjet77)")
+        
+        
+        
+
+        
+        """    
+        print(df[k].Display("bjet85").AsString())
+        print(df[k].Display("bjet77").AsString())
+        """
+       
 
         # Adding column for type of channel
 
@@ -751,7 +774,7 @@ if __name__ == "__main__":
     # de = [f.unlink() for f in Path(HISTO_VAR).glob("*") if f.is_file()]
 
     """ Actual analysis """
-    N_j = 4
+    N_j = 12
     N_l = 10
 
     N_col = N_j + N_l + 1

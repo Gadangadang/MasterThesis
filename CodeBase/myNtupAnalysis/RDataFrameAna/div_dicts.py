@@ -22,57 +22,106 @@ triggers = {
     },
 }
 
-particle_placement = {
-            1: "jet0",
-            2: "jet1",
-            3: "jet2",
-            4: "jet3",
-            5: "ele0",
-            6: "ele1",
-            7: "ele2",
-            8: "ele3",
-            9: "ele4",
-            10: "muo0",
-            11: "muo1",
-            12: "muo2",
-            13: "muo3",
-            14: "muo4",                    
-        }
+
 
 rmm_structure = {
     1: [
-        "jet_0",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_0",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         0,
     ],
     2: [
-        "jet_1",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_1",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         1,
     ],
     3: [
-        "jet_2",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_2",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         2,
     ],
     4: [
-        "jet_3",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_3",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         3,
     ],
     5: [
+        "ljet_4",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
+        4,
+    ],
+    6: [
+        "ljet_5",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
+        5,
+    ],
+    7: [
+        "bjet_0",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        0,
+    ],
+    8: [
+        "bjet_1",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        1,
+    ],
+    9: [
+        "bjet_2",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        2,
+    ],
+    10: [
+        "bjet_3",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        3,
+    ],
+    11: [
+        "bjet_4",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        4,
+    ],
+    12: [
+        "bjet_5",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        5,
+    ],
+    13: [
         "ele_0",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -80,7 +129,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         0,
     ],
-    6: [
+    14: [
         "ele_1",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -88,7 +137,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         1,
     ],
-    7: [
+    15: [
         "ele_2",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -96,7 +145,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         2,
     ],
-    8: [
+    16: [
         "ele_3",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -104,7 +153,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         3,
     ],
-    9: [
+    17: [
         "ele_4",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -112,7 +161,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         4,
     ],
-    10: [
+    18: [
         "muo_0",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -120,7 +169,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         0,
     ],
-    11: [
+    19: [
         "muo_1",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -128,7 +177,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         1,
     ],
-    12: [
+    20: [
         "muo_2",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -136,7 +185,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         2,
     ],
-    13: [
+    21: [
         "muo_3",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -144,7 +193,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         3,
     ],
-    14: [
+    22: [
         "muo_4",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -152,6 +201,31 @@ rmm_structure = {
         "lepM[muo_SG]",
         4,
     ],
+}
+
+particle_placement = {
+        1: "ljet0",
+        2: "ljet1",
+        3: "ljet2",
+        4: "ljet3",
+        5: "ljet4",
+        6: "ljet5",
+        7: "bjet0",
+        8: "bjet1",
+        9: "bjet2",
+        10: "bjet3",
+        11: "bjet4",
+        12: "bjet5",
+        13: "ele0",
+        14: "ele1",
+        15: "ele2",
+        16: "ele3",
+        17: "ele4",
+        18: "muo0",
+        19: "muo1",
+        20: "muo2",
+        21: "muo3",
+        22: "muo4",                    
 }
 
 
