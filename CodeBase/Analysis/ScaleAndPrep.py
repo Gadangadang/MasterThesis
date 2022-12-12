@@ -158,7 +158,7 @@ class ScaleAndPrep:
         """_summary_"""
 
         if not self.load:
-            plotRMMMatrix = plotRMM(self.path, rmm_structure, 23)
+            plotRMMMatrix = plotRMM(self.path, rmm_structure, RMMSIZE)
 
             try:
                 self.df  # type: ignore

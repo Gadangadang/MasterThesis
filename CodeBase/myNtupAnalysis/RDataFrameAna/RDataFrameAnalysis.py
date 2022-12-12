@@ -79,12 +79,12 @@ def runANA(
     
     for k in df.keys():
 
-        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOthe","triboso","ttbar","Zeejets","singletop"]:  # , "ttbar"]:
+        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop"]: #["topOther"]:#
             continue
         
         
         
-        #print(df[k].GetColumnNames())
+       
         
         # df[k] = df[k].Range(0,100)
             
@@ -678,7 +678,9 @@ def runANA(
         exit()"""
 
         a = df[k].Report().Print()
+        
         print(a)
+       
 
     for k in histo.keys():
         allhisto.append(histo[k])
@@ -743,6 +745,9 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
 
     dfs = []
     for k in cols:
+        
+        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop"]: #["topOther"]:#
+            continue
 
         print(f"Transforming {k}.ROOT to numpy")
         numpy = df[k].AsNumpy(all_cols)
@@ -759,6 +764,72 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
         )
 
     return dfs
+
+
+def fetchDfs():
+    
+    
+    files = [
+        f for f in listdir(str(df_storage)) 
+        if isfile(join(str(df_storage), f)) and 
+        f[-4:] != ".npy"
+        and f[-4:] != ".csv"
+        and f[-5:] != "_b.h5"
+        and f[-4:] != ".txt"
+        and f[-3:] != ".h5"
+    ]
+    
+    
+    
+    
+    keep = [
+        "Wjets_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "diboson2L_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "diboson3L_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "diboson4L_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "higgs_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "singletop_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "topOther_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "triboson_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "ttbar_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "data18_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "Zeejets_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "Zmmjets_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "Zttjets_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "data15_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "data16_3lep_df_forML_bkg_signal_fromRDF.hdf5",
+        "data17_3lep_df_forML_bkg_signal_fromRDF.hdf5",]
+    
+    
+    
+    
+    keeps = []  
+    names = []
+        
+    for file in files:
+        if file in keep:
+            c = file.find("_3lep_df_forML_bkg_signal_fromRDF.hdf5")
+            name = file[:c]
+            names.append(name)
+            print(name)
+            df = pd.read_hdf(str(df_storage) + "/" + file)
+            
+            df = df.drop([
+                'nlep_BL', 'nlep_SG','flcomp', 'ele_0_charge',
+                'ele_1_charge', 'ele_2_charge', 'muo_0_charge', 'muo_1_charge',
+                'muo_2_charge', 'wgt_SG'], axis=1)
+            print(df.columns)
+            keeps.append(df)
+        
+       
+    
+    print(names)
+     
+
+    return keeps, names
+
+
+
 
 
 if __name__ == "__main__":
@@ -814,7 +885,7 @@ if __name__ == "__main__":
             for d in all_histo:
                 histo.update(d)
     else:"""
-
+    
     df, histo = runANA(
         str(MC_AND_DATA_PATH),
         str(MC_AND_DATA_PATH) + "/data18",
@@ -827,7 +898,7 @@ if __name__ == "__main__":
 
     all_cols = get_column_names(df, histo)
 
-    # print(all_cols)
+    
 
     print("Histogram creation started")
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
@@ -835,17 +906,25 @@ if __name__ == "__main__":
     
     print(" ")
     
+    print(all_cols)
+    
     print("Numpy conversion started")
     numpy_dfs = get_numpy_df(df, all_cols)
     print("Numpy conversion ended")
+    names = list(df.keys())
+    
+    
+    #numpy_dfs, names = fetchDfs()
     
     print(" ")
     
     print("RMM plot creation started")
-    names = list(df.keys())
+    
     for index, df in enumerate(numpy_dfs):
-        plot_rmm_matrix(df, names[index], rmm_structure, N_row)
+        plot_rmm_matrix(df, names[index], rmm_structure, RMMSIZE)
     print("RMM plot creation ended")
+    
+    
     
     TOKEN = "5789363537:AAF0SErRfZ07yWrzjppg9oCCO6H8BfFLHw"
     chat_id = "5733209220"

@@ -21,6 +21,13 @@ from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
+from tensorflow.compat.v1 import ConfigProto
+from tensorflow.compat.v1 import InteractiveSession
+
+config = ConfigProto()
+config.gpu_options.allow_growth = True
+session = InteractiveSession(config=config)
+
 from AE import RunAE
 from plotRMM import plotRMM
 from Utilities.config import *
@@ -47,7 +54,7 @@ class GradNoise(RunAE):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)  
         
-        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 23)
+        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, RMMSIZE)
         self.lower = 0
         self.upper = 1
     
@@ -107,13 +114,22 @@ class GradNoise(RunAE):
         if choice == "sigAVG":
             signal, signame = self.sigAvgBasedOnMC(X_train, X_val)
         elif choice == "sample":
-            signal, signame = self.sampledRMMS(num_events=1000, X_val=X_val)
+            signal, signame = self.sampledRMMS(num_events=BACTH_SIZE*2, X_val=X_val)
             
         self.sig_err = np.ones(np.shape(signal)[0])
         
-        print(signal)
+        print(np.shape(X_val), np.shape(signal))
+        
+        print(len(X_val)/BACTH_SIZE)
+        
+        
+        print("Inference started")
+        
         
         self.runInference(X_val, signal, True)
+        
+        print("Inference ended")
+        
 
         self.checkReconError(self.channels, sig_name=signame, Noise=True)
         

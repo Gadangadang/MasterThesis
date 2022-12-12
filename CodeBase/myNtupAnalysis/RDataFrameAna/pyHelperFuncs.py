@@ -15,6 +15,12 @@ from os import listdir, remove, walk
 from samples import configure_samples
 from os.path import isfile, join, isdir
 
+nbjet = 6
+nljet = 6
+nele = 5
+nmuo = 5
+
+RMMSIZE = 1 + nbjet + nljet + nele + nmuo
 
 fldic = {
     "eee": 0,
@@ -461,14 +467,14 @@ def plot_rmm_matrix(
     tot = len(df2)
     row = int(np.sqrt(tot))
 
-    rmm_mat = np.zeros((row, row))
+    rmm_mat = np.zeros((N_row, N_row))
 
     df2 = df2.to_numpy()
 
     p = 0
 
-    for i in range(row):
-        for j in range(row):
+    for i in range(N_row):
+        for j in range(N_row):
             rmm_mat[i, j] = df2[p]
             p += 1
 
@@ -521,13 +527,7 @@ def get_column_names(df: dict, histo: dict) -> list:
 
     extra = [
         "wgt_SG",
-        "flcomp",
-        "ele_0_charge",
-        "ele_1_charge",
-        "ele_2_charge",
-        "muo_0_charge",
-        "muo_1_charge",
-        "muo_2_charge",
+        "flcomp"
     ]
     for col in extra:
         all_cols.append(col)

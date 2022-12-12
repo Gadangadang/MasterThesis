@@ -204,8 +204,10 @@ class RunAE:
         """
         try:
             self.AE_model
+            print("Model loaded")
         except:
             if tuned_model:
+                print("tuned trained_model")
                 try:
                     self.modelname
                 except:
@@ -221,16 +223,21 @@ class RunAE:
                 print("reg trained_model")
                 self.AE_model = self.trainModel()
 
+        
         with tf.device("/GPU:0"):
+            print("Background started")
             self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
+            print("Background predicted")
             self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
             print(f"Background done, lenght: {len(self.recon_err_back)}")
 
             if len(test_set) > 0:
+                print("Signal started")
                 self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
                 self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
                 print(f"Signal done, lenght: {len(self.recon_sig)}")
 
+            print("ATLAS data started")
             self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
             self.recon_data = self.reconstructionError(self.pred_data, self.data)
             print("ATLAS data done")
@@ -239,11 +246,11 @@ class RunAE:
         """_summary_
 
         Args:
-            pred (np.ndarray): _description_
-            real (np.ndarray): _description_
+            pred (np.ndarray): Prediction from model
+            real (np.ndarray): Truth array to compare
 
         Returns:
-            np.ndarray: _description_
+            np.ndarray: log10 of the error, each feature weighted the same
         """
 
         diff = pred - real
@@ -256,8 +263,9 @@ class RunAE:
         """_summary_
 
         Args:
-            channels (list): _description_
-            sig_name (str, optional): _description_. Defaults to "nosig".
+            channels (list): List containing all the channels
+            sig_name (str, optional): Name of signal sample. Defaults to "nosig".
+            Noise (bool, optional): Noise paramter, sets the bins to 25 as default. Defaults to False.
         """
 
         histo_atlas = []
