@@ -1,7 +1,7 @@
 LOAD_VAR = True #False 
 SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
-BACTH_SIZE = int(8192*2)      
+BACTH_SIZE = int(8192/2)      
 EPOCHS = 2
 
 SMALL = True
@@ -11,38 +11,102 @@ chat_id = "5733209220"
 
 rmm_structure = {
     1: [
-        "jet_0",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_0",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         0,
     ],
     2: [
-        "jet_1",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_1",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         1,
     ],
     3: [
-        "jet_2",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_2",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         2,
     ],
     4: [
-        "jet_3",
-        "jetPt[jet_SG]",
-        "jetEta[jet_SG]",
-        "jetPhi[jet_SG]",
-        "jetM[jet_SG]",
+        "ljet_3",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
         3,
     ],
     5: [
+        "ljet_4",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
+        4,
+    ],
+    6: [
+        "ljet_5",
+        "jetPt[ljet]",
+        "jetEta[ljet]",
+        "jetPhi[ljet]",
+        "jetM[ljet]",
+        5,
+    ],
+    7: [
+        "bjet_0",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        0,
+    ],
+    8: [
+        "bjet_1",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        1,
+    ],
+    9: [
+        "bjet_2",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        2,
+    ],
+    10: [
+        "bjet_3",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        3,
+    ],
+    11: [
+        "bjet_4",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        4,
+    ],
+    12: [
+        "bjet_5",
+        "jetPt[bjet77]",
+        "jetEta[bjet77]",
+        "jetPhi[bjet77]",
+        "jetM[bjet77]",
+        5,
+    ],
+    13: [
         "ele_0",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -50,7 +114,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         0,
     ],
-    6: [
+    14: [
         "ele_1",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -58,7 +122,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         1,
     ],
-    7: [
+    15: [
         "ele_2",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -66,7 +130,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         2,
     ],
-    8: [
+    16: [
         "ele_3",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -74,7 +138,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         3,
     ],
-    9: [
+    17: [
         "ele_4",
         "lepPt[ele_SG]",
         "lepEta[ele_SG]",
@@ -82,7 +146,7 @@ rmm_structure = {
         "lepM[ele_SG]",
         4,
     ],
-    10: [
+    18: [
         "muo_0",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -90,7 +154,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         0,
     ],
-    11: [
+    19: [
         "muo_1",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -98,7 +162,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         1,
     ],
-    12: [
+    20: [
         "muo_2",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -106,7 +170,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         2,
     ],
-    13: [
+    21: [
         "muo_3",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",
@@ -114,7 +178,7 @@ rmm_structure = {
         "lepM[muo_SG]",
         3,
     ],
-    14: [
+    22: [
         "muo_4",
         "lepPt[muo_SG]",
         "lepEta[muo_SG]",

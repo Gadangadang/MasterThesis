@@ -1,8 +1,5 @@
 import sys 
-sys.path.insert(1, "../")
-
 import argparse
-
 from AE import *
 from corr import CorrCheck
 from Noise import NoiseTrial
@@ -17,7 +14,7 @@ from PlotScaledFeats import VizualizeFeats
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
 
-
+sys.path.insert(1, "../")
 
 
 def main():
@@ -46,6 +43,8 @@ def main():
 
     sp = ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR)
     sp.MergeScaleAndSplit()
+    
+    
 
     rae = RunAE(sp, STORE_IMG_PATH)
     
@@ -107,5 +106,10 @@ def main():
 
 if __name__ == "__main__":
     print("Num GPUs Available: ", len(tf.config.list_physical_devices("GPU")))
+    gpus = tf.config.experimental.list_physical_devices('GPU')
+    for gpu in gpus:
+      tf.config.experimental.set_memory_growth(gpu, True)
+    logical_gpus = tf.config.experimental.list_logical_devices('GPU')
+    print(len(gpus), "Physical GPUs,", len(logical_gpus), "Logical GPUs")
 
     main()

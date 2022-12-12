@@ -47,7 +47,7 @@ class GradNoise(RunAE):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)  
         
-        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
+        self.plotRMMMatrix = plotRMM(self.path, rmm_structure, 23)
         self.lower = 0
         self.upper = 1
     
@@ -67,6 +67,8 @@ class GradNoise(RunAE):
         
         
         rows, cols = np.shape(self.X_val)
+        
+        print(rows, cols)
         
         X_train = self.X_train 
         X_val = self.X_val 
@@ -178,6 +180,8 @@ class GradNoise(RunAE):
         
         sample_gen_data = np.zeros((np.shape(test_samples)))
         
+        print("Sample gen data shape", np.shape(sample_gen_data))
+        
         
         p = 0
         samples = np.zeros((len(test_samples), len(self.mu)))
@@ -208,6 +212,7 @@ class GradNoise(RunAE):
             #self.plotRMMMatrix.plotDfRmmMatrixNoMean(sample_gen_data, f"ttbar", index)
             
             
+        
             
         self.plotRMMMatrix.plotDfRmmMatrix(sample_gen_data, "masking")
     

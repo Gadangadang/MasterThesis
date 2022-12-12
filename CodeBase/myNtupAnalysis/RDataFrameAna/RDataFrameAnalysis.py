@@ -23,7 +23,7 @@ from div_dicts import triggers, rmm_structure
 
 d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-R.EnableImplicitMT(400)
+R.EnableImplicitMT(1000)
 
 R.gROOT.ProcessLine(".L helperFunctions.cxx+")
 R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))
@@ -79,9 +79,11 @@ def runANA(
     
     for k in df.keys():
 
-        """if k not in ["data15"]:  # , "ttbar"]:
-        continue
-        """
+        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOthe","triboso","ttbar","Zeejets","singletop"]:  # , "ttbar"]:
+            continue
+        
+        
+        
         #print(df[k].GetColumnNames())
         
         # df[k] = df[k].Range(0,100)
@@ -827,15 +829,23 @@ if __name__ == "__main__":
 
     # print(all_cols)
 
+    print("Histogram creation started")
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
-
+    print("Histogram creation done")
     
+    print(" ")
+    
+    print("Numpy conversion started")
     numpy_dfs = get_numpy_df(df, all_cols)
-
+    print("Numpy conversion ended")
+    
+    print(" ")
+    
+    print("RMM plot creation started")
     names = list(df.keys())
     for index, df in enumerate(numpy_dfs):
         plot_rmm_matrix(df, names[index], rmm_structure, N_row)
-    
+    print("RMM plot creation ended")
     
     TOKEN = "5789363537:AAF0SErRfZ07yWrzjppg9oCCO6H8BfFLHw"
     chat_id = "5733209220"

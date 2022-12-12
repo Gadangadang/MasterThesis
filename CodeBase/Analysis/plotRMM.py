@@ -92,14 +92,14 @@ class plotRMM:
         tot = len(df2)
         row = int(np.sqrt(tot))
 
-        rmm_mat = np.zeros((row, row))
+        rmm_mat = np.zeros((self.N_row, self.N_row))
 
         
 
         p = 0
 
-        for i in range(row):
-            for j in range(row):
+        for i in range(self.N_row):
+            for j in range(self.N_row):
                 rmm_mat[i, j] = df2[p]
                 p += 1
 
@@ -110,8 +110,14 @@ class plotRMM:
             names.append(name)
 
         # rmm_mat[rmm_mat < 0.00009] = np.nan
+        
+        print(len(names), np.shape(self.rmm_structure))
 
         rmm_mat[rmm_mat == 0] = np.nan
+        
+        print("RMM")
+        print(len(names), np.shape(rmm_mat))
+        print("rmm end")
 
         fig = px.imshow(
             rmm_mat,

@@ -112,6 +112,7 @@ class ScaleAndPrep:
             
 
             name = file[: file.find("_3lep")]
+            print(df.columns, len(df.columns))
         
 
             if name in data_names:
@@ -157,7 +158,7 @@ class ScaleAndPrep:
         """_summary_"""
 
         if not self.load:
-            plotRMMMatrix = plotRMM(self.path, rmm_structure, 15)
+            plotRMMMatrix = plotRMM(self.path, rmm_structure, 23)
 
             try:
                 self.df  # type: ignore
@@ -308,8 +309,16 @@ class ScaleAndPrep:
             # print(X_b_train.columns)
 
             print(" ")
+            print(np.shape(X_b_val))
+            print(" ")
+    
+                
+            print(" ")
             print("Scaling initiated ... ")
             print(" ")
+            
+            
+            
 
             if scaler == "MinMax":
             
@@ -333,6 +342,10 @@ class ScaleAndPrep:
                 
             print(" ")
             print("Scaling done")
+            print(" ")
+            
+            print(" ")
+            print(np.shape(self.X_b_train))
             print(" ")
 
             if self.event_rmm:
