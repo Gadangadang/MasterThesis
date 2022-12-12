@@ -36,9 +36,20 @@ M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to Quantum Field
 M.~Thomson, \emph{{Modern particle physics}}.
 \newblock Cambridge University Press, New York, 2013.
 
+\bibitem{weinberg_1995}
+S.~Weinberg, \emph{The Quantum Theory of Fields}, vol.~1.
+\newblock Cambridge University Press, 1995,
+  \href{http://dx.doi.org/10.1017/CBO9781139644167}{10.1017/CBO9781139644167}.
+
 \bibitem{feynrules}
 K.~Kumericki, \emph{Feynman diagrams for beginners},  2016.
 \newblock 10.48550/ARXIV.1602.04182.
+
+\bibitem{Katrin_neutrinos}
+M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
+  \emph{Direct neutrino-mass measurement with sub-electronvolt sensitivity},
+  \href{http://dx.doi.org/10.1038/s41567-021-01463-1}{\emph{Nature Physics}
+  {\bf 18} (Feb, 2022) 160–166}.
 
 \bibitem{collaboration_2020}
 {The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
