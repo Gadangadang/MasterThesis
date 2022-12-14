@@ -224,7 +224,7 @@ class RunAE:
                 self.AE_model = self.trainModel()
 
         
-        with tf.device("/GPU:0"):
+        with tf.device("/CPU:0"):
             print("Background started")
             self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
             print("Background predicted")
