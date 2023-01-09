@@ -10,11 +10,10 @@ This section will describe the standard model in a phenomelogical way, as the ma
 importance to understand the work, nor the results or discussion of them. For a more technical explanation, read (Pich, 2008)\cite{Pich:819632} for a 
 well written paper containing the some more standard model fundamentals, as well as summarizing the experimental status regarding the standard model.
 For more mathematical understanding of the standard model, Peskin and Schroeder's "An introduction to Quantum Field theory" (Peskin and Schroeder, 1995)\cite{Peskin:1995ev}
- is highly recommended. Finally, for more understanding of particle physics, the nature of interactions and more, see Thomson's "Modern Particle physics" (Thomson, 2013)\cite{Thomson:2013zua}. \par
-
-
-The standard model is to physicists what the periodic table is to chemists. It is comprised of two parent class particles, fermions and bosons, where fermions 
-are comprised of quarks and leptons. The model contains 17 particles, 6 quarks, 6 leptons and 5 bosons, and are shown in figure \ref{fig:smdiagram}.
+ is highly recommended. Finally, see Thomson's "Modern Particle physics" (Thomson, 2013)\cite{Thomson:2013zua} for a very comprehensive and up-to-date book that is easy to read and understand. \par
+The standard model is to physicists what the periodic table is to chemists, and is to this day the most fundamental description of matter as we know it. 
+It is comprised of two parent class particles, fermions and bosons, where fermions are comprised of quarks and leptons. The model contains 
+17 particles, 6 quarks, 6 leptons and 5 bosons, and are shown in figure \ref{fig:smdiagram}.
 
 
 
@@ -39,8 +38,34 @@ Note that the left column contains the leptons. whilst the right column contains
 to the given lepton. Here, the first family consists of the electron, the electron neutrino, the up and down quarks. The second family consists of the muon and the
 muon neutrino, the charm and strange quarks. The third family consists of the tau and the tau neutrino, the top and bottom quarks. The masses of these particles 
 increases for each particle in the matrix as the family number increases, i.e the muon is heavier than the electron, and the tau is heavier than the muon, and so 
-on for the other fermions. \par
-Quarks are fractional charge particles, with defined charge of either $2/3$ or $-1/3$. They are the "main" building blocks of protons and neutrons, and are bound by the strong 
+on for the other fermions. Below is a table with specific properties of the fermions.\par
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[h!]
+    \caption{Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass.}
+    \label{tab:fermion_table}
+    \begin{tabular}{|ccccccc|}
+    \hline
+    \multicolumn{1}{|l|}{\textbf{Generation}}         & \multicolumn{1}{l|}{\textbf{Name}}     & \multicolumn{1}{l|}{\textbf{Symbol}} & \multicolumn{1}{l|}{\textbf{Antiparticle}} & \multicolumn{1}{l|}{\textbf{Spin}} & \multicolumn{1}{l|}{\textbf{Charge}} & \multicolumn{1}{l|}{\textbf{Mass (MeV$/c^2$)}} \\ \hline
+    \multicolumn{7}{|c|}{\textbf{Quarks}}                                                                                                                                                                                                                                                                       \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{1}}}                  & \multicolumn{1}{c|}{up}                & \multicolumn{1}{c|}{u}               & \multicolumn{1}{c|}{$\bar{u}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$2/3$}   & $2.2_{-0.4}^{+0.6}$                            \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                   & \multicolumn{1}{c|}{down}              & \multicolumn{1}{c|}{d}               & \multicolumn{1}{c|}{$\bar{d}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$-1/3$}  & $4.6_{-0.4}^{+0.5}$                            \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{2}}} & \multicolumn{1}{c|}{charm}             & \multicolumn{1}{c|}{c}               & \multicolumn{1}{c|}{$\bar{c}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$2/3$}   & $1280 \pm 30$                                  \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{strange}           & \multicolumn{1}{c|}{s}               & \multicolumn{1}{c|}{$\bar{s}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$-1/3$}  & $96_{-4}^{+8}$                                 \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{3}}} & \multicolumn{1}{c|}{top}               & \multicolumn{1}{c|}{t}               & \multicolumn{1}{c|}{$\bar{t}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$2/3$}   & $172100 \pm 600$                               \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{bottom}            & \multicolumn{1}{c|}{b}               & \multicolumn{1}{c|}{$\bar{b}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$-1/3$}  & $4180_{-30}^{+40}$                             \\ \hline
+    \multicolumn{7}{|c|}{\textbf{Leptons}}                                                                                                                                                                                                                                                                               \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{1}}}                & \multicolumn{1}{c|}{electron}          & \multicolumn{1}{c|}{$e^-$}           & \multicolumn{1}{c|}{$\bar{e}^-$}           & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $0.511$                                        \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                   & \multicolumn{1}{c|}{electron neutrino} & \multicolumn{1}{c|}{$\nu_{e}$}       & \multicolumn{1}{c|}{$\bar{\nu}_e$}         & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $<0.0000022$                                   \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{2}}} & \multicolumn{1}{c|}{muon}              & \multicolumn{1}{c|}{$\mu^-$}         & \multicolumn{1}{c|}{$\bar{\mu}^-$}         & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $105.7$                                        \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{muon neutrino}     & \multicolumn{1}{c|}{$\nu_{\mu}$}     & \multicolumn{1}{c|}{$\bar{\nu}_{\mu}$}     & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $<0.170$                                       \\ \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{3}}} & \multicolumn{1}{c|}{tau}               & \multicolumn{1}{c|}{$\tau$}          & \multicolumn{1}{c|}{$\bar{\tau}$}          & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $1776.86 \pm 0.12$                             \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{tau neutrino}      & \multicolumn{1}{c|}{$\nu_{\tau}$}    & \multicolumn{1}{c|}{$\bar{\tau}_{\tau}$}   & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $< 15.5$                                       \\ \hline
+    \end{tabular}
+    \end{table}
+
+Quarks are fractional charge particles, with defined charge of either $2/3$ or $-1/3$, as shown in table \ref{tab:fermion_table}. They are the "main" building blocks of protons and neutrons, and are bound by the strong 
 force, the strongest of the four fundamental forces. The force mediator is the gluon. The other half of fermions are the leptons. They are split into the charged 
 leptons (electrons, muons and taus), and the uncharged leptons (neutrinos). The charged leptons can interact via the electroweak force, where the Z, W bosons 
 as well as the photon can be a mediator.
@@ -48,7 +73,7 @@ as well as the photon can be a mediator.
 
 \subsection*{Bosons}
 Bosons are integer number spin particles, with spin $0, 1, 2, ...$. Within bosons there are so called elementary bosons, some of which are force carriers or mediators such as the W, Z and the photon.
-The Higgs boson is also an elementary boson, but is not a force carrier. It provides masses for the fermions via spontaneous symmetry breaking\cite{Pich:819632}. Other 
+The Higgs boson is also an elementary boson, but is not a force carrier. It provides masses for the fermions via a process called spontaneous symmetry breaking\cite{Pich:819632}. Other 
 bosons are so called composite bosons, which are particles constructed by an even amount of fermions yeilding the integer spin. 
 
 \subsection*{Left and right handedness}

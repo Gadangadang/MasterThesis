@@ -9,6 +9,7 @@ the SM $W^{\pm}$ bosons.
 
 \begin{figure}
     \centering
+    \caption{Proton-proton collision with heavy neutrino production via SM $W^{\pm}$ boson into 3 lepton final state. Read the graph from left to right.}
 \begin{tikzpicture}
     \begin{feynman}
     
@@ -25,8 +26,8 @@ the SM $W^{\pm}$ bosons.
 
         \vertex at (5, -1.7) (e)  ;
 
-        \vertex at (5.5, -1.0) (f4) {\(l\)} ;
-        \vertex at (5.5, -2.2) (f5) {\(\nu\)} ;
+        \vertex at (6, -1.0) (f4) {\(l\)} ;
+        \vertex at (6, -2.2) (f5) {\(\nu\)} ;
 
         
     \diagram*{
@@ -38,12 +39,59 @@ the SM $W^{\pm}$ bosons.
         (d) -- [fermion] (f1),
         (d) -- [fermion] (f2),
         (f2) -- [fermion] (f3),
-        (f2) -- [boson, edge label = {$W^{*}$}] (e),
+        (f2) -- [boson, edge label = {$W^{(*)}$}] (e),
         (e) -- [fermion] (f4),
         (e) -- [fermion] (f5),
         ;
     };
     \end{feynman}
     \end{tikzpicture}
-    \label{fig:Target_model}
+    \label{fig:Target_model_1}
+    
 \end{figure}
+
+
+
+\begin{figure}
+    \centering
+    \caption{Proton-proton collision with heavy neutrino production via right-handed $W_R^{\pm}$ boson into 3 lepton final state. Read the graph from left to right.}
+
+\begin{tikzpicture}
+    \begin{feynman}
+    
+        \vertex at (0.5, 1.) (a2){\(q\)} ;
+        \vertex at (0.5, -1.)  (a5){\(\bar{q}'\)} ;
+
+        \vertex at (1.5, 0.0) (c);
+        \vertex at (3., 0.0) (d);
+
+        \vertex at (5.5, 1.) (f1) {\(l^{\pm}\)} ;
+        \vertex at (3.8,-0.88) (f2) {\(N\)};
+
+        \vertex at (5.5, -0.2) (f3) {\(l\)} ;
+
+        \vertex at (5, -1.7) (e)  ;
+
+        \vertex at (6, -1.0) (f4) {\(l\)} ;
+        \vertex at (6, -2.2) (f5) {\(\nu\)} ;
+
+        
+    \diagram*{
+
+
+        (a2) -- [fermion] (c) -- [boson] (d),
+    
+        (a5) -- [anti fermion] (c) -- [boson, edge label = {$W_R^{\pm}$}] (d),
+        (d) -- [fermion] (f1),
+        (d) -- [fermion] (f2),
+        (f2) -- [fermion] (f3),
+        (f2) -- [boson, edge label = {$W_R^{(*)}$}] (e),
+        (e) -- [fermion] (f4),
+        (e) -- [fermion] (f5),
+        ;
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    \label{fig:Target_model_2}
+    \end{figure}
+
