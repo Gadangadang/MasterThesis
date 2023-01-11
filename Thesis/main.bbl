@@ -88,6 +88,19 @@ S.~Chekanov, \emph{Imaging particle collision data for event classification
   and Methods in Physics Research Section A: Accelerators, Spectrometers,
   Detectors and Associated Equipment} {\bf 931} (jul, 2019) 92--99}.
 
+\bibitem{Chekanov_2021}
+S.~V. Chekanov, \emph{Machine learning using rapidity-mass matrices for event
+  classification problems in {HEP}},
+  \href{http://dx.doi.org/10.3390/universe7010019}{\emph{Universe} {\bf 7}
+  (jan, 2021) 19}.
+
+\bibitem{Santos_2017}
+R.~Santos, M.~Nguyen, J.~Webster, S.~Ryu, J.~Adelman, S.~Chekanov et~al.,
+  \emph{Machine learning techniques in searches for $t\bar{t}h$ in the $h\to
+  b\bar{b}$ decay channel},
+  \href{http://dx.doi.org/10.1088/1748-0221/12/04/p04014}{\emph{Journal of
+  Instrumentation} {\bf 12} (apr, 2017) P04014--P04014}.
+
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
   et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of

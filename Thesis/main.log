@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  14 DEC 2022 15:00
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  11 JAN 2023 11:45
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/Sakarias/MasterThesis/Thesis/main.tex
@@ -1309,12 +1309,6 @@ Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'UKenglish'.
  (./main.aux
 
-LaTeX Warning: Label `fig:eemm_scat' multiply defined.
-
-
-LaTeX Warning: Label `fig:eemm_scat@cref' multiply defined.
-
-
 LaTeX Warning: Label `code:python_func_example' multiply defined.
 
 
@@ -1589,14 +1583,26 @@ Package luatex.def Info: Figures/SM/Standard_Model_of_Elementary_Particles.svg.p
  [11<./Figures/SM/Standard_Model_of_Elementary_Particles.svg.png>] [12] [13]) (./Sections/SM_BSM/BSM.tex) [14]
 Chapter 3.
 (./Sections/Implementation/atlas.tex
-<Figures/atlas/data_col_phys.png, id=278, 824.07875pt x 645.41125pt>
+<Figures/atlas/data_col_phys.png, id=280, 824.07875pt x 645.41125pt>
 File: Figures/atlas/data_col_phys.png Graphic file (type png)
 <use Figures/atlas/data_col_phys.png>
 Package luatex.def Info: Figures/atlas/data_col_phys.png  used on input line 20.
 (luatex.def)             Requested size: 467.42276pt x 366.08603pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Figures/atlas/cms_Sketch_PartonParticleCaloJet.png, id=288, 533.3526pt x 197.0562pt>
+File: Figures/atlas/cms_Sketch_PartonParticleCaloJet.png Graphic file (type png)
+<use Figures/atlas/cms_Sketch_PartonParticleCaloJet.png>
+Package luatex.def Info: Figures/atlas/cms_Sketch_PartonParticleCaloJet.png  used on input line 33.
+(luatex.def)             Requested size: 467.42276pt x 172.69736pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 ) (./Sections/Implementation/root.tex [15
 
-] [16<./Figures/atlas/data_col_phys.png>] (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+] [16<./Figures/atlas/data_col_phys.png><./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png>] (/usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1613,32 +1619,37 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <8> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 89.
  [17]) (./Sections/Implementation/features.tex [18]
-<Figures/rmms/rmm_event_16832549_Zeejets.pdf, id=431, 527.0892pt x 376.5267pt>
-File: Figures/rmms/rmm_event_16832549_Zeejets.pdf Graphic file (type pdf)
-<use Figures/rmms/rmm_event_16832549_Zeejets.pdf>
-Package luatex.def Info: Figures/rmms/rmm_event_16832549_Zeejets.pdf  used on input line 57.
-(luatex.def)             Requested size: 327.1945pt x 233.74289pt.
-<Figures/rmms/rmm_event_11772211_higgs.pdf, id=432, 527.0892pt x 376.5267pt>
-File: Figures/rmms/rmm_event_11772211_higgs.pdf Graphic file (type pdf)
-<use Figures/rmms/rmm_event_11772211_higgs.pdf>
-Package luatex.def Info: Figures/rmms/rmm_event_11772211_higgs.pdf  used on input line 63.
-(luatex.def)             Requested size: 327.1945pt x 233.74289pt.
- [19<./Figures/rmms/rmm_event_16832549_Zeejets.pdf><./Figures/rmms/rmm_event_11772211_higgs.pdf>]
-<Figures/MC_Data_comp/e_T_miss.pdf, id=477, 569.12625pt x 555.07375pt>
-File: Figures/MC_Data_comp/e_T_miss.pdf Graphic file (type pdf)
-<use Figures/MC_Data_comp/e_T_miss.pdf>
-Package luatex.def Info: Figures/MC_Data_comp/e_T_miss.pdf  used on input line 92.
-(luatex.def)             Requested size: 280.4565pt x 273.53847pt.
-<Figures/MC_Data_comp/flcomp.pdf, id=478, 569.12625pt x 555.07375pt>
-File: Figures/MC_Data_comp/flcomp.pdf Graphic file (type pdf)
-<use Figures/MC_Data_comp/flcomp.pdf>
-Package luatex.def Info: Figures/MC_Data_comp/flcomp.pdf  used on input line 98.
-(luatex.def)             Requested size: 280.4565pt x 273.53847pt.
+<Figures/rmms/rmm_event_6993776_diboson4L.pdf, id=447, 527.0892pt x 376.5267pt>
+File: Figures/rmms/rmm_event_6993776_diboson4L.pdf Graphic file (type pdf)
+<use Figures/rmms/rmm_event_6993776_diboson4L.pdf>
+Package luatex.def Info: Figures/rmms/rmm_event_6993776_diboson4L.pdf  used on input line 63.
+(luatex.def)             Requested size: 373.93962pt x 267.13474pt.
+<Figures/rmms/rmm_event_11739638_higgs.pdf, id=448, 527.0892pt x 376.5267pt>
+File: Figures/rmms/rmm_event_11739638_higgs.pdf Graphic file (type pdf)
+<use Figures/rmms/rmm_event_11739638_higgs.pdf>
+Package luatex.def Info: Figures/rmms/rmm_event_11739638_higgs.pdf  used on input line 70.
+(luatex.def)             Requested size: 373.93962pt x 267.13474pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (./Sections/Implementation/algo.tex [20] [21<./Figures/MC_Data_comp/e_T_miss.pdf><./Figures/MC_Data_comp/flcomp.pdf>] [22] [23]) [24]
+<Figures/MC_Data_comp/e_T_miss.pdf, id=453, 569.12625pt x 555.07375pt>
+File: Figures/MC_Data_comp/e_T_miss.pdf Graphic file (type pdf)
+<use Figures/MC_Data_comp/e_T_miss.pdf>
+Package luatex.def Info: Figures/MC_Data_comp/e_T_miss.pdf  used on input line 108.
+(luatex.def)             Requested size: 280.4565pt x 273.53847pt.
+<Figures/MC_Data_comp/flcomp.pdf, id=454, 569.12625pt x 555.07375pt>
+File: Figures/MC_Data_comp/flcomp.pdf Graphic file (type pdf)
+<use Figures/MC_Data_comp/flcomp.pdf>
+Package luatex.def Info: Figures/MC_Data_comp/flcomp.pdf  used on input line 114.
+(luatex.def)             Requested size: 280.4565pt x 273.53847pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) (./Sections/Implementation/algo.tex [19]
+Overfull \vbox (6.71123pt too high) has occurred while \output is active []
+
+ [20<./Figures/rmms/rmm_event_6993776_diboson4L.pdf><./Figures/rmms/rmm_event_11739638_higgs.pdf>] [21<./Figures/MC_Data_comp/e_T_miss.pdf><./Figures/MC_Data_comp/flcomp.pdf>] [22] [23]) [24]
 Chapter 4.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex File ignored) [25
 
@@ -1670,19 +1681,19 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 52943 strings out of 477785
- 1164571,1977958 words of node,token memory allocated
- 1342 words of node memory still in use:
-   8 hlist, 2 vlist, 2 rule, 1 local_par, 15 glue, 10 kern, 1 penalty, 2 sub_mlist, 3 glyph, 128 attribute, 113 glue_spec, 66 attribute_list, 2 write, 3 pdf_action nodes
-   avail lists: 1:17,2:19853,3:2223,4:18732,5:17963,6:150,7:30133,8:153,9:54069,10:46,11:2841,12:1
- 71095 multiletter control sequences out of 65536+600000
+ 52971 strings out of 477785
+ 1164504,1977958 words of node,token memory allocated
+ 1381 words of node memory still in use:
+   8 hlist, 2 vlist, 2 rule, 1 local_par, 18 glue, 10 kern, 1 penalty, 2 sub_mlist, 3 glyph, 134 attribute, 113 glue_spec, 69 attribute_list, 2 write, 3 pdf_action nodes
+   avail lists: 1:21,2:19763,3:2238,4:18672,5:17753,6:150,7:30693,8:153,9:53421,10:46,11:2805,12:1
+ 71111 multiletter control sequences out of 65536+600000
  102 fonts using 8306479 bytes
  98i,15n,102p,1036b,2007s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (47 pages, 1677049 bytes).
+</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on main.pdf (47 pages, 1787624 bytes).
 
-PDF statistics: 1117 PDF objects out of 1200 (max. 8388607)
- 903 compressed objects within 10 object streams
- 412 named destinations out of 1000 (max. 131072)
+PDF statistics: 1136 PDF objects out of 1200 (max. 8388607)
+ 922 compressed objects within 10 object streams
+ 418 named destinations out of 1000 (max. 131072)
  168 words of extra memory for PDF output out of 10000 (max. 100000000)
 

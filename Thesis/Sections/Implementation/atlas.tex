@@ -16,7 +16,7 @@ packets of around $10^{11}$ protons, and collides them at a rate of 25 nanosecon
 
 \subsubsection*{Data preparation}
 
-\begin{figure}
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/data_col_phys.png}
     \caption{Figure describing the steps to take for data collection at ATLAS, fetched from \href{https://indico.cern.ch/event/1159574/timetable/?view=standard}{Hybrid ATLAS Induction Day + Software Tutorial workshop}, part
     \href{https://indico.cern.ch/event/860971/contributions/3672974/attachments/1972049/3280896/Atlas_computing_data_preparation_jan20.pdf}{Computing and Data preparation}, 
@@ -24,3 +24,18 @@ packets of around $10^{11}$ protons, and collides them at a rate of 25 nanosecon
     \label{fig:atlas_data_col_phys}
 \end{figure}
 
+
+\subsubsection*{Jets}
+Photons and leptons are detected via calorimeters, and are easy to track and detect as they separate easily. Quarks, however, are bound by QCD and thus cannot be seperated as individual particles. 
+An illustration of how quarks and gluons are behaving during a proton-proton collision is shown below in figure \ref{fig:cms_jets}.
+
+\begin{figure}[h!]
+    \includegraphics[width=\linewidth]{Figures/atlas/cms_Sketch_PartonParticleCaloJet.png}
+    \caption{Figure describing how quarks and gluons are treated in the detector, and thus why we name them jets, fetched from \href{https://cms.cern/sites/default/files/field/image/Sketch_PartonParticleCaloJet.png}{the CMS webpage}. }
+    \label{fig:cms_jets}
+\end{figure}
+
+In a proton-proton collision, the quarks and gluons forms stable or unstable hadrons such that the color confinement\footnote{Add link to a source or explanation for this.} is upheld. These then 
+decay to other stable hadrons that can be tracked, and these tracks are called jets. This is particularly difficult because one wants to isolate which hadrons came from  the original quark in the 
+Feynman diagram. Another point to make is that some quarks are of higher interest than others. For example, the b jet, coming from a b quark, is a good indicator for certain processes, 
+thus identifying suchs particles is of huge interest. 

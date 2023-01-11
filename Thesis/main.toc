@@ -14,7 +14,7 @@
 \contentsline {section}{\numberline {3.4}Code implementation}{20}{section.3.4}%
 \contentsline {chapter}{\numberline {4}Results}{25}{chapter.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{27}{chapter.5}%
-\contentsline {chapter}{Conclusion}{29}{chapter*.40}%
-\contentsline {chapter}{Appendices}{31}{section*.41}%
-\contentsline {chapter}{Appendix A}{33}{appendix*.42}%
-\contentsline {chapter}{Appendix B}{35}{appendix*.43}%
+\contentsline {chapter}{Conclusion}{29}{chapter*.42}%
+\contentsline {chapter}{Appendices}{31}{section*.43}%
+\contentsline {chapter}{Appendix A}{33}{appendix*.44}%
+\contentsline {chapter}{Appendix B}{35}{appendix*.45}%
