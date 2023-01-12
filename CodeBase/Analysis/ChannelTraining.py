@@ -1,5 +1,4 @@
 import time
-import random
 import requests
 import numpy as np
 import pandas as pd
