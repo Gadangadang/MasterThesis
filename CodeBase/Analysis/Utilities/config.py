@@ -4,6 +4,8 @@ SCALER = "MinMax" # or "Standard"
 BACTH_SIZE = int(8192)      
 EPOCHS = 2
 
+TYPE = "VAE" #"AE"
+
 nbjet = 6
 nljet = 6
 nele = 5
