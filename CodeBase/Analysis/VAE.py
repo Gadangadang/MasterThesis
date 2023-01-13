@@ -69,7 +69,7 @@ class VAE(tf.keras.Model):
             reconstruction = self.decoder(z)
             reconstruction_loss = tf.reduce_mean(
                 tf.reduce_sum(
-                    tf.keras.losses.binary_crossentropy(data, reconstruction), axis=(1, 2)
+                    tf.keras.losses.binary_crossentropy(data, reconstruction)
                 )
             )
             kl_loss = -0.5 * (1 + z_log_var - tf.square(z_mean) - tf.exp(z_log_var))
@@ -127,61 +127,30 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        
         val = 7
         
-        
-        
-        encoder_inputs = tf.keras.Input(shape=(self.data_shape))
-        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input"),
-        x = tf.keras.layers.Dense(
-                    units=70,
-                    activation="tanh",
-                    kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                    activity_regularizer=tf.keras.regularizers.L2(0.5),
-                )(inputs)
-        x = tf.keras.layers.Dense(units=45, activation="linear")(x)
-        x = tf.keras.layers.Dense(
-            units=20,
-            activation="linear",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
-        )(x)
-        x = tf.keras.layers.Dense(
-            units=val, activation=tf.keras.layers.LeakyReLU(alpha=1)
-        )(x)
-
+        encoder_inputs = tf.keras.Input(shape=self.data_shape)
+        x = tf.keras.layers.Dense(units=70, activation="relu")(encoder_inputs)
+        x = tf.keras.layers.Dense(units=40, activation="relu")(x)
+        x = tf.keras.layers.Dense(16, activation="relu")(x)
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
         z = Sampling()([z_mean, z_log_var])
-        self.encoder = tf.keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
-        self.encoder.summary()
+        encoder = tf.keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
+        encoder.summary()
         
-        latent_inputs = tf.keras.Input(shape=(val,))
-        
-        x = tf.keras.layers.Dense(
-            units=22,
-            activation="relu",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
-        )(latent_inputs)
-        x = tf.keras.layers.Dense(
-            units=50, activation=tf.keras.layers.LeakyReLU(alpha=1)
-        )(x)
-        x = tf.keras.layers.Dense(
-            units=73,
-            activation="tanh",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
-        )(x)
-        
-        decoder_outputs = tf.keras.layers.Dense(self.data_shape, activation="relu", padding="same")(x)
-        self.decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
-        self.decoder.summary()
+        latent_inputs = tf.keras.Input(shape=val)
+        x = tf.keras.layers.Dense(units=16, activation="relu")(latent_inputs)
+        x = tf.keras.layers.Dense(units=40, activation="relu")(x)
+        x = tf.keras.layers.Dense(units=70, activation="relu")(x)
+        decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(x)
+        decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
+        decoder.summary()
             
 
-        self.AE_model = VAE(self.encoder, self.decoder)
+        self.AE_model = VAE(encoder, decoder)
         self.AE_model.compile(optimizer=tf.keras.optimizers.Adam())
+        
         return self.AE_model
         
 
@@ -210,19 +179,17 @@ class RunVAE:
 
             self.AE_model.fit(
                 X_train,
-                X_train,
                 epochs=self.epochs,
                 batch_size=self.b_size,
-                validation_data=(X_val, X_val),
                 sample_weight=sample_weight,
             )
 
             print("Fitting complete")
 
         self.modelname = f"model_{self.name}"
-        self.AE_model.save("tf_models/" + self.modelname + ".h5")
+        #self.AE_model.save("tf_models/" + self.modelname + ".h5")
 
-        print(f"{self.modelname} saved")
+        #print(f"{self.modelname} saved")
 
 
       
@@ -259,19 +226,19 @@ class RunVAE:
         
         with tf.device("/CPU:0"):
             print("Background started")
-            self.pred_back = self.AE_model.predict(X_val, batch_size=self.b_size)
+            self.pred_back = self.AE_model.encoder.predict(X_val, batch_size=self.b_size)
             print("Background predicted")
             self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
             print(f"Background done, lenght: {len(self.recon_err_back)}")
 
             if len(test_set) > 0:
                 print("Signal started")
-                self.pred_sig = self.AE_model.predict(test_set, batch_size=self.b_size)
+                self.pred_sig = self.AE_model.encoder.predict(test_set, batch_size=self.b_size)
                 self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
                 print(f"Signal done, lenght: {len(self.recon_sig)}")
 
             print("ATLAS data started")
-            self.pred_data = self.AE_model.predict(self.data, batch_size=self.b_size)
+            self.pred_data = self.AE_model.encoder.predict(self.data, batch_size=self.b_size)
             self.recon_data = self.reconstructionError(self.pred_data, self.data)
             print("ATLAS data done")
 
@@ -424,3 +391,49 @@ class RunVAE:
         plt.close()
 
 
+
+
+
+
+def getmodel(data_shape):
+    val = 7
+        
+    encoder_inputs = tf.keras.Input(shape=data_shape)
+    x = tf.keras.layers.Dense(units=70, activation="relu")(encoder_inputs)
+    x = tf.keras.layers.Dense(units=40, activation="relu")(x)
+    x = tf.keras.layers.Dense(16, activation="relu")(x)
+    z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
+    z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
+    z = Sampling()([z_mean, z_log_var])
+    encoder = tf.keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
+    encoder.summary()
+    
+    latent_inputs = tf.keras.Input(shape=(val,))
+    
+    x = tf.keras.layers.Dense(units=16, activation="relu")(latent_inputs)
+    x = tf.keras.layers.Dense(units=40, activation="relu")(x)
+    x = tf.keras.layers.Dense(units=70, activation="relu")(x)
+    decoder_outputs = tf.keras.layers.Dense(units=data_shape, activation="relu")(x)
+    decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
+    decoder.summary()
+        
+
+    AE_model = VAE(encoder, decoder)
+    AE_model.compile(optimizer=tf.keras.optimizers.Adam())
+    
+    return AE_model
+    
+def my_func(arg):
+  arg = tf.convert_to_tensor(arg, dtype=tf.float32)
+  return arg
+    
+if __name__ == "__main__":
+    vaemodel = getmodel(529)
+    data = my_func(np.random.uniform(0, 1, (1000, 529)))
+    target = my_func(np.random.uniform(0, 1, 1000))
+   
+    print(np.shape(data), np.shape(target))
+    
+    vaemodel.fit(data, data)
+    
+    
