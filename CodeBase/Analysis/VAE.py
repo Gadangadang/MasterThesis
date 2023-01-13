@@ -226,19 +226,27 @@ class RunVAE:
         
         with tf.device("/CPU:0"):
             print("Background started")
-            self.pred_back = self.AE_model.encoder.predict(X_val, batch_size=self.b_size)
+            z_m, z_var, z = self.AE_model.encoder.predict(X_val, batch_size=self.b_size)
+            self.pred_back = self.AE_model.decoder.predict(z)
             print("Background predicted")
+            print(np.shape(self.pred_back))
             self.recon_err_back = self.reconstructionError(self.pred_back, X_val)
+            
+            
             print(f"Background done, lenght: {len(self.recon_err_back)}")
 
             if len(test_set) > 0:
                 print("Signal started")
-                self.pred_sig = self.AE_model.encoder.predict(test_set, batch_size=self.b_size)
+                z_m, z_var, z = self.AE_model.encoder.predict(test_set, batch_size=self.b_size)
+                self.pred_sig = self.AE_model.decoder.predict(z)
                 self.recon_sig = self.reconstructionError(self.pred_sig, test_set)
                 print(f"Signal done, lenght: {len(self.recon_sig)}")
 
             print("ATLAS data started")
-            self.pred_data = self.AE_model.encoder.predict(self.data, batch_size=self.b_size)
+            z_m, z_var, z = self.AE_model.encoder.predict(self.data, batch_size=self.b_size)
+            self.pred_data = self.AE_model.decoder.predict(z)
+           
+            
             self.recon_data = self.reconstructionError(self.pred_data, self.data)
             print("ATLAS data done")
 

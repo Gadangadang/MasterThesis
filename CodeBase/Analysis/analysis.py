@@ -56,9 +56,6 @@ def main():
         pt_T = pTAltering_T(sp, STORE_IMG_PATH)
         pt_T.run([1.5, 3, 5, 7, 10])
     
-    if args.fake_t:
-        T = FakeParticles_T(sp, STORE_IMG_PATH)
-        T.run([[1,5], [2,5], [3,5], [4,5]], 0.1)
     
     if args.corr:
         C = CorrCheck(sp, STORE_IMG_PATH)
