@@ -18,10 +18,28 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
 
+\bibitem{weng2018VAE}
+L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
+  (2018) }.
+
+\bibitem{VAE}
+D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
+\newblock 10.48550/ARXIV.1312.6114.
+
 \bibitem{ADAM:opti}
 D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
   2014.
 \newblock 10.48550/ARXIV.1412.6980.
+
+\bibitem{hyperband:opt}
+L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
+  \emph{Hyperband: A novel bandit-based approach to hyperparameter
+  optimization}, .
+
+\bibitem{successivehalving}
+K.~Jamieson and A.~Talwalkar, \emph{Non-stochastic best arm identification and
+  hyperparameter optimization},  2015.
+\newblock 10.48550/ARXIV.1502.07943.
 
 \bibitem{Pich:819632}
 A.~Pich, \emph{{The Standard Model of Electroweak Interactions; rev. version}},
