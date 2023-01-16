@@ -41,13 +41,31 @@ reconstruction without copying, thus we can simply use mean squared error, given
 \section{Variational autoencoders}
 Another popular method for reconstruction is the so called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
 one can use the variational bayesian approach for efficient approximate posterior inference, leading to the use of variational autoencoders.
+Here, contrary to regular autoencoders, the latent space is thought of as a distribution. In the context of reconstruction, this means that
+we want to create a latent space distribution based on the true distribution in the data, and use this latent space distribution to then generate
+data given that latent space. 
 \subsection*{Variational Bayes}
+Lets assume some dataset $X = \{x^{(i)}\}_{i=1}^{N}$ with N samples for a variable x, and also assume that the generation of the data comes from 
+some random variable z. We also assume that this variable z is generated from a prior distribution $p_{\theta}(z)$ and that the data is then 
+generated from a conditional distribution $p_{\theta}(x|z)$, and that both their respective probability density functions are sufficiently 
+differentiable with respect to parameters $\theta$ and z. We then have that the true posterior distribution is given by 
+$p_{\theta}(z|x) = p_{\theta}(z)p_{\theta}(x|z)/p_{\theta}(x)$. The work done by Kingman and Welling \cite{VAE} was motivated by the fact that
+$p_{\theta}(z|x)$ more often than not is intractable\footnote{Intractability here refers to the inability to evaluate or differentiate 
+a given distribution or function, or difficulty with solving a problem due to a large parameter space or finding the global optimum of 
+a complex function. }, thus instead we will try to approximate the true posterior with a variational approximation $p_{\theta}(z|x) \approx q_{\phi}(z|x)$.   
+It can from here on out be useful to think of $q_{\phi}(z|x)$ as a probabilistic encoder, as it for a given data point x will produce a distribution
+over possible values for z, the latent space, that the datapoint could have been generated from. Similarly, is can be useful to think of the   
+$p_{\theta}(z|x)$ as a probabilistic decoder, as it for a given z will produce a distribution over possible values for x.
 
+\subsubsection*{The variational bound}
 
+\subsubsection*{The SGVB estimator}
+
+\subsubsection*{Reparameterization}
 
 
 \subsection*{Variational autoencoders}
-Now, this variational bayes can then be used to create a variational autoencoder. This contains two neural networks, the generative model $p_{\theta}(x,z)$,
+Now, this variational bayes can then be used to create a variational autoencoder. This contains two neural networks, the generative model $p_{\theta}(x|z)$,
 as well as the probabilistic encoder $q_{\phi}(z|x)$, which is used to approximate the posterior $p_{\theta}(z|x)$. We now let the prior over 
 the latent space be a multivariate Gaussian, lacking parameters: $p_{\theta}(z) = \mathcal{N}(z;0,I)$. We also have that $p_{\theta}(x|z)$ is a multivariate Gaussian,
 with a distribution generated from z, whilst $p_{\theta}(z|x)$ is in fact intractable. If we now assume that the true (intractable) posterior 
