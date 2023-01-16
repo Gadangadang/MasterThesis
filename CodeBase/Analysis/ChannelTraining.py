@@ -18,10 +18,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE import RunAE
+from VAE import RunVAE
 from plotRMM import plotRMM
 from Utilities.config import *
 from Utilities.pathfile import *
 from HyperParameterTuning import HyperParameterTuning
+
 
 seed = tf.random.set_seed(1)
 
@@ -37,7 +39,13 @@ else:
     arc = "big"
     
     
-class ChannelTraining(RunAE):
+if TYPE == "VAE":
+    model = RunVAE
+elif TYPE == "AE":
+    model = RunAE
+    
+    
+class ChannelTraining(model):
     def __init__(self,data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
@@ -97,17 +105,18 @@ class ChannelTraining(RunAE):
 
             self.name = "no_" + channel
 
-            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-            HPT.runHpSearch(
-                X_train_reduced, X_val_reduced, sample_weight, small=small, epochs=2
-            )
+            if TYPE == "AE":
+                HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+                HPT.runHpSearch(
+                    X_train_reduced, X_val_reduced, sample_weight, small=small, epochs=2
+                )
 
-            # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-            print(" ")
-            print("Hyperparam search done")
-            print(" ")
+                # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
+                print(" ")
+                print("Hyperparam search done")
+                print(" ")
 
-            self.AE_model = HPT.AE_model
+                self.AE_model = HPT.AE_model
 
             
             self.trainModel(X_train_reduced, X_val_reduced, sample_weight)

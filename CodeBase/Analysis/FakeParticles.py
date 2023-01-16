@@ -19,6 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE import RunAE
+from VAE import RunVAE
 from plotRMM import plotRMM
 from Utilities.config import *
 from Utilities.pathfile import *
@@ -36,9 +37,15 @@ if SMALL:
     arc = "small"
 else:
     arc = "big"
+    
+        
+if TYPE == "VAE":
+    model = RunVAE
+elif TYPE == "AE":
+    model = RunAE
 
 
-class FakeParticles(RunAE):
+class FakeParticles(model):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)     
         
@@ -87,7 +94,7 @@ class FakeParticles(RunAE):
         print(event)
         channel_test = val_cat[event]
         print(channel_test)
-        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, additional_info="preswap", fake=True)
+        #plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, additional_info="preswap", fake=True)
         
         print(" ")
         print(" loop ")
@@ -119,7 +126,7 @@ class FakeParticles(RunAE):
         print(" ")
           
             
-        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, fake=True)
+        #plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, fake=True)
 
         
         print("  ")
@@ -146,11 +153,12 @@ class FakeParticles(RunAE):
         
         
         #* Tuning, training, and inference
-        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-        HPT.runHpSearch(
-            self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
-        )
-        self.AE_model = HPT.AE_model
+        if TYPE == "AE":
+            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+            HPT.runHpSearch(
+                self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
+            )
+            self.AE_model = HPT.AE_model
         
         self.trainModel(self.X_train, X_val_dummy, sample_weight)
         self.runInference(X_tot, signal,True)
