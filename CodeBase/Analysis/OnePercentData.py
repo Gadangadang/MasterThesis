@@ -19,6 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE import RunAE
+from VAE import RunVAE
 from Utilities.config import *
 from Utilities.pathfile import *
 from HyperParameterTuning import HyperParameterTuning
@@ -36,7 +37,12 @@ if SMALL:
 else:
     arc = "big"
     
-class OnePercentData(RunAE):
+if TYPE == "VAE":
+    useclass = RunVAE
+elif TYPE == "AE":
+    useclass = RunAE
+    
+class OnePercentData(useclass):
     def __init__(self, data_structure:object, path: str)->None:
         super().__init__(data_structure, path)
         
@@ -174,11 +180,14 @@ class OnePercentData(RunAE):
         
         
         #* Tuning, training, and inference
-        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+        """HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
         HPT.runHpSearch(
             X_train, X_val, sample_weight, small=SMALL
         )
+        
         self.AE_model = HPT.AE_model
+        """
+        
 
         self.trainModel(X_train, X_val, sample_weight)
 

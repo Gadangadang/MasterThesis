@@ -13,6 +13,7 @@ from OnePercentData import OnePercentData
 from PlotScaledFeats import VizualizeFeats
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
+from ptaltering_VAE import pTAltering_T
 
 sys.path.insert(1, "../")
 
@@ -38,6 +39,9 @@ def main():
     parser.add_argument("-C", "--corr", action="store_true", help="Check correlation")
     parser.add_argument("-V", "--vizfeat", action="store_true", help="Plot distributions")
     parser.add_argument("-G", "--gradnoise", action="store_true", help="Plot distributions")
+    parser.add_argument("-FT", "--fake_t", action="store_true", help="Fake particles pytorch")
+    parser.add_argument("-AT", "--altering_t", action="store_true", help="Fake particles pytorch")
+    
 
     args = parser.parse_args()
 
@@ -47,6 +51,11 @@ def main():
     
 
     rae = RunAE(sp, STORE_IMG_PATH)
+    
+    if args.altering_t:
+        pt_T = pTAltering_T(sp, STORE_IMG_PATH)
+        pt_T.run([1.5, 3, 5, 7, 10])
+    
     
     if args.corr:
         C = CorrCheck(sp, STORE_IMG_PATH)
