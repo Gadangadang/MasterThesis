@@ -127,12 +127,17 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        val = 7
+        val = 30
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
-        x = tf.keras.layers.Dense(units=70, activation="relu")(encoder_inputs)
-        x = tf.keras.layers.Dense(units=40, activation="relu")(x)
-        x = tf.keras.layers.Dense(16, activation="relu")(x)
+        x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
+        x = tf.keras.layers.Dense(units=437, activation="tanh",
+                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(encoder_inputs)
+        x = tf.keras.layers.Dense(units=231, activation="relu")(x)
+        x = tf.keras.layers.Dense(77, activation=tf.keras.layers.LeakyReLU(alpha=1),
+                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
         z = Sampling()([z_mean, z_log_var])
@@ -140,10 +145,14 @@ class RunVAE:
         encoder.summary()
         
         latent_inputs = tf.keras.Input(shape=val)
-        x = tf.keras.layers.Dense(units=16, activation="relu")(latent_inputs)
-        x = tf.keras.layers.Dense(units=40, activation="relu")(x)
-        x = tf.keras.layers.Dense(units=70, activation="relu")(x)
-        decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(x)
+        x = tf.keras.layers.Dense(units=75, activation="linear")(latent_inputs)
+        x = tf.keras.layers.Dense(units=267, activation="relu",
+                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
+        x = tf.keras.layers.Dense(units=444, activation="tanh",
+                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
+        decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="sigmoid")(x)
         decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
         decoder.summary()
             

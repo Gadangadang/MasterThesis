@@ -94,7 +94,7 @@ class FakeParticles(model):
         print(event)
         channel_test = val_cat[event]
         print(channel_test)
-        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, additional_info="preswap", fake=True)
+        #plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, additional_info="preswap", fake=True)
         
         print(" ")
         print(" loop ")
@@ -126,7 +126,7 @@ class FakeParticles(model):
         print(" ")
           
             
-        plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, fake=True)
+        #plotRMMMatrix.plotDfRmmMatrixNoMean(X_val_dummy, channel_test, event, fake=True)
 
         
         print("  ")

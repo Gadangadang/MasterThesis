@@ -1,8 +1,8 @@
 LOAD_VAR = True #False 
 SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
-BACTH_SIZE = int(8192)      
-EPOCHS = 10
+BACTH_SIZE = 256#int(8192/4)      
+EPOCHS = 2
 
 TYPE = "VAE" #"AE"
 
