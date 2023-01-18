@@ -134,13 +134,13 @@ class RunVAE:
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
-        """x = tf.keras.layers.Dense(units=437, activation="tanh",
+        x = tf.keras.layers.Dense(units=437, activation="tanh",
                                   kernel_regularizer=tf.keras.regularizers.L1(0.05),
                                   activity_regularizer=tf.keras.regularizers.L2(0.5),)(encoder_inputs)
         x = tf.keras.layers.Dense(units=231, activation="relu")(x)
         x = tf.keras.layers.Dense(77, activation=tf.keras.layers.LeakyReLU(alpha=1),
                                   kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)"""
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
         z = Sampling()([z_mean, z_log_var])

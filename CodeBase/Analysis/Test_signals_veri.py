@@ -57,22 +57,23 @@ class SignalDumVeri(model):
         self.signal_cats = self.signal_cats.to_numpy()
         
         print(np.unique(self.signal_cats))
-        breakpoint()
-        
+        #breakpoint()
+        i = 0
         for signal in np.unique(self.signal_cats):
-            if signal == 'MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7':
-                continue
-            signal_name = signal
             
-      
+            signal_name = signal
+            if i == 0:
+                i+=1
+                continue
+
             
             val_cat = self.data_structure.val_categories
             sample_weight = self.data_structure.weights_train
             
             
             self.sig_err = self.signal_weights.to_numpy()[np.where(self.signal_cats == signal_name )]
-            self.signal = self.signal[np.where(self.signal_cats == signal_name )]
-            signal = self.signal
+            signal = self.signal[np.where(self.signal_cats == signal_name )]
+            
             
             #* Tuning, training, and inference
             if TYPE == "AE":
