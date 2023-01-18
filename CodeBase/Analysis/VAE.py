@@ -99,6 +99,9 @@ class RunVAE:
         self.data_structure = data_structure
         self.X_train = self.data_structure.X_b_train
         self.X_val = self.data_structure.X_b_val
+        self.signal = self.data_structure.signal
+        self.signal_cats = self.data_structure.signal_categories
+        self.signal_weights = self.data_structure.signal_weights
         self.data = self.data_structure.data
         self.data_shape = np.shape(self.X_train)[1]
         self.idxs = self.data_structure.idxs
@@ -131,13 +134,13 @@ class RunVAE:
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
-        x = tf.keras.layers.Dense(units=437, activation="tanh",
+        """x = tf.keras.layers.Dense(units=437, activation="tanh",
                                   kernel_regularizer=tf.keras.regularizers.L1(0.05),
                                   activity_regularizer=tf.keras.regularizers.L2(0.5),)(encoder_inputs)
         x = tf.keras.layers.Dense(units=231, activation="relu")(x)
         x = tf.keras.layers.Dense(77, activation=tf.keras.layers.LeakyReLU(alpha=1),
                                   kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
+                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)"""
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
         z = Sampling()([z_mean, z_log_var])
@@ -404,7 +407,7 @@ class RunVAE:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
 
 

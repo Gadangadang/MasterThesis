@@ -199,7 +199,7 @@ class OnePercentData(useclass):
         et = time.time()
        
         
-        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_1%_ATLAS_Data.pdf")
+        img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_1%_ATLAS_Data.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}

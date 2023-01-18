@@ -79,7 +79,7 @@ def runANA(
     
     for k in df.keys():
 
-        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop"]: #["topOther"]:#
+        if k not in samples: #["topOther"]:#
             continue
         
         
@@ -746,7 +746,7 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
     dfs = []
     for k in cols:
         
-        if k not in ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop"]: #["topOther"]:#
+        if k not in samples: #["topOther"]:#
             continue
 
         print(f"Transforming {k}.ROOT to numpy")
@@ -833,6 +833,8 @@ def fetchDfs():
 
 
 if __name__ == "__main__":
+    
+    samples = ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop", "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
 
     rerun = 1
     if len(sys.argv) > 2:

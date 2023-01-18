@@ -170,7 +170,7 @@ class FakeParticles(model):
         et = time.time()
             
         try:
-            img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_fakedata.pdf")
+            img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_fakedata.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}

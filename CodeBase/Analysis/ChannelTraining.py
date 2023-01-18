@@ -129,7 +129,7 @@ class ChannelTraining(model):
             et = time.time()
             
 
-            img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{channel}.pdf")
+            img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{channel}.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}

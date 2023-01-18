@@ -85,7 +85,7 @@ class ScaleAndPrep:
         self.signals = []
 
         data_names = ["data15", "data16", "data17", "data18"]
-        signal_names = [
+        """signal_names = [
             "LRSMWR2400NR50",
             "LRSMWR4500NR400",
             "WeHNL5040Glt01ddlepfiltch1",
@@ -99,7 +99,9 @@ class ScaleAndPrep:
             "ttbarHNLfullLepMLp15",
             "ttbarHNLfullLepMLp75",
         ]
-
+        """
+        
+        signal_names = ["MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
         charge_df_data = []
 
         self.tot_mc_events = 0
@@ -117,8 +119,21 @@ class ScaleAndPrep:
 
             if name in data_names:
                 name = "data"
-            if name in signal_names:
+                
+            if name in ["LRSMWR2400NR50",
+            "LRSMWR4500NR400",
+            "WeHNL5040Glt01ddlepfiltch1",
+            "WeHNL5060Glt01ddlepfiltch1",
+            "WeHNL5070Glt01ddlepfiltch1",
+            "WmuHNL5040Glt01ddlepfiltch1",
+            "WmuHNL5060Glt01ddlepfiltch1",
+            "WmuHNL5070Glt01ddlepfiltch1",
+            "ttbarHNLfullLepMLm15",
+            "ttbarHNLfullLepMLm75",
+            "ttbarHNLfullLepMLp15",
+            "ttbarHNLfullLepMLp75",]:
                 continue
+            
             try:
 
                 df.drop(
@@ -240,14 +255,17 @@ class ScaleAndPrep:
             self.weights_val = pd.concat(df_val_w)
 
             self.data = pd.concat(self.datas)
+            self.signal = pd.concat(self.signals)
             
             print(" ")
             print("Concatination done for dfs")
             print(" ")
 
             self.data_categories = self.data["Category"]
-
             self.data_weights = self.data["wgt_SG"]
+            
+            self.signal_categories = self.signal["Category"]
+            self.signal_weights = self.signal["wgt_SG"]
 
             channels = [
                 "Zeejets",
@@ -289,22 +307,27 @@ class ScaleAndPrep:
             X_b_train.drop("Category", axis=1, inplace=True)
             X_b_val.drop("Category", axis=1, inplace=True)
             self.data.drop("Category", axis=1, inplace=True)
+            self.signal.drop("Category", axis=1, inplace=True)
 
             X_b_train.drop("wgt_SG", axis=1, inplace=True)
             X_b_val.drop("wgt_SG", axis=1, inplace=True)
             self.data.drop("wgt_SG", axis=1, inplace=True)
+            self.signal.drop("wgt_SG", axis=1, inplace=True)
             
             X_b_train["flcomp"].to_hdf(DATA_PATH / "flcomp_train.h5", "mini")
             X_b_val["flcomp"].to_hdf(DATA_PATH / "flcomp_val.h5", "mini")
             self.data["flcomp"].to_hdf(DATA_PATH / "flcomp_data.h5", "mini")
+            self.signal["flcomp"].to_hdf(DATA_PATH / "flcomp_data.h5", "mini")
             
             self.flcomp_train = X_b_train["flcomp"]
             self.flcomp_val = X_b_val["flcomp"]           
-            self.flcomp_data = self.data["flcomp"]            
+            self.flcomp_data = self.data["flcomp"]      
+            self.flcomp_signals = self.signal["flcomp"]   
             
             X_b_train.drop("flcomp", axis=1, inplace=True)
             X_b_val.drop("flcomp", axis=1, inplace=True)
             self.data.drop("flcomp", axis=1, inplace=True)
+            self.signal.drop("flcomp", axis=1, inplace=True)
 
             # print(X_b_train.columns)
 
@@ -339,6 +362,7 @@ class ScaleAndPrep:
                 self.X_b_train = column_trans.fit_transform(X_b_train)
                 self.X_b_val = column_trans.transform(X_b_val)
                 self.data = column_trans.transform(self.data)
+                self.signal = column_trans.transform(self.signal)
                 
             print(" ")
             print("Scaling done")
@@ -382,6 +406,7 @@ class ScaleAndPrep:
                 np.save(DATA_PATH / "X_train.npy", self.X_b_train)
                 np.save(DATA_PATH / "X_val.npy", self.X_b_val)
                 np.save(DATA_PATH / "Data.npy", self.data)
+                np.save(DATA_PATH / "signal.npy", self.signal)
                 np.save(DATA_PATH / "cols.npy", self.columns)
                 np.save(DATA_PATH / "scalecols.npy", self.scalecols)
 
@@ -402,6 +427,9 @@ class ScaleAndPrep:
                 self.data_categories.to_hdf(DATA_PATH / "data_cat_b.h5", "mini")
                 self.data_weights.to_hdf(DATA_PATH / "data_weight_b.h5", "mini")
                 
+                self.signal_categories.to_hdf(DATA_PATH / "signal_cat_b.h5", "mini")
+                self.signal_weights.to_hdf(DATA_PATH / "signal_weight_b.h5", "mini")
+                
                 #self.columns.to_hdf(DATA_PATH / "cols.h5", "mini")
 
         else:
@@ -410,6 +438,7 @@ class ScaleAndPrep:
             self.X_b_val = np.load(DATA_PATH / "X_val.npy")
             self.data = np.load(DATA_PATH / "Data.npy")
             self.scalecols = np.load(DATA_PATH / "scalecols.npy")
+            self.signal = np.load(DATA_PATH / "signal.npy")
             
             
           
@@ -435,6 +464,9 @@ class ScaleAndPrep:
 
             self.data_categories = pd.read_hdf(DATA_PATH / "data_cat_b.h5")
             self.data_weights = pd.read_hdf(DATA_PATH / "data_weight_b.h5")
+            
+            self.signal_categories = pd.read_hdf(DATA_PATH / "signal_cat_b.h5")
+            self.signal_weights = pd.read_hdf(DATA_PATH / "signal_weight_b.h5")
             
             
             self.flcomp_train = pd.read_hdf(DATA_PATH / "flcomp_train.h5")

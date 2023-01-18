@@ -19,6 +19,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE import RunAE
+from VAE import RunVAE
 from Utilities.config import *
 from Utilities.pathfile import *
 from HyperParameterTuning import HyperParameterTuning
@@ -35,10 +36,13 @@ if SMALL:
     arc = "small"
 else:
     arc = "big"
+if TYPE == "VAE":
+    model = RunVAE
+elif TYPE == "AE":
+    model = RunAE
 
 
-
-class DummyData(RunAE):
+class DummyData(model):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
@@ -117,11 +121,12 @@ class DummyData(RunAE):
         self.val_cats = self.val_cats[np.where(val_cat != "Signal")]
         
          #* Tuning, training, and inference
-        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-        HPT.runHpSearch(
-            self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
-        )
-        self.AE_model = HPT.AE_model
+        if TYPE == "AE":
+            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+            HPT.runHpSearch(
+                self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
+            )
+            self.AE_model = HPT.AE_model
 
         self.trainModel(self.X_train, X_val_dummy, sample_weight)
 
@@ -135,7 +140,7 @@ class DummyData(RunAE):
         et = time.time()
         
         
-        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_Dummydata.pdf")
+        img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_Dummydata.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}

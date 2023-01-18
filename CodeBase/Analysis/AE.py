@@ -48,6 +48,9 @@ class RunAE:
         self.data_structure = data_structure
         self.X_train = self.data_structure.X_b_train
         self.X_val = self.data_structure.X_b_val
+        self.signal = self.data_structure.signal
+        self.signal_cats = self.data_structure.signal_categories
+        self.signal_weights = self.data_structure.signal_weights
         self.data = self.data_structure.data
         self.data_shape = np.shape(self.X_train)[1]
         self.idxs = self.data_structure.idxs
@@ -384,7 +387,7 @@ class RunAE:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
 
 

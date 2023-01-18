@@ -29,6 +29,7 @@ config.gpu_options.allow_growth = True
 session = InteractiveSession(config=config)
 
 from AE import RunAE
+from VAE import RunVAE
 from plotRMM import plotRMM
 from Utilities.config import *
 from Utilities.pathfile import *
@@ -48,9 +49,13 @@ if SMALL:
 else:
     arc = "big"
 
+if TYPE == "VAE":
+    model = RunVAE
+elif TYPE == "AE":
+    model = RunAE
 
 
-class GradNoise(RunAE):
+class GradNoise(model):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)  
         
@@ -88,20 +93,22 @@ class GradNoise(RunAE):
         
         
         #* Tuning, training, and inference
-        if tune:
-            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-            HPT.runHpSearch(
-                X_train, X_val, sample_weight, small=SMALL
-            )
-            
-            self.AE_model = HPT.AE_model
-            
-            self.trainModel(X_train, X_val, sample_weight)
-            
-        else:
-            self.AE_model = tf.keras.models.load_model(
-                    "tf_models/" + "model_test.h5"
+        
+        if TYPE == "AE":
+            if tune:
+                HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+                HPT.runHpSearch(
+                    X_train, X_val, sample_weight, small=SMALL
                 )
+                
+                self.AE_model = HPT.AE_model
+                
+                self.trainModel(X_train, X_val, sample_weight)
+                
+            else:
+                self.AE_model = tf.keras.models.load_model(
+                        "tf_models/" + "model_test.h5"
+                    )
         
         if train:  
             self.trainModel(X_train, X_val, sample_weight)
@@ -136,7 +143,7 @@ class GradNoise(RunAE):
         et = time.time()
        
         
-        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{signame}.pdf")
+        img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{signame}.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}

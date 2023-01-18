@@ -19,6 +19,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
 from AE import RunAE
+from VAE import RunVAE
+
 from plotRMM import plotRMM
 from Utilities.config import *
 from Utilities.pathfile import *
@@ -38,8 +40,11 @@ if SMALL:
 else:
     arc = "big"
 
-
-class NoiseTrial(RunAE):
+if TYPE == "VAE":
+    model = RunVAE
+elif TYPE == "AE":
+    model = RunAE
+class NoiseTrial(model):
     def __init__(self, data_structure:object, path:str)->None:
         super().__init__(data_structure, path)    
         
@@ -74,18 +79,18 @@ class NoiseTrial(RunAE):
         
         
         #* Tuning, training, and inference
+        if TYPE == "AE":
+            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+            HPT.runHpSearch(
+                X_train, X_val, sample_weight, small=SMALL
+            )
         
-        HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-        HPT.runHpSearch(
-            X_train, X_val, sample_weight, small=SMALL
-        )
-       
-        """self.AE_model = tf.keras.models.load_model(
-                    "tf_models/" + "model_test.h5"
-                )"""
-                
-        
-        self.AE_model = HPT.AE_model
+            """self.AE_model = tf.keras.models.load_model(
+                        "tf_models/" + "model_test.h5"
+                    )"""
+                    
+            
+            self.AE_model = HPT.AE_model
 
         self.trainModel(X_train, X_val, sample_weight)
 
@@ -97,7 +102,7 @@ class NoiseTrial(RunAE):
         et = time.time()
        
         
-        img_path = Path(f"histo/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_Noise.pdf")
+        img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_Noise.pdf")
         path = STORE_IMG_PATH/img_path
 
         files = {"photo":open(path, "rb")}

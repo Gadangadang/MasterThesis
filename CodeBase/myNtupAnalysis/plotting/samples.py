@@ -291,7 +291,7 @@ def configure_samples():
             "f_color": kAzure - 9,
             "path": "Zeejets" + bkg_suffix,
         },
-        "WmuHNL50_60G_lt01dd": {
+        """WmuHNL50_60G_lt01dd": {
             "type": "sig",
             "leg": "W' #rightarrow N ",
             "f_color": kRed,
@@ -332,7 +332,28 @@ def configure_samples():
             "path": "ttbar_HNLfullLep_ML_p_75" + bkg_suffix,
             "l_color": kRed+13,
             
+        },"""
+        
+        
+        
+        "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+13,
+            "path": "MGPy8EG_A14N23LO_C1N2_WZ_450p0p0_300p0p0_3L_2L7" + bkg_suffix,
+            "l_color": kRed+13,
+            
         },
+        
+        "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+13,
+            "path": "MGPy8EG_A14N23LO_C1N2_WZ_450p0p0_300p0p0_3L_2L7" + bkg_suffix,
+            "l_color": kRed+13,
+            
+        },
+        
         # 'Zeejets1'    :{'type':'bkg', 'leg':'Z(ee)+jets1',                   'f_color':kOrange+10,  'path':'Zeejets'+bkg_suffix},
         # 'Zeejets2'    :{'type':'bkg', 'leg':'Z(ee)+jets2',                    'f_color':kOrange+9,  'path':'Zeejets'+bkg_suffix},
         # 'Zeejets3'    :{'type':'bkg', 'leg':'Z(ee)+jets3',                    'f_color':kOrange+8,  'path':'Zeejets'+bkg_suffix},
