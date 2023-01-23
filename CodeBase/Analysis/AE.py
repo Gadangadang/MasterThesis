@@ -109,6 +109,7 @@ class RunAE:
 
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
+        encoder.summary()
 
         # Latent space
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
@@ -139,6 +140,7 @@ class RunAE:
 
         # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
+        decoder.summary()
 
         # Output definition
         outputs = decoder(encoder(inputs))

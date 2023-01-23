@@ -62,9 +62,9 @@ class SignalDumVeri(model):
         for signal in np.unique(self.signal_cats):
             
             signal_name = signal
-            if i == 0:
+            """if i == 0:
                 i+=1
-                continue
+                continue"""
 
             
             val_cat = self.data_structure.val_categories
@@ -77,11 +77,14 @@ class SignalDumVeri(model):
             
             #* Tuning, training, and inference
             if TYPE == "AE":
-                HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-                HPT.runHpSearch(
-                    self.X_train, self.X_val, sample_weight, small=SMALL, epochs=3
-                )
-                self.AE_model = HPT.AE_model
+                if i == 0:
+                    HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
+                    HPT.runHpSearch(
+                        self.X_train, self.X_val, sample_weight, small=SMALL, epochs=3
+                    )
+                    self.AE_model = HPT.AE_model
+                    i+=1
+                
 
             self.trainModel(self.X_train, self.X_val, sample_weight)
 
