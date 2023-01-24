@@ -75,6 +75,7 @@ class SignalDumVeri(model):
             signal = self.signal[np.where(self.signal_cats == signal_name )]
             
             
+            
             #* Tuning, training, and inference
             if TYPE == "AE":
                 if i == 0:

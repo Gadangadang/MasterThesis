@@ -102,13 +102,15 @@ class FakeParticles(model):
             rows = rows_split_up[idx]
             old_col = pair[0]
             new_col = pair[1]
-            print(rows, old_col, new_col)
+            #print(rows, old_col, new_col)
             
+            
+            print(cols)
             
             for column in range(old_col, cols, 15):
-                if column > cols:
+                if column + new_col-1 > cols:
                     break
-                
+                print(rows, column, column + new_col-1)
                 old_val = X_val_dummy[rows, column]
                 new_val = X_val_dummy[rows, column + new_col-1]
                 

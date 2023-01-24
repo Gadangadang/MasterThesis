@@ -75,7 +75,7 @@ class NoiseTrial(model):
         print(" ")
         signal = s
         
-        plotRMMMatrix.plotDfRmmMatrixNoMean(s, "Noise", 0)
+        #plotRMMMatrix.plotDfRmmMatrixNoMean(s, "Noise", 0)
         
         
         #* Tuning, training, and inference
