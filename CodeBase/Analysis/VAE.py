@@ -396,9 +396,14 @@ class RunVAE:
         )
 
         ax.legend(prop={"size": 15})
-        ax.set_title(
-            "Reconstruction error histogram with MC and ATLAS data", fontsize=25
-        )
+        if data:
+            ax.set_title(
+                "Reconstruction error histogram with MC and ATLAS data", fontsize=25
+            )
+        else:
+            ax.set_title(
+                "Reconstruction error histogram with MC", fontsize=25
+            )
         ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
         # ax.set_xlim([0, 3.5])

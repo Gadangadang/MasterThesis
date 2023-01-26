@@ -54,6 +54,8 @@ class SignalDumVeri(model):
     def run(self):
         st = time.time()
         
+        plotRMMMatrix = plotRMM(DATA_PATH, rmm_structure, 23)
+        
         self.signal_cats = self.signal_cats.to_numpy()
         
         print(np.unique(self.signal_cats))
@@ -74,6 +76,12 @@ class SignalDumVeri(model):
             self.sig_err = self.signal_weights.to_numpy()[np.where(self.signal_cats == signal_name )]
             signal = self.signal[np.where(self.signal_cats == signal_name )]
             
+            event = int(np.random.choice(np.shape(signal)[0], size=1, replace=False))
+            print(event, type(event))
+            
+            
+            plotRMMMatrix.plotDfRmmMatrixNoMean(signal, signal_name[21:31], event, additional_info="signal_name[21:31]", fake=True)
+            plotRMMMatrix.plotDfRmmMatrix(signal, signal_name[21:31])
             
             
             #* Tuning, training, and inference
