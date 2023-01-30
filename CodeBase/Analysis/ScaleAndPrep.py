@@ -196,6 +196,8 @@ class ScaleAndPrep:
       
                 weight = df["wgt_SG"]
                 
+                
+                
 
                 print(np.sum(weight))
                 flag = 1
@@ -266,6 +268,12 @@ class ScaleAndPrep:
             
             self.signal_categories = self.signal["Category"]
             self.signal_weights = self.signal["wgt_SG"]
+            
+            self.X_train_trilep_mass = X_b_train["TrileptonMass"]
+            self.X_val_trilep_mass = X_b_val["TrileptonMass"]
+            self.data_trilep_mass = self.data["TrileptonMass"]
+            self.signal_trilep_mass = self.signal["TrileptonMass"]
+            
 
             channels = [
                 "Zeejets",
@@ -313,6 +321,11 @@ class ScaleAndPrep:
             X_b_val.drop("wgt_SG", axis=1, inplace=True)
             self.data.drop("wgt_SG", axis=1, inplace=True)
             self.signal.drop("wgt_SG", axis=1, inplace=True)
+            
+            X_b_train.drop("TrileptonMass", axis=1, inplace=True)
+            X_b_val.drop("TrileptonMass", axis=1, inplace=True)
+            self.data.drop("TrileptonMass", axis=1, inplace=True)
+            self.signal.drop("TrileptonMass", axis=1, inplace=True)
             
             X_b_train["flcomp"].to_hdf(DATA_PATH / "flcomp_train.h5", "mini")
             X_b_val["flcomp"].to_hdf(DATA_PATH / "flcomp_val.h5", "mini")
@@ -430,6 +443,12 @@ class ScaleAndPrep:
                 self.signal_categories.to_hdf(DATA_PATH / "signal_cat_b.h5", "mini")
                 self.signal_weights.to_hdf(DATA_PATH / "signal_weight_b.h5", "mini")
                 
+            
+                self.X_train_trilep_mass.to_hdf(DATA_PATH / "X_train_trilep.h5", "mini")
+                self.X_val_trilep_mass.to_hdf(DATA_PATH / "X_val_trilep.h5", "mini")
+                self.data_trilep_mass.to_hdf(DATA_PATH / "data_trilep.h5", "mini")
+                self.signal_trilep_mass.to_hdf(DATA_PATH / "signal_trilep.h5", "mini")
+                
                 #self.columns.to_hdf(DATA_PATH / "cols.h5", "mini")
 
         else:
@@ -473,4 +492,9 @@ class ScaleAndPrep:
             self.flcomp_val = pd.read_hdf(DATA_PATH / "flcomp_val.h5")
             self.flcomp_data = pd.read_hdf(DATA_PATH / "flcomp_data.h5")
             self.noscale_X_b_train = pd.read_hdf(DATA_PATH / "X_b_train.h5")
+            
+            self.X_train_trilep_mass = pd.read_hdf(DATA_PATH / "X_train_trilep.h5")
+            self.X_val_trilep_mass = pd.read_hdf(DATA_PATH / "X_val_trilep.h5")
+            self.data_trilep_mass = pd.read_hdf(DATA_PATH / "data_trilep.h5")
+            self.signal_trilep_mass = pd.read_hdf(DATA_PATH / "signal_trilep.h5")
             
