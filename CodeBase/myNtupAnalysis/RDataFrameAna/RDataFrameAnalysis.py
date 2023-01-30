@@ -667,7 +667,23 @@ def runANA(
                 "wgt_SG",
             )
         )
-
+        
+        df[k] = df[k].Define("TrileptonMass", "TrileptonMass(lepPt[isGoodLep],lepEta[isGoodLep],lepPhi[isGoodLep],lepM[isGoodLep])")
+        histo_name = "TrileptonMass"
+        histo[f"{histo_name}_%s" % (k)] = (
+            df[k]
+            .Histo1D(
+                (
+                    f"h_{histo_name}_{k}",
+                    f"h_{histo_name}_{k};;Entries",
+                    70,
+                    0,
+                    500,
+                ),
+                f"{histo_name}",
+                "wgt_SG",
+            )
+        )
         """
         k = df[k].Range(5, 30)  
         k.Filter("ele_0_charge < 0 || ele_0_charge > 0")

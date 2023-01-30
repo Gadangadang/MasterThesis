@@ -223,6 +223,26 @@ float ComputeInvariantMass(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e) {
   return (p1 + p2).M();
 }
 
+float TrileptonMass(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e){
+  const auto size_i = int(pt.size());
+
+
+  if (size_i == 0) return 0.;
+
+ 
+
+  TLorentzVector p1;
+  TLorentzVector p2;
+  TLorentzVector p3;
+
+  p1.SetPtEtaPhiM(pt[0], eta[0], phi[0], e[0]);
+  p2.SetPtEtaPhiM(pt[1], eta[1], phi[1], e[1]);
+  p3.SetPtEtaPhiM(pt[2], eta[2], phi[2], e[2]);
+
+
+  return (p1 + p2 + p3).M();
+}
+
 
 
 

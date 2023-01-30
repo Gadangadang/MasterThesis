@@ -124,5 +124,7 @@ double getm(VecF_t &m, int i);
 
 int checkFlavorCombo(VecI_t &lepFlavor, int tag);
 int getLepCharge(VecI_t &lepCharge, VecI_t &lepFlavor, int i, int type);
+float TrileptonMass(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e);
+
 
 #endif
