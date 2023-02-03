@@ -71,7 +71,7 @@ class SignalDumVeri(model):
 
             
             val_cat = self.data_structure.val_categories.to_numpy()
-            sample_weight = self.data_structure.weights_train.to_numpy()
+            sample_weight = self.data_structure.weights_train
             
             
             self.sig_err = self.signal_weights.to_numpy()[np.where(self.signal_cats == signal_name )]
@@ -125,13 +125,14 @@ class SignalDumVeri(model):
             signal_cats = signal_cats[error_cut_sig]
             
             histoname = "Trilepton invariant mass for MC val and Susy signal"
-            PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, trilep_mass_signal, sig_weights, signal_cats)
-            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=70)
+            featurename = "Trilepton mass"
+            PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, trilep_mass_signal, sig_weights, signal_cats)
+            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=25)
             
             et = time.time()
             
             
-            img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{signal_name[21:31]}.pdf")
+            img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{signal_name[21:31]}_{featurename}.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}

@@ -39,16 +39,18 @@ else:
 
 class PlotHistogram:
     def __init__(self, 
-                 path, 
+                 path,
                  err_val, 
                  err_val_weights, 
                  val_cats, 
                  histoname="Reconstruction error histogram with MC", 
+                 featurename="Log10 Reconstruction Error",
                  signal=[], 
                  signal_weights=[], 
                  signal_cats=[], 
                  data=[], 
-                 data_weights=[]):
+                 data_weights=[], 
+                 ):
         
         self.path = path
         self.err_val = err_val
@@ -63,6 +65,7 @@ class PlotHistogram:
             self.data_weights = data_weights
             
         self.histoname = histoname
+        self.featurename = featurename
         
         pass
     def histogram(self, channels: list, sig_name="nosig", bins=25, Noise=False)->None:
@@ -81,13 +84,14 @@ class PlotHistogram:
         print(self.err_val, np.shape(self.err_val))
         
         for channel in channels:
-
-            err = self.err_val[np.where(self.val_cats == channel)[0]]
+            condition = np.where(self.val_cats == channel)[0]
+            print(condition)
+            err = self.err_val[condition]
             print(err)
 
             histo_atlas.append(err)
 
-            err_w = self.err_val[np.where(self.val_cats == channel)[0]]
+            err_w = self.err_val[condition]
             print(err_w)
 
             weight_atlas_data.append(err_w)
@@ -101,7 +105,7 @@ class PlotHistogram:
             
             
         
-        print(histo_atlas)
+   
 
         sum_w = [np.sum(weight) for weight in weight_atlas_data]
         sort_w = np.argsort(sum_w, kind="mergesort")
@@ -127,6 +131,7 @@ class PlotHistogram:
         if Noise:
             n_bins = 25
 
+        print(N)
         colors = [
             "mediumspringgreen",
             "darkgreen",
@@ -162,12 +167,6 @@ class PlotHistogram:
             we = weight_atlas_data
             labels = channels
         
-        print(" ")
-        print(data_histo, np.shape(data_histo))
-        print(data_histo[0], np.shape(data_histo))
-        print(colors, np.shape(colors))
-        print(labels, np.shape(labels))
-        print(" ")
         
         ax.hist(
             data_histo,
@@ -190,7 +189,7 @@ class PlotHistogram:
             ax.set_title(
                 self.histoname , fontsize=25
             )
-        ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
+        ax.set_xlabel(self.featurename, fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
         # ax.set_xlim([0, 3.5])
         ax.set_ylim([0.1, 5e6])  # type: ignore
@@ -198,5 +197,5 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.featurename}.pdf")
         plt.close()
