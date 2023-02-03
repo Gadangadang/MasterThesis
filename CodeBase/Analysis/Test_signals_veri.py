@@ -17,6 +17,7 @@ from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 
+from histo import PlotHistogram
 from AE import RunAE
 from VAE import RunVAE
 from plotRMM import plotRMM
@@ -69,13 +70,13 @@ class SignalDumVeri(model):
                 continue"""
 
             
-            val_cat = self.data_structure.val_categories
-            sample_weight = self.data_structure.weights_train
+            val_cat = self.data_structure.val_categories.to_numpy()
+            sample_weight = self.data_structure.weights_train.to_numpy()
             
             
             self.sig_err = self.signal_weights.to_numpy()[np.where(self.signal_cats == signal_name )]
             signal = self.signal[np.where(self.signal_cats == signal_name )]
-            
+            signal_cats = self.signal_cats[np.where(self.signal_cats == signal_name )]
             event = int(np.random.choice(np.shape(signal)[0], size=1, replace=False))
             print(event, type(event))
             
@@ -93,7 +94,7 @@ class SignalDumVeri(model):
                     )
                     self.AE_model = HPT.AE_model
                     i+=1
-                
+           
 
             self.trainModel(self.X_train, self.X_val, sample_weight)
 
@@ -101,7 +102,31 @@ class SignalDumVeri(model):
             self.runInference(self.X_val, signal, True)
             
         
-            self.checkReconError(self.channels, sig_name=f"{signal_name[21:31]}")   
+            self.checkReconError(self.channels, sig_name=f"{signal_name[21:31]}") 
+            
+            #* Reconstruction cut
+            error_cut_val = np.where(self.recon_err_back > 0.6)
+            error_cut_sig = np.where(self.recon_sig > 0.6)
+            
+            """recon_tot = np.concatenate((self.recon_sig,self.recon_err_back), axis=0)
+            recon_cat = np.concatenate((self.val_cats, signal_cats))
+            signal_reg = recon_tot[error_cut]
+            signal_reg_cats = recon_cat[error_cut]"""
+            
+            trilep_mass_val = self.X_val_trilep_mass[error_cut_val]
+            
+            #self.data_trilep_mass 
+            trilep_mass_signal = self.signal_trilep_mass[error_cut_sig]
+            
+            val_weights = self.err_val[error_cut_val]
+            sig_weights = self.sig_err[error_cut_sig]
+            
+            val_cats = val_cat[error_cut_val]
+            signal_cats = signal_cats[error_cut_sig]
+            
+            histoname = "Trilepton invariant mass for MC val and Susy signal"
+            PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, trilep_mass_signal, sig_weights, signal_cats)
+            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=70)
             
             et = time.time()
             
