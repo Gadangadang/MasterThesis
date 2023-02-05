@@ -8,6 +8,18 @@
 
 
 \subsection*{Data collection}
+
+\begin{figure}[h!]
+    \includegraphics[width=\linewidth]{Figures/atlas/ATLAS Detector Schematic black particles.png}
+    \caption{Figure describing how particles are detected at ATLAS, fetched from \href{https://cds.cern.ch/record/2770815}{	ATLAS detector slice (and particle visualisations)}, by Sascha Mehlhase \cite{Mehlhase:2770815} . }
+    \label{fig:atlas_particle_detect}
+\end{figure}
+
+The features used in this analysis are computed with or fetched from the features from the detector itself. Such features includes the momentum, energy, angles etc, 
+all of which are either directly measured or computed baesd on the measurements in the detector. In figure \ref{fig:atlas_particle_detect} a visualization shows how
+different particles move through the detector and where they are detected. For example, energy deposits are measured using calorimeters, and the different particles 
+have calorimeters specially designed for them. . \par
+
 The ATLAS detector three selection stages before the data is stored. In order to reach the highest intensity of collisions, the LHC accellerates
 packets of around $10^{11}$ protons, and collides them at a rate of 25 nanoseconds, yeilding a collision rate of 40 MHz\cite{Wang:2707056}. \cite{Bernius:2707054}
 
@@ -15,6 +27,7 @@ packets of around $10^{11}$ protons, and collides them at a rate of 25 nanosecon
 
 
 \subsubsection*{Data preparation}
+
 
 \begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/data_col_phys.png}

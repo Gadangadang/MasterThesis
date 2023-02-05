@@ -67,11 +67,11 @@ where the first term on the right hand side is the Kullback-Leibler (KL) diverge
 probability distribution is different from a second, reference probability distribution. It is often used as a distance measure 
 between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelyhood. As the KL divergence
 is non-negative, the ELBO will always be equal to or less than the marginal likelihood, written below:
-\begin{equation}
+\begin{equation}\label{eq:elbo_leq1}
     log\, p_{\theta}(x^{(i)}) \geq \mathcal{L}(\theta, \phi;x^{(i)}) = \mathbb{E}_{q_{\phi}(z|x)}[-log\, q_{\phi}(x|z)+log\, p_{\theta}(x|z)].
 \end{equation}
 Rewriting we get that the ELBO is given as:
-\begin{equation}
+\begin{equation}\label{eq:elbo_leq2}
     \mathcal{L}(\theta, \phi;x^{(i)}) =  - D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathbb{E}_{q_{\phi}(z|x^{(i)})}[log\, p_{\theta}(x^{(i)}|z)],
 \end{equation}
 which is also known as the loss function for variational inference. As a loss function, this needs to be differentiated with respect to 
@@ -91,11 +91,31 @@ Using Monte Carlo estimates of expectations of a function $f(z)$ with respect to
 \begin{equation}
     \mathbb{E}_{q_{\theta}(z|x^{(i)})}[f(z)] = \mathbb{E}_{p(\epsilon)}[f(g_{\phi}(\epsilon, x^{(i)}))] \approx \frac{1}{L}\sum_{l=1}^{L}f(f(g_{\phi}(\epsilon^{(l)}, x^{(i)}))),
 \end{equation}
-where $\epsilon^{(l)} \thicksim p(\epsilon)$.   
+where $\epsilon^{(l)} \thicksim p(\epsilon)$. Using this technique, and assuming that the KL divergence 
+$D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)}))$ can be integrated analytically, we only get one term in 
+equation \ref{eq:elbo_leq2} that requires estimation by sampling: $\mathbb{E}_{q_{\phi}(z|x^{(i)})}[log\, p_{\theta}(x^{(i)}|z)]$. 
+What we end up with is a version of the SGVB estimator: $\tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)}) \backsimeq 
+\mathcal{L}(\theta, \phi; x^{(i)})$. This is given as:
 
-
+\begin{equation}
+    \mathcal{L}(\theta, \phi; x^{(i)}) = -D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z)) + \frac{1}{L}\sum_{l=1}^{L} (\log p_{\theta}(x^{(i)}|z^{(i,l)})),
+\end{equation}
+where $z^{(i,l)} = g_{\phi}(\epsilon^{(i,l)}, x^{(i)})$ and $\epsilon^{(i)} \thicksim p(\epsilon)$. What we now have is a loss function that contains two terms. 
+The first term, the KL divergence, acts as a regularizer, whereas the other term acts as a negative reconstruction error. In fact, we have here two objectives, 
+we want to minimize the ELBO, $\mathcal{L}(\theta, \phi; x^{(i)})$, by minimizing the KL divergence and maximizing the expected log-likelihood. 
 
 \subsubsection*{Reparameterization}\label{sec:reparameterization}
+If the latent space is assumed to be a continous variable sampled from a conditional continous distribution 
+$z \thicksim q_{\phi}(z|x)$, then we can reparametrize z as a deterministic variable. This is very useful as 
+we then can rewrite the expectation of the conditional distribution such that the Monte Carlo estimate of 
+the expecation is differentiable with respect to the parameters $\phi$. The proof can be found in the article\cite{VAE}.  
+Now lets take the example of the univariate Gaussian distribution. First, let $z \thicksim p(z|x) = \mathcal{N}(\mu, \sigma^2)$. 
+Then, a reparametrization of z can be $z = \mu + \sigma\epsilon$, where $\epsilon \thicksim \mathcal{N}(0,1)$. 
+Thus 
+
+\begin{equation*}
+    \mathbb{E}_{\mathcal{N}(z; \mu, \sigma^2)}[f(z)] \backsimeq  \frac{1}{L}\sum_{l=1}^L f(\mu + \sigma\epsilon^{(l)}).
+\end{equation*}
 
 \subsection*{Variational autoencoders}
 Now, this variational bayes can then be used to create a variational autoencoder. This contains two neural networks, the generative model $p_{\theta}(x|z)$,
@@ -115,7 +135,10 @@ can then be showed\footnote{VURDER Å LEGGE TIL UTREGNINGEN I APPENDIX}\cite{VAE
     \mathcal{L}(\theta, \phi;x^{(i)}) \simeq \frac{1}{2}\sum_{j=1}^{J}(1 + log\, ((\sigma^{(i)}_{j})^2) - (\mu^{(i)}_{j})^2 - (\sigma^{(i)}_{j})^2) +\frac{1}{L}\sum_{l=1}^{L}log\, p_{\theta}(x^{(i)}|z^{(i,l)}),
 \end{equation}
 
-where $z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$ and $ \epsilon^{(l)} \thicksim \mathcal{N}(0,I)$.
+where $z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$ and $ \epsilon^{(l)} \thicksim \mathcal{N}(0,I)$. 
+
+
+
 
 \begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/vae-gaussian.png}
