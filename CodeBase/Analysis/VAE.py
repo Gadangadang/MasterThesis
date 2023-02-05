@@ -108,6 +108,11 @@ class RunVAE:
         self.val_cats = self.data_structure.val_categories.to_numpy()
         self.err_val = self.data_structure.weights_val.to_numpy()
         self.err_train = self.data_structure.weights_train.to_numpy()
+        
+        self.X_train_trilep_mass = self.data_structure.X_train_trilep_mass.to_numpy()
+        self.X_val_trilep_mass = self.data_structure.X_val_trilep_mass.to_numpy()
+        self.data_trilep_mass = self.data_structure.data_trilep_mass.to_numpy()
+        self.signal_trilep_mass = self.data_structure.signal_trilep_mass.to_numpy()
 
         print(" ")
         print(f"{(self.X_train.nbytes + self.X_val.nbytes)/1000000000} Gbytes")

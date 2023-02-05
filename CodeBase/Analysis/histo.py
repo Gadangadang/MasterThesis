@@ -81,22 +81,18 @@ class PlotHistogram:
         weight_atlas_data = []
         
         print("histo started")
-        print(self.err_val, np.shape(self.err_val))
+        
         
         for channel in channels:
             condition = np.where(self.val_cats == channel)[0]
-            print(condition)
             err = self.err_val[condition]
-            print(err)
-
             histo_atlas.append(err)
 
-            err_w = self.err_val[condition]
-            print(err_w)
-
+            err_w = self.err_val_weights[condition]
+           
             weight_atlas_data.append(err_w)
             
-        print("length = ", len(histo_atlas), len(weight_atlas_data))
+       
         try:
             sig_err = self.signal
             sig_err_w = self.signal_weights
@@ -116,13 +112,9 @@ class PlotHistogram:
         fig, ax = plt.subplots()
 
         try:
-            print("in try 1")
             N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
-            print("in try 2")
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-            print("in try 3")
             ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
-            print("in try 4")
             n_bins = bins
             print("Bins: ",n_bins)
         except:
@@ -131,7 +123,7 @@ class PlotHistogram:
         if Noise:
             n_bins = 25
 
-        print(N)
+       
         colors = [
             "mediumspringgreen",
             "darkgreen",
@@ -192,7 +184,7 @@ class PlotHistogram:
         ax.set_xlabel(self.featurename, fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
         # ax.set_xlim([0, 3.5])
-        ax.set_ylim([0.1, 5e6])  # type: ignore
+        ax.set_ylim([1, 5e6])  # type: ignore
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()

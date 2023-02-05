@@ -105,17 +105,12 @@ class SignalDumVeri(model):
             self.checkReconError(self.channels, sig_name=f"{signal_name[21:31]}") 
             
             #* Reconstruction cut
-            error_cut_val = np.where(self.recon_err_back > 0.6)
-            error_cut_sig = np.where(self.recon_sig > 0.6)
+            error_cut_val = np.where(self.recon_err_back > 0)[0]
+            error_cut_sig = np.where(self.recon_sig > 0)[0]
             
-            """recon_tot = np.concatenate((self.recon_sig,self.recon_err_back), axis=0)
-            recon_cat = np.concatenate((self.val_cats, signal_cats))
-            signal_reg = recon_tot[error_cut]
-            signal_reg_cats = recon_cat[error_cut]"""
-            
+            print(f"val cut shape: {np.shape(error_cut_val)}")
+        
             trilep_mass_val = self.X_val_trilep_mass[error_cut_val]
-            
-            #self.data_trilep_mass 
             trilep_mass_signal = self.signal_trilep_mass[error_cut_sig]
             
             val_weights = self.err_val[error_cut_val]
@@ -124,6 +119,8 @@ class SignalDumVeri(model):
             val_cats = val_cat[error_cut_val]
             signal_cats = signal_cats[error_cut_sig]
             
+            print(f"Signal error cut: {error_cut_sig}, trilep with cut: {trilep_mass_signal}")
+        
             histoname = "Trilepton invariant mass for MC val and Susy signal"
             featurename = "Trilepton mass"
             PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, trilep_mass_signal, sig_weights, signal_cats)
