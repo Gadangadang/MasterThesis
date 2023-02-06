@@ -184,7 +184,7 @@ class PlotHistogram:
         ax.set_xlabel(self.featurename, fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
         # ax.set_xlim([0, 3.5])
-        ax.set_ylim([1, 5e6])  # type: ignore
+        ax.set_ylim([0.1, 5e6])  # type: ignore
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()

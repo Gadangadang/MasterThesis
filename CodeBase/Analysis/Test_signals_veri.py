@@ -119,7 +119,7 @@ class SignalDumVeri(model):
             val_cats = val_cat[error_cut_val]
             signal_cats = signal_cats[error_cut_sig]
             
-            print(f"Signal error cut: {error_cut_sig}, trilep with cut: {trilep_mass_signal}")
+            print(f"Signal error cut: {np.shape(error_cut_sig)}, trilep with cut: {np.shape(trilep_mass_signal)}")
         
             histoname = "Trilepton invariant mass for MC val and Susy signal"
             featurename = "Trilepton mass"
