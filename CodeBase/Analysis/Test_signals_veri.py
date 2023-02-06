@@ -126,6 +126,15 @@ class SignalDumVeri(model):
             PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, trilep_mass_signal, sig_weights, signal_cats)
             PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=25)
             
+            
+            eTmiss_val = self.X_val_eTmiss[error_cut_val]
+            eTmiss_signal = self.signal_eTmiss[error_cut_sig]
+            
+            histoname = "Transverse missing energy for MC val and Susy signal"
+            featurename = r"$E_{T}^{miss}$"
+            PH = PlotHistogram(self.path, eTmiss_val, val_weights, val_cats, histoname, featurename, eTmiss_signal, sig_weights, signal_cats)
+            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=25)
+            
             et = time.time()
             
             

@@ -276,6 +276,11 @@ class ScaleAndPrep:
             self.data_trilep_mass = self.data["TrileptonMass"]
             self.signal_trilep_mass = self.signal["TrileptonMass"]
             
+            self.X_train_eTmiss = X_b_train["e_T_miss"]
+            self.X_val_eTmiss = X_b_val["e_T_miss"]
+            self.data_eTmiss = self.data["e_T_miss"]
+            self.signal_eTmiss = self.signal["e_T_miss"]
+            
 
             channels = [
                 "Zeejets",
@@ -451,6 +456,13 @@ class ScaleAndPrep:
                 self.data_trilep_mass.to_hdf(DATA_PATH / "data_trilep.h5", "mini")
                 self.signal_trilep_mass.to_hdf(DATA_PATH / "signal_trilep.h5", "mini")
                 
+                self.X_train_eTmiss.to_hdf(DATA_PATH / "X_train_etmiss.h5", "mini")
+                self.X_val_eTmiss.to_hdf(DATA_PATH / "X_val_etmiss.h5", "mini")
+                self.data_eTmiss.to_hdf(DATA_PATH / "data_etmiss.h5", "mini")
+                self.signal_eTmiss.to_hdf(DATA_PATH / "signal_etmiss.h5", "mini")
+                
+             
+                    
                 #self.columns.to_hdf(DATA_PATH / "cols.h5", "mini")
 
         else:
@@ -500,4 +512,7 @@ class ScaleAndPrep:
             self.data_trilep_mass = pd.read_hdf(DATA_PATH / "data_trilep.h5")
             self.signal_trilep_mass = pd.read_hdf(DATA_PATH / "signal_trilep.h5")
             
-            
+            self.X_train_eTmiss = pd.read_hdf(DATA_PATH / "X_train_etmiss.h5")
+            self.X_val_eTmiss = pd.read_hdf(DATA_PATH / "X_val_etmiss.h5")
+            self.data_eTmiss = pd.read_hdf(DATA_PATH / "data_etmiss.h5")
+            self.signal_eTmiss = pd.read_hdf(DATA_PATH / "signal_etmiss.h5")

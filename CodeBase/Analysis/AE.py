@@ -62,6 +62,11 @@ class RunAE:
         self.X_val_trilep_mass = self.data_structure.X_val_trilep_mass.to_numpy()
         self.data_trilep_mass = self.data_structure.data_trilep_mass.to_numpy()
         self.signal_trilep_mass = self.data_structure.signal_trilep_mass.to_numpy()
+        
+        self.X_train_eTmiss = self.data_structure.X_train_eTmiss.to_numpy()
+        self.X_val_eTmiss = self.data_structure.X_val_eTmiss.to_numpy()
+        self.data_eTmiss = self.data_structure.data_eTmiss.to_numpy()
+        self.signal_eTmiss = self.data_structure.signal_eTmiss.to_numpy()
 
         print(" ")
         print(f"{(self.X_train.nbytes + self.X_val.nbytes)/1000000000} Gbytes")
