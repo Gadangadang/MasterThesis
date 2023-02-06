@@ -874,6 +874,9 @@ INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Sections/Implementation/atlas.tex
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
 INPUT ./Figures/atlas/data_col_phys.png
 INPUT ./Figures/atlas/data_col_phys.png
 INPUT ./Figures/atlas/data_col_phys.png
@@ -911,8 +914,38 @@ INPUT ./Figures/MC_Data_comp/flcomp.pdf
 INPUT ./Figures/MC_Data_comp/flcomp.pdf
 INPUT ./Sections/Implementation/algo.tex
 INPUT ./Sections/Implementation/algo.tex
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
+INPUT ./Sections/Results/Testing.tex
+INPUT ./Sections/Results/Testing.tex
+INPUT ./Sections/Results/Dummy_Signaltesting.tex
+INPUT ./Sections/Results/Dummy_Signaltesting.tex
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Sections/Results/proper_signaltesting.tex
+INPUT ./Sections/Results/proper_signaltesting.tex
+INPUT ./Sections/Results/ATLAS_data_and_analysis.tex
+INPUT ./Sections/Results/ATLAS_data_and_analysis.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
@@ -929,6 +962,7 @@ INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/
 OUTPUT main.thm
 INPUT ./main.aux
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb
@@ -953,6 +987,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy9.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb
