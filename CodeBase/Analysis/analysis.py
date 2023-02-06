@@ -46,7 +46,7 @@ def main():
 
     args = parser.parse_args()
 
-    sp = ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR)
+    sp = ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=3)
     sp.MergeScaleAndSplit()
     
     

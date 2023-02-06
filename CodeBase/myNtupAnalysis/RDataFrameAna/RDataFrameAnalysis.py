@@ -244,8 +244,8 @@ def runANA(
         else:
             print("Loading %s" % (k))
 
-        df[k] = df[k].Filter("nlep_BL == 3", "3 BL leptons")
-        df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
+        df[k] = df[k].Filter("nlep_BL == 2", "2 BL leptons")
+        df[k] = df[k].Filter("nlep_SG == 2", "2 SG leptons")
 
         print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -776,7 +776,7 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
         # dfs.append(df1)
         # del df1
         df1.to_hdf(
-            str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+            str(df_storage) + f"/two_{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
         )
 
     return dfs
@@ -905,8 +905,8 @@ if __name__ == "__main__":
     else:"""
     
     df, histo = runANA(
-        str(MC_AND_DATA_PATH),
-        str(MC_AND_DATA_PATH) + "/data18",
+        str(MC_AND_DATA_PATH_2LEP),
+        str(MC_AND_DATA_PATH_2LEP) + "/EXOT0_Data",
         everyN,
         fldic,
         histo,
@@ -939,7 +939,7 @@ if __name__ == "__main__":
     print("RMM plot creation started")
     
     for index, df in enumerate(numpy_dfs):
-        plot_rmm_matrix(df, names[index], rmm_structure, RMMSIZE)
+        plot_rmm_matrix(df, names[index], rmm_structure, RMMSIZE, lep=2)
     print("RMM plot creation ended")
     
     

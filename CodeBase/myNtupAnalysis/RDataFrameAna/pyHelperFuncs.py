@@ -456,7 +456,7 @@ def getRatio1D(hT, hL, vb=0):
 
 
 def plot_rmm_matrix(
-    df: pd.DataFrame, process: str, rmm_structure: dict, N_row: int
+    df: pd.DataFrame, process: str, rmm_structure: dict, N_row: int, lep=3
 ) -> None:
 
     col = len(df.columns)
@@ -509,7 +509,7 @@ def plot_rmm_matrix(
     )
     fig.update_xaxes(side="top")
 
-    fig.write_image(f"../../../Figures/histo_var_check/rmm_avg_{process}.pdf")
+    fig.write_image(f"../../../Figures/histo_var_check/rmm_avg_{process}_lep{lep}.pdf")
 
 
 def get_column_names(df: dict, histo: dict) -> list:

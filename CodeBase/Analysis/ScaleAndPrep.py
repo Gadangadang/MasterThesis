@@ -34,7 +34,7 @@ else:
     arc = "big"
 
 class ScaleAndPrep:
-    def __init__(self, path: Path, event_rmm=False, save=False, load=False) -> None:
+    def __init__(self, path: Path, event_rmm=False, save=False, load=False, lep=3) -> None:
         """_summary_
 
         Args:
@@ -46,6 +46,7 @@ class ScaleAndPrep:
         self.event_rmm = event_rmm
         self.load = load
         self.save = save
+        self.lep = lep
         # self.scaleAndSplit()
         
 
@@ -58,18 +59,31 @@ class ScaleAndPrep:
         Returns:
             Tuple[str, ...]: list of pathnames
         """
-
-        files = [
-            f
-            for f in listdir(self.path)
-            if isfile(join(self.path, f))
-            and f[-4:] != ".npy"
-            and f[-4:] != ".csv"
-            and f[-5:] != "_b.h5"
-            and f[-4:] != ".txt"
-            and f[-3:] != ".h5"
-        ]
         
+        if self.lep == 3:
+            files = [
+                f
+                for f in listdir(self.path)
+                if isfile(join(self.path, f))
+                and f[-4:] != ".npy"
+                and f[-4:] != ".csv"
+                and f[-5:] != "_b.h5"
+                and f[-4:] != ".txt"
+                and f[-3:] != ".h5"
+                and f[0:3] != "two"
+            ]
+        elif self.lep == 2:
+            files = [
+                f
+                for f in listdir(self.path)
+                if isfile(join(self.path, f))
+                and f[-4:] != ".npy"
+                and f[-4:] != ".csv"
+                and f[-5:] != "_b.h5"
+                and f[-4:] != ".txt"
+                and f[-3:] != ".h5"
+                and f[0:3] == "two"
+            ]
         
       
         return files  # type: ignore

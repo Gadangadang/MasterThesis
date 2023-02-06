@@ -10,6 +10,8 @@ MC_AND_DATA_PATH = Path(
     "/storage/shared/data/master_students/William_Sakarias/data_vOCT2022/"
 )
 
+MC_AND_DATA_PATH_2LEP = Path("/storage/shared/data/master_students/William_Sakarias/2LEP")
+
 
 BKG_SAMPLE1516 = Path(
     "/storage/shared/data/master_students/William_Sakarias/data_vOCT2022/PHYS_3LBkgs_mc16a/"
@@ -36,3 +38,4 @@ DATA_SAMPLE18 = Path(
 )
 
 DYNAMIC_PATH = Path("-I/home/sgfrette/myNtupAnalysis/RDataFrameAna")
+
