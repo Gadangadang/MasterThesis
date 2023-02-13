@@ -1,10 +1,11 @@
 LOAD_VAR = True #False 
 SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
-BACTH_SIZE = 256#int(8192)      
+BACTH_SIZE = int(8192)      
 EPOCHS = 5
 
-TYPE = "VAE" #"VAE"
+TYPE = "AE" #"VAE"
+SMALL = True
 
 data = False
 
@@ -14,7 +15,7 @@ nele = 5
 nmuo = 5
 
 RMMSIZE = 1 + nbjet + nljet + nele + nmuo
-SMALL = False
+
 
 TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
 chat_id = "5733209220"

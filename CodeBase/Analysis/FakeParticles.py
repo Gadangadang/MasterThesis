@@ -155,12 +155,6 @@ class FakeParticles(model):
         
         
         #* Tuning, training, and inference
-        if TYPE == "AE":
-            HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-            HPT.runHpSearch(
-                self.X_train, X_val_dummy, sample_weight, small=SMALL, epochs=3
-            )
-            self.AE_model = HPT.AE_model
         
         self.trainModel(self.X_train, X_val_dummy, sample_weight)
         self.runInference(X_tot, signal,True)

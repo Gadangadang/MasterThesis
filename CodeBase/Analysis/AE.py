@@ -81,6 +81,55 @@ class RunAE:
         self.b_size = BACTH_SIZE
 
         self.epochs = EPOCHS
+        
+    def getModelSmall(self):
+        """_summary_
+
+        Returns:
+            tf.python.keras.engine.functional.Functional: Model to use
+        """
+        # Input layer
+        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
+
+        # First hidden layer
+        x = tf.keras.layers.Dense(
+            units=self.data_shape,
+            activation="tanh",
+            
+        )(inputs)
+        val = 150
+     
+        x2 = tf.keras.layers.Dense(
+            units=val, activation=tf.keras.layers.LeakyReLU(alpha=0.3)
+        )(x)
+
+        # Encoder definition
+        encoder = tf.keras.Model(inputs, x2, name="encoder")
+        encoder.summary()
+
+        # Latent space
+        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
+
+        # Output layer
+        output = tf.keras.layers.Dense(self.data_shape, activation=tf.keras.Layer.LeakyReLU(alpha=0.3))(latent_input)
+
+        # Decoder definition
+        decoder = tf.keras.Model(latent_input, output, name="decoder")
+        decoder.summary()
+
+        # Output definition
+        outputs = decoder(encoder(inputs))
+
+        # Model definition
+        AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
+
+        hp_learning_rate = 0.0015
+        optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
+        AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
+
+        # tf.keras.utils.plot_model(AE_model, to_file=path+"ae_model_plot.pdf", show_shapes=True, show_layer_names=True, expand_nested=True)
+
+        return AE_model
 
     def getModel(self):
         """_summary_
@@ -93,28 +142,31 @@ class RunAE:
 
         # First hidden layer
         x = tf.keras.layers.Dense(
-            units=70,
+            units=529,
             activation="tanh",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
+            
         )(inputs)
+        x__ = tf.keras.layers.Dense(
+            units=450,
+            activation="tanh",
+            
+        )(x)
 
         # Second hidden layer
-        x_ = tf.keras.layers.Dense(units=45, activation="linear")(inputs)
+        x_ = tf.keras.layers.Dense(units=300, activation=tf.keras.layers.LeakyReLU(alpha=0.3))(x__)
 
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
-            units=20,
-            activation="linear",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
+            units=200,
+            activation="relu",
+            
         )(x_)
 
-        val = 7
+        val = 50
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
-            units=val, activation=tf.keras.layers.LeakyReLU(alpha=1)
+            units=val, activation=tf.keras.layers.LeakyReLU(alpha=0.3)
         )(x1)
 
         # Encoder definition
@@ -126,27 +178,25 @@ class RunAE:
 
         # Fifth hidden layer
         x = tf.keras.layers.Dense(
-            units=22,
+            units=200,
             activation="relu",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
+            
         )(latent_input)
 
         # Sixth hidden layer
         x_ = tf.keras.layers.Dense(
-            units=50, activation=tf.keras.layers.LeakyReLU(alpha=1)
+            units=350, activation=tf.keras.layers.LeakyReLU(alpha=0.3)
         )(x)
 
         # Seventh hidden layer
         x1 = tf.keras.layers.Dense(
-            units=73,
+            units=450,
             activation="tanh",
-            kernel_regularizer=tf.keras.regularizers.L1(0.05),
-            activity_regularizer=tf.keras.regularizers.L2(0.5),
+            
         )(x_)
 
         # Output layer
-        output = tf.keras.layers.Dense(self.data_shape, activation="linear")(x1)
+        output = tf.keras.layers.Dense(self.data_shape, activation=tf.keras.layers.LeakyReLU(alpha=0.3))(x1)
 
         # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
@@ -175,10 +225,11 @@ class RunAE:
             sample_weight (_type_): _description_
         """
 
-        try:
-            self.AE_model
-            print("Model loaded")
-        except:
+        
+        if SMALL:
+            self.AE_model = self.getModelSmall()
+            print("New model created")
+        else:
             self.AE_model = self.getModel()
             print("New model created")
 
@@ -353,6 +404,8 @@ class RunAE:
             "darkgoldenrod",
             
         ]
+        
+        self.n_bins = n_bins
         
         if len(colors) != len(histo_atlas):
             colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  

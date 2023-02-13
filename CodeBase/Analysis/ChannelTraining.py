@@ -105,19 +105,7 @@ class ChannelTraining(model):
 
             self.name = "no_" + channel
 
-            if TYPE == "AE":
-                HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-                HPT.runHpSearch(
-                    X_train_reduced, X_val_reduced, sample_weight, small=small, epochs=2
-                )
-
-                # self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
-                print(" ")
-                print("Hyperparam search done")
-                print(" ")
-
-                self.AE_model = HPT.AE_model
-
+            
             
             self.trainModel(X_train_reduced, X_val_reduced, sample_weight)
 

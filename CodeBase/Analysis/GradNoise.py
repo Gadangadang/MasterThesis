@@ -94,21 +94,7 @@ class GradNoise(model):
         
         #* Tuning, training, and inference
         
-        if TYPE == "AE":
-            if tune:
-                HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-                HPT.runHpSearch(
-                    X_train, X_val, sample_weight, small=SMALL
-                )
-                
-                self.AE_model = HPT.AE_model
-                
-                self.trainModel(X_train, X_val, sample_weight)
-                
-            else:
-                self.AE_model = tf.keras.models.load_model(
-                        "tf_models/" + "model_test.h5"
-                    )
+        
         
         if train:  
             self.trainModel(X_train, X_val, sample_weight)
@@ -163,36 +149,7 @@ class GradNoise(model):
         Returns:
             Tuple[np.ndarray, str]: Sampled events for inference and the name of the set
         """
-        
-        
-        
-        
-        
-        """ #* Scaling the features with each other, not correct I think
-        if scaler == "MinMax":
-            
-            column_trans = ColumnTransformer(
-                    [('scaler_ae', scaler, self.scalecols)],
-                    remainder='passthrough'
-                )
-        else:
-            column_trans = scaler
-        
-        #column_trans = scaler
-
-        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
-        with strategy.scope():
-
-            self.mu = column_trans.fit_transform(np.mean(self.data_structure.noscale_X_b_train.to_numpy(), axis=0).reshape(-1, 1))
-            self.sigma = column_trans.fit_transform(np.std(self.data_structure.noscale_X_b_train.to_numpy(), axis=0).reshape(-1, 1))
-        
-        self.mu = np.concatenate(self.mu)
-        self.sigma = np.concatenate(self.sigma)
-        """
-        
-        
-        
-        
+      
         val_cats = self.data_structure.val_categories.to_numpy()
         ttbar_events = np.where(val_cats=="ttbar")[0]
         

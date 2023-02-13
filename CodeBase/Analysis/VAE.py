@@ -140,7 +140,7 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        val = 50
+        val = 150
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
@@ -171,7 +171,7 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        val = 50
+        val = 100
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
@@ -211,16 +211,13 @@ class RunVAE:
             sample_weight (_type_): _description_
         """
 
-        try:
-            self.AE_model
-            print("Model loaded")
-        except:
-            if SMALL:
-                self.AE_model = self.getModel()
-                print("New model created")
-            else:
-                self.AE_model = self.getModel_big()
-                print("New model created")
+    
+        if SMALL:
+            self.AE_model = self.getModel()
+            print("New model created")
+        else:
+            self.AE_model = self.getModel_big()
+            print("New model created")
 
         #print(self.AE_model.layers[1].weights)
         with tf.device("/GPU:0"):
@@ -409,6 +406,8 @@ class RunVAE:
         
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]
+            
+        self.n_bins = n_bins
             
         print(colors, len(histo_atlas), channels)
         if len(histo_atlas) != 1:

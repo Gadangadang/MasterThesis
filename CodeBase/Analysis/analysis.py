@@ -13,7 +13,6 @@ from OnePercentData import OnePercentData
 from PlotScaledFeats import VizualizeFeats
 from ChannelTraining import ChannelTraining
 from HyperParameterTuning import HyperParameterTuning
-from ptaltering_VAE import pTAltering_T
 from Test_signals_veri import SignalDumVeri
 from etmiss_trilep_plothisto import ETM_TRILEP
 
@@ -45,6 +44,7 @@ def main():
     parser.add_argument("-AT", "--altering_t", action="store_true", help="Fake particles pytorch")
     parser.add_argument("-S", "--signal_test", action="store_true", help="Try on dummy signals from SUSY")
     parser.add_argument("-O", "--plotfeats", action="store_true")
+    parser.add_argument("--all", action="store_true")
 
     args = parser.parse_args()
 
@@ -55,18 +55,39 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
     
+    if args.all:
+        ST = SignalDumVeri(sp, STORE_IMG_PATH)
+        ST.run()
+        
+        GN = GradNoise(sp, STORE_IMG_PATH)
+        #GN.genRmmEvent()
+        GN.run(False, False, "sample")
+        
+        CT = ChannelTraining(sp, STORE_IMG_PATH)
+        CT.run(small=SMALL)
+        
+        DD = DummyData(sp, STORE_IMG_PATH)
+        DD.swapEventsInChannels(0.4, 0.01)
+        
+        OPD = OnePercentData(sp, STORE_IMG_PATH)
+        OPD.run()
+        
+        FP = FakeParticles(sp, STORE_IMG_PATH)
+        FP.run([[1,5], [2,5], [3,5], [4,5]], 0.1)
+        
+        N = NoiseTrial(sp, STORE_IMG_PATH)
+        N.run()
+    
+        pTA = pTAltering(sp, STORE_IMG_PATH)
+        pTA.run([1.5, 3, 5, 7, 10])
+        
     if args.plotfeats:
         g = ETM_TRILEP(sp, STORE_IMG_PATH)
         g.run()
     if args.signal_test:
         ST = SignalDumVeri(sp, STORE_IMG_PATH)
         ST.run()
-    
-    if args.altering_t:
-        pt_T = pTAltering_T(sp, STORE_IMG_PATH)
-        pt_T.run([1.5, 3, 5, 7, 10])
-    
-    
+     
     if args.corr:
         C = CorrCheck(sp, STORE_IMG_PATH)
         C.checkCorr()

@@ -211,7 +211,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            ,
+            
             
         )(inputs)
 
@@ -229,7 +229,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            ,
+            
             
         )(x_)
 
@@ -255,7 +255,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("5_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            ,
+        
             
         )(latent_input)
 
@@ -275,7 +275,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("7_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            ,
+         
             
         )(x_)
 

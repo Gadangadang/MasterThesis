@@ -86,14 +86,7 @@ class SignalDumVeri(model):
             
             
             #* Tuning, training, and inference
-            if TYPE == "AE":
-                if i == 0:
-                    HPT = HyperParameterTuning(self.data_structure, STORE_IMG_PATH)
-                    HPT.runHpSearch(
-                        self.X_train, self.X_val, sample_weight, small=SMALL, epochs=3
-                    )
-                    self.AE_model = HPT.AE_model
-                    i+=1
+            
            
 
             self.trainModel(self.X_train, self.X_val, sample_weight)
@@ -104,9 +97,13 @@ class SignalDumVeri(model):
         
             self.checkReconError(self.channels, sig_name=f"{signal_name[21:31]}") 
             
+            mean = np.mean(self.n_bins)
+            std = np.std(self.n_bins)
+             
+            
             #* Reconstruction cut
-            error_cut_val = np.where(self.recon_err_back > 0)[0]
-            error_cut_sig = np.where(self.recon_sig > 0)[0]
+            error_cut_val = np.where(self.recon_err_back > (mean + std))[0]
+            error_cut_sig = np.where(self.recon_sig > (mean + std))[0]
             
             print(f"val cut shape: {np.shape(error_cut_val)}")
         
