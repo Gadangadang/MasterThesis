@@ -49,7 +49,7 @@ def configure_samples():
 
     # background path bkg_suffix
     data_suffix = "_SusySkim2LJetsLegacy_v1.1_SUSY2.root"
-    # data_suffix='_merged_processed.root'
+    data_suffix='_merged_processed.root'
     bkg_suffix = "_merged_processed.root"
 
     d_type = {
@@ -252,9 +252,6 @@ def configure_samples():
             "lumi": 1258.27,
             "sqrts": 13.6,
         },
-        #'data'     :{'type':'data','leg':'Data15-16',                'f_color':0,'l_color':0,  'path': 'data15-16'+data_suffix},
-        #'data'     :{'type':'data','leg':'Data17',                   'f_color':0,'l_color':0,  'path': 'data17'+data_suffix},
-        #'ttbarDilep_410472' :{'type':'bkg', 'leg':'t#bar{t} (dilep)',                  'f_color':kRed-4,   'path':'ttbarDilep_410472'+bkg_suffix},
         "ttbar": {
             "type": "bkg",
             "leg": "t#bar{t}",
@@ -285,55 +282,97 @@ def configure_samples():
             "f_color": myDarkGreen,
             "path": "Zjets" + bkg_suffix,
         },
-        "Zeejets": {
+        
+        "Zeejets1": {
             "type": "bkg",
             "leg": "Z(ee)+jets",
             "f_color": kAzure - 9,
-            "path": "Zeejets" + bkg_suffix,
+            "path": "Zeejets1" + bkg_suffix,
         },
-        """WmuHNL50_60G_lt01dd": {
-            "type": "sig",
-            "leg": "W' #rightarrow N ",
-            "f_color": kRed,
-            "path": "WmuHNL50_60G_lt01dd_lepfilt_ch" + bkg_suffix,
-            "l_color": kBlack,
-            "m_type": 26,
-            "lumi": 58450.1,
-            "sqrts": 13,
+        "Zeejets2": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets2" + bkg_suffix,
         },
-        "ttbarHNLfullLepMLm15": {
-            "type": "sig",
-            "leg": "W' #rightarrow N ",
-            "f_color": kRed+11,
-            "path": "ttbar_HNLfullLep_ML_m_15" + bkg_suffix,
-            "l_color": kRed+11,
-            
+        "Zeejets3": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets3" + bkg_suffix,
         },
-        "ttbarHNLfullLepMLm75": {
-            "type": "sig",
-            "leg": "W' #rightarrow N ",
-            "f_color": kRed+14,
-            "path": "ttbar_HNLfullLep_ML_m_75" + bkg_suffix,
-            "l_color": kRed+14,
-           
+        "Zeejets4": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets4" + bkg_suffix,
         },
-        "ttbarHNLfullLepMLp15": {
-            "type": "sig",
-            "leg": "W' #rightarrow N ",
-            "f_color": kRed+12,
-            "path": "ttbar_HNLfullLep_ML_p_15" + bkg_suffix,
-            "l_color": kRed+12,
-            
+        "Zeejets5": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets5" + bkg_suffix,
         },
-        "ttbarHNLfullLepMLp75": {
-            "type": "sig",
-            "leg": "W' #rightarrow N ",
-            "f_color": kRed+13,
-            "path": "ttbar_HNLfullLep_ML_p_75" + bkg_suffix,
-            "l_color": kRed+13,
-            
-        },"""
-        
+        "Zeejets6": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets6" + bkg_suffix,
+        },
+        "Zeejets7": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets7" + bkg_suffix,
+        },
+        "Zeejets8": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets8" + bkg_suffix,
+        },
+        "Zeejets9": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets9" + bkg_suffix,
+        },
+        "Zeejets10": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets10" + bkg_suffix,
+        },
+        "Zeejets11": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets11" + bkg_suffix,
+        },
+        "Zeejets12": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets12" + bkg_suffix,
+        },
+        "Zeejets13": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets13" + bkg_suffix,
+        },
+        "Zeejets14": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets14" + bkg_suffix,
+        },
+        "Zeejets15": {
+            "type": "bkg",
+            "leg": "Z(ee)+jets",
+            "f_color": kAzure - 9,
+            "path": "Zeejets15" + bkg_suffix,
+        },
         
         
         "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7": {
@@ -363,11 +402,83 @@ def configure_samples():
         # 'Zeejets7'    :{'type':'bkg', 'leg':'Z(ee)+jets7',                    'f_color':kOrange+4, 'path':'Zeejets'+bkg_suffix},
         # 'Zeejets8'    :{'type':'bkg', 'leg':'Z(ee)+jets8',                    'f_color':kOrange+3, 'path':'Zeejets'+bkg_suffix},
         # 'Zeejets9'    :{'type':'bkg', 'leg':'Z(ee)+jets9',                    'f_color':kOrange+2,  'path':'Zeejets'+bkg_suffix},
-        "Zmmjets": {
+        "Zmmjets1": {
             "type": "bkg",
             "leg": "Z(mm)+jets",
             "f_color": kAzure - 8,
-            "path": "Zmmjets" + bkg_suffix,
+            "path": "Zmmjets1" + bkg_suffix,
+        },
+        "Zmmjets2": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets2" + bkg_suffix,
+        },
+        "Zmmjets3": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets3" + bkg_suffix,
+        },
+        "Zmmjets4": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets4" + bkg_suffix,
+        },
+        "Zmmjets5": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets5" + bkg_suffix,
+        },
+        "Zmmjets6": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets6" + bkg_suffix,
+        },
+        "Zmmjets7": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets7" + bkg_suffix,
+        },
+        "Zmmjets8": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets8" + bkg_suffix,
+        },
+        "Zmmjets9": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets9" + bkg_suffix,
+        },
+        "Zmmjets10": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets10" + bkg_suffix,
+        },
+        "Zmmjets11": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets11" + bkg_suffix,
+        },
+        "Zmmjets12": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets12" + bkg_suffix,
+        },
+        "Zmmjets13": {
+            "type": "bkg",
+            "leg": "Z(mm)+jets",
+            "f_color": kAzure - 8,
+            "path": "Zmmjets13" + bkg_suffix,
         },
         "Zttjets": {
             "type": "bkg",
@@ -406,7 +517,6 @@ def configure_samples():
             "path": "diboson" + bkg_suffix,
             
         },
-        #'dibosonPOWHEG'  :{'type':'bkg', 'leg':'Diboson (PH)',        'f_color':kAzure-3, 'path':'diboson (PH)'+bkg_suffix},
         "PHZZ": {
             "type": "bkg",
             "leg": "ZZ (powheg)",
@@ -653,6 +763,49 @@ def configure_samples():
         "FAKE2L21": {"descr": "Heavy fl. CR"},
         "FAKE2L23": {"descr": "Conversion CR"},
     }
+    
+    """WmuHNL50_60G_lt01dd": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed,
+            "path": "WmuHNL50_60G_lt01dd_lepfilt_ch" + bkg_suffix,
+            "l_color": kBlack,
+            "m_type": 26,
+            "lumi": 58450.1,
+            "sqrts": 13,
+        },
+        "ttbarHNLfullLepMLm15": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+11,
+            "path": "ttbar_HNLfullLep_ML_m_15" + bkg_suffix,
+            "l_color": kRed+11,
+            
+        },
+        "ttbarHNLfullLepMLm75": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+14,
+            "path": "ttbar_HNLfullLep_ML_m_75" + bkg_suffix,
+            "l_color": kRed+14,
+           
+        },
+        "ttbarHNLfullLepMLp15": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+12,
+            "path": "ttbar_HNLfullLep_ML_p_15" + bkg_suffix,
+            "l_color": kRed+12,
+            
+        },
+        "ttbarHNLfullLepMLp75": {
+            "type": "sig",
+            "leg": "W' #rightarrow N ",
+            "f_color": kRed+13,
+            "path": "ttbar_HNLfullLep_ML_p_75" + bkg_suffix,
+            "l_color": kRed+13,
+            
+        },"""
 
     # python -i compareEfficiencies.py MMinput_2L2JFAR.root h_lep_pT_eff_EEOS_E_REAL2L09_2L2J_diboson_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_REAL2L09_2L2J_ttbar_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_REAL2L09_2L2J_Zjets_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_REAL2L09_2L2J_singleTop_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_trueREAL_REAL2L09_2L2J_diboson_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_trueREAL_REAL2L09_2L2J_ttbar_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_trueREAL_REAL2L09_2L2J_Zjets_REBIN_mc16eEST2 h_lep_pT_eff_EEOS_E_trueREAL_REAL2L09_2L2J_singleTop_REBIN_mc16eEST2
 

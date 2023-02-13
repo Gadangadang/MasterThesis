@@ -140,17 +140,11 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        val = 30
+        val = 50
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
-        x = tf.keras.layers.Dense(units=437, activation="tanh",
-                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(encoder_inputs)
-        x = tf.keras.layers.Dense(units=231, activation="relu")(x)
-        x = tf.keras.layers.Dense(77, activation=tf.keras.layers.LeakyReLU(alpha=1),
-                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
+        
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
         z = Sampling()([z_mean, z_log_var])
@@ -158,13 +152,43 @@ class RunVAE:
         encoder.summary()
         
         latent_inputs = tf.keras.Input(shape=val)
-        x = tf.keras.layers.Dense(units=75, activation="linear")(latent_inputs)
-        x = tf.keras.layers.Dense(units=267, activation="relu",
-                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
-        x = tf.keras.layers.Dense(units=444, activation="tanh",
-                                  kernel_regularizer=tf.keras.regularizers.L1(0.05),
-                                  activity_regularizer=tf.keras.regularizers.L2(0.5),)(x)
+        
+        decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="sigmoid")(latent_inputs)
+        decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
+        decoder.summary()
+            
+
+        self.AE_model = VAE(encoder, decoder)
+        self.AE_model.compile(optimizer=tf.keras.optimizers.Adam())
+        
+        return self.AE_model
+    
+    
+    def getModel_big(self):
+        """_summary_
+
+        Returns:
+            tf.python.keras.engine.functional.Functional: Model to use
+        """
+        
+        val = 50
+        
+        encoder_inputs = tf.keras.Input(shape=self.data_shape)
+        x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
+        x = tf.keras.layers.Dense(units=400, activation="tanh",)(encoder_inputs)
+        x = tf.keras.layers.Dense(units=300, activation="relu")(x)
+        x = tf.keras.layers.Dense(200, activation=tf.keras.layers.LeakyReLU(alpha=1),)(x)
+        
+        z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
+        z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
+        z = Sampling()([z_mean, z_log_var])
+        encoder = tf.keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
+        encoder.summary()
+        
+        latent_inputs = tf.keras.Input(shape=val)
+        x = tf.keras.layers.Dense(units=200, activation="linear")(latent_inputs)
+        x = tf.keras.layers.Dense(units=300, activation="relu",)(x)
+        x = tf.keras.layers.Dense(units=400, activation="tanh",)(x)
         decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="sigmoid")(x)
         decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
         decoder.summary()
@@ -191,8 +215,12 @@ class RunVAE:
             self.AE_model
             print("Model loaded")
         except:
-            self.AE_model = self.getModel()
-            print("New model created")
+            if SMALL:
+                self.AE_model = self.getModel()
+                print("New model created")
+            else:
+                self.AE_model = self.getModel_big()
+                print("New model created")
 
         #print(self.AE_model.layers[1].weights)
         with tf.device("/GPU:0"):

@@ -187,8 +187,8 @@ class HyperParameterTuning(RunAE):
         Returns:
             _type_: _description_
         """
-        ker_choice = hp.Choice("Kernel_reg", values=[0.5, 0.1, 0.05, 0.01])
-        act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
+        
+        
 
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
 
@@ -206,18 +206,18 @@ class HyperParameterTuning(RunAE):
         # First hidden layer
         x = tf.keras.layers.Dense(
             units=hp.Int(
-                "num_of_neurons1", min_value=60, max_value=self.data_shape - 1, step=1
+                "num_of_neurons1", min_value=400, max_value=self.data_shape - 1, step=10
             ),
             activation=activations.get(
                 hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+            ,
+            
         )(inputs)
 
         # Second hidden layer
         x_ = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons2", min_value=30, max_value=59, step=1),
+            units=hp.Int("num_of_neurons2", min_value=200, max_value=399, step=10),
             activation=activations.get(
                 hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
@@ -225,15 +225,15 @@ class HyperParameterTuning(RunAE):
 
         # Third hidden layer
         x1 = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons3", min_value=10, max_value=29, step=1),
+            units=hp.Int("num_of_neurons3", min_value=100, max_value=199, step=10),
             activation=activations.get(
                 hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+            ,
+            
         )(x_)
 
-        val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
+        val = hp.Int("lat_num", min_value=10, max_value=99, step=5)
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
@@ -251,17 +251,17 @@ class HyperParameterTuning(RunAE):
 
         # Fifth hidden layer
         x = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons5", min_value=10, max_value=29, step=1),
+            units=hp.Int("num_of_neurons5", min_value=100, max_value=199, step=10),
             activation=activations.get(
                 hp.Choice("5_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+            ,
+            
         )(latent_input)
 
         # Sixth hidden layer
         x_ = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons6", min_value=30, max_value=59, step=1),
+            units=hp.Int("num_of_neurons6", min_value=200, max_value=399, step=10),
             activation=activations.get(
                 hp.Choice("6_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
@@ -270,13 +270,13 @@ class HyperParameterTuning(RunAE):
         # Seventh hidden layer
         x1 = tf.keras.layers.Dense(
             units=hp.Int(
-                "num_of_neurons7", min_value=60, max_value=self.data_shape - 1, step=1
+                "num_of_neurons7", min_value=400, max_value=self.data_shape - 1, step=10
             ),
             activation=activations.get(
                 hp.Choice("7_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+            ,
+            
         )(x_)
 
         # Output layer
@@ -312,8 +312,8 @@ class HyperParameterTuning(RunAE):
         Returns:
             _type_: _description_
         """
-        ker_choice = hp.Choice("Kernel_reg", values=[0.5, 0.1, 0.05, 0.01])
-        act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
+        
+        
 
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
 
@@ -334,13 +334,13 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
+            
+            
         )(inputs)
         
         drop = tf.keras.layers.Dropout(.2)(x1)
         
-        val = hp.Int("lat_num", min_value=2, max_value=int(self.data_shape/2), step=3)
+        val = hp.Int("lat_num", min_value=2, max_value=400, step=20)
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(

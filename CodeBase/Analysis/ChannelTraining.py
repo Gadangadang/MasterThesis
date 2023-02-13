@@ -62,8 +62,8 @@ class ChannelTraining(model):
 
         for channel, idx_train, idx_val in self.idxs:
             
-            if channel in ["Zeejets", "Zmmjets", "Zttjets", "diboson2L", "diboson3L"]:
-                continue
+            """if channel in ["Zeejets", "Zmmjets", "Zttjets", "diboson2L", "diboson3L"]:
+                continue"""
 
             st = time.time()
             channels = self.channels.copy()

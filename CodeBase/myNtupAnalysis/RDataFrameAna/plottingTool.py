@@ -74,6 +74,8 @@ class Plot:
             p.plot1D(hdic, hname, bkgs)
         else:
             p.plot2D(hdic, hname, bkgs)
+            
+        
 
     def plot2D(p, hdic, hname="lepPt_ele_hT", bkgs=[]):
 
@@ -393,40 +395,142 @@ class Plot:
                 p.ratio.SetBinContent(ibin, -10)
         p.ratio.SetLineWidth(2)
         p.ratio.SetMarkerStyle(21)
+        
+   
 
     def fillStack(p, histo, hkey, procs):
-        # print("fillstack")
+        print("fillstack")
+     
+        zees = ['Zeejets1', 'Zeejets2', 'Zeejets3', 'Zeejets4', 'Zeejets5', 'Zeejets6', 'Zeejets7', 'Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15']
+        zmms = ['Zmmjets1', 'Zmmjets2', 'Zmmjets3', 'Zmmjets4', 'Zmmjets5', 'Zmmjets6', 'Zmmjets7', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']
+        
+        print("Stack")
+        print(p.stackorder)
+        
+        zee_channel_count = 0
+        zmm_channel_count = 0
+        
+        tot_zee = 0
+        tot_zmm = 0
+        
+        zee_check = 0
+        zmm_check = 0
         for k in procs:
-            # print(k)
+            
             if p.is1D and not d_samp[k]["type"] == "bkg":
                 print("continue")
                 continue
             if not hkey + "_%s" % k in histo.keys():
-                print("Could not find key %s in histo dctionary" % (hkey + "_%s" % k))
+                print("Could not find key %s in histo dictionary" % (hkey + "_%s" % k))
                 continue
 
             pc_yield = 0.0
+            
+            
             if float(p.nTotBkg) != 0:
-                pc_yield = 100 * (p.dyield[k] / float(p.nTotBkg))
-            if not p.isEff:
-                leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
-            else:
-                print(k, pc_yield)
-                if pc_yield < 10:
-                    continue
-                leg_txt = "{0}".format(d_samp[k]["leg"])
+                if k in zees:
+                    tot_zee += p.dyield[k]
+                    zee_channel_count += 1
+                    choice = tot_zee
+                elif k in zmms:
+                    tot_zmm += p.dyield[k]
+                    zmm_channel_count += 1
+                    choice = tot_zmm
+                else:
+                    choice = p.dyield[k]
+                    
+                pc_yield = 100 * (choice / float(p.nTotBkg))
+            
             try:
                 # print("Adding %s_%s"%(hkey,k))
+                
                 if p.rebin:
                     histo[hkey + "_%s" % k] = histo[hkey + "_%s" % k].Rebin(p.rebin)
-                p.hstack.Add(histo[hkey + "_%s" % k])
-                p.leg.AddEntry(histo[hkey + "_%s" % k], leg_txt, "lpf")
+                
+                if k in zees:
+                    if zee_check == 0:
+                        p.zeejetsh = histo[hkey + "_%s" % k].Clone(hkey + "_%s_SUM" % k)
+                        zee_check += 1
+                        
+                    
+                    
+                    p.zeejetsh.Add(histo[hkey + "_%s" % k].GetValue())
+                    
+                    if zee_channel_count == 15:
+                        
+                        leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                        print(leg_txt)
+                        p.leg.AddEntry(histo[hkey + "_%s" % k], leg_txt, "lpf")
+                        
+                        p.hstack.Add(p.zeejetsh)
+                
+                elif k in zmms:
+                    if zmm_check == 0:
+                        
+                        p.zmmjetsh = histo[hkey + "_%s" % k].Clone(hkey + "_%s_SUM" % k)
+                        zmm_check += 1
+                        print("created zmm histo")
+                    
+                    
+                    p.zmmjetsh.Add(histo[hkey + "_%s" % k].GetValue())
+                    
+                    if zmm_channel_count == 13:
+                        
+                        leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                        print(leg_txt)
+                        p.leg.AddEntry(histo[hkey + "_%s" % k], leg_txt, "lpf")
+                        p.hstack.Add(p.zmmjetsh)
+                    
+                else:
+                    p.hstack.Add(histo[hkey + "_%s" % k])
+                    leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                    print(leg_txt)
+                    p.leg.AddEntry(histo[hkey + "_%s" % k], leg_txt, "lpf")
                 p.xtit = histo[hkey + "_%s" % k].GetXaxis().GetTitle()
                 # print("xtitle = %s"%p.xtit)
             except:
+               
                 # print("Adding %s_%s"%(hkey,k))
-                p.hstack.Add(histo[hkey + "_%s" % k].GetValue())
-                p.leg.AddEntry(histo[hkey + "_%s" % k].GetValue(), leg_txt, "lpf")
+                
+                if k in zees:
+                    if zee_check == 0:
+                        p.zeejetsh = histo[hkey + "_%s" % k].Clone(hkey + "_%s_SUM" % k)
+                        zee_check += 1
+                        print("created zee histo")
+                    
+                    
+                    p.zeejetsh.Add(histo[hkey + "_%s" % k].GetValue())
+                    
+                    
+                    if zee_channel_count == 15:
+                        
+                        leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                        print(leg_txt)
+                        p.leg.AddEntry(histo[hkey + "_%s" % k].GetValue(), leg_txt, "lpf")
+                        p.hstack.Add(p.zeejetsh)
+                
+                elif k in zmms:
+                    if zmm_check == 0:
+                        p.zmmjetsh = histo[hkey + "_%s" % k].Clone(hkey + "_%s_SUM" % k)
+                        zmm_check += 1
+                        print("created zmm histo")
+                    
+                    
+                    p.zmmjetsh.Add(histo[hkey + "_%s" % k].GetValue())
+                    
+                    if zmm_channel_count == 13:
+                        
+                        leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                        print(leg_txt)
+                        p.leg.AddEntry(histo[hkey + "_%s" % k].GetValue(), leg_txt, "lpf")
+                        p.hstack.Add(p.zmmjetsh)
+                    
+                else:
+                    p.hstack.Add(histo[hkey + "_%s" % k].GetValue())
+                    leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
+                    print(leg_txt)
+                    p.leg.AddEntry(histo[hkey + "_%s" % k].GetValue(), leg_txt, "lpf")
+              
 
     def getData(p, histo, hkey, procs):
         tot_data = 0
@@ -436,11 +540,7 @@ class Plot:
                 continue
             if not hkey + "_%s" % k in histo.keys():
                 continue
-            if not p.isEff:
-                leg_txt = "{0}".format(d_samp[k]["leg"])
-
-            else:
-                leg_txt = "{0})".format(d_samp[k]["leg"])
+            
             # try:
             if p.rebin:
                 histo[hkey + "_%s" % k] = histo[hkey + "_%s" % k].Rebin(p.rebin)

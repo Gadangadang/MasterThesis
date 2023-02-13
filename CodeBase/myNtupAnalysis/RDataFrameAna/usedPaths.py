@@ -3,6 +3,8 @@ from pathlib import Path
 
 HISTO_VAR = Path("../../../Figures/histo_var_check/")
 
+LEP2 = True
+
 
 df_storage = Path("/storage/William_Sakarias/Sakarias_Data/")
 

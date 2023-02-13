@@ -59,27 +59,45 @@ myMediumPink = R.TColor.GetColor("#fcc5c0")
 myDarkPink = R.TColor.GetColor("#dd3497")
 
 
-bkgdic = {
-    "Zjets": {"color": myMediumGreen},
-    "Wjets": {"color": myLightGreen},
-    "ttbar": {"color": myMediumBlue},
-    "singletop": {"color": myLightBlue},
-    "Diboson": {"color": myMediumOrange},
-    "data22": {"color": R.kBlack},
-}
 
 bkgdic = {
     "Wjets": {"color": myLightGreen},
-    "Zeejets": {"color": myMediumGreen},
-    "diboson2L": {"color": myMediumOrange},
-    "diboson3L": {"color": myLighterOrange},
-    "diboson4L": {"color": myLightOrange},
-    "higgs": {"color": myLightPink},
+    "Zeejets1": {"color": myMediumGreen},
+    "Zeejets2": {"color": myMediumGreen},
+    "Zeejets3": {"color": myMediumGreen},
+    "Zeejets4": {"color": myMediumGreen},
+    "Zeejets5": {"color": myMediumGreen},
+    "Zeejets6": {"color": myMediumGreen},
+    "Zeejets7": {"color": myMediumGreen},
+    "Zeejets8": {"color": myMediumGreen},
+    "Zeejets9": {"color": myMediumGreen},
+    "Zeejets10": {"color": myMediumGreen},
+    "Zeejets11": {"color": myMediumGreen},
+    "Zeejets12": {"color": myMediumGreen},
+    "Zeejets13": {"color": myMediumGreen},
+    "Zeejets14": {"color": myMediumGreen},
+    "Zeejets15": {"color": myMediumGreen},
+    #"diboson2L": {"color": myMediumOrange},
+    #"diboson3L": {"color": myLighterOrange},
+    #"diboson4L": {"color": myLightOrange},
+    #"higgs": {"color": myLightPink},
     "singletop": {"color": myLightBlue},
     "topOther": {"color": myDarkBlue},
     "triboson": {"color": myDarkPink},
     "ttbar": {"color": myMediumBlue},
-    "Zmmjets": {"color": myLightGreen},
+    "Zmmjets1": {"color": myLightGreen},
+    "Zmmjets2": {"color": myLightGreen},
+    "Zmmjets3": {"color": myLightGreen},
+    "Zmmjets4": {"color": myLightGreen},
+    "Zmmjets5": {"color": myLightGreen},
+    "Zmmjets6": {"color": myLightGreen},
+    "Zmmjets7": {"color": myLightGreen},
+    "Zmmjets8": {"color": myLightGreen},
+    "Zmmjets9": {"color": myLightGreen},
+    "Zmmjets10": {"color": myLightGreen},
+    "Zmmjets11": {"color": myLightGreen},
+    "Zmmjets12": {"color": myLightGreen},
+    "Zmmjets13": {"color": myLightGreen},
     "Zttjets": {"color": myDarkGreen},
     "data15": {"color": R.kBlack},
     "data16": {"color": R.kBlack},
@@ -284,13 +302,17 @@ def convertRDFCutflowToTex(cutflow1, cutflow2):
 
 def writeHistsToFile(histo, d_samp, writetofile=True):
     for k in histo.keys():
+        
         col = -1
         sp = k.split("_")
         typ = ""
         for i in range(len(sp)):
             s = "_".join(sp[i:])
+           
             if s in d_samp.keys():
                 typ = s
+                
+        
         if not typ:
             print("Did to find match for key %s" % k)
             continue
@@ -407,16 +429,35 @@ def getDataFrames1(mypath, nev=0):
 
     df = {}
     files = {}
+    
+    zeecount = 0
+    zmmcount = 0
     for of in onlyfiles:
         if not "merged" in of or not of.endswith(".root"):
             continue
         sp = of.split("/")[-1].split("_")
-        print(sp)
+        
         typ = ""
+        
+        
         for s in sp:
+            
             if "merged" in s or s.isnumeric():
+                
+                if typ[:7] == "Zeejets":
+                    zeecount += 1
+                    typ += str(zeecount)
+                    
+                
+                elif typ[:7] == "Zmmjets":
+                    zmmcount += 1
+                    typ += str(zmmcount)
+                    
                 break
             typ += s
+            
+            
+            
         
         if "HNLfullLep" in sp:
             num = sp[4]
@@ -432,6 +473,9 @@ def getDataFrames1(mypath, nev=0):
         files[typ]["files"].append(of)
         print(typ, treename)
 
+ 
+    
+    
         # print(typ)
         # if not typ == "singleTop": continue
         # df[typ] = R.Experimental.MakeNTupleDataFrame("mini",of)#("%s_NoSys"%typ,of)
@@ -440,6 +484,8 @@ def getDataFrames1(mypath, nev=0):
         df[typ] = R.RDataFrame(files[typ]["treename"], files[typ]["files"])
         if nev:
             df[typ] = df[typ].Range(nev)
+            
+    
     return df
 
 
@@ -517,11 +563,11 @@ def get_column_names(df: dict, histo: dict) -> list:
 
     new_feats = []
     for name in names:
-        if name[-5:] == "higgs":
+        if name[-5:] == "ttbar":
             new_feats.append(name[:-6])
 
     all_cols = []
-    for c in df["higgs"].GetColumnNames():
+    for c in df["ttbar"].GetColumnNames():
         if c in new_feats:
             all_cols.append(str(c))
 

@@ -19,22 +19,11 @@ from samples import configure_samples
 from os.path import isfile, join, isdir
 from div_dicts import triggers, rmm_structure
 
+samples = ['data15', 'data16', 'data17', 'data18', 'singletop', 'Diboson', 'Zeejets1', 'Zeejets2', 'Zeejets3', 'Zmmjets1', 'Zmmjets2', 'Zmmjets3', 'Zttjets', 'Wjets', 'ttbar', 'Zeejets4', 'Zeejets5', 'Zeejets6', 'Zeejets7', 'Zmmjets4', 'Zmmjets5', 'Zmmjets6', 'Zmmjets7', 'Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13', "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
 
+TOKEN = "5789363537:AAF0SErRfZ07yWrzjppg9oCCO6H8BfFLHw"
+chat_id = "5733209220"
 
-d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
-
-R.EnableImplicitMT(1000)
-
-R.gROOT.ProcessLine(".L helperFunctions.cxx+")
-R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))
-R.gInterpreter.Declare(
-    '#include "helperFunctions.h"'
-)  # Header with the definition of the myFilter function
-R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
-
-# from IPython.display import display, HTML
-
-# display(HTML("<style>.container { width:100% !important; }</style>"))
 
 
 def runANA(
@@ -75,18 +64,20 @@ def runANA(
     df = {**df_mc, **df_data}
     
     print(" ")
-   
+    print(" ")
+    print(df.keys())
+    
     
     for k in df.keys():
 
         if k not in samples: #["topOther"]:#
             continue
         
-        
+        start = time.time()
         
        
         
-        # df[k] = df[k].Range(0,100)
+        #df[k] = df[k].Range(0,1000)
             
         # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
@@ -298,7 +289,17 @@ def runANA(
         """
         Remove Z overlap
         """
-        if k in ["Zeejets", "Zmmjets", "Zttjets"]:
+        if "Zeejets" in k: 
+            df[k] = df[k].Filter(
+                "((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))",
+                "Z overlap",
+            )
+        elif "Zmmjets" in k: 
+            df[k] = df[k].Filter(
+                "((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))",
+                "Z overlap",
+            )
+        elif "Zttjets" in k:
             df[k] = df[k].Filter(
                 "((DatasetNumber >= 700320 && DatasetNumber <= 700328) && bornMass <= 120000) || !((DatasetNumber >= 700320 && DatasetNumber <= 700328))",
                 "Z overlap",
@@ -696,6 +697,9 @@ def runANA(
         a = df[k].Report().Print()
         
         print(a)
+        
+        end = time.time()
+        
        
 
     for k in histo.keys():
@@ -729,22 +733,39 @@ def create_histograms_pdfs(
     """
 
     writeHistsToFile(histo, d_samp, False)
+    
+    
 
     toplot = []
     for bkg in bkgdic.keys():
         toplot.append(bkg)
+        
+    if len(all_cols) == 0:
+        all_cols = []
+        with open("featuren_names.txt", "r") as file:
+    # Writing data to a file
+            for word in file:
+                all_cols.append(word)
 
+ 
     for hname in all_cols:
 
         try:
 
             p = pt.Plot(histo, hname, toplot)
-
-            p.can.SaveAs(str(histo_var) + f"/{hname}.pdf")
+            if LEP2:
+                
+                p.can.SaveAs(str(histo_var) + f"/{hname}_2lep.pdf")
+            else:
+                p.can.SaveAs(str(histo_var) + f"/{hname}_3lep.pdf")
 
         except:
             print(f"Could not make plot for name {hname}")
-
+        
+        
+        
+            
+      
 
 def get_numpy_df(df: dict, all_cols: list) -> list:
     """_summary_
@@ -770,16 +791,26 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
         print(f"Numpy conversion done for {k}.ROOT")
         df1 = pd.DataFrame(data=numpy)
         print(f"Transformation done")
-        dfs.append(df1)
+        #dfs.append(df1)
 
         # print("        ")
         # dfs.append(df1)
         # del df1
-        df1.to_hdf(
-            str(df_storage) + f"/two_{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
-        )
+        if LEP2:
+            
+            df1.to_hdf(
+                str(df_storage) + f"/two_{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+            )
+        else:
+            df1.to_hdf(
+                    str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+                )
+            
+        print(df1.info(memory_usage="deep"))
+        
+        df1 = pd.DataFrame()
 
-    return dfs
+    #return dfs
 
 
 def fetchDfs():
@@ -845,14 +876,8 @@ def fetchDfs():
     return keeps, names
 
 
-
-
-
-if __name__ == "__main__":
-    
-    samples = ["data15","data16","data17","data18", "Wjets","Zmmjets","Zttjets","diboson2L","diboson3L","diboson4L","higgs","topOther","triboson","ttbar","Zeejets","singletop", "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
-
-    rerun = 1
+def main():
+    rerun = 0
     if len(sys.argv) > 2:
         rerun = int(sys.argv[2])
     if rerun:
@@ -868,8 +893,16 @@ if __name__ == "__main__":
     N_j = 12
     N_l = 10
 
+    global N_row, N_col 
+    
+    
     N_col = N_j + N_l + 1
+    
+    
+    
     N_row = N_col
+    
+  
     
     
 
@@ -886,27 +919,18 @@ if __name__ == "__main__":
 
     hfiles = glob.glob("./histograms_*.root")
     histo = {}
-    """name_allhisto_1D = []
-    name_allhisto_2D = []
-    if not rerun:
-        all_histo = []
-        for f in hfiles:
-            all_histo.append(getHistograms("%s"%f))
-            for key in all_histo[-1].keys():
-                this_hname = "_".join(key.split("_")[:-1])
-                if not this_hname in name_allhisto_1D and type(all_histo[-1][key]) is R.TH1D:
-                    name_allhisto_1D.append(this_hname)
-                    #print(this_hname)
-                elif not this_hname in name_allhisto_2D and type(all_histo[-1][key]) is R.TH2D:
-                    name_allhisto_2D.append(this_hname)
-                    #print(this_hname)
-            for d in all_histo:
-                histo.update(d)
-    else:"""
+    
+    
+    if LEP2:
+        MCPATH = str(MC_AND_DATA_PATH_2LEP) 
+        DATAPATH = str(MC_AND_DATA_PATH_2LEP) + "/EXOT0_Data"
+    else:
+        MCPATH = str(MC_AND_DATA_PATH)
+        DATAPATH = str(MC_AND_DATA_PATH) + "/data18"
     
     df, histo = runANA(
-        str(MC_AND_DATA_PATH_2LEP),
-        str(MC_AND_DATA_PATH_2LEP) + "/EXOT0_Data",
+        MCPATH,
+        DATAPATH,
         everyN,
         fldic,
         histo,
@@ -914,9 +938,19 @@ if __name__ == "__main__":
         create_histogram=True,
     )
 
+  
     all_cols = get_column_names(df, histo)
 
     
+    print(histo)
+    
+    
+    
+    
+    
+    
+    """if len(histo) == 0:
+        for channel in """
 
     print("Histogram creation started")
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
@@ -924,15 +958,17 @@ if __name__ == "__main__":
     
     print(" ")
     
+    exit()
+    
     print(all_cols)
     
     print("Numpy conversion started")
-    numpy_dfs = get_numpy_df(df, all_cols)
+    get_numpy_df(df, all_cols)
     print("Numpy conversion ended")
     names = list(df.keys())
     
     
-    #numpy_dfs, names = fetchDfs()
+    numpy_dfs, names = fetchDfs()
     
     print(" ")
     
@@ -942,10 +978,30 @@ if __name__ == "__main__":
         plot_rmm_matrix(df, names[index], rmm_structure, RMMSIZE, lep=2)
     print("RMM plot creation ended")
     
-    
+   
     
     TOKEN = "5789363537:AAF0SErRfZ07yWrzjppg9oCCO6H8BfFLHw"
     chat_id = "5733209220"
     message = "Hello Sakarias, Event selection is done!"
     resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}")
     print(resp.status_code)
+    
+    
+
+if __name__ == "__main__":
+    d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
+
+    R.EnableImplicitMT(2000)
+
+    R.gROOT.ProcessLine(".L helperFunctions.cxx+")
+    R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))
+    R.gInterpreter.Declare(
+        '#include "helperFunctions.h"'
+    )  # Header with the definition of the myFilter function
+    R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
+    
+    main()
+
+    
+    
+  

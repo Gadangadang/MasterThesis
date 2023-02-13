@@ -42,11 +42,12 @@ class ScaleAndPrep:
             event_rmm (bool, optional):
         """
         self.path = path
+        self.lep = lep
         self.onlyfiles = self.getDfNames()
         self.event_rmm = event_rmm
         self.load = load
         self.save = save
-        self.lep = lep
+        
         # self.scaleAndSplit()
         
 

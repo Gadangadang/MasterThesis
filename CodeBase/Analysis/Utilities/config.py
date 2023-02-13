@@ -14,7 +14,7 @@ nele = 5
 nmuo = 5
 
 RMMSIZE = 1 + nbjet + nljet + nele + nmuo
-SMALL = True
+SMALL = False
 
 TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
 chat_id = "5733209220"
