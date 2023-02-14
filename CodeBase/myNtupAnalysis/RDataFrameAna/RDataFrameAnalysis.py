@@ -73,7 +73,10 @@ def runANA(
         if k not in samples: #["topOther"]:#
             continue
         
-        start = time.time()
+        if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
+            continue
+        
+       
         
        
         
@@ -98,6 +101,8 @@ def runANA(
         df[k] = df[k].Define(
             "new_xsec", "(DatasetNumber == 308981) ? (0.30649*69.594)/80000. : 0.0"
         )
+        
+        
 
         # Baseline leptons
         df[k] = df[k].Define(
@@ -208,6 +213,10 @@ def runANA(
             # df[k] = df[k].Define("wgt_BL","1.0")
             df[k] = df[k].Define("wgt_SG", "1.0")
             df[k] = df[k].Define("wgt_EV", "1.0")
+            
+        # Remove bad ids
+        df[k] = df[k].Define("badDSID","((DatasetNumber >= 308092 && DatasetNumber <= 308093) || ((DatasetNumber >= 410633 && DatasetNumber <= 410637) || (!is2018 && DatasetNumber == 410472)))")
+        df[k] = df[k].Filter("!badDSID","Removing bad DSID")
 
         # df[k].Define("lepIsTrigMatched_2L","is2015 ? trigmatch_2015_2L : (is2016 ? trigmatch_2016_2L : (is2017 ? trigmatch_2017_2L : trigmatch_2018_2L))")
         # df[k].Define("lepIsTrigMatched_3L","is2015 ? trigmatch_2015_3L : (is2016 ? trigmatch_2016_3L : (is2017 ? trigmatch_2017_3L : trigmatch_2018_3L))")
@@ -785,6 +794,9 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
         
         if k not in samples: #["topOther"]:#
             continue
+        
+        if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
+            continue
 
         print(f"Transforming {k}.ROOT to numpy")
         numpy = df[k].AsNumpy(all_cols)
@@ -958,7 +970,7 @@ def main():
     
     print(" ")
     
-    exit()
+    
     
     print(all_cols)
     
