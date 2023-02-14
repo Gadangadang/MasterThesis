@@ -111,7 +111,7 @@ class RunAE:
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
 
         # Output layer
-        output = tf.keras.layers.Dense(self.data_shape, activation=tf.keras.Layer.LeakyReLU(alpha=0.3))(latent_input)
+        output = tf.keras.layers.Dense(self.data_shape, activation=tf.keras.layers.LeakyReLU(alpha=0.3))(latent_input)
 
         # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
