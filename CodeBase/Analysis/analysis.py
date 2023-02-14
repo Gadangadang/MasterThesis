@@ -61,7 +61,7 @@ def main():
         
         GN = GradNoise(sp, STORE_IMG_PATH)
         #GN.genRmmEvent()
-        GN.run(False, False, "sample")
+        GN.run(False, True, "sample")
         
         CT = ChannelTraining(sp, STORE_IMG_PATH)
         CT.run(small=SMALL)
