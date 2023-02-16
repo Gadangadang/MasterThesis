@@ -54,7 +54,7 @@ optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
 nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
 \end{lstlisting}
 The neural network here contains one input layer, two hidden layers, and an output layer. The choice of nodes and activation functions are 
-arbitrary here as the use case has not been defined. Note that this is exactly the same as this example, using a sequential structure.
+arbitrary here as the use case has not been defined. Note that this is exactly the same as the previous example, but using the sequential structure.
 
 
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_seq_example}]
@@ -86,17 +86,6 @@ class HyperParameterTuning(RunAE):
 
     def AE_model_builder(self, hp: kt.engine.hyperparameters.HyperParameters):
 
-        """_summary_
-
-        Args:
-            hp (kt.engine.hyperparameters.HyperParameters): _description_
-
-        Returns:
-            _type_: _description_
-        """
-        ker_choice = hp.Choice("Kernel_reg", values=[0.5, 0.1, 0.05, 0.01])
-        act_choice = hp.Choice("Atc_reg", values=[0.5, 0.1, 0.05, 0.01])
-
         alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
 
         # Activation functions
@@ -118,27 +107,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
         )(inputs)
-
-        # Second hidden layer
-        x_ = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons2", min_value=30, max_value=59, step=1),
-            activation=activations.get(
-                hp.Choice("2_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-        )(x)
-
-        # Third hidden layer
-        x1 = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons3", min_value=10, max_value=29, step=1),
-            activation=activations.get(
-                hp.Choice("3_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
-        )(x_)
 
         val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
 
@@ -148,7 +117,7 @@ class HyperParameterTuning(RunAE):
             activation=activations.get(
                 hp.Choice("4_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-        )(x1)
+        )(x)
 
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
@@ -156,43 +125,13 @@ class HyperParameterTuning(RunAE):
         # Latent space
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
 
-        # Fifth hidden layer
-        x = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons5", min_value=10, max_value=29, step=1),
-            activation=activations.get(
-                hp.Choice("5_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
-        )(latent_input)
-
-        # Sixth hidden layer
-        x_ = tf.keras.layers.Dense(
-            units=hp.Int("num_of_neurons6", min_value=30, max_value=59, step=1),
-            activation=activations.get(
-                hp.Choice("6_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-        )(x)
-
-        # Seventh hidden layer
-        x1 = tf.keras.layers.Dense(
-            units=hp.Int(
-                "num_of_neurons7", min_value=60, max_value=self.data_shape - 1, step=1
-            ),
-            activation=activations.get(
-                hp.Choice("7_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-            kernel_regularizer=tf.keras.regularizers.L1(ker_choice),
-            activity_regularizer=tf.keras.regularizers.L2(act_choice),
-        )(x_)
-
         # Output layer
         output = tf.keras.layers.Dense(
             self.data_shape,
             activation=activations.get(
                 hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
             ),
-        )(x1)
+        )(latent_input)
 
         # Encoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
@@ -214,4 +153,6 @@ class HyperParameterTuning(RunAE):
     \end{lstlisting}
 
 This function creates a tensorflow.keras model that has tuneable structure, thus allowing for optimized tuning with the Keras-Tuner 
-library\cite{omalley2019kerastuner}.
+library\cite{omalley2019kerastuner}. The model is then compiled and saved with the selected architecture from the tuning. 
+Note that the tuning section does not train the model, it simply creates a set of copies to check and stores the hyperparameters. 
+Then, the model is trained with the selected hyperparameters and inference is calculated. 

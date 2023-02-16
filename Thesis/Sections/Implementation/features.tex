@@ -27,14 +27,15 @@ shown in matrix \ref{eq:rmmmatrix}.
 
 In matrix \ref{eq:rmmmatrix} we have the RMM matrix for a T2N2 system, in other words we have two types of particles, jets
 \footnote{Jets here can both be b- or ljets. Ljet is defined as jets with jetdl1r < 0.665, where as bjet77 is defined as jets with jetdl1r>=2.195, 
-EXPLAIN WHAT THIS FEATURE MEANS. } and electrons, where each type has two particles. The matrix itself is partitioned into three parts. 
+where jetdl1r is a machine learning output from a network trained to destinguish b- and ljets.} and electrons, where each type has two particles. 
+The matrix itself is partitioned into three parts. 
 The diagonal represents energy properties, the upper triangular represents mass properties, and the lower triangular represents longitudal 
 properties related to rapidity. The diagonal has three different properties, $\boldsymbol{e_T^{miss}}$, $\boldsymbol{e_T}$ and $\delta\boldsymbol{e_T}$. 
 $\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing energy for the system, which is of high interest 
 for this analysis due to the search for heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
-\begin{equation*}
+\begin{equation}\label{eq:et}
     \boldsymbol{e_T} = \sqrt{m^2 + p_T^2}
-\end{equation*}
+\end{equation}
 but for light particles such as electrons, this can be approximated to $\boldsymbol{e_T} \approx p_T$. $\delta\boldsymbol{e_T}$ 
 is the transverse energy imbalance. It is defined as 
 \begin{equation*}
@@ -86,6 +87,11 @@ scalers were fitted to the specific value using the "$.fit\_transform()$" and "$
 Scikit-learn library\cite{scikit-learn}. For easier interpretability, the gray area corresponds to a missing value, 
 leading to so called "islands" in the RMM matrix.
 
+\subsection*{Tabular and sparce data}
+A concequence of using the RMM structure is that the data and Monte Carlo are sparce. This is due to the fact that the RMM allows for 
+the variaty of final states of the reconstructed events, i.e that one event has two ljets, zero bjets, one electron and two muons, where as another 
+event can have 4 ljet, 3 bjets and three electrons. This means that the RMM matrix for each event will have a different size, 
+and for neural networks this is a problem. To solve this problem, Chekanov simply pads the missing values with 0s\cite{Chekanov_2019}. 
 
 \subsection*{MonteCarlo and data comparison}\label{sec:mcdatacomp}
 
@@ -94,12 +100,20 @@ use are actually useful. As described by R. Stuart Geiger et al. \cite{DBLP:jour
 in, garbage out" is of key importance in computer science, and indeed important in high energy physics. To ensure that the models 
 we train actually learns physical processes, the training set must represent the physics "status quo". If the training samples do 
 not match the physical reality, we regard it, in the context of high energy physics, as garbage in, which will in turn give 
-garbage out. The Monte Carlo standard model simulations are indeed very good, but the are numerical approximations, and can 
-sometimes be off. Thus, every feature that well be used for training have to be checked before being used. This is done by 
-comparing the distributions of the features in the MonteCarlo and ATLAS data. Assuming that there are no issues with the data 
-collection from ATLAS, we then assume that the data from ATLAS is the "ground truth", as it is the only dataset we can analyze, 
-and the only dataset we can compare to. The MonteCarlo is then compared to the data, and if the distributions are similar, 
-we can assume that the training samples are good enough. 
+garbage out. The Monte Carlo standard model simulations are indeed very good, but they are numerical approximations, and can 
+sometimes be off. Thus, every feature that will be used for training have to be checked before being used. This is done by 
+comparing the distributions of the features in the MonteCarlo and ATLAS data. MonteCarlo simulations are based on the actual theory 
+itself, and comparisons with data taken from ATLAS and other detectors alike are neccesary to prove that the standard model is a good model.
+
+Now, if we compare all SM MonteCarlo and ATLAS data, we would usually expect there to be a good overlap. To ensure that the standard model 
+MonteCarlo actualy represents the physics, we create signal and background regions to optimize for a signal and or background. If we can 
+create a background region where we believe with very high certainty that only standard model processes can occur, and we get a good match, 
+we usually conclude that the MonteCarlo is good enough. Now, for this thesis, simply comparing all ATLAS data to all standard model MonteCarlo
+is enough, as this data batch has been analysed by the ATLAS collaboration for multiple years without finding any new physics, concluding 
+that if the signals are there, they are too small for so called visual cuts. Traditional searches have only exluded models, which is why 
+machine learning is getting more popular. The hope is that the signal, whatever it might be, can be revealed with clever feature 
+engineering and smart machine learning algorithms. Particle physics differs here from more day to day machine learning as the target data is 
+unlabeled. 
 
 
 \begin{figure}[h!]
@@ -126,6 +140,3 @@ In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize th
 and $flcomp$. We see that both $e_T^{miss}$ and $flcomp$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
 move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis under the folder 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}.
-
-\par \par
-\subsection*{Tabular data}

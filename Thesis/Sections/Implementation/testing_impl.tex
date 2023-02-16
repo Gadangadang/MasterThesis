@@ -2,11 +2,18 @@
 Before testing the AE and VAE on signal samples, it was of interest to test the sensitivity of the
 two models on alterings on the Monte Carlo. This can be thought of as initial testing. 
 \subsection*{Channel removing}
-Removing one channel in the standard model and using it as a signal whilst training on the remainding channels, 
+As the goal of the autoencoder is to reconstruction data is has looked on, one idea was to remove on of the channels in the standard model.
+The idea was that some of the channels differs enough in the final states they produce and thus the RMMs for the events in the given selection. 
+All channels where tested on as signal, but one can expect some to have more similar results than others. 
+
 \subsection*{Altering transverse momentum}
-changing the transverse momentum on certain particles, 
+Another idea for anomaly detection testing with the MonteCarlo was to alter the transverse momentum of some of the particles. Random events where
+selected and had the transverse energy changed, in accordance with equation \ref{eq:et}. The hope is that especially events with above 5 time 
+increase in transverse momentum should be picked up. 
 
 \subsection*{Feature shuffling}
-creating fake events by shuffling some of the features 
-
-\subsection*{}
+Another idea was to shuffle the features of the events. This is done by randomly selecting a feature and swapping it with another feature. 
+This will create fake and unphysical events, which should be picked up by the autoencoder. 
+\subsection*{Dummy data}
+The last idea was to create dummy data. This is done by selecting both a percentage of the rows and columns, and swapping them, 
+making the data unphysical. 
