@@ -174,7 +174,7 @@ class RunVAE:
             tf.python.keras.engine.functional.Functional: Model to use
         """
         
-        val = 100
+        val = 150
         
         encoder_inputs = tf.keras.Input(shape=self.data_shape)
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)

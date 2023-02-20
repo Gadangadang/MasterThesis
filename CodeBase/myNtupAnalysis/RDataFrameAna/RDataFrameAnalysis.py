@@ -80,10 +80,10 @@ def runANA(
             continue
         
 
-        df[k] = df[k].Range(0,100000)
+        #df[k] = df[k].Range(0,100000)
             
         print("Filtering start.")
-        print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
+        #print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
         # if not k in ["data18"]: continue
 
@@ -1004,7 +1004,7 @@ def main():
     
     print(" ")
     
-    exit()
+    
   
     
     print(all_cols)
@@ -1038,7 +1038,7 @@ def main():
 if __name__ == "__main__":
     d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-    #R.EnableImplicitMT(2000)
+    R.EnableImplicitMT(2000)
 
     R.gROOT.ProcessLine(".L helperFunctions.cxx+")
     R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))
