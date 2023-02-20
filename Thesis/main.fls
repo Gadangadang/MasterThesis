@@ -683,6 +683,36 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/listings.cfg
+INPUT ./neuralnetwork.sty
+INPUT ./neuralnetwork.sty
+INPUT ./neuralnetwork.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+INPUT /usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
 INPUT ./jheppub.sty
 INPUT ./jheppub.sty
 INPUT ./jheppub.sty
@@ -914,34 +944,124 @@ INPUT ./Figures/MC_Data_comp/flcomp.pdf
 INPUT ./Figures/MC_Data_comp/flcomp.pdf
 INPUT ./Sections/Implementation/algo.tex
 INPUT ./Sections/Implementation/algo.tex
+INPUT ./Sections/Implementation/background_samples.tex
+INPUT ./Sections/Implementation/background_samples.tex
+INPUT ./Sections/Implementation/nn_models.tex
+INPUT ./Sections/Implementation/nn_models.tex
+INPUT ./Figures/nnarchitect/ae_small.jpeg
+INPUT ./Figures/nnarchitect/ae_small.jpeg
+INPUT ./Figures/nnarchitect/ae_small.jpeg
+INPUT ./Figures/nnarchitect/ae_big.jpeg
+INPUT ./Figures/nnarchitect/ae_big.jpeg
+INPUT ./Figures/nnarchitect/ae_big.jpeg
+INPUT ./Figures/nnarchitect/vae_small.jpeg
+INPUT ./Figures/nnarchitect/vae_small.jpeg
+INPUT ./Figures/nnarchitect/vae_small.jpeg
+INPUT ./Figures/nnarchitect/vae_big.jpeg
+INPUT ./Figures/nnarchitect/vae_big.jpeg
+INPUT ./Figures/nnarchitect/vae_big.jpeg
+INPUT ./Sections/Implementation/testing_impl.tex
+INPUT ./Sections/Implementation/testing_impl.tex
 INPUT ./Sections/Results/Testing.tex
 INPUT ./Sections/Results/Testing.tex
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
+INPUT ./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf
 INPUT ./Sections/Results/Dummy_Signaltesting.tex
 INPUT ./Sections/Results/Dummy_Signaltesting.tex
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
 INPUT ./Sections/Results/proper_signaltesting.tex
 INPUT ./Sections/Results/proper_signaltesting.tex
 INPUT ./Sections/Results/ATLAS_data_and_analysis.tex
