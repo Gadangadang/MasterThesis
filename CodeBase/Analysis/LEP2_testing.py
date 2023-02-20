@@ -104,7 +104,7 @@ class LEP2ScaleAndPrep:
             for file in self.onlyfiles:
                 
                 
-                
+                break
                 strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
                 with strategy.scope():
                     start = file.find("two_")

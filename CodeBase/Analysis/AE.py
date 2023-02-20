@@ -166,7 +166,7 @@ class RunAE:
             
         )(x_)
 
-        val = 50
+        val = 150
 
         # Forth hidden layer
         x2 = tf.keras.layers.Dense(
