@@ -158,6 +158,8 @@ class LEP2ScaleAndPrep:
             if file[7:11] == "data":
                 continue
             
+            print(file)
+            
             df = pl.read_parquet(self.path/file, use_pyarrow=True)
             
             x_b_train, x_b_val = train_test_split(
@@ -175,21 +177,17 @@ class LEP2ScaleAndPrep:
     def sampleSet(self, xtrain, xval):
         
         print(len(xtrain))
-        percentage = int(len(xtrain)/10)
-        print(percentage)
+        
         
         
         #* Sample from training set
-        indices = np.asarray(range(len(xtrain)))
+        indices_train = np.asarray(range(len(xtrain)))
         
-        np.random.shuffle(indices)
+        np.random.shuffle(indices_train)
     
-        split_idx = np.array_split(indices, percentage)
+        split_idx = np.array_split(indices_train, 10)
         print(split_idx)
         
-        exit()
-        
-        lenght_train = len(xtrain)
         
         weights_train = xtrain["wgt_SG"]
         weights_val = xval["wgt_SG"]
@@ -198,10 +196,11 @@ class LEP2ScaleAndPrep:
         val_categories = xval["Category"]
         
         #* Sample from validation set
+        indices_train = np.asarray(range(len(xval)))
         
-        np.random.shuffle(arr)
+        np.random.shuffle(xval)
     
-        split_idx = np.array_split(arr, 3)
+        split_idx = np.array_split(xval, 10)
         
         
             
