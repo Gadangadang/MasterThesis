@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {4.3}Proper signal testing of the regular and variational Autoencoder}{33}{section.4.3}%
 \contentsline {section}{\numberline {4.4}ATLAS data and analysis}{33}{section.4.4}%
 \contentsline {chapter}{\numberline {5}Discussion}{51}{chapter.5}%
-\contentsline {chapter}{Conclusion}{53}{chapter*.88}%
-\contentsline {chapter}{Appendices}{55}{section*.89}%
-\contentsline {chapter}{Appendix A}{57}{appendix*.90}%
-\contentsline {chapter}{Appendix B}{59}{appendix*.91}%
+\contentsline {chapter}{Conclusion}{53}{chapter*.91}%
+\contentsline {chapter}{Appendices}{55}{section*.92}%
+\contentsline {chapter}{Appendix A}{57}{appendix*.93}%
+\contentsline {chapter}{Appendix B}{59}{appendix*.94}%

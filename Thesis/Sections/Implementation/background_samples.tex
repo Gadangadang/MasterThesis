@@ -18,9 +18,173 @@ contains the following channels:
     \item Diboson2L
     \item Diboson3L
     \item Diboson4L
-   
 \end{enumerate}
 
+Below are three examples of what some of the samples contains. The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets channels. 
+
+\begin{figure}[h!]
+    \centering
+    \caption{Proton-proton collision showing the $t\bar{t}$ channel. Here the w bosons decay leptonically and one or more jets
+    are misreconstructed as leptons by the detector. }
+
+\begin{tikzpicture}
+    \begin{feynman}
+    
+        \vertex at (0, 1.) (a2){\(g\)} ;
+        \vertex at (0, -1.)  (a5){\(g\)} ;
+
+        \vertex at (1.5, 1.) (c);
+        \vertex at (3., 1.) (d);
+
+        \vertex at (1.5, -1.) (e);
+        \vertex at (3., -1.) (f);
+
+        \vertex at (1.5, 1.) (g);
+        \vertex at (1.5, -1.) (h);
+
+        \vertex at (3, 1) (a1);
+        \vertex at (4.5, 1.5) (a3);
+
+        \vertex at (3, 1) (a6);
+        \vertex at (4.5, 0.5) (a7);
+
+
+        \vertex at (3, -1) (b1);
+        \vertex at (4.5, -1.5) (b2);
+
+        \vertex at (3, -1) (b3);
+        \vertex at (4.5, -0.5) (b4);
+
+       
+        
+    \diagram*{
+
+
+        (a2) -- [gluon] (c) -- [anti fermion, edge label = {$\bar{t}$}] (d),
+    
+        (a5) -- [gluon] (e) -- [fermion, edge label = {$t$}] (f),
+
+        (g) -- [fermion, edge label = {$t$}] (h),
+
+        (a1) -- [boson, edge label ={$w^-$}] (a3),
+
+        (a6) -- [anti fermion, edge label ={$\bar{b}$}] (a7),
+
+        (b1) -- [boson, edge label ={$w^+$}] (b2),
+
+        (b3) -- [anti fermion, edge label ={$b$}] (b4),
+        
+        ;
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    \label{fig:ttbar_feynman}
+    \end{figure}
+
+    \begin{figure}[h!]
+        \centering
+        \caption{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. }
+    
+    \begin{tikzpicture}
+        \begin{feynman}
+        
+            \vertex at (0, 1.) (a2){\(g\)} ;
+            \vertex at (0, -1.)  (a5){\(g\)} ;
+    
+            \vertex at (1.5, 1.) (c);
+            \vertex at (3., 0) (d);
+    
+            \vertex at (1.5, -1.) (e);
+            \vertex at (3., 0) (f);
+    
+            \vertex at (1.5, 1.) (g);
+            \vertex at (1.5, -1.) (h);
+    
+            \vertex at (3, 0) (a1);
+            \vertex at (4.5, 0) (a3);
+
+            \vertex at (6, 1) (a6);
+            \vertex at (6, -1) (a7);
+    
+           
+            
+        \diagram*{
+    
+    
+            (a2) -- [gluon] (c) -- [anti fermion, edge label = {$\bar{t}$}] (d),
+        
+            (a5) -- [gluon] (e) -- [fermion, edge label = {$t$}] (f),
+    
+            (g) -- [fermion] (h),
+    
+            (a1) -- [dashed, edge label = {$H$}] (a3),
+
+            (a3) -- [boson, edge label = {$Z$}] (a6),
+            (a3) -- [boson, edge label = {$Z$}] (a7),
+
+
+            
+            ;
+        };
+        \end{feynman}
+        \end{tikzpicture}
+        \label{fig:higgs_feynman}
+        \end{figure}
+        
+        \begin{figure}[h!]
+            \centering
+            \caption{Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the W boson
+            decays hadronically. }
+        
+        \begin{tikzpicture}
+            \begin{feynman}
+                \vertex at (0, 1.) (a2){\(q\)} ;
+                \vertex at (0, -1.)  (a5){\(\bar{q}^{'}\)} ;
+
+                \vertex at (1.5, 1.) (c);
+
+                \vertex at (1.5, -1.) (e);
+
+                \vertex at (3, 1.) (b1);
+
+                \vertex at (3, -1.) (b2);
+
+                \vertex at (4.5, -0.5) (b4);
+
+                \vertex at (4.5, -1.5) (b3);
+
+                \vertex at (4.5, 0.5) (b5);
+
+                \vertex at (4.5, 1.5) (b6);
+        
+                
+               
+                
+            \diagram*{
+        
+        
+                (a2) -- [fermion] (c),
+            
+                (a5) -- [anti fermion] (e),
+
+                (c) -- [fermion] (e),
+
+                (c) -- [boson, edge label={$Z$}] (b1),
+                (e) -- [gluon, edge label={$g$}] (b2),
+
+                (b2) -- [fermion, edge label={$b$}] (b4),
+                (b2) -- [anti fermion, edge label={$\bar{b}$}] (b3),
+
+                (b1) -- [fermion, edge label={$e^-$}] (b5),
+                (b1) -- [anti fermion, edge label={$e^+$}] (b6),
+        
+                ;
+            };
+               
+            \end{feynman}
+            \end{tikzpicture}
+            \label{fig:zeejets_feynman}
+            \end{figure}
 
 \subsection*{2 lepton background MonteCarlo}
 

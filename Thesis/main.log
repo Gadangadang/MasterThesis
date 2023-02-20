@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  16 FEB 2023 16:25
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  20 FEB 2023 13:30
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/Sakarias/MasterThesis/Thesis/main.tex
@@ -1714,12 +1714,15 @@ File: Figures/nnarchitect/ae_small.jpeg Graphic file (type jpg)
 <use Figures/nnarchitect/ae_small.jpeg>
 Package luatex.def Info: Figures/nnarchitect/ae_small.jpeg  used on input line 8.
 (luatex.def)             Requested size: 174.65207pt x 243.91064pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 <Figures/nnarchitect/ae_big.jpeg, id=854, 886.31125pt x 693.59125pt>
 File: Figures/nnarchitect/ae_big.jpeg Graphic file (type jpg)
 <use Figures/nnarchitect/ae_big.jpeg>
 Package luatex.def Info: Figures/nnarchitect/ae_big.jpeg  used on input line 15.
 (luatex.def)             Requested size: 373.93962pt x 292.62926pt.
-
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -1739,24 +1742,15 @@ Package luatex.def Info: Figures/nnarchitect/vae_big.jpeg  used on input line 35
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (./Sections/Implementation/testing_impl.tex [29<./Figures/nnarchitect/ae_small.jpeg>]
-
-LaTeX Warning: Text page 30 contains only floats.
-
-
-Overfull \vbox (2.4623pt too high) has occurred while \output is active []
-
- [30<./Figures/nnarchitect/ae_big.jpeg><./Figures/nnarchitect/vae_small.jpeg>]) [31<./Figures/nnarchitect/vae_big.jpeg>] [32
-
-]
+) (./Sections/Implementation/testing_impl.tex [29] [30<./Figures/nnarchitect/ae_small.jpeg><./Figures/nnarchitect/ae_big.jpeg>] [31<./Figures/nnarchitect/vae_small.jpeg><./Figures/nnarchitect/vae_big.jpeg>]) [32]
 Chapter 4.
 (./Sections/Results/Testing.tex
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf, id=896, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf, id=900, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf  used on input line 11.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf, id=897, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf, id=901, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf  used on input line 18.
@@ -1765,12 +1759,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf, id=898, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf, id=902, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf  used on input line 31.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf, id=899, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf, id=903, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf  used on input line 38.
@@ -1778,12 +1772,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf, id=900, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf, id=904, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf  used on input line 51.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=901, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=905, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 58.
@@ -1791,12 +1785,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=902, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=906, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 72.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf, id=903, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf, id=907, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf  used on input line 79.
@@ -1804,12 +1798,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=904, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=908, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 92.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=905, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=909, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 99.
@@ -1817,12 +1811,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=906, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=910, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 112.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=907, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=911, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 119.
@@ -1830,12 +1824,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf, id=908, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf, id=912, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf  used on input line 135.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf, id=909, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf, id=913, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf  used on input line 141.
@@ -1843,12 +1837,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_d
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf, id=910, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf, id=914, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf  used on input line 153.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf, id=911, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf, id=915, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf  used on input line 159.
@@ -1856,12 +1850,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_h
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf, id=912, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf, id=916, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf  used on input line 171.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=913, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=917, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 177.
@@ -1869,12 +1863,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_t
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=914, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=918, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 190.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf, id=915, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf, id=919, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf  used on input line 196.
@@ -1882,12 +1876,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_t
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=916, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=920, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 208.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=917, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=921, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 214.
@@ -1895,12 +1889,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Z
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=918, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=922, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 226.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=919, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=923, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 232.
@@ -1909,12 +1903,12 @@ Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Z
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 ) (./Sections/Results/Dummy_Signaltesting.tex
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf, id=920, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf, id=924, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 12.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf, id=921, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf, id=925, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf  used on input line 19.
@@ -1923,12 +1917,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf, id=922, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf, id=926, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 33.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf, id=923, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf, id=927, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf  used on input line 40.
@@ -1936,12 +1930,12 @@ Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf, id=924, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf, id=928, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 56.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf, id=925, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf, id=929, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf  used on input line 63.
@@ -1949,12 +1943,12 @@ Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_si
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf, id=926, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf, id=930, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 77.
 (luatex.def)             Requested size: 373.93962pt x 280.45357pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf, id=927, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf, id=931, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf  used on input line 84.
@@ -1962,7 +1956,9 @@ Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_si
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) (./Sections/Results/proper_signaltesting.tex) (./Sections/Results/ATLAS_data_and_analysis.tex) [33] [34<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>] [35<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf>] [36<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf>] [37<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf>] [38<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>] [39<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>] [40<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>] [41<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf>] [42<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf>] [43<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf>] [44<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>] [45<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>] [46<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>] [47<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>] [48<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>] [49<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>] [50
+) (./Sections/Results/proper_signaltesting.tex) (./Sections/Results/ATLAS_data_and_analysis.tex) [33
+
+] [34<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2L.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>] [35<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4L.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_higgs.pdf>] [36<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_singletop.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf>] [37<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_ttbar.pdf>] [38<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>] [39<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>] [40<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2L.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3L.pdf>] [41<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4L.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_higgs.pdf>] [42<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_singletop.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf>] [43<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_ttbar.pdf>] [44<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>] [45<./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>] [46<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>] [47<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>] [48<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf>] [49<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf>] [50
 
 ]
 Chapter 5.
@@ -1990,19 +1986,19 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 55520 strings out of 477785
+ 55664 strings out of 477785
  745298,1977958 words of node,token memory allocated
  1553 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 23 glue, 10 kern, 1 penalty, 1 margin_kern, 4 glyph, 176 attribute, 113 glue_spec, 90 attribute_list, 2 write, 4 pdf_action nodes
-   avail lists: 1:16,2:13854,3:2242,4:13170,5:11973,6:168,7:22646,8:142,9:36067,10:46,11:1914,12:1
- 73223 multiletter control sequences out of 65536+600000
+   avail lists: 1:16,2:13854,3:3079,4:13170,5:11973,6:168,7:22646,8:142,9:36067,10:46,11:1914,12:1
+ 73364 multiletter control sequences out of 65536+600000
  108 fonts using 8679791 bytes
- 98i,15n,111p,1036b,2007s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,15n,111p,1036b,2013s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (72 pages, 2992525 bytes).
+Output written on main.pdf (72 pages, 3001300 bytes).
 
-PDF statistics: 2943 PDF objects out of 2984 (max. 8388607)
- 1378 compressed objects within 14 object streams
- 469 named destinations out of 1000 (max. 131072)
+PDF statistics: 2946 PDF objects out of 2984 (max. 8388607)
+ 1381 compressed objects within 14 object streams
+ 472 named destinations out of 1000 (max. 131072)
  208 words of extra memory for PDF output out of 10000 (max. 100000000)
 
