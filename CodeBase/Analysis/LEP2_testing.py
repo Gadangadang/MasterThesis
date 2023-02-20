@@ -103,13 +103,7 @@ class LEP2ScaleAndPrep:
             
             for file in self.onlyfiles:
                 
-<<<<<<< HEAD
-=======
-                break
                 
-                
->>>>>>> 3d77e1265a22782e6032b3947a1f1cbb21392e4f
-                break
                 
                 strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
                 with strategy.scope():
@@ -120,6 +114,8 @@ class LEP2ScaleAndPrep:
                         continue
                     
                     df = pd.read_hdf(self.path/file)
+                    print(df.columns)
+                    break
                     #scaled_df = scaler.fit_transform(df)
                     name = "twolep_" + name +".parquet"
                     
@@ -158,19 +154,43 @@ class LEP2ScaleAndPrep:
         
         
         
+        
         for file in self.parqs:
             if file[7:11] == "data":
                 continue
             
-            print(file)
+            start = file.find("twolep_")
+            end = file.find(".parquet")
             
+            name = file[start+7:end]
+            
+            print(name)
+            
+
             df = pl.read_parquet(self.path/file, use_pyarrow=True)
+            
+            df = df.drop(
+                    [
+                        "nlep_BL",
+                        "nlep_SG",
+                        "ele_0_charge",
+                        "ele_1_charge",
+                        "ele_2_charge",
+                        "muo_0_charge",
+                        "muo_1_charge",
+                        "muo_2_charge",
+                        "TrileptonMass",
+                    ],
+                    
+                )
             
             x_b_train, x_b_val = train_test_split(
                         df, test_size=0.2, random_state=seed
             )
             
-            self.sampleSet(x_b_train, x_b_val)
+            self.sampleSet(x_b_train, x_b_val, name)
+            
+            break
             
             
             
@@ -178,38 +198,71 @@ class LEP2ScaleAndPrep:
 
         
         
-    def sampleSet(self, xtrain, xval):
+    def sampleSet(self, xtrain, xval, name):
         
-        print(len(xtrain))
+        """count = len(df)
+        names = [name] * count
+        names = np.asarray(names)
+
+        df["Category"] = names"""
+        
+        print(xtrain.columns)
+        
+        print(np.shape(xtrain))
         
         
         
-        #* Sample from training set
+        
+        #* Sample from training and validation set
+        
         indices_train = np.asarray(range(len(xtrain)))
         
         np.random.shuffle(indices_train)
     
-        split_idx = np.array_split(indices_train, 10)
-        print(split_idx)
+        split_idx_train = np.array_split(indices_train, 10)
         
         
-        weights_train = xtrain["wgt_SG"]
-        weights_val = xval["wgt_SG"]
+        indices_val = np.asarray(range(len(xval)))
         
-        train_categories = xtrain["Category"]
-        val_categories = xval["Category"]
+        np.random.shuffle(indices_val)
         
-        #* Sample from validation set
-        indices_train = np.asarray(range(len(xval)))
+        split_idx_val = np.array_split(indices_val, 10)
         
-        np.random.shuffle(xval)
-    
-        split_idx = np.array_split(xval, 10)
-        
-        
+        megaset = 0
+        for idx_set_train, idx_set_val in zip(split_idx_train, split_idx_val):
             
             
+            
+            weights_train = xtrain["wgt_SG"].to_numpy()[idx_set_train]
+            weights_val = xval["wgt_SG"].to_numpy()[idx_set_val]
+            
+            #train_categories = xtrain["Category"].to_numpy()[idx_set_train]
+            #val_categories = xval["Category"].to_numpy()[idx_set_val]
+            
+            
+            #xtrain = xtrain.drop("__index_level_0__")
+            #xval = xval.drop("__index_level_0__")
+            #xtrain = xtrain.drop("Category")
+            #xtrain = xtrain.drop("wgt_SG")
+            
+            #xval = xval.drop("Category")
+            #xval = xval.drop("wgt_SG")
 
+            np.save(DATA_PATH/ f"Megabatches/MSET{megaset}_{name}_weights_train", weights_train)
+            np.save(DATA_PATH/ f"Megabatches/MSET{megaset}_{name}_weights_val", weights_val)
+            
+            #np.save(DATA_PATH/ f"Megasbatches/MSET{megaset}_{name}_categories_train", train_categories)
+            #np.save(DATA_PATH/ f"Megasbatches/MSET{megaset}_{name}_categories_val", val_categories)
+            
+            megaset += 1
+            
+            
+        
+        
+    
+        
+        
+        
 if __name__ == "__main__":
     L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
     L2.convertParquet()
