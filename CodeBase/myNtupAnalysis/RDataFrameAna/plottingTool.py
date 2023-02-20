@@ -69,6 +69,8 @@ class Plot:
         p.intlumi = 0.0
         p.sqrts = ""
         p.datasumh = -1
+        
+        print(p.xtit)
 
         if p.is1D:
             p.plot1D(hdic, hname, bkgs)
@@ -248,6 +250,7 @@ class Plot:
                 .Last()
                 .GetBinContent(p.hstack.GetStack().Last().GetMaximumBin())
             )
+            print(f"xtitle = {xtitle}")
             p.customise_axes(
                 p.hstack,
                 xtitle,
@@ -260,6 +263,7 @@ class Plot:
             )
         except:
             maxbin = 0
+            print(f"xtitle = {xtitle}")
             p.customise_axes(
                 p.datastack,
                 xtitle,
@@ -301,7 +305,7 @@ class Plot:
             scaling = "False"
 
             maxbin = p.ratio.GetBinContent(p.ratio.GetMaximumBin())
-
+            print(f"xtitle = {xtitle}")
             p.customise_axes(
                 p.ratio,
                 xtitle,
@@ -486,7 +490,8 @@ class Plot:
                     leg_txt = "{0} ({1:.1f}%)".format(d_samp[k]["leg"], pc_yield)
                     print(leg_txt)
                     p.leg.AddEntry(histo[hkey + "_%s" % k], leg_txt, "lpf")
-                p.xtit = histo[hkey + "_%s" % k].GetXaxis().GetTitle()
+                
+                
                 # print("xtitle = %s"%p.xtit)
             except:
                

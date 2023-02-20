@@ -14,13 +14,93 @@ triggers = {
                                      || is2015 || is2017 || is2018",
     },
     "2017/18": {
-        "trig": "trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1 || is2015 || is2016  ",
+        "trig": "trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || trigMatch_HLT_e17_lhloose_nod0_mu14 || trigMatch_HLT_mu22_mu8noL1 || is2015 || is2016",
         "trigmatch": "ROOT::VecOps::Sum( lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17) >= 2  \
                                       || ROOT::VecOps::Sum( lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17 ) >= 2 \
                                       || ROOT::VecOps::Sum(lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 \
-                                      || is2015 || is2016 ",
+                                      || is2015 || is2016",
     },
 }
+
+triggers_2lep = {
+    "2015": {
+        "trigmatch": "((is2015 && (ROOT::VecOps::Sum(lepHLT_2e12_lhloose_L12EM10VH[isGoodLep] && lepPt[isGoodLep] > 12) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2mu10[isGoodLep] && lepPt[isGoodLep] > 10) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_mu18_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 18) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e17_lhloose_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e7_lhmedium_mu24[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 )) \
+                      || is2016 || is2017 || is2018)",
+                      
+        "trig": "((is2015 && (trigMatch_HLT_2e12_lhloose_L12EM10VH || \
+                 trigMatch_HLT_2mu10 || \
+                 trigMatch_HLT_mu18_mu8noL1 || \
+                 trigMatch_HLT_e17_lhloose_mu14 || \
+                 trigMatch_HLT_e7_lhmedium_mu24 )) || \
+                 is2016 || is2017 || is2018)",
+    },
+    "2016": {
+        "trigmatch": "((is2016 && (ROOT::VecOps::Sum(lepHLT_2e15_lhvloose_nod0_L12EM13VH[isGoodLep] && lepPt[isGoodLep] > 15) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2mu10[isGoodLep] && lepPt[isGoodLep] > 10) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2mu14[isGoodLep] && lepPt[isGoodLep] > 14) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_mu20_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 20) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e24_lhmedium_nod0_L1EM20VHI_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e7_lhmedium_nod0_mu24[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 )) \
+                      || is2015 || is2017 || is2018)",
+                      
+        "trig":  "((is2016 && (trigMatch_HLT_2e15_lhvloose_nod0_L12EM13VH || \
+                  trigMatch_HLT_2e17_lhvloose_nod0 || \
+                  trigMatch_HLT_2mu10 || \
+                  trigMatch_HLT_2mu14 || \
+                  trigMatch_HLT_mu20_mu8noL1 || \
+                  trigMatch_HLT_mu22_mu8noL1 || \
+                  trigMatch_HLT_e17_lhloose_nod0_mu14 || \
+                  trigMatch_HLT_e24_lhmedium_nod0_L1EM20VHI_mu8noL1 || \
+                  trigMatch_HLT_e7_lhmedium_nod0_mu24 )) || \
+                  is2015 || is2017 || is2018)",
+    },
+    "2017":{
+        "trigmatch": "((is2017 && (ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2e24_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2mu14[isGoodLep] && lepPt[isGoodLep] > 14) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e26_lhmedium_nod0_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 26) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e7_lhmedium_nod0_mu24[isGoodLep] && lepPt[isGoodLep] > 24) >= 2)) \
+                      || is2015 || is2016 || is2018)",
+        
+        "trig":  "((is2017 && (trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || \
+                  trigMatch_HLT_2e24_lhvloose_nod0 || \
+                  trigMatch_HLT_2mu14 || \
+                  trigMatch_HLT_mu22_mu8noL1 || \
+                  trigMatch_HLT_e17_lhloose_nod0_mu14 || \
+                  trigMatch_HLT_e26_lhmedium_nod0_mu8noL1 || \
+                  trigMatch_HLT_e7_lhmedium_nod0_mu24 ))|| \
+                  is2015 || is2016 || is2018)",
+    },
+    "2018":{
+        "trigmatch": "((is2018 && (ROOT::VecOps::Sum(lepHLT_2e17_lhvloose_nod0_L12EM15VHI[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 ||\
+                      ROOT::VecOps::Sum(lepHLT_2e24_lhvloose_nod0[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_2mu14[isGoodLep] && lepPt[isGoodLep] > 1) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_mu22_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 22) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e17_lhloose_nod0_mu14[isGoodLep] && lepPt[isGoodLep] > 17) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e26_lhmedium_nod0_mu8noL1[isGoodLep] && lepPt[isGoodLep] > 26) >= 2 || \
+                      ROOT::VecOps::Sum(lepHLT_e7_lhmedium_nod0_mu24[isGoodLep] && lepPt[isGoodLep] > 24) >= 2 )) \
+                      || is2015 || is2016 || is2017)",
+        
+        "trig":  "(trigMatch_HLT_2e17_lhvloose_nod0_L12EM15VHI || \
+                  trigMatch_HLT_2e24_lhvloose_nod0 || \
+                  trigMatch_HLT_2mu14 || \
+                  trigMatch_HLT_mu22_mu8noL1 || \
+                  trigMatch_HLT_e17_lhloose_nod0_mu14 || \
+                  trigMatch_HLT_e26_lhmedium_nod0_mu8noL1 || \
+                  trigMatch_HLT_e7_lhmedium_nod0_mu24 || \
+                  is2015 || is2016 || is2017)",
+    }  
+}
+
 
 
 

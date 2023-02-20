@@ -38,6 +38,7 @@ myLightBlue = R.TColor.GetColor("#9ecae1")
 myMediumBlue = R.TColor.GetColor("#0868ac")
 myDarkBlue = R.TColor.GetColor("#08306b")
 
+
 # Greens
 myLightGreen = R.TColor.GetColor("#c7e9c0")
 myMediumGreen = R.TColor.GetColor("#41ab5d")
@@ -47,6 +48,7 @@ myDarkGreen = R.TColor.GetColor("#006d2c")
 myLighterOrange = R.TColor.GetColor("#ffeda0")
 myLightOrange = R.TColor.GetColor("#fec49f")
 myMediumOrange = R.TColor.GetColor("#fe9929")
+myDarkOrange = R.kOrange +10
 
 # Greys
 myLightestGrey = R.TColor.GetColor("#f0f0f0")
@@ -77,7 +79,8 @@ bkgdic = {
     "Zeejets13": {"color": myMediumGreen},
     "Zeejets14": {"color": myMediumGreen},
     "Zeejets15": {"color": myMediumGreen},
-    #"diboson2L": {"color": myMediumOrange},
+    "Diboson": {"color": myMediumOrange},
+    #"diboson2L": {"color": myDarkOrange},
     #"diboson3L": {"color": myLighterOrange},
     #"diboson4L": {"color": myLightOrange},
     #"higgs": {"color": myLightPink},
@@ -433,6 +436,7 @@ def getDataFrames1(mypath, nev=0):
     zeecount = 0
     zmmcount = 0
     for of in onlyfiles:
+        print(of)
         if not "merged" in of or not of.endswith(".root"):
             continue
         sp = of.split("/")[-1].split("_")
@@ -473,7 +477,7 @@ def getDataFrames1(mypath, nev=0):
         files[typ]["files"].append(of)
         print(typ, treename)
 
- 
+    
     
     
         # print(typ)

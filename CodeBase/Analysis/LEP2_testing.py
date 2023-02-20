@@ -2,6 +2,7 @@ import time
 import random
 import requests
 import numpy as np
+import polars as pl 
 import pandas as pd
 import seaborn as sns
 from os import listdir
@@ -35,7 +36,7 @@ else:
     
     
 class LEP2ScaleAndPrep:
-    def __init__(self, path: Path, event_rmm=False, save=False, load=False, lep=3) -> None:
+    def __init__(self, path: Path, event_rmm=False, save=False, load=False, lep=3, convert=True) -> None:
         """_summary_
 
         Args:
@@ -48,7 +49,7 @@ class LEP2ScaleAndPrep:
         self.event_rmm = event_rmm
         self.load = load
         self.save = save
-        
+        self.convert = convert
         # self.scaleAndSplit()
         
 
@@ -73,6 +74,7 @@ class LEP2ScaleAndPrep:
                 and f[-4:] != ".txt"
                 and f[-3:] != ".h5"
                 and f[0:3] != "two"
+                and f[-8:] != ".parquet"
             ]
         elif self.lep == 2:
             files = [
@@ -85,19 +87,73 @@ class LEP2ScaleAndPrep:
                 and f[-4:] != ".txt"
                 and f[-3:] != ".h5"
                 and f[0:3] == "two"
+                and f[-8:] != ".parquet"
             ]
         
       
         return files  # type: ignore
     
-    def checkSizes(self):
+    def convertParquet(self):
+        """
+        Converts all hdf5 files to parquet files for use of polars later
+        """
         
-        for file in self.onlyfiles:
-            df = pd.read_hdf(self.path/file)
-            print(df.info(memory_usage="deep"))
-    
+        if self.convert:
+            
+            
+            for file in self.onlyfiles:
+                
+                
+                
+                strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+                with strategy.scope():
+                    start = file.find("two_")
+                    stop = file.find("_3lep")
+                    name = file[start+4:stop]
+                    if name in ["data15", "data16", "data17","data18","singletop","Diboson","Zeejets1","Zeejets2","Zeejets3","Zmmjets1","Zmmjets2","Zmmjets3""Zttjets","Wjets","ttbar","Zeejets4"]:
+                        continue
+                    
+                    df = pd.read_hdf(self.path/file)
+                    scaled_df = scaler.fit_transform(df)
+                    name = "twolep_" + name +".parquet"
+                    
+                    df.to_parquet(self.path/name)
+                    print(f"{name} done")
+                
+            
+
+            
+        
+                
+        parqs = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-8:] == ".parquet"]
+        
+        print(parqs)
+
+    def createMCSubsamples():
+        """
+        Create subsets that maintains the SM MC distribution. 
+        
+        """
+        
+        """
+        
+        for file in parqs:
+            
+            
+            strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+            with strategy.scope():
+                df = pl.read_parquet(self.path/file, use_pyarrow=True)
+                
+                
+            print("Scaling done")
+            
+
+        """
+        pass
+        
+            
+            
 
 if __name__ == "__main__":
-    L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2)
-    print(L2.onlyfiles)
-    L2.checkSizes()
+    L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
+    L2.convertParquet()

@@ -17,7 +17,7 @@ from pyHelperFuncs import *
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
-from div_dicts import triggers, rmm_structure
+from div_dicts import triggers, triggers_2lep, rmm_structure
 
 samples = ['data15', 'data16', 'data17', 'data18', 'singletop', 'Diboson', 'Zeejets1', 'Zeejets2', 'Zeejets3', 'Zmmjets1', 'Zmmjets2', 'Zmmjets3', 'Zttjets', 'Wjets', 'ttbar', 'Zeejets4', 'Zeejets5', 'Zeejets6', 'Zeejets7', 'Zmmjets4', 'Zmmjets5', 'Zmmjets6', 'Zmmjets7', 'Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13', "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
 
@@ -33,8 +33,10 @@ def runANA(
     fldic: dict,
     histo: dict,
     allhisto: list,
+    triggersdict,
     nEvents=0,
     create_histogram=False,
+    
 ) -> Tuple[dict, dict]:
 
     nh = 100
@@ -49,6 +51,8 @@ def runANA(
         )
     else:
         df_mc = {}
+        
+    
     
     #exit()
     # mypath = "/storage/eirikgr/ANAntuples/PHYS_Data/"
@@ -60,6 +64,8 @@ def runANA(
         )
     else:
         df_data = {}
+        
+ 
 
     df = {**df_mc, **df_data}
     
@@ -73,16 +79,11 @@ def runANA(
         if k not in samples: #["topOther"]:#
             continue
         
-        if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
-            continue
-        
-       
-        
-       
-        
-        #df[k] = df[k].Range(0,1000)
+
+        df[k] = df[k].Range(0,100000)
             
-        # print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
+        print("Filtering start.")
+        print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
 
         # if not k in ["data18"]: continue
 
@@ -217,6 +218,7 @@ def runANA(
         # Remove bad ids
         df[k] = df[k].Define("badDSID","((DatasetNumber >= 308092 && DatasetNumber <= 308093) || ((DatasetNumber >= 410633 && DatasetNumber <= 410637) || (!is2018 && DatasetNumber == 410472)))")
         df[k] = df[k].Filter("!badDSID","Removing bad DSID")
+      
 
         # df[k].Define("lepIsTrigMatched_2L","is2015 ? trigmatch_2015_2L : (is2016 ? trigmatch_2016_2L : (is2017 ? trigmatch_2017_2L : trigmatch_2018_2L))")
         # df[k].Define("lepIsTrigMatched_3L","is2015 ? trigmatch_2015_3L : (is2016 ? trigmatch_2016_3L : (is2017 ? trigmatch_2017_3L : trigmatch_2018_3L))")
@@ -247,15 +249,21 @@ def runANA(
         df[k] = df[k].Filter("nlep_BL == 2", "2 BL leptons")
         df[k] = df[k].Filter("nlep_SG == 2", "2 SG leptons")
 
-        print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
+        
 
+        
+        df[k] = df[k].Filter(
+            "ROOT::VecOps::Sum(lepPt[isGoodLep] > 25) >= 2", "pt cut 25"
+        )
+        
+        
         """
         Trigger filtering
         """
-        """
+        
         # 2015 only triggers
 
-        trigs2015 = triggers["2015"]
+        trigs2015 = triggersdict["2015"]
         trig2015 = trigs2015["trig"]
         trigmatch2015 = trigs2015["trigmatch"]
 
@@ -266,7 +274,7 @@ def runANA(
 
         # 2016 only triggers
 
-        trigs2016 = triggers["2015"]
+        trigs2016 = triggersdict["2016"]
         trig2016 = trigs2016["trig"]
         trigmatch2016 = trigs2016["trigmatch"]
 
@@ -276,24 +284,39 @@ def runANA(
         
 
         # 2017 and 2018 only triggers
-
-        trigs201718 = triggers["2017/18"]
-        trig201718 = trigs201718["trig"]
-        trigmatch201718 = trigs201718["trigmatch"]
-
-        df[k] = df[k].Filter(trig201718, "2018trig")
         
-        df[k] = df[k].Filter(trigmatch201718, "2018trigmatch")
-        
-        print("Filtering done.")
-        """
+        if LEP2:
+            trigs2017 = triggersdict["2017"]
+            trig2017 = trigs2017["trig"]
+            trigmatch2017 = trigs2017["trigmatch"]
 
-        """
-        pT cut for two highest pT leptons above 20 GeV
-        """
-        df[k] = df[k].Filter(
-            "ROOT::VecOps::Sum(lepPt[isGoodLep] > 20) >= 2", "pt cut 20"
-        )
+            df[k] = df[k].Filter(trig2017, "2017trig")
+            
+            df[k] = df[k].Filter(trigmatch2017, "2017trigmatch")
+            
+            trigs2018 = triggersdict["2018"]
+            trig2018 = trigs2018["trig"]
+            trigmatch2018 = trigs2018["trigmatch"]
+
+            df[k] = df[k].Filter(trig2018, "2018trig")
+            
+            df[k] = df[k].Filter(trigmatch2018, "2018trigmatch")
+            
+        else:
+
+            trigs201718 = triggersdict["2017/18"]
+            trig201718 = trigs201718["trig"]
+            trigmatch201718 = trigs201718["trigmatch"]
+
+            df[k] = df[k].Filter(trig201718, "2018trig")
+            
+            df[k] = df[k].Filter(trigmatch201718, "2018trigmatch")
+        
+        
+        
+
+       
+        
 
         """
         Remove Z overlap
@@ -702,7 +725,10 @@ def runANA(
         p = k.Display(("ele_0_charge", "ele_1_charge", "ele_2_charge", "muo_0_charge", "muo_1_charge", "muo_2_charge")).AsString()#df[k].Display("lepFlavor").AsString()
         print(p)
         exit()"""
+        
+        print("Filtering done.")
 
+        print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
         a = df[k].Report().Print()
         
         print(a)
@@ -758,7 +784,7 @@ def create_histograms_pdfs(
 
  
     for hname in all_cols:
-
+       
         try:
 
             p = pt.Plot(histo, hname, toplot)
@@ -770,6 +796,8 @@ def create_histograms_pdfs(
 
         except:
             print(f"Could not make plot for name {hname}")
+            
+      
         
         
         
@@ -933,10 +961,14 @@ def main():
     histo = {}
     
     
+    
+    
     if LEP2:
         MCPATH = str(MC_AND_DATA_PATH_2LEP) 
         DATAPATH = str(MC_AND_DATA_PATH_2LEP) + "/EXOT0_Data"
+        triggerdict = triggers_2lep
     else:
+        triggersdict = triggers
         MCPATH = str(MC_AND_DATA_PATH)
         DATAPATH = str(MC_AND_DATA_PATH) + "/data18"
     
@@ -947,7 +979,9 @@ def main():
         fldic,
         histo,
         allhisto[:],
+        triggersdict=triggerdict,
         create_histogram=True,
+        
     )
 
   
@@ -970,7 +1004,8 @@ def main():
     
     print(" ")
     
-    
+    exit()
+  
     
     print(all_cols)
     
@@ -1003,7 +1038,7 @@ def main():
 if __name__ == "__main__":
     d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
 
-    R.EnableImplicitMT(2000)
+    #R.EnableImplicitMT(2000)
 
     R.gROOT.ProcessLine(".L helperFunctions.cxx+")
     R.gSystem.AddDynamicPath(str(DYNAMIC_PATH))

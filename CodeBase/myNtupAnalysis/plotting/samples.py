@@ -496,7 +496,13 @@ def configure_samples():
             "type": "bkg",
             "leg": "Diboson",
             "f_color": myMediumOrange,
-            "path": "diboson" + bkg_suffix,
+            "path": "Diboson" + bkg_suffix,
+        },
+        "diboson": {
+            "type": "bkg",
+            "leg": "Diboson",
+            "f_color": myMediumOrange,
+            "path": "Diboson" + bkg_suffix,
         },
         "diboson2L": {
             "type": "bkg",

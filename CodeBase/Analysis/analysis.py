@@ -1,6 +1,7 @@
 import sys 
 import argparse
 from AE import *
+from VAE import *
 from corr import CorrCheck
 from Noise import NoiseTrial
 from DummyData import DummyData
@@ -45,6 +46,7 @@ def main():
     parser.add_argument("-S", "--signal_test", action="store_true", help="Try on dummy signals from SUSY")
     parser.add_argument("-O", "--plotfeats", action="store_true")
     parser.add_argument("--all", action="store_true")
+    parser.add_argument("--savemodel", action="store_true")
 
     args = parser.parse_args()
 
@@ -55,6 +57,15 @@ def main():
 
     rae = RunAE(sp, STORE_IMG_PATH)
     
+    if args.savemodel:
+        AE = RunAE(sp, STORE_IMG_PATH)
+        model_big = AE.getModel()
+        model_small = AE.getModelSmall()
+        
+        VAE = RunVAE(sp, STORE_IMG_PATH)
+        model = VAE.getModel()
+        model_big = VAE.getModel_big()
+        
     if args.all:
         ST = SignalDumVeri(sp, STORE_IMG_PATH)
         ST.run()

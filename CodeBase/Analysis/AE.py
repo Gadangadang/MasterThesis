@@ -97,21 +97,24 @@ class RunAE:
             activation="tanh",
             
         )(inputs)
+        
+        # Latent space
         val = 150
-     
-        x2 = tf.keras.layers.Dense(
-            units=val, activation=tf.keras.layers.LeakyReLU(alpha=0.3)
+        x2 = tf.keras.layers.Dense(units=val, 
+                                   activation=tf.keras.layers.LeakyReLU(alpha=0.3)
         )(x)
 
         # Encoder definition
         encoder = tf.keras.Model(inputs, x2, name="encoder")
         encoder.summary()
 
-        # Latent space
+        # Latent input for decoder
         latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
 
         # Output layer
-        output = tf.keras.layers.Dense(self.data_shape, activation=tf.keras.layers.LeakyReLU(alpha=0.3))(latent_input)
+        output = tf.keras.layers.Dense(self.data_shape, 
+                                       activation=tf.keras.layers.LeakyReLU(alpha=0.3)
+        )(latent_input)
 
         # Decoder definition
         decoder = tf.keras.Model(latent_input, output, name="decoder")
@@ -126,7 +129,8 @@ class RunAE:
         hp_learning_rate = 0.0015
         optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
         AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
-
+        #AE_model.save("tf_models/untrained_small_ae")
+        
         # tf.keras.utils.plot_model(AE_model, to_file=path+"ae_model_plot.pdf", show_shapes=True, show_layer_names=True, expand_nested=True)
 
         return AE_model
@@ -211,7 +215,7 @@ class RunAE:
         hp_learning_rate = 0.0015
         optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
         AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
-
+        #AE_model.save("tf_models/untrained_big_ae")
         # tf.keras.utils.plot_model(AE_model, to_file=path+"ae_model_plot.pdf", show_shapes=True, show_layer_names=True, expand_nested=True)
 
         return AE_model

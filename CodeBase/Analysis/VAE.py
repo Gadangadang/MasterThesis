@@ -36,7 +36,7 @@ else:
     
 class Sampling(tf.keras.layers.Layer):
     """Uses (z_mean, z_log_var) to sample z, the vector encoding a digit."""
-
+    
     def call(self, inputs):
         z_mean, z_log_var = inputs
         batch = tf.shape(z_mean)[0]
@@ -54,7 +54,8 @@ class VAE(tf.keras.Model):
             name="reconstruction_loss"
         )
         self.kl_loss_tracker = tf.keras.metrics.Mean(name="kl_loss")
-
+    
+    
     @property
     def metrics(self):
         return [
@@ -62,7 +63,7 @@ class VAE(tf.keras.Model):
             self.reconstruction_loss_tracker,
             self.kl_loss_tracker,
         ]
-
+    
     def train_step(self, data):
         with tf.GradientTape() as tape:
             z_mean, z_log_var, z = self.encoder(data)
@@ -133,6 +134,7 @@ class RunVAE:
 
         self.epochs = EPOCHS
 
+    
     def getModel(self):
         """_summary_
 
@@ -160,6 +162,7 @@ class RunVAE:
 
         self.AE_model = VAE(encoder, decoder)
         self.AE_model.compile(optimizer=tf.keras.optimizers.Adam())
+        #self.AE_model.save("tf_models/untrained_small_vae")
         
         return self.AE_model
     
@@ -177,7 +180,7 @@ class RunVAE:
         x = tf.keras.layers.Dense(units=self.data_shape, activation="relu")(encoder_inputs)
         x = tf.keras.layers.Dense(units=400, activation="tanh",)(encoder_inputs)
         x = tf.keras.layers.Dense(units=300, activation="relu")(x)
-        x = tf.keras.layers.Dense(200, activation=tf.keras.layers.LeakyReLU(alpha=1),)(x)
+        x = tf.keras.layers.Dense(200, activation=tf.keras.layers.LeakyReLU(alpha=0.3),)(x)
         
         z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
         z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
@@ -186,7 +189,7 @@ class RunVAE:
         encoder.summary()
         
         latent_inputs = tf.keras.Input(shape=val)
-        x = tf.keras.layers.Dense(units=200, activation="linear")(latent_inputs)
+        x = tf.keras.layers.Dense(units=200, activation=tf.keras.layers.LeakyReLU(alpha=0.3))(latent_inputs)
         x = tf.keras.layers.Dense(units=300, activation="relu",)(x)
         x = tf.keras.layers.Dense(units=400, activation="tanh",)(x)
         decoder_outputs = tf.keras.layers.Dense(units=self.data_shape, activation="sigmoid")(x)
@@ -196,7 +199,7 @@ class RunVAE:
 
         self.AE_model = VAE(encoder, decoder)
         self.AE_model.compile(optimizer=tf.keras.optimizers.Adam())
-        
+        #self.AE_model.save("tf_models/untrained_big_vae")
         return self.AE_model
         
 
@@ -454,48 +457,3 @@ class RunVAE:
 
 
 
-
-
-
-def getmodel(data_shape):
-    val = 7
-        
-    encoder_inputs = tf.keras.Input(shape=data_shape)
-    x = tf.keras.layers.Dense(units=70, activation="relu")(encoder_inputs)
-    x = tf.keras.layers.Dense(units=40, activation="relu")(x)
-    x = tf.keras.layers.Dense(16, activation="relu")(x)
-    z_mean = tf.keras.layers.Dense(val, name="z_mean")(x)
-    z_log_var = tf.keras.layers.Dense(val, name="z_log_var")(x)
-    z = Sampling()([z_mean, z_log_var])
-    encoder = tf.keras.Model(encoder_inputs, [z_mean, z_log_var, z], name="encoder")
-    encoder.summary()
-    
-    latent_inputs = tf.keras.Input(shape=(val,))
-    
-    x = tf.keras.layers.Dense(units=16, activation="relu")(latent_inputs)
-    x = tf.keras.layers.Dense(units=40, activation="relu")(x)
-    x = tf.keras.layers.Dense(units=70, activation="relu")(x)
-    decoder_outputs = tf.keras.layers.Dense(units=data_shape, activation="relu")(x)
-    decoder = tf.keras.Model(latent_inputs, decoder_outputs, name="decoder")
-    decoder.summary()
-        
-
-    AE_model = VAE(encoder, decoder)
-    AE_model.compile(optimizer=tf.keras.optimizers.Adam())
-    
-    return AE_model
-    
-def my_func(arg):
-  arg = tf.convert_to_tensor(arg, dtype=tf.float32)
-  return arg
-    
-if __name__ == "__main__":
-    vaemodel = getmodel(529)
-    data = my_func(np.random.uniform(0, 1, (1000, 529)))
-    target = my_func(np.random.uniform(0, 1, 1000))
-   
-    print(np.shape(data), np.shape(target))
-    
-    vaemodel.fit(data, data)
-    
-    
