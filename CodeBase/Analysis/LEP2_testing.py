@@ -103,8 +103,8 @@ class LEP2ScaleAndPrep:
             
             for file in self.onlyfiles:
                 
-                
                 break
+                
                 strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
                 with strategy.scope():
                     start = file.find("two_")
@@ -114,7 +114,7 @@ class LEP2ScaleAndPrep:
                         continue
                     
                     df = pd.read_hdf(self.path/file)
-                    scaled_df = scaler.fit_transform(df)
+                    #scaled_df = scaler.fit_transform(df)
                     name = "twolep_" + name +".parquet"
                     
                     df.to_parquet(self.path/name)

@@ -823,8 +823,8 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
         if k not in samples: #["topOther"]:#
             continue
         
-        if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
-            continue
+        """if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
+            continue"""
 
         print(f"Transforming {k}.ROOT to numpy")
         numpy = df[k].AsNumpy(all_cols)
