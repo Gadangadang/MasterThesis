@@ -103,7 +103,7 @@ class LEP2ScaleAndPrep:
             
             for file in self.onlyfiles:
                 
-                
+                break
                 
                 strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
                 with strategy.scope():
@@ -114,7 +114,7 @@ class LEP2ScaleAndPrep:
                         continue
                     
                     df = pd.read_hdf(self.path/file)
-                    scaled_df = scaler.fit_transform(df)
+                    #scaled_df = scaler.fit_transform(df)
                     name = "twolep_" + name +".parquet"
                     
                     df.to_parquet(self.path/name)
@@ -125,31 +125,82 @@ class LEP2ScaleAndPrep:
             
         
                 
-        parqs = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-8:] == ".parquet"]
+        self.parqs = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-8:] == ".parquet"]
         
-        print(parqs)
+        print(self.parqs)
 
-    def createMCSubsamples():
+    def createMCSubsamples(self):
         """
         Create subsets that maintains the SM MC distribution. 
         
-        """
         
-        """
         
-        for file in parqs:
-            
-            
-            strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
+        
+        strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
             with strategy.scope():
                 df = pl.read_parquet(self.path/file, use_pyarrow=True)
                 
                 
             print("Scaling done")
+        
+        """
+        
+        try:
+            self.parqs
+        except:
+            self.convertParquet()
+        
+        
+        
+        for file in self.parqs:
+            if file[7:11] == "data":
+                continue
+            
+            df = pl.read_parquet(self.path/file, use_pyarrow=True)
+            
+            x_b_train, x_b_val = train_test_split(
+                        df, test_size=0.2, random_state=seed
+            )
+            
+            self.sampleSet(x_b_train, x_b_val)
+            
+            
+            
             
 
-        """
-        pass
+        
+        
+    def sampleSet(self, xtrain, xval):
+        
+        print(len(xtrain))
+        percentage = int(len(xtrain)/10)
+        print(percentage)
+        
+        
+        #* Sample from training set
+        indices = np.asarray(range(len(xtrain)))
+        
+        np.random.shuffle(indices)
+    
+        split_idx = np.array_split(indices, percentage)
+        print(split_idx)
+        
+        exit()
+        
+        lenght_train = len(xtrain)
+        
+        weights_train = xtrain["wgt_SG"]
+        weights_val = xval["wgt_SG"]
+        
+        train_categories = xtrain["Category"]
+        val_categories = xval["Category"]
+        
+        #* Sample from validation set
+        
+        np.random.shuffle(arr)
+    
+        split_idx = np.array_split(arr, 3)
+        
         
             
             
@@ -157,3 +208,4 @@ class LEP2ScaleAndPrep:
 if __name__ == "__main__":
     L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
     L2.convertParquet()
+    L2.createMCSubsamples()
