@@ -22,4 +22,15 @@ configurations, to determine the ideal set of hyperparameters via successive hal
 Bayesian optimization. One drawback for this algorithm is that you cannot guarantiy that the configuration is optimal, 
 but rather that it is good enough. 
 
-%\subsubsection*{Regularization}
+\subsubsection*{Activation functions}
+Several activation functions are used in neural networks, and how one chooses the best combination for a given problem is not trivial. 
+This leads often to the use of tuning. Below are a list of the functions used in this thesis, aswell as their mathematical definitions. 
+
+\begin{enumerate}
+    \item  $sigmoid(x) = \frac{1}{1+e^{-x}}$
+    \item $tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$
+    \item $ReLU(x) = \max(0,x)$
+    \item $LeakyReLU(x) = \max(\alpha x,x)$
+    \item $Softmax(x) = \frac{e^x}{\sum_{i=1}^n e^x}$
+    \item $Linear(x) = x$
+\end{enumerate}
