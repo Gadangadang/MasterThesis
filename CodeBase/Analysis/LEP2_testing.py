@@ -103,7 +103,7 @@ class LEP2ScaleAndPrep:
             
             for file in self.onlyfiles:
                 
-                
+                break
                 
                 strategy = tf.distribute.OneDeviceStrategy(device="/gpu:0")
                 with strategy.scope():
@@ -115,7 +115,7 @@ class LEP2ScaleAndPrep:
                     
                     df = pd.read_hdf(self.path/file)
                     print(df.columns)
-                    break
+                    
                     #scaled_df = scaler.fit_transform(df)
                     name = "twolep_" + name +".parquet"
                     
@@ -159,6 +159,7 @@ class LEP2ScaleAndPrep:
             if file[7:11] == "data":
                 continue
             
+            
             start = file.find("twolep_")
             end = file.find(".parquet")
             
@@ -190,7 +191,7 @@ class LEP2ScaleAndPrep:
             
             self.sampleSet(x_b_train, x_b_val, name)
             
-            break
+            
             
             
             
@@ -200,18 +201,14 @@ class LEP2ScaleAndPrep:
         
     def sampleSet(self, xtrain, xval, name):
         
-        """count = len(df)
-        names = [name] * count
-        names = np.asarray(names)
-
-        df["Category"] = names"""
-        
-        print(xtrain.columns)
-        
-        print(np.shape(xtrain))
+        count1 = len(xtrain)
+        count2 = len(xval)
+        names_train = [name] * count1
+        names_train = np.asarray(names_train)
         
         
-        
+        names_val = [name] * count2
+        names_val = np.asarray(names_val)
         
         #* Sample from training and validation set
         
@@ -230,29 +227,23 @@ class LEP2ScaleAndPrep:
         
         megaset = 0
         for idx_set_train, idx_set_val in zip(split_idx_train, split_idx_val):
-            
-            
+            print(f"name: {name}; megaset: {megaset}")
             
             weights_train = xtrain["wgt_SG"].to_numpy()[idx_set_train]
             weights_val = xval["wgt_SG"].to_numpy()[idx_set_val]
             
-            #train_categories = xtrain["Category"].to_numpy()[idx_set_train]
-            #val_categories = xval["Category"].to_numpy()[idx_set_val]
+            train_categories = names_train[idx_set_train]
+            val_categories = names_val[idx_set_val]
             
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_weights_train", weights_train)
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_weights_val", weights_val)
             
-            #xtrain = xtrain.drop("__index_level_0__")
-            #xval = xval.drop("__index_level_0__")
-            #xtrain = xtrain.drop("Category")
-            #xtrain = xtrain.drop("wgt_SG")
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_categories_train", train_categories)
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_categories_val", val_categories)
             
-            #xval = xval.drop("Category")
-            #xval = xval.drop("wgt_SG")
-
-            np.save(DATA_PATH/ f"Megabatches/MSET{megaset}_{name}_weights_train", weights_train)
-            np.save(DATA_PATH/ f"Megabatches/MSET{megaset}_{name}_weights_val", weights_val)
-            
-            #np.save(DATA_PATH/ f"Megasbatches/MSET{megaset}_{name}_categories_train", train_categories)
-            #np.save(DATA_PATH/ f"Megasbatches/MSET{megaset}_{name}_categories_val", val_categories)
+            #* Save the actual dataframe
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_x_train", xtrain.to_numpy()[idx_set_train])
+            np.save(DATA_PATH/ f"Megabatches/MB{megaset}/MSET{megaset}_{name}_x_val", xval.to_numpy()[idx_set_val])
             
             megaset += 1
             
