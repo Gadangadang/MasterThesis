@@ -94,8 +94,12 @@ class PlotHistogram:
             
        
         try:
-            sig_err = self.signal
-            sig_err_w = self.signal_weights
+            try:
+                sig_err = self.signal
+                sig_err_w = self.signal_weights
+            except:
+                sig_err = self.data
+                sig_err_w = self.data_weights
         except:
             print("No signal")
             
@@ -189,5 +193,5 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.featurename}.pdf")
+        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.featurename.replace(' ', '_')}.pdf")
         plt.close()

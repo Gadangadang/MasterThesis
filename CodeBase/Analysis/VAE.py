@@ -452,7 +452,7 @@ class RunVAE:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
+        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
 
 

@@ -1,0 +1,2 @@
+model_checkpoint_path: "Megabatch_checkpoint"
+all_model_checkpoint_paths: "Megabatch_checkpoint"
