@@ -4,7 +4,7 @@ import time
 import random
 import requests
 import numpy as np
-import polars as pl 
+#import polars as pl 
 import pandas as pd
 import seaborn as sns
 from os import listdir
@@ -325,7 +325,24 @@ class LEP2ScaleAndPrep:
         self.epochs = EPOCHS
         self.b_size = BACTH_SIZE
         
-        self.channels = ["Zttjets", "Wjets", "singletop", "ttbar", "Zeejets", "Zmmjets","Diboson"]
+        self.channels = [
+            "Zttjets", 
+            "Wjets", 
+            "singletop", 
+            "ttbar", 
+            "Zeejets", 
+            "Zmmjets",
+            "Diboson"
+        ]
+        
+        self.signal = np.load(DATA_PATH / "signal.npy")
+        self.signal_weights = pd.read_hdf(DATA_PATH / "signal_weight_b.h5")
+        self.signal_categories = pd.read_hdf(DATA_PATH / "signal_cat_b.h5")
+        
+        if SMALL:
+            self.checkpointname = "small"
+        else:
+            self.checkpointname = "big"
         
 
         
@@ -578,6 +595,30 @@ class LEP2ScaleAndPrep:
             
         print("Megabatching done")
         print(" ")
+        
+    def _trainloop(self, xtrain, xval, x_train_weights):
+        
+        
+        with tf.device("/GPU:0"):
+
+            tf.config.optimizer.set_jit("autoclustering")
+
+            if TYPE == "VAE":
+                self.AE_model.fit(
+                    xtrain,
+                    epochs=self.epochs,
+                    batch_size=self.b_size,
+                    sample_weight=x_train_weights,
+                )
+            else:
+                self.AE_model.fit(
+                    xtrain,
+                    xtrain,
+                    epochs=self.epochs,
+                    batch_size=self.b_size,
+                    validation_data=(xval, xval),
+                    sample_weight=x_train_weights,
+                )
             
     def RunTraining(self):
         global data_shape
@@ -587,20 +628,17 @@ class LEP2ScaleAndPrep:
         elif TYPE == "AE":
             nn_model = RunAE(data_shape=data_shape)
             
-        
+        start = time.time()
         
         for megaset in range(self.totmegasets):
+            start1 = time.time()
             print(f"Running training on megabatch: {megaset}")
             FETCH_PATH = DATA_PATH/ f"Megabatches/MB{megaset}"
             MERGE_PATH = FETCH_PATH / f"MergedMB{megaset}"
             
             xtrain = np.load(MERGE_PATH / f"Merged{megaset}_xtrain.npy")
             xval = np.load(MERGE_PATH / f"Merged{megaset}_xval.npy")
-            x_train_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_train.npy")
-            
-            print(xtrain.dtype)
-            print(x_train_weights.dtype)
-            
+            x_train_weights = pd.DataFrame(np.load(MERGE_PATH / f"Merged{megaset}_weights_train.npy"))
             
             #* Load model 
             if SMALL:
@@ -609,40 +647,73 @@ class LEP2ScaleAndPrep:
                 self.AE_model = nn_model.getModelBig()
             
             if megaset != 0:
-                self.AE_model.load_weights('./checkpoints/Megabatch_checkpoint')
+                if TYPE == "VAE":
+                    self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_encoder_{self.checkpointname}')
+                    self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_decoder_{self.checkpointname}')
+                else:
+                    
+                    self.AE_model.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}')
                 
-                
+            
             #* Run Training
-            with tf.device("/GPU:0"):
-
-                tf.config.optimizer.set_jit("autoclustering")
-
-                self.AE_model.fit(
-                    xtrain,
-                    xtrain,
-                    epochs=self.epochs,
-                    batch_size=self.b_size,
-                    validation_data=(xval, xval),
-                    sample_weight=x_train_weights,
-                )
+            self._trainloop(xtrain, xval, x_train_weights)
                 
-            
-            self.AE_model.save_weights('./checkpoints/Megabatch_checkpoint')
-            
+            if TYPE == "VAE":
+                self.AE_model.encoder.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_encoder_{self.checkpointname}')
+                self.AE_model.encoder.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_decoder_{self.checkpointname}')
+            else:
+                self.AE_model.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}')
+        
             print("Model weights saved")
+            end1 = time.time()
+            print(f"Time taken for megaset {megaset} is: {(end1-start1)/60:.2f}m or {(end1-start1)/60/60:.2f}h")
             print(" ")
-            break
             
+            
+            
+        end = time.time()
+        print(f"Time taken for all megasets is: {(end-start)/60:.2f}m or {(end-start)/60/60:.2f}h")
+        print(" ")  
           
             
     def RunInference(self):
         
-        self.AE_model.load_weights('./checkpoints/Megabatch_checkpoint')
         
+        try:
+            self.AE_model
+        except:
+            #* Load model 
+            if TYPE == "VAE":
+                nn_model = RunVAE(data_shape=data_shape)
+                if SMALL:
+                    self.AE_model = nn_model.getModel()
+                    
+                else:
+                    self.AE_model = nn_model.getModelBig()
+                   
+            elif TYPE == "AE":
+                nn_model = RunAE(data_shape=data_shape)
+                
+                if SMALL:
+                    self.AE_model = nn_model.getModel()
+                    
+                else:
+                    self.AE_model = nn_model.getModelBig()
+                    
+                
+            
+        if TYPE == "VAE":
+            self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_encoder_{self.checkpointname}')
+            self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_decoder_{self.checkpointname}')
+        else:
+            self.AE_model.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}')
+
         
         val_cats = []
         val_weights = []
         recon_err = []
+        
+        #* Validation inference for all megasets
         
         for megaset in range(self.totmegasets):
             print(f"Running inference on megabatch: {megaset}")
@@ -654,29 +725,71 @@ class LEP2ScaleAndPrep:
             x_val_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_val.npy")
             x_val_cats = np.load(MERGE_PATH / f"Merged{megaset}_categories_val.npy")
             
-            
-            with tf.device("/GPU:0"):
-                print("Background started")
-                pred_back = self.AE_model.predict(xval, batch_size=self.b_size)
-                print("Background predicted")
-                recon_err_back = self.reconstructionError(pred_back, xval)
-                print(f"Background done, lenght: {len(recon_err_back)}")
-                
+            recon_err_back = self._inference(xval, types="MC")
+                 
             val_cats.append(x_val_cats)
             val_weights.append(x_val_weights)
             recon_err.append(recon_err_back)
             
             
-        
+         
 
         recon_err = np.concatenate(recon_err, axis=0)
         val_weights = np.concatenate(val_weights, axis=0)
         val_cats = np.concatenate(val_cats, axis=0)
         
-        plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, )
-        plothisto.histogram(self.channels)
-       
+        pattern = re.compile(r'(\D+)\d*')
+        val_cats = np.array([re.sub(pattern, r'\1', elem) if any(x in elem for x in ['Zmmjets', 'Zeejets']) else elem for elem in val_cats])
+
+        #* Signal inference 
+        sigs = np.unique(self.signal_categories)
+        sig = sigs[0]
+        signame = sig[21:-9]
+        sig_idx = np.where(self.signal_categories==sig)
+        signal_cats = self.signal_categories.to_numpy()[sig_idx]
+        signal = self.signal[sig_idx]
+        recon_err_sig = self._inference(signal, types="Signal")
+        sig_weights = self.signal_weights.to_numpy()[sig_idx] * 1000
         
+        plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, signal=recon_err_sig, signal_weights=sig_weights, signal_cats=signal_cats)
+        plothisto.histogram(self.channels, sig_name=signame )
+       
+    
+    def _inference(self, arr, types="MC"):
+        """_summary_
+
+        Args:
+            arr (np.ndarray): Matrix containing the data to have inference on
+
+        Returns:
+            np.ndarray: Reconstruction loss of arr
+        """
+        
+        
+        if types == "MC":
+            datatype = "Background"
+        elif types == "Signal":
+            datatype = "Signal"
+        else:
+            datatype = "ATLAS Data"
+            
+        with tf.device("/CPU:0"):
+            if TYPE == "VAE":
+                print(f"{datatype} started")
+                z_m, z_var, z = self.AE_model.encoder.predict(arr, batch_size=self.b_size)
+                sig_err = self.AE_model.decoder.predict(z)
+                print(f"{datatype} predicted")
+                recon_err_sig = self.reconstructionError(sig_err, arr)
+                print(f"{datatype} done, lenght: {len(recon_err_sig)}")
+            else:
+                print(f"{datatype} started")
+                sig_err = self.AE_model.predict(arr, batch_size=self.b_size)
+                print(f"{datatype} predicted")
+                recon_err_sig = self.reconstructionError(sig_err, arr)
+                print(f"{datatype} done, lenght: {len(recon_err_sig)}")
+        
+        return recon_err_sig
+    
     def reconstructionError(self, pred: np.ndarray, real: np.ndarray) -> np.ndarray:
         """_summary_
 
@@ -695,14 +808,22 @@ class LEP2ScaleAndPrep:
         return err
         
 if __name__ == "__main__":
+    
+    
+    gpus = tf.config.experimental.list_physical_devices('GPU') 
+    for gpu in gpus: 
+        tf.config.experimental.set_memory_growth(gpu, True)
+
+    
+    
     global data_shape
     data_shape = 529
     
     L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
-    L2.convertParquet()
-    L2.createMCSubsamples()
+    #L2.convertParquet()
+    #L2.createMCSubsamples()
     
-    L2.mergeMegaBatches()
+    #L2.mergeMegaBatches()
     
-    #L2.RunTraining()
-    #L2.RunInference()
+    L2.RunTraining()
+    L2.RunInference()

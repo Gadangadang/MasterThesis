@@ -67,7 +67,9 @@ class PlotHistogram:
         self.histoname = histoname
         self.featurename = featurename
         
-        pass
+     
+        
+        
     def histogram(self, channels: list, sig_name="nosig", bins=25, Noise=False)->None:
         """_summary_
 
@@ -127,26 +129,36 @@ class PlotHistogram:
         if Noise:
             n_bins = 25
 
-       
-        colors = [
-            "mediumspringgreen",
-            "darkgreen",
-            "lime",
-            "magenta",
-            "blue",
-            "red",
-            "orange",
-            "brown",
-            "cyan",
-            "mediumorchid",
-            "gold",
-            "darkgoldenrod",
-            
-        ]
+        if LEP == "Lep2":    
+            colors = [
+                "darkblue",
+                "gray",
+                "indigo",
+                "darkgoldenrod",
+                "cornflowerblue",
+                "royalblue",
+                "orangered"
+            ]
+        else:   
+            colors = [
+                "mediumspringgreen",
+                "darkgreen",
+                "lime",
+                "magenta",
+                "blue",
+                "red",
+                "orange",
+                "brown",
+                "cyan",
+                "mediumorchid",
+                "gold",
+                "darkgoldenrod",
+                
+            ]
         
-        if len(colors) != len(histo_atlas):
+        """if len(colors) != len(histo_atlas):
             colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
-        
+        """
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]
             
