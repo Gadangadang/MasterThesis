@@ -79,6 +79,7 @@ def runANA(
         if k not in samples: #["topOther"]:#
             continue
         
+        
 
         #df[k] = df[k].Range(0,100000)
             
@@ -246,8 +247,8 @@ def runANA(
         else:
             print("Loading %s" % (k))
 
-        df[k] = df[k].Filter("nlep_BL == 2", "2 BL leptons")
-        df[k] = df[k].Filter("nlep_SG == 2", "2 SG leptons")
+        df[k] = df[k].Filter("nlep_BL >= 2", "2 BL leptons")
+        df[k] = df[k].Filter("nlep_SG >= 2", "2 SG leptons")
 
         
 
@@ -968,7 +969,7 @@ def main():
         DATAPATH = str(MC_AND_DATA_PATH_2LEP) + "/EXOT0_Data"
         triggerdict = triggers_2lep
     else:
-        triggersdict = triggers
+        triggerdict = triggers
         MCPATH = str(MC_AND_DATA_PATH)
         DATAPATH = str(MC_AND_DATA_PATH) + "/data18"
     
@@ -984,6 +985,7 @@ def main():
         
     )
 
+    exit()
   
     all_cols = get_column_names(df, histo)
 

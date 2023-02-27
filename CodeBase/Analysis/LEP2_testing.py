@@ -596,29 +596,7 @@ class LEP2ScaleAndPrep:
         print("Megabatching done")
         print(" ")
         
-    def _trainloop(self, xtrain, xval, x_train_weights):
-        
-        
-        with tf.device("/GPU:0"):
-
-            tf.config.optimizer.set_jit("autoclustering")
-
-            if TYPE == "VAE":
-                self.AE_model.fit(
-                    xtrain,
-                    epochs=self.epochs,
-                    batch_size=self.b_size,
-                    sample_weight=x_train_weights,
-                )
-            else:
-                self.AE_model.fit(
-                    xtrain,
-                    xtrain,
-                    epochs=self.epochs,
-                    batch_size=self.b_size,
-                    validation_data=(xval, xval),
-                    sample_weight=x_train_weights,
-                )
+    
             
     def RunTraining(self):
         global data_shape
@@ -753,10 +731,39 @@ class LEP2ScaleAndPrep:
         
         plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, signal=recon_err_sig, signal_weights=sig_weights, signal_cats=signal_cats)
         plothisto.histogram(self.channels, sig_name=signame )
-       
+    
+    def _trainloop(self, xtrain, xval, x_train_weights):
+        """Sets up the training loop for a given megaset
+
+        Args:
+            xtrain (np.ndarray): Training set
+            xval (np.ndarray): Validation set
+            x_train_weights (pd.DataFrame): Weights for the trianing set
+        """
+        
+        with tf.device("/GPU:0"):
+
+            tf.config.optimizer.set_jit("autoclustering")
+
+            if TYPE == "VAE":
+                self.AE_model.fit(
+                    xtrain,
+                    epochs=self.epochs,
+                    batch_size=self.b_size,
+                    sample_weight=x_train_weights,
+                )
+            else:
+                self.AE_model.fit(
+                    xtrain,
+                    xtrain,
+                    epochs=self.epochs,
+                    batch_size=self.b_size,
+                    validation_data=(xval, xval),
+                    sample_weight=x_train_weights,
+                ) 
     
     def _inference(self, arr, types="MC"):
-        """_summary_
+        """Sets up inference for a given megaset
 
         Args:
             arr (np.ndarray): Matrix containing the data to have inference on
