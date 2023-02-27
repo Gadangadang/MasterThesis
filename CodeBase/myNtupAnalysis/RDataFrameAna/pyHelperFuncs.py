@@ -436,11 +436,11 @@ def getDataFrames1(mypath, nev=0):
     zeecount = 0
     zmmcount = 0
     for of in onlyfiles:
-        print(of)
+        
         if not "merged" in of or not of.endswith(".root"):
             continue
         sp = of.split("/")[-1].split("_")
-        
+        print(sp)
         typ = ""
         
         
@@ -470,21 +470,22 @@ def getDataFrames1(mypath, nev=0):
         if not typ in files.keys():
             files[typ] = {"files": [], "treename": ""}
         treename = getTreeName(of)
+        
         if treename == "noname":
             print("ERROR \t Could not find any TTree in %s" % (of))
             continue
         files[typ]["treename"] = treename
         files[typ]["files"].append(of)
+        
         print(typ, treename)
+        print(" ")
 
     
     
-    
-        # print(typ)
-        # if not typ == "singleTop": continue
-        # df[typ] = R.Experimental.MakeNTupleDataFrame("mini",of)#("%s_NoSys"%typ,of)
     for typ in files.keys():
         print("Adding %i files for %s" % (len(files[typ]["files"]), typ))
+        print(files[typ]["treename"], files[typ]["files"])
+        print(" ")
         df[typ] = R.RDataFrame(files[typ]["treename"], files[typ]["files"])
         if nev:
             df[typ] = df[typ].Range(nev)

@@ -5,7 +5,7 @@ BACTH_SIZE = 256#int(8192)
 EPOCHS = 4
 
 TYPE = "VAE" #"VAE"
-SMALL = True
+SMALL = False
 LEP = "Lep2" #"Lep3"
 
 data = False
