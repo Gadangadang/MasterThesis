@@ -200,3 +200,57 @@ Below are three examples of what some of the samples contains. The selected ones
 \end{enumerate}
 
  
+\subsubsection*{Iterative training}
+The two lepton dataset contains about 1.5 - 2 Terra bytes of data. This is too much to hold in memory at the same time, thus it had to be split into 
+several smaller datasets, called megasets. Below is a figure visualizing the structure used. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Figures/2lep_config/megaset_struct.jpeg}
+    \caption{Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, 
+    the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets.  }
+    \label{fig:2lep_struct}
+\end{figure}
+
+
+
+
+In figure \ref{fig:2lep_struct} we see a generalized dividing structure. In the case of this thesis, each channel was divided into 10 equal parts, 
+and stored in their respective folder. When all channels were 
+split, a merging was done combining all the channels in a given megaset to a separate dataset. The selection of events from each channel was done randomly, 
+which is important, as we want to the best of our ability keep the distribution signature of the entire dataset in each megaset. If not, the model will 
+be biased towards those datasets with the most events. Once each of the megasets where merged, the training could begin in an iterative fashion. Because
+Tensorflow is statically compiled, you cannot call the fit function over and over again. Instead, the weights trained based on one megaset is stored and 
+reloaded into a new model, thus the weights are still trained on the entire set, but in a batch like manner. 
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:megabatch_training}]
+for megaset in range(self.totmegasets):
+    
+    #* Load model 
+    if SMALL:
+        self.AE_model = nn_model.getModel()
+    else:
+        self.AE_model = nn_model.getModelBig()
+    
+    if megaset != 0:
+        self.AE_model.load_weights('./checkpoints/Megabatch_checkpoint')
+        
+        
+    #* Run Training
+    with tf.device("/GPU:0"):
+
+        tf.config.optimizer.set_jit("autoclustering")
+
+        self.AE_model.fit(
+            xtrain,
+            xtrain,
+            epochs=self.epochs,
+            batch_size=self.b_size,
+            validation_data=(xval, xval),
+            sample_weight=x_train_weights,
+        )
+        
+    
+    self.AE_model.save_weights('./checkpoints/Megabatch_checkpoint')
+
+\end{lstlisting}
