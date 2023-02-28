@@ -394,25 +394,28 @@ class RunAE:
             n_bins = 25
 
         colors = [
-            "mediumspringgreen",
-            "darkgreen",
-            "lime",
-            "magenta",
-            "blue",
-            "red",
-            "orange",
-            "brown",
-            "cyan",
-            "mediumorchid",
-            "gold",
-            "darkgoldenrod",
-            
-        ]
+                "darkblue",
+                "gray",
+                "indigo",
+                "darkgoldenrod",
+                "cornflowerblue",
+                "royalblue",
+                "orangered",
+                "mediumspringgreen",
+                "darkgreen",
+                "blue",
+                "brown",
+                "mediumorchid",
+                "gold",
+               
+                
+            ]
+        
+        if len(colors) != len(histo_atlas):
+            colors = colors[:len(histo_atlas)]
         
         self.n_bins = n_bins
         
-        if len(colors) != len(histo_atlas):
-            colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
         
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]

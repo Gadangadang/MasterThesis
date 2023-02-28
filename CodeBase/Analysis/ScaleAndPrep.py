@@ -129,10 +129,13 @@ class ScaleAndPrep:
 
             df = pd.read_hdf(self.path / file)
             
+            
 
             name = file[: file.find("_3lep")]
             print(df.columns, len(df.columns))
-        
+
+            np.save(DATA_PATH / "dfcols.npy", np.asarray(df.columns))
+           
 
             if name in data_names:
                 name = "data"

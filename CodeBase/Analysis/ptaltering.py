@@ -78,9 +78,43 @@ class pTAltering(model):
             signal = X_val[np.where(val_cat == "Signal")]
             X_val = X_val[np.where(val_cat != "Signal")]
             
-            signal[:, 0] = signal[:, 0]*ptscaling
+            cols = np.load(DATA_PATH / "dfcols.npy", allow_pickle=True)
             
-            print(np.shape(signal))
+            pt_ele0 = np.where(cols == "e_T_ele_0")
+            pt_muo0 = np.where(cols == "e_T_muo_0")
+            
+            df = pd.DataFrame(signal, columns = cols)
+            indexes1 = df.index[df["e_T_ele_0"] > 0.].to_list()
+            indexes2 = df.index[df["e_T_muo_0"] > 0.].to_list()
+            
+          
+            
+            
+            delta_et_ele1ele2 = np.where(cols == "delta_e_t_ele_1")
+            
+            e1 = signal[indexes1, pt_ele0] * (signal[indexes1, delta_et_ele1ele2]-1)/(-(signal[indexes1, delta_et_ele1ele2]+1))
+            signal[indexes1, pt_ele0] = signal[indexes1, pt_ele0]*ptscaling
+            
+            e0 = signal[indexes1, pt_ele0]
+            
+            signal[indexes1, delta_et_ele1ele2] = (e0-e1)/(e0+e1)
+            
+           
+            
+           
+            
+            delta_et_muo1 = np.where(cols == "delta_e_t_muo_1")
+            
+            e1 = signal[indexes2, pt_muo0] * (signal[indexes2, delta_et_muo1]-1)/(-(signal[indexes2, delta_et_muo1]+1))
+            signal[indexes2, pt_muo0] = signal[indexes2, pt_muo0]*ptscaling
+
+            e0 = signal[indexes2, pt_muo0]
+            
+            signal[indexes2, delta_et_muo1] = (e0-e1)/(e0+e1)
+            
+            print(np.shape(signal[indexes2, pt_muo0]))
+            
+            
             
             
             sample_weight_t = self.data_structure.weights_train.to_numpy().copy()
@@ -109,7 +143,7 @@ class pTAltering(model):
             et = time.time()
                 
             try:
-                img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_fakedata.pdf")
+                img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_pT_{ptscaling}.pdf")
                 path = STORE_IMG_PATH/img_path
 
                 files = {"photo":open(path, "rb")}

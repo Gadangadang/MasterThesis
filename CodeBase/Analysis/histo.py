@@ -141,24 +141,26 @@ class PlotHistogram:
             ]
         else:   
             colors = [
+                "darkblue",
+                "gray",
+                "indigo",
+                "darkgoldenrod",
+                "cornflowerblue",
+                "royalblue",
+                "orangered",
                 "mediumspringgreen",
                 "darkgreen",
-                "lime",
-                "magenta",
                 "blue",
-                "red",
-                "orange",
                 "brown",
-                "cyan",
                 "mediumorchid",
                 "gold",
-                "darkgoldenrod",
+               
                 
             ]
         
-        """if len(colors) != len(histo_atlas):
-            colors = np.random.choice(colors, size=len(histo_atlas), replace=False)  
-        """
+        if len(colors) != len(histo_atlas):
+            colors = colors[:len(histo_atlas)]
+        
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]
             

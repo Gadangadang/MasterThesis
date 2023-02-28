@@ -721,7 +721,7 @@ class LEP2ScaleAndPrep:
 
         #* Signal inference 
         sigs = np.unique(self.signal_categories)
-        sig = sigs[0]
+        sig = sigs[1]
         signame = sig[21:-9]
         sig_idx = np.where(self.signal_categories==sig)
         signal_cats = self.signal_categories.to_numpy()[sig_idx]
@@ -832,5 +832,5 @@ if __name__ == "__main__":
     
     #L2.mergeMegaBatches()
     
-    L2.RunTraining()
+    #L2.RunTraining()
     L2.RunInference()
