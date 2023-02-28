@@ -14,14 +14,15 @@
 \contentsline {section}{\numberline {3.3}The dataset features}{23}{section.3.3}%
 \contentsline {section}{\numberline {3.4}Code implementation}{25}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Background samples}{28}{section.3.5}%
-\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{29}{section.3.6}%
-\contentsline {chapter}{\numberline {4}Results}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{33}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{33}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Proper signal testing of the regular and variational Autoencoder}{33}{section.4.3}%
-\contentsline {section}{\numberline {4.4}ATLAS data and analysis}{33}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Discussion}{51}{chapter.5}%
-\contentsline {chapter}{Conclusion}{53}{chapter*.90}%
-\contentsline {chapter}{Appendices}{55}{section*.91}%
-\contentsline {chapter}{Appendix A}{57}{appendix*.92}%
-\contentsline {chapter}{Appendix B}{59}{appendix*.93}%
+\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{30}{section.3.6}%
+\contentsline {chapter}{\numberline {4}Results}{35}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{35}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{37}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Proper signal testing of the regular and variational Autoencoder}{37}{section.4.3}%
+\contentsline {section}{\numberline {4.4}ATLAS data and analysis}{37}{section.4.4}%
+\contentsline {section}{\numberline {4.5}2 lepton signal testing}{37}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Discussion}{41}{chapter.5}%
+\contentsline {chapter}{Conclusion}{43}{chapter*.85}%
+\contentsline {chapter}{Appendices}{45}{section*.86}%
+\contentsline {chapter}{Appendix A}{47}{appendix*.87}%
+\contentsline {chapter}{Appendix B}{49}{appendix*.88}%
