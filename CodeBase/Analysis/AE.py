@@ -337,6 +337,7 @@ class RunAE:
 
         histo_atlas = []
         weight_atlas_data = []
+        colors = []
         try:
     
             for id, channel in enumerate(channels):
@@ -351,6 +352,7 @@ class RunAE:
                 err_w = self.err_val[idxs]
 
                 weight_atlas_data.append(err_w)
+                colors.append(colors_scheme[channel])
         except:
             for channel in channels:
 
@@ -361,7 +363,7 @@ class RunAE:
                 err_w = self.err_val[np.where(self.val_cats == channel)[0]]
 
                 weight_atlas_data.append(err_w)
-            
+                colors.append(colors_scheme[channel])
             
         try:
             sig_err = self.recon_sig
@@ -411,9 +413,7 @@ class RunAE:
                 
             ]
         
-        if len(colors) != len(histo_atlas):
-            colors = colors[:len(histo_atlas)]
-        
+      
         self.n_bins = n_bins
         
         

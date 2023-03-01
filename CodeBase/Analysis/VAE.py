@@ -328,6 +328,7 @@ class RunVAE:
 
         histo_atlas = []
         weight_atlas_data = []
+        colors = []
         try:
     
             for id, channel in enumerate(channels):
@@ -342,6 +343,7 @@ class RunVAE:
                 err_w = self.err_val[idxs]
 
                 weight_atlas_data.append(err_w)
+                colors.append(colors_scheme[channel])
         except:
             for channel in channels:
 
@@ -352,7 +354,7 @@ class RunVAE:
                 err_w = self.err_val[np.where(self.val_cats == channel)[0]]
 
                 weight_atlas_data.append(err_w)
-            
+                colors.append(colors_scheme[channel])
             
         try:
             sig_err = self.recon_sig
@@ -388,26 +390,9 @@ class RunVAE:
         if Noise:
             n_bins = 25
 
-        colors = [
-                "darkblue",
-                "gray",
-                "indigo",
-                "darkgoldenrod",
-                "cornflowerblue",
-                "royalblue",
-                "orangered",
-                "mediumspringgreen",
-                "darkgreen",
-                "blue",
-                "brown",
-                "mediumorchid",
-                "gold",
-               
-                
-            ]
         
-        if len(colors) != len(histo_atlas):
-            colors = colors[:len(histo_atlas)]
+        
+        
         if len(histo_atlas) < 2:
             channels = ["Monte Carlo"]
             

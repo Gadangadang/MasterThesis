@@ -84,6 +84,11 @@ class PlotHistogram:
         
         print("histo started")
         
+        colors = []
+        if LEP == "Lep2":
+            color_schemes = colors_scheme_2lep
+        else:
+            color_schemes = colors_scheme
         
         for channel in channels:
             condition = np.where(self.val_cats == channel)[0]
@@ -93,7 +98,7 @@ class PlotHistogram:
             err_w = self.err_val_weights[condition]
            
             weight_atlas_data.append(err_w)
-            
+            colors.append(color_schemes[channel])
        
         try:
             try:
@@ -129,34 +134,7 @@ class PlotHistogram:
         if Noise:
             n_bins = 25
 
-        if LEP == "Lep2":    
-            colors = [
-                "darkblue",
-                "gray",
-                "indigo",
-                "darkgoldenrod",
-                "cornflowerblue",
-                "royalblue",
-                "orangered"
-            ]
-        else:   
-            colors = [
-                "darkblue",
-                "gray",
-                "indigo",
-                "darkgoldenrod",
-                "cornflowerblue",
-                "royalblue",
-                "orangered",
-                "mediumspringgreen",
-                "darkgreen",
-                "blue",
-                "brown",
-                "mediumorchid",
-                "gold",
-               
-                
-            ]
+        
         
         if len(colors) != len(histo_atlas):
             colors = colors[:len(histo_atlas)]

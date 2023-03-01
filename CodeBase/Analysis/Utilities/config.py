@@ -1,11 +1,11 @@
 LOAD_VAR = True #False 
 SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
-BACTH_SIZE = 256#int(8192)      
+BACTH_SIZE = int(8192)      
 EPOCHS = 4
 
 TYPE = "AE" #"VAE"
-SMALL = True
+SMALL = False
 LEP = "Lep3" #"Lep3"
 
 data = False
@@ -20,6 +20,32 @@ RMMSIZE = 1 + nbjet + nljet + nele + nmuo
 
 TOKEN = "5789363537:AAF0SErRfZ07yWrzjp9pg9oCCO6H8BfFLHw"
 chat_id = "5733209220"
+
+
+colors_scheme = {
+    "Zeejets": "darkblue",
+    "Zmmjets": "gray",
+    "Zttjets": "indigo",
+    "diboson2L": "darkgoldenrod",
+    "diboson3L":"cornflowerblue",
+    "diboson4L":"royalblue",
+    "higgs":"orangered",
+    "singletop":"mediumspringgreen",
+    "topOther":"darkgreen",
+    "Wjets":"blue",
+    "triboson":"brown",
+    "ttbar":"mediumorchid",            
+}
+
+colors_scheme_2lep = {
+               "Zttjets": "darkblue",
+               "Wjets": "gray",
+               "singletop":  "indigo",
+                "ttbar": "darkgoldenrod",
+               "Zeejets": "cornflowerblue",
+              "Zmmjets":  "royalblue",
+              "Diboson":  "orangered"
+}
 
 rmm_structure = {
     1: [
