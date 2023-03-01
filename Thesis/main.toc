@@ -17,12 +17,11 @@
 \contentsline {section}{\numberline {3.6}The chosen neural network architectures}{30}{section.3.6}%
 \contentsline {chapter}{\numberline {4}Results}{35}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{35}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{37}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Proper signal testing of the regular and variational Autoencoder}{37}{section.4.3}%
-\contentsline {section}{\numberline {4.4}ATLAS data and analysis}{37}{section.4.4}%
-\contentsline {section}{\numberline {4.5}2 lepton signal testing}{37}{section.4.5}%
-\contentsline {chapter}{\numberline {5}Discussion}{41}{chapter.5}%
-\contentsline {chapter}{Conclusion}{43}{chapter*.85}%
-\contentsline {chapter}{Appendices}{45}{section*.86}%
-\contentsline {chapter}{Appendix A}{47}{appendix*.87}%
-\contentsline {chapter}{Appendix B}{49}{appendix*.88}%
+\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{39}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{40}{section.4.3}%
+\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{40}{section.4.4}%
+\contentsline {chapter}{\numberline {5}Discussion}{45}{chapter.5}%
+\contentsline {chapter}{Conclusion}{47}{chapter*.99}%
+\contentsline {chapter}{Appendices}{49}{section*.100}%
+\contentsline {chapter}{Appendix A}{51}{appendix*.101}%
+\contentsline {chapter}{Appendix B}{53}{appendix*.102}%
