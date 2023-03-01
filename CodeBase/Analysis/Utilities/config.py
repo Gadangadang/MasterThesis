@@ -1,11 +1,11 @@
 LOAD_VAR = True #False 
 SAVE_VAR = False #True
 SCALER = "MinMax" # or "Standard"
-BACTH_SIZE = int(8192)      
+BACTH_SIZE = 256#int(8192)      
 EPOCHS = 4
 
 TYPE = "AE" #"VAE"
-SMALL = False
+SMALL = True
 LEP = "Lep3" #"Lep3"
 
 data = False

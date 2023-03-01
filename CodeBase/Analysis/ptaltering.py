@@ -87,43 +87,29 @@ class pTAltering(model):
             indexes1 = df.index[df["e_T_ele_0"] > 0.].to_list()
             indexes2 = df.index[df["e_T_muo_0"] > 0.].to_list()
             
-          
-            
-            
             delta_et_ele1ele2 = np.where(cols == "delta_e_t_ele_1")
             
             e1 = signal[indexes1, pt_ele0] * (signal[indexes1, delta_et_ele1ele2]-1)/(-(signal[indexes1, delta_et_ele1ele2]+1))
             signal[indexes1, pt_ele0] = signal[indexes1, pt_ele0]*ptscaling
-            
             e0 = signal[indexes1, pt_ele0]
-            
             signal[indexes1, delta_et_ele1ele2] = (e0-e1)/(e0+e1)
-            
-           
-            
-           
             
             delta_et_muo1 = np.where(cols == "delta_e_t_muo_1")
             
             e1 = signal[indexes2, pt_muo0] * (signal[indexes2, delta_et_muo1]-1)/(-(signal[indexes2, delta_et_muo1]+1))
             signal[indexes2, pt_muo0] = signal[indexes2, pt_muo0]*ptscaling
-
             e0 = signal[indexes2, pt_muo0]
-            
             signal[indexes2, delta_et_muo1] = (e0-e1)/(e0+e1)
             
             print(np.shape(signal[indexes2, pt_muo0]))
-            
-            
             
             
             sample_weight_t = self.data_structure.weights_train.to_numpy().copy()
             sample_weight_v = self.data_structure.weights_val.to_numpy().copy()
             
             sample_weight = pd.DataFrame(sample_weight_t)
-            
+        
             self.err_val = sample_weight_v#np.concatenate((sample_weight_t, sample_weight_v), axis=0)
-            
             self.sig_err = self.err_val[np.where(val_cat == "Signal")]
             self.err_val = self.err_val[np.where(val_cat != "Signal")]
             
