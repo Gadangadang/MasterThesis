@@ -827,6 +827,15 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/microtype/mt-msb.cfg
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
 OUTPUT main.toc
+INPUT ./main.lof
+INPUT ./main.lof
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
+OUTPUT main.lof
+INPUT ./main.lot
+INPUT ./main.lot
+OUTPUT main.lot
 INPUT ./Sections/Introduction/Introduction.tex
 INPUT ./Sections/Introduction/Introduction.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
@@ -844,9 +853,6 @@ INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/
 INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman9-bold.luc
 INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-regular.luc
 INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-regular.luc
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx7.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx5.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmib10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmib7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmib5.tfm
@@ -860,6 +866,8 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmi8.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmi6.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmsy8.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmsy6.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/rsfs/rsfs7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
@@ -879,11 +887,9 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmr9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmi9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmsy9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx9.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy5.tfm
@@ -892,13 +898,31 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT ./Figures/Machinelearning/vae-gaussian.png
 INPUT ./Figures/Machinelearning/vae-gaussian.png
 INPUT ./Figures/Machinelearning/vae-gaussian.png
-INPUT ./Sections/Machinelearning/optimizer.tex
-INPUT ./Sections/Machinelearning/optimizer.tex
+INPUT ./Sections/Machinelearning/other_algo.tex
+INPUT ./Sections/Machinelearning/other_algo.tex
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri7.tfm
+INPUT ./Figures/Machinelearning/histo_example_Sep.pdf
+INPUT ./Figures/Machinelearning/histo_example_Sep.pdf
+INPUT ./Figures/Machinelearning/histo_example_Sep.pdf
+INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-bold.luc
+INPUT ./Figures/Machinelearning/ROC_curve_example_Sep.pdf
+INPUT ./Figures/Machinelearning/ROC_curve_example_Sep.pdf
+INPUT ./Figures/Machinelearning/ROC_curve_example_Sep.pdf
+INPUT ./Figures/Machinelearning/histo_example_bad.pdf
+INPUT ./Figures/Machinelearning/histo_example_bad.pdf
+INPUT ./Figures/Machinelearning/histo_example_bad.pdf
+INPUT ./Figures/Machinelearning/ROC_curve_example_bad.pdf
+INPUT ./Figures/Machinelearning/ROC_curve_example_bad.pdf
+INPUT ./Figures/Machinelearning/ROC_curve_example_bad.pdf
 INPUT ./Sections/SM_BSM/SM.tex
 INPUT ./Sections/SM_BSM/SM.tex
 INPUT ./Figures/SM/Standard_Model_of_Elementary_Particles.svg.png
 INPUT ./Figures/SM/Standard_Model_of_Elementary_Particles.svg.png
 INPUT ./Figures/SM/Standard_Model_of_Elementary_Particles.svg.png
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri9.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Sections/SM_BSM/BSM.tex
@@ -913,6 +937,7 @@ INPUT ./Figures/atlas/data_col_phys.png
 INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
 INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
 INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri8.tfm
 INPUT ./Sections/Implementation/root.tex
 INPUT ./Sections/Implementation/root.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -932,7 +957,6 @@ INPUT ./Sections/Implementation/features.tex
 INPUT ./Figures/rmms/rmm_event_6993776_diboson4L.pdf
 INPUT ./Figures/rmms/rmm_event_6993776_diboson4L.pdf
 INPUT ./Figures/rmms/rmm_event_6993776_diboson4L.pdf
-INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-bold.luc
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
@@ -1071,30 +1095,49 @@ INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
 INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
 INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
 INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
+INPUT ./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
 INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
-INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_Trilepton mass.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
+INPUT ./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss.pdf
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmmi12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/lmsy10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri12.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/rsfs/rsfs10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_450p0p0300.png
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_800p0p050p.png
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_800p0p050p.png
+INPUT ./Figures/AE_testing/big/roc_curve_etmiss_800p0p050p.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_800p0p050p.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_800p0p050p.png
+INPUT ./Figures/AE_testing/big/roc_curve_recon_err_800p0p050p.png
 INPUT ./Sections/Results/ATLAS_data_and_analysis.tex
 INPUT ./Sections/Results/ATLAS_data_and_analysis.tex
 INPUT ./Sections/Results/lep2_signals.tex
 INPUT ./Sections/Results/lep2_signals.tex
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
-INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Appendix/Appendix1.tex
@@ -1223,6 +1266,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb
@@ -1236,6 +1280,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb

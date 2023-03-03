@@ -1,14 +1,26 @@
 \providecommand{\href}[2]{#2}\begingroup\raggedright\begin{thebibliography}{10}
 
-\bibitem{anom_detec}
-V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
-  \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
-  {\bf 41} (07, 2009) }.
+\bibitem{weng2018VAE}
+L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
+  (2018) }.
+
+\bibitem{Mehlhase:2770815}
+{\scshape ATLAS} collaboration, S.~Mehlhase, \emph{{ATLAS detector slice (and
+  particle visualisations)}}, .
+
+\bibitem{Wang:2707056}
+S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
+  Software Tutorial}}, .
 
 \bibitem{FYSSTK}
 S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
   problems in comparison to regression methods}}, .
+
+\bibitem{anom_detec}
+V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
+  \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
+  {\bf 41} (07, 2009) }.
 
 \bibitem{backprop}
 D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
@@ -17,10 +29,6 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 \bibitem{Goodfellow-et-al-2016}
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
-
-\bibitem{weng2018VAE}
-L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
-  (2018) }.
 
 \bibitem{VAE}
 D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
@@ -40,6 +48,11 @@ L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
 K.~Jamieson and A.~Talwalkar, \emph{Non-stochastic best arm identification and
   hyperparameter optimization},  2015.
 \newblock 10.48550/ARXIV.1502.07943.
+
+\bibitem{FAWCETT2006861}
+T.~Fawcett, \emph{An introduction to roc analysis},
+  \href{http://dx.doi.org/https://doi.org/10.1016/j.patrec.2005.10.010}{\emph{Pattern
+  Recognition Letters} {\bf 27} (2006) 861--874}.
 
 \bibitem{Pich:819632}
 A.~Pich, \emph{{The Standard Model of Electroweak Interactions; rev. version}},
@@ -77,14 +90,6 @@ M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
 \bibitem{Owen:2302730}
 {\scshape ATLAS} collaboration, R.~E. Owen, \emph{{The ATLAS Trigger System}},
   .
-
-\bibitem{Mehlhase:2770815}
-{\scshape ATLAS} collaboration, S.~Mehlhase, \emph{{ATLAS detector slice (and
-  particle visualisations)}}, .
-
-\bibitem{Wang:2707056}
-S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
-  Software Tutorial}}, .
 
 \bibitem{Bernius:2707054}
 C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +

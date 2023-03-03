@@ -1,0 +1,41 @@
+\babel@toc {UKenglish}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, and the red dots are the output layer. The arrows shows the connections between each node. \relax }}{4}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Figures showing different choice of learning rate for a given costfunction, with respect to the tunable parameters. Source: \href {https://www.jeremyjordan.me/content/images/2018/02/Screen-Shot-2018-02-24-at-11.47.09-AM.png}{Jeremy Jordan}, accessed 03.10.22.\relax }}{6}{figure.caption.11}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Figure depicting a model for an autoencoder. Here the input $\bf {x}$ is the original image, $\bf {x'}$ is a reconstructed version of $\bf {x}$, $g_{\phi }$ is the encoder, $f_{\theta }$ is the decoder, and $z$ is the latent space. Found 14.01.23 \href {https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{here} \cite {weng2018VAE}. \relax }}{9}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Figure depicting a model for a variational autoencoder. Found 14.01.23 \href {https://lilianweng.github.io/posts/2018-08-12-vae/vae-gaussian.png}{here} \cite {weng2018VAE}. \relax }}{11}{figure.caption.20}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Histogram and ROC curve for two well separated distributions.\relax }}{13}{figure.caption.25}%
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Histogram and ROC curve for two poorly separated distributions.\relax }}{13}{figure.caption.26}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The standard model of elementary particles. Source \href {https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Standard_Model_of_Elementary_Particles.svg/1200px-Standard_Model_of_Elementary_Particles.svg.png}{here}. Accessed 07.10.22\relax }}{15}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Feynman diagram of muon pair production from electron scattering. Here, both Z and $\gamma $ can work as the propagator.\relax }}{17}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Muon decay into an electron, an electron neutrino and a muon neutrino via the $W^{-}$ boson. Read the graph from left to right.\relax }}{17}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Proton-proton collision with heavy neutrino production via SM $W^{\pm }$ boson into 3 lepton final state. Read the graph from left to right.\relax }}{18}{figure.caption.37}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Proton-proton collision with heavy neutrino production via right-handed $W_R^{\pm }$ boson into 3 lepton final state. Read the graph from left to right.\relax }}{18}{figure.caption.38}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Figure describing how particles are detected at ATLAS, fetched from \href {https://cds.cern.ch/record/2770815}{ ATLAS detector slice (and particle visualisations)}, by Sascha Mehlhase \cite {Mehlhase:2770815} . \relax }}{21}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Figure describing the steps to take for data collection at ATLAS, fetched from \href {https://indico.cern.ch/event/1159574/timetable/?view=standard}{Hybrid ATLAS Induction Day + Software Tutorial workshop}, part \href {https://indico.cern.ch/event/860971/contributions/3672974/attachments/1972049/3280896/Atlas_computing_data_preparation_jan20.pdf}{Computing and Data preparation}, held by S.M Wang \cite {Wang:2707056} . \relax }}{22}{figure.caption.44}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Figure describing how quarks and gluons are treated in the detector, and thus why we name them jets, fetched from \href {https://cms.cern/sites/default/files/field/image/Sketch_PartonParticleCaloJet.png}{the CMS webpage}. \relax }}{22}{figure.caption.46}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Note here that the y axis for the RMM's lack every other label, due to lack of space. Thus each figure have all RMM cells, just not all y axis labels. \relax }}{26}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Comparison of the MonteCarlo and data for the three lepton final state with the features $e_{T}^{miss}$ and flavor composition. \relax }}{28}{figure.caption.56}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Proton-proton collision showing the $t\bar {t}$ channel. Here the w bosons decay leptonically and one or more jets are misreconstructed as leptons by the detector. \relax }}{31}{figure.caption.59}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. \relax }}{31}{figure.caption.60}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the W boson decays hadronically. \relax }}{31}{figure.caption.61}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets. \relax }}{32}{figure.caption.64}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Small autoencoder architecture.\relax }}{33}{figure.caption.66}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Large autoencoder architecture.\relax }}{33}{figure.caption.67}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Small variational autoencoder architecture.\relax }}{34}{figure.caption.69}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces Large variational autoencoder architecture.\relax }}{34}{figure.caption.70}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{44}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Reconstruction error and etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{45}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces \relax }}{45}{figure.caption.103}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{46}{figure.caption.104}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {21}{\ignorespaces \relax }}{54}{figure.caption.112}%
+\contentsline {figure}{\numberline {22}{\ignorespaces \relax }}{55}{figure.caption.113}%
+\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{56}{figure.caption.114}%
+\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{57}{figure.caption.116}%
+\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{58}{figure.caption.117}%
+\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{59}{figure.caption.118}%
