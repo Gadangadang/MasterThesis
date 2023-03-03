@@ -187,7 +187,7 @@ class SignalDumVeri(model):
             plt.ylabel("True positive rate", fontsize=25)
             plt.legend()
             plt.title(r"ROC curve of $e_T^{miss}$ for SM bkg and " + f"SUSY{sig_name}", fontsize=25)
-            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_etmiss_{sig_name}")
+            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_etmiss_{sig_name}.pdf")
             plt.close()
             
             
@@ -207,7 +207,7 @@ class SignalDumVeri(model):
             plt.ylabel("True positive rate", fontsize=25)
             plt.legend()
             plt.title(f"ROC curve of recon error for SM bkg and SUSY{sig_name}", fontsize=25)
-            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_recon_err_{sig_name}")
+            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_recon_err_{sig_name}.pdf")
             plt.close()
             
          
