@@ -9,7 +9,13 @@ All channels where tested on as signal, but one can expect some to have more sim
 \subsection*{Altering transverse momentum}
 Another idea for anomaly detection testing with the MonteCarlo was to alter the transverse momentum of some of the particles. Random events where
 selected and had the transverse energy changed, in accordance with equation \ref{eq:et}. The hope is that especially events with above 5 time 
-increase in transverse momentum should be picked up. 
+increase in transverse momentum should be picked up. Note that by changing the transverse momentum, the change in transverse energy also changes. 
+From equation \ref{eq:deltaet} we have that a scale change k in $p_T$ yields the following new relation:
+
+\begin{equation}\label{eq:deltaet_scale}
+    \delta\boldsymbol{e_T}^k = \frac{kE_T(i_n-1) - E_T(i_n)}{kE_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N.
+\end{equation}
+Thus, both the transverse energy and the change in transverse energy is changed for this test.
 
 \subsection*{Feature shuffling}
 Another idea was to shuffle the features of the events. This is done by randomly selecting a feature and swapping it with another feature. 
