@@ -43,10 +43,11 @@ for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.41, 0.3, 0.49, 0.3)]:
 
     count, bins, ignored = plt.hist([s, s2], 30, density=False, label=[fr"$\mu$: {mu}, $\sigma$: {sigma}", fr"$\mu$: {mu2}, $\sigma$: {sigma2}"])
 
-    plt.legend()
+    plt.legend(prop={"size": 15})
     plt.title("Example using two normal distributions", fontsize=25)
     plt.ylabel("#Number of events", fontsize=25)
     plt.xlabel("Output of the distributions", fontsize=25)
+    plt.tight_layout()
     plt.savefig(STORE_IMG_PATH / Path(f"histo_example_{hist_name}.pdf"))
     plt.close()
 
@@ -68,7 +69,8 @@ for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.41, 0.3, 0.49, 0.3)]:
     plt.plot(x, f(x), "k--")
     plt.xlabel("False positive rate", fontsize=25)
     plt.ylabel("True positive rate", fontsize=25)
-    plt.legend()
+    plt.legend(prop={"size": 15})
+    #plt.tight_layout()
     plt.title(f"ROC curve of two normal distributions", fontsize=25)
     plt.savefig(STORE_IMG_PATH / Path(f"roc_curve_example_{hist_name}.pdf"))
     plt.close()
