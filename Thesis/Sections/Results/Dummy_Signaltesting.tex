@@ -87,19 +87,18 @@ The SUSY signals have very high $e_T^{miss}$, so much so that one can separate t
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{.45\textwidth}
-    \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_etmiss_450p0p0300.png}
+    \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_etmiss_450p0p0300.pdf}
         \caption{ROC curve for $e_T^{miss}$ of both SM MC and the SUSY $450-300$ signal. We see here that based on that feature alone, you can separate 
         the distributions with reative ease, with an AUC of about 0.94. }
-        
     \end{subfigure}
     \hfill
     \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_recon_err_450p0p0300.png}
-            \caption{ }
-            
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_recon_err_450p0p0300.pdf}
+            \caption{ROC curve for reconstruction error of both SM MC and the SUSY $450-300$ signal. We see here that there is relatively good separation,
+            with a small AUC of about 0.81.}
         \end{subfigure}
         \hfill
-    \caption{ }
+    \caption{ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. }
     \label{fig:roc_susy_450_300}
 \end{figure}
 
@@ -108,18 +107,22 @@ The SUSY signals have very high $e_T^{miss}$, so much so that one can separate t
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{.45\textwidth}
-    \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_etmiss_800p0p050p.png}
+    \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_etmiss_800p0p050p.pdf}
         \caption{ROC curve for $e_T^{miss}$ of both SM MC and the SUSY $800-50$ signal. We see here that based on that feature alone, you can separate 
-        the distributions with reative ease, with an AUC of about 0.94. }
-        
+        the distributions with reative ease, with an AUC of about 0.99. }
     \end{subfigure}
     \hfill
     \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_recon_err_800p0p050p.png}
-            \caption{ }
-            
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/roc_curve_recon_err_800p0p050p.pdf}
+            \caption{ROC curve for reconstruction error of both SM MC and the SUSY $800-50$ signal. We see here that there is a very good separation between the distributions
+            , with an AUC of about 0.94.}
         \end{subfigure}
         \hfill
     \caption{ }
     \label{fig:roc_susy_800_50}
 \end{figure}
+
+From figure \ref{fig:roc_susy_450_300} and \ref{fig:roc_susy_800_50} we see that even though the reconstruction error is a good discriminator for the SM MC and the SUSY signals, 
+$e_T^{miss}$ provides better separation. This is because the SUSY signals have very high $e_T^{miss}$, so much so that one can separate them by eye on that distribution alone. 
+The interpretation of this is that the autoencoder has shown it can be used for the purpose of separating the SM MC from the SUSY signals, but not to the level of using just $e_T^{miss}$. 
+The same behavior is shown for the small autoencoder in the appendix, aswell as for the small and large variational autoencoder. 
