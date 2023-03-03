@@ -45,6 +45,7 @@ class PlotHistogram:
                  val_cats, 
                  histoname="Reconstruction error histogram with MC", 
                  featurename="Log10 Reconstruction Error",
+                 histotitle="",
                  signal=[], 
                  signal_weights=[], 
                  signal_cats=[], 
@@ -66,6 +67,7 @@ class PlotHistogram:
             
         self.histoname = histoname
         self.featurename = featurename
+        self.histotitle = histotitle
         
      
         
@@ -185,5 +187,5 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.featurename.replace(' ', '_')}.pdf")
+        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
         plt.close()

@@ -134,8 +134,9 @@ class SignalDumVeri(model):
             print(f"Signal error cut: {np.shape(error_cut_sig)}, trilep with cut: {np.shape(trilep_mass_signal)}")
         
             histoname = "Trilepton invariant mass for MC val and Susy signal"
+            histo_title = "Trilepton_mass"
             featurename = "Trilepton mass"
-            PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, trilep_mass_signal, sig_weights, signal_cats)
+            PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, histo_title, trilep_mass_signal, sig_weights, signal_cats)
             PH.histogram(self.channels, sig_name=f"{sig_name}", bins=25)
             
             
@@ -143,14 +144,15 @@ class SignalDumVeri(model):
             eTmiss_signal = self.signal_eTmiss[error_cut_sig]
             
             histoname = "Transverse missing energy for MC val and Susy signal"
+            histo_title = "etmiss"
             featurename = r"$E_{T}^{miss}$"
-            PH = PlotHistogram(self.path, eTmiss_val, val_weights, val_cats, histoname, featurename, eTmiss_signal, sig_weights, signal_cats)
+            PH = PlotHistogram(self.path, eTmiss_val, val_weights, val_cats, histoname, featurename, histo_title, eTmiss_signal, sig_weights, signal_cats)
             PH.histogram(self.channels, sig_name=f"{sig_name}", bins=25)
             
             et = time.time()
             
             
-            img_path = Path(f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{featurename}.pdf")
+            img_path = Path(f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{histo_title}.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}
@@ -185,7 +187,7 @@ class SignalDumVeri(model):
             plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
             plt.xlabel("False positive rate", fontsize=25)
             plt.ylabel("True positive rate", fontsize=25)
-            plt.legend()
+            plt.legend(prop={"size": 15})
             plt.title(r"ROC curve of $e_T^{miss}$ for SM bkg and " + f"SUSY{sig_name}", fontsize=25)
             plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_etmiss_{sig_name}.pdf")
             plt.close()
@@ -205,7 +207,7 @@ class SignalDumVeri(model):
             plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
             plt.xlabel("False positive rate", fontsize=25)
             plt.ylabel("True positive rate", fontsize=25)
-            plt.legend()
+            plt.legend(prop={"size": 15})
             plt.title(f"ROC curve of recon error for SM bkg and SUSY{sig_name}", fontsize=25)
             plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_recon_err_{sig_name}.pdf")
             plt.close()
