@@ -1,4 +1,5 @@
 import time
+import matplotlib
 import requests
 import numpy as np
 import pandas as pd
@@ -12,6 +13,7 @@ from typing import Tuple
 import plotly.express as px
 import matplotlib.pyplot as plt
 from os.path import isfile, join
+from sklearn.metrics import roc_curve, RocCurveDisplay, auc
 from sklearn.compose import ColumnTransformer
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
@@ -24,6 +26,17 @@ from plotRMM import plotRMM
 from Utilities.config import *
 from Utilities.pathfile import *
 from HyperParameterTuning import HyperParameterTuning
+
+import seaborn as sns
+
+plt.style.use("bmh")
+sns.color_palette("hls", 1)
+
+matplotlib.rc('xtick', labelsize=14)
+matplotlib.rc('ytick', labelsize=14)
+matplotlib.rcParams['mathtext.fontset'] = 'stix'
+matplotlib.rcParams['font.family'] = 'STIXGeneral'
+
 
 
 seed = tf.random.set_seed(1)
@@ -81,8 +94,8 @@ class SignalDumVeri(model):
             print(event, type(event))
             
             
-            plotRMMMatrix.plotDfRmmMatrixNoMean(signal, signal_name[21:31], event, additional_info="signal_name[21:31]", fake=True)
-            plotRMMMatrix.plotDfRmmMatrix(signal, signal_name[21:31])
+            #plotRMMMatrix.plotDfRmmMatrixNoMean(signal, signal_name[21:31], event, additional_info="signal_name[21:31]", fake=True)
+            #plotRMMMatrix.plotDfRmmMatrix(signal, signal_name[21:31])
             
             
             #* Tuning, training, and inference
@@ -94,8 +107,10 @@ class SignalDumVeri(model):
             
             self.runInference(self.X_val, signal, True)
             
+            
+            sig_name = signal_name[21:31]
         
-            self.checkReconError(self.channels, sig_name=f"{signal_name[21:31]}") 
+            self.checkReconError(self.channels, sig_name=f"{sig_name}") 
             
             mean = np.mean(self.n_bins)
             std = np.std(self.n_bins)
@@ -121,7 +136,7 @@ class SignalDumVeri(model):
             histoname = "Trilepton invariant mass for MC val and Susy signal"
             featurename = "Trilepton mass"
             PH = PlotHistogram(self.path, trilep_mass_val, val_weights, val_cats, histoname, featurename, trilep_mass_signal, sig_weights, signal_cats)
-            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=25)
+            PH.histogram(self.channels, sig_name=f"{sig_name}", bins=25)
             
             
             eTmiss_val = self.X_val_eTmiss[error_cut_val]
@@ -130,12 +145,12 @@ class SignalDumVeri(model):
             histoname = "Transverse missing energy for MC val and Susy signal"
             featurename = r"$E_{T}^{miss}$"
             PH = PlotHistogram(self.path, eTmiss_val, val_weights, val_cats, histoname, featurename, eTmiss_signal, sig_weights, signal_cats)
-            PH.histogram(self.channels, sig_name=f"{signal_name[21:31]}", bins=25)
+            PH.histogram(self.channels, sig_name=f"{sig_name}", bins=25)
             
             et = time.time()
             
             
-            img_path = Path(f"histo/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{signal_name[21:31]}_{featurename}.pdf")
+            img_path = Path(f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{featurename}.pdf")
             path = STORE_IMG_PATH/img_path
 
             files = {"photo":open(path, "rb")}
@@ -143,3 +158,56 @@ class SignalDumVeri(model):
             resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendPhoto?chat_id={chat_id}&caption={message}", files=files)
             print(resp.status_code)
             
+            
+            #* ROC curve stuff
+            
+            etmiss_back = self.X_val[:, 0].copy()
+            bkg = np.zeros(len(self.X_val))
+            
+            etmiss_sig = signal[:, 0].copy()
+            sg = np.ones(len(signal))
+            
+            label = np.concatenate((bkg, sg))
+            scores = np.concatenate((etmiss_back,etmiss_sig))
+            
+            scaleFactor = np.sum(self.sig_err) / np.sum(self.err_val)
+            
+            weights = np.concatenate((self.err_val*scaleFactor, self.sig_err))
+            
+            fpr, tpr, thresholds = roc_curve(label, scores, sample_weight = weights, pos_label=1)
+            sorted_index = np.argsort(fpr)
+            fpr =  np.array(fpr)[sorted_index]
+            tpr = np.array(tpr)[sorted_index]
+            
+            roc_auc = auc(fpr,tpr)
+            
+            #RocCurveDisplay.from_predictions(label, scores, sample_weight=weights)
+            plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
+            plt.xlabel("False positive rate", fontsize=25)
+            plt.ylabel("True positive rate", fontsize=25)
+            plt.legend()
+            plt.title(r"ROC curve of $e_T^{miss}$ for SM bkg and " + f"SUSY{sig_name}", fontsize=25)
+            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_etmiss_{sig_name}")
+            plt.close()
+            
+            
+           
+            scores = np.concatenate((self.recon_err_back,self.recon_sig))
+            
+            fpr, tpr, thresholds = roc_curve(label, scores, sample_weight = weights, pos_label=1)
+            sorted_index = np.argsort(fpr)
+            fpr =  np.array(fpr)[sorted_index]
+            tpr = np.array(tpr)[sorted_index]
+            
+            roc_auc = auc(fpr,tpr)
+            
+            #RocCurveDisplay.from_predictions(label, scores, sample_weight=weights)
+            plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
+            plt.xlabel("False positive rate", fontsize=25)
+            plt.ylabel("True positive rate", fontsize=25)
+            plt.legend()
+            plt.title(f"ROC curve of recon error for SM bkg and SUSY{sig_name}", fontsize=25)
+            plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_recon_err_{sig_name}")
+            plt.close()
+            
+         
