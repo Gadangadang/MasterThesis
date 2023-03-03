@@ -19,8 +19,11 @@ matplotlib.rcParams['mathtext.fontset'] = 'stix'
 matplotlib.rcParams['font.family'] = 'STIXGeneral'
 
 
+def f(x):
+    return x
+
 c = 0
-for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.44, 0.3, 0.46, 0.3)]:
+for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.41, 0.3, 0.49, 0.3)]:
     print( mu, sigma, mu2, sigma)
     if c == 0:
         hist_name = "Sep"
@@ -41,6 +44,9 @@ for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.44, 0.3, 0.46, 0.3)]:
     count, bins, ignored = plt.hist([s, s2], 30, density=False, label=[fr"$\mu$: {mu}, $\sigma$: {sigma}", fr"$\mu$: {mu2}, $\sigma$: {sigma2}"])
 
     plt.legend()
+    plt.title("Example using two normal distributions", fontsize=25)
+    plt.ylabel("#Number of events", fontsize=25)
+    plt.xlabel("Output of the distributions", fontsize=25)
     plt.savefig(STORE_IMG_PATH / Path(f"histo_example_{hist_name}.pdf"))
     plt.close()
 
@@ -54,13 +60,15 @@ for mu, sigma, mu2, sigma2 in [(0.3, 0.1, 0.5, 0.1),(0.44, 0.3, 0.46, 0.3)]:
     tpr = np.array(tpr)[sorted_index]
 
     roc_auc = auc(fpr,tpr)
+    
+    x = np.linspace(0,1, 1001)
 
     #RocCurveDisplay.from_predictions(label, scores, sample_weight=weights)
     plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
+    plt.plot(x, f(x), "k--")
     plt.xlabel("False positive rate", fontsize=25)
     plt.ylabel("True positive rate", fontsize=25)
     plt.legend()
     plt.title(f"ROC curve of two normal distributions", fontsize=25)
     plt.savefig(STORE_IMG_PATH / Path(f"roc_curve_example_{hist_name}.pdf"))
     plt.close()
-
