@@ -1,18 +1,21 @@
 \section{The dataset features}
 
-\subsection*{The RMM matrix}
+\subsection*{The Rapidity-Mass matrix (RMM) }\label{sec:rmm}
 Most of the features in the analysis are elements in the so called Rapidity-Mass matrix (RMM)  inspired by the work of Chekanov \cite{Chekanov_2019}.
 \par
-The RMM is a convenient structure to create a feature space for the dataset. It contains information about mass, rapidity, momenta and energy, 
-all of which are useful in searches for new physics\cite{Chekanov_2021}. One example of an analysis that have used some of the features from the RMM 
-is demontrated in \cite{Santos_2017}. The main reason however for using this structure is the systematic layout and automated featurespace,
-that maintains low to no corrolation between the cells in the matrix, as this is ideal when using neural networks
+The RMM is a convenient structure to create a feature space for the dataset. It contains information of various reconstructed objects and their combinations 
+about mass, rapidity, momenta and missing transverse energy, all of which are useful in searches for new physics\cite{Chekanov_2021} in HEP. 
+One example of an analysis that have used some of the features from the RMM is demontrated in \cite{Santos_2017}. The main reason however 
+for using this structure is the systematic layout and automated featurespace, that maintains low to no corrolation between the cells in the 
+matrix, as this is ideal when using neural networks.
 \par
 Its composition is determined as a square matrix of $1 + \sum_{i=1}^{T}N_i$ columns and rows, where T is the total number of objects (i.e jets, 
 electrons etc.), and $N_i$ is the multiplicity of a given object. In the case of the same number of a given object for all objects, we can 
 denote the RMM matrix as a TmNn matrix, where m is the multiplicity of T, and n is the number of particle per type. Thus there is already 
 room for evaluation, as the combination of number of objects and the number of each object type highly affects the analysis as well as 
-computational resources. Each cell in the matrix contains information about either single og two particle properties. An example is 
+computational resources. Each cell in the matrix contains information about either single og two particle properties. This could in principle be
+generalized to three particle properties, which would make a three dimensional RMM. The scope of thesis will for simplicity only cover the 
+two dimensional case. An example is 
 shown in matrix \ref{eq:rmmmatrix}.
 
 \begin{equation}\label{eq:rmmmatrix}
@@ -31,8 +34,9 @@ where jetdl1r is a machine learning output from a network trained to destinguish
 The matrix itself is partitioned into three parts. 
 The diagonal represents energy properties, the upper triangular represents mass properties, and the lower triangular represents longitudal 
 properties related to rapidity. The diagonal has three different properties, $\boldsymbol{e_T^{miss}}$, $\boldsymbol{e_T}$ and $\delta\boldsymbol{e_T}$. 
-$\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing energy for the system, which is of high interest 
-for this analysis due to the search for heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
+$\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing transverse energy for the system, which is of 
+high interest for this analysis due to the search for heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
+
 \begin{equation}\label{eq:et}
     \boldsymbol{e_T} = \sqrt{m^2 + p_T^2}
 \end{equation}
@@ -47,7 +51,8 @@ It is defined as
     h_L(i_n) = C(\cosh{(y)} - 1),
 \end{equation*}
 where C is a constant to ensure that the average $h_L(i_n)$ values do not deviate too much from the ranges of the invariant masses 
-of the transverse masses, found to be $0.15$\cite{Chekanov_2019}. y is the rapidity of the particle, and $i_n$ is the particle number. 
+of the transverse masses, found to be $0.15$, as it ensures that rapidity ranges in the range $[-2.5, 2.5]$ produces $h_L(i_n)$ values in the 
+$[0,1]$ interval\cite{Chekanov_2019}. y is the rapidity of the particle, and $i_n$ is the particle number. 
 On the lower triangle we have the longitudal properties of the combinations of particles. Similar to $h_L(i_n)$, this property is defined as 
 \begin{equation*}
     h(i_n, j_k) = C(\cosh{(\Delta y)} - 1),
@@ -74,8 +79,9 @@ An example of the RMM matrices used in this thesis is shown in figure \ref{fig:r
         \label{fig:rmm_higgs_event}
     \end{subfigure}
     \hfill        
-    \caption{Note here that the y axis for the RMM's lack every other label, due to lack of space. Thus each figure have all RMM cells, 
-    just not all y axis labels.  }
+    \caption{Note here that the y axis for the RMM's lack every other label, due to lack of space in the y axis of the plot. If looked more closely upon, one can see that 
+    each figure have all RMM cells, just that the labels, which are identical to the x axis label, only show every other. Note also here that the labels only tell which particle are used for that row/column, i.e 
+    in figure \ref{fig:rmm_higgs_event} in row 0 column 3 we have the invariant mass of the first and second ljet. }
     \label{fig:rmm_singular_events}
 \end{figure}
 
@@ -95,10 +101,10 @@ and for neural networks this is a problem. To solve this problem, Chekanov simpl
 
 \subsection*{MonteCarlo and data comparison}\label{sec:mcdatacomp}
 
-Before we can start the analysis, we need to compare the MonteCarlo and data. This is done to ensure that the training samples we 
-use are actually useful. As described by R. Stuart Geiger et al. \cite{DBLP:journals/corr/abs-2107-02278}, the concept of "Garbage 
+Before we can start the analysis, we need to compare the MonteCarlo and data. This is done to ensure that the measured features used 
+are reconstructed well by the MonteCarlo training samples we use. As described by R. Stuart Geiger et al. \cite{DBLP:journals/corr/abs-2107-02278}, the concept of "Garbage 
 in, garbage out" is of key importance in computer science, and indeed important in high energy physics. To ensure that the models 
-we train actually learns physical processes, the training set must represent the physics "status quo". If the training samples do 
+we train actually learn physical processes, the training set must represent the physics "status quo". If the training samples do 
 not match the physical reality, we regard it, in the context of high energy physics, as garbage in, which will in turn give 
 garbage out. The Monte Carlo standard model simulations are indeed very good, but they are numerical approximations, and can 
 sometimes be off. Thus, every feature that will be used for training have to be checked before being used. This is done by 
@@ -110,7 +116,7 @@ MonteCarlo actualy represents the physics, we create signal and background regio
 create a background region where we believe with very high certainty that only standard model processes can occur, and we get a good match, 
 we usually conclude that the MonteCarlo is good enough. Now, for this thesis, simply comparing all ATLAS data to all standard model MonteCarlo
 is enough, as this data batch has been analysed by the ATLAS collaboration for multiple years without finding any new physics, concluding 
-that if the signals are there, they are too small for so called visual cuts. Traditional searches have only exluded models, which is why 
+that if the signals are there, they are too small for so called visual cuts. Traditional searches have only exluded some models, which is why 
 machine learning is getting more popular. The hope is that the signal, whatever it might be, can be revealed with clever feature 
 engineering and smart machine learning algorithms. Particle physics differs here from more day to day machine learning as the target data is 
 unlabeled. 
@@ -119,16 +125,15 @@ unlabeled.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{.6\textwidth}
-        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/e_T_miss.pdf}
+        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf}
         \caption{Missing transverse energy for the three lepton final state. The histogram contains the entire Run 2 dataset.}
         \label{fig:etmiss}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.6\textwidth}
-        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/flcomp.pdf}
-        \caption{Flavor combination for the three lepton final state. This histogram only contains the flavor combinations for the good leptons, 
-        denoted $lep_{SG}$. The histogram contains the entire Run 2 dataset. }
-        \label{fig:flcomp}
+        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/m_ele_0_ele_1_3lep.pdf}
+        \caption{Invariant mass for the first and second electron. The histogram contains the entire Run 2 dataset. }
+        \label{fig:}
     \end{subfigure}
     \hfill        
     \caption{Comparison of the MonteCarlo and data for the three lepton final state with the features $e_{T}^{miss}$ and flavor composition.
@@ -137,6 +142,6 @@ unlabeled.
 \end{figure}
 
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between Monte Carlo and ATLAS data, $e_T^{miss}$ 
-and $flcomp$. We see that both $e_T^{miss}$ and $flcomp$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
+and $m(ele_0, ele_1)$. We see that both $e_T^{miss}$ and$m(ele_0, ele_1)$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
 move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis under the folder 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}.

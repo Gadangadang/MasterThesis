@@ -4,7 +4,7 @@ Amongst them are neural networks, which have for the last decade exponentially b
 within industry and academia for a number of usecases. From image analysis to weather prediction,
 these models are used extensively. \par
 Neural networks, or feed forward neural networks (FFNN), are based on a few principles.
-First, the data is feeded forward through the network. The end output is evaluated in some fashion, 
+First, the data is fed forward through the network. The end output is evaluated in some fashion, 
 and corrections are then back propagated through the network, updating the weights and biases. 
 This "training" is done until a sufficient threshold is met. A general layout of a neural network is displayed in
 figure \ref{fig:nndiagram}.
@@ -12,15 +12,15 @@ figure \ref{fig:nndiagram}.
 \begin{figure}
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
     \caption{Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, 
-    and the red dots are the output layer. The arrows shows the connections between each node. }
+    and the red dots are the output layer. The arrows shows the connections between the nodes. }
     \label{fig:nndiagram}
 \end{figure}
 
 The input layer has the same shape of the dataset one uses to train or predict on, with one node for each feature in the dataset.
-The next layer is the hidden layers. For a given network, the amount of hidden layers can be tuned, as well as the number of 
+The next layers are the hidden layers. For a given network, the amount of hidden layers can be tuned, as well as the number of 
 nodes per layer. Finally, the last hidden layer is connected to the ouput layer, which is determined by the aim of the problem. 
 In the case of figure \ref{fig:nndiagram}, this neural network would represent a binary classification problem, in other words, two categories. 
-The nodes in the network interacts through so called weights $w$ and biases $b$. These are known as tunable parameters, 
+The nodes in the network interact through so-called weights $w$ and biases $b$. These are known as tunable parameters, 
 which needs to be trained on the dataset before any prediction can be made. \par 
 In order to avoid confusion, we will adhere to table \ref{tab:notation} for the notation used in the following sections.
 
@@ -43,9 +43,9 @@ In order to avoid confusion, we will adhere to table \ref{tab:notation} for the 
      $B^l$ & The bias vector associated with layer $l$ which handles the biases for all nodes in layer $l$.  & $\mathbb{R}^{n_{l} \times 1}$ \\ \hline
    
     \multicolumn{3}{|c|}{Elements}  \\ \hline
-    $w^l_{ij}$ & The weight connecting node $i$ in layer $l-1$ to node $k$ in layer $l$. & $\mathbb{R}$ \\ \hline
+    $w^l_{ij}$ & The weight connecting node $i$ in layer $l-1$ to node $j$ in layer $l$. & $\mathbb{R}$ \\ \hline
     $b^l_j$ & Bias acting on node $j$ in layer $l$.  & $\mathbb{R}$ \\ \hline
-    $z^l_j$ & Node output before activation on node $j$ on layer $l$. & \\ \hline
+    $z^l_j$ & Node output before activation on node $j$ on layer $l$. & $\mathbb{R}$\\ \hline
     $a^l_j$ & Activated node output on node $j$ on layer $l$. & $\mathbb{R}$ \\ \hline
     \multicolumn{3}{|c|}{Functions}  \\ \hline
     $C$ & \multicolumn{2}{l|}{Cost function} \\ \hline
@@ -63,14 +63,14 @@ In order to avoid confusion, we will adhere to table \ref{tab:notation} for the 
    
 
 \subsection*{Gradient descent}
-Let us now consider a general n-dimansional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. We want the set of $\boldsymbol{\theta}$
-such that we minimize a costfunction with respect to the data and target. One way to solve this problem is using ordinary least squares. For this approach, 
+Let us now consider a general n-dimensional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. We want the set of $\boldsymbol{\theta}$
+such that we minimize a cost function with respect to the data and target. One way to solve this problem is using ordinary least squares. For this approach, 
 the optimal paramters $\boldsymbol{\theta_{opt}}$ are derived from minimizing the cost function, as shown here:
 \begin{equation*}
     \boldsymbol{\theta_{opt}} = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{t},
 \end{equation*}
 where $\boldsymbol{X}$ is the design matrix containing the data, and $\boldsymbol{t}$ is the target vector. This however leads to a problem. Suppose the design matrix is sufficiently large,
-then the matrix inversion will get computaitonally expensive, or it might not even exist for a given $\boldsymbol{X}$. Thus, an alternative approch is to iteratively approximate the the ideal 
+then the matrix inversion will get computaitonally expensive, or it might not even exist for a given $\boldsymbol{X}$. Thus, an alternative approch is to iteratively approximate the ideal 
 parameters. \par 
 Suppose we we have a cost function $C(\boldsymbol{\theta})$ for a given problem. We can approximate the minimum of the cost function by calculating
 the gradient $\nabla_{\theta}C$ with respect to $\boldsymbol{\theta}$. The negative of this gradient indicates the direction for the minimum of $C$ when evaluating 
@@ -78,12 +78,13 @@ it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSS
 \begin{equation}
     \boldsymbol{\theta}_{i+1} = \boldsymbol{\theta}_i - \eta\nabla_{\theta}C(\boldsymbol{\theta}_i),
 \end{equation}
-where $\eta$ is a step size, also called the learning rate. The choice of $\eta$ is not a trivial case. It is one of severel 
+where $\eta$ is a step size, also called the learning rate. The choice of $\eta$ is not a trivial case. It is one of several 
 hyperparameters\footnote{Give reference to hyperparameters}
-that can be altered, and that highly depend on the given problem. with regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
+that can be altered, and that highly depend on the given problem. With regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
+
 \begin{figure}
     \includegraphics[width=\linewidth]{Figures/Machinelearning/lr_choice.png}
-    \caption{Figures showing different choice of learning rate for a given costfunction, with respect to the tunable parameters. 
+    \caption{Figures showing different choices of learning rate for a given cost function, with respect to the tunable parameters. 
     Source: \href{https://www.jeremyjordan.me/content/images/2018/02/Screen-Shot-2018-02-24-at-11.47.09-AM.png}{Jeremy Jordan}, accessed 03.10.22.}
     \label{fig:lr_choice}
 \end{figure}
@@ -92,16 +93,17 @@ Figure \ref{fig:lr_choice} visualizes the relation between the learning rate and
 This leads to many iterations before you reach a minimum. In the right most figure we note that the learning rate is too high, and the result is that we get divergent behavior. 
 Thus the goal is to find the optimal learning rate, shown in the middle figure. \par 
 A modified and prefered version of gradient descent is the so called stochastic gradient descent. Regular gradient descent can, for large datasets be quite slow, and is prone to 
-getting stuck in local minima. To circumvent this issue, mini batches are introduced. 
+getting stuck in a local minima. To circumvent this issue, mini batches are introduced. 
 
 
 
 
 \subsection*{Feed forwarding}
-Inference (prediction) and training both use the same feed-forward algorithm. The procedure is to send the data through the network, weighting each connection according to the networks architecture,
+Inference (prediction) and training both use the same feed-forward algorithm. Lets then assume that we have generated a network. The network initializes the weights and biases usually 
+with normal or uniformly distributed values, that can later be tuned. The procedure is to send the data through the network, weighting each connection according to the networks architecture,
 and produce an output. The procedure can be summarized in the following steps \cite{FYSSTK}:
  \begin{itemize}
-    \item The data is recieved by the input nodes in teh network for each feature.
+    \item The data is recieved by the input nodes in the network for each feature.
     \item Each input node weights the data value according to the connection of each node in the next layer.
     \item Every node in the hidden layers sums the weighted data values, and adds the bias associated to the given node, denoted as z. 
     \item This value z is then sent through an activation function $\sigma$, which produces the output of the node, denoted as $a = \sigma(z)$.
@@ -118,11 +120,11 @@ where $l$ is the layer index, $j$ is the node index, and $i$ is the index of the
 
 \subsection*{Backpropagation}
 The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by Rumelhart et al\cite{backprop}. This is a bit misleading, 
-as the backprop algorithm actually only refers to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and biases such that
-we get an ideal output. Assuming a costfunction $C$, we can calculate the gradient $\nabla_{w, b}C$, and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of 
-two derivatives:\par \par
-
-$\bf{Note that this calculation is not a generalized algorithm for backpropagation, but rather for a special case using MSE.!!!!}$. \par
+as the backpropagation algorithm actually only refers to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and biases such that
+we get an ideal output. Assuming a cost function $C$, we can calculate the gradient $\nabla_{w, b}C$, and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of 
+two derivatives
+\footnote{NOTE TO SELF:: Note that this calculation is not a generalized algorithm for backpropagation, but rather for a special case using MSE.}\par
+:\par 
 
 \begin{equation*}
     \nabla_{w, b}C = \left(\frac{\partial C}{\partial w_{i,j}^l}, \frac{\partial C}{\partial b_j^l}\right).
@@ -140,8 +142,12 @@ where
 
 This then gives us 
 \begin{equation*}
-    \frac{\partial C}{\partial w_{i,j}^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L)a_i^{L-1}.
+    \frac{\partial C}{\partial w_{i,j}^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L)a_i^{L-1},
 \end{equation*}
+where we defined that 
+\begin{equation}\label{eq:sigma_der}
+    \sigma'(z_j^L) = \frac{\partial a_j^L}{\partial z_j^L}.
+\end{equation}
 
 This derivative is very easy to calculate given a specific cost function and activation function. The derivative with respect to the bias is given as follows:
 
@@ -175,7 +181,7 @@ We can now let $\boldsymbol{\delta^l}$ be the vector of all the errors in the l'
 The error in the l'th layer can then be expressed as a matrix equation for the last layer as follows:
 
 \begin{equation*}
-    \boldsymbol{\delta^l} = \nabla_aC \odot \frac{\partial \sigma}{\partial z^L}, \quad \nabla_aC = \left[\frac{\partial C}{\partial a_1^L}, \frac{\partial C}{\partial a_1^L}, ..., \frac{\partial C}{\partial a_{n_L}^L} \right]^T.
+    \boldsymbol{\delta^l} = \nabla_aC \odot \frac{\partial \sigma}{\partial z^L}, \quad \nabla_aC = \left[\frac{\partial C}{\partial a_1^L}, \frac{\partial C}{\partial a_2^L}, ..., \frac{\partial C}{\partial a_{n_L}^L} \right]^T.
 \end{equation*}
 
 Here $\odot$ is the Hadamard product (element wise product). This local gradient can now be defined recursively for the j'th node in a layer l as a function of the local error in the next layer:
@@ -193,22 +199,20 @@ thus the partial derivative is given as
 
 \begin{equation}
     \label{eq:dzl1dz}
-    \frac{\partial z_k^{l+1}}{\partial z_j^l} = w_{j,k}^{l+1}\sigma'(z_j^l).
+    \frac{\partial z_k^{l+1}}{\partial z_j^l} = w_{j,k}^{l+1}\sigma'(z_j^l), 
 \end{equation}
-
-This allows us to substitute equation into equation  to get the following expression:
-
+using the substitution from equation \ref{eq:sigma_der}. This allows us to substitute equation \ref{eq:dzl1dz} into equation \ref{eq:localgradient} to get the following expression:
 
 \begin{equation}
     \label{eq:localgradient2}
     \delta_j^l = \sum_k w_{j,k}^{l+1}\sigma'(z_j^l)\delta_k^{l+1}.
 \end{equation}
 
-Using this we can derive a three step formula for the backprop algorithm:
+Using this we can derive a three step formula for the backpropagation algorithm:
 \begin{itemize}
     \item Compute the local gradient for the last layer, $\delta^L$.
     \item Recursively compute the local gradient for the remaining layers, $\delta^l$ for $l=L-1, L-2, ..., 1$.
-    \item Update the weights and biases for all layers, $l=1, 2, ..., L$. as shown below: 
+    \item Update the weights and biases for all layers, $l=1, 2, ..., L$, given the learning rate $\eta$ as shown below: 
 \end{itemize}
 
 \begin{equation*}

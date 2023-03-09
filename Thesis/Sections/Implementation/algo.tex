@@ -1,7 +1,7 @@
 \section{Code implementation}
 
 The machine learning analysis was written with Keras\cite{chollet2015keras} using the Tensorflow api\cite{tensorflow2015-whitepaper} . 
-The machine learning structure was written using a functional structure\footnote{Functional structure uses a function call for layers, i.e for layers a,b, then b(a) will connect the two layers, and equals a sequential link a $\to$ b. This allows for more flexible structures. More on the functional api can be found \href{https://www.tensorflow.org/guide/keras/functional}{here}.}
+The machine learning structure was written using a functional structure\footnote{Functional structure uses a function call for layers, i.e for layers a,b, then b(a) will connect the two layers, and equals a sequential link a $\to$ b. This allows for more flexible structures. More on the functional api can be found \href{https://www.tensorflow.org/guide/keras/functional}{here}.}.
 In practise, this model could just as well have been written as a Sequential model\footnote{Sequential structure adds layers in sequence, i.e for layers a, b, c we have that a $\to$ b $\to$ c, with a strict structure. This allows for more organized code. More on sequential models can be found \href{https://www.tensorflow.org/guide/keras/sequential_model}{here}.}, 
 but at a cost of flexibility and lack of potential non-linear structure in the architecture. The code consists of one general class for
  the autoencoder, where the different testing cases are different classes inheriting from the parent class.\par
@@ -73,86 +73,3 @@ optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
 nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
 \end{lstlisting}
 
-In the case of this project, we want to create an autoencoder, as shown in figure \ref{fig:ae_denoise}. A general network archtitecture is proposed below, 
-where the nodes, activation functions, and other hyperparameters can be tuned. 
-
-
-\begin{lstlisting}[language=Python, style=pythonstyle, label={code:ae_code_arch}]
-import tensorflow as tf
-
-class HyperParameterTuning(RunAE):
-    def __init__(self, data_structure: object, path: str)->None:
-        super().__init__(data_structure, path)
-
-    def AE_model_builder(self, hp: kt.engine.hyperparameters.HyperParameters):
-
-        alpha_choice = hp.Choice("alpha", values=[1.0, 0.5, 0.1, 0.05, 0.01])
-
-        # Activation functions
-        activations = {
-            "relu": tf.nn.relu,
-            "tanh": tf.nn.tanh,
-            "leakyrelu": "leaky_relu",
-            "linear": tf.keras.activations.linear,
-        }  # lambda x: tf.nn.leaky_relu(x, alpha=alpha_choice),
-
-        # Input layer
-        inputs = tf.keras.layers.Input(shape=self.data_shape, name="encoder_input")
-
-        # First hidden layer
-        x = tf.keras.layers.Dense(
-            units=hp.Int(
-                "num_of_neurons1", min_value=60, max_value=self.data_shape - 1, step=1
-            ),
-            activation=activations.get(
-                hp.Choice("1_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-        )(inputs)
-
-        val = hp.Int("lat_num", min_value=1, max_value=9, step=1)
-
-        # Forth hidden layer
-        x2 = tf.keras.layers.Dense(
-            units=val,
-            activation=activations.get(
-                hp.Choice("4_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-        )(x)
-
-        # Encoder definition
-        encoder = tf.keras.Model(inputs, x2, name="encoder")
-
-        # Latent space
-        latent_input = tf.keras.layers.Input(shape=val, name="decoder_input")
-
-        # Output layer
-        output = tf.keras.layers.Dense(
-            self.data_shape,
-            activation=activations.get(
-                hp.Choice("8_act", ["relu", "tanh", "leakyrelu", "linear"])
-            ),
-        )(latent_input)
-
-        # Encoder definition
-        decoder = tf.keras.Model(latent_input, output, name="decoder")
-
-        # Output definition
-        outputs = decoder(encoder(inputs))
-
-        # Model definition
-        AE_model = tf.keras.Model(inputs, outputs, name="AE_model")
-
-        hp_learning_rate = hp.Choice(
-            "learning_rate", values=[9e-2, 9.5e-2, 1e-3, 1.5e-3]
-        )
-        optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
-
-        AE_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
-
-        return AE_model
-    \end{lstlisting}
-
-This function creates a tensorflow.keras model that has tuneable structure, thus allowing for optimized tuning with the Keras-Tuner 
-library\cite{omalley2019kerastuner}. The model is then compiled and saved with the selected architecture from the tuning. 
-Note that the tuning section does not train the model, it simply creates a set of copies to check and stores the hyperparameters. 
-Then, the model is trained with the selected hyperparameters and inference is calculated. 

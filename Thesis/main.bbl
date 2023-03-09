@@ -148,8 +148,4 @@ M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
   2015.
 
-\bibitem{omalley2019kerastuner}
-T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
-  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
-
 \end{thebibliography}\endgroup

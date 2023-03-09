@@ -926,18 +926,18 @@ INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri7.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Sections/SM_BSM/BSM.tex
-INPUT ./Sections/Implementation/atlas.tex
-INPUT ./Sections/Implementation/atlas.tex
-INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
-INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
-INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
-INPUT ./Figures/atlas/data_col_phys.png
-INPUT ./Figures/atlas/data_col_phys.png
-INPUT ./Figures/atlas/data_col_phys.png
-INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
-INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
-INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri8.tfm
+INPUT ./Sections/Implementation/atlas.tex
+INPUT ./Sections/Implementation/atlas.tex
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
+INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
+INPUT ./Figures/atlas/data_col_phys.png
+INPUT ./Figures/atlas/data_col_phys.png
+INPUT ./Figures/atlas/data_col_phys.png
+INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
+INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
+INPUT ./Figures/atlas/cms_Sketch_PartonParticleCaloJet.png
 INPUT ./Sections/Implementation/root.tex
 INPUT ./Sections/Implementation/root.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -960,14 +960,16 @@ INPUT ./Figures/rmms/rmm_event_6993776_diboson4L.pdf
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
 INPUT ./Figures/rmms/rmm_event_11739638_higgs.pdf
-INPUT ./Figures/MC_Data_comp/e_T_miss.pdf
-INPUT ./Figures/MC_Data_comp/e_T_miss.pdf
-INPUT ./Figures/MC_Data_comp/e_T_miss.pdf
-INPUT ./Figures/MC_Data_comp/flcomp.pdf
-INPUT ./Figures/MC_Data_comp/flcomp.pdf
-INPUT ./Figures/MC_Data_comp/flcomp.pdf
+INPUT ./Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf
+INPUT ./Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf
+INPUT ./Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf
+INPUT ./Figures/MC_Data_comp/lep3/m_ele_0_ele_1_3lep.pdf
+INPUT ./Figures/MC_Data_comp/lep3/m_ele_0_ele_1_3lep.pdf
+INPUT ./Figures/MC_Data_comp/lep3/m_ele_0_ele_1_3lep.pdf
 INPUT ./Sections/Implementation/algo.tex
 INPUT ./Sections/Implementation/algo.tex
+INPUT ./Sections/Implementation/strategy.tex
+INPUT ./Sections/Implementation/strategy.tex
 INPUT ./Sections/Implementation/background_samples.tex
 INPUT ./Sections/Implementation/background_samples.tex
 INPUT ./Figures/2lep_config/megaset_struct.jpeg
