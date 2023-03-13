@@ -78,6 +78,7 @@ class SignalDumVeri(model):
         for signal in np.unique(self.signal_cats):
             
             signal_name = signal
+            print(signal_name)
             """if i == 0:
                 i+=1
                 continue"""
@@ -115,6 +116,7 @@ class SignalDumVeri(model):
             mean = np.mean(self.n_bins)
             std = np.std(self.n_bins)
              
+            print(f"Mean recon: {mean}, std recon: {std}")
             
             #* Reconstruction cut
             error_cut_val = np.where(self.recon_err_back > (mean + std))[0]
