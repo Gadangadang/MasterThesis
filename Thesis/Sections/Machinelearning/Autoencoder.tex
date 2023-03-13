@@ -7,7 +7,7 @@ into the following points:
     \item Same number of output categories as input categories  
     \item A latent space with smaller dimensionality than the input/output layer  
 \end{itemize}
-What we end up with two funnel shaped parts linked together. The two funnels are 
+What we end up with are two funnel shaped parts linked together. The two funnels are 
 called the encoder (left funnel) and decoder (right funnel) respectively. This architecture is not 
 accidental, but rather designed with a very specific solution of ploblems in mind, reconstruction. 
 A good example to illustrate this is image reconstruction, illustrated in figure \ref{fig:ae_denoise}. 
@@ -20,8 +20,7 @@ and comparing the decoder output to the actual image, the autoencoder can tune i
     \label{fig:ae_denoise}
 \end{figure}
 
-Mathematically this is is represented as follows\cite{weng2018VAE}. Using the annotations of each component in figure \ref{fig:ae_denoise}
-we have that the decoded information is defined as follows 
+Mathematically this is is represented as follows\cite{weng2018VAE}. Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
 \begin{equation*}
     \bf{z} = g_{\phi}(\bf{x}),
 \end{equation*}    
@@ -45,7 +44,7 @@ Here, contrary to regular autoencoders, the latent space is thought of as a dist
 we want to create a latent space distribution based on the true distribution in the data, and use this latent space distribution to then generate
 data given that latent space. 
 \subsection*{Variational Bayes}
-Lets assume some dataset $X = \{x^{(i)}\}_{i=1}^{N}$ with N samples for a variable x, and also assume that the generation of the data comes from 
+Let's assume some dataset $X = \{x^{(i)}\}_{i=1}^{N}$ with N samples for a variable x, and also assume that the generation of the data comes from 
 some random variable z. We also assume that this variable z is generated from a prior distribution $p_{\theta}(z)$ and that the data is then 
 generated from a conditional distribution $p_{\theta}(x|z)$, and that both their respective probability density functions are sufficiently 
 differentiable with respect to parameters $\theta$ and z. We then have that the true posterior distribution is given by 
@@ -78,7 +77,7 @@ which is also known as the loss function for variational inference. As a loss fu
 $(\phi, \theta)$, but as shown by Kingman and Welling \cite{VAE}, the common method using Monte Carlo gradient estimator have high variance,
 and thus is not ideal. 
 
-\subsubsection*{The SGVB estimator}
+\subsubsection*{The Stochastic gradient variational bayes (SGVB) estimator}
 Kingman and Welling \cite{VAE} instead proposes a practical estimator that both deals with effectivity with large datasets, aswell as the 
 issue of intractability. This estimator is called the stochastic gradient variational bayes (SGVB) estimator, and first assumes an approximate 
 posterior $q_{\phi}(z|x)$. Under certain conditions, as shown in subsection \ref{sec:reparameterization}, we can reparameterize this approximate
@@ -108,8 +107,8 @@ we want to minimize the ELBO, $\mathcal{L}(\theta, \phi; x^{(i)})$, by minimizin
 If the latent space is assumed to be a continous variable sampled from a conditional continous distribution 
 $z \thicksim q_{\phi}(z|x)$, then we can reparametrize z as a deterministic variable. This is very useful as 
 we then can rewrite the expectation of the conditional distribution such that the Monte Carlo estimate of 
-the expecation is differentiable with respect to the parameters $\phi$. The proof can be found in the article\cite{VAE}.  
-Now lets take the example of the univariate Gaussian distribution. First, let $z \thicksim p(z|x) = \mathcal{N}(\mu, \sigma^2)$. 
+the expectation is differentiable with respect to the parameters $\phi$. The proof can be found in the article\cite{VAE}.  
+Now let's take the example of the univariate Gaussian distribution. First, let $z \thicksim p(z|x) = \mathcal{N}(\mu, \sigma^2)$. 
 Then, a reparametrization of z can be $z = \mu + \sigma\epsilon$, where $\epsilon \thicksim \mathcal{N}(0,1)$. 
 Thus 
 
@@ -122,14 +121,14 @@ Now, this variational bayes can then be used to create a variational autoencoder
 as well as the probabilistic encoder $q_{\phi}(z|x)$, which is used to approximate the posterior $p_{\theta}(z|x)$. We now let the prior over 
 the latent space be a multivariate Gaussian, lacking parameters: $p_{\theta}(z) = \mathcal{N}(z;0,I)$. We also have that $p_{\theta}(x|z)$ is a multivariate Gaussian,
 with a distribution generated from z, whilst $p_{\theta}(z|x)$ is in fact intractable. If we now assume that the true (intractable) posterior 
-is a Gaussian with approximately diagonal convariance, we can let the variational approximate posterior be a multivatiate Gaussian:
+is a Gaussian with approximately diagonal covariance, we can let the variational approximate posterior be a multivatiate Gaussian:
 \begin{equation}
     log\, q_{\theta}(z|x^{(i)}) = log\, \mathcal{N}(z;\mu^{(i)},\sigma^{2(i)}I),
 \end{equation}
 where the mean and standard deviation are given by the neural network. Now, we sample from the approximate posterior $z^{(i,l)} \thicksim q_{\theta}(z|x^{(i)})$
 where $z^{(i,l)} = g_{\phi}(x^{(i)}, \epsilon^{(l)}) = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$, $\epsilon^{(l)} \thicksim \mathcal(N)(0,I)$ and $\odot$
 is the elementwise product. If both the prior $p_{\theta}(z)$ and $q_{\theta}(z|x)$ are Gaussian, the KL divergence can be computed analytically, and it 
-can then be showed\footnote{VURDER Å LEGGE TIL UTREGNINGEN I APPENDIX}\cite{VAE} that the variational approximate posterior is:
+can then be showed\cite{VAE} that the variational approximate posterior is:
 
 \begin{equation}\label{eq:loss_vae}
     \mathcal{L}(\theta, \phi;x^{(i)}) \simeq \frac{1}{2}\sum_{j=1}^{J}(1 + log\, ((\sigma^{(i)}_{j})^2) - (\mu^{(i)}_{j})^2 - (\sigma^{(i)}_{j})^2) +\frac{1}{L}\sum_{l=1}^{L}log\, p_{\theta}(x^{(i)}|z^{(i,l)}),

@@ -1,0 +1,9 @@
+\section{The search strategy}
+The strategy used to look for anomalies in the three lepton + missing energy finals state is presented as follows. First, the MonteCarlo and ATLAS data 
+for training and inference are constructed with the RMM from section \ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for 
+training the neural network, and the remaining $20\%$ will be used for inference. To separate the anomalies, the reconstruction error of the input data 
+will create a distribution, which if there are anomalies, will be separated from some of the reconstruction error distribution of the ATLAS data. 
+Before analysing the ATLAS data, it is useful to test the algorithm. Here, one can use ROC curves to measure the effectives of the autoencoder. 
+Having tested the algorithm on several tests, one can then finally do an analysis on
+the ATLAS data. To avoid bias, one of the tests should contain some signal that the creator of the model has not seen before, to ensure no changes have been made 
+to the network to adjust for that signal. 

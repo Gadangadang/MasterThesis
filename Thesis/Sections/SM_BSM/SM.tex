@@ -7,19 +7,20 @@
 
 \section{Structure and composition of the Standard Model}
 This section will describe the standard model in a phenomelogical way, as the mathematics and physical reasoning behind the theory is not of great 
-importance to understand the work, nor the results or discussion of them. For a more technical explanation, read (Pich, 2008)\cite{Pich:819632} for a 
-well written paper containing the some more standard model fundamentals, as well as summarizing the experimental status regarding the standard model.
+importance to understand the work presented here, nor the results or discussion. For a more technical explanation, read (Pich, 2008)\cite{Pich:819632} for a 
+well written paper containing some more standard model fundamentals, as well as summarizing the experimental status regarding the standard model.
 For more mathematical understanding of the standard model, Peskin and Schroeder's "An introduction to Quantum Field theory" (Peskin and Schroeder, 1995)\cite{Peskin:1995ev}
  is highly recommended. Finally, see Thomson's "Modern Particle physics" (Thomson, 2013)\cite{Thomson:2013zua} for a very comprehensive and up-to-date book that is easy to read and understand. \par
-The standard model is to physicists what the periodic table is to chemists, and is to this day the most fundamental description of matter as we know it. 
+The standard model is to physicists what the periodic table is to chemists, and is to this day the most fundamental description of matter as we know it at the subatomic scale. 
 It is comprised of two parent class particles, fermions and bosons, where fermions are comprised of quarks and leptons. The model contains 
-17 particles, 6 quarks, 6 leptons and 5 bosons, and are shown in figure \ref{fig:smdiagram}.
+6 leptons, 6 quarks coming in 3 colors each, 4 gauge bosons mediating the electroweak interactions $(\gamma, W^{\pm}, Z^{0})$, 8 gluons behind the strong interaction and one 
+scalar Higgs explaining particle masses, all of which are shown in figure \ref{fig:smdiagram}.
 
 
 
 \subsection*{Fermions}
-The fermions are the building blocks of matter, and contain two types of particles, leptons and quarks. Together they form protons and neutrons,  atoms all around us.
-Fermions, unlike bosons, are spin half particles, and are also the only particles to have anti particles. The fermions are grouped into three so called families:
+The fermions are the building blocks of matter, and contain two types of particles, leptons and quarks. the up and down quarks form protons and neutrons, which together with electrons forms the atoms around us.
+Fermions, unlike bosons, are spin half particles.  The fermions are grouped into three so called families:
 \begin{equation*}
     \begin{bmatrix}
         \nu_e & u \\
@@ -38,7 +39,7 @@ Note that the left column contains the leptons. whilst the right column contains
 to the given lepton. Here, the first family consists of the electron, the electron neutrino, the up and down quarks. The second family consists of the muon and the
 muon neutrino, the charm and strange quarks. The third family consists of the tau and the tau neutrino, the top and bottom quarks. The masses of these particles 
 increases for each particle in the matrix as the family number increases, i.e the muon is heavier than the electron, and the tau is heavier than the muon, and so 
-on for the other fermions. Below is a table with specific properties of the fermions.\par
+on for the other charged fermions. It is not known wether or not the neutrinos follow this pattern as well due to their very low mass. Below is a table with specific properties of the fermions.\par
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
@@ -64,17 +65,20 @@ on for the other fermions. Below is a table with specific properties of the ferm
     \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{tau neutrino}      & \multicolumn{1}{c|}{$\nu_{\tau}$}    & \multicolumn{1}{c|}{$\bar{\tau}_{\tau}$}   & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $< 15.5$                                       \\ \hline
     \end{tabular}
     \end{table}
-
+Another mystery regarding the neutrinos is in relation to anti particles. To each particle corresponds an antiparticle, i.e for $l^-\to l^+$, $q\to \bar{q}$, where the anti particle 
+and particle are different. With neutrinos however it is not known wether or not the neutrinos and antineutrinos are the same particle $\nu = \bar{\nu}$ (Majorana neutrino), 
+or if they are different $\nu \neq \bar{\nu}$ (Dirac neutrino).
+\par
 Quarks are fractional charge particles, with defined charge of either $2/3$ or $-1/3$, as shown in table \ref{tab:fermion_table}. They are the "main" building blocks of protons and neutrons, and are bound by the strong 
 force, the strongest of the four fundamental forces. The force mediator is the gluon. The other half of fermions are the leptons. They are split into the charged 
 leptons (electrons, muons and taus), and the uncharged leptons (neutrinos). The charged leptons can interact via the electroweak force, where the Z, W bosons 
-as well as the photon can be a mediator.
-
+as well as the photon can be a mediator. Note that the neutrinos can only interact through the weak force.
 
 \subsection*{Bosons}
-Bosons are integer number spin particles, with spin $0, 1, 2, ...$. Within bosons there are so called elementary bosons, some of which are force carriers or mediators such as the W, Z and the photon.
-The Higgs boson is also an elementary boson, but is not a force carrier. It provides masses for the fermions via a process called spontaneous symmetry breaking\cite{Pich:819632}. Other 
-bosons are so called composite bosons, which are particles constructed by an even amount of fermions yeilding the integer spin. 
+Bosons are integer number spin particles, with spin $0, 1, 2, ...$. Within bosons there are so called elementary bosons, some of which are force carriers or mediators such as the $W^{\pm}$, Z and the photon.
+The Higgs boson is also an elementary scalar boson, but is not a force carrier. It provides masses for the fermions via a process called spontaneous symmetry breaking\cite{Pich:819632}. Other 
+bosons are so called composite bosons, mesons ($q\bar{q}$) and baryons ($qqq$) which are particles constructed by even or half integer spin. Bosons also have antiparticles, where $(\gamma, g, H^{0}, Z^{0})$ are
+ equal to their respective antiparticle, and the $W^{-} \to W^{+}$ are not equal.
 
 \subsection*{Left and right handedness}
 Particles in the standard model are subject to a quantum mechanical property called chirality. 
@@ -119,17 +123,16 @@ can be linked to a part in the Lagrangian for the system.
     \label{fig:eemm_scat}
 \end{figure}
 
-In figure \ref{fig:eemm_scat} we have a Feynman diagram describing two scenarios: electron scattering into muon pairs and 
-electron muon scattering into electron muon. This is because we have not yet set the direction for time evolution. In this thesis, all 
-diagrams will be interpreted from left to right, i.e figure \ref{fig:eemm_scat} then only represents electron scattering into muon pair. 
+In figure \ref{fig:eemm_scat} we have a Feynman diagram describing electron-positron annihalition into muon-antimuon pairs. In this thesis, all 
+diagrams will be interpreted from left to right, i.e figure \ref{fig:eemm_scat}. 
 The diagram contains all the components in the Lagrangian, and arrows, curly lines and so on all have its own meaning. A straight line with 
-an arrow usually means a fermion, where the direction of the arrow tells if the particle (arrow towards the vertex) is an anti particle (arrow away from the vertex) 
-or particle, showing the momentum direction essentially. The is often also a propagator between the input and the output of such processes, 
-and they depend on the processes we want to study. in the diagram above we have lepton scattering, thus we can both have the photon and the 
+an arrow usually means a fermion, where the direction of the arrow tells if the particle (arrow towards the vertex) is an anti particle (arrow away from the vertex). 
+There is often also a propagator between the left and right side of the Feynman diagram, 
+and they depend on the processes we want to study. In the diagram above we have lepton scattering, thus we can both have the photon and the 
 Z-boson as a propagator. This process is called a neutral current\cite{Pich:819632}, as the total charge coming out of the interaction is 0. 
 As with neutral currents, we also have so called charged currents, where the sum of charge is not 0. Note that we only require charge conservation,
 thus there is nothing wrong with either having a neutral or a charged current, as long as charge conservation is preserved. \par 
-Feynman diagrams is not only used for visualizing scatterings, they can also visualize decays. An example is provided below. 
+Feynman diagrams is not only used for visualizing scatterings, they can also visualize decays. An example is provided in figure \ref{fig:mw_decay}. 
 
 \begin{figure}[h!]
     \centering
@@ -166,18 +169,18 @@ Feynman diagrams is not only used for visualizing scatterings, they can also vis
 
 Here we have a decay of a muon into and electron and two neutrinos, through a charged current. \par 
 The examples above in figure \ref{fig:eemm_scat} and \ref{fig:mw_decay} show interactions with 
-the electroweak force, but along with the electroweak interactions, are also the quantum chromodynamics, 
-responsible for interactions between quarks and gluons. A strange property of the strong interaction (QCD),
-is that the coupling constant $\alpha_S$, unlike the $\alpha_s$ for electroweak,
-gets stronger as the energy decreases, thus to study such interactions, one needs to create collisions 
-at very high energies. Below is a 
+the electroweak force, but along with the electroweak interactions, are also the quantum chromodynamics (QCD), 
+responsible for interactions between quarks and gluons. A strange property of QCD,
+is that the coupling constant $\alpha_{S}$, unlike the $\alpha_{EM}$ for electromagnetism,
+gets stronger as the energy decreases. This is because QCD (and weak interactions) are based on non-abelian 
+groups\cite{Peskin:1995ev}, thus to study such interactions, one needs to create collisions at very high energies. 
 
 
 \subsection*{Some limitations}
-All though the standard model have had great success comparing with experiments,
+All though the standard model has had great success comparing with experiments,
 there are still several problems not addressed by it. One example is gravity, the standard model
-as described above, does not and cannot explain gravity in a quantized way. There 
-are models that try to address this problem, but they supplement the standard model,
+as described above, does not and cannot incorporate gravity in a quantized way. There 
+are models that try, without success so far, to address this problem, but they supplement the standard model,
 and does not derrive it from it. \par 
 The problem that will be addressed in this thesis is a curious property of the weak interaction, 
 namely that parity is broken. Parity as a mathematical operation is equivalent to the spatial inversion 
@@ -186,13 +189,13 @@ through the origin\cite{Thomson:2013zua}:
     x \to -x.
 \end{equation}
 In other words, parity can be thought of as left-right symmetry, or mirror symmetry. Breaking of parity is observed
-with weak currents, where the mediator of the charged currents, $W^{\pm}$ only interacts with 
-left handed fermions. In the standard model, neutrinos are assumed to be massless, and the righthanded 
-neutrinos are sterile, i.e they do not interact with the standard model. \par 
-This asymmetry is strange, and hints towards new physics that perhaps can restore the parity breaking. 
+in weak currents, where the mediator of the charged currents, $W^{\pm}$ only interacts with 
+left handed fermions and right handed antifermions. In the standard model, neutrinos are assumed to be massless, and the righthanded 
+neutrinos are sterile, i.e they do not interact in the standard model. \par 
+This asymmetry is strange, and hints towards new physics that perhaps can restore the parity breaking at much higher energies. 
 Another note to make is that it has been experimentally verified that the neutrinos are massive\cite{Katrin_neutrinos},
 with an upper limit on the mass for the anti electron neutrino of $m_{\nu} < 0.8eVc^2$ at $90\%$ confidence level.
-This is somewhat problematic, as the masses of the neutrinos are not predicted by the standard model. 
+This is somewhat problematic, as the tiny masses of the neutrinos are not predicted by the standard model. 
 
 
 
