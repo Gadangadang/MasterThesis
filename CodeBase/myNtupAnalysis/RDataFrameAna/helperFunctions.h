@@ -84,6 +84,7 @@ int Zlep2 = -1;
 int Wlep1 = -1;
 std::pair <double,double> getLeptonsFromZ(VecI_t chlep, VecI_t& fllep, VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi);
 bool  myfilter(float x);
+int checkTriggerMatch(VecF_t& pt, VecB_t trigmatch, Float_t th);
 bool  isOS(const ROOT::VecOps::RVec<int>& chlep);
 bool  isSF(VecI_t& fllep);
 bool isEE(VecI_t& fllep);

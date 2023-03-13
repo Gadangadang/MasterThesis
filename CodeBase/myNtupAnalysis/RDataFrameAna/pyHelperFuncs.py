@@ -248,30 +248,6 @@ def getTriggerThreshold(tname):
     return max(thr)
 
 
-trigstr = {}
-evtrigstr = {}
-for yr in trgdic.keys():
-    for x in trgdic[yr].keys():
-        if not len(trgdic[yr][x]):
-            continue
-        if not x in trigstr.keys():
-            trigstr[x] = {}
-            evtrigstr[x] = {}
-        if not yr in trigstr[x].keys():
-            trigstr[x][yr] = "("
-            evtrigstr[x][yr] = "("
-        for trigger in trgdic[yr][x]:
-            if trigger == "1":
-                trigstr[x][yr] += "(1) || "
-                evtrigstr[x][yr] += "1 || "
-            else:
-                trigstr[x][yr] += "(lep%s && lepPt > %i) || " % (
-                    trigger,
-                    getTriggerThreshold(trigger),
-                )
-                evtrigstr[x][yr] += "trigMatch_%s || " % (trigger)
-        trigstr[x][yr] = trigstr[x][yr][:-4] + ")"
-        evtrigstr[x][yr] = evtrigstr[x][yr][:-4] + ")"
 
 
 def convertRDFCutflowToTex(cutflow1, cutflow2):

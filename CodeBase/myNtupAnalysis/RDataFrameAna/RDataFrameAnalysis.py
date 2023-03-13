@@ -17,7 +17,7 @@ from pyHelperFuncs import *
 import matplotlib.pyplot as plt
 from samples import configure_samples
 from os.path import isfile, join, isdir
-from div_dicts import triggers, triggers_2lep, rmm_structure
+from div_dicts import *
 
 samples = ['data15', 'data16', 'data17', 'data18', 'singletop', 'Diboson', 'Zeejets1', 'Zeejets2', 'Zeejets3', 'Zmmjets1', 'Zmmjets2', 'Zmmjets3', 'Zttjets', 'Wjets', 'ttbar', 'Zeejets4', 'Zeejets5', 'Zeejets6', 'Zeejets7', 'Zmmjets4', 'Zmmjets5', 'Zmmjets6', 'Zmmjets7', 'Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13', "MGPy8EGA14N23LOC1N2WZ800p0p050p0p03L2L7", "MGPy8EGA14N23LOC1N2WZ450p0p0300p0p03L2L7"]
 
@@ -81,7 +81,7 @@ def runANA(
         
         
 
-        #df[k] = df[k].Range(0,100000)
+        #df[k] = df[k].Range(0,1000)
             
         print("Filtering start.")
         #print("Number of events in %s = %i" % (k, df[k].Count().GetValue()))
@@ -219,7 +219,37 @@ def runANA(
         # Remove bad ids
         df[k] = df[k].Define("badDSID","((DatasetNumber >= 308092 && DatasetNumber <= 308093) || ((DatasetNumber >= 410633 && DatasetNumber <= 410637) || (!is2018 && DatasetNumber == 410472)))")
         df[k] = df[k].Filter("!badDSID","Removing bad DSID")
-      
+
+        for tr in trigstr.keys():
+            if tr == "3L" or tr == "1L": continue
+            for yr in trigstr[tr].keys():
+                """if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue"""
+                print("trigmatch_%s_%s = %s"%(yr,tr,trigstr[tr][yr]))
+                
+                df[k] = df[k].Define("trigmatch_%s_%s"%(yr,tr),trigstr[tr][yr])
+                df[k] = df[k].Define("triggered_%s_%s"%(yr,tr),evtrigstr[tr][yr])
+
+        for nlep in ["2L"]:#,"1L"]: #"1L"
+            #print(nlep)
+            #print("trigmatched")
+            for yr in trigstr[tr].keys():
+                """if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue"""
+                
+                
+                df[k] = df[k].Define("lepIsTrigMatched_%s_%s"%(yr,nlep),"trigmatch_%s_%s"%(yr,nlep))
+                #df[k] = df[k].Define("lepIsTrigMatched_%s"%nlep,"is2015 ? trigmatch_2015_%s[ele_SG > 0 || muo_SG > 0] : (is2016 ? trigmatch_2016_%s[ele_SG > 0 || muo_SG > 0] : (is2017 ? trigmatch_2017_%s[ele_SG > 0 || muo_SG > 0] : (is2018 ? trigmatch_2018_%s[ele_SG > 0 || muo_SG > 0] : trigmatch_2022_%s[ele_SG > 0 || muo_SG > 0])))"%(nlep,nlep,nlep,nlep,nlep))
+                #print("trig")
+                df[k] = df[k].Define("eventIsTriggered_%s_%s"%(yr,nlep),"triggered_%s_%s"%(yr,nlep))#"is2015 ? triggered_2015_%s : (is2016 ? triggered_2016_%s : (is2017 ? triggered_2017_%s : (is2018 ? triggered_2018_%s : triggered_2022_%s)))"%(nlep,nlep,nlep,nlep,nlep))
+                
+
 
         # df[k].Define("lepIsTrigMatched_2L","is2015 ? trigmatch_2015_2L : (is2016 ? trigmatch_2016_2L : (is2017 ? trigmatch_2017_2L : trigmatch_2018_2L))")
         # df[k].Define("lepIsTrigMatched_3L","is2015 ? trigmatch_2015_3L : (is2016 ? trigmatch_2016_3L : (is2017 ? trigmatch_2017_3L : trigmatch_2018_3L))")
@@ -257,10 +287,35 @@ def runANA(
             "ROOT::VecOps::Sum(lepPt[isGoodLep] > 25) >= 2", "pt cut 25"
         )
         
+        for nlep in ["2L"]:#,"1L"]:#,"2L"]:#,"2L"]:
+            cut1 = "("
+            cut2 = "("
+            for yr in trigstr[nlep].keys():
+                
+                """if yr == "2015" and not "data15" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2016" and not "data16" in k and not "mc16a" in mypath_mc: continue
+                if yr == "2017" and not "data17" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2018" and not "data18" in k and not "mc16e" in mypath_mc: continue
+                if yr == "2022" and not "data22" in k and not "mc21a" in mypath_mc: continue"""
+                #cut1 += "(eventIsTriggered_%s_%s) || "%(yr,nlep)
+
+                ## OLD trigger matching cut - from March 2023 testing new method
+                #cut2 += "(ROOT::VecOps::Sum(lepIsTrigMatched_%s_%s[ele_SG > 0 || muo_SG > 0]) >= %i) || "%(yr,nlep,int(nlep[0]))
+                cut1 += "(is%s && eventIsTriggered_%s_%s) || "%(yr,yr,nlep)
+            cut2 += "(is2015 && %s) || (is2016 && %s) || (is2017 && %s) || (is2018 && %s)    "%(evtrigstrC[nlep]["2015"],evtrigstrC[nlep]["2016"],evtrigstrC[nlep]["2017"],evtrigstrC[nlep]["2018"])
+            cut1 = cut1[:-3]+")"
+            cut2 = cut2[:-3]+")"
+            
+        print(cut1)
+        print(" ")
         
+        df[k] = df[k].Filter(cut1,cut1)
+        df[k] = df[k].Filter(cut2,cut2)
+
         """
-        Trigger filtering
-        """
+        
+        #* Trigger filtering
+        
         
         # 2015 only triggers
 
@@ -313,7 +368,7 @@ def runANA(
             
             df[k] = df[k].Filter(trigmatch201718, "2018trigmatch")
         
-        
+        """
         
 
        
@@ -918,6 +973,42 @@ def fetchDfs():
 
 
 def main():
+    global trigstr
+    global evtrigstr
+    global evtrigstrC
+    
+    trigstr = {}
+    evtrigstr = {}
+    evtrigstrC = {}
+    for yr in trgdic.keys():
+        for x in trgdic[yr].keys():
+            if not len(trgdic[yr][x]): continue
+            if not x in trigstr.keys():
+                trigstr[x] = {}
+                evtrigstr[x] = {}
+                evtrigstrC[x] = {}
+            if not yr in trigstr[x].keys():
+                trigstr[x][yr] = "("
+                evtrigstr[x][yr] = "("
+                evtrigstrC[x][yr] = "("
+            for trigger in trgdic[yr][x]:
+                if trigger == "1":
+                    trigstr[x][yr] += "(1) || "
+                    evtrigstr[x][yr] += "1 || "
+                else:
+                    trigstr[x][yr] += "(lep%s && lepPt > %i) || "%(trigger,getTriggerThreshold(trigger))
+                    evtrigstr[x][yr] += "trigMatch_%s || "%(trigger)
+                    evtrigstrC[x][yr] += "checkTriggerMatch(lepPt[ele_SG > 0 || muo_SG > 0], lep%s[ele_SG > 0 || muo_SG > 0], %i) >= %i || "%(trigger,getTriggerThreshold(trigger),int(x.replace("L","")))
+            trigstr[x][yr] = trigstr[x][yr][:-4]+")"
+            evtrigstr[x][yr] = evtrigstr[x][yr][:-4]+")"
+            evtrigstrC[x][yr] = evtrigstrC[x][yr][:-4]+")"
+    
+    
+    print(evtrigstr["2L"])
+    print(" ")
+    print(evtrigstrC["2L"])
+
+    #exit()    
     rerun = 0
     if len(sys.argv) > 2:
         rerun = int(sys.argv[2])
@@ -985,7 +1076,7 @@ def main():
         
     )
 
-    exit()
+  
   
     all_cols = get_column_names(df, histo)
 

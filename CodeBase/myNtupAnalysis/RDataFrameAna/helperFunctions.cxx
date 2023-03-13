@@ -22,6 +22,15 @@ auto sum = [](int a, int b) {
         return a + b;
     };
 
+int checkTriggerMatch(VecF_t& pt, VecB_t trigmatch, Float_t th){
+  int n_match = 0;
+  for(unsigned int i=0; i<pt.size(); i++)
+    {
+      if(trigmatch[i] && pt[i] > th)n_match += 1;
+    }
+  return n_match;
+}
+
 
 
 Double_t getMetRel(VecF_t& pt, VecF_t& eta, VecF_t& phi, VecF_t& e, Float_t met_et, Float_t met_phi){

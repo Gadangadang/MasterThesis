@@ -19,7 +19,9 @@ from os.path import isfile, join
 from sklearn.compose import ColumnTransformer
 from tensorflow.python.client import device_lib
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import roc_curve, RocCurveDisplay, auc
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
 
 from plotRMM import plotRMM
 from histo import PlotHistogram
@@ -686,13 +688,15 @@ class LEP2ScaleAndPrep:
         else:
             self.AE_model.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}')
 
+        #* Iterate over the different signals, by index
         
         val_cats = []
         val_weights = []
         recon_err = []
         
-        #* Validation inference for all megasets
+        xvals = []
         
+        #* Validation inference for all megasets
         for megaset in range(self.totmegasets):
             print(f"Running inference on megabatch: {megaset}")
             
@@ -703,14 +707,16 @@ class LEP2ScaleAndPrep:
             x_val_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_val.npy")
             x_val_cats = np.load(MERGE_PATH / f"Merged{megaset}_categories_val.npy")
             
+            xvals.append(xval)
+            
             recon_err_back = self._inference(xval, types="MC")
-                 
+                
             val_cats.append(x_val_cats)
             val_weights.append(x_val_weights)
             recon_err.append(recon_err_back)
             
             
-         
+        xvals = np.concatenate(xvals, axis=0)
 
         recon_err = np.concatenate(recon_err, axis=0)
         val_weights = np.concatenate(val_weights, axis=0)
@@ -720,17 +726,62 @@ class LEP2ScaleAndPrep:
         val_cats = np.array([re.sub(pattern, r'\1', elem) if any(x in elem for x in ['Zmmjets', 'Zeejets']) else elem for elem in val_cats])
 
         #* Signal inference 
-        sigs = np.unique(self.signal_categories)
-        sig = sigs[1]
-        signame = sig[21:-9]
-        sig_idx = np.where(self.signal_categories==sig)
-        signal_cats = self.signal_categories.to_numpy()[sig_idx]
-        signal = self.signal[sig_idx]
-        recon_err_sig = self._inference(signal, types="Signal")
-        sig_weights = self.signal_weights.to_numpy()[sig_idx] * 1000
+        for signal_num in [0,1]:  
+            
+            sigs = np.unique(self.signal_categories)
+            sig = sigs[signal_num]
+            signame = sig[21:-9]
+            print(f"{signame} start")
+            sig_idx = np.where(self.signal_categories==sig)
+            signal_cats = self.signal_categories.to_numpy()[sig_idx]
+            signal = self.signal[sig_idx]
+            recon_err_sig = self._inference(signal, types="Signal")
+            sig_weights = self.signal_weights.to_numpy()[sig_idx] 
+            
+            plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, signal=recon_err_sig, signal_weights=sig_weights, signal_cats=signal_cats)
+            plothisto.histogram(self.channels, sig_name=signame)
+            
+            
+            #* ROC curve
+            self._roc_curve(distribution_bkg=xvals[:, 0], weights_bkg=val_weights, distribution_sig=signal[:, 0], weights_sig=sig_weights, sig_name=signame, figname="$e_T^{miss}$")
+            
+            self._roc_curve(distribution_bkg=recon_err, weights_bkg=val_weights, distribution_sig=recon_err_sig, weights_sig=sig_weights, sig_name=signame, figname="Reconstruction_error")
+
+            print(f"{signame} done!")
+    
         
-        plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, signal=recon_err_sig, signal_weights=sig_weights, signal_cats=signal_cats)
-        plothisto.histogram(self.channels, sig_name=signame )
+    def _roc_curve(self, distribution_bkg, weights_bkg, distribution_sig, weights_sig, sig_name, figname):
+        bkg_dist = distribution_bkg.copy()
+        bkg = np.zeros(len(distribution_bkg))
+        
+        sig_dist = distribution_sig.copy()
+        sg = np.ones(len(distribution_sig))
+        
+        label = np.concatenate((bkg, sg))
+        scores = np.concatenate((bkg_dist,sig_dist))
+        
+        scaleFactor = np.sum(weights_sig) / np.sum(weights_bkg)
+        
+        weights = np.concatenate((weights_bkg*scaleFactor, weights_sig))
+        
+        fpr, tpr, thresholds = roc_curve(label, scores, sample_weight = weights, pos_label=1)
+        sorted_index = np.argsort(fpr)
+        fpr =  np.array(fpr)[sorted_index]
+        tpr = np.array(tpr)[sorted_index]
+        
+        roc_auc = auc(fpr,tpr)
+        
+        #RocCurveDisplay.from_predictions(label, scores, sample_weight=weights)
+        plt.plot(fpr, tpr, label=f"AUC score: {roc_auc:.2f}")
+        plt.xlabel("False positive rate", fontsize=25)
+        plt.ylabel("True positive rate", fontsize=25)
+        plt.legend(prop={"size": 15})
+        plt.title(rf"ROC curve of {figname} for SM bkg and " + f"SUSY{sig_name}", fontsize=25)
+        plt.savefig(STORE_IMG_PATH + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/roc_curve_{figname}_{sig_name}.pdf")
+        plt.close()
+    
+        
+     
     
     def _trainloop(self, xtrain, xval, x_train_weights):
         """Sets up the training loop for a given megaset
@@ -786,18 +837,18 @@ class LEP2ScaleAndPrep:
                 z_m, z_var, z = self.AE_model.encoder.predict(arr, batch_size=self.b_size)
                 sig_err = self.AE_model.decoder.predict(z)
                 print(f"{datatype} predicted")
-                recon_err_sig = self.reconstructionError(sig_err, arr)
+                recon_err_sig = self._reconstructionError(sig_err, arr)
                 print(f"{datatype} done, lenght: {len(recon_err_sig)}")
             else:
                 print(f"{datatype} started")
                 sig_err = self.AE_model.predict(arr, batch_size=self.b_size)
                 print(f"{datatype} predicted")
-                recon_err_sig = self.reconstructionError(sig_err, arr)
+                recon_err_sig = self._reconstructionError(sig_err, arr)
                 print(f"{datatype} done, lenght: {len(recon_err_sig)}")
         
         return recon_err_sig
     
-    def reconstructionError(self, pred: np.ndarray, real: np.ndarray) -> np.ndarray:
+    def _reconstructionError(self, pred: np.ndarray, real: np.ndarray) -> np.ndarray:
         """_summary_
 
         Args:
