@@ -2,8 +2,11 @@
 The strategy used to look for anomalies in the three lepton + missing energy finals state is presented as follows. First, the MonteCarlo and ATLAS data 
 for training and inference are constructed with the RMM from section \ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for 
 training the neural network, and the remaining $20\%$ will be used for inference. To separate the anomalies, the reconstruction error of the input data 
-will create a distribution, which if there are anomalies, will be separated from some of the reconstruction error distribution of the ATLAS data. 
-Before analysing the ATLAS data, it is useful to test the algorithm. Here, one can use ROC curves to measure the effectives of the autoencoder. 
-Having tested the algorithm on several tests, one can then finally do an analysis on
-the ATLAS data. To avoid bias, one of the tests should contain some signal that the creator of the model has not seen before, to ensure no changes have been made 
-to the network to adjust for that signal. 
+will create a distribution. The same will then be done for a test signal, and eventually the ATLAS data. The ATLAS data is completely unlabeled which 
+makes validation difficult. However, the test signals are labeled, thus we can analyze the reconstruction error distribution of those signals as a 
+weak\footnote{Weak means here that allthough the test signals can provide valuable insight in how the autoencoder can separate anomalies,
+ we must be cautious about generalizing the evaluation value of those results. There are many contributing factors that affect the reconstruction error separation, 
+ which will be such as similiarities with the Standard model, large amounts of missing energy, high energy particles and more,  discussed in chapter \ref{Chap:results_discuss}. } 
+ validation of performance when later running on ATLAS data. To avoid bias by the author, 
+some of the test signals should contain some signal samples that the creator of the model has not seen before, to ensure no changes have been made 
+ to the network to adjust for that signal. ROC curves will then be used to evaluate the binary classification ability of the autoencoder. 

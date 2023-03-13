@@ -148,4 +148,9 @@ M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
   2015.
 
+\bibitem{kl_mse_balance}
+A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
+  kullback-leibler divergence in variational autoencoders},  2020.
+\newblock 10.48550/ARXIV.2002.07514.
+
 \end{thebibliography}\endgroup
