@@ -9,36 +9,36 @@ Warning--entry type for "hdf5" isn't style-file defined
 --line 154 of file bibliography.bib
 Warning--entry type for "chollet2015keras" isn't style-file defined
 --line 305 of file bibliography.bib
-You've used 31 entries,
+You've used 32 entries,
             2188 wiz_defined-function locations,
-            710 strings with 11804 characters,
-and the built_in function-call counts, 6652 in all, are:
-= -- 603
-> -- 388
+            714 strings with 11968 characters,
+and the built_in function-call counts, 6812 in all, are:
+= -- 617
+> -- 398
 < -- 0
-+ -- 116
-- -- 85
-* -- 450
-:= -- 1000
-add.period$ -- 40
-call.type$ -- 31
-change.case$ -- 27
++ -- 119
+- -- 87
+* -- 456
+:= -- 1022
+add.period$ -- 42
+call.type$ -- 32
+change.case$ -- 28
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 285
-empty$ -- 627
-format.name$ -- 85
-if$ -- 1674
+cite$ -- 32
+duplicate$ -- 290
+empty$ -- 647
+format.name$ -- 87
+if$ -- 1716
 int.to.chr$ -- 0
-int.to.str$ -- 31
+int.to.str$ -- 32
 missing$ -- 76
-newline$ -- 105
-num.names$ -- 31
-pop$ -- 126
+newline$ -- 109
+num.names$ -- 32
+pop$ -- 133
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 179
+skip$ -- 184
 stack$ -- 0
 substring$ -- 226
 swap$ -- 89
@@ -47,7 +47,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 47
-width$ -- 33
-write$ -- 266
+while$ -- 48
+width$ -- 34
+write$ -- 275
 (There were 3 warnings)

@@ -1,8 +1,8 @@
 \section{Non signal testing of the regular and variational Autoencoder}
 
 \subsection*{Channel removing}
-\subsubsection*{Autoencoder}
-Both the large and small autoencoder produced results, and are shown below. The Higgs, singletop and ttbar channels have been selected here, as they are 
+
+Both the large and small regular and variational autoencoder produced results, and are shown below. The Higgs, singletop and ttbar channels have been selected here, as they are 
 from a physics stand point the channels that looks most unlike the other channels.  
 
 
@@ -21,8 +21,11 @@ from a physics stand point the channels that looks most unlike the other channel
         is used as signal. No significant difference in distributions are found. }
         \label{fig:ae_big_higgs}
     \end{subfigure}
-    \hfill  
+    \hfill 
+    \caption[Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
+    training the autoencoder on the remaining channels.  } 
     \label{fig:ae_big_channel_1}
+    
 \end{figure}
 
 \begin{figure}[h!]
@@ -40,7 +43,9 @@ from a physics stand point the channels that looks most unlike the other channel
         is used as signal. No significant difference in distributions are found. }
         \label{fig:ae_big_singletop}
     \end{subfigure}
-    \hfill 
+    \hfill
+    \caption[Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
+    training the autoencoder on the remaining channels. } 
     \label{fig:ae_big_channel_2}
 \end{figure}
 
@@ -60,13 +65,11 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:ae_big_ttbar}
     \end{subfigure}
     \hfill 
-    \label{fig:ae_big_channel_3}
+    \caption[Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
+    training the autoencoder on the remaining channels. }
+    \label[Reconstruction error using ttbar channel as signal]{fig:ae_big_channel_3}
 \end{figure}
 
-
-
-\subsubsection*{Variational Autoencoder}
-Both the large and small autoencoder produced results, and are shown below. The small autoencoder results will always be first for each of the tests. 
 
 
 \begin{figure}[h!]
@@ -85,6 +88,8 @@ Both the large and small autoencoder produced results, and are shown below. The 
         \label{fig:vae_big_higgs}
     \end{subfigure}
     \hfill  
+    \caption[Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
+    training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_1}
 \end{figure}
 
@@ -104,6 +109,8 @@ Both the large and small autoencoder produced results, and are shown below. The 
         \label{fig:vae_big_singletop}
     \end{subfigure}
     \hfill 
+    \caption[Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
+    training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_2}
 \end{figure}
 
@@ -123,10 +130,27 @@ Both the large and small autoencoder produced results, and are shown below. The 
         \label{fig:vae_big_ttbar}
     \end{subfigure}
     \hfill 
+    \caption[Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
+    training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_3}
 \end{figure}
 
+In figures \ref{fig:ae_big_channel_1} to \ref{fig:vae_big_channel_3} we have the reconstruction error distributions for the SM MC using 
+Higgs, singletop and ttbar as signal samples for the small (to the left) and the big (to the right) regular and variational autoencoder. 
+It is clear from figures that the reconstruction error distributions for the removed SM channel and the remainding SM MC are very similar. 
+The same behavior is also shown for the other channels, which can found in appendix 2. All though the two models struggled to get a 
+separation of reconstruction error distributions, the regular autoencoder seems to have a more shifted pattern of reconstruction to lower 
+values than the variational autoencoder. In fact, the regular autoencoder's reconstruction error distribution peak is about 3 order of 
+magnitude lower than the variational autoencoder's error distribution peak. There could be several reasons for this, one of which is that 
+the variational autoencoder requires more input data to approximate the distribution, as well as the fact that the balance between the KL divergence and MSE loss 
+can be difficult to handle\cite{kl_mse_balance}. This can lead to poor performance of the network. It should be notet that all though the 
+three channels selected here, as well as the rest in appendix 2, do not differ that much from one another, and the hopes were not high that 
+the networks would be able to separate the two distributions created. However it does provide us with a baseline, as well as insight for what 
+to expect if we were to test on signals that looks a lot like some channels. 
+
+
 \newpage
+
 
 \subsection*{Altering of transverse momentum}
 Altering the transverse momentum of some particles would in the extreme be anomalous and the hypothesis was that some of those trends would be
@@ -152,6 +176,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:ae_big_pt_1_5}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:ae_big_small_pt_1_5}
 \end{figure}
 
@@ -173,6 +198,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:ae_big_pt_3}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:ae_big_small_pt_3}
 \end{figure}
 
@@ -194,6 +220,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:ae_big_pt_5}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:ae_big_small_pt_5}
 \end{figure}
 
@@ -216,6 +243,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:ae_big_pt_7}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:ae_big_small_pt_7}
 \end{figure}
 
@@ -237,6 +265,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:ae_big_pt_10}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:ae_big_small_pt_10}
 \end{figure}
 
@@ -262,6 +291,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_1_5}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:VAE_big_small_pt_1_5}
 \end{figure}
 
@@ -283,6 +313,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_3}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:VAE_big_small_pt_3}
 \end{figure}
 
@@ -304,6 +335,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_5}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:VAE_big_small_pt_5}
 \end{figure}
 
@@ -326,6 +358,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_7}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:VAE_big_small_pt_7}
 \end{figure}
 
@@ -347,6 +380,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_10}
     \end{subfigure}
     \hfill 
+    \caption{title}
     \label{fig:VAE_big_small_pt_10}
 \end{figure}
 

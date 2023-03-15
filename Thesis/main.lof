@@ -27,15 +27,31 @@
 \contentsline {figure}{\numberline {3.12}{\ignorespaces Small variational autoencoder architecture.\relax }}{33}{figure.caption.69}%
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Large variational autoencoder architecture.\relax }}{34}{figure.caption.70}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{42}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Reconstruction error and etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{43}{figure.caption.101}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. \relax }}{43}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{44}{figure.caption.104}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Reconstruction error using Higgs channel as signal}}{35}{figure.caption.77}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Reconstruction error using Singletop channel as signal}}{36}{figure.caption.78}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Reconstruction error using ttbar channel as signal}}{36}{figure.caption.79}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Reconstruction error using Higgs channel as signal}}{37}{figure.caption.80}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Reconstruction error using Singletop channel as signal}}{37}{figure.caption.81}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Reconstruction error using ttbar channel as signal}}{38}{figure.caption.82}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces title\relax }}{38}{figure.caption.85}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces title\relax }}{39}{figure.caption.86}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces title\relax }}{39}{figure.caption.87}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces title\relax }}{40}{figure.caption.88}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces title\relax }}{40}{figure.caption.89}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces title\relax }}{41}{figure.caption.91}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces title\relax }}{41}{figure.caption.92}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces title\relax }}{42}{figure.caption.93}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces title\relax }}{42}{figure.caption.94}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces title\relax }}{43}{figure.caption.95}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{43}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Reconstruction error and etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{44}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. \relax }}{44}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{45}{figure.caption.102}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {21}{\ignorespaces \relax }}{52}{figure.caption.112}%
-\contentsline {figure}{\numberline {22}{\ignorespaces \relax }}{53}{figure.caption.113}%
-\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{54}{figure.caption.114}%
-\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{55}{figure.caption.116}%
-\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{56}{figure.caption.117}%
-\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{57}{figure.caption.118}%
+\contentsline {figure}{\numberline {21}{\ignorespaces \relax }}{54}{figure.caption.110}%
+\contentsline {figure}{\numberline {22}{\ignorespaces \relax }}{55}{figure.caption.111}%
+\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{56}{figure.caption.112}%
+\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{57}{figure.caption.114}%
+\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{58}{figure.caption.115}%
+\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{59}{figure.caption.116}%
