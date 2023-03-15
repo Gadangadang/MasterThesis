@@ -4,7 +4,7 @@ import time
 import random
 import requests
 import numpy as np
-#import polars as pl 
+import polars as pl 
 import pandas as pd
 import seaborn as sns
 from os import listdir
@@ -337,9 +337,12 @@ class LEP2ScaleAndPrep:
             "Diboson"
         ]
         
+        self.parqs = [f for f in listdir(self.path) if isfile(join(self.path, f)) and f[-8:] == ".parquet"]
+        
         self.signal = np.load(DATA_PATH / "signal.npy")
         self.signal_weights = pd.read_hdf(DATA_PATH / "signal_weight_b.h5")
         self.signal_categories = pd.read_hdf(DATA_PATH / "signal_cat_b.h5")
+        self.signal_etmiss = pd.read_hdf(DATA_PATH / "signal_etmiss.h5").to_numpy()
         
         if SMALL:
             self.checkpointname = "small"
@@ -404,8 +407,8 @@ class LEP2ScaleAndPrep:
                     start = file.find("two_")
                     stop = file.find("_3lep")
                     name = file[start+4:stop]
-                    if name in ["data15", "data16", "data17","data18","singletop","Diboson","Zeejets1","Zeejets2","Zeejets3","Zmmjets1","Zmmjets2","Zmmjets3""Zttjets","Wjets","ttbar","Zeejets4"]:
-                        continue
+                    """if name in ["data15", "data16", "data17","data18","singletop","Diboson","Zeejets1","Zeejets2","Zeejets3","Zmmjets1","Zmmjets2","Zmmjets3""Zttjets","Wjets","ttbar","Zeejets4"]:
+                        continue"""
                     
                     df = pd.read_hdf(self.path/file)
                     
@@ -513,6 +516,8 @@ class LEP2ScaleAndPrep:
         xtrain = xtrain.drop(["flcomp", "wgt_SG"],)
         xval = xval.drop(["flcomp", "wgt_SG"],)
         
+        etmiss_val = xval["e_T_miss"].to_numpy()
+        
         
         megaset = 0
         for idx_set_train, idx_set_val in zip(split_idx_train, split_idx_val):
@@ -524,16 +529,20 @@ class LEP2ScaleAndPrep:
             train_categories = names_train[idx_set_train]
             val_categories = names_val[idx_set_val]
             
-            #* Save weights and categories 
+            #* Save weights, categories, etmiss
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_weights_train", weights_train)
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_weights_val", weights_val)
             
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_categories_train", train_categories)
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_categories_val", val_categories)
             
+            
+            
             #* Save the actual dataframe
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_x_train", xtrain.to_numpy()[idx_set_train])
             np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_x_val", xval.to_numpy()[idx_set_val])
+            
+            np.save(DATA_PATH / f"Megabatches/MB{megaset}/MSET{megaset}_{name}_etmiss_val", etmiss_val[idx_set_val])
             
             megaset += 1
             
@@ -548,6 +557,11 @@ class LEP2ScaleAndPrep:
             FETCH_PATH = DATA_PATH/ f"Megabatches/MB{megaset}"
             MERGE_PATH = FETCH_PATH / f"MergedMB{megaset}"
             
+            xval_etmiss = [np.load(FETCH_PATH/filename) for filename in os.listdir(FETCH_PATH) if "etmiss_val" in filename]
+            xval_etmiss = np.concatenate((xval_etmiss), axis=0)
+            
+            
+            
             xtrains = [np.load(FETCH_PATH/file)[:, :-1] for file in os.listdir(FETCH_PATH) if "x_train" in file]
             xtrain_weights = [np.load(FETCH_PATH/filename) for filename in os.listdir(FETCH_PATH) if "weights_train" in filename]
             xtrain_categories = [np.load(FETCH_PATH/filename) for filename in os.listdir(FETCH_PATH) if "categories_train" in filename]
@@ -555,6 +569,9 @@ class LEP2ScaleAndPrep:
             xvals = [np.load(FETCH_PATH/filename)[:, :-1] for filename in os.listdir(FETCH_PATH) if "x_val" in filename]
             xval_weights = [np.load(FETCH_PATH/filename) for filename in os.listdir(FETCH_PATH) if "weights_val" in filename]
             xval_categories = [np.load(FETCH_PATH/filename) for filename in os.listdir(FETCH_PATH) if "categories_val" in filename]
+            
+            
+            
    
             xtrain = np.concatenate((xtrains), axis=0)
             x_train_cats = np.concatenate((xtrain_categories), axis=0)
@@ -568,6 +585,8 @@ class LEP2ScaleAndPrep:
             xval = np.concatenate((xvals), axis=0)
             x_val_cats = np.concatenate((xval_categories), axis=0)
             x_val_weights = np.concatenate((xval_weights), axis=0)
+            
+            
             
             print("Val shapes")
             [print(np.shape(array)) for array in xvals]
@@ -594,6 +613,9 @@ class LEP2ScaleAndPrep:
             np.save(MERGE_PATH / f"Merged{megaset}_xval", xval)
             np.save(MERGE_PATH / f"Merged{megaset}_weights_val", x_val_weights)
             np.save(MERGE_PATH / f"Merged{megaset}_categories_val", x_val_cats)
+            
+            
+            np.save(MERGE_PATH / f"Merged{megaset}_etmiss_val", xval_etmiss)
             
         print("Megabatching done")
         print(" ")
@@ -693,7 +715,7 @@ class LEP2ScaleAndPrep:
         val_cats = []
         val_weights = []
         recon_err = []
-        
+        etmiss = []
         xvals = []
         
         #* Validation inference for all megasets
@@ -706,9 +728,16 @@ class LEP2ScaleAndPrep:
             xval = np.load(MERGE_PATH / f"Merged{megaset}_xval.npy")
             x_val_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_val.npy")
             x_val_cats = np.load(MERGE_PATH / f"Merged{megaset}_categories_val.npy")
+            etmiss_mega = np.load(MERGE_PATH / f"Merged{megaset}_etmiss_val.npy")
+            
+            print("etmiss stuff: ")
+            print("vals: ", etmiss_mega)
+            print("max: ", np.max(etmiss_mega))
+            print("mean: ", np.mean(etmiss_mega))
+            print("median: ", np.median(etmiss_mega))
             
             xvals.append(xval)
-            
+            etmiss.append(etmiss_mega)
             recon_err_back = self._inference(xval, types="MC")
                 
             val_cats.append(x_val_cats)
@@ -716,11 +745,14 @@ class LEP2ScaleAndPrep:
             recon_err.append(recon_err_back)
             
             
+            
         xvals = np.concatenate(xvals, axis=0)
-
+        etmiss = np.concatenate(etmiss, axis=0)
         recon_err = np.concatenate(recon_err, axis=0)
         val_weights = np.concatenate(val_weights, axis=0)
         val_cats = np.concatenate(val_cats, axis=0)
+        
+        
         
         pattern = re.compile(r'(\D+)\d*')
         val_cats = np.array([re.sub(pattern, r'\1', elem) if any(x in elem for x in ['Zmmjets', 'Zeejets']) else elem for elem in val_cats])
@@ -738,16 +770,104 @@ class LEP2ScaleAndPrep:
             recon_err_sig = self._inference(signal, types="Signal")
             sig_weights = self.signal_weights.to_numpy()[sig_idx] 
             
-            plothisto = PlotHistogram(STORE_IMG_PATH, recon_err, val_weights, val_cats, signal=recon_err_sig, signal_weights=sig_weights, signal_cats=signal_cats)
+            plothisto = PlotHistogram(STORE_IMG_PATH, 
+                                      recon_err, 
+                                      val_weights, 
+                                      val_cats, 
+                                      signal=recon_err_sig, 
+                                      signal_weights=sig_weights, 
+                                      signal_cats=signal_cats)
             plothisto.histogram(self.channels, sig_name=signame)
             
             
-            #* ROC curve
-            self._roc_curve(distribution_bkg=xvals[:, 0], weights_bkg=val_weights, distribution_sig=signal[:, 0], weights_sig=sig_weights, sig_name=signame, figname="$e_T^{miss}$")
             
-            self._roc_curve(distribution_bkg=recon_err, weights_bkg=val_weights, distribution_sig=recon_err_sig, weights_sig=sig_weights, sig_name=signame, figname="Reconstruction_error")
+            
+            #* ROC curve
+            self._roc_curve(distribution_bkg=xvals[:, 0], 
+                            weights_bkg=val_weights, 
+                            distribution_sig=signal[:, 0], 
+                            weights_sig=sig_weights, 
+                            sig_name=signame, 
+                            figname="$e_T^{miss}$")
+            
+            self._roc_curve(distribution_bkg=recon_err, 
+                            weights_bkg=val_weights, 
+                            distribution_sig=recon_err_sig, 
+                            weights_sig=sig_weights, 
+                            sig_name=signame, 
+                            figname="Reconstruction_error")
+            
+            
+            #* Etmiss pre cut 
+            histo_tit = r"$e_T^{miss}$ distribution for SM MC and " + f"{signame}"
+            plotetmiss = PlotHistogram(STORE_IMG_PATH, 
+                                               etmiss, 
+                                               val_weights, 
+                                               val_cats, 
+                                               histoname=histo_tit, 
+                                               featurename=r"$e_T^{miss}$",
+                                               histotitle=histo_tit,
+                                               signal=self.signal_etmiss, 
+                                               signal_weights=sig_weights, 
+                                               signal_cats=signal_cats)
+            plotetmiss.histogram(self.channels, sig_name=signame)
+            
+            
+            #* Etmiss post Reconstruction cut
+            median = np.median(plothisto.n_bins)
+            std = np.abs(median/5)
+            print(f"Median recon: {median}, std recon: {std}")
+            
+            for std_scale in range(1, 4):
+                
+                recon_er_cut = median + std_scale*std
+                print(f"Recon err cut: {recon_er_cut}")
+                
+                error_cut_val = np.where(recon_err > (recon_er_cut))[0]
+                error_cut_sig = np.where(recon_err_sig > (recon_er_cut))[0]
+                
+                print(f"val cut shape: {np.shape(error_cut_val)}")
+            
+                val_weights_cut = val_weights[error_cut_val]
+                sig_weights_cut = sig_weights[error_cut_sig]
+                
+                val_cats_cut = val_cats[error_cut_val]
+                signal_cats_cut = signal_cats[error_cut_sig]
+                
+                etmiss_bkg = etmiss[error_cut_val]
+                etmiss_sig = self.signal_etmiss[error_cut_sig]
+                
+                small_sig = self._significance_small(len(etmiss_sig), len(etmiss_bkg))
+                big_sig = self._significance_big(len(etmiss_sig), len(etmiss_bkg))
+                
+                print(" ")
+                print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
+                print(" ")
+                
+                etmiss_histoname = r"$e_T^{miss}$ with recon err cut of "+ f"{recon_er_cut}"
+                
+                plotetmiss_cut = PlotHistogram(STORE_IMG_PATH, 
+                                               etmiss_bkg, 
+                                               val_weights_cut, 
+                                               val_cats_cut, 
+                                               histoname=etmiss_histoname, 
+                                               featurename=r"$e_T^{miss}$",
+                                               histotitle=f"recon_errcut_{recon_er_cut}",
+                                               signal=etmiss_sig, 
+                                               signal_weights=sig_weights_cut, 
+                                               signal_cats=signal_cats_cut)
+                plotetmiss_cut.histogram(self.channels, sig_name=signame)
+                
 
             print(f"{signame} done!")
+            
+            
+    def _significance_small(self, s, b):
+        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
+    
+    def _significance_big(self, s, b):
+        return s / np.sqrt(b)
+        
     
         
     def _roc_curve(self, distribution_bkg, weights_bkg, distribution_sig, weights_sig, sig_name, figname):
@@ -878,10 +998,13 @@ if __name__ == "__main__":
     data_shape = 529
     
     L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
-    #L2.convertParquet()
-    #L2.createMCSubsamples()
+    L2.convertParquet()
+    L2.createMCSubsamples()
     
-    #L2.mergeMegaBatches()
+    L2.mergeMegaBatches()
     
     #L2.RunTraining()
-    L2.RunInference()
+    
+    #L2.RunInference()
+    
+  

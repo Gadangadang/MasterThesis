@@ -136,7 +136,7 @@ class PlotHistogram:
         if Noise:
             n_bins = 25
 
-        
+        self.n_bins = n_bins
         
         if len(colors) != len(histo_atlas):
             colors = colors[:len(histo_atlas)]

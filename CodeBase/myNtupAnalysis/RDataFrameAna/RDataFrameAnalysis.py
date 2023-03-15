@@ -281,7 +281,11 @@ def runANA(
         df[k] = df[k].Filter("nlep_SG >= 2", "2 SG leptons")
 
         
-
+        df[k] = df[k].Filter("ComputeInvariantMass(\
+                              lepPt[isGoodLep],\
+                              lepEta[isGoodLep],\
+                              lepPhi[isGoodLep],\
+                              lepM[isGoodLep]) > 70", "mll > 70 GeV")
         
         df[k] = df[k].Filter(
             "ROOT::VecOps::Sum(lepPt[isGoodLep] > 25) >= 2", "pt cut 25"
@@ -450,9 +454,9 @@ def runANA(
                             (
                                 f"h_e_T_miss_{k}",
                                 f"h_e_T_miss_{k};m_" + "{T}^{2}(23) [GeV];Entries",
-                                70,
+                                100,
                                 0,
-                                500,
+                                800,
                             ),
                             f"e_T_miss",
                             "wgt_SG",
