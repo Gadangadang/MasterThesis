@@ -12,17 +12,17 @@
 \contentsline {chapter}{\numberline {3}Implementation}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}ATLAS}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}ROOT}{23}{section.3.2}%
-\contentsline {section}{\numberline {3.3}The dataset features}{25}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Code implementation}{27}{section.3.4}%
-\contentsline {section}{\numberline {3.5}The search strategy}{29}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Background samples}{29}{section.3.6}%
-\contentsline {section}{\numberline {3.7}The chosen neural network architectures}{32}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{35}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{35}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{37}{section.4.2}%
-\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{39}{section.4.3}%
-\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{39}{section.4.4}%
-\contentsline {chapter}{Conclusion}{47}{chapter*.104}%
-\contentsline {chapter}{Appendices}{49}{section*.105}%
-\contentsline {chapter}{Appendix A}{51}{appendix*.106}%
-\contentsline {chapter}{Appendix B}{53}{appendix*.107}%
+\contentsline {section}{\numberline {3.3}The dataset features}{26}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Code implementation}{29}{section.3.4}%
+\contentsline {section}{\numberline {3.5}The search strategy}{31}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Background samples}{31}{section.3.6}%
+\contentsline {section}{\numberline {3.7}The chosen neural network architectures}{34}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{37}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{37}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{39}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{41}{section.4.3}%
+\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{41}{section.4.4}%
+\contentsline {chapter}{Conclusion}{49}{chapter*.105}%
+\contentsline {chapter}{Appendices}{51}{section*.106}%
+\contentsline {chapter}{Appendix A}{53}{appendix*.107}%
+\contentsline {chapter}{Appendix B}{55}{appendix*.108}%

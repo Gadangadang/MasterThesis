@@ -929,6 +929,14 @@ INPUT ./Sections/SM_BSM/BSM.tex
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmri8.tfm
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Sections/Implementation/atlas.tex
+INPUT ./Figures/atlas/transverse_plane.png
+INPUT ./Figures/atlas/transverse_plane.png
+INPUT ./Figures/atlas/transverse_plane.png
+INPUT ./Figures/atlas/longitudal_plane.png
+INPUT ./Figures/atlas/longitudal_plane.png
+INPUT ./Figures/atlas/longitudal_plane.png
+INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman7-bold.luc
+INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman5-bold.luc
 INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
 INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png
 INPUT ./Figures/atlas/ATLAS Detector Schematic black particles.png

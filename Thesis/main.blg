@@ -9,45 +9,54 @@ Warning--entry type for "hdf5" isn't style-file defined
 --line 154 of file bibliography.bib
 Warning--entry type for "chollet2015keras" isn't style-file defined
 --line 305 of file bibliography.bib
-You've used 32 entries,
+Warning--entry type for "Gramstad:1631043" isn't style-file defined
+--line 509 of file bibliography.bib
+Field filled up at 78, reallocating.
+Reallocated buffer (elt_size=1) to 40000 items from 20000.
+Reallocated sv_buffer (elt_size=1) to 40000 items from 20000.
+Reallocated ex_buf (elt_size=1) to 40000 items from 20000.
+Reallocated out_buf (elt_size=1) to 40000 items from 20000.
+Reallocated name_tok (elt_size=4) to 40000 items from 20000.
+Reallocated name_sep_char (elt_size=1) to 40000 items from 20000.
+You've used 33 entries,
             2188 wiz_defined-function locations,
-            714 strings with 11968 characters,
-and the built_in function-call counts, 6812 in all, are:
-= -- 617
-> -- 398
+            720 strings with 42115 characters,
+and the built_in function-call counts, 6799 in all, are:
+= -- 597
+> -- 428
 < -- 0
-+ -- 119
-- -- 87
-* -- 456
-:= -- 1022
-add.period$ -- 42
-call.type$ -- 32
-change.case$ -- 28
++ -- 127
+- -- 94
+* -- 446
+:= -- 1031
+add.period$ -- 46
+call.type$ -- 33
+change.case$ -- 27
 chr.to.int$ -- 0
-cite$ -- 32
-duplicate$ -- 290
-empty$ -- 647
-format.name$ -- 87
-if$ -- 1716
+cite$ -- 33
+duplicate$ -- 288
+empty$ -- 659
+format.name$ -- 94
+if$ -- 1713
 int.to.chr$ -- 0
-int.to.str$ -- 32
-missing$ -- 76
-newline$ -- 109
-num.names$ -- 32
-pop$ -- 133
+int.to.str$ -- 33
+missing$ -- 73
+newline$ -- 114
+num.names$ -- 33
+pop$ -- 149
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 184
+skip$ -- 167
 stack$ -- 0
-substring$ -- 226
-swap$ -- 89
+substring$ -- 170
+swap$ -- 76
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 48
-width$ -- 34
-write$ -- 275
-(There were 3 warnings)
+while$ -- 46
+width$ -- 35
+write$ -- 286
+(There were 4 warnings)

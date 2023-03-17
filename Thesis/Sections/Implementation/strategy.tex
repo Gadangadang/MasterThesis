@@ -7,6 +7,15 @@ makes validation difficult. However, the test signals are labeled, thus we can a
 weak\footnote{Weak means here that allthough the test signals can provide valuable insight in how the autoencoder can separate anomalies,
  we must be cautious about generalizing the evaluation value of those results. There are many contributing factors that affect the reconstruction error separation, 
  which will be such as similiarities with the Standard model, large amounts of missing energy, high energy particles and more,  discussed in chapter \ref{Chap:results_discuss}. } 
- validation of performance when later running on ATLAS data. To avoid bias by the author, 
+ validation of performance when later running on ATLAS data. 
+ 
+Standard analyses creates what is called a signal region. The signal region is a region in the feature space where the signal is maximized. We use this region to calculate the 
+significance of a result in the search, which is really the only metric that is of use. The statistical uncertainty and noise is proportional to the amount of SM MC, thus
+with lower amounts of SM MC, the better the significance will be. Using the reconstruction error, the autoencoder can create its own signal region, 
+namely the areas of high reconstruction error. A cut here will then be used to separate the anomalies from the Standard model in for example missing transverse energy, or 
+other features of interest. 
+
+
+To avoid bias by the author, 
 some of the test signals should contain some signal samples that the creator of the model has not seen before, to ensure no changes have been made 
  to the network to adjust for that signal. ROC curves will then be used to evaluate the binary classification ability of the autoencoder. 
