@@ -4,7 +4,7 @@ import time
 import random
 import requests
 import numpy as np
-import polars as pl 
+#import polars as pl 
 import pandas as pd
 import seaborn as sns
 from os import listdir
@@ -625,6 +625,7 @@ class LEP2ScaleAndPrep:
     def RunTraining(self):
         global data_shape
         
+        
         if TYPE == "VAE":
             nn_model = RunVAE(data_shape=data_shape)
         elif TYPE == "AE":
@@ -644,9 +645,13 @@ class LEP2ScaleAndPrep:
             
             #* Load model 
             if SMALL:
+                
                 self.AE_model = nn_model.getModel()
             else:
+                
                 self.AE_model = nn_model.getModelBig()
+                
+            file = f'timelist_model_{TYPE}_{size_m}.txt'
             
             if megaset != 0:
                 if TYPE == "VAE":
@@ -668,14 +673,20 @@ class LEP2ScaleAndPrep:
         
             print("Model weights saved")
             end1 = time.time()
-            print(f"Time taken for megaset {megaset} is: {(end1-start1)/60:.2f}m or {(end1-start1)/60/60:.2f}h")
+            megasettime = end1-start1
+            print(f"Time taken for megaset {megaset} is: {(megasettime)/60:.2f}m or {(megasettime)/60/60:.2f}h")
             print(" ")
+            
+            write_to_file(file, f"Megaset {megaset} took: {(megasettime)/60:.2f}m or {(megasettime)/60/60:.2f}h\n")
             
             
             
         end = time.time()
         print(f"Time taken for all megasets is: {(end-start)/60:.2f}m or {(end-start)/60/60:.2f}h")
-        print(" ")  
+        print(" ") 
+        
+        write_to_file(file, f"\nAll megasets took: {(end-start)/60:.2f}m or {(end-start)/60/60:.2f}h\n")
+             
           
             
     def RunInference(self):
@@ -697,9 +708,11 @@ class LEP2ScaleAndPrep:
                 nn_model = RunAE(data_shape=data_shape)
                 
                 if SMALL:
+                    
                     self.AE_model = nn_model.getModel()
                     
                 else:
+                    
                     self.AE_model = nn_model.getModelBig()
                     
                 
@@ -711,6 +724,8 @@ class LEP2ScaleAndPrep:
             self.AE_model.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}')
 
         #* Iterate over the different signals, by index
+        
+        file = f"significance_{TYPE}_{size_m}.txt"
         
         val_cats = []
         val_weights = []
@@ -746,11 +761,18 @@ class LEP2ScaleAndPrep:
             
             
             
-        xvals = np.concatenate(xvals, axis=0)
+            
+        
         etmiss = np.concatenate(etmiss, axis=0)
-        recon_err = np.concatenate(recon_err, axis=0)
-        val_weights = np.concatenate(val_weights, axis=0)
-        val_cats = np.concatenate(val_cats, axis=0)
+        etmiss_cut = np.where(etmiss < 800)
+        print("Etmiss cut to remove all above 800 GeV")
+        print(np.shape(etmiss_cut))
+        print(" ")
+        etmiss = etmiss[etmiss_cut]
+        xvals = np.concatenate(xvals, axis=0)[etmiss_cut]
+        recon_err = np.concatenate(recon_err, axis=0)[etmiss_cut]
+        val_weights = np.concatenate(val_weights, axis=0)[etmiss_cut]
+        val_cats = np.concatenate(val_cats, axis=0)[etmiss_cut]
         
         
         
@@ -760,9 +782,13 @@ class LEP2ScaleAndPrep:
         #* Signal inference 
         for signal_num in [0,1]:  
             
+            
+            
             sigs = np.unique(self.signal_categories)
             sig = sigs[signal_num]
             signame = sig[21:-9]
+            string_write = f"\nSignal: {signame}\n"
+            write_to_file(file, string_write)
             print(f"{signame} start")
             sig_idx = np.where(self.signal_categories==sig)
             signal_cats = self.signal_categories.to_numpy()[sig_idx]
@@ -783,12 +809,12 @@ class LEP2ScaleAndPrep:
             
             
             #* ROC curve
-            self._roc_curve(distribution_bkg=xvals[:, 0], 
+            """self._roc_curve(distribution_bkg=xvals[:, 0], 
                             weights_bkg=val_weights, 
                             distribution_sig=signal[:, 0], 
                             weights_sig=sig_weights, 
                             sig_name=signame, 
-                            figname="$e_T^{miss}$")
+                            figname="$e_T^{miss}$")"""
             
             self._roc_curve(distribution_bkg=recon_err, 
                             weights_bkg=val_weights, 
@@ -807,16 +833,32 @@ class LEP2ScaleAndPrep:
                                                histoname=histo_tit, 
                                                featurename=r"$e_T^{miss}$",
                                                histotitle=histo_tit,
-                                               signal=self.signal_etmiss, 
+                                               signal=self.signal_etmiss[sig_idx], 
                                                signal_weights=sig_weights, 
                                                signal_cats=signal_cats)
-            plotetmiss.histogram(self.channels, sig_name=signame)
+            plotetmiss.histogram(self.channels, sig_name=signame, etmiss_flag=True)
+            
+            small_sig = self._significance_small(len(self.signal_etmiss[sig_idx]), len(etmiss))
+            big_sig = self._significance_big(len(self.signal_etmiss[sig_idx]), len(etmiss))
+            
+            print(" ")
+            print(f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}")
+            print(" ")
+            
+            string_write = f"\nPre reconstruction error cut:\n"
+            write_to_file(file, string_write)
+            
+            string_write = f"Significance small: {small_sig} | Signifiance big: {big_sig}\n"
+            write_to_file(file, string_write)
             
             
             #* Etmiss post Reconstruction cut
             median = np.median(plothisto.n_bins)
             std = np.abs(median/5)
             print(f"Median recon: {median}, std recon: {std}")
+            
+            string_write = f"\nPost recon err cut\n"
+            write_to_file(file, string_write)
             
             for std_scale in range(1, 4):
                 
@@ -844,7 +886,13 @@ class LEP2ScaleAndPrep:
                 print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
                 print(" ")
                 
-                etmiss_histoname = r"$e_T^{miss}$ with recon err cut of "+ f"{recon_er_cut}"
+                string_write = f"Recon error cut: {recon_er_cut}\n"
+                write_to_file(file, string_write)
+                
+                string_write = f"Significance small: {small_sig} | Signifiance big: {big_sig}\n"
+                write_to_file(file, string_write)
+                
+                etmiss_histoname = r"$e_T^{miss}$ with recon err cut of "+ f"{recon_er_cut:.2f}"
                 
                 plotetmiss_cut = PlotHistogram(STORE_IMG_PATH, 
                                                etmiss_bkg, 
@@ -852,11 +900,11 @@ class LEP2ScaleAndPrep:
                                                val_cats_cut, 
                                                histoname=etmiss_histoname, 
                                                featurename=r"$e_T^{miss}$",
-                                               histotitle=f"recon_errcut_{recon_er_cut}",
+                                               histotitle=f"recon_errcut_{recon_er_cut:.2f}",
                                                signal=etmiss_sig, 
                                                signal_weights=sig_weights_cut, 
                                                signal_cats=signal_cats_cut)
-                plotetmiss_cut.histogram(self.channels, sig_name=signame)
+                plotetmiss_cut.histogram(self.channels, sig_name=signame, etmiss_flag=True)
                 
 
             print(f"{signame} done!")
@@ -985,6 +1033,14 @@ class LEP2ScaleAndPrep:
         err = np.log10(err)
         return err
         
+
+
+def write_to_file(file, string_write):
+    with open(file, 'a') as f:
+        f.write(string_write)        
+
+
+
 if __name__ == "__main__":
     
     
@@ -998,13 +1054,12 @@ if __name__ == "__main__":
     data_shape = 529
     
     L2 = LEP2ScaleAndPrep(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
-    L2.convertParquet()
-    L2.createMCSubsamples()
+    #L2.convertParquet()
+    #L2.createMCSubsamples()
+    #L2.mergeMegaBatches()
     
-    L2.mergeMegaBatches()
+    L2.RunTraining()
     
-    #L2.RunTraining()
-    
-    #L2.RunInference()
+    L2.RunInference()
     
   

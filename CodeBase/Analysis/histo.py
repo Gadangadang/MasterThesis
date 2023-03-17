@@ -57,10 +57,17 @@ class PlotHistogram:
         self.err_val = err_val
         self.err_val_weights = err_val_weights
         self.val_cats = val_cats
+        
+        print(len(signal))
+        print(len(signal_weights))
+        print(len(signal_cats))
+        
         if len(signal) != 0:
             self.signal = signal
             self.signal_weights = signal_weights
             self.signal_cats = signal_cats
+            
+            
         if len(data) != 0:
             self.data = data
             self.data_weights = data_weights
@@ -69,10 +76,12 @@ class PlotHistogram:
         self.featurename = featurename
         self.histotitle = histotitle
         
+        
+        
      
         
         
-    def histogram(self, channels: list, sig_name="nosig", bins=25, Noise=False)->None:
+    def histogram(self, channels: list, sig_name="nosig", bins=25, etmiss_flag=False)->None:
         """_summary_
 
         Args:
@@ -124,17 +133,14 @@ class PlotHistogram:
 
         fig, ax = plt.subplots()
 
-        try:
-            N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
-            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
-            n_bins = bins
-            print("Bins: ",n_bins)
-        except:
-            n_bins = 25
-    
-        if Noise:
-            n_bins = 25
+        
+        N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
+        x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
+        ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
+        n_bins = bins
+        print("Bins: ",n_bins)
+        
+         
 
         self.n_bins = n_bins
         
@@ -181,8 +187,9 @@ class PlotHistogram:
             )
         ax.set_xlabel(self.featurename, fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
-        # ax.set_xlim([0, 3.5])
-        ax.set_ylim([0.1, 5e6])  # type: ignore
+        if etmiss_flag:
+            ax.set_xlim([0, 1300])
+        ax.set_ylim(bottom=0.1)  # type: ignore
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
