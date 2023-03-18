@@ -1,4 +1,4 @@
-\section{ATLAS}
+\section{The ATLAS detector}
 
 \subsection*{Kinematics and detector geometry}
 Before one can analyse the data, it has to be collected and processed in a detector. The data used in this thesis 
@@ -90,7 +90,8 @@ which can be used to show that $e^{-y} = \tan{\frac{\theta}{2}}$. From this we d
     \eta = -\ln{\left( \tan{\frac{\theta}{2}}\right)},
 \end{equation}
 which is, in the relativistic limit, the same as the rapidity y. A useful property of the pseudorapidity is that 
-the phase space of a single particle is uniformly distributed 
+the phase space of a single particle is uniformly distributed for both $\eta$ and $\phi$, making them good features 
+to compare overlap between SM MC and ATLAS data\cite{Gramstad:1631043}. 
 \subsection*{Data collection}
 
 \begin{figure}[h!]
@@ -99,18 +100,37 @@ the phase space of a single particle is uniformly distributed
     \label{fig:atlas_particle_detect}
 \end{figure}
 
-The features used in this analysis are computed with or fetched from the features from the detector itself. Such features includes the momentum, energy, angles etc, 
-all of which are either directly measured or computed baesd on the measurements in the detector. In figure \ref{fig:atlas_particle_detect} a visualization shows how
-different particles move through the detector and where they are detected. For example, energy deposits are measured using calorimeters, and the different particles 
-have calorimeters specially designed for them. . \par
+The features used in this analysis are computed with or fetched from the features from the 
+detector itself. Such features include the momentum, energy, angles etc, 
+all of which are either directly measured or computed based on the measurements in the 
+detector. In figure \ref{fig:atlas_particle_detect} a visualization shows how
+different particles move through the detector and how they are detected. For example, 
+energy deposits are measured using calorimeters, and the different particles 
+have calorimeters specially designed for them. Charged particles leaves tracks in the 
+inner tracking device. Thus, electrons leaves tracks in the inner tracker and deposits energy 
+in the elctromagnetic calorimeter, the muons leaves tracks in the inner detector and 
+deposits energy in the muon detector. The photons only deposits energy in the electromagnetic 
+calorimeter. Hadrons like protons and neutrons deposits energy in the electromagnetic and 
+hadronic calorimeters, and charged hadrons also leaves tracks in the inner tracker. This is 
+shown in figure \ref{fig:atlas_particle_detect}.\par
 
-The ATLAS detector three selection stages before the data is stored. In order to reach the highest intensity of collisions, the LHC accellerates
-packets of around $10^{11}$ protons, and collides them at a rate of 25 nanoseconds, yeilding a collision rate of 40 MHz\cite{Wang:2707056}. \cite{Bernius:2707054}
+The ATLAS detector have a few thousand selection stages before the data is stored. 
+In order to reach the highest intensity of collisions, the LHC accellerates
+packets of around $10^{11}$ protons, and collides them at a rate of 25 nanoseconds, 
+yeilding a collision rate of 40 MHz\cite{Wang:2707056}. \cite{Bernius:2707054}
 
 
 
 \subsubsection*{Data preparation}
-
+During datagathering at the ATLAS detector, triggers on the hardware and software level select out the events that are of most interest. On the order of $99 \%$ or
+ more of the recorded events are discarded, with about 1 in 40000 events being accepted, as the amount of recorded events simply as too high to realistically analyse. Also, a lot of the events are of no 
+ interest for new physics analysis anyways as they for example might have to little energy. Once the trigger selection is done, the data is reconstructed. This means that the objects
+ in the recorded events are through software algorithms reconstructed into particles, jets, photons etc. The reconstruction is done based on the tracks and measurements
+ in the detector, but it is not perfect, and can lead to fake leptons or jets. By fake it is meant that an object might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
+ Once the reconstruction is done, further slimming of the n-tuples are done. Derivations are slimmings of the n-tuples where the selection of events are further reduced 
+ to match the needs of the different analysis groups. \par 
+The SM MC go through parts of the same process. These events are first generated and then run through the detector to simulate actual events. Once that is done, the events
+ can be reconstructed and go through derivations just like the pp-collision data, to be used in analysis. 
 
 \begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/data_col_phys.png}
@@ -122,8 +142,10 @@ packets of around $10^{11}$ protons, and collides them at a rate of 25 nanosecon
 
 
 \subsubsection*{Jets}
-Photons and leptons are detected via calorimeters, and are easy to track and detect as they separate easily. Quarks, however, are bound by QCD and thus cannot be seperated as individual particles. 
-An illustration of how quarks and gluons are behaving during a proton-proton collision is shown below in figure \ref{fig:cms_jets}.
+Photons and electrons are detected in the electromagnetic calorimeter, and are easy to track and detect as they 
+separate easily. Quarks, however, are bound by QCD and thus cannot be seperated as individual 
+particles. An illustration of how quarks and gluons materialise as jets during a proton-proton 
+collision is shown below in figure \ref{fig:cms_jets}.
 
 \begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/cms_Sketch_PartonParticleCaloJet.png}

@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1679064348 "main.aux" "main.bbl" "main" 1679064361
+["bibtex main"] 1679157634 "main.aux" "main.bbl" "main" 1679157642
   "./jhep.bst" 1635225418 19415 119cff932b2ee8773ea988cf488e8896 ""
-  "bibliography.bib" 1679064309 62235 1fa08a1874df944c57078c1138b03918 ""
-  "main.aux" 1679064360 116434 da4250ff5aaa898bf162aace056ff30c "lualatex"
+  "bibliography.bib" 1679155107 62481 50b3162450908a8ad4dd04eb05f25827 ""
+  "main.aux" 1679157641 116684 5e476414222a01ada2144a9dff42b00d "lualatex"
   (generated)
   "main.bbl"
   "main.blg"
-["lualatex"] 1679064349 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1679064361
+["lualatex"] 1679157634 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1679157642
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/fontawesome.luc" 1668505054 65327 aebc0c5f1f4357aaccede3b514315f78 ""
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-italic.luc" 1668505056 82963 d3ab1513143077da69a927c4f857b880 ""
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1668505056 81837 6304bf769927f628477a16dd8282346b ""
@@ -655,7 +655,7 @@
   "Sections/Appendix/Appendix2.tex" 1678718190 16813 969a247952ad362238418f9649627da6 ""
   "Sections/Conclusion/Conclusion.tex" 1661329036 137 d60cf5a845a1a97b9545933a9ec44b5c ""
   "Sections/Implementation/algo.tex" 1678372801 3305 0a0728f0603df0d83416f437152e94ee ""
-  "Sections/Implementation/atlas.tex" 1679064324 7946 63e21f608e67e9f4fac1cd1fdd62a2b8 ""
+  "Sections/Implementation/atlas.tex" 1679157626 10104 5b6c462a7a13903e4228d8481f97e25d ""
   "Sections/Implementation/background_samples.tex" 1678701810 7863 73f700d012794e67b4b42c650ed34f83 ""
   "Sections/Implementation/features.tex" 1678375195 11527 fa6d08fe125419734e8d90c253f6d3a2 ""
   "Sections/Implementation/nn_models.tex" 1676901277 2945 46df8fab595abd8fa5a0b18bb1c34572 ""
@@ -677,12 +677,12 @@
   "duoforside.tex" 1668088642 6776 628e9d1c9dd0d96721373bf5891ec22c ""
   "duomasterforside.sty" 1635225418 1245 0f0fdb32e432549cbffa5ff0a0493ca0 ""
   "jheppub.sty" 1666616765 11379 0879f95863e3001c773fd5825cb90a2a ""
-  "main.aux" 1679064360 116434 da4250ff5aaa898bf162aace056ff30c "lualatex"
-  "main.bbl" 1679064349 6165 511fc3b799f78bcf75c5b2b1d3d32be3 "bibtex main"
-  "main.lof" 1679064360 9979 fdbf4d9b5ffb1b994557a8d273e1d707 "lualatex"
-  "main.lot" 1679064360 642 44ecf5795ff53f9f5beff5a37aaa66db "lualatex"
+  "main.aux" 1679157641 116684 5e476414222a01ada2144a9dff42b00d "lualatex"
+  "main.bbl" 1679157634 6379 7fec9d4d32fe0c592a0bb2ed9abd39b8 "bibtex main"
+  "main.lof" 1679157641 9979 dc88c398b9d3f3b27490e21e25359ad7 "lualatex"
+  "main.lot" 1679157641 642 44ecf5795ff53f9f5beff5a37aaa66db "lualatex"
   "main.tex" 1678718090 3548 c2cb6dfe687c6c37db12c79d710e7b73 ""
-  "main.toc" 1679064360 2174 fa04c0f06246ace6400e0d0e011eee9d "lualatex"
+  "main.toc" 1679157641 2187 9828dae49d6ccdaa788c496078a4acb9 "lualatex"
   "neuralnetwork.sty" 1676546716 12080 615b622647724dacbb08cc4cdbfe4dd7 ""
   "uio-fp-navn-eng.pdf" 1643568008 9896 3790f54969705c4284148bf62f780187 ""
   "uio-fp-segl.pdf" 1643566874 64936 89441810db60f45a672971bad5b14ed1 ""

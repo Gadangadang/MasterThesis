@@ -24,9 +24,9 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the W boson decays hadronically. \relax }}{32}{figure.caption.62}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets. \relax }}{33}{figure.caption.65}%
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Small autoencoder architecture.\relax }}{34}{figure.caption.67}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Large autoencoder architecture.\relax }}{34}{figure.caption.68}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Large autoencoder architecture.\relax }}{35}{figure.caption.68}%
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Small variational autoencoder architecture.\relax }}{35}{figure.caption.70}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Large variational autoencoder architecture.\relax }}{35}{figure.caption.71}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces Large variational autoencoder architecture.\relax }}{36}{figure.caption.71}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Reconstruction error using Higgs channel as signal}}{37}{figure.caption.78}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Reconstruction error using Singletop channel as signal}}{38}{figure.caption.79}%

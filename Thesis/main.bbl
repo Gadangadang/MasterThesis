@@ -100,6 +100,12 @@ D.~Green, \emph{High $p_T$ Physics at Hadron Colliders}.
 C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
   Software Tutorial}}, .
 
+\bibitem{Gillam:2015kta}
+T.~P.~S. Gillam, \emph{{Identifying fake leptons in ATLAS while hunting SUSY in
+  8 TeV proton-proton collisions}}.
+\newblock PhD thesis, Cambridge U., 2015.
+\newblock 10.17863/CAM.16619.
+
 \bibitem{ROOT}
 R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
   \emph{root-project/root: v6.18/02},  Aug., 2019.
