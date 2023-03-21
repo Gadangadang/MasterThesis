@@ -4,17 +4,6 @@
 L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
   (2018) }.
 
-\bibitem{Mehlhase:2770815}
-{\scshape ATLAS} collaboration, S.~Mehlhase, \emph{{ATLAS detector slice (and
-  particle visualisations)}}, .
-
-\bibitem{Wang:2707056}
-S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
-  Software Tutorial}}, .
-
-\bibitem{plotly}
-{Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
-
 \bibitem{FYSSTK}
 S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
@@ -99,6 +88,14 @@ E.~Gramstad, \emph{{Searches for Supersymmetry in Di-Lepton Final States with
 D.~Green, \emph{High $p_T$ Physics at Hadron Colliders}.
 \newblock Cambridge University Press, 2004.
 
+\bibitem{Mehlhase:2770815}
+{\scshape ATLAS} collaboration, S.~Mehlhase, \emph{{ATLAS detector slice (and
+  particle visualisations)}}, .
+
+\bibitem{Wang:2707056}
+S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
+  Software Tutorial}}, .
+
 \bibitem{Bernius:2707054}
 C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
   Software Tutorial}}, .
@@ -156,6 +153,9 @@ F.~Chollet et~al., \emph{Keras},  2015.
 M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
   2015.
+
+\bibitem{plotly}
+{Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
 
 \bibitem{reback2020pandas}
 {The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.

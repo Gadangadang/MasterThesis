@@ -19,9 +19,9 @@
 \contentsline {section}{\numberline {3.7}The search strategy}{37}{section.3.7}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{41}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{41}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{43}{section.4.2}%
-\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{45}{section.4.3}%
-\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{46}{section.4.4}%
+\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{44}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{46}{section.4.3}%
+\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{47}{section.4.4}%
 \contentsline {chapter}{Conclusion}{53}{chapter*.112}%
 \contentsline {chapter}{Appendices}{55}{section*.113}%
 \contentsline {chapter}{Appendix A}{57}{appendix*.114}%
