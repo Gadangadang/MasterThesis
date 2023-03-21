@@ -1,25 +1,26 @@
+
 Signal: 450p0p0300
 
 Pre reconstruction error cut:
-Significance small: 1.0084915310909857 | Signifiance big: 1.0085090666256076
+Significance small: 0.34664801600677503 | Signifiance big: 0.017306778432509606
 
 Post recon err cut
 Recon error cut: -1.7140569556423368
-Significance small: 2.4059219315478297 | Signifiance big: 2.406813797686111
+Significance small: 0.8466572904663141 | Signifiance big: 0.846659400835787
 Recon error cut: -1.2855427167317526
-Significance small: 1.418135337726213 | Signifiance big: 1.4186641762389394
+Significance small: 0.28479626998227425 | Signifiance big: 0.28479698163379913
 Recon error cut: -0.8570284778211685
-Significance small: 0.46500196533444793 | Signifiance big: 0.46509997359836797
+Significance small: 0.029745268223102896 | Signifiance big: 0.029745138614747188
 
 Signal: 800p0p050
 
 Pre reconstruction error cut:
-Significance small: 1.2158531566722421 | Signifiance big: 1.215878636780909
+Significance small: nan | Signifiance big: 0.001662730263509214
 
 Post recon err cut
 Recon error cut: -1.6118156621588688
-Significance small: 5.882962072354539 | Signifiance big: 5.888981843138466
+Significance small: 0.338318145320168 | Signifiance big: 0.3383178459852472
 Recon error cut: -1.2088617466191516
-Significance small: 4.384054705457622 | Signifiance big: 4.38963108409708
+Significance small: 0.18259043877841236 | Signifiance big: 0.1825908994369782
 Recon error cut: -0.8059078310794345
-Significance small: 1.5661424450678179 | Signifiance big: 1.5673307242856342
+Significance small: 0.023396263345496188 | Signifiance big: 0.02339627813945973

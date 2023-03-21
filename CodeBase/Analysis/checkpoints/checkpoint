@@ -1,2 +1,2 @@
-model_checkpoint_path: "Megabatch_checkpoint_AEsmall"
-all_model_checkpoint_paths: "Megabatch_checkpoint_AEsmall"
+model_checkpoint_path: "Megabatch_checkpoint_VAE_decoder_big"
+all_model_checkpoint_paths: "Megabatch_checkpoint_VAE_decoder_big"

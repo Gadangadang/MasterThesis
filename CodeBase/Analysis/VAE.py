@@ -432,14 +432,20 @@ class RunVAE:
             )
         ax.set_xlabel("Log10 Reconstruction Error", fontsize=25)
         ax.set_ylabel("#Events", fontsize=25)
-        # ax.set_xlim([0, 3.5])
-        ax.set_ylim([0.1, 5e6])  # type: ignore
+        #ax.set_xlim([0, 3.5])
+        #ax.set_ylim([0.1, 5e6])  # type: ignore
         ax.set_yscale("log")
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
         plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
+        
+    def _significance_small(self, s, b):
+        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
+    
+    def _significance_big(self, s, b):
+        return s / np.sqrt(b)
 
 
 

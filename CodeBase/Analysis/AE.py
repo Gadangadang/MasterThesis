@@ -463,4 +463,8 @@ class RunAE:
         plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}.pdf")
         plt.close()
 
-
+    def _significance_small(self, s, b):
+        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
+    
+    def _significance_big(self, s, b):
+        return s / np.sqrt(b)
