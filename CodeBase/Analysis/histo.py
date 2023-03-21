@@ -133,16 +133,18 @@ class PlotHistogram:
 
         fig, ax = plt.subplots()
 
-        
-        N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
-        x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
-        ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
-        n_bins = bins
-        print("Bins: ",n_bins)
-        
+        if len(self.signal) != 0:
+            N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
+            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
+            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
+            n_bins = bins
+            print("Bins: ",n_bins)
+            
          
 
-        self.n_bins = n_bins
+            self.n_bins = n_bins
+        else:
+            self.n_bins = 25
         
         if len(colors) != len(histo_atlas):
             colors = colors[:len(histo_atlas)]

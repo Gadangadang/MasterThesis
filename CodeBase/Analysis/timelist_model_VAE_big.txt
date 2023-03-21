@@ -1,0 +1,30 @@
+Megaset 0 took: 22.78m or 0.38h
+Megaset 1 took: 23.31m or 0.39h
+Megaset 2 took: 23.57m or 0.39h
+Megaset 3 took: 25.51m or 0.43h
+Megaset 4 took: 23.95m or 0.40h
+Megaset 5 took: 24.92m or 0.42h
+Megaset 6 took: 23.44m or 0.39h
+Megaset 7 took: 24.78m or 0.41h
+Megaset 8 took: 26.05m or 0.43h
+Megaset 9 took: 25.89m or 0.43h
+
+All megasets took: 244.21m or 4.07h
+Megaset 0 took: 12.90m or 0.21h
+
+All megasets took: 12.90m or 0.21h
+Megaset 0 took: 2.94m or 0.05h
+
+All megasets took: 2.94m or 0.05h
+Megaset 0 took: 2.81m or 0.05h
+Megaset 1 took: 4.64m or 0.08h
+Megaset 2 took: 6.22m or 0.10h
+Megaset 3 took: 6.74m or 0.11h
+Megaset 4 took: 6.96m or 0.12h
+Megaset 5 took: 7.60m or 0.13h
+Megaset 6 took: 7.30m or 0.12h
+Megaset 7 took: 4.37m or 0.07h
+Megaset 8 took: 7.05m or 0.12h
+Megaset 9 took: 9.76m or 0.16h
+
+All megasets took: 63.45m or 1.06h

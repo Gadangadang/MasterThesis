@@ -1,0 +1,26 @@
+
+Signal: 450p0p0300
+
+Pre reconstruction error cut:
+Significance small: 0.34664801600677503 | Signifiance big: 0.017306778432509606
+
+Post recon err cut
+Recon error cut: -0.8455937688519061
+Significance small: nan | Signifiance big: 0.031775880955892316
+Recon error cut: -0.6341953266389295
+Significance small: 0.044222706590977115 | Signifiance big: 0.02316409205486051
+Recon error cut: -0.4227968844259531
+Significance small: 0.03567447908679134 | Signifiance big: 0.011858377665334792
+
+Signal: 800p0p050
+
+Pre reconstruction error cut:
+Significance small: nan | Signifiance big: 0.001662730263509214
+
+Post recon err cut
+Recon error cut: -0.872252870839111
+Significance small: nan | Signifiance big: 0.0052220589694904895
+Recon error cut: -0.6541896531293332
+Significance small: nan | Signifiance big: 0.005412502929904427
+Recon error cut: -0.43612643541955554
+Significance small: 0.02377217661552772 | Signifiance big: 0.00462433525367526
