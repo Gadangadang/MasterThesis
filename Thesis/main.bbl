@@ -12,6 +12,9 @@ L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
 S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
   Software Tutorial}}, .
 
+\bibitem{plotly}
+{Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
+
 \bibitem{FYSSTK}
 S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
@@ -139,11 +142,6 @@ R.~Santos, M.~Nguyen, J.~Webster, S.~Ryu, J.~Adelman, S.~Chekanov et~al.,
   \href{http://dx.doi.org/10.1088/1748-0221/12/04/p04014}{\emph{Journal of
   Instrumentation} {\bf 12} (apr, 2017) P04014--P04014}.
 
-\bibitem{scikit-learn}
-F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
-  et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of
-  Machine Learning Research} {\bf 12} (2011) 2825--2830}.
-
 \bibitem{DBLP:journals/corr/abs-2107-02278}
 R.~S. Geiger, D.~Cope, J.~Ip, M.~Lotosh, A.~Shah, J.~Weng et~al.,
   \emph{"garbage in, garbage out" revisited: What do machine learning
@@ -158,6 +156,26 @@ F.~Chollet et~al., \emph{Keras},  2015.
 M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
   2015.
+
+\bibitem{reback2020pandas}
+{The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.
+\newblock 10.5281/zenodo.3509134.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel
+  et~al., \emph{Scikit-learn: Machine learning in {P}ython}, {\emph{Journal of
+  Machine Learning Research} {\bf 12} (2011) 2825--2830}.
+
+\bibitem{harris2020array}
+C.~R. Harris, K.~J. Millman, S.~J. van~der Walt, R.~Gommers, P.~Virtanen,
+  D.~Cournapeau et~al., \emph{Array programming with {NumPy}},
+  \href{http://dx.doi.org/10.1038/s41586-020-2649-2}{\emph{Nature} {\bf 585}
+  (Sept., 2020) 357--362}.
+
+\bibitem{ritchie_vink_2023_7744139}
+R.~Vink, S.~de~Gooijer, A.~Beedie, J.~van Zundert, G.~Hulselmans, C.~Grinstead
+  et~al., \emph{pola-rs/polars: Python polars 0.16.14},  Mar., 2023.
+\newblock 10.5281/zenodo.7744139.
 
 \bibitem{kl_mse_balance}
 A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and

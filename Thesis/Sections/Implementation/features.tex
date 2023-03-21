@@ -59,39 +59,6 @@ On the lower triangle we have the longitudal properties of the combinations of p
 \end{equation*}
 where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference for particle $i_n$ and $j_k$. 
 
-\subsection*{Implementation of the RMM matrix}
-An example of the RMM matrices used in this thesis is shown in figure \ref{fig:rmm_singular_events} below:
-
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}{.8\textwidth}
-        \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_6993776_diboson4L.pdf}
-        \caption{RMM matrix for event number 6993776 from the MonteCarlo diboson4L sample. Each feature is scaled based on a fit for that feature for 
-        all events in the training set ($\approx 80\%$ of total MC). This sample contains two ljets, one electron and two muons.}
-        \label{fig:rmm_zee_event}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.8\textwidth}
-        \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_11739638_higgs.pdf}
-        \caption{ RMM matrix for event number 11739638 from the MonteCarlo Higgs sample. Each feature is scaled based on a fit for that feature for 
-        all events in the training set ($\approx 80\%$ of total MC). This sample contains five ljets, one bjet, one electron and two muons. }
-        \label{fig:rmm_higgs_event}
-    \end{subfigure}
-    \hfill        
-    \caption{Note here that the y axis for the RMM's lack every other label, due to lack of space in the y axis of the plot. If looked more closely upon, one can see that 
-    each figure have all RMM cells, just that the labels, which are identical to the x axis label, only show every other. Note also here that the labels only tell which particle are used for that row/column, i.e 
-    in figure \ref{fig:rmm_higgs_event} in row 0 column 3 we have the invariant mass of the first and second ljet. }
-    \label{fig:rmm_singular_events}
-\end{figure}
-
-In figure \ref{fig:rmm_singular_events} we see two RMM matrices created from two different channels in the MonteCarlo samples. 
-This RMM is of type T4N5\footnote{T4 $\to$ 4 particle types: bjets, ljets, electrons and muons. N5 $\to$ 5 particles per 
-particle type. Note here that we have 5 particles only for the leptons, and 6 particles for each of the types of jets.}. 
-These RMM matrices have scaled the features that a minimum value less than $-3$ and or a maximum value of above $3$. These 
-scalers were fitted to the specific value using the "$.fit\_transform()$" and "$.transform()$" functions from the 
-Scikit-learn library\cite{scikit-learn}. For easier interpretability, the gray area corresponds to a missing value, 
-leading to so called "islands" in the RMM matrix.
 
 \subsection*{Tabular and sparce data}
 A concequence of using the RMM structure is that the data and Monte Carlo are sparce. This is due to the fact that the RMM allows for 
@@ -142,6 +109,6 @@ unlabeled.
 \end{figure}
 
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between Monte Carlo and ATLAS data, $e_T^{miss}$ 
-and $m(ele_0, ele_1)$. We see that both $e_T^{miss}$ and$m(ele_0, ele_1)$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
+and $m(ele_0, ele_1)$. We see that both $e_T^{miss}$ and $m(ele_0, ele_1)$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
 move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis under the folder 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}.

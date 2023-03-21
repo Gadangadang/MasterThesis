@@ -22,7 +22,7 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:ae_big_higgs}
     \end{subfigure}
     \hfill 
-    \caption[Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
+    \caption[AE | Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
     training the autoencoder on the remaining channels.  } 
     \label{fig:ae_big_channel_1}
     
@@ -44,7 +44,7 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:ae_big_singletop}
     \end{subfigure}
     \hfill
-    \caption[Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
+    \caption[AE | Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
     training the autoencoder on the remaining channels. } 
     \label{fig:ae_big_channel_2}
 \end{figure}
@@ -65,9 +65,9 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:ae_big_ttbar}
     \end{subfigure}
     \hfill 
-    \caption[Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
+    \caption[AE | Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
     training the autoencoder on the remaining channels. }
-    \label[Reconstruction error using ttbar channel as signal]{fig:ae_big_channel_3}
+    \label{fig:ae_big_channel_3}
 \end{figure}
 
 
@@ -88,7 +88,7 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:vae_big_higgs}
     \end{subfigure}
     \hfill  
-    \caption[Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
+    \caption[VAE | Reconstruction error using Higgs channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Higgs channel as a signal, and 
     training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_1}
 \end{figure}
@@ -109,7 +109,7 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:vae_big_singletop}
     \end{subfigure}
     \hfill 
-    \caption[Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
+    \caption[VAE | Reconstruction error using Singletop channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the Singletop channel as a signal, and 
     training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_2}
 \end{figure}
@@ -130,7 +130,7 @@ from a physics stand point the channels that looks most unlike the other channel
         \label{fig:vae_big_ttbar}
     \end{subfigure}
     \hfill 
-    \caption[Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
+    \caption[VAE | Reconstruction error using ttbar channel as signal]{Reconstruction error distributions for the small (to the left) and large (to the right) autoencoder using the ttbar channel as a signal, and 
     training the autoencoder on the remaining channels. }
     \label{fig:vae_big_channel_3}
 \end{figure}
@@ -156,13 +156,12 @@ to expect if we were to test on signals that looks a lot like some channels.
 Altering the transverse momentum of some particles would in the extreme be anomalous and the hypothesis was that some of those trends would be
 picked up by the autoencoder. Several scales for the transverse momentum were used, with the following results.
 
-\subsubsection*{Autoencoder}
 
 \begin{figure}[h!]
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf}
-        \caption{Reconstruction error on validation SM MC from the small variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the small regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $1.5$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_small_pt_1_5}
@@ -170,13 +169,14 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \hfill 
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf}
-        \caption{Reconstruction error on validation SM MC from the big variational Autoencoder.Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the big regular Autoencoder.Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $1.5$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_big_pt_1_5}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[AE | Reconstruction error $p_T$ altering of 1.5]{Reconstruction error on validation SM MC using randomly selected events from all SM MC channels for the small and big regular autoencoder. 
+    $p_T$ is scaled by 1.5. }
     \label{fig:ae_big_small_pt_1_5}
 \end{figure}
 
@@ -184,7 +184,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf}
-        \caption{Reconstruction error on validation SM MC from the small variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the small regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $3$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_small_pt_3}
@@ -192,13 +192,14 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \hfill 
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf}
-        \caption{Reconstruction error on validation SM MC from the big variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the big regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $3$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_big_pt_3}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[AE | Reconstruction error $p_T$ altering of 3]{Reconstruction error on validation SM MC using randomly selected events from all SM MC channels for the small and big regular autoencoder. 
+    $p_T$ is scaled by 3. }
     \label{fig:ae_big_small_pt_3}
 \end{figure}
 
@@ -206,7 +207,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf}
-        \caption{Reconstruction error on validation SM MC from the small variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the small regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $5$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_small_pt_5}
@@ -214,13 +215,14 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \hfill 
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf}
-        \caption{Reconstruction error on validation SM MC from the big variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the big regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $5$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_big_pt_5}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[AE | Reconstruction error $p_T$ altering of 5]{Reconstruction error on validation SM MC using randomly selected events from all SM MC channels for the small and big regular autoencoder. 
+    $p_T$ is scaled by 5. }
     \label{fig:ae_big_small_pt_5}
 \end{figure}
 
@@ -229,7 +231,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf}
-        \caption{Reconstruction error on validation SM MC from the small variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the small regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $7$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_small_pt_7}
@@ -237,13 +239,14 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \hfill 
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf}
-        \caption{Reconstruction error on validation SM MC from the big variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the big regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $7$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_big_pt_7}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[AE | Reconstruction error $p_T$ altering of 7]{Reconstruction error on validation SM MC using randomly selected events from all SM MC channels for the small and big regular autoencoder. 
+    $p_T$ is scaled by 7. }
     \label{fig:ae_big_small_pt_7}
 \end{figure}
 
@@ -251,7 +254,7 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_10.pdf}
-        \caption{Reconstruction error on validation SM MC from the small variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the small regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_small_pt_10}
@@ -259,19 +262,18 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
     \hfill 
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_10.pdf}
-        \caption{Reconstruction error on validation SM MC from the big variational Autoencoder. Here the signal is a subsample of the validation 
+        \caption{Reconstruction error on validation SM MC from the big regular Autoencoder. Here the signal is a subsample of the validation 
         set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The change of transverse 
         energy has thusly also been changed according to the scaling of transverse momentum. No significant difference in distributions are found. }
         \label{fig:ae_big_pt_10}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[AE | Reconstruction error $p_T$ altering of 10]{Reconstruction error on validation SM MC using randomly selected events from all SM MC channels for the small and big regular autoencoder. 
+    $p_T$ is scaled by 10. }
     \label{fig:ae_big_small_pt_10}
 \end{figure}
 
 
-
-\subsubsection*{Variational Autoencoder}
 
 \begin{figure}[h!]
     \centering
@@ -291,7 +293,8 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_1_5}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[VAE |Reconstruction error $p_T$ altering of 1.5]{Reconstruction error on validation SM MC using randomly selected events from all SM 
+    MC channels for the small and big variational autoencoder. $p_T$ is scaled by 1.5. }
     \label{fig:VAE_big_small_pt_1_5}
 \end{figure}
 
@@ -313,7 +316,8 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_3}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[VAE | Reconstruction error $p_T$ altering of 3]{Reconstruction error on validation SM MC using randomly selected events from all SM 
+    MC channels for the small and big variational autoencoder. $p_T$ is scaled by 3. }
     \label{fig:VAE_big_small_pt_3}
 \end{figure}
 
@@ -335,7 +339,8 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_5}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[VAE | Reconstruction error $p_T$ altering of 5]{Reconstruction error on validation SM MC using randomly selected events from all SM 
+    MC channels for the small and big variational autoencoder. $p_T$ is scaled by 5. }
     \label{fig:VAE_big_small_pt_5}
 \end{figure}
 
@@ -358,7 +363,8 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_7}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[VAE | Reconstruction error $p_T$ altering of 7]{Reconstruction error on validation SM MC using randomly selected events from all SM 
+    MC channels for the small and big variational autoencoder. $p_T$ is scaled by 7. }
     \label{fig:VAE_big_small_pt_7}
 \end{figure}
 
@@ -380,8 +386,19 @@ picked up by the autoencoder. Several scales for the transverse momentum were us
         \label{fig:VAE_big_pt_10}
     \end{subfigure}
     \hfill 
-    \caption{title}
+    \caption[VAE | Reconstruction error $p_T$ altering of 10]{Reconstruction error on validation SM MC using randomly selected events from all SM 
+    MC channels for the small and big variational autoencoder. $p_T$ is scaled by 1.5. }
     \label{fig:VAE_big_small_pt_10}
 \end{figure}
+
+The first thing to notice here is that, as with the channel removal, the distribution shape of the output from the regular autoencoder compared to the
+variational autoencoder is different. The shape from the regular autoencoder is clearly shifted to the left end, with low reconstruction error compared 
+to the shape from the variational autoencoder, where the peak of the distribution is around 1. From the $p_T$ altering test we also see here that the 
+variational autoencoder falls short to the regular one. It is also interesting to observe here that the high $p_T$ events are picked up as anomalous from both
+autoencoders, with both shallow and deep structure. In the regular autoencoder it is arguably even separated distributions. This is also a good sign as it 
+indicates that the network has learned which ranges the $p_T$ should be in for the 3 lepton plus missing energy final state. The most extreme case is 
+as expected in the case where the $p_T$ is multiplied by 10, and the $\delta e_T^{10}$, there is a clear separation in reconstruction error distributions for the
+signal and background for the deep regular autoencoder, and a slightly more subtle separation of reconstruction error distributions for the shallow regular autoencoder.
+In the variational autoencoder, the separation is not as clear, but the signal is still picked up as anomalous. The peaks are separated, but not to the same degree. 
 
 \newpage
