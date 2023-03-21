@@ -82,18 +82,29 @@ M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
   \href{http://dx.doi.org/10.1038/s41567-021-01463-1}{\emph{Nature Physics}
   {\bf 18} (Feb, 2022) 160–166}.
 
-\bibitem{collaboration_2020}
-{The ATLAS collaboration}, \emph{Operation of the {ATLAS} trigger system in run
-  2}, \href{http://dx.doi.org/10.1088/1748-0221/15/10/p10004}{\emph{Journal of
-  Instrumentation} {\bf 15} (oct, 2020) P10004--P10004}.
+\bibitem{Gramstad:1631043}
+E.~Gramstad, \emph{{Searches for Supersymmetry in Di-Lepton Final States with
+  the ATLAS Detector at √s = 7 TeV}},  2013.
 
-\bibitem{Owen:2302730}
-{\scshape ATLAS} collaboration, R.~E. Owen, \emph{{The ATLAS Trigger System}},
-  .
+\bibitem{Airapetian:391176}
+{\scshape ATLAS} collaboration, A.~Airapetian, V.~Grabsky, H.~Hakopian,
+  A.~Vartapetian, B.~Dick, F.~Fares et~al., \emph{{ATLAS detector and physics
+  performance: Technical Design Report, 1}}.
+\newblock Technical design report. ATLAS. CERN, Geneva, 1999.
+
+\bibitem{green_highpt}
+D.~Green, \emph{High $p_T$ Physics at Hadron Colliders}.
+\newblock Cambridge University Press, 2004.
 
 \bibitem{Bernius:2707054}
 C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
   Software Tutorial}}, .
+
+\bibitem{Gillam:2015kta}
+T.~P.~S. Gillam, \emph{{Identifying fake leptons in ATLAS while hunting SUSY in
+  8 TeV proton-proton collisions}}.
+\newblock PhD thesis, Cambridge U., 2015.
+\newblock 10.17863/CAM.16619.
 
 \bibitem{ROOT}
 R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
