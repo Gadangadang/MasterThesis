@@ -1,58 +1,59 @@
 \babel@toc {UKenglish}{}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, and the red dots are the output layer. The arrows shows the connections between the nodes. \relax }}{4}{figure.caption.8}%
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Figures showing different choices of learning rate for a given cost function, with respect to the tunable parameters. Source: \href {https://www.jeremyjordan.me/content/images/2018/02/Screen-Shot-2018-02-24-at-11.47.09-AM.png}{Jeremy Jordan}, accessed 03.10.22.\relax }}{6}{figure.caption.11}%
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Figure depicting a model for an autoencoder. Here the input $\bf {x}$ is the original image, $\bf {x'}$ is a reconstructed version of $\bf {x}$, $g_{\phi }$ is the encoder, $f_{\theta }$ is the decoder, and $z$ is the latent space. Found 14.01.23 \href {https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{here} \cite {weng2018VAE}. \relax }}{9}{figure.caption.14}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Simple diagram of a neural network}}{4}{figure.caption.8}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Explaining concequence of choice of learning rate}}{6}{figure.caption.11}%
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Conceptual autoencoder}}{9}{figure.caption.14}%
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Figure depicting a model for a variational autoencoder. Found 14.01.23 \href {https://lilianweng.github.io/posts/2018-08-12-vae/vae-gaussian.png}{here} \cite {weng2018VAE}. \relax }}{11}{figure.caption.20}%
 \contentsline {figure}{\numberline {1.5}{\ignorespaces Histogram and ROC curve for two well separated distributions.\relax }}{13}{figure.caption.25}%
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Histogram and ROC curve for two poorly separated distributions.\relax }}{13}{figure.caption.26}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces The standard model of elementary particles. Source \href {https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Standard_Model_of_Elementary_Particles.svg/1200px-Standard_Model_of_Elementary_Particles.svg.png}{here}. Accessed 07.10.22\relax }}{15}{figure.caption.27}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Feynman diagram of muon pair production from electron scattering. Here, both Z and $\gamma $ can work as the propagator.\relax }}{17}{figure.caption.33}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Muon decay into an electron, an electron neutrino and a muon neutrino via the $W^{-}$ boson. Read the graph from left to right.\relax }}{17}{figure.caption.34}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Proton-proton collision with heavy neutrino production via SM $W^{\pm }$ boson into 3 lepton final state. Read the graph from left to right.\relax }}{18}{figure.caption.37}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Proton-proton collision with heavy neutrino production via right-handed $W_R^{\pm }$ boson into 3 lepton final state. Read the graph from left to right.\relax }}{19}{figure.caption.38}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The Standard Model}}{15}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Electron scattering diagram}}{17}{figure.caption.33}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Muon decay diagram}}{17}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Heavy neutrino signal diagram, SM W}}{18}{figure.caption.37}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Heavy neutrino signal diagram, right handed W}}{19}{figure.caption.38}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Spherical coordinate definitions with the azimuthal and polar angles $\phi $ and $\theta $. Here figure \ref {fig:transverse_plane} of the transverse plane shows the z-axis into the paper, where as figure \ref {fig:longitudal_plane} of the longitudal plane shows the positive x-axis going out of the paper. Source \href {https://www.duo.uio.no/bitstream/handle/10852/37785/thesis_clean_embedded.pdf?sequence=2&isAllowed=y}{here}. Accessed 16.03.23 \relax }}{21}{figure.caption.41}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Figure describing how particles are detected at ATLAS, fetched from \href {https://cds.cern.ch/record/2770815}{ ATLAS detector slice (and particle visualisations)}, by Sascha Mehlhase \cite {Mehlhase:2770815} . \relax }}{23}{figure.caption.43}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Figure describing the steps to take for data collection at ATLAS, fetched from \href {https://indico.cern.ch/event/1159574/timetable/?view=standard}{Hybrid ATLAS Induction Day + Software Tutorial workshop}, part \href {https://indico.cern.ch/event/860971/contributions/3672974/attachments/1972049/3280896/Atlas_computing_data_preparation_jan20.pdf}{Computing and Data preparation}, held by S.M Wang \cite {Wang:2707056} . \relax }}{24}{figure.caption.45}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Figure describing how quarks and gluons are treated in the detector, and thus why we name them jets, fetched from \href {https://cms.cern/sites/default/files/field/image/Sketch_PartonParticleCaloJet.png}{the CMS webpage}. \relax }}{24}{figure.caption.47}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Proton-proton collision showing the $t\bar {t}$ channel. Here the w bosons decay leptonically and one or more jets are misreconstructed as leptons by the detector. \relax }}{27}{figure.caption.53}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. \relax }}{27}{figure.caption.54}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the W boson decays hadronically. \relax }}{27}{figure.caption.55}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Comparison of the MonteCarlo and data for the three lepton final state with the features $e_{T}^{miss}$ and flavor composition. \relax }}{30}{figure.caption.60}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Note here that the y axis for the RMM's lack every other label, due to lack of space in the y axis of the plot. If looked more closely upon, one can see that each figure have all RMM cells, just that the labels, which are identical to the x axis label, only show every other. Note also here that the labels only tell which particle are used for that row/column, i.e in figure \ref {fig:rmm_higgs_event} in row 0 column 3 we have the invariant mass of the first and second ljet. The RMM plots were created using Plotly\cite {plotly}. \relax }}{32}{figure.caption.65}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets. \relax }}{33}{figure.caption.68}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Small autoencoder architecture.\relax }}{34}{figure.caption.70}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Large autoencoder architecture.\relax }}{35}{figure.caption.71}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Small variational autoencoder architecture.\relax }}{35}{figure.caption.73}%
-\contentsline {figure}{\numberline {3.14}{\ignorespaces Large variational autoencoder architecture.\relax }}{36}{figure.caption.74}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ATLAS detector longitudal and azimuthal diagrams}}{21}{figure.caption.41}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Detector tracking of particles}}{23}{figure.caption.43}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Steps from data collection to physics results}}{24}{figure.caption.45}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Jet produciton from pp-collisions to detector}}{24}{figure.caption.47}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces $t\bar {t}$ production diagram}}{27}{figure.caption.53}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Higgs production diagram}}{27}{figure.caption.54}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Zeejets channel diagram}}{27}{figure.caption.55}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces 3 lepton + $e_T^{miss}$ MonteCarlo and ATLAS data comparison}}{30}{figure.caption.60}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces 2 lepton + $e_T^{miss}$ MonteCarlo and ATLAS data comparison}}{31}{figure.caption.61}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Single event RMM plot}}{34}{figure.caption.71}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Megaset structure diagram}}{35}{figure.caption.74}%
+\contentsline {figure}{\numberline {3.12}{\ignorespaces AE | Small network architecture}}{36}{figure.caption.76}%
+\contentsline {figure}{\numberline {3.13}{\ignorespaces AE | Large network architecture}}{37}{figure.caption.77}%
+\contentsline {figure}{\numberline {3.14}{\ignorespaces VAE | Small network architecture}}{37}{figure.caption.79}%
+\contentsline {figure}{\numberline {3.15}{\ignorespaces Large variational autoencoder architecture.\relax }}{38}{figure.caption.80}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces AE | Reconstruction error using Higgs channel as signal}}{39}{figure.caption.81}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces AE | Reconstruction error using Singletop channel as signal}}{40}{figure.caption.82}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces AE | Reconstruction error using ttbar channel as signal}}{40}{figure.caption.83}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces VAE | Reconstruction error using Higgs channel as signal}}{41}{figure.caption.84}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces VAE | Reconstruction error using Singletop channel as signal}}{41}{figure.caption.85}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces VAE | Reconstruction error using ttbar channel as signal}}{42}{figure.caption.86}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{42}{figure.caption.88}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{43}{figure.caption.89}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{43}{figure.caption.90}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{44}{figure.caption.91}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces AE | Reconstruction error $p_T$ altering of 10}}{44}{figure.caption.92}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{45}{figure.caption.93}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{45}{figure.caption.94}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{46}{figure.caption.95}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{46}{figure.caption.96}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{47}{figure.caption.97}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{48}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Reconstruction error and etmiss bump search on the $450-300$ and $800-50$ susy signals. The reconstruction error cut is set to 1.\relax }}{49}{figure.caption.101}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. \relax }}{49}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{50}{figure.caption.104}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AE | Reconstruction error using Higgs channel as signal}}{41}{figure.caption.87}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces AE | Reconstruction error using Singletop channel as signal}}{42}{figure.caption.88}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces AE | Reconstruction error using ttbar channel as signal}}{42}{figure.caption.89}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces VAE | Reconstruction error using Higgs channel as signal}}{42}{figure.caption.90}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces VAE | Reconstruction error using Singletop channel as signal}}{43}{figure.caption.91}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces VAE | Reconstruction error using ttbar channel as signal}}{43}{figure.caption.92}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{44}{figure.caption.94}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{44}{figure.caption.95}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{45}{figure.caption.96}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{45}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces AE | Reconstruction error $p_T$ altering of 10}}{46}{figure.caption.98}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{46}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{47}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{47}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{48}{figure.caption.102}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{48}{figure.caption.103}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces $e_T^{miss}$ bump search for regular autoencoder}}{49}{figure.caption.105}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces $e_T^{miss}$ bump search for variational autoencoder}}{50}{figure.caption.107}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. \relax }}{50}{figure.caption.109}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{51}{figure.caption.110}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {21}{\ignorespaces \relax }}{58}{figure.caption.112}%
-\contentsline {figure}{\numberline {22}{\ignorespaces \relax }}{59}{figure.caption.113}%
-\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{60}{figure.caption.114}%
-\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{61}{figure.caption.116}%
-\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{62}{figure.caption.117}%
-\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{63}{figure.caption.118}%
+\contentsline {figure}{\numberline {21}{\ignorespaces \relax }}{60}{figure.caption.118}%
+\contentsline {figure}{\numberline {22}{\ignorespaces \relax }}{61}{figure.caption.119}%
+\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{62}{figure.caption.120}%
+\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{63}{figure.caption.122}%
+\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{64}{figure.caption.123}%
+\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{65}{figure.caption.124}%

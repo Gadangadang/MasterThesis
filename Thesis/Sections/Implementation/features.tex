@@ -93,22 +93,143 @@ unlabeled.
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf}
-        \caption{Missing transverse energy for the three lepton final state. The histogram contains the entire Run 2 dataset.}
+        \caption{Missing transverse energy for the three lepton final state in GeV. The histogram contains the entire Run 2 dataset.}
         \label{fig:etmiss}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/m_ele_0_ele_1_3lep.pdf}
-        \caption{Invariant mass for the first and second electron. The histogram contains the entire Run 2 dataset. }
-        \label{fig:}
+        \caption{Invariant mass for the first and second electron in GeV. The histogram contains the entire Run 2 dataset. }
+        \label{fig:mll_3lep}
     \end{subfigure}
     \hfill        
-    \caption{Comparison of the MonteCarlo and data for the three lepton final state with the features $e_{T}^{miss}$ and flavor composition.
+    \caption[3 lepton + $e_T^{miss}$ MonteCarlo and ATLAS data comparison]{Comparison of the MonteCarlo and data for the three lepton + $e_T^{miss}$ final state with the features $e_{T}^{miss}$ and flavor composition.
     }
     \label{fig:MC_Data_comp}
 \end{figure}
 
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between Monte Carlo and ATLAS data, $e_T^{miss}$ 
-and $m(ele_0, ele_1)$. We see that both $e_T^{miss}$ and $m(ele_0, ele_1)$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
-move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis under the folder 
-\href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}.
+and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset. We see that both $e_T^{miss}$ and $m(ele_0, ele_1)$ satisfy a good ratio between Monte Carlo and ATLAS data, thus we can safely 
+move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis at 
+\href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP3}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP3$}} under the 3lep folder. \par 
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}{.6\textwidth}
+        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep2/e_T_miss_2lep.pdf}
+        \caption{Missing transverse energy for the three lepton final state in GeV. The histogram contains the entire Run 2 dataset. Note here the lack of good overlap from about
+        200-500 GeV.}
+        \label{fig:etmiss_2lep}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.6\textwidth}
+        \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep2/m_ele_0_ele_1_2lep.pdf}
+        \caption{Invariant mass for the first and second electron in GeV. The histogram contains the entire Run 2 dataset. Note the sharp reduction of events from 10-70 GeV.}
+        \label{fig:mll_2lep}
+    \end{subfigure}
+    \hfill        
+    \caption[2 lepton + $e_T^{miss}$ MonteCarlo and ATLAS data comparison]{Comparison of the MonteCarlo and data for the 2 lepton + $e_T^{miss}$ final state with the features $e_{T}^{miss}$ and flavor composition.
+    }
+    \label{fig:MC_Data_comp_2lep}
+\end{figure}
+The same checks were done for the 2 lepton + $e_T^{miss}$ dataset. In figure \ref{fig:MC_Data_comp_2lep} we see that the features $e_T^{miss}$ and $m(ele_0, ele_1)$ 
+do not satisfy the same ratio between SM MC and ATLAS data, as with the 3 lepton + $e_T^{miss}$ case. It is suspected that the trigger matching and 
+triggers are not implemented properly, but neither the author or the supervisors have found a solution to the issue, and due to time constraints, chose to 
+move forward with the analysis regardless. Thus, for all results regarding the 2 lepton + $e_T^{miss}$ dataset should be interpreted with this in mind. One attempt can be shown in 
+figure \ref{fig:mll_2lep} where a cut on the invariant mass above 70 GeV of at least the two leptons with the highest energy, to try to acommodate the trigger issue. 
+It did not seem to work. All features were checked, and can be found in the Github repository for this thesis at 
+\href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP2}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP2$}} under the 2lep folder.
+
+
+
+\subsubsection*{Triggers }\label{sec:triggers}
+The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ dataset are written below:
+
+
+
+   
+
+\begin{table}[h!]
+    \centering
+    \caption[2015 triggers table]{Triggers used in the 2015 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+\begin{tabular}{|l|l|l|}
+\hline
+                      & Name & Description \\ \hline
+\multirow{6}{*}{2015} & $HLT\_2e15\_lhvloose\_nod0\_L12EM13VH$      &             \\ \cline{2-3} 
+                      & $HLT\_2e12_lhloose_L12EM10VH$      &             \\ \cline{2-3} 
+                      & $HLT\_2mu10$     &             \\ \cline{2-3} 
+                      & $HLT\_mu18\_mu8noL1$      &             \\ \cline{2-3} 
+                      & $HLT\_e17\_lhloose\_mu14$    &             \\ \cline{2-3} 
+                      & $HLT\_e7\_lhmedium\_mu24$      &             \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+\begin{table}[h!]
+    \centering
+    \caption[2016 triggers table]{Triggers used in the 2016 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+    \begin{tabular}{|l|l|l|}
+    \hline
+                          & Name & Description \\ \hline
+    \multirow{9}{*}{2016} & $HLT\_2e15\_lhvloose\_nod0\_L12EM13VH$      &             \\ \cline{2-3} 
+                          & $HLT\_2e17\_lhvloose\_nod0$      &             \\ \cline{2-3} 
+                          & $HLT\_2mu10$     &             \\ \cline{2-3} 
+                          & $HLT\_2mu14$     &             \\ \cline{2-3} 
+                          & $HLT\_mu20\_mu8noL1$     &             \\ \cline{2-3} 
+                          & $HLT\_mu22\_mu8noL1$      &             \\ \cline{2-3} 
+                          & $HLT\_e17\_lhloose\_nod0\_mu14$      &             \\ \cline{2-3} 
+                          & $HLT\_e24\_lhmedium\_nod0\_L1EM20VHI\_mu8noL1$     &             \\ \cline{2-3} 
+                          & $HLT\_e7\_lhmedium\_nod0\_mu24$      &             \\ \hline
+    \end{tabular}
+    \end{table}
+
+
+
+
+\begin{table}[h!]
+    \centering
+    \caption[2017 triggers table]{Triggers used in the 2017 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+    \begin{tabular}{|l|l|l|}
+    \hline
+                            & Name & Description \\ \hline
+    \multirow{7}{*}{2017} & $HLT\_2e17\_lhvloose\_nod0\_L12EM15VHI$      &             \\ \cline{2-3} 
+                            & $HLT\_2e24\_lhvloose\_nod0$        &             \\ \cline{2-3} 
+                            & $HLT\_2mu14$     &             \\ \cline{2-3} 
+                            &  $HLT\_mu22\_mu8noL1$     &             \\ \cline{2-3} 
+                            &  $HLT\_e17\_lhloose\_nod0\_mu14$   &             \\ \cline{2-3} 
+                            &   $HLT\_e26\_lhmedium\_nod0\_mu8noL1$    &             \\ \cline{2-3} 
+                            
+                            & $HLT\_e7\_lhmedium\_nod0\_mu24$    &  \\ \hline
+    \end{tabular}
+    \end{table}
+
+
+    \begin{table}[h!]
+        \centering
+        \caption[2018 triggers table]{Triggers used in the 2018 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+        \begin{tabular}{|l|l|l|}
+        \hline
+                                & Name & Description \\ \hline
+        \multirow{7}{*}{2018} & $HLT\_2e17\_lhvloose\_nod0\_L12EM15VHI$      &             \\ \cline{2-3} 
+                                & $HLT\_2e24\_lhvloose\_nod0$        &             \\ \cline{2-3} 
+                                & $HLT\_2mu14$     &             \\ \cline{2-3} 
+                                &  $HLT\_mu22\_mu8noL1$     &             \\ \cline{2-3} 
+                                &  $HLT\_e17\_lhloose\_nod0\_mu14$   &             \\ \cline{2-3} 
+                                &   $HLT\_e26\_lhmedium\_nod0\_mu8noL1$    &             \\ \cline{2-3} 
+                                
+                                & $HLT\_e7\_lhmedium\_nod0\_mu24$    & \\ \hline
+        \end{tabular}
+        \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
