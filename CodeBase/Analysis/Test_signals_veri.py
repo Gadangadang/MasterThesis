@@ -100,16 +100,16 @@ class SignalDumVeri(model):
             sig_name = signal_name[21:31]
             self.checkReconError(self.channels, sig_name=f"{sig_name}") 
             
-            histoname = "Transverse missing energy for MC val and Susy signal"
-            etmiss_histoname = r"$e_T^{miss}$"
-            featurename = r"$E_{T}^{miss}$"
+            histoname = "etmiss_no_reconerr_cut"
+            etmiss_histoname = r"$e_T^{miss}$ no reconstruction error cut"
+            featurename = r"$E_{T}^{miss}$ [GeV]"
             
             plotetmiss_cut = PlotHistogram(STORE_IMG_PATH, 
                                             self.X_val_eTmiss, 
                                             self.err_val, 
                                             val_cat, 
                                             histoname=etmiss_histoname, 
-                                            featurename=r"$e_T^{miss}$",
+                                            featurename=featurename,
                                             histotitle=histoname,
                                             signal=self.signal_eTmiss[sig_idx], 
                                             signal_weights=self.sig_err, 
@@ -184,25 +184,27 @@ class SignalDumVeri(model):
                 
                 
                 
-                histoname = "Transverse missing energy for MC val and Susy signal"
+                histoname = f"etmiss_recon_errcut_{recon_er_cut:.2f}"
                 etmiss_histoname = r"$e_T^{miss}$ with recon err cut of "+ f"{recon_er_cut:.2f}"
-                featurename = r"$E_{T}^{miss}$"
+                featurename = r"$E_{T}^{miss}$ [GeV]"
+                
+                
                 
                 plotetmiss_cut = PlotHistogram(STORE_IMG_PATH, 
                                                etmiss_bkg, 
                                                val_weights_cut, 
                                                val_cats_cut, 
-                                               histoname=histoname, 
-                                               featurename=etmiss_histoname,
-                                               histotitle=f"recon_errcut_{recon_er_cut:.2f}",
+                                               histoname=etmiss_histoname, 
+                                               featurename=featurename,
+                                               histotitle=histoname,
                                                signal=etmiss_sig, 
                                                signal_weights=sig_weights_cut, 
                                                signal_cats=signal_cats_cut)
                 plotetmiss_cut.histogram(self.channels, sig_name=sig_name, etmiss_flag=True)
                 
-                histoname = "Trilepton invariant mass for MC val and Susy signal"
-                histo_title = f"Trilepton mass with recon err cut of {recon_er_cut:.2f}"
-                featurename = "Trilepton mass"
+                histoname = f"Trilepton invariant mass with recon err cut of {recon_er_cut:.2f}"
+                histo_title =  f"mlll_recon_errcut_{recon_er_cut:.2f}"
+                featurename = r"$m_{lll}$ [GeV]"
                 PH = PlotHistogram(self.path, 
                                    trilep_mass_val, 
                                    val_weights_cut, 

@@ -384,7 +384,7 @@ class RunAE:
         fig, ax = plt.subplots()
 
         try:
-            N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
+            N, bins = np.histogram(sig_err, bins=40, weights=sig_err_w)
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
             ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
             n_bins = bins

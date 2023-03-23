@@ -81,7 +81,7 @@ class PlotHistogram:
      
         
         
-    def histogram(self, channels: list, sig_name="nosig", bins=25, etmiss_flag=False)->None:
+    def histogram(self, channels: list, sig_name="nosig", bins=40, etmiss_flag=False)->None:
         """_summary_
 
         Args:

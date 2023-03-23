@@ -376,7 +376,7 @@ class RunVAE:
 
         try:
             print("in try 1")
-            N, bins = np.histogram(sig_err, bins=25, weights=sig_err_w)
+            N, bins = np.histogram(sig_err, bins=40, weights=sig_err_w)
             print("in try 2")
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
             print("in try 3")
