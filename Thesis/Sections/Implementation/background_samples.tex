@@ -1,31 +1,40 @@
 \section{Background samples}
 
-\subsection*{3 lepton + $e_T^{miss}$ background MonteCarlo}
 To look for anomalies in the three lepton final state we need to train on background MonteCarlo samples with that specific final state. 
 This means in a sense that we want the autoencoder to learn what is expected from the Standard model in terms of this final state. 
-The 3 lepton background MonteCarlo contains the following channels:
+The 2 and 3 lepton + $e_T^{miss}$ background MonteCarlo contains the following channels:
 
-\begin{enumerate}
-    \item Wjets
-    \item Triboson
-    \item Higgs
-    \item Zttjets
-    \item Zmmjets
-    \item Zeejets
-    \item SingleTop
-    \item TopOther
-    \item ttbar
-    \item Diboson2L
-    \item Diboson3L
-    \item Diboson4L
-\end{enumerate}
+\begin{table}
+    \centering
+    \caption[SM MC channels]{SM MC channels for both the 2 and 3 lepton + $e_T^{miss}$ final state background. }
+    \label{tab:bkg_channels}
+    \begin{tabular}{|cc|}
+    \hline
+    \multicolumn{1}{|c|}{\textbf{3 lepton + $e_T^{miss}$}} & \textbf{2 lepton + $e_T^{miss}$} \\ \hline
+    \multicolumn{2}{|c|}{\textbf{Channel names:}}                                             \\ \hline
+    \multicolumn{1}{|c|}{Wjets}                            & Wjets                            \\ \hline
+    \multicolumn{1}{|c|}{ttbar}                            & ttbar                            \\ \hline
+    \multicolumn{1}{|c|}{Singletop}                        & Singletop                        \\ \hline
+    \multicolumn{1}{|c|}{ZeeJets}                          & ZeeJets                          \\ \hline
+    \multicolumn{1}{|c|}{ZmmJets}                          & ZmmJets                          \\ \hline
+    \multicolumn{1}{|c|}{ZttJets}                          & ZttJets                          \\ \hline
+    \multicolumn{1}{|c|}{Higgs}                            & Diboson                          \\ \hline
+    \multicolumn{1}{|c|}{Triboson}                         &                                  \\ \hline
+    \multicolumn{1}{|c|}{TopOther}                         &                                  \\ \hline
+    \multicolumn{1}{|c|}{Diboson2L}                        &                                  \\ \hline
+    \multicolumn{1}{|c|}{Diboson3L}                        &                                  \\ \hline
+    \multicolumn{1}{|c|}{Diboson4L}                        &                                  \\ \hline
+\end{tabular}
+\end{table}
 
-Below are three examples of what some of the samples contains. The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets channels. 
 
-\begin{figure}[h!]
+Below are three Feynamn diagrams, two of which are both represented in the 2 and 3 lepton + $e_T^{miss}$ background MonteCarlo shown in table \ref{tab:bkg_channels}. 
+The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets channels. 
+
+\begin{figure}
     \centering
     \caption[$t\bar{t}$ production diagram]{Proton-proton collision showing the $t\bar{t}$ channel. Here the w bosons decay leptonically and one or more jets
-    are misreconstructed as leptons by the detector. }
+    can be misreconstructed as fake leptons by the detector. }
 
 \begin{tikzpicture}
     \begin{feynman}
@@ -81,7 +90,7 @@ Below are three examples of what some of the samples contains. The selected ones
     \label{fig:ttbar_feynman}
     \end{figure}
 
-    \begin{figure}[h!]
+    \begin{figure}
         \centering
         \caption[Higgs production diagram]{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. }
     
@@ -131,9 +140,9 @@ Below are three examples of what some of the samples contains. The selected ones
         \label{fig:higgs_feynman}
         \end{figure}
         
-        \begin{figure}[h!]
+        \begin{figure}
             \centering
-            \caption[Zeejets channel diagram]{Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the W boson
+            \caption[Zeejets channel diagram]{Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the gluon
             decays hadronically. }
         
         \begin{tikzpicture}
@@ -186,19 +195,4 @@ Below are three examples of what some of the samples contains. The selected ones
             \label{fig:zeejets_feynman}
             \end{figure}
 
-\subsection*{2 lepton + $e_T^{miss}$ background MonteCarlo}
-
-\begin{enumerate}
-    \item singletop 
-    \item Diboson 
-    \item Zeejets 
-    \item Zmmjets 
-    \item Zttjets 
-    \item Wjets 
-    \item ttbar
-   
-\end{enumerate}
-
- 
-Below are two examples of what some of the samples contains. The selected ones are likely Feynman diagrams for $t\bar{t}$ and diboson. 
-
+\newpage
