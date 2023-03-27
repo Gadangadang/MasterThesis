@@ -77,8 +77,32 @@ The figures with the best significance are shown below:
         \label{fig:AE_2lep_small_800_cut_etmiss}
     \end{subfigure}
     \hfill      
-    \caption[$e_T^{miss}$ best cuts for regular autoencoder]{$e_T^{miss}$ distribution for small (left) and large (right) autoencoder 
-    . Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
+    \caption[$e_T^{miss}$ best cuts for regular autoencoder]{$e_T^{miss}$ distribution for small (left) and large (right) autoencoder.
+    Each figure used the best cut of three possibilities, the remainding results are in the appendix. By best, it is meant that the cut
+    gave the best significance. Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
     and figures \ref{fig:AE_2lep_big_800} and \ref{fig:AE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
     \label{fig:AE_2lep_recon_err_both_sig_cut_etmiss}
 \end{figure}
+
+In figure \ref{fig:AE_2lep_recon_err_both_sig_cut_etmiss} we have the $e_T^{miss}$ distributions for the best cuts for the regular autoencoder models.
+The cuts then gives rise to the significance for each signal region. Now, one indication that the method could work is if the models can improve the 
+significance from just looking at the $e_T^{miss}$ distributions of the background and the signal in mind. The significances corresponding to each 
+reconstruction error cuts are all listed below. Note here that for $e_T^{miss}$, no physics basedcuts have been used, but there are certain cuts 
+that can increase the significance, so the results in the following table should be thought carefully of.
+
+\begin{table}[]
+    \centering
+    \begin{tabular}{|llllllll|}
+    \hline
+    \multicolumn{8}{|c|}{Regular Autoencoder}                                                                                                                                    \\ \hline
+    \multicolumn{4}{|c|}{Small}                                                                    & \multicolumn{4}{c|}{Large}                                                  \\ \hline
+    \multicolumn{2}{|l|}{450p300}                  & \multicolumn{2}{l|}{800p50}                   & \multicolumn{2}{l|}{450p300}                  & \multicolumn{2}{l|}{800p50} \\ \hline
+    \multicolumn{8}{|c|}{Pre reconstruction error cut significance}                                                                                                                           \\ \hline
+    \multicolumn{1}{|l|}{1.38} & \multicolumn{1}{l|}{1.38} & \multicolumn{1}{l|}{0.13} & \multicolumn{1}{l|}{0.13} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   &   \\ \hline
+    \multicolumn{8}{|c|}{Post reconstruction error  cut significance}                                                                                                                         \\ \hline
+    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   &   \\ \hline
+    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   &   \\ \hline
+    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   &   \\ \hline
+    \end{tabular}
+\end{table}
+
