@@ -3,13 +3,15 @@
 \contentsline {table}{\numberline {1.1}{\ignorespaces Notation\relax }}{5}{table.caption.9}%
 \contentsline {table}{\numberline {1.2}{\ignorespaces Table containing notation used for deriving the mathematical formulas for the neural network \cite {FYSSTK}\relax }}{5}{table.caption.9}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass.\relax }}{16}{table.caption.29}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass.\relax }}{16}{table.caption.30}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces SM MC channels}}{27}{table.caption.58}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces SM MC channels}}{28}{table.caption.58}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces 2015 triggers table}}{33}{table.caption.68}%
 \contentsline {table}{\numberline {3.3}{\ignorespaces 2016 triggers table}}{33}{table.caption.69}%
 \contentsline {table}{\numberline {3.4}{\ignorespaces 2017 triggers table}}{33}{table.caption.70}%
-\contentsline {table}{\numberline {3.5}{\ignorespaces 2018 triggers table}}{33}{table.caption.71}%
+\contentsline {table}{\numberline {3.5}{\ignorespaces 2018 triggers table}}{34}{table.caption.71}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Significance table regular autoencoder}}{57}{table.caption.122}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Significance table variational autoencoder}}{57}{table.caption.123}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

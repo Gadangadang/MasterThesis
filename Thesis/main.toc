@@ -12,17 +12,18 @@
 \contentsline {chapter}{\numberline {3}Implementation}{21}{chapter.3}%
 \contentsline {section}{\numberline {3.1}The ATLAS detector}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}ROOT}{25}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Background samples}{25}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Background samples}{27}{section.3.3}%
 \contentsline {section}{\numberline {3.4}The dataset features}{29}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Code implementation}{35}{section.3.5}%
-\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{36}{section.3.6}%
-\contentsline {section}{\numberline {3.7}The search strategy}{40}{section.3.7}%
+\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{39}{section.3.6}%
+\contentsline {section}{\numberline {3.7}The search strategy}{42}{section.3.7}%
 \contentsline {chapter}{\numberline {4}Results and Discussion}{43}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{43}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{46}{section.4.2}%
-\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{48}{section.4.3}%
-\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{49}{section.4.4}%
-\contentsline {chapter}{Conclusion}{55}{chapter*.123}%
-\contentsline {chapter}{Appendices}{57}{section*.124}%
-\contentsline {chapter}{Appendix A}{59}{appendix*.125}%
-\contentsline {chapter}{Appendix B}{61}{appendix*.126}%
+\contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{51}{section.4.2}%
+\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{54}{section.4.3}%
+\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{55}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{57}{section.4.5}%
+\contentsline {chapter}{Conclusion}{59}{chapter*.124}%
+\contentsline {chapter}{Appendices}{61}{section*.125}%
+\contentsline {chapter}{Appendix A}{63}{appendix*.126}%
+\contentsline {chapter}{Appendix B}{65}{appendix*.127}%

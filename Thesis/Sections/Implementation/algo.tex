@@ -14,7 +14,7 @@ but at a cost of flexibility and lack of potential non-linear structure in the a
 
 Using the functional structure, a general neural network in the Tensorflow API can be constructed as shown below. 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_general}]
 import tensorflow as tf
@@ -52,7 +52,7 @@ nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
 The neural network here contains one input layer, two hidden layers, and an output layer. The choice of nodes and activation functions are 
 arbitrary here as the use case has not been defined. Note that this is exactly the same as the previous example, but using the sequential structure.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_seq_example}]
 import tensorflow as tf
@@ -82,7 +82,7 @@ nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"])
 An example of the RMM matrices used in this thesis is shown in figure \ref{fig:rmm_singular_events} below:
 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.8\textwidth}
         \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_6993776_diboson4L.pdf}
@@ -127,7 +127,7 @@ The two lepton dataset contains about 1.5 - 2 Terra bytes of data when implement
 b- and ljets, 5 electrons and 5 muons, as for the 3 lepton dataset. This is too much to hold in memory at the same time, thus it had to 
 be split into several smaller datasets, called megasets. Below is a figure visualizing the structure used. 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Figures/2lep_config/megaset_struct.jpeg}
     \caption[Megaset structure diagram]{Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, 
@@ -151,7 +151,7 @@ reloaded into a new model, thus the weights are still trained on the entire set,
 
 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:megabatch_training}]
 for megaset in range(totmegasets):

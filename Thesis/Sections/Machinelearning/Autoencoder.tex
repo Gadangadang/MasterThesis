@@ -14,7 +14,7 @@ A good example to illustrate this is image reconstruction, illustrated in figure
 Suppose you have an image, and want to reconstruct it. By feeding the encoder an image, 
 and comparing the decoder output to the actual image, the autoencoder can tune itself to recreate the images it trains on. 
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/autoencoder_imagedenoising.png}
     \caption[Conceptual autoencoder]{Figure depicting a model for an autoencoder. Here the input $\bf{x}$ is the original image, $\bf{x'}$ is a reconstructed version of $\bf{x}$, $g_{\phi}$ is the encoder, $f_{\theta}$ is the decoder, and $z$ is the latent space. Found 14.01.23 \href{https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{here} \cite{weng2018VAE}. }
     \label{fig:ae_denoise}
@@ -139,7 +139,7 @@ where $z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$ and $ \epsilon
 
 
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/vae-gaussian.png}
     \caption{Figure depicting a model for a variational autoencoder. Found 14.01.23 \href{https://lilianweng.github.io/posts/2018-08-12-vae/vae-gaussian.png}{here} \cite{weng2018VAE}. }
     \label{fig:vae}

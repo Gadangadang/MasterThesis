@@ -1,27 +1,25 @@
 \section{Neural Networks}
-There are several categories of statistical algorithms for data analysis within machine learning.
-Amongst them are neural networks, which have for the last decade exponentially been used
-within industry and academia for a number of usecases. From image analysis to weather prediction,
-these models are used extensively. \par
-Neural networks, or feed forward neural networks (FFNN), are based on a few principles.
-First, the data is fed forward through the network. The end output is evaluated in some fashion, 
-and corrections are then back propagated through the network, updating the weights and biases. 
-This "training" is done until a sufficient threshold is met. A general layout of a neural network is displayed in
-figure \ref{fig:nndiagram}.
+In the field of machine learning, statistical algorithms are commonly employed for data analysis. 
+Neural networks, a specific category of such algorithms, have experienced exponential growth in 
+usage in both industry and academia over the past decade. These models find extensive use in a 
+variety of applications, ranging from image analysis to weather prediction. The fundamental principle 
+behind feed forward neural networks (FFNN) involves the data being fed forward through the network,
+ with the end output evaluated and corrections then back propagated through the network to update 
+ the weights and biases. This training process is repeated until a certain threshold is met. 
+ figure \ref{fig:nndiagram} depicts a general layout of a neural network, wherein the input layer consists of 
+ one node per feature in the dataset. The number of hidden layers and nodes per layer can be 
+ fine-tuned, with the last hidden layer connected to the output layer. The latter is determined 
+ by the problem being addressed, and in the case of the binary classification problem depicted 
+ in figure \ref{fig:nndiagram}, the nodes interact via tunable weights $w$ and biases $b$ that must 
+ be trained on the dataset prior to making predictions.
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
     \caption[Simple diagram of a neural network]{Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, 
     and the red dots are the output layer. The arrows shows the connections between the nodes. }
     \label{fig:nndiagram}
 \end{figure}
 
-The input layer has the same shape of the dataset one uses to train or predict on, with one node for each feature in the dataset.
-The next layers are the hidden layers. For a given network, the amount of hidden layers can be tuned, as well as the number of 
-nodes per layer. Finally, the last hidden layer is connected to the ouput layer, which is determined by the aim of the problem. 
-In the case of figure \ref{fig:nndiagram}, this neural network would represent a binary classification problem, in other words, two categories. 
-The nodes in the network interact through so-called weights $w$ and biases $b$. These are known as tunable parameters, 
-which needs to be trained on the dataset before any prediction can be made. \par 
 In order to avoid confusion, we will adhere to table \ref{tab:notation} for the notation used in the following sections.
 
 % Define new columns types 
@@ -63,8 +61,9 @@ In order to avoid confusion, we will adhere to table \ref{tab:notation} for the 
    
 
 \subsection*{Gradient descent}
-Let us now consider a general n-dimensional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. We want the set of $\boldsymbol{\theta}$
-such that we minimize a cost function with respect to the data and target. One way to solve this problem is using ordinary least squares. For this approach, 
+Let us now consider a general n-dimensional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. 
+Our objective is to find the set of $\boldsymbol{\theta}$ to minimize a cost function with respect to the data and target. 
+One way to solve this problem is using ordinary least squares. For this approach, 
 the optimal paramters $\boldsymbol{\theta_{opt}}$ are derived from minimizing the cost function, as shown here:
 \begin{equation*}
     \boldsymbol{\theta_{opt}} = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{t},
@@ -82,7 +81,7 @@ where $\eta$ is a step size, also called the learning rate. The choice of $\eta$
 hyperparameters\footnote{Give reference to hyperparameters}
 that can be altered, and that highly depend on the given problem. With regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
 
-\begin{figure}
+\begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/lr_choice.png}
     \caption[Explaining concequence of choice of learning rate]{Figures showing different choices of learning rate for a given cost function, with respect to the tunable parameters. 
     Source: \href{https://www.jeremyjordan.me/content/images/2018/02/Screen-Shot-2018-02-24-at-11.47.09-AM.png}{Jeremy Jordan}, accessed 03.10.22.}

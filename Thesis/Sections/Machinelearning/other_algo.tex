@@ -56,7 +56,7 @@ the more "north west"\cite{FAWCETT2006861} of the plot the curve is, the better.
 is calculated from. For simplicity, the classifier output is in this case just two normal distributions with the mean and standard deviation 
 listed in the legend of the distribution plots.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/Machinelearning/histo_example_Sep.pdf}
@@ -75,7 +75,7 @@ listed in the legend of the distribution plots.
     \label{fig:roc_example_good}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/Machinelearning/histo_example_bad.pdf}
@@ -96,4 +96,16 @@ listed in the legend of the distribution plots.
 
 In figure \ref{fig:roc_example_good} we have a histogram showing two distributions that are well separated, and the ROC curve that is calculated 
 based on thos distributions. If we compare this to figure \ref{fig:roc_example_bad}, we see that the better separation of the two distributions, the better ROC curve. 
-This is a useful tool to use with the autoencoder, as it provides valueable insight beyond just looking at the output distributions. 
+This is a useful tool to use with the autoencoder, as it provides valueable insight beyond just looking at the output distributions.
+
+\subsection*{Statistical significance}
+In the frequentist statistics, the Poisson distribution can be approximated with a Gaussian distribution in the limit of large number of events\cite{magnar}. 
+The expression for the significance is given then as 
+\begin{equation}\label{eq:significance_large}
+    Z = \frac{s}{\sqrt{b}},
+\end{equation}
+where s is the amount of signal, and b is the amount of background. For low statistics we have that the significance is given as 
+\begin{equation}\label{eq:significance_small}
+    Z = \sqrt{2\left[(s+b)\ln(1+\frac{s}{b})-s\right]}.
+\end{equation}
+It can be shown that in the limit where $s << b$, the two expressions are approimately the same\cite{magnar}.

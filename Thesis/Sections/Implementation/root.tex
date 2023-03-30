@@ -1,15 +1,11 @@
 \section{ROOT}
 
-It is a lot. \cite{ROOT}
-\subsection*{ROOT, memory management etc.}
-
-
 \subsection*{N tuples}
 
 The main datastructure of ROOT is the so called N tuple structure. This datastructure contains each property for each type of particle in a given event, yeilding
 a ragged structure. 
 
-\begin{table}[h!]
+\begin{table}[H]
     \begin{tabular}{|l|l|l|l|l|l|l|}
     \cline{1-5} \cline{7-7}
         & $jetP_T$      & $jetPhi$     & $lepP_T$             & $lepPhi$             &  & Rowlength \\ \cline{1-5} \cline{7-7} 
@@ -34,7 +30,7 @@ k. Notice here that if the variable already exist as a column in the dataframe, 
 columns to create new one. More complicated variables, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
 found or calculated using C++ functions. An example of such a function is shown below the python code listing. 
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
 import ROOT as R
@@ -92,7 +88,7 @@ The loop then does event selection for each channel sample, defining new variabl
 Some variables are constructed using variables already in the ROOT files, such as energy and mass and so on, which through custom C++ functions
 can be added. In the codelisting below we see a custom C++ function which is used in this thesis.
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=C++, style=cppstyle, label={code:cpp_func_example}]
 double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
@@ -124,7 +120,7 @@ The C++ function listed above creates Lorentzvectors for two particles, and then
 this function will be used on all the leptons in a given event, and in the case that one particle or both do not exist, the C++ function will
 return 0 as the invariant mass. \par
 
-\begin{figure}
+\begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_2}]
 import pandas as pd 

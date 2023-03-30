@@ -847,6 +847,7 @@ INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/tools/.tex
 INPUT ./Sections/Machinelearning/AnomalyDetection.tex
 INPUT ./Sections/Machinelearning/AnomalyDetection.tex
+INPUT /Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
 INPUT ./Sections/Machinelearning/Neuralnetworks.tex
 INPUT ./Sections/Machinelearning/Neuralnetworks.tex
 INPUT ./Figures/Machinelearning/nn_diagram.jpeg
@@ -1184,6 +1185,8 @@ INPUT ./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_rec
 INPUT ./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf
 INPUT ./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf
 INPUT ./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf
+INPUT ./Sections/Results/lacks_challenges.tex
+INPUT ./Sections/Results/lacks_challenges.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Appendix/Appendix1.tex
