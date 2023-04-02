@@ -39,7 +39,7 @@ Below are some of the results from training on the 2 lepton case, using the same
         \label{fig:AE_2lep_small_800}
     \end{subfigure}
     \hfill      
-    \caption[2lep reconstruction error with SUSY signals]{Reconstruction error distribution for the small (left) and large (right)
+    \caption[2lep reconstruction error with SUSY signals for AE]{Reconstruction error distribution for the small (left) and large (right)
     regular autoencoder, using the 2 lepton + $e_T^{miss}$ dataset as training and test set. The signals used are the same SUSY signals 
     from the 3 lepton case. Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
     and figures \ref{fig:AE_2lep_big_800} and \ref{fig:AE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
@@ -137,25 +137,111 @@ contains low statistics, in other words, the weights are just a lot lower, compa
 This only happens in the case we use equation \ref{eq:significance_small}, and is either because the square root has a negative term inside it, or because the logarithm 
 has a negative term inside it. \par
 
+From figure \ref{fig:VAE_2lep_recon_err_both_sig} below we have the variational autoencoder output for the 2 lepton case. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+        \caption{ }
+        \label{fig:VAE_2lep_big_450}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_small_450}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_big_800}
+    \end{subfigure}
+    \hfill   
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_small_800}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep reconstruction error with SUSY signals for VAE]{Reconstruction error distribution for the small (left) and large (right)
+    regular autoencoder, using the 2 lepton + $e_T^{miss}$ dataset as training and test set. The signals used are the same SUSY signals 
+    from the 3 lepton case. Figures \ref{fig:VAE_2lep_big_450} and \ref{fig:VAE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
+    and figures \ref{fig:VAE_2lep_big_800} and \ref{fig:VAE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
+    \label{fig:VAE_2lep_recon_err_both_sig}
+\end{figure}
+
+In figure \ref{fig:VAE_2lep_recon_err_both_sig} we have the reconstruction error distributions for both SUSY signals for 
+the small and large variational autoencoder. Here we observe that the peak of the distributions for the SM MC in all four cases 
+are somewhat centered in the middle of the reconstruction error range, which differs from the steep slope we saw in figure
+\ref{fig:AE_2lep_recon_err_both_sig}. Interestingly, we see here that the deepness of the neural network here plays a role, 
+which is different from the regular autoencoder output, where both the small and large autoencoder made a steep slope shape of 
+the SM MC reconstruction error distribution. The peak of the distribution here is slightly shifted to the left for the shallow 
+autoencoder model, and slightly shifted to the right of the center with the deep autoencoder model. One possible reason for this 
+somewhat Gaussian like distribution could be that the variational autoencoder, via the reparametization trick from section 
+\ref{sec:reparameterization}, samples from a Gaussian distribution that has yet to be trained on enough data to produce a 
+good enough error distribution. It could also be that the batch size is too large, and that the model has to train on smaller 
+batches to get a better result. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.78.pdf}
+        \caption{ }
+        \label{fig:VAE_2lep_big_450_cut_etmiss}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.06.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_small_450_cut_etmiss}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.55.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_big_800_cut_etmiss}
+    \end{subfigure}
+    \hfill   
+    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.80.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_small_800_cut_etmiss}
+    \end{subfigure}
+    \hfill      
+    \caption[$e_T^{miss}$ best cuts for regular autoencoder]{$e_T^{miss}$ distribution for small (left) and large (right) autoencoder.
+    Each figure used the best cut of three possibilities, the remainding results are in the appendix. By best, it is meant that the cut
+    gave the best significance. Figures \ref{fig:VAE_2lep_big_450_cut_etmiss} and \ref{fig:VAE_2lep_small_450_cut_etmiss} shows the SUSY 450 and 300 mass signal, 
+    and figures \ref{fig:VAE_2lep_big_800_cut_etmiss} and \ref{fig:VAE_2lep_small_800_cut_etmiss} shows the SUSY 800 and 50 mass signal.}
+    \label{fig:VAE_2lep_recon_err_both_sig_cut_etmiss}
+\end{figure}
+
+
+
+WRITE ABOUT THE CUTS DONE IN THE RECONSTRUCTION ERROR DISTRIBUTION
+
+
 
 \begin{table}[H]
     \centering
     \caption[Significance table variational autoencoder]{Significance table for the variational autoencoder models. For each signal for both the small and 
     large regular autoencoder, the significance is calculated with equation small (left column) and equation large (right column). The 
-    reconstruction error cuts used where $[]$ for the SUSY $450p300$ signal and $[]$ for the SUSY 
-    $800p50$ signal for the large autoencoder. The reconstruction error cuts used for the small autoencoder where $[]$ 
-    for the SUSY $450p300$ signal and $[]$ for the SUSY $800p50$ signal. }
-    \label{tab:AE_2lep_significance}
+    reconstruction error cuts used where $[-0.78, -0.58, -0.39]$ for the SUSY $450p300$ signal and $[-0.74, -0.55, -0.37]$ for the SUSY 
+    $800p50$ signal for the large autoencoder. The reconstruction error cuts used for the small autoencoder where $[-1.06, -0.79, -0.53]$ 
+    for the SUSY $450p300$ signal and $[-1.06, -0.79, -0.53]$ for the SUSY $800p50$ signal. }
+    \label{tab:VAE_2lep_significance}
     \begin{tabular}{|llllllll|}
     \hline
     \multicolumn{8}{|c|}{Regular Autoencoder}                                                                                                                                    \\ \hline
     \multicolumn{4}{|c|}{Small}                                                                    & \multicolumn{4}{c|}{Large}                                                  \\ \hline
     \multicolumn{2}{|l|}{450p300}                  & \multicolumn{2}{l|}{800p50}                   & \multicolumn{2}{l|}{450p300}                  & \multicolumn{2}{l|}{800p50} \\ \hline
     \multicolumn{8}{|c|}{Pre reconstruction error cut significance}                                                                                                                           \\ \hline
-    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} \\ \hline
+    \multicolumn{1}{|l|}{0.017} & \multicolumn{1}{l|}{0.017} & \multicolumn{1}{l|}{0.001} & \multicolumn{1}{l|}{0.001} & \multicolumn{1}{l|}{0.017} & \multicolumn{1}{l|}{0.017} & \multicolumn{1}{l|}{0.001}  & \multicolumn{1}{l|}{0.001} \\ \hline
     \multicolumn{8}{|c|}{Post reconstruction error  cut significance}                                                                                                                         \\ \hline
-    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{}  \\ \hline
-    \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{}   & \multicolumn{1}{l|}{} \\ \hline
+    \multicolumn{1}{|l|}{0.023} & \multicolumn{1}{l|}{0.023} & \multicolumn{1}{l|}{0.002} & \multicolumn{1}{l|}{0.002} & \multicolumn{1}{l|}{0.030} & \multicolumn{1}{l|}{0.030} & \multicolumn{1}{l|}{0.004}   & \multicolumn{1}{l|}{0.004}  \\ \hline
+    \multicolumn{1}{|l|}{0.021} & \multicolumn{1}{l|}{0.022} & \multicolumn{1}{l|}{0.003} & \multicolumn{1}{l|}{0.003} & \multicolumn{1}{l|}{0.026} & \multicolumn{1}{l|}{0.026} & \multicolumn{1}{l|}{0.004}   & \multicolumn{1}{l|}{0.004}  \\ \hline
+    \multicolumn{1}{|l|}{0.016} & \multicolumn{1}{l|}{0.016} & \multicolumn{1}{l|}{0.002} & \multicolumn{1}{l|}{0.002} & \multicolumn{1}{l|}{0.018} & \multicolumn{1}{l|}{0.018} & \multicolumn{1}{l|}{0.003}   & \multicolumn{1}{l|}{0.003} \\ \hline
     \end{tabular}
 \end{table}
+
