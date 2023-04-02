@@ -816,12 +816,12 @@ class LEP2ScaleAndPrep:
                             sig_name=signame, 
                             figname="$e_T^{miss}$")"""
             
-            self._roc_curve(distribution_bkg=recon_err, 
+            """self._roc_curve(distribution_bkg=recon_err, 
                             weights_bkg=val_weights, 
                             distribution_sig=recon_err_sig, 
                             weights_sig=sig_weights, 
                             sig_name=signame, 
-                            figname="Reconstruction_error")
+                            figname="Reconstruction_error")"""
             
             
             #* Etmiss pre cut 
@@ -838,8 +838,8 @@ class LEP2ScaleAndPrep:
                                                signal_cats=signal_cats)
             plotetmiss.histogram(self.channels, sig_name=signame, etmiss_flag=True)
             
-            small_sig = self._significance_small(len(self.signal_etmiss[sig_idx])*np.sum(sig_weights), len(etmiss)*np.sum(val_weights))
-            big_sig = self._significance_big(len(self.signal_etmiss[sig_idx])*np.sum(sig_weights), len(etmiss)*np.sum(val_weights))
+            small_sig = self._significance_small(np.sum(sig_weights), np.sum(val_weights))
+            big_sig = self._significance_big(np.sum(sig_weights), np.sum(val_weights))
             
             print(" ")
             print(f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}")
@@ -879,11 +879,11 @@ class LEP2ScaleAndPrep:
                 etmiss_bkg = etmiss[error_cut_val]
                 etmiss_sig = self.signal_etmiss[error_cut_sig]
                 
-                small_sig = self._significance_small(len(etmiss_sig)*np.sum(sig_weights_cut), len(etmiss_bkg)*np.sum(val_weights_cut))
-                big_sig = self._significance_big(len(etmiss_sig)*np.sum(sig_weights_cut), len(etmiss_bkg)*np.sum(val_weights_cut))
+                small_sig = self._significance_small(np.sum(sig_weights_cut), np.sum(val_weights_cut))
+                big_sig = self._significance_big(np.sum(sig_weights_cut), np.sum(val_weights_cut))
                 
                 print(" ")
-                print(f"S: {len(etmiss_sig)*np.sum(sig_weights_cut):.3f} | B: {len(etmiss_bkg)*np.sum(val_weights_cut):.3f}")
+                print(f"S: {np.sum(sig_weights_cut):.3f} | B: {np.sum(val_weights_cut):.3f}")
                 print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
                 print(" ")
                 

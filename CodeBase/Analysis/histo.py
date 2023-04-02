@@ -67,6 +67,8 @@ class PlotHistogram:
             self.signal_weights = signal_weights
             self.signal_cats = signal_cats
             
+            self.flag = 0
+        self.flag = 1
             
         if len(data) != 0:
             self.data = data
@@ -133,17 +135,14 @@ class PlotHistogram:
 
         fig, ax = plt.subplots()
 
-        if len(self.signal) != 0:
+        try:
             N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
             x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
             ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
             n_bins = bins
             print("Bins: ",n_bins)
-            
-         
-
             self.n_bins = n_bins
-        else:
+        except:
             self.n_bins = 25
         
         if len(colors) != len(histo_atlas):
@@ -168,7 +167,7 @@ class PlotHistogram:
         
         ax.hist(
             data_histo,
-            n_bins,
+            self.n_bins,
             density=False,
             stacked=True,
             alpha=0.5,

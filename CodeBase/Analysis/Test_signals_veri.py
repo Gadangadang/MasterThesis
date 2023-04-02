@@ -122,8 +122,8 @@ class SignalDumVeri(model):
             write_to_file(file, string_write)
             
             
-            small_sig = self._significance_small(len(self.signal_eTmiss[sig_idx])*np.sum(self.sig_err), len(self.X_val_eTmiss)*np.sum(self.err_val))
-            big_sig = self._significance_big(len(self.signal_eTmiss[sig_idx])*np.sum(self.sig_err), len(self.X_val_eTmiss)*np.sum(self.err_val))
+            small_sig = self._significance_small(np.sum(self.sig_err), np.sum(self.err_val))
+            big_sig = self._significance_big(np.sum(self.sig_err), np.sum(self.err_val))
             
             print(" ")
             print(f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}")
@@ -169,8 +169,8 @@ class SignalDumVeri(model):
                 etmiss_bkg = self.X_val_eTmiss[error_cut_val]
                 etmiss_sig = self.signal_eTmiss[error_cut_sig]
                 
-                small_sig = self._significance_small(len(etmiss_sig)*np.sum(sig_weights_cut), len(etmiss_bkg)*np.sum(val_weights_cut ))
-                big_sig = self._significance_big(len(etmiss_sig)*np.sum(sig_weights_cut), len(etmiss_bkg)*np.sum(val_weights_cut ))
+                small_sig = self._significance_small(np.sum(sig_weights_cut), np.sum(val_weights_cut ))
+                big_sig = self._significance_big(np.sum(sig_weights_cut), np.sum(val_weights_cut ))
                 
                 print(" ")
                 print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
