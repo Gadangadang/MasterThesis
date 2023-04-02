@@ -3,8 +3,6 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: main.aux
 The style file: jhep.bst
 Database file #1: bibliography.bib
-Warning--entry type for "ROOT" isn't style-file defined
---line 36 of file bibliography.bib
 Warning--entry type for "hdf5" isn't style-file defined
 --line 154 of file bibliography.bib
 Warning--entry type for "reback2020pandas" isn't style-file defined
@@ -26,34 +24,34 @@ Warning--entry type for "ritchie_vink_2023_7744139" isn't style-file defined
 --line 1074 of file bibliography.bib
 You've used 38 entries,
             2188 wiz_defined-function locations,
-            748 strings with 43751 characters,
-and the built_in function-call counts, 7898 in all, are:
-= -- 696
-> -- 503
+            747 strings with 43275 characters,
+and the built_in function-call counts, 7789 in all, are:
+= -- 692
+> -- 478
 < -- 0
-+ -- 149
-- -- 111
-* -- 518
-:= -- 1198
-add.period$ -- 55
++ -- 143
+- -- 105
+* -- 504
+:= -- 1176
+add.period$ -- 54
 call.type$ -- 38
 change.case$ -- 31
 chr.to.int$ -- 0
 cite$ -- 38
 duplicate$ -- 328
 empty$ -- 764
-format.name$ -- 111
-if$ -- 1986
+format.name$ -- 105
+if$ -- 1963
 int.to.chr$ -- 0
 int.to.str$ -- 38
 missing$ -- 77
-newline$ -- 133
+newline$ -- 132
 num.names$ -- 38
-pop$ -- 175
+pop$ -- 177
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 195
+skip$ -- 194
 stack$ -- 0
 substring$ -- 202
 swap$ -- 86
@@ -64,5 +62,5 @@ type$ -- 0
 warning$ -- 0
 while$ -- 54
 width$ -- 40
-write$ -- 333
-(There were 7 warnings)
+write$ -- 331
+(There were 6 warnings)

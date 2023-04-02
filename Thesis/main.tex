@@ -25,9 +25,9 @@ date=\today,
 dept=Department of Physics,
 fac=Faculty of Mathematics and Natural Sciences,
 long,
-subtitle=Search for heavy neutrinos at the LHC with the ATLAS detector,
-supervisors={Professor Farid Ould-Saada \and Dr. Eirik Gramstad \and Dr. James Catmore},
-title=Deployment of unsupervised learning in the search for new physics at the LHC with the ATLAS detector,
+subtitle=Benchmarking autoencoders for anomaly detection at the LHC with the ATLAS detector,
+supervisors={Professor Farid Ould-Saada \and Dr. James Catmore},
+title=Deployment of semi-unsupervised learning in the search for new physics at the LHC with the ATLAS detector,
 program={Computational Science: Physics}]    
 
 
@@ -71,14 +71,14 @@ program={Computational Science: Physics}]
 \input{Sections/Implementation/strategy}
 \input{Sections/Implementation/testing_impl}
 
-%%%%%%%%%%%%%%  Results  %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%  Results and Discussion %%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results and Discussion}\label{Chap:results_discuss}
 \input{Sections/Results/Testing}
 \input{Sections/Results/Dummy_Signaltesting}
 \input{Sections/Results/ATLAS_data_and_analysis}
 \input{Sections/Results/lep2_signals}
+\input{Sections/Results/lacks_challenges}
 
-%%%%%%%%%%%%%%  Discussion  %%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%% Conclusion %%%%%%%%%%%%%%%%%%%%%%%%%%
 \input{Sections/Conclusion/Conclusion}
@@ -120,7 +120,8 @@ program={Computational Science: Physics}]
 
 
 
-
+\twocolumn
 \bibliography{bibliography.bib}
 \bibliographystyle{jhep}
+
 \end{document}

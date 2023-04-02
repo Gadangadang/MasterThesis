@@ -46,6 +46,9 @@ T.~Fawcett, \emph{An introduction to roc analysis},
   \href{http://dx.doi.org/https://doi.org/10.1016/j.patrec.2005.10.010}{\emph{Pattern
   Recognition Letters} {\bf 27} (2006) 861--874}.
 
+\bibitem{magnar}
+M.~Bugge, \emph{Discovery and exclusion in high energy physics},  2022.
+
 \bibitem{Pich:819632}
 A.~Pich, \emph{{The Standard Model of Electroweak Interactions; rev. version}},
   .
@@ -106,15 +109,14 @@ T.~P.~S. Gillam, \emph{{Identifying fake leptons in ATLAS while hunting SUSY in
 \newblock PhD thesis, Cambridge U., 2015.
 \newblock 10.17863/CAM.16619.
 
-\bibitem{ROOT}
-R.~Brun, F.~Rademakers, P.~Canal, A.~Naumann, O.~Couet, L.~Moneta et~al.,
-  \emph{root-project/root: v6.18/02},  Aug., 2019.
-\newblock 10.5281/zenodo.3895860.
-
 \bibitem{Manca:2694107}
 E.~Manca and E.~Guiraud, \emph{{Using RDataFrame, ROOT’s declarative analysis
   tool, in a CMS physics study. Using RDataFrame, ROOT’s declarative analysis
   tool, in a CMS physics study}}, .
+
+\bibitem{reback2020pandas}
+{The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.
+\newblock 10.5281/zenodo.3509134.
 
 \bibitem{hdf5}
 {The HDF Group}, \emph{{Hierarchical Data Format, version 5}},  1997-2022.
@@ -156,10 +158,6 @@ M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
 
 \bibitem{plotly}
 {Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.
-
-\bibitem{reback2020pandas}
-{The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.
-\newblock 10.5281/zenodo.3509134.
 
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel

@@ -1,5 +1,5 @@
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/SM/Standard_Model_of_Elementary_Particles.svg.png}
     \caption[The Standard Model]{The standard model of elementary particles. Source \href{https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Standard_Model_of_Elementary_Particles.svg/1200px-Standard_Model_of_Elementary_Particles.svg.png}{here}. Accessed 07.10.22}
     \label{fig:smdiagram}
@@ -43,7 +43,7 @@ on for the other charged fermions. It is not known wether or not the neutrinos f
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
-\begin{table}[h!]
+\begin{table}[H]
     \caption{Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass.}
     \label{tab:fermion_table}
     \begin{tabular}{|ccccccc|}
@@ -90,7 +90,7 @@ rotation, and reflection operations. \cite{weinberg_1995}
 A graphical way to understand particle interactions are through so called Feynman diagrams. Feynman diagrams are drawn based on the Feynman rules for a given Lagrangian\cite{Pich:819632}\cite{feynrules}, and each component 
 can be linked to a part in the Lagrangian for the system. 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \caption[Electron scattering diagram]{Feynman diagram of muon pair production from electron scattering. Here, both Z and $\gamma$ can work as the propagator.}
     
@@ -134,7 +134,7 @@ As with neutral currents, we also have so called charged currents, where the sum
 thus there is nothing wrong with either having a neutral or a charged current, as long as charge conservation is preserved. \par 
 Feynman diagrams is not only used for visualizing scatterings, they can also visualize decays. An example is provided in figure \ref{fig:mw_decay}. 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \caption[Muon decay diagram]{Muon decay into an electron, an electron neutrino and a muon neutrino via the $W^{-}$ boson. Read the graph from left to right.}
     
@@ -175,6 +175,105 @@ is that the coupling constant $\alpha_{S}$, unlike the $\alpha_{EM}$ for electro
 gets stronger as the energy decreases. This is because QCD (and weak interactions) are based on non-abelian 
 groups\cite{Peskin:1995ev}, thus to study such interactions, one needs to create collisions at very high energies. 
 
+\subsubsection*{Proton-proton collisions}
+Proton-proton collisions require high energy to collide. During an interaction, both the quarks and gluons
+in the protons colliding can interact in proton-proton collisions, as shown below:
+
+\begin{figure}[H]
+    \centering
+    \caption[$q\bar{q}$ collision into lepton pair]{Proton-proton collision with lepton pair production via the Z boson or photon. Read from left to right.}
+    
+\begin{tikzpicture}
+    \begin{feynman}
+    
+        \vertex at (0.5, 1.) (a2){\(q\)} ;
+        \vertex at (0.5, -1.)  (a5){\(\bar{q}\)} ;
+
+        \vertex at (1.5, 0.0) (c);
+        \vertex at (3., 0.0) (d);
+
+        \vertex at (4, 1.) (f1) {\(l^{-}\)} ;
+        \vertex at (4,-1.) (f2) {\(l^{+}\)};
+
+        
+    \diagram*{
+
+
+        (a2) -- [fermion] (c) -- [boson] (d),
+    
+        (a5) -- [anti fermion] (c) -- [boson, edge label = {$\gamma, Z$}] (d),
+        (d) -- [fermion] (f1),
+        (d) -- [anti fermion] (f2),
+        
+        ;
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    \label{fig:qqbar_ll}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption[gluon-gluon interaction into $t\bar{t}$ production]{Proton-proton collision showing the $t\bar{t}$ channel. Read from left to right}
+
+\begin{tikzpicture}
+    \begin{feynman}
+    
+        \vertex at (0, 1.) (a2){\(g\)} ;
+        \vertex at (0, -1.)  (a5){\(g\)} ;
+
+        \vertex at (1.5, 1.) (c);
+        \vertex at (3., 1.) (d);
+
+        \vertex at (1.5, -1.) (e);
+        \vertex at (3., -1.) (f);
+
+        \vertex at (1.5, 1.) (g);
+        \vertex at (1.5, -1.) (h);
+
+        \vertex at (3, 1) (a1);
+        \vertex at (4.5, 1.5) (a3);
+
+        \vertex at (3, 1) (a6);
+        \vertex at (4.5, 0.5) (a7);
+
+
+        \vertex at (3, -1) (b1);
+        \vertex at (4.5, -1.5) (b2);
+
+        \vertex at (3, -1) (b3);
+        \vertex at (4.5, -0.5) (b4);
+
+       
+        
+    \diagram*{
+
+
+        (a2) -- [gluon] (c) -- [anti fermion, edge label = {$\bar{t}$}] (d),
+    
+        (a5) -- [gluon] (e) -- [fermion, edge label = {$t$}] (f),
+
+        (g) -- [fermion, edge label = {$t$}] (h),
+
+        (a1) -- [boson, edge label ={$w^-$}] (a3),
+
+        (a6) -- [anti fermion, edge label ={$\bar{b}$}] (a7),
+
+        (b1) -- [boson, edge label ={$w^+$}] (b2),
+
+        (b3) -- [anti fermion, edge label ={$b$}] (b4),
+        
+        ;
+    };
+    \end{feynman}
+    \end{tikzpicture}
+    \label{fig:ttbar_feynman_example}
+    \end{figure}
+
+In figure \ref{fig:qqbar_ll} and figure \ref{fig:ttbar_feynman_example} we have two examples of Feynman
+diagrams for possible interactions in proton-proton collisions. The first figure displays a lepton pair production
+via the Z boson or photon from quark-antiquark annihilation, and the second figure displays the $t\bar{t}$ production
+via gluon-gluon fusion. \par
 
 \subsection*{Some limitations}
 All though the standard model has had great success comparing with experiments,

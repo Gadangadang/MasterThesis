@@ -89,7 +89,7 @@ engineering and smart machine learning algorithms. Particle physics differs here
 unlabeled. 
 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf}
@@ -113,7 +113,7 @@ and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset. We see that both $
 move forward with the analysis. All features were checked, and can be found in the Github repository for this thesis at 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP3}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP3$}} under the 3lep folder. \par 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep2/e_T_miss_2lep.pdf}
@@ -146,13 +146,11 @@ It did not seem to work. All features were checked, and can be found in the Gith
 The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ dataset are written below:
 
 
-
-   
-
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption[2015 triggers table]{Triggers used in the 2015 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
-\begin{tabular}{|l|l|l|}
+    \label{tab:triggers2015}
+    \begin{tabular}{|l|l|l|}
 \hline
                       & Name & Description \\ \hline
 \multirow{6}{*}{2015} & $HLT\_2e15\_lhvloose\_nod0\_L12EM13VH$      &             \\ \cline{2-3} 
@@ -166,9 +164,10 @@ The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption[2016 triggers table]{Triggers used in the 2016 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+    \label{tab:triggers2016}
     \begin{tabular}{|l|l|l|}
     \hline
                           & Name & Description \\ \hline
@@ -187,9 +186,10 @@ The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 
 
 
 
-\begin{table}[h!]
+\begin{table}[H]
     \centering
     \caption[2017 triggers table]{Triggers used in the 2017 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+    \label{tab:triggers2017}
     \begin{tabular}{|l|l|l|}
     \hline
                             & Name & Description \\ \hline
@@ -205,29 +205,34 @@ The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 
     \end{table}
 
 
-    \begin{table}[h!]
-        \centering
-        \caption[2018 triggers table]{Triggers used in the 2018 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
-        \begin{tabular}{|l|l|l|}
-        \hline
-                                & Name & Description \\ \hline
-        \multirow{7}{*}{2018} & $HLT\_2e17\_lhvloose\_nod0\_L12EM15VHI$      &             \\ \cline{2-3} 
-                                & $HLT\_2e24\_lhvloose\_nod0$        &             \\ \cline{2-3} 
-                                & $HLT\_2mu14$     &             \\ \cline{2-3} 
-                                &  $HLT\_mu22\_mu8noL1$     &             \\ \cline{2-3} 
-                                &  $HLT\_e17\_lhloose\_nod0\_mu14$   &             \\ \cline{2-3} 
-                                &   $HLT\_e26\_lhmedium\_nod0\_mu8noL1$    &             \\ \cline{2-3} 
-                                
-                                & $HLT\_e7\_lhmedium\_nod0\_mu24$    & \\ \hline
-        \end{tabular}
-        \end{table}
+\begin{table}[H]
+    \centering
+    \caption[2018 triggers table]{Triggers used in the 2018 MonteCarlo and ATLAS data samples for the 2 lepton 0 $e_T^{miss}$ dataset.}
+    \label{tab:triggers2018}
+    \begin{tabular}{|l|l|l|}
+    \hline
+                            & Name & Description \\ \hline
+    \multirow{7}{*}{2018} & $HLT\_2e17\_lhvloose\_nod0\_L12EM15VHI$      &             \\ \cline{2-3} 
+                            & $HLT\_2e24\_lhvloose\_nod0$        &             \\ \cline{2-3} 
+                            & $HLT\_2mu14$     &             \\ \cline{2-3} 
+                            &  $HLT\_mu22\_mu8noL1$     &             \\ \cline{2-3} 
+                            &  $HLT\_e17\_lhloose\_nod0\_mu14$   &             \\ \cline{2-3} 
+                            &   $HLT\_e26\_lhmedium\_nod0\_mu8noL1$    &             \\ \cline{2-3} 
+                            
+                            & $HLT\_e7\_lhmedium\_nod0\_mu24$    & \\ \hline
+    \end{tabular}
+    \end{table}
 
 
+In tables \ref{tab:triggers2015}, \ref{tab:triggers2016}, \ref{tab:triggers2017}, \ref{tab:triggers2018} we have the triggers used for
+the different data generations used for the 2 lepton + $e_T^{miss}$, i.e the data taken from the 4 years of data collection in Run 2. 
+Each trigger corresponds a certain detection in the calorimeters and reconstruction. For example, $HLT\_2mu10$ means that at least 2 muons 
+with a $p_T$ of atleast 10 GeV is detected. \par 
+For the 3 lepton + $e_T^{miss}$ final state, the trigger system did not implement well in RDataframe, thus a simple cut of requiring 
+at least two leptons with a $p_T$ above 20 GeV was implemented. Note that further triggers would refine the dataset even more. 
 
 
-
-
-
+\newpage
 
 
 
