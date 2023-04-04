@@ -23,12 +23,14 @@ biased as one assumes that the new physics looks like the signal, and thus do an
 signal in mind. But we do not know, at all, what the new physics looks like, even the assumption that we are looking for 
 particles are implying a bias that might not be true. From the collisions in the detector to the analysis, there are biased descisions, 
 we cannot avoid them, but we can minimize them as much as possible, which is a goal with the search strategy in this thesis. \par
+
 This leads us to the second challenge, which is reconstruction error minimization. The proposed method in this thesis is to 
 learn the signature of the standard model so well, that even subtle anomalous behavior will be picked up by the analysis tool. 
 The autoencoder learns the signature of the standard model, by mimimizing the reconstruction error, and then hopefully, the 
 anomalous data will be picked up and skewed to the right end of the reconstructino error distribution in a signal region. 
 One problem with this is that one first blinds oneself to signals that might be very, very similar to the standard model in some 
 feature space, but with very low statistics. These events will for a given set of features, never be found. \par 
+
 The The third challenge is the choice of features. This thesis utilized the RMM structure by Chekanov et al, as it maximizes 
 the amount of information in the input data by using almost completely uncorrolated features. However, as we do not know the signals 
 we are looking for, there is no way to know if this choice is the optimal choice for new physics. In fact, even if we found 

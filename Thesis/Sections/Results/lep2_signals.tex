@@ -46,20 +46,27 @@ Below are some of the results from training on the 2 lepton case, using the same
     \label{fig:AE_2lep_recon_err_both_sig}
 \end{figure}
 
-In figure \ref{fig:AE_2lep_recon_err_both_sig} we have the reconstruction error distributions for the 2 lepton + $e_T^{miss}$ 
-dataset for the regular autoencoder models. There is a general trend here for both the small and large regular autoencoder, which is that 
-the distribution is highly shifted to the lower end of the reconstruction error range. This is a continuing trend following the 3 lepton + $e_T^{miss}$
-showin i figure \ref{fig:ae_susy_450_300_800_50_recon_etmiss}. This indicates that as we increase the statistics, in other words the amount of 
-background events, the ability of the autoencoder to learn the internal structure increases. It is also interesting to observe here that 
-as the reconstruction error increases, the amount of each sample in a given bin changes alot. As expected, Zmmjets and Zeejets along with 
-ttbar are the events with the highest statistics in the 2 lepton + $e_T^{miss}$ dataset, thus it should be easier to learn to better 
-reconstruct those events. However, note the amount of Diboson in the higher end of the reconstruction error histograms, as well as in 
-the $e_T^{miss}$ post reconstruction error cut distributions. One explanation for this could be the sample discrepencay explained in section
- \ref{sec:mcdatacomp}. It would appear that too much of the diboson samples is cut, leading to not enough samples for it to appropriatly 
- learn the RMM structure for that channel, leading to the high reconstruction error values for some of those events. Note also here that
-  the reconstruction threshold where this effet is getting more notisable around $10^{-2}$ and larger, where the events are on the order of 
-  a 1000 or less per bin. Thus it is not alot of events, but still enough to note. \par 
-Using the signal region definition from above we set cuts on the reconstruction error and then calculate the significance of the signal. 
+In figure \ref{fig:AE_2lep_recon_err_both_sig} we have the reconstruction error distributions 
+for the 2 lepton + $e_T^{miss}$ dataset for the regular autoencoder models. There is a general 
+trend here for both the small and large regular autoencoder, which is that the distribution is 
+highly shifted to the lower end of the reconstruction error range. This is a continuing trend 
+following the 3 lepton + $e_T^{miss}$ showin i figure 
+\ref{fig:ae_susy_450_300_800_50_recon_etmiss}. This indicates that as we increase the statistics, 
+in other words the amount of background events, the ability of the autoencoder to learn the 
+internal structure increases. It is also interesting to observe here that 
+as the reconstruction error increases, the amount of each sample in a given bin changes alot. 
+As expected, Zmmjets and Zeejets along with ttbar are the events with the highest statistics 
+in the 2 lepton + $e_T^{miss}$ dataset, thus it should be easier to learn to better reconstruct 
+those events. However, note the amount of Diboson in the higher end of the reconstruction 
+rror histograms, as well as in the $e_T^{miss}$ post reconstruction error cut distributions. 
+One explanation for this could be the sample discrepency explained in section 
+\ref{sec:mcdatacomp}. It would appear that too much of the diboson samples is cut, leading to 
+not enough samples for it to appropriatly learn the RMM structure for that channel, leading to 
+the high reconstruction error values for some of those events. Note also here that the 
+reconstruction threshold where this effect is getting more notisable around $10^{-2}$ and 
+larger, where the events are on the order of a 1000 or less per bin. Thus it is not alot of 
+events, but still enough to note. \par Using the signal region definition from above we set 
+cuts on the reconstruction error and then calculate the significance of the signal. 
 The figures with the best significance are shown below:
 
 \begin{figure}[H]
@@ -172,17 +179,20 @@ From figure \ref{fig:VAE_2lep_recon_err_both_sig} below we have the variational 
     \label{fig:VAE_2lep_recon_err_both_sig}
 \end{figure}
 
-In figure \ref{fig:VAE_2lep_recon_err_both_sig} we have the reconstruction error distributions for both SUSY signals for 
-the small and large variational autoencoder. Here we observe that the peak of the distributions for the SM MC in all four cases 
-are somewhat centered in the middle of the reconstruction error range, which differs from the steep slope we saw in figure
-\ref{fig:AE_2lep_recon_err_both_sig}. Interestingly, we see here that the deepness of the neural network here plays a role, 
-which is different from the regular autoencoder output, where both the small and large autoencoder made a steep slope shape of 
-the SM MC reconstruction error distribution. The peak of the distribution here is slightly shifted to the left for the shallow 
-autoencoder model, and slightly shifted to the right of the center with the deep autoencoder model. One possible reason for this 
-somewhat Gaussian like distribution could be that the variational autoencoder, via the reparametization trick from section 
-\ref{sec:reparameterization}, samples from a Gaussian distribution that has yet to be trained on enough data to produce a 
-good enough error distribution. It could also be that the batch size is too large, and that the model has to train on smaller 
-batches to get a better result. 
+In figure \ref{fig:VAE_2lep_recon_err_both_sig} we have the reconstruction error distributions 
+for both SUSY signals for the small and large variational autoencoder. Here we observe that the 
+peak of the distributions for the SM MC in all four cases are somewhat centered in the middle 
+of the reconstruction error range, which differs from the steep slope we saw in figure
+\ref{fig:AE_2lep_recon_err_both_sig}. Interestingly, we see here that the deepness of the neural 
+network here plays a role, which is different from the regular autoencoder output, where both 
+the small and large autoencoder made a steep slope shape of the SM MC reconstruction error 
+distribution. The peak of the distribution here is slightly shifted to the left for the shallow 
+autoencoder model, and slightly shifted to the right of the center with the deep autoencoder 
+model. One possible reason for this somewhat Gaussian like distribution could be that the 
+variational autoencoder, via the reparametization trick from section \ref{sec:reparameterization}, 
+samples from a Gaussian distribution that has yet to be trained on enough data to produce a 
+good enough error distribution. It could also be that the batch size is too large, and that 
+the model has to train on smaller batches to get a better result. \par 
 
 \begin{figure}[H]
     \centering
@@ -218,8 +228,21 @@ batches to get a better result.
 \end{figure}
 
 
-
-WRITE ABOUT THE CUTS DONE IN THE RECONSTRUCTION ERROR DISTRIBUTION
+In figure \ref{fig:VAE_2lep_recon_err_both_sig_cut_etmiss} we have the $e_T^{miss}$ distribution 
+for the best cut for each signal. By best, it is meant the cut that gave the best significance.
+ We see that the cuts are somewhat similar to the regular autoencoder, but with two key 
+ differences. \par  First, because the peaks of the distributions from figure 
+ \ref{fig:VAE_2lep_recon_err_both_sig} are so close, the cuts allowed for more background events 
+ in the signal region. Here, as with the regular autoencoder output, $m_{err}$ was used, but was 
+ not a good descriminator for the background events. One could perhaps make a new strategy for 
+ setting the cuts in the event one has a "fat gaussian" shape. Still, because we set cuts based 
+ on reconstruction error to mimimize the background in the signal region, if one does not have a 
+ slope like shape, the results will be poor in comparison. \par Secondly, the background that remains 
+ are slightly different from the signal region from the regular autoencoder. In the lower energy 
+ range there is a large excess of Zeejets, Zmmjets and ttbar events that have a high reconstruction 
+ error, which is not the case for the variational autoencoder, dominated by diboson events in all bins. 
+ In the higher energy range, diboson are are largest contributer to the background, but the number 
+ of bins are exceptionally smaller than the Zmmjets/Zeejets/ttbar events, by a magnitude of 3 at the most. 
 
 
 
@@ -233,7 +256,7 @@ WRITE ABOUT THE CUTS DONE IN THE RECONSTRUCTION ERROR DISTRIBUTION
     \label{tab:VAE_2lep_significance}
     \begin{tabular}{|llllllll|}
     \hline
-    \multicolumn{8}{|c|}{Regular Autoencoder}                                                                                                                                    \\ \hline
+    \multicolumn{8}{|c|}{Variational Autoencoder}                                                                                                                                    \\ \hline
     \multicolumn{4}{|c|}{Small}                                                                    & \multicolumn{4}{c|}{Large}                                                  \\ \hline
     \multicolumn{2}{|l|}{450p300}                  & \multicolumn{2}{l|}{800p50}                   & \multicolumn{2}{l|}{450p300}                  & \multicolumn{2}{l|}{800p50} \\ \hline
     \multicolumn{8}{|c|}{Pre reconstruction error cut significance}                                                                                                                           \\ \hline

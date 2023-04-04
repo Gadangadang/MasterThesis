@@ -1,6 +1,49 @@
 \chapter*{Introduction}
 \addcontentsline{toc}{chapter}{Introduction} 
 
+\epigraph{Not only is the Universe stranger than we think, it is stranger than we can think.}{\textit{Werner Heisenberg}}
+So goes the quote by Werner Heisenberg, acclaimed for his work in quantum physics in the ealy to mid 
+20th century. The quote is a reminder and a statement of the fact that the world we live in is immensly 
+strange, beautiful, complex and interesting. From the smallest atoms to the largest galaxy clusters, 
+the universe is a place of wonder and mystery. It is perhaps easy to forget what science tries to do
+when studying nature. Its fundamental duty is to model the universe as well as possible given the tools 
+available. These models gets better over time, but unlike what scientific absolutists might think and 
+argue for, we will never know the whole truth. One should always remember Heisenbergs quote, for it
+illustrates the very point that nature is indeed more strange than we can think, and science, with its 
+predictive power is only an approximation, one can never truly know if the model we have of nature is 
+a hyperfitted model or the actual instruction manual for nature itself. \par As physicists we develop 
+and extends, replaces and debunks models at the most fundamental level of nature, one of which is
+the Standard model. At higher energies, it is the most accurate, experimentally tested model to date,
+only rivalled by general relativity. From the 1930's to around 1973, there where huge leaps within the field
+of particle physics. However, besides experimentally verifying the existence of the Higgs boson,
+there have not been any major discoveries of the same order as before 1973. As the tools of science became 
+better and better, more and more strange behavior was found around us, behavior that could not be explained by the 
+Standard model. Attempts have been made to create theoretical frameworks that could include the strange behavior 
+into the Standard Model, but all have yet to be experimentally verified. One could ask oneself why 
+this is the case. Why is this new physics, what ever it may look like, so difficult to find? 
+Is the framework wrong? Are the theories not well enough understood or wrong? Or could it be that
+the new physics are hiding within the data already collected, in some set of features, too subtle for
+the naked eye, but available through advanced data analysis tools? The answer is, perhaps not to 
+anyones shock, we have no earthly idea. In fact, they may all be true or false, to some proud 
+physicist's dismay. \par Luckily this story does not end here, as there are countless departments all 
+over the world searching for this new physics. The ATLAS experiment at CERN is one organization that 
+has taken upon itself this task, with my supervisors Professor Farid Ould-Saada and Dr. James Catmore working 
+on searches for new physics at the University of Oslo. This thesis will take a somewhat different search 
+approach than conventional analyses done at ATLAS. In a humble attempt, the assumption is made that 
+if the new physics exists, it is too subtle for the naked eye to see, and that it is hiding in the data
+in some set of features. Further, it is assumed that by focusing on data we can label and that we know 
+from experiment to exist, deviations from this would be of interest for more narrow searches. The hope is 
+to filter out the events of interest, that with some certainty differs from the established theory, 
+and then try to understand them better. \par 
+In the last decade, data analysis tools such as neural networks have become more and more available 
+to the public, getting optimized and upgraded, extended and getting more computationally powerful every 
+day. Google's Tensorflow\cite{tensorflow2015-whitepaper} and Facebooks PyTorch\cite{paszke2019pytorch} 
+are two increasingly popular frameworks, with their own strengths and weaknesses that are used within industry, 
+academia, and even within the particle physics community. Tensorflow was chosen for this thesis, and 
+all of the neural networks are using this framework, together with several other third party softwares. 
+In the epigraph below, the author of this thesis used ChatGPT to write a description of what is 
+attempted in this thesis. 
+
 \epigraph{
     This endeavor resembles casting a line into the abyss, a murky world 
 shrouded in darkness. With vision obscured and a net of unknown scale, 
@@ -8,12 +51,29 @@ the pursuit is not of fish, but of a nebulous entity that may or may
 not bear resemblance to its aquatic counterparts, if it exists in 
 the briny deep at all.}{\textit{ChatGPT | Spring 2023}}
 
+\par \par 
+\subsection*{Or this?}
+In describing the work undertaken in this thesis, it feels appropriate to evoke imagery from the world of fishing. Imagine casting a line into the abyss, a murky world shrouded in darkness, where the only sounds that can be heard are the gentle lapping of waves and the occasional call of a seabird. The water is vast, and its depths are unknown. With vision obscured and a net of unknown scale, the pursuit is not of fish, but of a nebulous entity that may or may not bear resemblance to its aquatic counterparts, if it exists in the briny deep at all.
+
+As a fisherman would use bait and tackle to catch their quarry, the tools used in this thesis are data analysis techniques such as neural networks. These are powerful tools that allow us to sift through vast amounts of information and identify patterns that might be invisible to the naked eye. By carefully selecting the data we work with and training our models to recognize specific features, we hope to identify anomalies that might point to the existence of new physics.
+
+The world of particle physics is vast and complex, and there is much that we still do not understand. While the Standard Model has been successful in explaining a wide range of phenomena, it is known to be incomplete. There are many questions that it cannot answer, and many phenomena that it cannot explain. For example, there is currently no explanation for dark matter, which is believed to make up a significant portion of the matter in the universe. Similarly, there are many aspects of the behavior of particles at high energies that are not well understood.
+
+The search for new physics is an ongoing endeavor, and there are many scientists and researchers around the world who are working to push the boundaries of our understanding. Organizations like CERN and the ATLAS experiment are at the forefront of this effort, using powerful tools and cutting-edge techniques to explore the mysteries of the universe.
+
+In this thesis, we take a somewhat unconventional approach to the search for new physics. Rather than looking for large, dramatic signals that might indicate the presence of new particles or phenomena, we focus on more subtle features that might be hidden in the data. By carefully selecting the events we study and training our models to look for specific patterns, we hope to uncover anomalies that might point to the existence of new physics.
+
+Of course, this is a challenging task, and there are many obstacles that must be overcome along the way. The data we work with is complex and noisy, and it can be difficult to separate signal from noise. Similarly, the tools we use to analyze the data are themselves complex, and it can be challenging to ensure that our models are working correctly and producing accurate results.
+
+Despite these challenges, we remain optimistic about the potential of this approach. By focusing on subtle features and anomalies, we hope to identify signals that might be missed by other methods. If successful, this could lead to a deeper understanding of the universe and the fundamental laws that govern it.
+
+In conclusion, the search for new physics is a daunting but exciting endeavor. By using powerful data analysis tools and carefully selecting the events we study, we hope to uncover new phenomena and deepen our understanding of the universe. While the road ahead may be long and challenging, we remain committed to the pursuit of knowledge and the exploration of the mysteries that lie beyond our current understanding.
 
 \subsubsection*{Outline of the Thesis}
 The master thesis is outlined in the following way. The first two chapters are dedicated to the neccesary machine learning and
 standard model physics background required to understand the analysis done and tools used in the thesis. The third chapter goes 
 through the implementation of the project, where the datasets comes from, the ATLAS architecture, the programming libraries, 
-feature choice, and so on. Chapter four goes through the results from the implementation. Chapter five is dedicated to the discussion and 
+feature choice, and so on. Chapter four goes through the results from the implementation as well as discussion and 
 interpretation of the results, the pros and cons of the implementation, aspects for future improvement, and other thoughts around the process.
 The final chapter is dedicated to the conclusion, were the foundings are summarized. 
 

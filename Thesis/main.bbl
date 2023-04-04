@@ -9,6 +9,16 @@ S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
   problems in comparison to regression methods}}, .
 
+\bibitem{tensorflow2015-whitepaper}
+M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
+  \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
+  2015.
+
+\bibitem{paszke2019pytorch}
+A.~Paszke, S.~Gross, F.~Massa, A.~Lerer, J.~Bradbury, G.~Chanan et~al.,
+  \emph{Pytorch: An imperative style, high-performance deep learning library},
+  2019.
+
 \bibitem{anom_detec}
 V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
@@ -150,11 +160,6 @@ R.~S. Geiger, D.~Cope, J.~Ip, M.~Lotosh, A.~Shah, J.~Weng et~al.,
 
 \bibitem{chollet2015keras}
 F.~Chollet et~al., \emph{Keras},  2015.
-
-\bibitem{tensorflow2015-whitepaper}
-M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
-  \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
-  2015.
 
 \bibitem{plotly}
 {Plotly Technologies Inc.}, \emph{Collaborative data science},  2015.

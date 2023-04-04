@@ -22,36 +22,36 @@ Reallocated name_tok (elt_size=4) to 40000 items from 20000.
 Reallocated name_sep_char (elt_size=1) to 40000 items from 20000.
 Warning--entry type for "ritchie_vink_2023_7744139" isn't style-file defined
 --line 1074 of file bibliography.bib
-You've used 38 entries,
+You've used 39 entries,
             2188 wiz_defined-function locations,
-            747 strings with 43275 characters,
-and the built_in function-call counts, 7789 in all, are:
-= -- 692
-> -- 478
+            751 strings with 43739 characters,
+and the built_in function-call counts, 8014 in all, are:
+= -- 703
+> -- 508
 < -- 0
-+ -- 143
-- -- 105
-* -- 504
-:= -- 1176
-add.period$ -- 54
-call.type$ -- 38
-change.case$ -- 31
++ -- 151
+- -- 112
+* -- 520
+:= -- 1213
+add.period$ -- 55
+call.type$ -- 39
+change.case$ -- 32
 chr.to.int$ -- 0
-cite$ -- 38
-duplicate$ -- 328
-empty$ -- 764
-format.name$ -- 105
-if$ -- 1963
+cite$ -- 39
+duplicate$ -- 333
+empty$ -- 784
+format.name$ -- 112
+if$ -- 2017
 int.to.chr$ -- 0
-int.to.str$ -- 38
+int.to.str$ -- 39
 missing$ -- 77
-newline$ -- 132
-num.names$ -- 38
-pop$ -- 177
+newline$ -- 135
+num.names$ -- 39
+pop$ -- 185
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 194
+skip$ -- 198
 stack$ -- 0
 substring$ -- 202
 swap$ -- 86
@@ -60,7 +60,7 @@ text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 54
-width$ -- 40
-write$ -- 331
+while$ -- 55
+width$ -- 41
+write$ -- 338
 (There were 6 warnings)
