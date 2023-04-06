@@ -20,10 +20,10 @@
 \contentsline {chapter}{\numberline {4}Results and Discussion}{43}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{43}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Dummy signal testing of the regular and variational Autoencoder}{51}{section.4.2}%
-\contentsline {section}{\numberline {4.3}3 lepton ATLAS data analysis}{54}{section.4.3}%
-\contentsline {section}{\numberline {4.4}2 lepton ATLAS data analysis}{55}{section.4.4}%
+\contentsline {section}{\numberline {4.3}3 lepton training for bump search testing}{54}{section.4.3}%
+\contentsline {section}{\numberline {4.4}2 lepton training for bump search testing}{55}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{60}{section.4.5}%
-\contentsline {chapter}{Conclusion}{63}{chapter*.127}%
-\contentsline {chapter}{Appendices}{65}{section*.128}%
-\contentsline {chapter}{Appendix A}{67}{appendix*.129}%
-\contentsline {chapter}{Appendix B}{69}{appendix*.130}%
+\contentsline {chapter}{Conclusion}{63}{chapter*.130}%
+\contentsline {chapter}{Appendices}{65}{section*.131}%
+\contentsline {chapter}{Appendix A}{67}{appendix*.132}%
+\contentsline {chapter}{Appendix B}{69}{appendix*.133}%
