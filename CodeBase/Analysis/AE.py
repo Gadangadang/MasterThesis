@@ -82,7 +82,7 @@ class RunAE:
 
         self.epochs = EPOCHS
         
-    def getModelSmall(self):
+    def getModel(self):
         """_summary_
 
         Returns:
@@ -135,7 +135,7 @@ class RunAE:
 
         return AE_model
 
-    def getModel(self):
+    def getModelBig(self):
         """_summary_
 
         Returns:
@@ -231,10 +231,10 @@ class RunAE:
 
         
         if SMALL:
-            self.AE_model = self.getModelSmall()
+            self.AE_model = self.getModel()
             print("New model created")
         else:
-            self.AE_model = self.getModel()
+            self.AE_model = self.getModelBig()
             print("New model created")
 
         #print(self.AE_model.layers[1].weights)

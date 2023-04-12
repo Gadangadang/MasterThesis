@@ -1,0 +1,52 @@
+
+Signal: 450p0p0300
+
+Pre reconstruction error cut:
+Significance small: 0.3035266729973907 | Signifiance big: 0.3035822723906011
+
+Post recon err cut
+Recon error cut: -1.7085919365039774
+Significance small: 0.13052381555613998 | Signifiance big: 0.13057781833899937
+Recon error cut: -1.281443952377983
+Significance small: 0.05999957456606579 | Signifiance big: 0.06001692306136808
+Recon error cut: -0.8542959682519888
+Significance small: 0.027445154729309924 | Signifiance big: 0.027451045641970616
+
+Signal: 800p0p050p
+
+Pre reconstruction error cut:
+Significance small: 0.024191634388441484 | Signifiance big: 0.024191987769311384
+
+Post recon err cut
+Recon error cut: -1.4085612559040699
+Significance small: 0.051737962123634657 | Signifiance big: 0.051749216956691796
+Recon error cut: -1.0564209419280526
+Significance small: 0.029326902777646623 | Signifiance big: 0.029332197259750434
+Recon error cut: -0.704280627952035
+Significance small: 0.010237610158788163 | Signifiance big: 0.010238618707609866
+
+Signal: 450p0p0300
+
+Pre reconstruction error cut:
+Significance small: 0.3035266729973907 | Signifiance big: 0.3035822723906011
+
+Post recon err cut
+Recon error cut: -1.7085919365039774
+Significance small: 0.13052381555613998 | Signifiance big: 0.13057781833899937
+Recon error cut: -1.281443952377983
+Significance small: 0.05999957456606579 | Signifiance big: 0.06001692306136808
+Recon error cut: -0.8542959682519888
+Significance small: 0.027445154729309924 | Signifiance big: 0.027451045641970616
+
+Signal: 800p0p050p
+
+Pre reconstruction error cut:
+Significance small: 0.024191634388441484 | Signifiance big: 0.024191987769311384
+
+Post recon err cut
+Recon error cut: -1.4085612559040699
+Significance small: 0.051737962123634657 | Signifiance big: 0.051749216956691796
+Recon error cut: -1.0564209419280526
+Significance small: 0.029326902777646623 | Signifiance big: 0.029332197259750434
+Recon error cut: -0.704280627952035
+Significance small: 0.010237610158788163 | Signifiance big: 0.010238618707609866

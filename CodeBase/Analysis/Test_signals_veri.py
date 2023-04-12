@@ -64,7 +64,11 @@ class SignalDumVeri(model):
     def __init__(self,data_structure:object, path:str)->None:
         super().__init__(data_structure, path)
         
-    
+        if SMALL:
+            self.checkpointname = "small"
+        else:
+            self.checkpointname = "big"
+            
     def run(self):
         st = time.time()
         
@@ -79,9 +83,27 @@ class SignalDumVeri(model):
         val_cat = self.data_structure.val_categories.to_numpy()
         sample_weight = self.data_structure.weights_train
         
-        self.trainModel(self.X_train, self.X_val, sample_weight)
-        
-        
+        if TRAIN:
+            self.trainModel(self.X_train, self.X_val, sample_weight)
+            
+            if TYPE == "VAE":
+                    self.AE_model.encoder.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_encoder_{self.checkpointname}')
+                    self.AE_model.encoder.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_decoder_{self.checkpointname}')
+            else:
+                self.AE_model.save_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_{self.checkpointname}')
+        else:
+            #* Load model 
+            if SMALL:
+                self.AE_model = self.getModel()
+            else:
+                self.AE_model = self.getModelBig()
+                
+            if TYPE == "VAE":
+                    self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_encoder_{self.checkpointname}')
+                    self.AE_model.encoder.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_decoder_{self.checkpointname}')
+            else:
+                self.AE_model.load_weights(f'./checkpoints/Megabatch_checkpoint_{TYPE}_{LEP}_{self.checkpointname}')
+                
         for signal in np.unique(self.signal_cats):
             
             signal_name = signal
@@ -183,6 +205,7 @@ class SignalDumVeri(model):
                 write_to_file(file, string_write)
                 
                 
+                #* Etmiss tail search
                 
                 histoname = f"etmiss_recon_errcut_{recon_er_cut:.2f}"
                 etmiss_histoname = r"$e_T^{miss}$ with recon err cut of "+ f"{recon_er_cut:.2f}"
@@ -202,6 +225,25 @@ class SignalDumVeri(model):
                                                signal_cats=signal_cats_cut)
                 plotetmiss_cut.histogram(self.channels, sig_name=sig_name, etmiss_flag=True)
                 
+                #* Significance as function of etmiss
+                
+                small_sign, big_sign  = bin_integrate_significance(plotetmiss_cut.n_bins, 
+                                           etmiss_bkg, 
+                                           etmiss_sig, 
+                                           val_weights_cut, 
+                                           sig_weights_cut)
+                
+                plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label="Small Significance")
+                plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label="Big Significance")
+                plt.legend()
+                plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
+                plt.ylabel("Signifiance", fontsize=25)
+                plt.legend(prop={"size": 15})
+                plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
+                plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{sig_name}.pdf")
+                plt.close()
+                
+                #* Trilepton bump search
                 histoname = f"Trilepton invariant mass with recon err cut of {recon_er_cut:.2f}"
                 histo_title =  f"mlll_recon_errcut_{recon_er_cut:.2f}"
                 featurename = r"$m_{lll}$ [GeV]"
@@ -287,3 +329,33 @@ class SignalDumVeri(model):
 def write_to_file(file, string_write):
     with open(file, 'a') as f:
         f.write(string_write)  
+        
+
+def bin_integrate_significance(bins, dist_bkg, dist_sig, dist_bkg_weights, dist_sig_weights):
+    
+    sign_bin_based_small = []
+    sign_bin_based_big = []
+   
+    for bin in bins:
+        
+        bin_cond = np.where(dist_bkg > bin)[0]
+        bin_cond_sig = np.where(dist_sig > bin)[0]
+        
+        s = dist_bkg_weights[bin_cond]
+        s2 = dist_sig_weights[bin_cond_sig]
+        w_bins_integrated_sum_bkg =np.sum(s)
+        w_bins_integrated_sum_sig= np.sum(s2)
+        
+        sig_small = _significance_small(w_bins_integrated_sum_sig, w_bins_integrated_sum_bkg)
+        sig_big = _significance_big(w_bins_integrated_sum_sig, w_bins_integrated_sum_bkg)
+        
+        sign_bin_based_big.append(sig_big)
+        sign_bin_based_small.append(sig_small)
+        
+    return sign_bin_based_small, sign_bin_based_big
+
+def _significance_small(s, b):
+        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
+    
+def _significance_big(s, b):
+    return s / np.sqrt(b)

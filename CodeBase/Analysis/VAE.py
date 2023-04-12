@@ -167,7 +167,7 @@ class RunVAE:
         return self.AE_model
     
     
-    def getModel_big(self):
+    def getModelBig(self):
         """_summary_
 
         Returns:
@@ -219,7 +219,7 @@ class RunVAE:
             self.AE_model = self.getModel()
             print("New model created")
         else:
-            self.AE_model = self.getModel_big()
+            self.AE_model = self.getModelBig()
             print("New model created")
 
         #print(self.AE_model.layers[1].weights)

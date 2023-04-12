@@ -838,8 +838,8 @@ class LEP2ScaleAndPrep:
                                                signal_cats=signal_cats)
             plotetmiss.histogram(self.channels, sig_name=signame, etmiss_flag=True)
             
-            small_sig = self._significance_small(np.sum(sig_weights), np.sum(val_weights))
-            big_sig = self._significance_big(np.sum(sig_weights), np.sum(val_weights))
+            small_sig = _significance_small(np.sum(sig_weights), np.sum(val_weights))
+            big_sig = _significance_big(np.sum(sig_weights), np.sum(val_weights))
             
             print(" ")
             print(f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}")
@@ -879,8 +879,8 @@ class LEP2ScaleAndPrep:
                 etmiss_bkg = etmiss[error_cut_val]
                 etmiss_sig = self.signal_etmiss[error_cut_sig]
                 
-                small_sig = self._significance_small(np.sum(sig_weights_cut), np.sum(val_weights_cut))
-                big_sig = self._significance_big(np.sum(sig_weights_cut), np.sum(val_weights_cut))
+                small_sig = _significance_small(np.sum(sig_weights_cut), np.sum(val_weights_cut))
+                big_sig = _significance_big(np.sum(sig_weights_cut), np.sum(val_weights_cut))
                 
                 print(" ")
                 print(f"S: {np.sum(sig_weights_cut):.3f} | B: {np.sum(val_weights_cut):.3f}")
@@ -907,15 +907,28 @@ class LEP2ScaleAndPrep:
                                                signal_cats=signal_cats_cut)
                 plotetmiss_cut.histogram(self.channels, sig_name=signame, etmiss_flag=True)
                 
+                if not isinstance(plotetmiss_cut.n_bins, int):
+                
+                    small_sign, big_sign  = bin_integrate_significance(plotetmiss_cut.n_bins, 
+                                            etmiss_bkg, 
+                                            etmiss_sig, 
+                                            val_weights_cut, 
+                                            sig_weights_cut)
+                    
+                    plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label="Small Significance")
+                    plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label="Big Significance")
+                    plt.legend()
+                    plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
+                    plt.ylabel("Signifiance", fontsize=25)
+                    plt.legend(prop={"size": 15})
+                    plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
+                    plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}.pdf")
+                    plt.close()
 
             print(f"{signame} done!")
             
             
-    def _significance_small(self, s, b):
-        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
     
-    def _significance_big(self, s, b):
-        return s / np.sqrt(b)
         
     
         
@@ -1038,9 +1051,39 @@ class LEP2ScaleAndPrep:
 
 def write_to_file(file, string_write):
     with open(file, 'a') as f:
-        f.write(string_write)        
+        f.write(string_write)   
+        
+def bin_integrate_significance(bins, dist_bkg, dist_sig, dist_bkg_weights, dist_sig_weights):
+    
+    sign_bin_based_small = []
+    sign_bin_based_big = []
+    
+    for bin in bins:
+        
+        bin_cond = np.where(dist_bkg > bin)[0]
+        bin_cond_sig = np.where(dist_sig > bin)[0]
+       
+        s = dist_bkg_weights[bin_cond]
+        s2 = dist_sig_weights[bin_cond_sig]
+        w_bins_integrated_sum_bkg =np.sum(s)
+        w_bins_integrated_sum_sig= np.sum(s2)
+        
+        sig_small = _significance_small(w_bins_integrated_sum_sig, w_bins_integrated_sum_bkg)
+        sig_big = _significance_big(w_bins_integrated_sum_sig, w_bins_integrated_sum_bkg)
+        
+        sign_bin_based_big.append(sig_big)
+        sign_bin_based_small.append(sig_small)
+        
+    return sign_bin_based_small, sign_bin_based_big
+        
+    
+    
 
-
+def _significance_small(s, b):
+        return np.sqrt(2*(( s + b )*np.log( 1 + s / b) - s ))
+    
+def _significance_big(s, b):
+    return s / np.sqrt(b)
 
 if __name__ == "__main__":
     
