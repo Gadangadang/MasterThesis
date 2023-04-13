@@ -47,22 +47,16 @@
 \contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{49}{figure.caption.110}%
 \contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{50}{figure.caption.111}%
 \contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{50}{figure.caption.112}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces $e_T^{miss}$ bump search for regular autoencoder}}{51}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces $e_T^{miss}$ bump search for variational autoencoder}}{52}{figure.caption.116}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces ROC curve for both $e_T^{miss}$ and reconstruction error with the SUSY $450-300$ signal. \relax }}{53}{figure.caption.118}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces \relax }}{53}{figure.caption.119}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{54}{figure.caption.120}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{54}{figure.caption.121}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces $m_{lll}$ best cuts for regular autoencoder}}{54}{figure.caption.122}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{56}{figure.caption.124}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{57}{figure.caption.125}%
-\contentsline {figure}{\numberline {4.26}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{58}{figure.caption.127}%
-\contentsline {figure}{\numberline {4.27}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{59}{figure.caption.128}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{51}{figure.caption.113}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{52}{figure.caption.114}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{53}{figure.caption.115}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{54}{figure.caption.116}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{55}{figure.caption.117}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {28}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{70}{figure.caption.136}%
-\contentsline {figure}{\numberline {29}{\ignorespaces \relax }}{71}{figure.caption.137}%
-\contentsline {figure}{\numberline {30}{\ignorespaces \relax }}{72}{figure.caption.138}%
-\contentsline {figure}{\numberline {31}{\ignorespaces \relax }}{73}{figure.caption.140}%
-\contentsline {figure}{\numberline {32}{\ignorespaces \relax }}{74}{figure.caption.141}%
-\contentsline {figure}{\numberline {33}{\ignorespaces \relax }}{75}{figure.caption.142}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{64}{figure.caption.124}%
+\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{65}{figure.caption.125}%
+\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{66}{figure.caption.126}%
+\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{67}{figure.caption.128}%
+\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{68}{figure.caption.129}%
+\contentsline {figure}{\numberline {27}{\ignorespaces \relax }}{69}{figure.caption.130}%

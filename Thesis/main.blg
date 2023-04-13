@@ -1,0 +1,74 @@
+This is BibTeX, Version 0.99d (TeX Live 2022)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: jhep.bst
+Database file #1: bibliography.bib
+Warning--entry type for "hdf5" isn't style-file defined
+--line 154 of file bibliography.bib
+Warning--entry type for "reback2020pandas" isn't style-file defined
+--line 285 of file bibliography.bib
+Warning--entry type for "plotly" isn't style-file defined
+--line 296 of file bibliography.bib
+Warning--entry type for "chollet2015keras" isn't style-file defined
+--line 305 of file bibliography.bib
+Warning--entry type for "Gramstad:1631043" isn't style-file defined
+--line 509 of file bibliography.bib
+Field filled up at 78, reallocating.
+Reallocated buffer (elt_size=1) to 40000 items from 20000.
+Reallocated sv_buffer (elt_size=1) to 40000 items from 20000.
+Reallocated ex_buf (elt_size=1) to 40000 items from 20000.
+Reallocated out_buf (elt_size=1) to 40000 items from 20000.
+Reallocated name_tok (elt_size=4) to 40000 items from 20000.
+Reallocated name_sep_char (elt_size=1) to 40000 items from 20000.
+Warning--entry type for "ritchie_vink_2023_7744139" isn't style-file defined
+--line 1074 of file bibliography.bib
+Reallocated str_pool (elt_size=1) to 130000 items from 65000.
+Reallocated buffer (elt_size=1) to 60000 items from 40000.
+Reallocated sv_buffer (elt_size=1) to 60000 items from 40000.
+Reallocated ex_buf (elt_size=1) to 60000 items from 40000.
+Reallocated out_buf (elt_size=1) to 60000 items from 40000.
+Reallocated name_tok (elt_size=4) to 60000 items from 40000.
+Reallocated name_sep_char (elt_size=1) to 60000 items from 40000.
+Reallocated str_pool (elt_size=1) to 195000 items from 130000.
+You've used 42 entries,
+            2188 wiz_defined-function locations,
+            769 strings with 170767 characters,
+and the built_in function-call counts, 9118 in all, are:
+= -- 798
+> -- 598
+< -- 0
++ -- 175
+- -- 133
+* -- 627
+:= -- 1390
+add.period$ -- 58
+call.type$ -- 42
+change.case$ -- 35
+chr.to.int$ -- 0
+cite$ -- 42
+duplicate$ -- 374
+empty$ -- 863
+format.name$ -- 133
+if$ -- 2284
+int.to.chr$ -- 0
+int.to.str$ -- 42
+missing$ -- 89
+newline$ -- 144
+num.names$ -- 42
+pop$ -- 191
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 223
+stack$ -- 0
+substring$ -- 258
+swap$ -- 103
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 61
+width$ -- 44
+write$ -- 368
+(There were 6 warnings)
