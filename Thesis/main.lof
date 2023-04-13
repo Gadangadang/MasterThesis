@@ -48,15 +48,24 @@
 \contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{50}{figure.caption.111}%
 \contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{50}{figure.caption.112}%
 \contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{51}{figure.caption.113}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{52}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{53}{figure.caption.115}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{54}{figure.caption.116}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{55}{figure.caption.117}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{52}{figure.caption.114}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Some $m_{lll}$ cuts for AE}}{53}{figure.caption.115}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{54}{figure.caption.116}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces 3lep reconstruction error with SUSY signals for VAE}}{55}{figure.caption.117}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Some $e_T^{miss}$ cuts for VAE}}{56}{figure.caption.118}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Some $m_{lll}$ cuts for VAE}}{57}{figure.caption.119}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces VAE | Significance as function of $e_T^{miss}$}}{58}{figure.caption.120}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{59}{figure.caption.121}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{60}{figure.caption.122}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{61}{figure.caption.123}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{62}{figure.caption.124}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Some $e_T^{miss}$ cuts for VAE}}{63}{figure.caption.125}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces VAE | Significance as function of $e_T^{miss}$}}{64}{figure.caption.126}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {22}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{64}{figure.caption.124}%
-\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{65}{figure.caption.125}%
-\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{66}{figure.caption.126}%
-\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{67}{figure.caption.128}%
-\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{68}{figure.caption.129}%
-\contentsline {figure}{\numberline {27}{\ignorespaces \relax }}{69}{figure.caption.130}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{74}{figure.caption.133}%
+\contentsline {figure}{\numberline {32}{\ignorespaces \relax }}{75}{figure.caption.134}%
+\contentsline {figure}{\numberline {33}{\ignorespaces \relax }}{76}{figure.caption.135}%
+\contentsline {figure}{\numberline {34}{\ignorespaces \relax }}{77}{figure.caption.137}%
+\contentsline {figure}{\numberline {35}{\ignorespaces \relax }}{78}{figure.caption.138}%
+\contentsline {figure}{\numberline {36}{\ignorespaces \relax }}{79}{figure.caption.139}%

@@ -20,9 +20,10 @@
 \contentsline {chapter}{\numberline {4}Results and Discussion}{43}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{43}{section.4.1}%
 \contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{51}{section.4.2}%
-\contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{51}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Challenges with the search method and tools}{55}{section.4.4}%
-\contentsline {chapter}{Conclusion}{57}{chapter*.118}%
-\contentsline {chapter}{Appendices}{59}{section*.119}%
-\contentsline {chapter}{Appendix A}{61}{appendix*.120}%
-\contentsline {chapter}{Appendix B}{63}{appendix*.121}%
+\contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{58}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Blind MonteCarlo signal samples tests}{64}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{64}{section.4.5}%
+\contentsline {chapter}{Conclusion}{67}{chapter*.127}%
+\contentsline {chapter}{Appendices}{69}{section*.128}%
+\contentsline {chapter}{Appendix A}{71}{appendix*.129}%
+\contentsline {chapter}{Appendix B}{73}{appendix*.130}%
