@@ -5,12 +5,10 @@ The 3 lepton + $e_T^{miss}$ dataset has less events, and thus allows for less tr
 Thus, the 2 lepton + $e_T^{miss}$ dataset was tried as well. The event selection was done choosing atleast 
 2 leptons, meaning that the RMM signatures of some of the events will look similar to the RMM signatures of 
 the 3 lepton + $e_T^{miss}$ dataset. A consequence of this is that the signal samples for the 3 lepton case 
-would be a good start point for testing. The signal region for the regular autoencoder models were created by 
-calculating the median $m_{err}$ of the reconstruction error. Then, 3 cuts were made, starting at 
-$m_{err} + im_{err}/5$ for $i = 1,2,3$. As the shape of the background reconstruction error has a hill like 
-shape, the median is a good place to start to remove alot of the background. This is however just a guess 
-for an optimal signal region, as the true signal is unknown, and the method has to be as unbiased as possible. 
-Below are some of the results from training on the 2 lepton case, using the same two SUSY signals as test cases. 
+would be a good start point for testing. 
+
+\subsubsection*{Regular autoencoder performance}
+Below are some of the results from training on the 2 lepton case with the regular autoencoder, using the same two SUSY signals as test cases. 
 
 
 \begin{figure}[H]
@@ -149,6 +147,7 @@ contains low statistics, in other words, the weights are just a lot lower, compa
 This only happens in the case we use equation \ref{eq:significance_small}, and is either because the square root has a negative term inside it, or because the logarithm 
 has a negative term inside it. \par
 
+\subsubsection*{Variational autoencoder performance}
 From figure \ref{fig:VAE_2lep_recon_err_both_sig} below we have the variational autoencoder output for the 2 lepton case. 
 
 \begin{figure}[H]
