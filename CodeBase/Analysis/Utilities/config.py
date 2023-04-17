@@ -4,10 +4,10 @@ SCALER = "MinMax" # or "Standard"
 BACTH_SIZE = int(8192)       # 256
 EPOCHS = 4
 
-TYPE = "VAE" #"VAE"
+TYPE = "AE" #"VAE"
 SMALL = False
-LEP = "Lep3" #"Lep3"
-TRAIN = True
+LEP = "Lep2" #"Lep3"
+TRAIN = False
 
 if SMALL:
     size_m = "small"

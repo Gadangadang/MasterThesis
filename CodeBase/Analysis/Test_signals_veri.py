@@ -226,42 +226,42 @@ class SignalDumVeri(model):
                 plotetmiss_cut.histogram(self.channels, sig_name=sig_name, etmiss_flag=True)
                 
                 #* Significance as function of etmiss
-                
-                small_sign, big_sign  = bin_integrate_significance(plotetmiss_cut.n_bins, 
-                                           etmiss_bkg, 
-                                           etmiss_sig, 
-                                           val_weights_cut, 
-                                           sig_weights_cut)
-                
-                plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label="Small Significance")
-                plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label="Big Significance")
-                plt.legend()
-                plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
-                plt.ylabel("Signifiance", fontsize=25)
-                plt.legend(prop={"size": 15})
-                plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
-                plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{sig_name}.pdf")
-                plt.close()
-                
+                if not isinstance(plotetmiss_cut.n_bins, int):
+                    small_sign, big_sign  = bin_integrate_significance(plotetmiss_cut.n_bins, 
+                                            etmiss_bkg, 
+                                            etmiss_sig, 
+                                            val_weights_cut, 
+                                            sig_weights_cut)
+                    
+                    plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label=r"$\sqrt{2((s+b)log(1+\frac{s}{b}) - s)}$")
+                    plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label=r"$\frac{s}{\sqrt{b}}$")
+                    plt.legend()
+                    plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
+                    plt.ylabel("Signifiance", fontsize=25)
+                    plt.legend(prop={"size": 15})
+                    plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
+                    plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{sig_name}_{recon_er_cut}.pdf")
+                    plt.close()
+                    
                 #* Trilepton bump search
                 histoname = f"Trilepton invariant mass with recon err cut of {recon_er_cut:.2f}"
                 histo_title =  f"mlll_recon_errcut_{recon_er_cut:.2f}"
                 featurename = r"$m_{lll}$ [GeV]"
                 PH = PlotHistogram(self.path, 
-                                   trilep_mass_val, 
-                                   val_weights_cut, 
-                                   val_cats_cut, 
-                                   histoname, 
-                                   featurename, 
-                                   histo_title, 
-                                   trilep_mass_signal, 
-                                   sig_weights_cut, 
-                                   signal_cats_cut)
+                                trilep_mass_val, 
+                                val_weights_cut, 
+                                val_cats_cut, 
+                                histoname, 
+                                featurename, 
+                                histo_title, 
+                                trilep_mass_signal, 
+                                sig_weights_cut, 
+                                signal_cats_cut)
                 PH.histogram(self.channels, sig_name=f"{sig_name}", etmiss_flag=True)
                 
-                
-                
-                
+            
+            
+            
                 
                 
                 

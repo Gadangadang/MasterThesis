@@ -915,14 +915,14 @@ class LEP2ScaleAndPrep:
                                             val_weights_cut, 
                                             sig_weights_cut)
                     
-                    plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label="Small Significance")
-                    plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label="Big Significance")
+                    plt.plot(plotetmiss_cut.n_bins, small_sign,"r-", label=r"$\sqrt{2((s+b)log(1+\frac{s}{b}) - s)}$")
+                    plt.plot(plotetmiss_cut.n_bins, big_sign,"b-", label=r"$\frac{s}{\sqrt{b}}$")
                     plt.legend()
                     plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
                     plt.ylabel("Signifiance", fontsize=25)
                     plt.legend(prop={"size": 15})
                     plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
-                    plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}.pdf")
+                    plt.savefig(STORE_IMG_PATH +f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}_{recon_er_cut}.pdf")
                     plt.close()
 
             print(f"{signame} done!")
@@ -1102,7 +1102,7 @@ if __name__ == "__main__":
     #L2.createMCSubsamples()
     #L2.mergeMegaBatches()
     
-    L2.RunTraining()
+    #L2.RunTraining()
     
     L2.RunInference()
     
