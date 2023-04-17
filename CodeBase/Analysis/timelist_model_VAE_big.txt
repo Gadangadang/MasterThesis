@@ -22,3 +22,5 @@ Megaset 8 took: 7.91m or 0.13h
 Megaset 9 took: 6.12m or 0.10h
 
 All megasets took: 92.34m or 1.54h
+Megaset 0 took: 5.14m or 0.09h
+Megaset 1 took: 5.22m or 0.09h

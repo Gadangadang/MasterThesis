@@ -1102,7 +1102,7 @@ if __name__ == "__main__":
     #L2.createMCSubsamples()
     #L2.mergeMegaBatches()
     
-    #L2.RunTraining()
+    L2.RunTraining()
     
     L2.RunInference()
     
