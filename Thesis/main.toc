@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{60}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Blind MonteCarlo signal samples tests}{66}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{66}{section.4.5}%
-\contentsline {chapter}{Conclusion}{69}{chapter*.131}%
-\contentsline {chapter}{Appendices}{71}{section*.132}%
-\contentsline {chapter}{Appendix A}{73}{appendix*.133}%
-\contentsline {chapter}{Appendix B}{75}{appendix*.134}%
+\contentsline {chapter}{Conclusion}{69}{chapter*.130}%
+\contentsline {chapter}{Appendices}{71}{section*.131}%
+\contentsline {chapter}{Appendix A}{73}{appendix*.132}%
+\contentsline {chapter}{Appendix B}{75}{appendix*.133}%
