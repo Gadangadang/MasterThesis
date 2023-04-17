@@ -1,2 +1,2 @@
-model_checkpoint_path: "Megabatch_checkpoint_VAE_Lep3_decoder_big"
-all_model_checkpoint_paths: "Megabatch_checkpoint_VAE_Lep3_decoder_big"
+model_checkpoint_path: "Megabatch_checkpoint_VAE_Lep3_decoder_small"
+all_model_checkpoint_paths: "Megabatch_checkpoint_VAE_Lep3_decoder_small"
