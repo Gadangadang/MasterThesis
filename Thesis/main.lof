@@ -31,32 +31,41 @@
 \contentsline {figure}{\numberline {3.14}{\ignorespaces VAE | Small network architecture}}{41}{figure.caption.88}%
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Large variational autoencoder architecture.\relax }}{41}{figure.caption.89}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces AE | Reconstruction error using Higgs channel as signal}}{43}{figure.caption.96}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces AE | Reconstruction error using Singletop channel as signal}}{44}{figure.caption.97}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces AE | Reconstruction error using ttbar channel as signal}}{44}{figure.caption.98}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces VAE | Reconstruction error using Higgs channel as signal}}{44}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces VAE | Reconstruction error using Singletop channel as signal}}{45}{figure.caption.100}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces VAE | Reconstruction error using ttbar channel as signal}}{45}{figure.caption.101}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{46}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{46}{figure.caption.104}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{47}{figure.caption.105}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{47}{figure.caption.106}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces AE | Reconstruction error $p_T$ altering of 10}}{48}{figure.caption.107}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{48}{figure.caption.108}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{49}{figure.caption.109}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{49}{figure.caption.110}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{50}{figure.caption.111}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{50}{figure.caption.112}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{51}{figure.caption.113}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{52}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{53}{figure.caption.115}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{54}{figure.caption.116}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces $e_T^{miss}$ best cuts for regular autoencoder}}{55}{figure.caption.117}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AE | Reconstruction error using Higgs channel as signal}}{45}{figure.caption.96}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces AE | Reconstruction error using Singletop channel as signal}}{46}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces AE | Reconstruction error using ttbar channel as signal}}{46}{figure.caption.98}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces VAE | Reconstruction error using Higgs channel as signal}}{46}{figure.caption.99}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces VAE | Reconstruction error using Singletop channel as signal}}{47}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces VAE | Reconstruction error using ttbar channel as signal}}{47}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{48}{figure.caption.103}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{48}{figure.caption.104}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{49}{figure.caption.105}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{49}{figure.caption.106}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces AE | Reconstruction error $p_T$ altering of 10}}{50}{figure.caption.107}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{50}{figure.caption.108}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{51}{figure.caption.109}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{51}{figure.caption.110}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{52}{figure.caption.111}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{52}{figure.caption.112}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{53}{figure.caption.114}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{54}{figure.caption.115}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Some $m_{lll}$ cuts for AE}}{55}{figure.caption.116}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{56}{figure.caption.117}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces 3lep reconstruction error with SUSY signals for VAE}}{57}{figure.caption.119}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Some $e_T^{miss}$ cuts for VAE}}{58}{figure.caption.120}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Some $m_{lll}$ cuts for VAE}}{59}{figure.caption.121}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces VAE | Significance as function of $e_T^{miss}$}}{60}{figure.caption.122}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{61}{figure.caption.124}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{62}{figure.caption.125}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{63}{figure.caption.126}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces 2lep reconstruction error with SUSY signals for VAE}}{64}{figure.caption.128}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Some $e_T^{miss}$ cuts for VAE}}{65}{figure.caption.129}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces VAE | Significance as function of $e_T^{miss}$}}{66}{figure.caption.130}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {22}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{64}{figure.caption.124}%
-\contentsline {figure}{\numberline {23}{\ignorespaces \relax }}{65}{figure.caption.125}%
-\contentsline {figure}{\numberline {24}{\ignorespaces \relax }}{66}{figure.caption.126}%
-\contentsline {figure}{\numberline {25}{\ignorespaces \relax }}{67}{figure.caption.128}%
-\contentsline {figure}{\numberline {26}{\ignorespaces \relax }}{68}{figure.caption.129}%
-\contentsline {figure}{\numberline {27}{\ignorespaces \relax }}{69}{figure.caption.130}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Channel removal, diboson2l, diboson3l, diboson4l}}{76}{figure.caption.137}%
+\contentsline {figure}{\numberline {32}{\ignorespaces \relax }}{77}{figure.caption.138}%
+\contentsline {figure}{\numberline {33}{\ignorespaces \relax }}{78}{figure.caption.139}%
+\contentsline {figure}{\numberline {34}{\ignorespaces \relax }}{79}{figure.caption.141}%
+\contentsline {figure}{\numberline {35}{\ignorespaces \relax }}{80}{figure.caption.142}%
+\contentsline {figure}{\numberline {36}{\ignorespaces \relax }}{81}{figure.caption.143}%
