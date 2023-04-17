@@ -47,14 +47,14 @@
 \contentsline {figure}{\numberline {4.14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{51}{figure.caption.109}%
 \contentsline {figure}{\numberline {4.15}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{52}{figure.caption.110}%
 \contentsline {figure}{\numberline {4.16}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 10}}{52}{figure.caption.111}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep reconstruction error with SUSY signals for AE}}{53}{figure.caption.113}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{54}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Some $m_{lll}$ cuts for AE}}{55}{figure.caption.115}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{56}{figure.caption.116}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces 3lep reconstruction error with SUSY signals for VAE}}{57}{figure.caption.118}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Some $e_T^{miss}$ cuts for VAE}}{58}{figure.caption.119}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Some $m_{lll}$ cuts for VAE}}{59}{figure.caption.120}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces VAE | Significance as function of $e_T^{miss}$}}{60}{figure.caption.121}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces 3lep deep network}}{53}{figure.caption.113}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces 3lep deep network}}{54}{figure.caption.114}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces 3lep deep network}}{55}{figure.caption.115}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces 3lep deep network}}{56}{figure.caption.116}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces 3lep deep network}}{57}{figure.caption.118}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces 3lep deep network}}{58}{figure.caption.119}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces 3lep deep network}}{59}{figure.caption.120}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces 3lep deep network}}{60}{figure.caption.121}%
 \contentsline {figure}{\numberline {4.25}{\ignorespaces 2lep reconstruction error with SUSY signals for AE}}{61}{figure.caption.123}%
 \contentsline {figure}{\numberline {4.26}{\ignorespaces Some $e_T^{miss}$ cuts for AE}}{62}{figure.caption.124}%
 \contentsline {figure}{\numberline {4.27}{\ignorespaces AE | Significance as function of $e_T^{miss}$}}{63}{figure.caption.125}%
