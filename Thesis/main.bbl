@@ -4,11 +4,6 @@
 L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
   (2018) }.
 
-\bibitem{FYSSTK}
-S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
-  dense feed forward neural network for regression and classification type
-  problems in comparison to regression methods}}, .
-
 \bibitem{tensorflow-whitepaper}
 M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
@@ -23,6 +18,11 @@ A.~Paszke, S.~Gross, F.~Massa, A.~Lerer, J.~Bradbury, G.~Chanan et~al.,
 V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
   {\bf 41} (07, 2009) }.
+
+\bibitem{FYSSTK}
+S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
+  dense feed forward neural network for regression and classification type
+  problems in comparison to regression methods}}, .
 
 \bibitem{backprop}
 D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
