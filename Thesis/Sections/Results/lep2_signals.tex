@@ -10,184 +10,287 @@ would be a good start point for testing.
 \subsubsection*{Regular autoencoder performance}
 Below are some of the results from training on the 2 lepton case with the regular autoencoder, using the same two SUSY signals as test cases. 
 
-
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
         \caption{ }
         \label{fig:AE_2lep_big_450}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf}
         \caption{}
+        \label{fig:AE_2lep_big_etmiss_450}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf}
+        \caption{}
+        \label{fig:AE_2lep_big_signi_450}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep deep network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    \label{fig:AE_2lep_big_rec_sig_signi_450}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+        \caption{ }
         \label{fig:AE_2lep_small_450}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf}
         \caption{}
+        \label{fig:AE_2lep_small_etmiss_450}
+    \end{subfigure}
+    \hfill  
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf}
+        \caption{}
+        \label{fig:AE_2lep_small_signi_450}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep shallow network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    \label{fig:AE_2lep_small_rec_sig_signi_450}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{ }
         \label{fig:AE_2lep_big_800}
     \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+    \hfill
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf}
         \caption{}
+        \label{fig:AE_2lep_big_etmiss_800}
+    \end{subfigure}
+    \hfill
+      
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf}
+        \caption{}
+        \label{fig:AE_2lep_big_signi_800}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep deep network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $800p50$ model is used.}
+    \label{fig:AE_2lep_big_rec_sig_signi_800}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{ }
         \label{fig:AE_2lep_small_800}
     \end{subfigure}
-    \hfill      
-    \caption[2lep reconstruction error with SUSY signals for AE]{Reconstruction error distribution for the small (left) and large (right)
-    regular autoencoder, using the 2 lepton + $e_T^{miss}$ dataset as training and test set. The signals used are the same SUSY signals 
-    from the 3 lepton case. Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
-    and figures \ref{fig:AE_2lep_big_800} and \ref{fig:AE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:AE_2lep_recon_err_both_sig}
-\end{figure}
-
-In figure \ref{fig:AE_2lep_recon_err_both_sig} we have the reconstruction error distributions 
-for the 2 lepton + $e_T^{miss}$ dataset for the regular autoencoder models. There is a general 
-trend here for both the small and large regular autoencoder, which is that the distribution is 
-highly shifted to the lower end of the reconstruction error range. This is a continuing trend 
-following the 3 lepton + $e_T^{miss}$ shown in figure 
-\ref{fig:AE_3lep_recon_err_both_sig}. This indicates that as we increase the statistics, 
-in other words the amount of background events, the ability of the autoencoder to learn the 
-internal structure increases. It is also interesting to observe here that 
-as the reconstruction error increases, the amount of each sample in a given bin changes alot. 
-As expected, Zmmjets and Zeejets along with ttbar are the events with the highest statistics 
-in the 2 lepton + $e_T^{miss}$ dataset, thus it should be easier to learn to better reconstruct 
-those events. However, note the amount of Diboson in the higher end of the reconstruction 
-rror histograms, as well as in the $e_T^{miss}$ post reconstruction error cut distributions. 
-One explanation for this could be the sample discrepency explained in section 
-\ref{sec:mcdatacomp}. It would appear that too much of the diboson samples is cut, leading to 
-not enough samples for it to appropriatly learn the RMM structure for that channel, leading to 
-the high reconstruction error values for some of those events. Note also here that the 
-reconstruction threshold where this effect is getting more notisable around $10^{-2}$ and 
-larger, where the events are on the order of a 1000 or less per bin. Thus it is not alot of 
-events, but still enough to note. \par Using the signal region definition from above we set 
-cuts on the reconstruction error and then calculate the significance of the signal. 
-The figures with the best significance are shown below:
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.42.pdf}
-        \caption{ }
-        \label{fig:AE_2lep_big_450_cut_etmiss}
-    \end{subfigure}
     \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.71.pdf}
-        \caption{}
-        \label{fig:AE_2lep_small_450_cut_etmiss}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.49.pdf}
-        \caption{}
-        \label{fig:AE_2lep_big_800_cut_etmiss}
-    \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.60\textwidth}
         \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf}
         \caption{}
-        \label{fig:AE_2lep_small_800_cut_etmiss}
+        \label{fig:AE_2lep_small_etmiss_800}
+    \end{subfigure}
+    \hfill  
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf}
+        \caption{}
+        \label{fig:AE_2lep_small_signi_800}
     \end{subfigure}
     \hfill      
-    \caption[Some $e_T^{miss}$ cuts for AE]{$e_T^{miss}$ distribution for small (left) and large (right) regular autoencoder.
-    Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
-    and figures \ref{fig:AE_2lep_big_800} and \ref{fig:AE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:AE_2lep_recon_err_both_sig_cut_etmiss}
-\end{figure}
-
-In figure \ref{fig:AE_2lep_recon_err_both_sig_cut_etmiss} we have the $e_T^{miss}$ distributions for the best cuts for the regular autoencoder models.
-The cuts then gives rise to the significance for each signal region. Now, one indication that the method could work is if the models can improve the 
-significance from just looking at the $e_T^{miss}$ distributions of the background and the signal in mind. The significances corresponding to each 
-reconstruction error cuts are all listed below. Note here that for $e_T^{miss}$, no physics basedcuts have been used, but there are certain cuts 
-that can increase the significance, so the results in the following table should be thought carefully of.
-
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300.pdf}
-        \caption{ }
-        \label{fig:AE_2lep_big_450_signi}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300.pdf}
-        \caption{}
-        \label{fig:AE_2lep_small_450_signi}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/big/2lep/significance_etmiss_800p0p050.pdf}
-        \caption{}
-        \label{fig:AE_2lep_big_800_signi}
-    \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/AE_testing/small/2lep/significance_etmiss_800p0p050.pdf}
-        \caption{}
-        \label{fig:AE_2lep_small_800_signi}
-    \end{subfigure}
-    \hfill      
-    \caption[AE | Significance as function of $e_T^{miss}$]{Significance as function of $e_T^{miss}$ for small (left) and large (right) 
-    regular autoencoder. Figures \ref{fig:AE_2lep_big_450} and \ref{fig:AE_2lep_small_450} shows the significance for the SUSY 450 and 
-    300 mass signal, and figures \ref{fig:AE_2lep_big_800} and \ref{fig:AE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:AE_2lep_recon_err_both_sig_signi}
+    \caption[2lep shallow network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the shallow regular autoencoder. Here the SUSY $800p50$ model is used.}
+    \label{fig:AE_2lep_small_rec_sig_signi_800}
 \end{figure}
 
 
-First, it should be noted that the significance for the $800p50$ signal model is a lot smaller than for the $450p300$ signal model, even though the separation shown in 
-figures \ref{fig:AE_2lep_recon_err_both_sig} and \ref{fig:AE_2lep_recon_err_both_sig_cut_etmiss} would suggest otherwise. All though the peak in both signal models are 
-fairly separated from the peak of the SM MC, the SUSY $800p50$ signal model is shifted a lot more. This is consistant with expectation, as that specific signal model 
-has a lot of missing transverse energy, compared to even the other SUSY signal model. Now, The reason for the low significance is most likely the fact that the signal sample 
-contains low statistics, in other words, the weights are just a lot lower, compared to the other signal sample. We also have to cases where the significance is $NaN$. 
-This only happens in the case we use equation \ref{eq:significance_small}, and is either because the square root has a negative term inside it, or because the logarithm 
-has a negative term inside it. \par
+In figures \ref{fig:AE_2lep_big_rec_sig_signi_450}, \ref{fig:AE_2lep_small_rec_sig_signi_450}, 
+\ref{fig:AE_2lep_big_rec_sig_signi_800} and \ref{fig:AE_2lep_small_rec_sig_signi_800} we have three 
+subplots containing the total reconstruction error distributions, the $e_T^{miss}$ signal region, 
+and the significance as function of $e_T^{miss}$ curve respectively. They were created using 
+the shallow and deep regular autoencoder with the 2 lepton + $e_T^{miss}$ dataset.
+In figures \ref{fig:AE_2lep_big_450}, \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, 
+\ref{fig:AE_2lep_small_800} we observe that there is a general trend here for both the small 
+and large regular autoencoder where the background distributions are highly shifted to the 
+lower end of the reconstruction error range. This is a continuing trend following the 3 
+lepton + $e_T^{miss}$ shown in figures \ref{fig:AE_2lep_big_450}, \ref{fig:AE_3lep_small_450},
+\ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800}. 
+This indicates that as we increase the statistics, in other words the amount of background events 
+used for training, the ability of the autoencoder to learn the internal structure increases. 
+It is also interesting to observe here that as the reconstruction error increases, the amount 
+of each sample in a given bin changes alot. As expected, Zmmjets and Zeejets along with ttbar 
+are the events with the highest statistics in the 2 lepton + $e_T^{miss}$ dataset, thus it 
+should be easier to learn to better reconstruct those events. However, note the amount of 
+Diboson in the higher end of the reconstruction error histograms, as well as in the $e_T^{miss}$ 
+post reconstruction error cut distributions. One explanation for this could be the sample 
+discrepency explained in section \ref{sec:mcdatacomp}. It would appear that too much of the 
+diboson samples is cut, leading to not enough samples for it to appropriatly learn the RMM 
+structure for that channel, leading to the high reconstruction error values for some of 
+those events. Note also here that the reconstruction threshold where this effect is getting 
+more notisable around $10^{-2}$ and larger, where the events are on the order of a 1000 or 
+less per bin. Thus it is not alot of events, but still enough to note. \par Using the signal 
+region definition from above we set cuts on the reconstruction error and then calculate the 
+significance of the signal. \par
+In figures \ref{fig:AE_2lep_big_etmiss_450}, \ref{fig:AE_2lep_small_etmiss_450}, \ref{fig:AE_2lep_big_etmiss_800} and  
+\ref{fig:AE_2lep_small_etmiss_800} we have the $e_T^{miss}$ distributions for 
+the least strict cuts for the regular autoencoder models. Now, one indication that the search strategy 
+used in this thesis could work is if the models can improve the significance from just looking at 
+the $e_T^{miss}$ distributions of the background and the signal in mind. Thus we want to compare the pre 
+reconstruction error significance with the signal region based on the autoencoder output. The significance 
+in the pre reconstruction error case were for the SUSY $450p300$ signal 0.017 using both the small and large 
+statistics formula, and 0.0014 for the SUSY $800p50$ signal. Note here that for $e_T^{miss}$, no physics 
+informed cuts have been used, but there are certain cuts that can increase the significance, so the significance
+in should be considered to possibly be somewhat higher. From figures \ref{fig:AE_2lep_big_signi_450}, 
+\ref{fig:AE_2lep_small_signi_450}, \ref{fig:AE_2lep_big_signi_800} and  \ref{fig:AE_2lep_small_signi_800} 
+we have the significance as a function of $e_T^{miss}$ for both signals using the shallow and deep autoencoder. 
+This graph shows how implementing another cut in the signal region, namely where in the $e_T^{miss}$ distribution 
+to select event, allowss for higher significance. We see here that the shallow autoencoder gets a significance of 
+almost 2.5 in the SUSY $450p300$ case, being the highest score, and beating the pre reconstruction error significance 
+by alot. Another interesting point to note here is the tail ends, especially for the SUSY $800p50$ signal. 
+This model has some events of very high $e_T^{miss}$, and in the tail end, there might be very few or none 
+background events. It should be noted that the significance for the $800p50$ signal model is a lot smaller than 
+for the $450p300$ signal model, even though the separation shown in figures \ref{fig:AE_2lep_big_450}, 
+\ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, \ref{fig:AE_2lep_small_800} would suggest otherwise. 
+All though the peak in both signal models are fairly separated from the peak of the SM MC, the SUSY $800p50$ 
+signal model is shifted a lot more. This is consistant with expectation, for the same reason that the significance 
+tails are the way they are.  Now, The reason for the low significance is most likely the fact that the signal 
+sample contains low statistics, in other words, the weights are just a lot lower, compared to the other signal 
+sample. \par
 
 \subsubsection*{Variational autoencoder performance}
-From figure \ref{fig:VAE_2lep_recon_err_both_sig} below we have the variational autoencoder output for the 2 lepton case. 
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
         \caption{ }
         \label{fig:VAE_2lep_big_450}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf}
         \caption{}
+        \label{fig:VAE_2lep_big_etmiss_450}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_big_signi_450}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep deep network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    \label{fig:VAE_2lep_big_rec_sig_signi_450}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf}
+        \caption{ }
         \label{fig:VAE_2lep_small_450}
     \end{subfigure}
     \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf}
         \caption{}
-        \label{fig:VAE_2lep_big_800}
+        \label{fig:VAE_2lep_small_etmiss_450}
     \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+    \hfill  
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf}
         \caption{}
-        \label{fig:VAE_2lep_small_800}
+        \label{fig:VAE_2lep_small_signi_450}
     \end{subfigure}
     \hfill      
-    \caption[2lep reconstruction error with SUSY signals for VAE]{Reconstruction error distribution for the small (left) and large (right)
-    variational autoencoder, using the 2 lepton + $e_T^{miss}$ dataset as training and test set. The signals used are the same SUSY signals 
-    from the 3 lepton case. Figures \ref{fig:VAE_2lep_big_450} and \ref{fig:VAE_2lep_small_450} shows the SUSY 450 and 300 mass signal, 
-    and figures \ref{fig:VAE_2lep_big_800} and \ref{fig:VAE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:VAE_2lep_recon_err_both_sig}
+    \caption[2lep shallow network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the shallow regular autoencoder. Here the SUSY $450p300$ model is used.}
+    \label{fig:VAE_2lep_small_rec_sig_signi_450}
 \end{figure}
 
-In figure \ref{fig:VAE_2lep_recon_err_both_sig} we have the reconstruction error distributions 
+
+
+
+
+
+
+
+
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{ }
+        \label{fig:VAE_2lep_big_800}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_big_etmiss_800}
+    \end{subfigure}
+    \hfill
+      
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_big_signi_800}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep deep network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the deep variational autoencoder. Here the SUSY $800p50$ model is used.}
+    \label{fig:VAE_2lep_big_rec_sig_signi_800}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf}
+        \caption{ }
+        \label{fig:VAE_2lep_small_800}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf}
+        \caption{}
+        \label{fig:VAE_2lep_small_etmiss_800}
+    \end{subfigure}
+    \hfill  
+    \begin{subfigure}{.60\textwidth}
+        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf}
+        \caption{}
+        \label{ffig:VAE_2lep_small_signi_800}
+    \end{subfigure}
+    \hfill      
+    \caption[2lep shallow network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
+    $e_T^{miss}$ for the shallow variational autoencoder. Here the SUSY $800p50$ model is used.}
+    \label{fig:VAE_2lep_small_rec_sig_signi_800}
+\end{figure}
+
+
+In figures \ref{fig:VAE_2lep_big_rec_sig_signi_450}, \ref{fig:VAE_2lep_small_rec_sig_signi_450}, 
+\ref{fig:VAE_2lep_big_rec_sig_signi_800} and \ref{fig:VAE_2lep_small_rec_sig_signi_800} we have three 
+subplots containing the total reconstruction error distributions, the $e_T^{miss}$ signal region, 
+and the significance as function of $e_T^{miss}$ curve respectively. They were created using 
+the shallow and deep regular autoencoder with the 2 lepton + $e_T^{miss}$ dataset.
+In figures \ref{fig:VAE_2lep_big_450}, \ref{fig:VAE_2lep_small_450}, \ref{fig:VAE_2lep_big_800}, 
+\ref{fig:VAE_2lep_small_800} we have the reconstruction error distributions 
 for both SUSY signals for the small and large variational autoencoder. Here we observe that the 
 peak of the distributions for the SM MC in all four cases are somewhat centered in the middle 
-of the reconstruction error range, which differs from the steep slope we saw in figure
-\ref{fig:AE_2lep_recon_err_both_sig}. Interestingly, we see here that the deepness of the neural 
+of the reconstruction error range, which differs from the steep slope we saw in figures 
+\ref{fig:AE_2lep_big_450}, \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, 
+\ref{fig:AE_2lep_small_800}. Interestingly, we see here that the deepness of the neural 
 network here plays a role, which is different from the regular autoencoder output, where both 
 the small and large autoencoder made a steep slope shape of the SM MC reconstruction error 
 distribution. The peak of the distribution here is slightly shifted to the left for the shallow 
@@ -198,85 +301,24 @@ samples from a Gaussian distribution that has yet to be trained on enough data t
 good enough error distribution. It could also be that the batch size is too large, and that 
 the model has to train on smaller batches to get a better result. \par 
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf}
-        \caption{ }
-        \label{fig:VAE_2lep_big_450_cut_etmiss}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.63.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_small_450_cut_etmiss}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.58.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_big_800_cut_etmiss}
-    \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.63.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_small_800_cut_etmiss}
-    \end{subfigure}
-    \hfill      
-    \caption[Some $e_T^{miss}$ cuts for VAE]{$e_T^{miss}$ distribution for small (left) and large (right) autoencoder.
-    Figures \ref{fig:VAE_2lep_big_450_cut_etmiss} and \ref{fig:VAE_2lep_small_450_cut_etmiss} shows the SUSY 450 and 300 mass signal, 
-    and figures \ref{fig:VAE_2lep_big_800_cut_etmiss} and \ref{fig:VAE_2lep_small_800_cut_etmiss} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:VAE_2lep_recon_err_both_sig_cut_etmiss}
-\end{figure}
+In figures \ref{fig:VAE_2lep_big_etmiss_450}, \ref{fig:VAE_2lep_small_etmiss_450}, 
+\ref{fig:VAE_2lep_big_etmiss_800} and  \ref{fig:VAE_2lep_small_etmiss_800} we have 
+the $e_T^{miss}$ distribution for the least strict cut for each signal. We see that 
+the cuts are somewhat similar to the regular autoencoder, but with two key differences.
+First, because the peaks of the distributions from figures \ref{fig:VAE_2lep_big_450}, 
+\ref{fig:VAE_2lep_small_450}, \ref{fig:VAE_2lep_big_800}, \ref{fig:VAE_2lep_small_800} 
+are so close, the cuts allowed for more background events in the signal region. Here, 
+as with the regular autoencoder output, $m_{err}$ was used, but was not a good descriminator 
+for the background events. One could perhaps make a new strategy for setting the cuts in 
+the event one has a "fat gaussian" shape. Still, because we set cuts based on reconstruction 
+error to mimimize the background in the signal region, if one does not have a slope like shape, 
+the results will be poor in comparison. \par 
+Secondly, the background that remains are slightly 
+different from the signal region from the regular autoencoder. In the lower energy range there 
+is a large excess of Zeejets, Zmmjets and ttbar events that have a high reconstruction error, 
+which is not the case for the variational autoencoder, dominated by diboson events in all bins. 
+In the higher energy range, diboson are are largest contributer to the background, but the number 
+of bins are exceptionally smaller than the Zmmjets/Zeejets/ttbar events, by a magnitude of 3 at the most. 
 
 
-In figure \ref{fig:VAE_2lep_recon_err_both_sig_cut_etmiss} we have the $e_T^{miss}$ distribution 
-for the best cut for each signal. By best, it is meant the cut that gave the best significance.
- We see that the cuts are somewhat similar to the regular autoencoder, but with two key 
- differences. \par  First, because the peaks of the distributions from figure 
- \ref{fig:VAE_2lep_recon_err_both_sig} are so close, the cuts allowed for more background events 
- in the signal region. Here, as with the regular autoencoder output, $m_{err}$ was used, but was 
- not a good descriminator for the background events. One could perhaps make a new strategy for 
- setting the cuts in the event one has a "fat gaussian" shape. Still, because we set cuts based 
- on reconstruction error to mimimize the background in the signal region, if one does not have a 
- slope like shape, the results will be poor in comparison. \par Secondly, the background that remains 
- are slightly different from the signal region from the regular autoencoder. In the lower energy 
- range there is a large excess of Zeejets, Zmmjets and ttbar events that have a high reconstruction 
- error, which is not the case for the variational autoencoder, dominated by diboson events in all bins. 
- In the higher energy range, diboson are are largest contributer to the background, but the number 
- of bins are exceptionally smaller than the Zmmjets/Zeejets/ttbar events, by a magnitude of 3 at the most. 
-
-
- \begin{figure}[H]
-    \centering
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300.pdf}
-        \caption{ }
-        \label{fig:VAE_2lep_big_450_signi}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_small_450_signi}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_big_800_signi}
-    \end{subfigure}
-    \hfill   
-    \begin{subfigure}{.45\textwidth}
-        \includegraphics[width=\textwidth]{Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050.pdf}
-        \caption{}
-        \label{fig:VAE_2lep_small_800_signi}
-    \end{subfigure}
-    \hfill      
-    \caption[VAE | Significance as function of $e_T^{miss}$]{Significance as function of $e_T^{miss}$ for small (left) and large (right) 
-    variational autoencoder. Figures \ref{fig:VAE_2lep_big_450} and \ref{fig:VAE_2lep_small_450} shows the significance for the SUSY 450 
-    and 300 mass signal, and figures \ref{fig:VAE_2lep_big_800} and \ref{fig:VAE_2lep_small_800} shows the SUSY 800 and 50 mass signal.}
-    \label{fig:VAE_2lep_recon_err_both_sig_signi}
-\end{figure}
-
+ 
