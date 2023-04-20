@@ -1289,8 +1289,14 @@ INPUT ./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.85421496
 INPUT ./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf
 INPUT ./Sections/Results/blind_test.tex
 INPUT ./Sections/Results/blind_test.tex
-INPUT ./Sections/Results/lacks_challenges.tex
-INPUT ./Sections/Results/lacks_challenges.tex
+INPUT ./Sections/Results/challenges_future.tex
+INPUT ./Sections/Results/challenges_future.tex
+INPUT ./Figures/atlas/LHC-nominal-lumi-projection.png
+INPUT ./Figures/atlas/LHC-nominal-lumi-projection.png
+INPUT ./Figures/atlas/LHC-nominal-lumi-projection.png
+INPUT ./Figures/atlas/cupy_testing.pdf
+INPUT ./Figures/atlas/cupy_testing.pdf
+INPUT ./Figures/atlas/cupy_testing.pdf
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Conclusion/Conclusion.tex
 INPUT ./Sections/Appendix/Appendix2.tex
