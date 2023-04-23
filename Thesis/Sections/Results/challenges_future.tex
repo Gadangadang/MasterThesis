@@ -80,8 +80,9 @@ one have a lot of GPU memory, and upscale the amount allowed for CuPy to allocat
 but as shown below, for now there is not much gained from using CuPy over Numpy. 
 
 \begin{figure}[H]
-    \caption[NumPy vs CuPy time comparison]{NumPy vs CuPy time comparison of creating, writing and reading from disk in minutes as function of 
-    number of events.}
+    \caption[NumPy vs CuPy time comparison]{NumPy vs CuPy time comparison. Left y axis shows time in minutes for 
+    creating, writing and reading from disk as function of number of events used in the $events\times 529$ dimentional array. 
+    Right y axis shows array size in Gigabytes for number of events, visualized by the black crosses. }
     \label{fig:cupy_comp}
     \centering
     \includegraphics[width=0.7\textwidth]{Figures/atlas/cupy_testing.pdf}
@@ -130,9 +131,24 @@ events might have even more jets in them, or leptons. But with a larger RMM come
 features as well. And also, with a larger RMM, the memory needed for a given array increases, which in the case of
 the 2 lepton case, would mean more megasets of smaller size. This is of course manageable, and can be automated with 
 some light scripting. The computation time, from event selection and conversion from Rdataframe to Numpy, and training 
-and inference, would increase a lot. 
+and inference, would increase a lot. \par 
+
+
 
 
 
 \subsubsection*{Architecture engineering}
-
+The regular autoencoder appears to provide a better anomaly detection performance than the variational autoencoder. 
+The architecture is somewhat simple, given the incredibly hard task it is meant to perform. It might be possible to 
+add some more complex layer structures like CNN autoencoders or PCA to make a more complicated and better performing 
+network architecture. This is of course only speculation, and was not investigated much in depth. General trends were 
+found to vary depending on the size of the dataset, and it is not trivial that for example a deep neural network in 
+benefitial as the training sample increases. What was important though was to ensure that the latent space was large 
+enough to store enough information for the decoder. In the early attempts the latent space were set between 10 and 50 
+nodes, which was way too little for the encoded information to be useful. As there is no clear way to find the optimal 
+architecture, an educated guess on the number of nodes were done. In theory, one can create a tunable network where 
+the number of layers and nodes in each layer are hyperparameters, but the share number of combinations would lead to 
+much longer computation time than what was available during this thesis. Tools like Keras-Tuner could facilitate 
+this search but one should have significant hardware. Based on the experience from working on this thesis it seems 
+that educated guesses are the best way to find a good architecture, but given the overall search problem it is hard 
+or perhaps no point in doing searches for optimal architectures, more than educated guesses. 
