@@ -1,0 +1,173 @@
+\section{Algorithmic implementation}
+
+The RMM as a set of features were a bit tricky to implement, and one way to implement it was 
+to use a dictionary containing the names of features already in the RDataFrame set. RDataFrame 
+allows for custom c++ functions to be run on the entire dataframe, and because almost all of 
+the features in the RMM use the kinematical variables for each particle they were needed to 
+be accessed. Each element in the dictionary contains a number id corresponding to the column 
+it belongs to, a name, the 4 kinematic variables $p_T$, $\eta$, $\phi$ and E, and the rank 
+within its particle type. Thus, $ele_0$ is the first electron, and its rank is 0. 
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:rmm_dict_struct}]
+rmm_structure = {
+    1: ["ljet_0", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 0,],
+    2: [ "ljet_1", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 1,],
+    3: [ "ljet_2", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 2,],
+    4: [ "ljet_3", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 3,],
+    5: [ "ljet_4", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 4,],
+    6: [ "ljet_5", "jetPt[ljet]", "jetEta[ljet]", "jetPhi[ljet]", "jetM[ljet]", 5,],
+    7: [ "bjet_0", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 0,],
+    8: [ "bjet_1", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 1,],
+    9: [ "bjet_2", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 2,],
+    10: [ "bjet_3", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 3,],
+    11: [ "bjet_4", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 4,],
+    12: [ "bjet_5", "jetPt[bjet77]", "jetEta[bjet77]", "jetPhi[bjet77]", "jetM[bjet77]", 5,],
+    13: [ "ele_0", "lepPt[ele_SG]", "lepEta[ele_SG]", "lepPhi[ele_SG]", "lepM[ele_SG]", 0,],
+    14: [ "ele_1", "lepPt[ele_SG]", "lepEta[ele_SG]", "lepPhi[ele_SG]", "lepM[ele_SG]", 1,],
+    15: [ "ele_2", "lepPt[ele_SG]", "lepEta[ele_SG]", "lepPhi[ele_SG]", "lepM[ele_SG]", 2,],
+    16: [ "ele_3", "lepPt[ele_SG]", "lepEta[ele_SG]", "lepPhi[ele_SG]", "lepM[ele_SG]", 3,],
+    17: [ "ele_4", "lepPt[ele_SG]", "lepEta[ele_SG]", "lepPhi[ele_SG]", "lepM[ele_SG]", 4,],
+    18: [ "muo_0", "lepPt[muo_SG]", "lepEta[muo_SG]", "lepPhi[muo_SG]", "lepM[muo_SG]", 0,],
+    19: [ "muo_1", "lepPt[muo_SG]", "lepEta[muo_SG]", "lepPhi[muo_SG]", "lepM[muo_SG]", 1,],
+    20: [ "muo_2", "lepPt[muo_SG]", "lepEta[muo_SG]", "lepPhi[muo_SG]", "lepM[muo_SG]", 2,],
+    21: [ "muo_3", "lepPt[muo_SG]", "lepEta[muo_SG]", "lepPhi[muo_SG]", "lepM[muo_SG]", 3,],
+    22: [ "muo_4", "lepPt[muo_SG]", "lepEta[muo_SG]", "lepPhi[muo_SG]", "lepM[muo_SG]", 4,],
+}      
+
+\end{lstlisting}
+ 
+The dictionary is then used in the nested for loop below. The loop is partitioned into several 
+scenarios. Firstly, the first element in the matrix is the $e_T^{miss}$. Once that is set, 
+the loop has three cases to check, the upper triangle, the lower triangle and the diagonal. 
+The upper triangle is related to masses, and the lower triangle is related to longitudal properties. 
+Using this, the number id helps id which particle(s) to use and where to put the properties 
+calculated based on them.
+
+\begin{lstlisting}[language=Python, style=pythonstyle, label={code:RMM_implementation}]
+for row in range(N_row):
+    if row == 0:
+
+        # Calculate e_T^miss and m_T for all objects
+
+        for column in range(N_col):
+            if column == 0:
+                # Set e_T_miss
+                df[k] = df[k].Define("e_T_miss", "met_Et")
+                
+            else:
+                # Set m_T for all particles
+                particle_info = rmm_structure[column]
+                name = particle_info[0]
+                pt = particle_info[1]
+                eta = particle_info[2]
+                phi = particle_info[3]
+                m = particle_info[4]
+                index = particle_info[5]
+
+                df[k] = df[k].Define(
+                    f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
+                )
+                
+    else:
+
+        # Calculate rest of matrix
+
+        for column in range(N_col):
+            if column == 0:
+                # Set h_L for all particles
+                particle_info = rmm_structure[row]
+                name = particle_info[0]
+                pt = particle_info[1]
+                eta = particle_info[2]
+                phi = particle_info[3]
+                m = particle_info[4]
+                index = particle_info[5]
+
+                df[k] = df[k].Define(
+                    f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
+                )
+                
+
+            elif column == row:
+                particle_info = rmm_structure[column]
+                name = particle_info[0]
+                pt = particle_info[1]
+                eta = particle_info[2]
+                phi = particle_info[3]
+                m = particle_info[4]
+                index = particle_info[5]
+
+                if index == 0:
+                    # If particle is the first of its type, calculate e_T of particle
+
+                    df[k] = df[k].Define(
+                        f"e_T_{name}", f"getET_part({pt},{m},{index})"
+                    )
+                    
+
+                else:
+                    # If particle is not the first of its type, calculate the difference in e_T
+
+                    df[k] = df[k].Define(
+                        f"delta_e_t_{name}", f"delta_e_T({pt},{m},{index})"
+                    )
+                    
+
+            elif column > row:
+                # For invariant mass
+
+                # Particle 1
+                particle_info1 = rmm_structure[row]
+                name1 = particle_info1[0]
+                pt1 = particle_info1[1]
+                eta1 = particle_info1[2]
+                phi1 = particle_info1[3]
+                m1 = particle_info1[4]
+                index1 = particle_info1[5]
+
+                # Particle 2
+                particle_info2 = rmm_structure[column]
+                name2 = particle_info2[0]
+                pt2 = particle_info2[1]
+                eta2 = particle_info2[2]
+                phi2 = particle_info2[3]
+                m2 = particle_info2[4]
+                index2 = particle_info2[5]
+
+                histo_name = f"m_{name1}_{name2}"
+
+                df[k] = df[k].Define(
+                    histo_name,
+                    f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2})",
+                )
+               
+
+            elif row > column:
+                # For h longitudal stuff
+
+                # Particle 1
+                particle_info1 = rmm_structure[row]
+                name1 = particle_info1[0]
+                pt1 = particle_info1[1]
+                eta1 = particle_info1[2]
+                phi1 = particle_info1[3]
+                m1 = particle_info1[4]
+                index1 = particle_info1[5]
+
+                # Particle 2
+                particle_info2 = rmm_structure[column]
+                name2 = particle_info2[0]
+                pt2 = particle_info2[1]
+                eta2 = particle_info2[2]
+                phi2 = particle_info2[3]
+                m2 = particle_info2[4]
+                index2 = particle_info2[5]
+
+                histo_name = f"h_{name1}_{name2}"
+
+                df[k] = df[k].Define(
+                    f"{histo_name}",
+                    f"geth({pt1},{eta1}, {phi1}, {m1},  {pt2}, {eta2}, {phi2}, {m2},  {index1}, {index2})",
+                )
+                
+\end{lstlisting}
