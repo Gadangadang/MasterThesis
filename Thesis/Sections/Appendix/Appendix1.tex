@@ -43,71 +43,40 @@ The upper triangle is related to masses, and the lower triangle is related to lo
 Using this, the number id helps id which particle(s) to use and where to put the properties 
 calculated based on them.
 
+\begin{figure}[H]
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:RMM_implementation}]
 for row in range(N_row):
     if row == 0:
-
         # Calculate e_T^miss and m_T for all objects
-
         for column in range(N_col):
             if column == 0:
                 # Set e_T_miss
-                df[k] = df[k].Define("e_T_miss", "met_Et")
-                
+                df[k] = df[k].Define("e_T_miss", "met_Et") 
             else:
                 # Set m_T for all particles
-                particle_info = rmm_structure[column]
-                name = particle_info[0]
-                pt = particle_info[1]
-                eta = particle_info[2]
-                phi = particle_info[3]
-                m = particle_info[4]
-                index = particle_info[5]
-
+                name, pt,eta,phi,m,index = rmm_structure[column]
                 df[k] = df[k].Define(
                     f"m_T_{name}", f"getM_T({pt},{eta},{phi},{m},{index})"
                 )
-                
     else:
-
         # Calculate rest of matrix
-
         for column in range(N_col):
             if column == 0:
                 # Set h_L for all particles
-                particle_info = rmm_structure[row]
-                name = particle_info[0]
-                pt = particle_info[1]
-                eta = particle_info[2]
-                phi = particle_info[3]
-                m = particle_info[4]
-                index = particle_info[5]
-
+                name, pt,eta,phi,m,index = rmm_structure[row]
+                
                 df[k] = df[k].Define(
                     f"h_L_{name}", f"geth_L({pt},{eta},{phi},{m},{index})"
                 )
-                
-
-            elif column == row:
-                particle_info = rmm_structure[column]
-                name = particle_info[0]
-                pt = particle_info[1]
-                eta = particle_info[2]
-                phi = particle_info[3]
-                m = particle_info[4]
-                index = particle_info[5]
-
+                elif column == row:
+                name, pt,eta,phi,m,index = rmm_structure[column]
                 if index == 0:
                     # If particle is the first of its type, calculate e_T of particle
-
                     df[k] = df[k].Define(
                         f"e_T_{name}", f"getET_part({pt},{m},{index})"
                     )
-                    
-
                 else:
                     # If particle is not the first of its type, calculate the difference in e_T
-
                     df[k] = df[k].Define(
                         f"delta_e_t_{name}", f"delta_e_T({pt},{m},{index})"
                     )
@@ -115,59 +84,30 @@ for row in range(N_row):
 
             elif column > row:
                 # For invariant mass
-
                 # Particle 1
-                particle_info1 = rmm_structure[row]
-                name1 = particle_info1[0]
-                pt1 = particle_info1[1]
-                eta1 = particle_info1[2]
-                phi1 = particle_info1[3]
-                m1 = particle_info1[4]
-                index1 = particle_info1[5]
-
+                name1, pt1,eta1,phi1,m1,index1 = rmm_structure[row]
+                
                 # Particle 2
-                particle_info2 = rmm_structure[column]
-                name2 = particle_info2[0]
-                pt2 = particle_info2[1]
-                eta2 = particle_info2[2]
-                phi2 = particle_info2[3]
-                m2 = particle_info2[4]
-                index2 = particle_info2[5]
-
+                name2,pt2,eta2,phi2,m2,index2 = rmm_structure[column]
+        
                 histo_name = f"m_{name1}_{name2}"
-
                 df[k] = df[k].Define(
                     histo_name,
                     f"getM({pt1},{eta1}, {phi1}, {m1}, {pt2}, {eta2}, {phi2}, {m2}, {index1}, {index2})",
                 )
-               
-
             elif row > column:
                 # For h longitudal stuff
-
                 # Particle 1
-                particle_info1 = rmm_structure[row]
-                name1 = particle_info1[0]
-                pt1 = particle_info1[1]
-                eta1 = particle_info1[2]
-                phi1 = particle_info1[3]
-                m1 = particle_info1[4]
-                index1 = particle_info1[5]
-
+                name1, pt1,eta1,phi1,m1,index1 = rmm_structure[row]
+                
                 # Particle 2
-                particle_info2 = rmm_structure[column]
-                name2 = particle_info2[0]
-                pt2 = particle_info2[1]
-                eta2 = particle_info2[2]
-                phi2 = particle_info2[3]
-                m2 = particle_info2[4]
-                index2 = particle_info2[5]
+                name2,pt2,eta2,phi2,m2,index2 = rmm_structure[column]
 
                 histo_name = f"h_{name1}_{name2}"
-
                 df[k] = df[k].Define(
                     f"{histo_name}",
                     f"geth({pt1},{eta1}, {phi1}, {m1},  {pt2}, {eta2}, {phi2}, {m2},  {index1}, {index2})",
                 )
                 
 \end{lstlisting}
+\end{figure}

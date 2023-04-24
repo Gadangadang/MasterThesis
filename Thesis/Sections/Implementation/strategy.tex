@@ -1,49 +1,30 @@
 \section{The search strategy}\label{sec:strategy}
 The strategy used to look for anomalies in the three lepton + missing energy finals state is presented as follows. 
-First, the MonteCarlo and ATLAS data 
-for training and inference are constructed with the RMM from section \ref{sec:rmm} as features. After scaling and 
-splitting, $80\%$ of the MC will be used for 
-training the neural network, and the remaining $20\%$ will be used for inference. To separate the anomalies, the 
-reconstruction error of the input data 
-will create a distribution. The same will then be done for a test signal, and eventually the ATLAS data. The 
-ATLAS data is completely unlabeled which 
-makes validation difficult. However, the test signals are labeled, thus we can analyze the reconstruction error 
-distribution of those signals as a 
-weak\footnote{Weak means here that allthough the test signals can provide valuable insight in how the autoencoder 
-can separate anomalies,
- we must be cautious about generalizing the evaluation value of those results. There are many contributing factors 
- that affect the reconstruction error separation, 
- which will be such as similiarities with the Standard model, large amounts of missing energy, high energy particles 
- and more,  discussed in chapter \ref{Chap:results_discuss}. } 
- validation of performance when later running on ATLAS data. 
- 
+First, the MonteCarlo and ATLAS data for training and inference are constructed with the RMM from section 
+\ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for training the neural 
+network, and the remaining $20\%$ will be used for inference. To separate the anomalies, the reconstruction 
+error of the input data will create a distribution. The same will then be done for a test signal. The ATLAS data 
+is completely unlabeled which makes validation difficult. However, the test signals are labeled, thus we can 
+analyze the reconstruction error distribution of those signals as a validation of performance when scientists at 
+ATLAS do analysis on ATLAS data. \par
 Standard analyses creates what is called a signal region. The signal region is a region in the feature space where 
-the signal is maximized. We use this region to calculate the 
-significance of a result in the search, which is really the only metric that is of use. The statistical uncertainty 
-and noise is proportional to the amount of SM MC, thus
-with lower amounts of SM MC, the better the significance will be. Using the reconstruction error, the autoencoder 
-can create its own signal region, 
-namely the areas of high reconstruction error. A cut here will then be used to separate the anomalies from the 
-Standard model in for example missing transverse energy, or 
-other features of interest. \par 
-
-The signal region for the regular autoencoder models were created by 
-calculating the median $m_{err}$ of the reconstruction error. Then, 3 cuts were made, starting at 
-$m_{err} + im_{err}/5$ for $i = 1,2,3$. This was a direct result of the shape of the background reconstruction error, being a hill like 
-shape. The median then became a good place to start to remove alot of the background. This is however just a guess 
-for an optimal signal region, as the true signal is unknown, and the method has to be as unbiased as possible. There is however 
-an issue to keep in mind here. The method to find the cut is in some sense based 
-on the slope shape of the SM MC reconstruction error distribution, thus three cuts based on the median seems 
-like a good choice. However, if one 
-then uses all the event in the signal region, it might be that one misses the ideal amount of background and 
-signal to create the significance. Thus, 
-for each reconstruction error cut, there is an associated graph showing the significance as a function of 
-$e_T^{miss}$. More specifically, the function 
-calculates from a point and outwards, for all values in the $e_T^{miss}$ distribution. Thus, you can find the ideal cut, 
-within the signal region, for where to choose the amount of background and signal to get a better significance.\par 
-To avoid bias by the author, 
-some of the test signals should contain some signal samples that the creator of the model has not seen before, 
-to ensure no changes have been made 
- to the network to adjust for that signal. ROC curves will then be used to evaluate the binary classification 
- ability of the autoencoder. 
- \par 
+the signal is maximized. We use this region to calculate the significance of a result in the search, which is 
+really the only metric that is of use. The statistical uncertainty and noise is proportional to the amount of SM MC, 
+thus with lower amounts of SM MC, the better the significance will be. Using the reconstruction error, the autoencoder 
+can create its own signal region, namely the areas of high reconstruction error. A cut here will then be used to 
+separate the anomalies from the Standard model in for example missing transverse energy, or other features of interest. \par 
+The signal region for the regular autoencoder models were created by calculating the median $m_{err}$ of the 
+reconstruction error. Then, 3 cuts were made, starting at $m_{err} + im_{err}/5$ for $i = 1,2,3$. This was a direct 
+result of the shape of the background reconstruction error, being a hill like shape. The median then became a 
+good place to start to remove alot of the background. This is however just a guess for an optimal signal region, 
+as the true signal is unknown, and the method has to be as unbiased as possible. There is however an issue to keep 
+in mind here. The method to find the cut is in some sense based on the slope shape of the SM MC reconstruction 
+error distribution, thus three cuts based on the median seems like a good choice. However, if one then uses all 
+the event in the signal region, it might be that one misses the ideal amount of background and signal to create 
+the significance. Thus, for each reconstruction error cut, there is an associated graph showing the significance 
+as a function of $e_T^{miss}$. More specifically, the function calculates from a point and outwards, for all 
+values in the $e_T^{miss}$ distribution. Thus, you can find the ideal cut, within the signal region, for where to 
+choose the amount of background and signal to get a better significance.\par 
+To avoid bias by the author, some of the test signals should contain some signal samples that the creator of the 
+model has not seen before, to ensure no changes have been made to the network to adjust for that signal. ROC 
+curves will then be used to evaluate the binary classification ability of the autoencoder. \par 
