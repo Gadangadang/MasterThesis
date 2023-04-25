@@ -139,12 +139,12 @@ and $l \neq 1$, as it is not used on the input layer.
 
 
 \subsection*{Backpropagation}
-The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by Rumelhart et al\cite{backprop}. This is a bit misleading, 
-as the backpropagation algorithm actually only refers to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and biases such that
-we get an ideal output. Assuming a cost function $C$, we can calculate the gradient $\nabla_{w, b}C$, and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of 
-two derivatives
-\footnote{NOTE TO SELF:: Note that this calculation is not a generalized algorithm for backpropagation, but rather for a special case using MSE.}\par
-:\par 
+The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by 
+Rumelhart et al\cite{backprop}. This is a bit misleading, as the backpropagation algorithm actually only refers 
+to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and 
+biases such thatwe get an ideal output. Assuming a cost function $C$, we can calculate the gradient $\nabla_{w, b}C$,
+and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ is comprised of two derivatives.
+ 
 
 \begin{equation*}
     \nabla_{w, b}C = \left(\frac{\partial C}{\partial w_{i,j}^l}, \frac{\partial C}{\partial b_j^l}\right).
