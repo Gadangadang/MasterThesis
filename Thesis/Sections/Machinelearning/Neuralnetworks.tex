@@ -41,7 +41,7 @@ Some of the following subsections contains work previously done by myself and tw
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % left fixed width
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % center fixed width
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % flush right fixed width
-\begin{table}
+\begin{table}[H]
     % \setlength{\tabcolsep}{15pt}
     \renewcommand{\arraystretch}{1.3}
     \begin{center}
@@ -68,7 +68,8 @@ Some of the following subsections contains work previously done by myself and tw
     $N$ & \multicolumn{2}{l|}{Total number of data points.} \\ \hline
     \multicolumn{3}{|l|}{All indexing starts from 1: $i,j,k,l = 1, 2, \hdots$}  \\ \hline
     \end{tabular}
-    \caption[Neural network notation]{Table containing notation used for deriving the mathematical formulas for the neural network \cite{FYSSTK}}
+    \caption[Neural network notation]{Table containing notation used for deriving the mathematical formulas for the neural 
+    network fetched from previous work\cite{FYSSTK}. }
     \label{tab:notation}
 \end{center}
 \end{table}
@@ -102,23 +103,28 @@ With regards to the learning rate, there are only three situations to consider, 
     \label{fig:lr_choice}
 \end{figure}
 
-Figure \ref{fig:lr_choice} visualizes the relation between the learning rate and the cost function. In the left most figure we note that the learning rate is too small. 
-This leads to many iterations before you reach a minimum. In the right most figure we note that the learning rate is too high, and the result is that we get divergent behavior. 
-Thus the goal is to find the optimal learning rate, shown in the middle figure. \par 
-A modified and prefered version of gradient descent is the so called stochastic gradient descent. Regular gradient descent can, for large datasets be quite slow, and is prone to 
-getting stuck in a local minima. To circumvent this issue, mini batches are introduced. 
+Figure \ref{fig:lr_choice} visualizes the relation between the learning rate and the cost function. 
+In the left most figure we note that the learning rate is too small. This leads to many iterations 
+before you reach a minimum. In the right most figure we note that the learning rate is too high, 
+and the result is that we get divergent behavior. Thus the goal is to find the optimal learning 
+rate, shown in the middle figure. There are several algorithms that tries to do what is shown in 
+the middle figure above, of of which is ADAM\cite{ADAM:opti}\par 
+A modified and prefered version of gradient descent is the so called stochastic gradient descent.
+Regular gradient descent can, for large datasets be quite slow, and is prone to getting stuck 
+in a local minima. To circumvent this issue, mini batches are introduced. 
 
 
 
 
 \subsection*{Feed forwarding}
-Inference (prediction) and training both use the same feed-forward algorithm. Lets then assume that we have generated a network. The network initializes the weights and biases usually 
-with normal or uniformly distributed values, that can later be tuned. The procedure is to send the data through the network, weighting each connection according to the networks architecture,
-and produce an output. The procedure can be summarized in the following steps \cite{FYSSTK}:
+Inference (prediction) and training both use the same feed-forward algorithm. Lets then assume that we have generated a 
+network. The network initializes the weights and biases usually with normal or uniformly distributed values, that can 
+later be adjusted. The procedure is to send the data through the network, weighting each connection according to the networks 
+architecture, and produce an output. The procedure can be summarized in the following steps\cite{FYSSTK}:
  \begin{itemize}
     \item The data is recieved by the input nodes in the network for each feature.
     \item Each input node weights the data value according to the connection of each node in the next layer.
-    \item Every node in the hidden layers sums the weighted data values, and adds the bias associated to the given node, denoted as z. 
+    \item Every node in the hidden layers sums the weighted data values and adds the bias associated to the given node. The resulting number is denoted as z. 
     \item This value z is then sent through an activation function $\sigma$, which produces the output of the node, denoted as $a = \sigma(z)$.
     \item This process is repeated for each hidden layer, and it is important to note that the number of nodes in the hidden layers is not dependent on the number of features in the original dataset. 
     \item The last hidden layer then sends the activated values to the output layer, where the number of nodes and choice of activation function depends on the problem to solve.
@@ -128,7 +134,8 @@ Mathematically this is expressed as follows:
 \begin{equation}
     z_j^l = \sum_{i=1}^{n_{l-1}} w_{ij}^l a_i^{l-1} + b_j^l, \quad a_j^l = \sigma^l(z_j^l),
 \end{equation}
-where $l$ is the layer index, $j$ is the node index, and $i$ is the index of the node in the previous layer, and $l \neq 1$, as it is not used on the input layer.
+where $l$ is the layer index, $j$ is the node index, and $i$ is the index of the node in the previous layer, 
+and $l \neq 1$, as it is not used on the input layer.
 
 
 \subsection*{Backpropagation}

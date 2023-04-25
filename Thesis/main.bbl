@@ -38,6 +38,11 @@ S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
 
+\bibitem{ADAM:opti}
+D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
+  2014.
+\newblock 10.48550/ARXIV.1412.6980.
+
 \bibitem{backprop}
 D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
   back-propagating errors}, {\emph{Nature} (1986) }.
@@ -45,11 +50,6 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 \bibitem{VAE}
 D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
 \newblock 10.48550/ARXIV.1312.6114.
-
-\bibitem{ADAM:opti}
-D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
-  2014.
-\newblock 10.48550/ARXIV.1412.6980.
 
 \bibitem{hyperband:opt}
 L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
