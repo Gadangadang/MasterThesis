@@ -1,17 +1,31 @@
 \section{Neural Networks}
 In the field of machine learning, statistical algorithms are commonly employed for data analysis. 
 Neural networks, a specific category of such algorithms, have experienced exponential growth in 
-usage in both industry and academia over the past decade. These models find extensive use in a 
-variety of applications, ranging from image analysis to weather prediction. The fundamental principle 
-behind feed forward neural networks (FFNN) involves the data being fed forward through the network,
- with the end output evaluated and corrections then back propagated through the network to update 
- the weights and biases. This training process is repeated until a certain threshold is met. 
- figure \ref{fig:nndiagram} depicts a general layout of a neural network, wherein the input layer consists of 
- one node per feature in the dataset. The number of hidden layers and nodes per layer can be 
- fine-tuned, with the last hidden layer connected to the output layer. The latter is determined 
- by the problem being addressed, and in the case of the binary classification problem depicted 
- in figure \ref{fig:nndiagram}, the nodes interact via tunable weights $w$ and biases $b$ that must 
- be trained on the dataset prior to making predictions.
+usage in both industry and academia over the past decade. All though most of the theory behind it was 
+discovered as far back as the 80's, the technology has only now in the last 10 to 15 years become good enough. 
+These statistical models are of extensive use in a variety of applications, ranging from image analysis to 
+weather prediction. \par 
+The fundamental principle behind feed forward neural networks (FFNN) involves the 
+data being fed forward through the network, with the end output evaluated and corrections then back 
+propagated through the network to update the weights and biases. This training process is repeated 
+until a certain threshold is met. Figure \ref{fig:nndiagram} depicts a general layout of a neural 
+network, wherein the input layer consists of one node per feature in the dataset. The number of 
+hidden layers and nodes per layer can be fine-tuned, with the last hidden layer connected to the 
+output layer. The latter is determined by the problem being addressed, and in the case of the 
+binary classification problem depicted in figure \ref{fig:nndiagram}, the nodes interact via 
+tunable weights $w$ and biases $b$ that must be trained on the dataset prior to making predictions.
+The neural network, expecially deep\footnote{Deep here refers to a neural network with more than 
+one hidden layer, and often also a network where the layers have many neurons. One example would be a network with say a 
+200 - 500 - 500 - 700 - 500 - 200 - 1 network where the numbers correspond to number of nodes in their layers.} 
+ones becomes black boxes, meaning that once the training data or the test data is fed in through 
+the input layer it is hard to know exactly what happens with the data until it comes out as a 
+prediction. It is because of this that some\footnote{In cases where a lot of money is at stake or 
+lives are dependent on the output and performance of the neural network, it is reasonable to expect 
+some explainability from the engineers if something goes wrong. There are other algorithms that are less 
+"black box" machines, such as decision trees\cite{Chen_2016} or support vector machines\cite{cortes1995support}, 
+both of which have their pros and cons compared to neural networks.} have shown some hesitency 
+with using neural networks for problems of high importance. None the less they can be very 
+effective if used correctly. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
@@ -21,6 +35,7 @@ behind feed forward neural networks (FFNN) involves the data being fed forward t
 \end{figure}
 
 In order to avoid confusion, we will adhere to table \ref{tab:notation} for the notation used in the following sections.
+Some of the following subsections contains work previously done by myself and two co-students, and can be found here\cite{FYSSTK}.
 
 % Define new columns types 
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % left fixed width
@@ -77,8 +92,8 @@ it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSS
     \boldsymbol{\theta}_{i+1} = \boldsymbol{\theta}_i - \eta\nabla_{\theta}C(\boldsymbol{\theta}_i),
 \end{equation}
 where $\eta$ is a step size, also called the learning rate. The choice of $\eta$ is not a trivial case. It is one of several 
-hyperparameters\footnote{Give reference to hyperparameters}
-that can be altered, and that highly depend on the given problem. With regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
+hyperparameters\cite{Goodfellow-et-al-2016} that can be altered, and that highly depend on the given problem. 
+With regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/lr_choice.png}

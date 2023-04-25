@@ -19,18 +19,28 @@ V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
   {\bf 41} (07, 2009) }.
 
+\bibitem{Chen_2016}
+T.~Chen and C.~Guestrin, \emph{{XGBoost}},  in \emph{Proceedings of the 22nd
+  {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data
+  Mining}, {ACM}, aug, 2016.
+\newblock \href{http://dx.doi.org/10.1145/2939672.2939785}{DOI}.
+
+\bibitem{cortes1995support}
+C.~Cortes and V.~Vapnik, \emph{Support-vector networks}, {\emph{Machine
+  learning} {\bf 20} (1995) 273--297}.
+
 \bibitem{FYSSTK}
 S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
   problems in comparison to regression methods}}, .
 
-\bibitem{backprop}
-D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
-  back-propagating errors}, {\emph{Nature} (1986) }.
-
 \bibitem{Goodfellow-et-al-2016}
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
+
+\bibitem{backprop}
+D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
+  back-propagating errors}, {\emph{Nature} (1986) }.
 
 \bibitem{VAE}
 D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
