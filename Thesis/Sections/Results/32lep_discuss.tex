@@ -1,3 +1,34 @@
-\section{Final marks on the results}
-In sections \ref{sec:nonsig}, \ref{sec:3lep}, \ref{sec:2lep} the performance of the regular and variational autoencoder 
-with respect to usage in BSM searches has been shown through various tests. 
+\section{Final remarks on the results}
+In sections \ref{sec:nonsig}, \ref{sec:3lep}, \ref{sec:2lep} the performance 
+of the regular and variational autoencoder with respect to usage in BSM 
+searches has been shown through various tests. First, interestingly it appears that 
+the shape of the reconstruction error is more sensitive to the choice between 
+variational and regular autoencoder than it is to the ammount of training samples 
+it uses. However, the steepness of the shape in the case of the regular autoencoder 
+increases with the increase of training data. From this obervation it is reasonable 
+to assume that to increase the ability of the autoencoder to perform, one needs 
+large amounts of training samples. This is also shown in the case of the variational 
+autoencoder, where if one increases the amount of training data by going from the 
+3 lepton + $e_T^{miss}$ case to the 2 lepton + $e_T^{miss}$ case we observe the 
+peak to move more to the left end of the reconstruction error distribution. It was not 
+well investigated why the outputs of the two models are so different, but one reason 
+could be that the decoder that sampels from the latent space distribution in the 
+variational autoencoder needs even more training data to get good separation. \par 
+Secondly, with the increase in training data it would be interesting to do the 
+"altering $p_T$" test, as well as some other SM MC altering tests with especially the 
+regular autoencoder. Based on the signal tests and the "altering $p_T$" test done with 
+the 3 lepton + $e_T^{miss}$ trained regular autoencoder, it is reasonable that the 
+autoencoder would perform even better. Other tests could for example be to swap 
+certain features in the RMM in order to create unphysical events, or swap events from
+one decay channel with another in order to create unphysical events. Essentially, 
+by making these anomalous events and testing the autoencoder, one would get a better 
+picture on the reach and ability of the autoencoder. This is of importance given the 
+fact that the target signal or signals could in theory look very strange or perhaps 
+in some feature space very similar to the SM MC. \par 
+A third point to note is in regards to the megaset training done in the 2 lepton + 
+$e_T^{miss}$ case. An arbitrary choice of 10 megasets were chosen, but it might perhaps 
+be better to choose a larger or smaller number of megasets, and that might have an impact
+on how well the autoencoders learn the SM signatures. A key criteria to uphold when 
+doing that training is to ensure that the megasets all keep the natural distribution of 
+the entire training set, and thus the standard model. If not, the algorithm will learn
+with a bias that is not contructive. 

@@ -142,7 +142,7 @@ The regular autoencoder appears to provide a better anomaly detection performanc
 The architecture is somewhat simple, given the incredibly hard task it is meant to perform. It might be possible to 
 add some more complex layer structures like CNN autoencoders or PCA to make a more complicated and better performing 
 network architecture. This is of course only speculation, and was not investigated much in depth. General trends were 
-found to vary depending on the size of the dataset, and it is not trivial that for example a deep neural network in 
+found to vary depending on the size of the dataset, and it is not trivial that for example a deep neural network is 
 benefitial as the training sample increases. What was important though was to ensure that the latent space was large 
 enough to store enough information for the decoder. In the early attempts the latent space were set between 10 and 50 
 nodes, which was way too little for the encoded information to be useful. As there is no clear way to find the optimal 
@@ -151,4 +151,16 @@ the number of layers and nodes in each layer are hyperparameters, but the share 
 much longer computation time than what was available during this thesis. Tools like Keras-Tuner could facilitate 
 this search but one should have significant hardware. Based on the experience from working on this thesis it seems 
 that educated guesses are the best way to find a good architecture, but given the overall search problem it is hard 
-or perhaps no point in doing searches for optimal architectures, more than educated guesses. 
+or perhaps no point in doing searches for optimal architectures, more than educated guesses. \par 
+Another point to think about is how the autoencoder is trained. As explained in section \ref{sec:autoencder_theory}
+the autoencoder is trained by how well it manages to reconstruct the input data. This is done by 
+calculating the error of each feature for a given event, and averaging the error for all features. 
+This has its pros and cons, and should be investigated further. Suppose one has an RMM which is very sparse, 
+with 10 bjets, 10 ljets, 10 electrons, 10 muons, and 10 photons, i.e a T5N10 matrix of 2601 colums and rows. 
+In this case, one can easily assume that the RMM would be very sparce, as few if any SM events produced 
+as the current energy level as the LHC contains that many particles. Thus, on could argue that some features 
+are more important to learn correctly than others, and thus should be weighted more. It is however difficult to 
+know which features that should be in focus, as the signatures for each events might differ, and some 
+might look completely different from one another. One way to deal with this issue is to calculate 
+the average RMM for a given channel, and then see if there are general trends in the RMM for those channels. 
+Then one could perhaps weigh the most used features more than the more sparce areas. 

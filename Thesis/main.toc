@@ -21,14 +21,14 @@
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{45}{section.4.1}%
 \contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{53}{section.4.2}%
 \contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{61}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Final marks on the results}{71}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{71}{section.4.5}%
+\contentsline {section}{\numberline {4.4}Final remarks on the results}{71}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{72}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Future work}{72}{section.4.6}%
-\contentsline {chapter}{Conclusion}{75}{chapter*.138}%
-\contentsline {chapter}{Appendices}{77}{section*.139}%
-\contentsline {chapter}{Appendix A}{79}{appendix*.140}%
-\contentsline {section}{\numberline {A.1}Channel removal testing}{79}{section.Alph0.1}%
-\contentsline {section}{\numberline {A.2}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{85}{section.Alph0.2}%
-\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{95}{section.Alph0.3}%
-\contentsline {chapter}{Appendix B}{107}{appendix*.185}%
-\contentsline {section}{\numberline {B.1}Algorithmic implementation}{107}{section.Alph0.1}%
+\contentsline {chapter}{Conclusion}{77}{chapter*.138}%
+\contentsline {chapter}{Appendices}{79}{section*.139}%
+\contentsline {chapter}{Appendix A}{81}{appendix*.140}%
+\contentsline {section}{\numberline {A.1}Channel removal testing}{81}{section.Alph0.1}%
+\contentsline {section}{\numberline {A.2}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{87}{section.Alph0.2}%
+\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{97}{section.Alph0.3}%
+\contentsline {chapter}{Appendix B}{109}{appendix*.185}%
+\contentsline {section}{\numberline {B.1}Algorithmic implementation}{109}{section.Alph0.1}%
