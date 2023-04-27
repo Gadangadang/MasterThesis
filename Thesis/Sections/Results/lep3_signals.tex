@@ -167,7 +167,7 @@ $e_T^{miss}$ distribution in the signal region for the SM MC and the SUSY signal
 with the most relaxed cut, in other words, the least strict and thus the signal region 
 with the most amount of total events, both SM MC and signal. This is to illustrate the difficulty
 of this method since we only have the reconstruction error to go on. Thus, too strict a cut 
-will most likely eliminate all possible signal, where as too loose a cut and the SM MC background 
+will most likely eliminate all possible signal, whereas too loose a cut and the SM MC background 
 will dominate completely. As the final state signal has 3 leptons, it was thought that 
 there might be a resonance\footnote{A resonance in this context means a peak that is significantly 
 different from the distribution it is found in, for example the Z mass resonance around 91 GeV shown in 
@@ -332,23 +332,23 @@ In figures \ref{fig:VAE_3lep_big_rec_sig_signi_450}, \ref{fig:VAE_3lep_small_rec
 subplots containing the total reconstruction error distributions, the $e_T^{miss}$ signal region, 
 the $m_{lll}$ signal region and the significance as function of $e_T^{miss}$ curve respectively for 
 the shallow and deep variational autoencoder. From figures \ref{fig:VAE_3lep_big_450}, \ref{fig:VAE_3lep_small_450},
-\ref{fig:VAE_3lep_big_800}, \ref{fig:VAE_3lep_small_800} we observe that the the variational 
+\ref{fig:VAE_3lep_big_800}, \ref{fig:VAE_3lep_small_800} we observe that the variational 
 autoencoder seems to struggle with differentiating between background and signal, having the 
 two distributions laying on top of each other. There is however a slight difference in the 
 shape of the distributions from the shallow and deep network. The shallow has a more narrow 
-and slightly more left leaning shale, where as the deep network has a slightly more broad 
+and slightly more left leaning shale, whereas the deep network has a slightly more broad 
 distribution shifted a bit to the right. \par 
 
 In figures \ref{fig:VAE_3lep_big_etmiss_450}, \ref{fig:VAE_3lep_small_etmiss_450}, 
 \ref{fig:VAE_3lep_big_etmiss_800} and  \ref{fig:VAE_3lep_small_etmiss_800} we have the 
 reconstruction error cut imposed on the SM MC and the signal samples. Interestingly, one should 
-note that all though the total reconstruction error distributions are not well separated, the 
-signal regions shows a separation in distribution peaks. Now, unlike in the regular autoencoder 
+note that although the total reconstruction error distributions are not well separated, the 
+signal regions show a separation in distribution peaks. Now, unlike in the regular autoencoder 
 case, the variational autoencoder allows for almost two orders of magnitude more background 
 events in the signal region. This is because of the algorithm used to determine the 
 reconstruction error cut by means of finding the median and iteratively increasing the criterion. 
 Bacause the two distributions are on top of each other, we do get a lot of background events, 
-but we also gets the peak of the signal distributions, which is why we see the clear 
+but we also get the peak of the signal distributions, which is why we see the clear 
 separation in the subfigures \ref{fig:VAE_3lep_big_etmiss_450}, \ref{fig:VAE_3lep_small_etmiss_450}, 
 \ref{fig:VAE_3lep_big_etmiss_800} and \ref{fig:VAE_3lep_small_etmiss_800}. \par 
 

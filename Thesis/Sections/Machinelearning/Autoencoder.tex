@@ -38,7 +38,7 @@ reconstruction without copying, thus we can use mean squared error, given as
 \end{equation}
 
 \section{Variational autoencoders}
-Another popular method for reconstruction is the so called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
+Another popular method for reconstruction is the so-called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
 one can use the variational bayesian approach for efficient approximate posterior inference, leading to the use of variational autoencoders.
 Here, contrary to regular autoencoders, the latent space is a distribution that can be sampled from. In the context of reconstruction, this means that
 we want to create a latent space distribution based on the true distribution in the data, and use this latent space distribution to then generate
@@ -62,7 +62,7 @@ It can be shown that the marginal likelyhood can be written as follows:
     log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)}),
 \end{equation}
 
-where the first term on the right hand side is the Kullback-Leibler (KL) divergence\footnote{The KL divergence is a measure of how one 
+where the first term on the right-hand side is the Kullback-Leibler (KL) divergence\footnote{The KL divergence is a measure of how one 
 probability distribution is different from a second, reference probability distribution. It is often used as a distance measure 
 between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelyhood. 
 As the KL divergence is non-negative, the ELBO will always be equal to or less than the marginal likelihood, written below:

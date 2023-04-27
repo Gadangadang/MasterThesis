@@ -1,8 +1,8 @@
 \section{Neural Networks}
 In the field of machine learning, statistical algorithms are commonly employed for data analysis. 
 Neural networks, a specific category of such algorithms, have experienced exponential growth in 
-usage in both industry and academia over the past decade. All though most of the theory behind it was 
-discovered as far back as the 80's, the technology has only now in the last 10 to 15 years become good enough. 
+usage in both industry and academia over the past decade. Although most of the theory behind it was 
+discovered as far back as the 80s, the technology has only now in the last 10 to 15 years become good enough. 
 These statistical models are of extensive use in a variety of applications, ranging from image analysis to 
 weather prediction. \par 
 The fundamental principle behind feed forward neural networks (FFNN) involves the 
@@ -24,13 +24,13 @@ lives are dependent on the output and performance of the neural network, it is r
 some explainability from the engineers if something goes wrong. There are other algorithms that are less 
 "black box" machines, such as decision trees\cite{Chen_2016} or support vector machines\cite{cortes1995support}, 
 both of which have their pros and cons compared to neural networks.} have shown some hesitency 
-with using neural networks for problems of high importance. None the less they can be very 
+with using neural networks for problems of high importance. Nonetheless, they can be very 
 effective if used correctly. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
     \caption[Simple diagram of a neural network]{Simple neural network diagram drawm using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, 
-    and the red dots are the output layer. The arrows shows the connections between the nodes. }
+    and the red dots are the output layer. The arrows show the connections between the nodes. }
     \label{fig:nndiagram}
 \end{figure}
 
@@ -94,7 +94,7 @@ it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSS
 \end{equation}
 where $\eta$ is a step size, also called the learning rate. The choice of $\eta$ is not a trivial case. It is one of several 
 hyperparameters\cite{Goodfellow-et-al-2016} that can be altered, and that highly depend on the given problem. 
-With regards to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
+With regard to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/lr_choice.png}
@@ -106,18 +106,18 @@ With regards to the learning rate, there are only three situations to consider, 
 Figure \ref{fig:lr_choice} visualizes the relation between the learning rate and the cost function. 
 In the left most figure we note that the learning rate is too small. This leads to many iterations 
 before you reach a minimum. In the right most figure we note that the learning rate is too high, 
-and the result is that we get divergent behavior. Thus the goal is to find the optimal learning 
-rate, shown in the middle figure. There are several algorithms that tries to do what is shown in 
-the middle figure above, of of which is ADAM\cite{ADAM:opti}\par 
-A modified and prefered version of gradient descent is the so called stochastic gradient descent.
+and the result is that we get divergent behavior. Thus, the goal is to find the optimal learning 
+rate, shown in the middle figure. There are several algorithms that try to do what is shown in 
+the middle figure above, of which is ADAM\cite{ADAM:opti}\par 
+A modified and prefered version of gradient descent is the so-called stochastic gradient descent.
 Regular gradient descent can, for large datasets be quite slow, and is prone to getting stuck 
-in a local minima. To circumvent this issue, mini batches are introduced. 
+in a local minimum. To circumvent this issue, mini batches are introduced. 
 
 
 
 
 \subsection*{Feed forwarding}
-Inference (prediction) and training both use the same feed-forward algorithm. Lets then assume that we have generated a 
+Inference (prediction) and training both use the same feed-forward algorithm. Let's then assume that we have generated a 
 network. The network initializes the weights and biases usually with normal or uniformly distributed values, that can 
 later be adjusted. The procedure is to send the data through the network, weighting each connection according to the networks 
 architecture, and produce an output. The procedure can be summarized in the following steps\cite{FYSSTK}:
@@ -228,7 +228,7 @@ using the substitution from equation \ref{eq:sigma_der}. This allows us to subst
     \delta_j^l = \sum_k w_{j,k}^{l+1}\sigma'(z_j^l)\delta_k^{l+1}.
 \end{equation}
 
-Using this we can derive a three step formula for the backpropagation algorithm:
+Using this we can derive a three-step formula for the backpropagation algorithm:
 \begin{itemize}
     \item Compute the local gradient for the last layer, $\delta^L$.
     \item Recursively compute the local gradient for the remaining layers, $\delta^l$ for $l=L-1, L-2, ..., 1$.

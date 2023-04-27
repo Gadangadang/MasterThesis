@@ -7,7 +7,7 @@ error of the input data will create a distribution. The same will then be done f
 is completely unlabeled which makes validation difficult. However, the test signals are labeled, thus we can 
 analyze the reconstruction error distribution of those signals as a validation of performance when scientists at 
 ATLAS do analysis on ATLAS data. \par
-Standard analyses creates what is called a signal region. The signal region is a region in the feature space where 
+Standard analyses create what is called a signal region. The signal region is a region in the feature space where 
 the signal is maximized. We use this region to calculate the significance of a result in the search, which is 
 really the only metric that is of use. The statistical uncertainty and noise is proportional to the amount of SM MC, 
 thus with lower amounts of SM MC, the better the significance will be. Using the reconstruction error, the autoencoder 
@@ -25,6 +25,6 @@ the significance. Thus, for each reconstruction error cut, there is an associate
 as a function of $e_T^{miss}$. More specifically, the function calculates from a point and outwards, for all 
 values in the $e_T^{miss}$ distribution. Thus, you can find the ideal cut, within the signal region, for where to 
 choose the amount of background and signal to get a better significance.\par 
-To avoid bias by the author, some of the test signals should contain some signal samples that the creator of the 
+To avoid bias by the author, some test signals should contain some signal samples that the creator of the 
 model has not seen before, to ensure no changes have been made to the network to adjust for that signal. ROC 
 curves will then be used to evaluate the binary classification ability of the autoencoder. \par 

@@ -43,16 +43,16 @@ Suppose a classifier $\mathcal{M}$ does a binary classification of positive and 
 label, and the instance is indeed positive, we define this as a $\it{true\, positive}$. The same goes for negative prediction of a 
 negative instance, which is defined as a $\it{true\, negative}$. Then there is the case where $\mathcal{M}$ predicts a negative label
 when the instance is positive, defined as a $\it{false\, negative}$, and vice versa is then defined as a $\it{false\, positive}$\cite{FAWCETT2006861}.
-Now, the TPR is defined as the ratio of true positives to the total number of positive instances, i.e 
+Now, the TPR is defined as the ratio of true positives to the total number of positive instances, i.e. 
 \begin{equation*}
     TPR = \frac{TP}{TP+FN},
 \end{equation*}
-and the FPR is defined as the ratio of false positives to the total number of negative instances, i.e
+and the FPR is defined as the ratio of false positives to the total number of negative instances, i.e.
 \begin{equation*}
     FPR = \frac{FP}{FP+TN}.
 \end{equation*}
-Using this, we get a plot that tells us how well the classifier performs. As the goal usually is it to have a high TPR and a low FPR,
-the more "north west"\cite{FAWCETT2006861} of the plot the curve is, the better. Below are two example of a ROC curve and the classifier output it 
+Using this, we get a plot that tells us how well the classifier performs. As the goal is usually to have a high TPR and a low FPR,
+the more "north-west"\cite{FAWCETT2006861} of the plot the curve is, the better. Below are two example of a ROC curve and the classifier output it 
 is calculated from. For simplicity, the classifier output is in this case just two normal distributions with the mean and standard deviation 
 listed in the legend of the distribution plots.
 

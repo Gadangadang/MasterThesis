@@ -1,0 +1,1 @@
+{"rule":"PRP_THE","sentence":"^\\Q8192 is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, and it a rather large batchsize.\\E$"}

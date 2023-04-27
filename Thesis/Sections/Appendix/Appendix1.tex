@@ -2,9 +2,9 @@
 
 The RMM as a set of features were a bit tricky to implement, and one way to implement it was 
 to use a dictionary containing the names of features already in the RDataFrame set. RDataFrame 
-allows for custom c++ functions to be run on the entire dataframe, and because almost all of 
-the features in the RMM use the kinematical variables for each particle they were needed to 
-be accessed. Each element in the dictionary contains a number id corresponding to the column 
+allows for custom c++ functions to be run on the entire dataframe, and because almost all the 
+features in the RMM use the kinematical variables for each particle they were needed to 
+be accessed. Each element in the dictionary contains a number ID corresponding to the column 
 it belongs to, a name, the 4 kinematic variables $p_T$, $\eta$, $\phi$ and E, and the rank 
 within its particle type. Thus, $ele_0$ is the first electron, and its rank is 0. 
 
@@ -40,7 +40,7 @@ The dictionary is then used in the nested for loop below. The loop is partitione
 scenarios. Firstly, the first element in the matrix is the $e_T^{miss}$. Once that is set, 
 the loop has three cases to check, the upper triangle, the lower triangle and the diagonal. 
 The upper triangle is related to masses, and the lower triangle is related to longitudal properties. 
-Using this, the number id helps id which particle(s) to use and where to put the properties 
+Using this, the number ID helps ID which particle(s) to use and where to put the properties 
 calculated based on them.
 
 \begin{figure}[H]

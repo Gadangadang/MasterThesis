@@ -82,7 +82,7 @@ for k in df.keys():
 \end{figure}
 
 In the code listing above we see an example of how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
-how many threads to use in the parallellization, extra helper functions written in C++ with .h and .so files an the path to the folder.
+how many threads to use in the parallellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
 The nex three lines creates a dictionary containing the ROOT RDataFrames to do event selection on. These are categorized by channel name. 
 The loop then does event selection for each channel sample, defining new variables in the RDataFrame, applying filters, and creating histograms.
 Some variables are constructed using variables already in the ROOT files, such as energy and mass and so on, which through custom C++ functions
