@@ -24,11 +24,12 @@
 \contentsline {section}{\numberline {4.4}Final remarks on the results}{71}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{72}{section.4.5}%
 \contentsline {section}{\numberline {4.6}Future work}{73}{section.4.6}%
-\contentsline {chapter}{Conclusion}{77}{chapter*.138}%
-\contentsline {chapter}{Appendices}{79}{section*.139}%
-\contentsline {chapter}{Appendix A}{81}{appendix*.140}%
+\contentsline {chapter}{\numberline {5}Conclusion}{77}{chapter.5}%
+\contentsline {chapter}{Conclusion}{77}{chapter.5}%
+\contentsline {chapter}{Appendices}{79}{section*.138}%
+\contentsline {chapter}{Appendix A}{81}{appendix*.139}%
 \contentsline {section}{\numberline {A.1}Channel removal testing}{81}{section.Alph0.1}%
 \contentsline {section}{\numberline {A.2}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{87}{section.Alph0.2}%
 \contentsline {section}{\numberline {A.3}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{97}{section.Alph0.3}%
-\contentsline {chapter}{Appendix B}{109}{appendix*.185}%
+\contentsline {chapter}{Appendix B}{109}{appendix*.184}%
 \contentsline {section}{\numberline {B.1}Algorithmic implementation}{109}{section.Alph0.1}%
