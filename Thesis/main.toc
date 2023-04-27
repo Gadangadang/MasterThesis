@@ -23,7 +23,7 @@
 \contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{61}{section.4.3}%
 \contentsline {section}{\numberline {4.4}Final remarks on the results}{71}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{72}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Future work}{72}{section.4.6}%
+\contentsline {section}{\numberline {4.6}Future work}{73}{section.4.6}%
 \contentsline {chapter}{Conclusion}{77}{chapter*.138}%
 \contentsline {chapter}{Appendices}{79}{section*.139}%
 \contentsline {chapter}{Appendix A}{81}{appendix*.140}%

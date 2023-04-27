@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  27 APR 2023 11:04
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  27 APR 2023 12:18
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/Sakarias/MasterThesis/Thesis/main.tex
@@ -2336,13 +2336,12 @@ File: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600
 <use Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf  used on input line 272.
 (luatex.def)             Requested size: 280.4565pt x 210.34514pt.
- [69<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf>] [70<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>]) (./Sections/Results/32lep_discuss.tex) (./Sections/Results/challenges_future.tex [71]
-<Figures/atlas/LHC-nominal-lumi-projection.png, id=6533, 1051.7694pt x 710.655pt>
+ [69<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf>] [70<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>]) (./Sections/Results/32lep_discuss.tex [71]) (./Sections/Results/challenges_future.tex [72]
+<Figures/atlas/LHC-nominal-lumi-projection.png, id=6537, 1051.7694pt x 710.655pt>
 File: Figures/atlas/LHC-nominal-lumi-projection.png Graphic file (type png)
 <use Figures/atlas/LHC-nominal-lumi-projection.png>
 Package luatex.def Info: Figures/atlas/LHC-nominal-lumi-projection.png  used on input line 63.
 (luatex.def)             Requested size: 327.1945pt x 221.07066pt.
- [72]
 <Figures/atlas/cupy_testing.pdf, id=6540, 462.528pt x 346.896pt>
 File: Figures/atlas/cupy_testing.pdf Graphic file (type pdf)
 <use Figures/atlas/cupy_testing.pdf>
@@ -3143,15 +3142,15 @@ warning  (pdf backend): ignoring duplicate destination with the name 'section.Al
 
 Here is how much of LuaTeX's memory you used:
  61699 strings out of 477785
- 1455612,2373549 words of node,token memory allocated
+ 1455615,2373549 words of node,token memory allocated
  1829 words of node memory still in use:
    8 hlist, 2 vlist, 2 rule, 1 local_par, 24 glue, 10 kern, 1 penalty, 3 glyph, 249 attribute, 117 glue_spec, 126 attribute_list, 2 write, 11 pdf_action nodes
-   avail lists: 1:18,2:36286,3:2901,4:25304,5:22631,6:163,7:38702,8:132,9:66892,10:57,11:3732,12:1
+   avail lists: 1:19,2:36286,3:2901,4:25304,5:22631,6:162,7:38702,8:132,9:66892,10:57,11:3732,12:1
  77830 multiletter control sequences out of 65536+600000
  126 fonts using 10175775 bytes
  98i,15n,111p,1036b,2009s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (126 pages, 6863855 bytes).
+Output written on main.pdf (126 pages, 6864678 bytes).
 
 PDF statistics: 13892 PDF objects out of 15390 (max. 8388607)
  4473 compressed objects within 45 object streams
