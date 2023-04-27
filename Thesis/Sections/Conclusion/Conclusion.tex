@@ -14,4 +14,19 @@ contains much more data. Due to the large size of the total dataset, we proposed
 where the natural distribution in the total set was conserved in smaller batches, called 
 megasets. Several tests were deviced to benchmark the autoencoders, 
 making anomalous events by altering the $p_T$ of standard model events and testing on two 
-supersymmetric signal models. 
+supersymmetric signal models. We showed that the autoencoders performance increased with 
+larger training samples, but argue for more testing as these methods are not well 
+understood yet. The performance was measured in three categories, how well it reconstructs 
+the test dataset, how much background and signal is left in the signal region, and 
+the significance it achieves when performing cuts in the signal region. It was showed that
+for the first category, the regular autoencoder is much better than the variational autoencoder, 
+creating a slopelike shape. In the second category the regular autoencoder is much better at 
+reducing the background, but not that much better at increasing the amount of signal. In the 
+third category the regular autoencoder performs better than the variational autoencoder. 
+It was also shown that with an increase in training data, the first category was improved 
+for both the regular autoencoder and the variational autoencoder. \par 
+We also argue for future work and challenges with the method. Amongst other 
+issues where computational bottlenecks related to writing and loading of data from training 
+and inference. It is recommended to further investigate the RMM, as well as alter 
+the training process by physics informed or machine learning informed choices, such as a 
+weighted MSE. 

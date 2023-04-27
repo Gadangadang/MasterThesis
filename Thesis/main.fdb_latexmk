@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex main"] 1682591890 "main.aux" "main.bbl" "main" 1682593497
+["bibtex main"] 1682591890 "main.aux" "main.bbl" "main" 1682601387
   "./jhep.bst" 1635225418 19415 119cff932b2ee8773ea988cf488e8896 ""
   "bibliography.bib" 1682422579 194678 01eb466eae23a3a31c41afc51a39aa94 ""
-  "main.aux" 1682593496 170198 2f9849e1c1e609b032d4ea45fefd0bab "lualatex"
+  "main.aux" 1682601386 170198 2f9849e1c1e609b032d4ea45fefd0bab "lualatex"
   (generated)
   "main.bbl"
   "main.blg"
-["lualatex"] 1682593477 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1682593497
+["lualatex"] 1682601371 "/Users/Sakarias/MasterThesis/Thesis/main.tex" "main.pdf" "main" 1682601387
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/fontawesome.luc" 1668505054 65327 aebc0c5f1f4357aaccede3b514315f78 ""
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-italic.luc" 1668505056 82963 d3ab1513143077da69a927c4f857b880 ""
   "/Users/Sakarias/Library/texlive/2022/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1668505056 81837 6304bf769927f628477a16dd8282346b ""
@@ -786,7 +786,7 @@
   "Sections/Appendix/Appendix2.tex" 1681979747 18464 1453c9dc0b14e2cbc43edea0ee005a40 ""
   "Sections/Appendix/Appendix3.tex" 1681979751 23200 d64fa1260e0582f6f2b98e6684a992e2 ""
   "Sections/Appendix/Appendix4.tex" 1681979991 18668 f408b983c80deb3df7da73e791f497f1 ""
-  "Sections/Conclusion/Conclusion.tex" 1682593477 1097 95ceb00f4e21412796ff6cba5a0ed3f8 ""
+  "Sections/Conclusion/Conclusion.tex" 1682601371 2403 c96cd24a2413b7614646d5b0e4055671 ""
   "Sections/Implementation/algo.tex" 1680963124 9652 7d881199b608831640b7a1a509b46901 ""
   "Sections/Implementation/atlas.tex" 1682327814 10474 feb357895e467c3f3f02bf6e116b5fa2 ""
   "Sections/Implementation/background_samples.tex" 1680178781 6648 4ead72c116531e0d84857b44e24b5ce6 ""
@@ -811,12 +811,12 @@
   "duoforside.tex" 1668088642 6776 628e9d1c9dd0d96721373bf5891ec22c ""
   "duomasterforside.sty" 1635225418 1245 0f0fdb32e432549cbffa5ff0a0493ca0 ""
   "jheppub.sty" 1666616765 11379 0879f95863e3001c773fd5825cb90a2a ""
-  "main.aux" 1682593496 170198 2f9849e1c1e609b032d4ea45fefd0bab "lualatex"
+  "main.aux" 1682601386 170198 2f9849e1c1e609b032d4ea45fefd0bab "lualatex"
   "main.bbl" 1682591890 9035 dd369932c9f34e74d4bc5e98dee8efa0 "bibtex main"
-  "main.lof" 1682593496 12634 9b072ab040139df7b59b2e38bd74e9b6 "lualatex"
-  "main.lot" 1682593496 968 f2373e05aa56f43eede6b94cc83b6a02 "lualatex"
+  "main.lof" 1682601386 12634 9b072ab040139df7b59b2e38bd74e9b6 "lualatex"
+  "main.lot" 1682601386 968 f2373e05aa56f43eede6b94cc83b6a02 "lualatex"
   "main.tex" 1682424976 3636 5e235d83cdf993595b5237e3eb7ef763 ""
-  "main.toc" 1682593496 2837 2b4b1fa6dd54c62e564f5fa3fc71ca36 "lualatex"
+  "main.toc" 1682601386 2837 2b4b1fa6dd54c62e564f5fa3fc71ca36 "lualatex"
   "neuralnetwork.sty" 1676546716 12080 615b622647724dacbb08cc4cdbfe4dd7 ""
   "uio-fp-navn-eng.pdf" 1643568008 9896 3790f54969705c4284148bf62f780187 ""
   "uio-fp-segl.pdf" 1643566874 64936 89441810db60f45a672971bad5b14ed1 ""
