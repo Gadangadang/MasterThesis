@@ -74,9 +74,12 @@ def runANA(
     print(df.keys())
     
     
+    
+    
+    
     for k in df.keys():
 
-        if k not in samples: #["topOther"]:#
+        if k not in signal_list: #["topOther"]:#
             continue
         
         
@@ -120,7 +123,7 @@ def runANA(
             "nlep_BL", "ROOT::VecOps::Sum(ele_BL)+ROOT::VecOps::Sum(muo_BL)"
         )
 
-        # Signal leptons
+        # Signal_list leptons
         df[k] = df[k].Define(
             "ele_SG",
             "ele_BL && lepIsoLoose_VarRad && lepTight && (lepD0Sig <= 5 && lepD0Sig >= -5)",
@@ -876,11 +879,11 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
     """
 
     cols = df.keys()
-
+    print(cols)
     dfs = []
     for k in cols:
-        
-        if k not in samples: #["topOther"]:#
+        print(k)
+        if k not in signal_list: #["topOther"]:#
             continue
         
         """if k not in ['Zeejets8', 'Zeejets9', 'Zeejets10', 'Zeejets11', 'Zeejets12', 'Zeejets13', 'Zeejets14', 'Zeejets15', 'Zmmjets8', 'Zmmjets9', 'Zmmjets10', 'Zmmjets11', 'Zmmjets12', 'Zmmjets13']:
@@ -1090,16 +1093,15 @@ def main():
     
     
     
+    """
     
-    
-    """if len(histo) == 0:
-        for channel in """
+   
 
     print("Histogram creation started")
     create_histograms_pdfs(histo, all_cols, histo_var=HISTO_VAR, d_samp=d_samp)
     print("Histogram creation done")
     
-    print(" ")
+    print(" ")"""
     
     
   
@@ -1111,7 +1113,7 @@ def main():
     print("Numpy conversion ended")
     names = list(df.keys())
     
-    
+    """
     numpy_dfs, names = fetchDfs()
     
     print(" ")
@@ -1130,7 +1132,7 @@ def main():
     resp = requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={chat_id}&text={message}")
     print(resp.status_code)
     
-    
+    """
 
 if __name__ == "__main__":
     d_samp, d_type, d_reg = configure_samples()  # False,False,True,False,False)
@@ -1143,6 +1145,8 @@ if __name__ == "__main__":
         '#include "helperFunctions.h"'
     )  # Header with the definition of the myFilter function
     R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
+    
+    signal_list = ["data1516"]
     
     main()
 

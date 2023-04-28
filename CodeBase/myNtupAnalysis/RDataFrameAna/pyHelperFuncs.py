@@ -544,18 +544,25 @@ def get_column_names(df: dict, histo: dict) -> list:
 
     new_feats = []
     for name in names:
-        if name[-5:] == "ttbar":
-            new_feats.append(name[:-6])
+        if name[-8:] == "data1516":
+            new_feats.append(name[:-9])
 
     all_cols = []
-    for c in df["ttbar"].GetColumnNames():
+    for c in df["data1516"].GetColumnNames():
         if c in new_feats:
             all_cols.append(str(c))
 
-    extra = [
-        "wgt_SG",
-        "flcomp"
-    ]
+    if name == "data1516":
+        extra = [
+            "wgt_SG",
+            "flcomp",
+            "isBSM"
+        ]
+    else:
+        extra = [
+            "wgt_SG",
+            "flcomp"
+        ]
     for col in extra:
         all_cols.append(col)
 
