@@ -3,11 +3,16 @@
 
 
 To better accertain and map the usefulness of the regular and variational autoencoder in the search for 
-new physics, two MonteCarlo signals were used. They both are 3 lep +$e_T^{miss}$ final state SUSY signals,
-and thus are fit to use for testing. What we are then looking for are two things. First, we want to see if
-there are a resonance in the trilepton mass. Secondly we want to do a bump search of the significance 
-in the signal region, and compare the significance with a base test of just eyeballing the $e_T^{miss}$. 
-That way, we can get an idea if the method has promise in usage for plublications at the LHC with the ATLAS collaboration. 
+new physics, two MonteCarlo signals were used as test cases. They both are 3 lep +$e_T^{miss}$ final state SUSY signals,
+and thus are fit to use for testing. The two autoencoders will be tested on four metrics. 
+\begin{itemize}
+    \item Low reconstruction error on SM MC
+    \item Background to signal ratio in $e_T^{miss}$ signal region
+    \item Possible resonance in trilepton signal region
+    \item Significance search in $e_T^{miss}$ signal region
+\end{itemize}
+
+
 
 \subsubsection*{Regular autoencoder output}
 
@@ -148,32 +153,35 @@ regular autoencoder.
 In figures \ref{fig:AE_3lep_big_rec_sig_signi_450}, \ref{fig:AE_3lep_small_rec_sig_signi_450}, 
 \ref{fig:AE_3lep_big_rec_sig_signi_800} and \ref{fig:AE_3lep_small_rec_sig_signi_800} we have four 
 subplots containing the total reconstruction error distributions, the $e_T^{miss}$ signal region, 
-the $m_{lll}$ signal region and the significance as function of $e_T^{miss}$ curve respectively for 
-the shallow and deep regular autoencoder. From figures \ref{fig:AE_3lep_big_450}, \ref{fig:AE_3lep_small_450},
-\ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800} it is clear here that the autoencoder manages to somewhat 
-separate the signals from the background. The SUSY $800p50$ signals has the best separation of peaks, which is expected
-considering its rather extreme tail in the $e_T^{miss}$ distribution of the signal. It is also interesting to obeserve 
-the slope trend in the SM MC reconstruciton error distribution. The steepness of the slope seems to be somewhat similar 
-for both the shallow and deep regular autoencoder, indicating at least that the difference in these two models do 
-not differ much when it comes to performance. \par
-In figures \ref{fig:AE_3lep_big_etmiss_450}, \ref{fig:AE_3lep_small_etmiss_450}, \ref{fig:AE_3lep_big_etmiss_800} and  
-\ref{fig:AE_3lep_small_etmiss_800} we have a signal region created 
-for each of the SUSY models from both the shallow and deep regular autoencoder. The cuts 
-were created using the median and then iteratively increasing the error requirement, as explained in section \ref{sec:strategy}.
-Only one of the three cuts done are shown here, the rest can be found in the appendix. 
-The histograms in figures \ref{fig:AE_3lep_big_etmiss_450}, \ref{fig:AE_3lep_small_etmiss_450}, \ref{fig:AE_3lep_big_etmiss_800} and  
-\ref{fig:AE_3lep_small_etmiss_800} displays the 
-$e_T^{miss}$ distribution in the signal region for the SM MC and the SUSY signals. They represent the signal region 
-with the most relaxed cut, in other words, the least strict and thus the signal region 
-with the most amount of total events, both SM MC and signal. This is to illustrate the difficulty
-of this method since we only have the reconstruction error to go on. Thus, too strict a cut 
-will most likely eliminate all possible signal, whereas too loose a cut and the SM MC background 
-will dominate completely. As the final state signal has 3 leptons, it was thought that 
-there might be a resonance\footnote{A resonance in this context means a peak that is significantly 
-different from the distribution it is found in, for example the Z mass resonance around 91 GeV shown in 
-a dilepton mass histogram. } in the trilepton $(m_{lll})$ distributions in the signal region. 
-Thus, the figure below diplays the $m_{lll}$ distributions for both the shallow and deep 
-regular autoencoder for both SUSY signals. \par
+the $m_{lll}$ signal region and the significance as function of $e_T^{miss}$ curve respectively 
+for the shallow and deep regular autoencoder. From figures \ref{fig:AE_3lep_big_450}, 
+\ref{fig:AE_3lep_small_450}, \ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800} it is clear 
+here that the autoencoder manages to somewhat separate the signals from the background. The 
+SUSY $800p50$ signals has the best separation of peaks, which is expected considering its 
+rather extreme tail in the $e_T^{miss}$ distribution of the signal. It is also interesting to 
+obeserve the slope trend in the SM MC reconstruciton error distribution. The steepness of the 
+slope seems to be somewhat similar for both the shallow and deep regular autoencoder, indicating 
+at least that the difference in these two models do not differ much when it comes to performance. 
+The bulk of the events are below $10^{-2}$ reconstruction error, indicating that the autoencoder 
+has learned a lot of the internal RMM structures for the 3 lepton + $e_T^{miss}$ final state MC. \par
+In figures \ref{fig:AE_3lep_big_etmiss_450}, \ref{fig:AE_3lep_small_etmiss_450}, 
+\ref{fig:AE_3lep_big_etmiss_800} and  \ref{fig:AE_3lep_small_etmiss_800} we have a signal region 
+created for each of the SUSY models from both the shallow and deep regular autoencoder. The cuts 
+were created using the median and then iteratively increasing the error requirement, as 
+explained in section \ref{sec:strategy}. Only one of the three cuts done are shown here, the 
+rest can be found in the appendix. The histograms in figures \ref{fig:AE_3lep_big_etmiss_450}, 
+\ref{fig:AE_3lep_small_etmiss_450}, \ref{fig:AE_3lep_big_etmiss_800} and  
+\ref{fig:AE_3lep_small_etmiss_800} displays the $e_T^{miss}$ distribution in the signal region 
+for the SM MC and the SUSY signals. They represent the signal region with the most relaxed cut, 
+in other words, the least strict and thus the signal region with the most amount of total events, 
+both SM MC and signal. This is to illustrate the difficulty of this method since we only have the 
+reconstruction error to go on. Thus, too strict a cut will most likely eliminate all possible 
+signal, whereas too loose a cut and the SM MC background will dominate completely. As the final 
+state signal has 3 leptons, it was thought that there might be a resonance\footnote{A resonance 
+in this context means a peak that is significantly different from the distribution it is found 
+in, for example the Z mass resonance around 91 GeV shown in a dilepton mass histogram. } in 
+the trilepton $(m_{lll})$ distributions in the signal region. Thus, the figure below diplays 
+the $m_{lll}$ distributions for both the shallow and deep regular autoencoder for both SUSY signals. \par
 In figures \ref{fig:AE_3lep_big_mlll_450}, \ref{fig:AE_3lep_small_mlll_450}, \ref{fig:AE_3lep_big_mlll_800} and  
 \ref{fig:AE_3lep_small_mlll_800} we have the  $m_{lll}$ distributions in the signal 
 regions from both the shallow and deep regular 
@@ -337,7 +345,11 @@ autoencoder seems to struggle with differentiating between background and signal
 two distributions laying on top of each other. There is however a slight difference in the 
 shape of the distributions from the shallow and deep network. The shallow has a more narrow 
 and slightly more left leaning shale, whereas the deep network has a slightly more broad 
-distribution shifted a bit to the right. \par 
+distribution shifted a bit to the right. The bulk of the events are between $10^{-2}$ and $10^{-0.5}$ 
+reconstruction error, indicating that the autoencoder struggles to learn  the internal RMM 
+structures for the 3 lepton + $e_T^{miss}$ final state MC. The somewhat Gaussian distribution 
+differs between the two SUSY samples. As the networks were retrained each time, it could indicate 
+that the distribution in part is due to the sampling in the latent space. \par 
 
 In figures \ref{fig:VAE_3lep_big_etmiss_450}, \ref{fig:VAE_3lep_small_etmiss_450}, 
 \ref{fig:VAE_3lep_big_etmiss_800} and  \ref{fig:VAE_3lep_small_etmiss_800} we have the 

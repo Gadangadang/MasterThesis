@@ -5,7 +5,13 @@ The 3 lepton + $e_T^{miss}$ dataset has fewer events, and thus allows for less t
 Thus, the 2 lepton + $e_T^{miss}$ dataset was tried as well. The event selection was done choosing atleast 
 2 leptons, meaning that the RMM signatures of some events will look similar to the RMM signatures of 
 the 3 lepton + $e_T^{miss}$ dataset. A consequence of this is that the signal samples for the 3 lepton case 
-would be a good start point for testing. 
+would be a good start point for testing. The two autoencoders will be tested on three of the 
+four metrics used for the 3 lepton + $e_T^{miss}$ case. 
+\begin{itemize}
+    \item Low reconstruction error on SM MC
+    \item Background to signal ratio in $e_T^{miss}$ signal region
+    \item Significance search in $e_T^{miss}$ signal region
+\end{itemize}
 
 \subsubsection*{Regular autoencoder performance}
 Below are some results from training on the 2 lepton case with the regular autoencoder, using the same two SUSY signals as test cases. 
@@ -299,8 +305,11 @@ autoencoder model, and slightly shifted to the right of the center with the deep
 model. One possible reason for this somewhat Gaussian like distribution could be that the 
 variational autoencoder, via the reparametization trick from section \ref{sec:reparameterization}, 
 samples from a Gaussian distribution that has yet to be trained on enough data to produce a 
-good enough error distribution. It could also be that the batch size is too large, and that 
-the model has to train on smaller batches to get a better result. \par 
+good enough error distribution. This is also supported with the fact that the shape is even more 
+Gaussian like in the 3 lepton + $e_T^{miss}$ case shown in figures \ref{fig:VAE_3lep_big_450}, 
+\ref{fig:VAE_3lep_small_450}, \ref{fig:VAE_3lep_big_800}, \ref{fig:VAE_3lep_small_800}. 
+It could also be that the batch size is too large, and that the model has to train on smaller 
+batches to get a better result. \par 
 
 In figures \ref{fig:VAE_2lep_big_etmiss_450}, \ref{fig:VAE_2lep_small_etmiss_450}, 
 \ref{fig:VAE_2lep_big_etmiss_800} and  \ref{fig:VAE_2lep_small_etmiss_800} we have 
