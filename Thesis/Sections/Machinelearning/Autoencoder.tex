@@ -1,4 +1,4 @@
-\section{Autoencoders}
+\section{Autoencoders}\label{sec:autoencder_theory}
 Autoencoders are a subset of neural networks. Whereas a general neural network
  in principle can take any shape, autoencoders are more restrictive.
 This restrictiveness can in its most general sence we condensed 
@@ -9,7 +9,7 @@ into the following points:
 \end{itemize}
 What we end up with are two funnel shaped parts linked together. The two funnels are 
 called the encoder (left funnel) and decoder (right funnel) respectively. This architecture is not 
-accidental, but rather designed with a very specific solution of ploblems in mind, reconstruction. 
+accidental, but rather designed with a very specific solution of problems in mind, namely reconstruction. 
 A good example to illustrate this is image reconstruction, illustrated in figure \ref{fig:ae_denoise}. 
 Suppose you have an image, and want to reconstruct it. By feeding the encoder an image, 
 and comparing the decoder output to the actual image, the autoencoder can tune itself to recreate the images it trains on. 
@@ -31,16 +31,16 @@ and the reconstruction given as
 \end{equation*}  
 
 The parameters $(\phi,\theta)$ are the tuneable parameters adjusted according to the loss function. In our case, the goal is
-reconstruction without copying, thus we can simply use mean squared error, given as 
+reconstruction without copying, thus we can use mean squared error, given as 
 
 \begin{equation}\label{eq:loss_ae}
     L_{AE} (\phi,\theta) = \frac{1}{N}\sum_{i=0}^{N-1} \left(\bf{x}^{i} - f_{\theta}(g_{\phi}(\bf{x}^{i}))\right)^{2}.
 \end{equation}
 
 \section{Variational autoencoders}
-Another popular method for reconstruction is the so called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
+Another popular method for reconstruction is the so-called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
 one can use the variational bayesian approach for efficient approximate posterior inference, leading to the use of variational autoencoders.
-Here, contrary to regular autoencoders, the latent space is thought of as a distribution. In the context of reconstruction, this means that
+Here, contrary to regular autoencoders, the latent space is a distribution that can be sampled from. In the context of reconstruction, this means that
 we want to create a latent space distribution based on the true distribution in the data, and use this latent space distribution to then generate
 data given that latent space. 
 \subsection*{Variational Bayes}
@@ -62,23 +62,27 @@ It can be shown that the marginal likelyhood can be written as follows:
     log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)}),
 \end{equation}
 
-where the first term on the right hand side is the Kullback-Leibler (KL) diverge\footnote{The KL divergence is a measure of how one 
+where the first term on the right-hand side is the Kullback-Leibler (KL) divergence\footnote{The KL divergence is a measure of how one 
 probability distribution is different from a second, reference probability distribution. It is often used as a distance measure 
-between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelyhood. As the KL divergence
-is non-negative, the ELBO will always be equal to or less than the marginal likelihood, written below:
+between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelyhood. 
+As the KL divergence is non-negative, the ELBO will always be equal to or less than the marginal likelihood, written below:
+
 \begin{equation}\label{eq:elbo_leq1}
     log\, p_{\theta}(x^{(i)}) \geq \mathcal{L}(\theta, \phi;x^{(i)}) = \mathbb{E}_{q_{\phi}(z|x)}[-log\, q_{\phi}(x|z)+log\, p_{\theta}(x|z)].
 \end{equation}
+
 Rewriting we get that the ELBO is given as:
+
 \begin{equation}\label{eq:elbo_leq2}
     \mathcal{L}(\theta, \phi;x^{(i)}) =  - D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathbb{E}_{q_{\phi}(z|x^{(i)})}[log\, p_{\theta}(x^{(i)}|z)],
 \end{equation}
+
 which is also known as the loss function for variational inference. As a loss function, this needs to be differentiated with respect to 
 $(\phi, \theta)$, but as shown by Kingman and Welling \cite{VAE}, the common method using Monte Carlo gradient estimator have high variance,
 and thus is not ideal. 
 
 \subsubsection*{The Stochastic gradient variational bayes (SGVB) estimator}
-Kingman and Welling \cite{VAE} instead proposes a practical estimator that both deals with effectivity with large datasets, aswell as the 
+Kingman and Welling \cite{VAE} instead proposes a practical estimator that both deals effectivily with large datasets, aswell as the 
 issue of intractability. This estimator is called the stochastic gradient variational bayes (SGVB) estimator, and first assumes an approximate 
 posterior $q_{\phi}(z|x)$. Under certain conditions, as shown in subsection \ref{sec:reparameterization}, we can reparameterize this approximate
 posterior to a random variable $\tilde{z} \thicksim q_{\theta}(z|x)$, by doing a differentiable transformation $g_{\phi}(\epsilon|x)$, such that 

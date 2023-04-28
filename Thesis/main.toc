@@ -13,17 +13,23 @@
 \contentsline {section}{\numberline {3.1}The ATLAS detector}{21}{section.3.1}%
 \contentsline {section}{\numberline {3.2}ROOT}{25}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Background samples}{27}{section.3.3}%
-\contentsline {section}{\numberline {3.4}The dataset features}{29}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Code implementation}{35}{section.3.5}%
-\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{39}{section.3.6}%
-\contentsline {section}{\numberline {3.7}The search strategy}{42}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{45}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{45}{section.4.1}%
-\contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{53}{section.4.2}%
-\contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{60}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Blind MonteCarlo signal samples tests}{70}{section.4.4}%
+\contentsline {section}{\numberline {3.4}The dataset features}{28}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Code implementation}{34}{section.3.5}%
+\contentsline {section}{\numberline {3.6}The chosen neural network architectures}{38}{section.3.6}%
+\contentsline {section}{\numberline {3.7}The search strategy}{41}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{43}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational Autoencoder}{43}{section.4.1}%
+\contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{51}{section.4.2}%
+\contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{59}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Final remarks on the results}{69}{section.4.4}%
 \contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{70}{section.4.5}%
-\contentsline {chapter}{Conclusion}{73}{chapter*.132}%
-\contentsline {chapter}{Appendices}{75}{section*.133}%
-\contentsline {chapter}{Appendix A}{77}{appendix*.134}%
-\contentsline {chapter}{Appendix B}{105}{appendix*.183}%
+\contentsline {section}{\numberline {4.6}Future work}{71}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{75}{chapter.5}%
+\contentsline {chapter}{Conclusion}{75}{chapter.5}%
+\contentsline {chapter}{Appendices}{77}{section*.138}%
+\contentsline {chapter}{Appendix A}{79}{appendix*.139}%
+\contentsline {section}{\numberline {A.1}Channel removal testing}{79}{section.Alph0.1}%
+\contentsline {section}{\numberline {A.2}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{85}{section.Alph0.2}%
+\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{95}{section.Alph0.3}%
+\contentsline {chapter}{Appendix B}{107}{appendix*.184}%
+\contentsline {section}{\numberline {B.1}Algorithmic implementation}{107}{section.Alph0.1}%

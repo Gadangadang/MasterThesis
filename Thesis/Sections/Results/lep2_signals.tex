@@ -1,14 +1,20 @@
 
-\section{2 lepton training for bump search testing}
+\section{2 lepton training for bump search testing}\label{sec:2lep}
 
-The 3 lepton + $e_T^{miss}$ dataset has less events, and thus allows for less training of the neural networks. 
+The 3 lepton + $e_T^{miss}$ dataset has fewer events, and thus allows for less training of the neural networks. 
 Thus, the 2 lepton + $e_T^{miss}$ dataset was tried as well. The event selection was done choosing atleast 
-2 leptons, meaning that the RMM signatures of some of the events will look similar to the RMM signatures of 
+2 leptons, meaning that the RMM signatures of some events will look similar to the RMM signatures of 
 the 3 lepton + $e_T^{miss}$ dataset. A consequence of this is that the signal samples for the 3 lepton case 
-would be a good start point for testing. 
+would be a good start point for testing. The two autoencoders will be tested on three of the 
+four metrics used for the 3 lepton + $e_T^{miss}$ case. 
+\begin{itemize}
+    \item Low reconstruction error on SM MC
+    \item Background to signal ratio in $e_T^{miss}$ signal region
+    \item Significance search in $e_T^{miss}$ signal region
+\end{itemize}
 
 \subsubsection*{Regular autoencoder performance}
-Below are some of the results from training on the 2 lepton case with the regular autoencoder, using the same two SUSY signals as test cases. 
+Below are some results from training on the 2 lepton case with the regular autoencoder, using the same two SUSY signals as test cases. 
 
 \begin{figure}[H]
     \centering
@@ -137,19 +143,20 @@ diboson samples is cut, leading to not enough samples for it to appropriatly lea
 structure for that channel, leading to the high reconstruction error values for some of 
 those events. Note also here that the reconstruction threshold where this effect is getting 
 more notisable around $10^{-2}$ and larger, where the events are on the order of a 1000 or 
-less per bin. Thus it is not alot of events, but still enough to note. \par Using the signal 
+less per bin. Thus, it is not alot of events, but still enough to note. \par Using the signal 
 region definition from above we set cuts on the reconstruction error and then calculate the 
 significance of the signal. \par
 In figures \ref{fig:AE_2lep_big_etmiss_450}, \ref{fig:AE_2lep_small_etmiss_450}, \ref{fig:AE_2lep_big_etmiss_800} and  
 \ref{fig:AE_2lep_small_etmiss_800} we have the $e_T^{miss}$ distributions for 
 the least strict cuts for the regular autoencoder models. Now, one indication that the search strategy 
 used in this thesis could work is if the models can improve the significance from just looking at 
-the $e_T^{miss}$ distributions of the background and the signal in mind. Thus we want to compare the pre 
+the $e_T^{miss}$ distributions of the background and the signal in mind. Thus, we want to compare the pre 
 reconstruction error significance with the signal region based on the autoencoder output. The significance 
 in the pre reconstruction error case were for the SUSY $450p300$ signal 0.017 using both the small and large 
 statistics formula, and 0.0014 for the SUSY $800p50$ signal. Note here that for $e_T^{miss}$, no physics 
 informed cuts have been used, but there are certain cuts that can increase the significance, so the significance
-in should be considered to possibly be somewhat higher. From figures \ref{fig:AE_2lep_big_signi_450}, 
+in should be considered to possibly be somewhat higher. \par
+From figures \ref{fig:AE_2lep_big_signi_450}, 
 \ref{fig:AE_2lep_small_signi_450}, \ref{fig:AE_2lep_big_signi_800} and  \ref{fig:AE_2lep_small_signi_800} 
 we have the significance as a function of $e_T^{miss}$ for both signals using the shallow and deep autoencoder. 
 This graph shows how implementing another cut in the signal region, namely where in the $e_T^{miss}$ distribution 
@@ -160,7 +167,7 @@ This model has some events of very high $e_T^{miss}$, and in the tail end, there
 background events. It should be noted that the significance for the $800p50$ signal model is a lot smaller than 
 for the $450p300$ signal model, even though the separation shown in figures \ref{fig:AE_2lep_big_450}, 
 \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, \ref{fig:AE_2lep_small_800} would suggest otherwise. 
-All though the peak in both signal models are fairly separated from the peak of the SM MC, the SUSY $800p50$ 
+Although the peak in both signal models are fairly separated from the peak of the SM MC, the SUSY $800p50$ 
 signal model is shifted a lot more. This is consistant with expectation, for the same reason that the significance 
 tails are the way they are.  Now, The reason for the low significance is most likely the fact that the signal 
 sample contains low statistics, in other words, the weights are just a lot lower, compared to the other signal 
@@ -298,8 +305,11 @@ autoencoder model, and slightly shifted to the right of the center with the deep
 model. One possible reason for this somewhat Gaussian like distribution could be that the 
 variational autoencoder, via the reparametization trick from section \ref{sec:reparameterization}, 
 samples from a Gaussian distribution that has yet to be trained on enough data to produce a 
-good enough error distribution. It could also be that the batch size is too large, and that 
-the model has to train on smaller batches to get a better result. \par 
+good enough error distribution. This is also supported with the fact that the shape is even more 
+Gaussian like in the 3 lepton + $e_T^{miss}$ case shown in figures \ref{fig:VAE_3lep_big_450}, 
+\ref{fig:VAE_3lep_small_450}, \ref{fig:VAE_3lep_big_800}, \ref{fig:VAE_3lep_small_800}. 
+It could also be that the batch size is too large, and that the model has to train on smaller 
+batches to get a better result. \par 
 
 In figures \ref{fig:VAE_2lep_big_etmiss_450}, \ref{fig:VAE_2lep_small_etmiss_450}, 
 \ref{fig:VAE_2lep_big_etmiss_800} and  \ref{fig:VAE_2lep_small_etmiss_800} we have 
@@ -317,7 +327,7 @@ Secondly, the background that remains are slightly
 different from the signal region from the regular autoencoder. In the lower energy range there 
 is a large excess of Zeejets, Zmmjets and ttbar events that have a high reconstruction error, 
 which is not the case for the variational autoencoder, dominated by diboson events in all bins. 
-In the higher energy range, diboson are are largest contributer to the background, but the number 
+In the higher energy range, diboson are largest contributer to the background, but the number 
 of bins are exceptionally smaller than the Zmmjets/Zeejets/ttbar events, by a magnitude of 3 at the most. 
 
 

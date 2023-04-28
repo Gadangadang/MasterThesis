@@ -1,6 +1,7 @@
-\section*{Initial testings}
-Before testing the AE and VAE on signal samples, it was of interest to test the sensitivity of the
-two models on alterings on the Monte Carlo. This can be thought of as initial testing. 
+\section*{Testing strategy}
+
+Before testing the AE and VAE on signal samples, it is of interest to test the sensitivity of both the regular and variational autoencoders 
+on alterings on the Monte Carlo. This can be thought of as initial testing. 
 \subsection*{Channel removing}
 As the goal of the autoencoder is to reconstruction data is has looked on, one idea was to remove on of the channels in the standard model.
 The idea was that some of the channels differs enough in the final states they produce and thus the RMMs for the events in the given selection. 
@@ -17,9 +18,17 @@ From equation \ref{eq:deltaet} we have that a scale change k in $p_T$ yields the
 \end{equation}
 Thus, both the transverse energy and the change in transverse energy is changed for this test.
 
-\subsection*{Feature shuffling}
-Another idea was to shuffle the features of the events. This is done by randomly selecting a feature and swapping it with another feature. 
-This will create fake and unphysical events, which should be picked up by the autoencoder. 
-\subsection*{Dummy data}
-The last idea was to create dummy data. This is done by selecting both a percentage of the rows and columns, and swapping them, 
-making the data unphysical. 
+
+\subsection*{Signal testing}
+It would not technically be true to call the machine learning used in this thesis as unsupervised learning. 
+This is mostly due to the fact that we show it labeled MonteCarlo to train on, and thus essentially gives 
+the models a target to aim for. But, sinse we do not show it any signals in training, it can be allowed to 
+name the learning strategy as semi-supervised learning. Because of this, one does not bias oneself too much 
+if one then tests the algorithm on one or more signal samples. This type of testing can be separated into two
+different categories, the open signal testing and the blind signal testing. \par 
+The open signal testing first takes a trained model that has only seen SM MC and then runs inference on both 
+SM MC and the given signal. Then the search strategy mentioned in the previous section is done on those 
+collected reconstruction error distributions. The blind signal testing is the final test, where a dataset 
+is prepared incapsulating SM MC, and one or multiple signals in a mix. The labels are kept, for verification. 
+That way, if one were to do open signal testing on many signal samples from many different theories, one could 
+in principle bias oneself too much. This way one can get an unbiased measurement of the performance. 

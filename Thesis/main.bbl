@@ -19,27 +19,37 @@ V.~Chandola, A.~Banerjee and V.~Kumar, \emph{Anomaly detection: A survey},
   \href{http://dx.doi.org/10.1145/1541880.1541882}{\emph{ACM Comput. Surv.}
   {\bf 41} (07, 2009) }.
 
+\bibitem{Chen_2016}
+T.~Chen and C.~Guestrin, \emph{{XGBoost}},  in \emph{Proceedings of the 22nd
+  {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data
+  Mining}, {ACM}, aug, 2016.
+\newblock \href{http://dx.doi.org/10.1145/2939672.2939785}{DOI}.
+
+\bibitem{cortes1995support}
+C.~Cortes and V.~Vapnik, \emph{Support-vector networks}, {\emph{Machine
+  learning} {\bf 20} (1995) 273--297}.
+
 \bibitem{FYSSTK}
 S.~Frette, W.~Hirst and M.~M. Jensen, \emph{{A computational analysis of a
   dense feed forward neural network for regression and classification type
   problems in comparison to regression methods}}, .
 
-\bibitem{backprop}
-D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
-  back-propagating errors}, {\emph{Nature} (1986) }.
-
 \bibitem{Goodfellow-et-al-2016}
 I.~Goodfellow, Y.~Bengio and A.~Courville, \emph{Deep Learning}.
 \newblock MIT Press, 2016.
-
-\bibitem{VAE}
-D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
-\newblock 10.48550/ARXIV.1312.6114.
 
 \bibitem{ADAM:opti}
 D.~P. Kingma and J.~Ba, \emph{Adam: A method for stochastic optimization},
   2014.
 \newblock 10.48550/ARXIV.1412.6980.
+
+\bibitem{backprop}
+D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
+  back-propagating errors}, {\emph{Nature} (1986) }.
+
+\bibitem{VAE}
+D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
+\newblock 10.48550/ARXIV.1312.6114.
 
 \bibitem{hyperband:opt}
 L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
@@ -202,5 +212,18 @@ R.~Vink, S.~de~Gooijer, A.~Beedie, J.~van Zundert, G.~Hulselmans, C.~Grinstead
 A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
   kullback-leibler divergence in variational autoencoders},  2020.
 \newblock 10.48550/ARXIV.2002.07514.
+
+\bibitem{LHC_int_lum}
+{LHC}, \emph{Lhc nominal luminosity projection},  2013.
+
+\bibitem{cupy_learningsys2017}
+R.~Okuta, Y.~Unno, D.~Nishino, S.~Hido and C.~Loomis, \emph{Cupy: A
+  numpy-compatible library for nvidia gpu calculations},  in \emph{Proceedings
+  of Workshop on Machine Learning Systems (LearningSys) in The Thirty-first
+  Annual Conference on Neural Information Processing Systems (NIPS)}, 2017.
+
+\bibitem{ATL-OREACH-PUB-2020-001}
+{\scshape ATLAS Collaboration} collaboration, \emph{{Review of the 13 TeV ATLAS
+  Open Data release}},  tech. rep., CERN, Geneva, Jan, 2020.
 
 \end{thebibliography}\endgroup

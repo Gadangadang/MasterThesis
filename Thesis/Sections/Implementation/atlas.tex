@@ -4,7 +4,7 @@
 Before one can analyse the data, it has to be collected and processed in a detector. The data used in this thesis 
 are generated from proton-proton collisions in the ATLAS detector at the LHC. The ATLAS inner detector itself is a solenoid, 
 and the kinematic variables are measured based on the following coordinate system. The z-axis is defined to go 
-along the center axis of the solenoid, where as the y axis points upwards in the detector and the x axis radialy 
+along the center axis of the solenoid, whereas the y-axis points upwards in the detector and the x-axis radialy 
 outwards from the center axis. This allows for all transverse variables to be defined in the x-y plane\cite{Gramstad:1631043}. 
 From this we contruct the azimuthal and polar angles $\phi$ and $\theta$, where the azimuthal angle $\phi$\cite{Airapetian:391176} is the angle around the z-axis, 
 and the polar angle $\theta$ is the angle from the z-axis, as shown in figure \ref{fig:long_trans_plane}.
@@ -31,7 +31,8 @@ and the polar angle $\theta$ is the angle from the z-axis, as shown in figure \r
 
 In figure \ref{fig:long_trans_plane} the kinematic variables for proton-proton collisions are described by the energy, rest mass 
 and momentum, given as E, m, and $\textbf{p} = (p_x, p_y, p_z)$ respectively. As the particles move with very high energy, we will 
-use the relativistic 4 momentum, given as $\textbf{P} = (E, \textbf{p})$. We also have that 
+use the relativistic 4 momentum\footnote{In special relativity, 4 momentum is used as both energy and momentum are conserved, and 
+thus by creating the 4 momentum, you achieve a Lorentz invariant quantity\cite{Thomson:2013zua}. }, given as $\textbf{P} = (E, \textbf{p})$. We also have that 
 \begin{equation*}
     \gamma = \frac{1}{\sqrt{1-\beta^2}},
 \end{equation*}
@@ -101,12 +102,12 @@ to compare overlap between SM MC and ATLAS data\cite{Gramstad:1631043}.
 \end{figure}
 
 The features used in this analysis are computed with or fetched from the features from the 
-detector itself. Such features include the momentum, energy, angles etc, 
+detector itself. Such features include the momentum, energy, angles etc., 
 all of which are either directly measured or computed based on the measurements in the 
 detector. In figure \ref{fig:atlas_particle_detect} a visualization shows how
 different particles move through the detector and how they are detected. For example, 
 energy deposits are measured using calorimeters, and the different particles 
-have calorimeters specially designed for them. Charged particles leaves tracks in the 
+have calorimeters specially designed for them. Charged particles leave tracks in the 
 inner tracking device. Thus, electrons leaves tracks in the inner tracker and deposits energy 
 in the elctromagnetic calorimeter, the muons leaves tracks in the inner detector and 
 deposits energy in the muon detector. The photons only deposits energy in the electromagnetic 
@@ -124,9 +125,9 @@ yeilding a collision rate of 40 MHz\cite{Wang:2707056}. \cite{Bernius:2707054}
 \subsubsection*{Data preparation}
 During datagathering at the ATLAS detector, triggers on the hardware and software level select out the events that are of most interest. On the order of $99 \%$ or
  more of the recorded events are discarded, with about 1 in 40000 events being accepted, as the amount of recorded events simply as too high to realistically analyse. Also, a lot of the events are of no 
- interest for new physics analysis anyways as they for example might have to little energy. Once the trigger selection is done, the data is reconstructed. This means that the objects
+ interest for new physics analysis anyway as they for example might have too little energy. Once the trigger selection is done, the data is reconstructed. This means that the objects
  in the recorded events are through software algorithms reconstructed into particles, jets, photons etc. The reconstruction is done based on the tracks and measurements
- in the detector, but it is not perfect, and can lead to fake leptons or jets. By fake it is meant that an object might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
+ in the detector, but it is not perfect, and can lead to fake leptons or jets. By fake, it is meant that an object might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
  Once the reconstruction is done, further slimming of the n-tuples are done. Derivations are slimmings of the n-tuples where the selection of events are further reduced 
  to match the needs of the different analysis groups. \par 
 The SM MC go through parts of the same process. These events are first generated and then run through the detector to simulate actual events. Once that is done, the events
