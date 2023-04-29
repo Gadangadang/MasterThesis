@@ -329,23 +329,26 @@ class DataHandling:
             print(f"Running merging on megabatch: {megaset}")
             FETCH_PATH = DATA_PATH / f"Megabatches/MB{megaset}"
             MERGE_PATH = FETCH_PATH / f"MergedMB{megaset}"
+            
+            
+            
 
             xval_etmiss = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "etmiss_val" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
 
             xtrain_etmiss = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "etmiss_train" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
 
             xtrain_etmiss = np.concatenate((xtrain_etmiss), axis=0)
@@ -356,74 +359,87 @@ class DataHandling:
                 np.load(FETCH_PATH / filename)[:, :-1]
                 for filename in os.listdir(FETCH_PATH)
                 if "x_train" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
             xtrain_weights = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "weights_train" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
             xtrain_categories = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "categories_train" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
 
             xvals = [
                 np.load(FETCH_PATH / filename)[:, :-1]
                 for filename in os.listdir(FETCH_PATH)
                 if "x_val" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
             xval_weights = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "weights_val" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
             xval_categories = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "categories_val" in filename
-                and "data1516" not in filename
+                and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename
+                and "data16" not in filename)
             ]
+            
+            xtrain = np.concatenate((xtrains), axis=0)
+            x_train_cats = np.concatenate((xtrain_categories), axis=0)
+            x_train_weights = np.concatenate((xtrain_weights), axis=0)
 
-            # * Data 15 and 16
+            
+
+            xval = np.concatenate((xvals), axis=0)
+            x_val_cats = np.concatenate((xval_categories), axis=0)
+            x_val_weights = np.concatenate((xval_weights), axis=0)
+
+            
+            print("SM MC partitioning and concatenation done")
+
+            #* Data 15 and 16
             data15_and_16_xval_etmiss = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "etmiss_val" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
 
             data15_and_16_xtrain_etmiss = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "etmiss_train" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
-
+            
             data15_and_16_xtrain_etmiss = np.concatenate(
-                (data15_and_16_xtrain_etmiss), axis=0
+                (data15_and_16_xtrain_etmiss[:2]), axis=0
             )
             data15_and_16_xval_etmiss = np.concatenate(
-                (data15_and_16_xval_etmiss), axis=0
+                (data15_and_16_xval_etmiss[:2]), axis=0
             )
             data15_and_16_etmiss = np.concatenate(
                 (data15_and_16_xtrain_etmiss, data15_and_16_xval_etmiss), axis=0
@@ -433,58 +449,60 @@ class DataHandling:
                 np.load(FETCH_PATH / filename)[:, :-1]
                 for filename in os.listdir(FETCH_PATH)
                 if "x_train" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
             data15_and_16_xtrain_weights = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "weights_train" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
             data15_and_16_xtrain_categories = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "categories_train" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
 
             data15_and_16_xvals = [
                 np.load(FETCH_PATH / filename)[:, :-1]
                 for filename in os.listdir(FETCH_PATH)
-                if "x_val" in filename and "data15" in filename and "data16" in filename
+                if "x_val" in filename 
+                and ("data15" in filename 
+                or "data16" in filename)
             ]
             data15_and_16_xval_weights = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "weights_val" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
             data15_and_16_xval_categories = [
                 np.load(FETCH_PATH / filename)
                 for filename in os.listdir(FETCH_PATH)
                 if "categories_val" in filename
-                and "data15" in filename
-                and "data16" in filename
+                and ("data15" in filename
+                or "data16" in filename)
             ]
 
-            data15_and_16_xtrain = np.concatenate((data15_and_16_xtrains), axis=0)
+            data15_and_16_xtrain = np.concatenate((data15_and_16_xtrains[:2]), axis=0)
             data15_and_16_x_train_cats = np.concatenate(
-                (data15_and_16_xtrain_categories), axis=0
+                (data15_and_16_xtrain_categories[:2]), axis=0
             )
             data15_and_16_x_train_weights = np.concatenate(
-                (data15_and_16_xtrain_weights), axis=0
+                (data15_and_16_xtrain_weights[:2]), axis=0
             )
 
-            data15_and_16_xval = np.concatenate((data15_and_16_xvals), axis=0)
+            data15_and_16_xval = np.concatenate((data15_and_16_xvals[:2]), axis=0)
             data15_and_16_x_val_cats = np.concatenate(
-                (data15_and_16_xval_categories), axis=0
+                (data15_and_16_xval_categories[:2]), axis=0
             )
             data15_and_16_x_val_weights = np.concatenate(
-                (data15_and_16_xval_weights), axis=0
+                (data15_and_16_xval_weights[:2]), axis=0
             )
 
             data15_and_16_x_weights = np.concatenate(
@@ -496,6 +514,8 @@ class DataHandling:
             data15_and_16 = np.concatenate(
                 (data15_and_16_xtrain, data15_and_16_xval), axis=0
             )
+            
+            print("Data 15 and data 16 partitioning and concatenation done")
 
             # * Data 1516 mix
             data1516_xval_etmiss = [
@@ -579,25 +599,11 @@ class DataHandling:
                 (data1516_x_train_cats, data1516_x_val_cats), axis=0
             )
             data1516 = np.concatenate((data1516_xtrain, data1516_xval), axis=0)
-            # * SM MC
-
-            xtrain = np.concatenate((xtrains), axis=0)
-            x_train_cats = np.concatenate((xtrain_categories), axis=0)
-            x_train_weights = np.concatenate((xtrain_weights), axis=0)
-
-            print("Train shapes")
-            [print(np.shape(array)) for array in xtrains]
-            print(np.sum([np.shape(array)[0] for array in xtrains]))
-            print(np.shape(xtrain))
-
-            xval = np.concatenate((xvals), axis=0)
-            x_val_cats = np.concatenate((xval_categories), axis=0)
-            x_val_weights = np.concatenate((xval_weights), axis=0)
-
-            print("Val shapes")
-            [print(np.shape(array)) for array in xvals]
-            print(np.sum([np.shape(array)[0] for array in xvals]))
-            print(np.shape(xval))
+            
+            
+            print("Data 1516 mix partitioning and concatenation done")
+            
+            # * SM MC byte size
 
             print(" ")
             print(f"xtrain: {(xtrain.nbytes)/1000000000} Gbytes")
@@ -625,6 +631,8 @@ class DataHandling:
             np.save(MERGE_PATH / f"Merged{megaset}_weights_val", x_val_weights)
             np.save(MERGE_PATH / f"Merged{megaset}_categories_val", x_val_cats)
             np.save(MERGE_PATH / f"Merged{megaset}_etmiss_val", xval_etmiss)
+            
+            print(f"SM MC megaset {megaset} saved")
 
             # * Data 15 and 16
             np.save(MERGE_PATH / f"Merged{megaset}_data15_and_16", data15_and_16)
@@ -640,6 +648,8 @@ class DataHandling:
                 MERGE_PATH / f"Merged{megaset}_data15_and_16_etmiss",
                 data15_and_16_etmiss,
             )
+            
+            print(f"Data 15 and data 16 megaset {megaset} saved")
 
             # * Data1516 mix
             np.save(MERGE_PATH / f"Merged{megaset}_data1516", data1516)
@@ -651,6 +661,8 @@ class DataHandling:
             )
             np.save(MERGE_PATH / f"Merged{megaset}_data1516_etmiss", data1516_etmiss)
             np.save(MERGE_PATH / f"Merged{megaset}_data1516_isBSM", data1516_isBSM)
+            
+            print(f"Data 1516 mix megaset {megaset} saved")
 
         print("Megabatching done")
         print(" ")
@@ -667,5 +679,5 @@ if __name__ == "__main__":
 
     L2 = DataHandling(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
     #L2.convertParquet()
-    L2.createMCSubsamples()
+    #L2.createMCSubsamples()
     L2.mergeMegaBatches()
