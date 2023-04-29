@@ -4,9 +4,9 @@ SCALER = "MinMax" # or "Standard"
 BACTH_SIZE = int(8192)       # 256
 EPOCHS = 4
 
-TYPE = "VAE" #"VAE"
-SMALL = True
-LEP = "Lep2" #"Lep3"
+TYPE = "AE" #"VAE"
+SMALL = False
+LEP = "data" #"Lep2" #"Lep3", 
 TRAIN = True
 
 if SMALL:
@@ -51,6 +51,10 @@ colors_scheme_2lep = {
                "Zeejets": "cornflowerblue",
               "Zmmjets":  "royalblue",
               "Diboson":  "orangered"
+}
+
+color_schemes_data = {
+               "Data 15 and 16": "darkblue"
 }
 
 rmm_structure = {

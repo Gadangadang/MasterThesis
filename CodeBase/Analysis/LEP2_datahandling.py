@@ -618,10 +618,8 @@ class DataHandling:
                 xtrain = self.column_trans.fit_transform(xtrain)
                 xval = self.column_trans.transform(xval)
 
-                data1516_xtrain = self.column_trans.transform(data1516_xtrain)
-                data1516_xval = self.column_trans.transform(data1516_xval)
-                data15_and_16_xtrain = self.column_trans.transform(data15_and_16_xtrain)
-                data15_and_16_xval = self.column_trans.transform(data15_and_16_xval)
+                data1516 = self.column_trans.transform(data1516)
+                data15_and_16 = self.column_trans.transform(data15_and_16)
 
             # * SM background
             np.save(MERGE_PATH / f"Merged{megaset}_xtrain", xtrain)
