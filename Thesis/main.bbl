@@ -119,20 +119,11 @@ D.~Green, \emph{High $p_T$ Physics at Hadron Colliders}.
 S.-M. Wang, \emph{{ATLAS Computing and Data Preparation. ATLAS Induction Day +
   Software Tutorial}}, .
 
-\bibitem{Bernius:2707054}
-C.~Bernius, \emph{{ATLAS Trigger and Data Acquisition. ATLAS Induction Day +
-  Software Tutorial}}, .
-
 \bibitem{Gillam:2015kta}
 T.~P.~S. Gillam, \emph{{Identifying fake leptons in ATLAS while hunting SUSY in
   8 TeV proton-proton collisions}}.
 \newblock PhD thesis, Cambridge U., 2015.
 \newblock 10.17863/CAM.16619.
-
-\bibitem{Manca:2694107}
-E.~Manca and E.~Guiraud, \emph{{Using RDataFrame, ROOT’s declarative analysis
-  tool, in a CMS physics study. Using RDataFrame, ROOT’s declarative analysis
-  tool, in a CMS physics study}}, .
 
 \bibitem{reback2020pandas}
 {The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.

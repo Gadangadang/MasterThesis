@@ -1,15 +1,15 @@
 \section*{Testing strategy}
 
-Before testing the AE and VAE on signal samples, it is of interest to test the sensitivity of both the regular and variational autoencoders 
-on alterings on the Monte Carlo. This can be thought of as initial testing. 
+Before testing the AE and VAE on signal samples, it is interesting to test the sensitivity of both the regular and variational autoencoders 
+on alterings on the SM MC. This can be thought of as initial testing. 
 \subsection*{Channel removing}
-As the goal of the autoencoder is to reconstruction data is has looked on, one idea was to remove on of the channels in the standard model.
+\hl{As the goal of the autoencoder is to reconstruction data is having looked on}, one idea was to remove one of the channels in the standard model.
 The idea was that some of the channels differs enough in the final states they produce and thus the RMMs for the events in the given selection. 
 All channels where tested on as signal, but one can expect some to have more similar results than others. 
 
 \subsection*{Altering transverse momentum}
-Another idea for anomaly detection testing with the MonteCarlo was to alter the transverse momentum of some of the particles. Random events where
-selected and had the transverse energy changed, in accordance with equation \ref{eq:et}. The hope is that especially events with above 5 time 
+Another idea for anomaly detection testing with the SM MC was to alter the transverse momentum of some of the particles. Random events were
+selected, and their transverse energy was changed, in accordance with equation \ref{eq:et}. The hope is that especially events with above 5 time 
 increase in transverse momentum should be picked up. Note that by changing the transverse momentum, the change in transverse energy also changes. 
 From equation \ref{eq:deltaet} we have that a scale change k in $p_T$ yields the following new relation:
 
@@ -20,15 +20,15 @@ Thus, both the transverse energy and the change in transverse energy is changed 
 
 
 \subsection*{Signal testing}
-It would not technically be true to call the machine learning used in this thesis as unsupervised learning. 
+It is not correct to call the machine learning algorithm used in this thesis as unsupervised learning. 
 This is mostly due to the fact that we show it labeled MonteCarlo to train on, and thus essentially gives 
-the models a target to aim for. But, sinse we do not show it any signals in training, it can be allowed to 
+the models a target to aim for. But, since we do not show the autoencoders any signals in training, \hl{it can be allowed} to 
 name the learning strategy as semi-supervised learning. Because of this, one does not bias oneself too much 
-if one then tests the algorithm on one or more signal samples. This type of testing can be separated into two
+if the algorithm is tested on one or more signal samples. This type of testing can be separated into two
 different categories, the open signal testing and the blind signal testing. \par 
 The open signal testing first takes a trained model that has only seen SM MC and then runs inference on both 
 SM MC and the given signal. Then the search strategy mentioned in the previous section is done on those 
 collected reconstruction error distributions. The blind signal testing is the final test, where a dataset 
-is prepared incapsulating SM MC, and one or multiple signals in a mix. The labels are kept, for verification. 
-That way, if one were to do open signal testing on many signal samples from many different theories, one could 
+is prepared incapsulating SM MC or ATLAS data, and one or multiple signals. The labels are kept, for verification. 
+That way, if one were to do open signal testing on many signal samples from many theories, one could 
 in principle bias oneself too much. This way one can get an unbiased measurement of the performance. 

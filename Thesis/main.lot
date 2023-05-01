@@ -2,7 +2,7 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {1.1}{\ignorespaces Neural network notation}}{5}{table.caption.9}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass.\relax }}{16}{table.caption.30}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass. The antiparticle for d and b also have a bar over, but it is on top of the box surrounding the letter. \relax }}{16}{table.caption.30}%
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces SM MC channels}}{28}{table.caption.58}%
 \contentsline {table}{\numberline {3.2}{\ignorespaces 2015 triggers table}}{33}{table.caption.68}%

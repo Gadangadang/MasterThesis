@@ -2,10 +2,10 @@
 \section{2 lepton training for bump search testing}\label{sec:2lep}
 
 The 3 lepton + $e_T^{miss}$ dataset has fewer events, and thus allows for less training of the neural networks. 
-Thus, the 2 lepton + $e_T^{miss}$ dataset was tried as well. The event selection was done choosing atleast 
+Thus, the 2 lepton + $e_T^{miss}$ dataset was tried as well. The event selection was done choosing at least 
 2 leptons, meaning that the RMM signatures of some events will look similar to the RMM signatures of 
 the 3 lepton + $e_T^{miss}$ dataset. A consequence of this is that the signal samples for the 3 lepton case 
-would be a good start point for testing. The two autoencoders will be tested on three of the 
+will be a good start point for testing. The two autoencoders will be tested on three of the 
 four metrics used for the 3 lepton + $e_T^{miss}$ case. 
 \begin{itemize}
     \item Low reconstruction error on SM MC
@@ -37,7 +37,7 @@ Below are some results from training on the 2 lepton case with the regular autoe
     \end{subfigure}
     \hfill      
     \caption[2lep deep network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    $e_T^{miss}$ for the deep regular autoencoder using SUSY $450p300$.}
     \label{fig:AE_2lep_big_rec_sig_signi_450}
 \end{figure}
 
@@ -62,7 +62,7 @@ Below are some results from training on the 2 lepton case with the regular autoe
     \end{subfigure}
     \hfill      
     \caption[2lep shallow network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    $e_T^{miss}$ for the deep regular autoencoder using SUSY $450p300$.}
     \label{fig:AE_2lep_small_rec_sig_signi_450}
 \end{figure}
 
@@ -89,7 +89,7 @@ Below are some results from training on the 2 lepton case with the regular autoe
     \end{subfigure}
     \hfill      
     \caption[2lep deep network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $800p50$ model is used.}
+    $e_T^{miss}$ for the deep regular autoencoder using SUSY $800p50$.}
     \label{fig:AE_2lep_big_rec_sig_signi_800}
 \end{figure}
 
@@ -114,7 +114,7 @@ Below are some results from training on the 2 lepton case with the regular autoe
     \end{subfigure}
     \hfill      
     \caption[2lep shallow network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the shallow regular autoencoder. Here the SUSY $800p50$ model is used.}
+    $e_T^{miss}$ for the shallow regular autoencoder using SUSY $800p50$.}
     \label{fig:AE_2lep_small_rec_sig_signi_800}
 \end{figure}
 
@@ -128,23 +128,23 @@ In figures \ref{fig:AE_2lep_big_450}, \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2
 \ref{fig:AE_2lep_small_800} we observe that there is a general trend here for both the small 
 and large regular autoencoder where the background distributions are highly shifted to the 
 lower end of the reconstruction error range. This is a continuing trend following the 3 
-lepton + $e_T^{miss}$ shown in figures \ref{fig:AE_2lep_big_450}, \ref{fig:AE_3lep_small_450},
+lepton + $e_T^{miss}$ case shown in figures \ref{fig:AE_3lep_big_450}, \ref{fig:AE_3lep_small_450},
 \ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800}. 
 This indicates that as we increase the statistics, in other words the amount of background events 
 used for training, the ability of the autoencoder to learn the internal structure increases. 
-It is also interesting to observe here that as the reconstruction error increases, the amount 
-of each sample in a given bin changes alot. As expected, Zmmjets and Zeejets along with ttbar 
-are the events with the highest statistics in the 2 lepton + $e_T^{miss}$ dataset, thus it 
+\hl{It is also interesting to observe here that as the reconstruction error increases, the amount 
+of each sample in a given bin changes alot.} As expected, Zmmjets and Zeejets along with ttbar 
+are the channels with the highest statistics in the 2 lepton + $e_T^{miss}$ dataset, thus it 
 should be easier to learn to better reconstruct those events. However, note the amount of 
-Diboson in the higher end of the reconstruction error histograms, as well as in the $e_T^{miss}$ 
+diboson in the higher end of the reconstruction error histograms, as well as in the $e_T^{miss}$ 
 post reconstruction error cut distributions. One explanation for this could be the sample 
 discrepency explained in section \ref{sec:mcdatacomp}. It would appear that too much of the 
-diboson samples is cut, leading to not enough samples for it to appropriatly learn the RMM 
+diboson samples is cut, leading to not enough samples for it to appropriately learn the RMM 
 structure for that channel, leading to the high reconstruction error values for some of 
 those events. Note also here that the reconstruction threshold where this effect is getting 
-more notisable around $10^{-2}$ and larger, where the events are on the order of a 1000 or 
-less per bin. Thus, it is not alot of events, but still enough to note. \par Using the signal 
-region definition from above we set cuts on the reconstruction error and then calculate the 
+more noticable around $10^{-2}$ and higer, where the events are on the order of a 1000 or 
+less per bin. \hl{Thus, it is not alot of events, but still enough to note}. \par Using the signal 
+region definition \hl{from above} we set cuts on the reconstruction error and then calculate the 
 significance of the signal. \par
 In figures \ref{fig:AE_2lep_big_etmiss_450}, \ref{fig:AE_2lep_small_etmiss_450}, \ref{fig:AE_2lep_big_etmiss_800} and  
 \ref{fig:AE_2lep_small_etmiss_800} we have the $e_T^{miss}$ distributions for 
@@ -160,7 +160,7 @@ From figures \ref{fig:AE_2lep_big_signi_450},
 \ref{fig:AE_2lep_small_signi_450}, \ref{fig:AE_2lep_big_signi_800} and  \ref{fig:AE_2lep_small_signi_800} 
 we have the significance as a function of $e_T^{miss}$ for both signals using the shallow and deep autoencoder. 
 This graph shows how implementing another cut in the signal region, namely where in the $e_T^{miss}$ distribution 
-to select event, allowss for higher significance. We see here that the shallow autoencoder gets a significance of 
+to select event, allows for higher significance. We see here that the shallow autoencoder gets a significance of 
 almost 2.5 in the SUSY $450p300$ case, being the highest score, and beating the pre reconstruction error significance 
 by alot. Another interesting point to note here is the tail ends, especially for the SUSY $800p50$ signal. 
 This model has some events of very high $e_T^{miss}$, and in the tail end, there might be very few or none 
@@ -168,7 +168,7 @@ background events. It should be noted that the significance for the $800p50$ sig
 for the $450p300$ signal model, even though the separation shown in figures \ref{fig:AE_2lep_big_450}, 
 \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, \ref{fig:AE_2lep_small_800} would suggest otherwise. 
 Although the peak in both signal models are fairly separated from the peak of the SM MC, the SUSY $800p50$ 
-signal model is shifted a lot more. This is consistant with expectation, for the same reason that the significance 
+signal model is shifted a lot more. This is consistent with expectation, for the same reason that the significance 
 tails are the way they are.  Now, The reason for the low significance is most likely the fact that the signal 
 sample contains low statistics, in other words, the weights are just a lot lower, compared to the other signal 
 sample. \par
@@ -196,7 +196,7 @@ sample. \par
     \end{subfigure}
     \hfill      
     \caption[2lep deep network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the deep regular autoencoder. Here the SUSY $450p300$ model is used.}
+    $e_T^{miss}$ for the deep regular autoencoder using SUSY $450p300$.}
     \label{fig:VAE_2lep_big_rec_sig_signi_450}
 \end{figure}
 
@@ -221,17 +221,9 @@ sample. \par
     \end{subfigure}
     \hfill      
     \caption[2lep shallow network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the shallow regular autoencoder. Here the SUSY $450p300$ model is used.}
+    $e_T^{miss}$ for the shallow regular autoencoder using SUSY $450p300$.}
     \label{fig:VAE_2lep_small_rec_sig_signi_450}
 \end{figure}
-
-
-
-
-
-
-
-
 
 
 \begin{figure}[H]
@@ -256,7 +248,7 @@ sample. \par
     \end{subfigure}
     \hfill      
     \caption[2lep deep network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the deep variational autoencoder. Here the SUSY $800p50$ model is used.}
+    $e_T^{miss}$ for the deep variational autoencoder using SUSY $800p50$.}
     \label{fig:VAE_2lep_big_rec_sig_signi_800}
 \end{figure}
 
@@ -281,7 +273,7 @@ sample. \par
     \end{subfigure}
     \hfill      
     \caption[2lep shallow network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
-    $e_T^{miss}$ for the shallow variational autoencoder. Here the SUSY $800p50$ model is used.}
+    $e_T^{miss}$ for the shallow variational autoencoder using SUSY $800p50$.}
     \label{fig:VAE_2lep_small_rec_sig_signi_800}
 \end{figure}
 

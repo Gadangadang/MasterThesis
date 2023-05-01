@@ -1,7 +1,7 @@
 \section{Autoencoders}\label{sec:autoencder_theory}
 Autoencoders are a subset of neural networks. Whereas a general neural network
  in principle can take any shape, autoencoders are more restrictive.
-This restrictiveness can in its most general sence we condensed 
+This restrictiveness can in its most general sense be condensed 
 into the following points:
 \begin{itemize}
     \item Same number of output categories as input categories  
@@ -12,15 +12,15 @@ called the encoder (left funnel) and decoder (right funnel) respectively. This a
 accidental, but rather designed with a very specific solution of problems in mind, namely reconstruction. 
 A good example to illustrate this is image reconstruction, illustrated in figure \ref{fig:ae_denoise}. 
 Suppose you have an image, and want to reconstruct it. By feeding the encoder an image, 
-and comparing the decoder output to the actual image, the autoencoder can tune itself to recreate the images it trains on. 
+and comparing the decoder output to the actual image, the autoencoder can tune itself to recreate the image it trained on. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/autoencoder_imagedenoising.png}
-    \caption[Conceptual autoencoder]{Figure depicting a model for an autoencoder. Here the input $\bf{x}$ is the original image, $\bf{x'}$ is a reconstructed version of $\bf{x}$, $g_{\phi}$ is the encoder, $f_{\theta}$ is the decoder, and $z$ is the latent space. Found 14.01.23 \href{https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{here} \cite{weng2018VAE}. }
+    \caption[Conceptual autoencoder]{Figure depicting a model for an autoencoder. Here the input $\bf{x}$ is the original image, $\bf{x'}$ is a reconstructed version of $\bf{x}$, $g_{\phi}$ is the encoder, $f_{\theta}$ is the decoder, and $z$ is the latent space. Found 14.01.23 at \href{https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{lilianweng.github.io} \cite{weng2018VAE}. }
     \label{fig:ae_denoise}
 \end{figure}
 
-Mathematically this is is represented as follows\cite{weng2018VAE}. Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
+Mathematically this is represented as follows\cite{weng2018VAE}. Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
 \begin{equation*}
     \bf{z} = g_{\phi}(\bf{x}),
 \end{equation*}    
@@ -52,19 +52,19 @@ $p_{\theta}(z|x) = p_{\theta}(z)p_{\theta}(x|z)/p_{\theta}(x)$. The work done by
 $p_{\theta}(z|x)$ more often than not is intractable\footnote{Intractability here refers to the inability to evaluate or differentiate 
 a given distribution or function, or difficulty with solving a problem due to a large parameter space or finding the global optimum of 
 a complex function. }, thus instead we will try to approximate the true posterior with a variational approximation $p_{\theta}(z|x) \approx q_{\phi}(z|x)$.   
-It can from here on out be useful to think of $q_{\phi}(z|x)$ as a probabilistic encoder, as it for a given data point x will produce a distribution
-over possible values for z, the latent space, that the datapoint could have been generated from. Similarly, is can be useful to think of the   
+\marginpar{Lang setning} It can be useful to think of $q_{\phi}(z|x)$ as a probabilistic encoder, as it for a given data point x will produce a distribution
+over possible values for z, the latent space, that the datapoint could have been generated from. Similarly, it can be useful to think of the   
 $p_{\theta}(z|x)$ as a probabilistic decoder, as it for a given z will produce a distribution over possible values for x.
 
 \subsubsection*{The variational bound}
-It can be shown that the marginal likelyhood can be written as follows:
+It can be shown that the marginal likelihood can be written as follows:
 \begin{equation}
     log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)}),
 \end{equation}
 
 where the first term on the right-hand side is the Kullback-Leibler (KL) divergence\footnote{The KL divergence is a measure of how one 
 probability distribution is different from a second, reference probability distribution. It is often used as a distance measure 
-between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelyhood. 
+between two probability distributions.} and the second term is the evidence lower bound (ELBO) on the marginal likelihood. 
 As the KL divergence is non-negative, the ELBO will always be equal to or less than the marginal likelihood, written below:
 
 \begin{equation}\label{eq:elbo_leq1}
@@ -77,27 +77,29 @@ Rewriting we get that the ELBO is given as:
     \mathcal{L}(\theta, \phi;x^{(i)}) =  - D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathbb{E}_{q_{\phi}(z|x^{(i)})}[log\, p_{\theta}(x^{(i)}|z)],
 \end{equation}
 
-which is also known as the loss function for variational inference. As a loss function, this needs to be differentiated with respect to 
-$(\phi, \theta)$, but as shown by Kingman and Welling \cite{VAE}, the common method using Monte Carlo gradient estimator have high variance,
-and thus is not ideal. 
+which is also known as the loss function for variational inference. This is a loss function and needs to be differentiated with respect to 
+$(\phi, \theta)$. As shown by Kingman and Welling \cite{VAE}, the common method using Monte Carlo gradient estimator have high variance 
+and is not ideal. 
 
 \subsubsection*{The Stochastic gradient variational bayes (SGVB) estimator}
-Kingman and Welling \cite{VAE} instead proposes a practical estimator that both deals effectivily with large datasets, aswell as the 
-issue of intractability. This estimator is called the stochastic gradient variational bayes (SGVB) estimator, and first assumes an approximate 
-posterior $q_{\phi}(z|x)$. Under certain conditions, as shown in subsection \ref{sec:reparameterization}, we can reparameterize this approximate
-posterior to a random variable $\tilde{z} \thicksim q_{\theta}(z|x)$, by doing a differentiable transformation $g_{\phi}(\epsilon|x)$, such that 
+Kingman and Welling \cite{VAE} instead propose a practical estimator that both deals effectively 
+with large datasets, and the issue of intractability. This estimator is called the stochastic 
+gradient variational bayes (SGVB) estimator, which assumes an approximate posterior 
+$q_{\phi}(z|x)$. Under certain conditions, as shown in subsection \ref{sec:reparameterization}, 
+we can reparameterize this approximate posterior to a random variable 
+$\tilde{z} \thicksim q_{\theta}(z|x)$ by doing a differentiable transformation $g_{\phi}(\epsilon|x)$ such that 
 \begin{equation*}
     \tilde{z} = g_{\phi}(\epsilon|x), \quad \epsilon \thicksim p(\epsilon),
 \end{equation*}
 where $\epsilon$ is a noise variable.\par 
-Using Monte Carlo estimates of expectations of a function $f(z)$ with respect to $q_{\theta}(z|x)$, Kingman and Welling \cite{VAE} shows that:
+Using Monte Carlo estimates of expectations of a function $f(z)$ with respect to $q_{\theta}(z|x)$, \marginpar{$f(f())$?} Kingman and Welling \cite{VAE} shows that:
 \begin{equation}
     \mathbb{E}_{q_{\theta}(z|x^{(i)})}[f(z)] = \mathbb{E}_{p(\epsilon)}[f(g_{\phi}(\epsilon, x^{(i)}))] \approx \frac{1}{L}\sum_{l=1}^{L}f(f(g_{\phi}(\epsilon^{(l)}, x^{(i)}))),
 \end{equation}
 where $\epsilon^{(l)} \thicksim p(\epsilon)$. Using this technique, and assuming that the KL divergence 
 $D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)}))$ can be integrated analytically, we only get one term in 
 equation \ref{eq:elbo_leq2} that requires estimation by sampling: $\mathbb{E}_{q_{\phi}(z|x^{(i)})}[log\, p_{\theta}(x^{(i)}|z)]$. 
-What we end up with is a version of the SGVB estimator: $\tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)}) \backsimeq 
+\hl{What we end up with} is a version of the SGVB estimator: $\tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)}) \backsimeq 
 \mathcal{L}(\theta, \phi; x^{(i)})$. This is given as:
 
 \begin{equation}
@@ -105,14 +107,14 @@ What we end up with is a version of the SGVB estimator: $\tilde{\mathcal{L}}^{B}
 \end{equation}
 where $z^{(i,l)} = g_{\phi}(\epsilon^{(i,l)}, x^{(i)})$ and $\epsilon^{(i)} \thicksim p(\epsilon)$. What we now have is a loss function that contains two terms. 
 The first term, the KL divergence, acts as a regularizer, whereas the other term acts as a negative reconstruction error. In fact, we have here two objectives, 
-we want to minimize the ELBO, $\mathcal{L}(\theta, \phi; x^{(i)})$, by minimizing the KL divergence and maximizing the expected log-likelihood. 
+we want to minimize the ELBO, $\mathcal{L}(\theta, \phi; x^{(i)})$ by minimizing the KL divergence, and maximizing the expected log-likelihood. 
 
 \subsubsection*{Reparameterization}\label{sec:reparameterization}
 If the latent space is assumed to be a continous variable sampled from a conditional continous distribution 
 $z \thicksim q_{\phi}(z|x)$, then we can reparametrize z as a deterministic variable. This is very useful as 
 we then can rewrite the expectation of the conditional distribution such that the Monte Carlo estimate of 
 the expectation is differentiable with respect to the parameters $\phi$. The proof can be found in the article\cite{VAE}.  
-Now let's take the example of the univariate Gaussian distribution. First, let $z \thicksim p(z|x) = \mathcal{N}(\mu, \sigma^2)$. 
+\hl{Now let's take the example of} the univariate Gaussian distribution. First, let $z \thicksim p(z|x) = \mathcal{N}(\mu, \sigma^2)$. 
 Then, a reparametrization of z can be $z = \mu + \sigma\epsilon$, where $\epsilon \thicksim \mathcal{N}(0,1)$. 
 Thus 
 
@@ -123,7 +125,7 @@ Thus
 \subsection*{Variational autoencoders}
 Now, this variational bayes can then be used to create a variational autoencoder. This contains two neural networks, the generative model $p_{\theta}(x|z)$,
 as well as the probabilistic encoder $q_{\phi}(z|x)$, which is used to approximate the posterior $p_{\theta}(z|x)$. We now let the prior over 
-the latent space be a multivariate Gaussian, lacking parameters: $p_{\theta}(z) = \mathcal{N}(z;0,I)$. We also have that $p_{\theta}(x|z)$ is a multivariate Gaussian,
+\marginpar{Lacking parameters ?} the latent space be a multivariate Gaussian, lacking parameters: $p_{\theta}(z) = \mathcal{N}(z;0,I)$. We also have that $p_{\theta}(x|z)$ is a multivariate Gaussian,
 with a distribution generated from z, whilst $p_{\theta}(z|x)$ is in fact intractable. If we now assume that the true (intractable) posterior 
 is a Gaussian with approximately diagonal covariance, we can let the variational approximate posterior be a multivatiate Gaussian:
 \begin{equation}

@@ -1,8 +1,8 @@
 \section{ROOT}
-
+\marginpar{Introduksjon til hva ROOT er}
 \subsection*{N tuples}
 
-The main datastructure of ROOT is the so called N tuple structure. This datastructure contains each property for each type of particle in a given event, yeilding
+The main data structure of ROOT is the so called N tuple structure. This data structure contains all properties for each type of particle in a given event, yielding
 a ragged structure. 
 
 \begin{table}[H]
@@ -16,19 +16,17 @@ a ragged structure.
 \end{table}
 
 \subsection*{RDataFrame}
-
-\cite{Manca:2694107}
-
+\marginpar{What is it?}
 RDataFrame's main purpose is to make reading and handling of root files easier, especially in relation to modern machine learning tools and their 
-respective frameworks and environments. This is done by creating a dataframe like structure of the root n-tuples, and then 
+respective frameworks and environments. This is done by creating a dataframe type of structure of the root n-tuples, and then 
 lazily\footnote{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
-apply contraints to the data. Using PyROOT, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is an example of how
+apply contraints to the data. Using \hl{PyROOT}, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is a code example of how
 to create a RDataFrame object, apply a cut and then create a column for later use. Here, good leptons are defined first, denoted as "ele\_SG" and "muo\_SG". 
 A cut is then applied where we require that the number of good leptons is always 3. Finally, a column is created where the combination of type of leptons 
-in the 3 lepton system is stored, as well as creating a histogram containing the results for that given channel\footnote{A channel here refers to a certain decay channel. The standard model has several, and some look more alike than others. One example is the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. } 
+in the 3 lepton system is stored, as well as creating a histogram containing the results for that given channel\footnote{A channel here refers to a certain decay channel. The standard model has several channels, and some look more alike than others. One example is the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. } 
 k. Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be applied directly using those 
 columns to create new one. More complicated variables, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
-found or calculated using C++ functions. An example of such a function is shown below the python code listing. 
+found or calculated using C++ functions. An example of such a C++ function is shown below the python code example. 
 
 \begin{figure}[H]
     \centering
@@ -79,14 +77,16 @@ for k in df.keys():
         "wgt_SG",
     )
     \end{lstlisting}
+    \caption[RDataFrame code example]{Example of event selection done using RDataFrame.}
+    \label{code:rdata}
 \end{figure}
-
-In the code listing above we see an example of how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
-how many threads to use in the parallellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
-The nex three lines creates a dictionary containing the ROOT RDataFrames to do event selection on. These are categorized by channel name. 
-The loop then does event selection for each channel sample, defining new variables in the RDataFrame, applying filters, and creating histograms.
-Some variables are constructed using variables already in the ROOT files, such as energy and mass and so on, which through custom C++ functions
-can be added. In the codelisting below we see a custom C++ function which is used in this thesis.
+\marginpar{Lange setninger?}
+In the code example above we see how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
+number of threads to use in the paralellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
+Line 11-13 creates a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
+The loop on line 15 does event selection for each channel sample, defining new variables in the RDataFrame, applying filters and creating histograms.
+Some variables are constructed using variables already in the ROOT files such as energy and mass. Through custom C++ functions
+these properties can be added to the RDataFrames. The example below shows a custom C++ function which is used in work of this thesis.
 
 \begin{figure}[H]
     \centering
@@ -115,11 +115,13 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
     return inv_mass;
 }
 \end{lstlisting}
+\caption[C++ function example]{Example of a C++ function used in event selection.}
 \end{figure}
-The C++ function listed above creates Lorentzvectors for two particles, and then constructs the invariant mass based on the parameters sent in. 
-this function will be used on all the leptons in a given event, and in the case that one particle or both do not exist, the C++ function will
-return 0 as the invariant mass. \par
+This C++ function creates Lorentz vectors for two particles, and then returns the invariant mass based on the parameters sent in. 
+This function will be used on all the leptons in a given event. If one particle or both do not exist, the C++ function will
+return zero as the invariant mass. \par
 
+\marginpar{Legg til kodekommentarer}
 \begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_2}]
@@ -141,9 +143,13 @@ for k in cols:
     )
 
 \end{lstlisting}
+\caption[Conversion from RDataFrame to NumPy]{Loop converting RDataFrames to NumPy structures, before being stored as HDF5 files.}
 \end{figure}
-
-Once eventselection is done, the features have been chosen and histograms have been drawn, the Rdataframe can be converted to a pandas dataframe, which is a very popular choice
-for data structure when doing data analysis in python. This is done through an intermediary step of converting the RDataframe to a numpy filestructure, which then can be converted
-to a pandas\cite{reback2020pandas} dataframe, or some other framwork. Here the new pandas dataframe is stored as hdf5\cite{hdf5} files to be used later, as the hdf5 format 
-has a very good compression ratio, and is very fast to read and write. 
+\marginpar{Lang setning}
+Once event selection is done, the features have been chosen and histograms have been 
+drawn, the Rdataframe can be converted to a Pandas dataframe. This is a very popular 
+choice for data structure when doing data analysis in python. This is done through an 
+intermediary step of converting the RDataframe to a numpy filestructure, which then can 
+be converted to a Pandas\cite{reback2020pandas} dataframe or some other framwork.
+The new Pandas dataframes are stored as HDF5\cite{hdf5} files to be used later. This is 
+because the HDF5 format has a very good compression ratio, and is very fast to read and write. 

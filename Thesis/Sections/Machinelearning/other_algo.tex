@@ -16,15 +16,15 @@ given problem. Several algorithms are used, from random search, grid search, and
 proposed by L. Li et al. It focuses on using successful halving\cite{successivehalving}
 but at the same time doing a grid search for how to allocate resources. Successive halving focuses on testing n configurations, and removing 
 the bottom half, thus (hopefully) quickly converging to the ideal combination. However, it is not easy to a priori know the 
-number of configurations n, and how much resources one needs, r, to quickly find the ideal set. This is where Hyperband comes in. 
+number of configurations n, and how many resources one needs, r, to quickly find the ideal set. This is where Hyperband comes in. 
 In essence, it fetches and tries different combinations of r resources (time, data set subsampling or feature subsampling) and n 
 configurations, to determine the ideal set of hyperparameters via successive halving, yielding 5x to 30x speedup compared to 
-Bayesian optimization. One drawback for this algorithm is that one cannot guarantiy that the configuration is optimal, 
-but rather that it is good enough. 
+Bayesian optimization. One drawback for this algorithm is that one cannot guarantee that the configuration is optimal, 
+but rather that it is only good enough. 
 
 \subsection*{Activation functions}
 Several activation functions are used in neural networks, and how one chooses the best combination for a given problem is not trivial. 
-This leads often to the use of tuning. Below are a list of the functions used in this thesis, aswell as their mathematical definitions. 
+This often leads to the use of tuning. Below are a list of the activation functions used in this thesis, and their mathematical definitions. 
 
 \begin{enumerate}
     \item  $sigmoid(x) = \frac{1}{1+e^{-x}}$
@@ -55,7 +55,7 @@ Using this, we get a plot that tells us how well the classifier performs. As the
 the more "north-west"\cite{FAWCETT2006861} of the plot the curve is, the better. Below are two example of a ROC curve and the classifier output it 
 is calculated from. For simplicity, the classifier output is in this case just two normal distributions with the mean and standard deviation 
 listed in the legend of the distribution plots.
-
+\marginpar{Bytt "here we get" med "the"}
 \begin{figure}[H]
     \centering
     \begin{subfigure}{.45\textwidth}
@@ -67,7 +67,7 @@ listed in the legend of the distribution plots.
     \hfill
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/Machinelearning/ROC_curve_example_Sep.pdf}
-        \caption{ROC curve based on the two distributions to the left. Here we get an area under the curve score of 0.92, which is very good. }
+        \caption{ROC curve based on the two distributions to the left. The area under the curve score of 0.92, which is very good. }
         \label{fig:ROC_curve_ex_good}
     \end{subfigure}
     \hfill        
@@ -86,7 +86,7 @@ listed in the legend of the distribution plots.
     \hfill
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/Machinelearning/ROC_curve_example_bad.pdf}
-        \caption{ROC curve based on the two distributions to the left. Here we get an area under the curve score of 0.58, which is not a good classification score.}
+        \caption{ROC curve based on the two distributions to the left. The area under the curve score of 0.58, which is not a good classification score.}
         \label{fig:ROC_curve_ex_bad}
     \end{subfigure}
     \hfill        
@@ -95,8 +95,8 @@ listed in the legend of the distribution plots.
 \end{figure}
 
 In figure \ref{fig:roc_example_good} we have a histogram showing two distributions that are well separated, and the ROC curve that is calculated 
-based on thos distributions. If we compare this to figure \ref{fig:roc_example_bad}, we see that the better separation of the two distributions, the better ROC curve. 
-This is a useful tool to use with the autoencoder, as it provides valueable insight beyond just looking at the output distributions.
+based on those distributions. If we compare this to figure \ref{fig:roc_example_bad}, we see that the better separation of the two distributions, the better ROC curve. 
+This is a useful tool to use with the autoencoder as it provides valueable insight beyond just looking at the output distributions. \marginpar{More info?}
 
 \subsection*{Statistical significance}
 In the frequentist statistics, the Poisson distribution can be approximated with a Gaussian distribution in the limit of large number of events\cite{magnar}. 
@@ -109,3 +109,5 @@ where s is the amount of signal, and b is the amount of background. For low stat
     Z = \sqrt{2\left[(s+b)\ln(1+\frac{s}{b})-s\right]}.
 \end{equation}
 It can be shown that in the limit where $s << b$, the two expressions are approimately the same\cite{magnar}.
+
+\marginpar{More on chapter 1?}
