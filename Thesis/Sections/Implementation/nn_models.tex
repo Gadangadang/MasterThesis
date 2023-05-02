@@ -10,9 +10,9 @@ Below are the two models used for the regular autoencoder.
     \label{fig:ae_small}
 \end{figure}
 
-In figure \ref{fig:ae_small} we have the small autoencoder. It consists of an input and output layer of 529 nodes, with 
+Figure \ref{fig:ae_small} shows the small autoencoder. It consists of an input and output layer of 529 nodes, with 
 one latent space layer of 150 nodes. The activation functions for the input, latent space and output are the Tanh and 
-LeakyReLU with $\alpha=0.3$ respectively, 
+LeakyReLU with $\alpha=0.3$ respectively.
 
 
 \begin{figure}[H]
@@ -22,7 +22,7 @@ LeakyReLU with $\alpha=0.3$ respectively,
     \label{fig:ae_big}
 \end{figure}
 
-In figure \ref{fig:ae_big} we have the large autoencoder. It consists of an input and output layer of 529 nodes, with three 
+Figure \ref{fig:ae_big} shows the large autoencoder. It consists of an input and output layer of 529 nodes, with three 
 hidden layers of 450, 300 and 200 nodes respectively in the encoder and three hidden layers of 200, 300 and 450 respectively. 
 The activation functions for the input and ouput layers are the Tanh and LeakyReLU with $\alpha=0.3$ respectively. The hidden 
 layers in the encoder have the activation functions Tanh, LeakyReLU with $\alpha=0.3$ and ReLU respectively. The hidden layers
@@ -50,7 +50,7 @@ output are the Tanh and LeakyReLU with $\alpha=0.3$ respectively.
 \end{figure}
 
 
-In figure \ref{fig:vae_big} we have the large autoencoder. It consists of an input and output layer of 529 nodes, with three 
+In figure \ref{fig:vae_big} we have the large variational autoencoder. It consists of an input and output layer of 529 nodes, with three 
 hidden layers of 400, 300 and 200 nodes respectively in the encoder and three hidden layers of 200, 300 and 400 respectively. 
 The activation functions for the input and ouput layers are the ReLU and Sigmoid respectively. The hidden 
 layers in the encoder have the activation functions Tanh, ReLU, LeakyReLU with $\alpha=0.3$ respectively. The hidden layers

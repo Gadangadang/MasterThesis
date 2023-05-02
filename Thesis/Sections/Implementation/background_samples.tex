@@ -1,13 +1,12 @@
 \section{Background samples}
 
-To look for anomalies in the three lepton final state we need to train on background MonteCarlo samples with that specific final state. 
+To look for anomalies in the 3 lepton final state we need to train on background MonteCarlo samples with that specific final state. 
 This means in a sense that we want the autoencoder to learn what is expected from the Standard model in terms of this final state. 
 The 2 and 3 lepton + $e_T^{miss}$ background MonteCarlo contains the following channels:
 
 \begin{table}[H]
     \centering
-    \caption[SM MC channels]{SM MC channels for both the 2 and 3 lepton + $e_T^{miss}$ final state background. }
-    \label{tab:bkg_channels}
+    
     \begin{tabular}{|cc|}
     \hline
     \multicolumn{1}{|c|}{\textbf{3 lepton + $e_T^{miss}$}} & \textbf{2 lepton + $e_T^{miss}$} \\ \hline
@@ -25,6 +24,8 @@ The 2 and 3 lepton + $e_T^{miss}$ background MonteCarlo contains the following c
     \multicolumn{1}{|c|}{Diboson3L}                        &                                  \\ \hline
     \multicolumn{1}{|c|}{Diboson4L}                        &                                  \\ \hline
 \end{tabular}
+\caption[SM MC channels]{SM MC channels for both the 2 and 3 lepton + $e_T^{miss}$ final state background. }
+\label{tab:bkg_channels}
 \end{table}
 
 
@@ -33,8 +34,7 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
 
 \begin{figure}[H]
     \centering
-    \caption[$t\bar{t}$ production diagram]{Proton-proton collision showing the $t\bar{t}$ channel. Here the w bosons decay leptonically and one or more jets
-    can be misreconstructed as fake leptons by the detector. }
+    
 
 \begin{tikzpicture}
     \begin{feynman}
@@ -87,13 +87,14 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
     };
     \end{feynman}
     \end{tikzpicture}
+    \caption[$t\bar{t}$ production diagram]{Proton-proton collision showing the $t\bar{t}$ channel. Here the w bosons decay leptonically and one or more jets
+    can be misreconstructed as fake leptons by the detector. }
     \label{fig:ttbar_feynman}
     \end{figure}
 
     \begin{figure}[H]
         \centering
-        \caption[Higgs production diagram]{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. }
-    
+        
     \begin{tikzpicture}
         \begin{feynman}
         
@@ -137,13 +138,14 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
         };
         \end{feynman}
         \end{tikzpicture}
+        \caption[Higgs production diagram]{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. }
+    
         \label{fig:higgs_feynman}
         \end{figure}
         
         \begin{figure}[H]
             \centering
-            \caption[Zeejets channel diagram]{Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the gluon
-            decays hadronically. }
+            
         
         \begin{tikzpicture}
             \begin{feynman}
@@ -192,6 +194,9 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
                
             \end{feynman}
             \end{tikzpicture}
+            \caption[Zeejets channel diagram]{Proton-proton collision showing the Zeejets channel. Here one of the Z bosons decay leptonically and the gluon
+            decays hadronically. }
             \label{fig:zeejets_feynman}
             \end{figure}
 
+\newpage

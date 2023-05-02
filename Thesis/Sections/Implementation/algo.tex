@@ -11,7 +11,7 @@ but at a cost of flexibility and lack of potential non-linear structure in the a
 
 \subsection*{Construction of a neural network in Tensorflow}
 
-Using the functional structure, a general neural network in the Tensorflow API can be constructed as shown below. 
+Using the functional structure, a general neural network in the Tensorflow API can be constructed as shown in the python code below. 
 
 \begin{figure}[H]
     \centering
@@ -47,8 +47,10 @@ hp_learning_rate = 0.0015
 optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
 nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
 \end{lstlisting}
+\caption[Functional structure]{Functional structure for Tensorflow neural network.}
+\label{code:functional}
 \end{figure}
-The neural network here contains one input layer, two hidden layers, and an output layer. The choice of nodes and activation functions are 
+The neural network in the code above contains one input layer, one hidden layer and an output layer. The choice of nodes and activation functions are 
 arbitrary here as the use case has not been defined. Note that this is exactly the same as the previous example, but using the sequential structure.
 
 \begin{figure}[H]
@@ -68,6 +70,8 @@ hp_learning_rate = 0.0015
 optimizer = tf.keras.optimizers.Adam(hp_learning_rate)
 nn_model.compile(loss="mse", optimizer=optimizer, metrics=["mse"]) 
 \end{lstlisting}
+\caption[Sequential structure]{Sequential structure for Tensorflow neural network.}
+\label{code:sequatial}
 \end{figure}
 
 \subsection*{Data handling python side}
@@ -85,22 +89,19 @@ An example of the RMM matrices used in this thesis is shown in figure \ref{fig:r
     \centering
     \begin{subfigure}{.8\textwidth}
         \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_6993776_diboson4L.pdf}
-        \caption{RMM matrix for event number 6993776 from the MonteCarlo diboson4L sample. Each feature is scaled based on a fit for that feature for 
-        all events in the training set ($\approx 80\%$ of total MC). This sample contains two ljets, one electron and two muons.}
+        \caption{RMM matrix for event number 6993776 from the MonteCarlo diboson4L event. Each feature is scaled based on a fit for that feature for 
+        all events in the training set ($\approx 80\%$ of total MC). This event contains two ljets, one electron and two muons.}
         \label{fig:rmm_zee_event}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.8\textwidth}
         \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_11739638_higgs.pdf}
-        \caption{ RMM matrix for event number 11739638 from the MonteCarlo Higgs sample. Each feature is scaled based on a fit for that feature for 
-        all events in the training set ($\approx 80\%$ of total MC). This sample contains five ljets, one bjet, one electron and two muons. }
+        \caption{ RMM matrix for event number 11739638 from the MonteCarlo Higgs event. Each feature is scaled based on a fit for that feature for 
+        all events in the training set ($\approx 80\%$ of total MC). This event contains five ljets, one bjet, one electron and two muons. }
         \label{fig:rmm_higgs_event}
     \end{subfigure}
     \hfill        
-    \caption[Single event RMM plot]{Note here that the y-axis for the RMM's lack every other label, due to lack of space in the y-axis of the plot. If looked more closely upon, one can see that 
-    each figure have all RMM cells, just that the labels, which are identical to the x-axis label, only show every other. Note also here that the labels only tell which particle are used for that row/column, i.e. 
-    in figure \ref{fig:rmm_higgs_event} in row 0 column 3 we have the invariant mass of the first and second ljet. The RMM plots were created using 
-    Plotly\cite{plotly}. }
+    \caption[Single event RMM plot]{Figure containing two RMM matrices for one diboson4L event and one Higgs event.}
     \label{fig:rmm_singular_events}
 \end{figure}
 
@@ -108,7 +109,10 @@ In figure \ref{fig:rmm_singular_events} we see two RMM matrices created from two
 This RMM is of type T4N5\footnote{T4 $\to$ 4 particle types: bjets, ljets, electrons and muons. N5 $\to$ 5 particles per 
 particle type. Note here that we have 5 particles only for the leptons, and 6 particles for each of the types of jets.}. 
  For easier interpretability, the gray area corresponds to a missing value, leading to so-called "islands" in the RMM matrix.
-
+ Note here that the y-axis for the RMM's lack every other label, due to lack of space in the y-axis of the plot. If looked more closely upon, one can see that 
+ each figure have all RMM cells, just that the labels, which are identical to the x-axis label, only show every other. Note also here that the labels only tell which particle are used for that row/column, i.e. 
+ in figure \ref{fig:rmm_higgs_event} in row 0 column 3 we have the invariant mass of the first and second ljet. The RMM plots were created using 
+ Plotly\cite{plotly}.
 
 
 \subsubsection*{Setup for 3 lepton dataset}
@@ -138,7 +142,7 @@ be split into several smaller datasets, called megasets. Below is a figure visua
 
 
 In figure \ref{fig:2lep_struct} we see a generalised dividing structure. In the case of this thesis, each channel was divided into 10 equal parts, 
-and stored in their respective folder. Pandas is not built for very large datasets, not running in a parallalized way. To handle this, the library
+and stored in their respective folder. Pandas is not built for very large datasets since it is not running in a parallalized way. To handle this, the library
 Polars
 \footnote{Polars uses all available cores on the system and has excellent memory handling capability, see \href{https://pola-rs.github.io/polars-book/user-guide/}{Polars User Guide}}
 \cite{ritchie_vink_2023_7744139} was used instead. When all channels were split, a merging was done combining all the channels in a given 
@@ -181,5 +185,7 @@ for megaset in range(totmegasets):
     AE_model.save_weights('./checkpoints/Megabatch_checkpoint')
 
 \end{lstlisting}
+\caption[Tensorflow neural network training]{Example code for training a neural network on megasets with Tensorflow.}
+\label{code:training}
 \end{figure}
 
