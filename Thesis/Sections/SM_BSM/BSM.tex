@@ -1,112 +1,30 @@
 \section{Beyond Standard Model physics}
-
-\subsection*{Heavy neutrinos}
-Parity symmetry is suggested to be restored at high energies by the introduction of 
-a right-handed weak symmetry, leading to right-handed weak charged bosons, $W_R^{'\pm}$. 
-These mediators, as with the rest, decay faster than the detection ability at the LHC\footnote{Large Hadron Collider at CERN}, thus 
-evidence of such a boson would come from the detection of the decay of a heavy neutrino. Heavy neutrinos can 
-be produced in proton-proton collisions through either the right-handed $W_R^{'\pm}$ bosons or
-the SM $W^{\pm}$ bosons, under certain conditions.
-
-
-\begin{figure}[H]
-    \centering
-    \begin{tikzpicture}
-    \begin{feynman}
-    
-        \vertex at (0.5, 1.) (a2){\(q\)} ;
-        \vertex at (0.5, -1.)  (a5){\(\bar{q}'\)} ;
-
-        \vertex at (1.5, 0.0) (c);
-        \vertex at (3., 0.0) (d);
-
-        \vertex at (5.5, 1.) (f1) {\(l^{\pm}\)} ;
-        \vertex at (3.8,-0.88) (f2) {\(N\)};
-
-        \vertex at (5.5, -0.2) (f3) {\(l\)} ;
-
-        \vertex at (5, -1.7) (e)  ;
-
-        \vertex at (6, -1.0) (f4) {\(l\)} ;
-        \vertex at (6, -2.2) (f5) {\(\nu\)} ;
-
-        
-    \diagram*{
-
-
-        (a2) -- [fermion] (c) -- [boson] (d),
-    
-        (a5) -- [anti fermion] (c) -- [boson, edge label = {$W^{(*)\pm}$}] (d),
-        (d) -- [fermion] (f1),
-        (d) -- [fermion] (f2),
-        (f2) -- [fermion] (f3),
-        (f2) -- [boson, edge label = {$W^{(*)}$}] (e),
-        (e) -- [fermion] (f4),
-        (e) -- [fermion] (f5),
-        ;
-    };
-    \end{feynman}
-    \end{tikzpicture}
-    \caption[Heavy neutrino signal diagram, SM W]{Proton-proton collision with heavy neutrino production via SM $W^{\pm}$ boson into 3 lepton final state. Read the graph from left to right.}
-    \label{fig:Target_model_1}
-    
-\end{figure}
-
-
-
-\begin{figure}[H]
-    \centering
-    
-\begin{tikzpicture}
-    \begin{feynman}
-    
-        \vertex at (0.5, 1.) (a2){\(q\)} ;
-        \vertex at (0.5, -1.)  (a5){\(\bar{q}'\)} ;
-
-        \vertex at (1.5, 0.0) (c);
-        \vertex at (3., 0.0) (d);
-
-        \vertex at (5.5, 1.) (f1) {\(l^{\pm}\)} ;
-        \vertex at (3.8,-0.88) (f2) {\(N\)};
-
-        \vertex at (5.5, -0.2) (f3) {\(l\)} ;
-
-        \vertex at (5, -1.7) (e)  ;
-
-        \vertex at (6, -1.0) (f4) {\(l\)} ;
-        \vertex at (6, -2.2) (f5) {\(\nu\)} ;
-
-        
-    \diagram*{
-
-
-        (a2) -- [fermion] (c) -- [boson] (d),
-    
-        (a5) -- [anti fermion] (c) -- [boson, edge label = {$W_R^{'\pm}$}] (d),
-        (d) -- [fermion] (f1),
-        (d) -- [fermion] (f2),
-        (f2) -- [fermion] (f3),
-        (f2) -- [boson, edge label = {$W_R^{'(*)}$}] (e),
-        (e) -- [fermion] (f4),
-        (e) -- [fermion] (f5),
-        ;
-    };
-    \end{feynman}
-    \end{tikzpicture}
-    \caption[Heavy neutrino signal diagram, right-handed W]{Proton-proton collision with heavy neutrino production via right-handed $W_R^{\pm}$ boson into 3 lepton final state. Read the graph from left to right.}
-    \label{fig:Target_model_2}
-    \end{figure}
-
-Note that the right most $W$ and $W_R$ bosons have an asterix as a superfix. This is because 
-the bosons can be virtual. This means that if the mass of the heavy neutrino is less than the W boson,
-it will produce a \hl{virtual} one such that the decay still happens. 
-
+The autoencoder is model independent to try to detect New Physics as unbiased as possible. This is because there are 
+numerous amounts of possible New Physics signals that could exist in nature. To test the autoencoder two 
+signals from supersymmetry were used.
 \subsection*{Supersymmetry}
-Supersymmetry is another Beyond Standard Model theory that attempts to solve two other problems that the standard model has. 
-First we have the hierarchy problem. As the standard model is a perturbative theory, the Higgs mass increases at 
+Supersymmetry is another Beyond Standard Model theory that attempts to solve two other problems that the SM has. 
+First we have the hierarchy problem. As the SM is a perturbative theory, the Higgs mass increases at 
 higher energies. The problem is that when you approach higher and higher energies, the Higgs mass goes to infinity, 
 which is not physical. Supersymmetry solves this problem by introducing a supersymmetric partner to each particle
-in the standard model. The result is that the contributions to the Higgs mass from fermions and bosons mainly cancel each other out, 
-thus fixing the hierarchy problem. Another problem we have with the standard model
-is that is does not have a field for dark matter. Some supersymmetry models have a dark matter candidate, 
-thus the Supersymmetry search is quite large at CERN. 
+in the SM. The result is that the contributions to the Higgs mass from fermions and bosons mainly cancel each other out, 
+thus fixing the hierarchy problem. Another problem we have with the SM
+is that is does not have a field for dark matter, whereas some supersymmetry models have a dark matter candidate.
+As supersymmetry in theory could solve some problems with the SM it is a topic of great interest with both theoretical and 
+experimental physicists. Still, after three LHC runs supersymmetry has not been observed\cite{atlas_search_2021}. \par 
+
+To test the autoencoders, two signal models from SUSY were picked. The chosen signal samples have a final state with 3 leptons + $e_T^{miss}$,
+as the background does. The signal final state is shown below in figure \ref{fig:sysy_feyn}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Figures/susy/C1N2-WZN1N1.png}
+    \caption[SUSY feynman diagram]{SUSY diagram showing chargino-neutralino prodiction in proton-proton collision. }
+    \label{fig:sysy_feyn}
+\end{figure}
+
+Figure \ref{fig:sysy_feyn} shows chargino$(\tilde{\chi}_1^{\pm})$-neutralino$(\tilde{\chi}_1^{0})$ production via proton-proton collisions. 
+This is a minimal supersymmetric standard model (MSSM). The chargino is the supersymmetric partner 
+to the charged bosons and the neutralino is the supersymmetric partner of the neutral bosons. The neutralino
+is the lightest and stable supersymmetric particle, and is therefor a good candidate for dark matter. 
+The search for these particles were similarly done by ATLAS in 2021\cite{atlas_search_2021}. 

@@ -51,21 +51,6 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
 \newblock 10.48550/ARXIV.1312.6114.
 
-\bibitem{hyperband:opt}
-L.~Li, K.~Jamieson, G.~DeSalvo, A.~Rostamizadeh and A.~Talwalkar,
-  \emph{Hyperband: A novel bandit-based approach to hyperparameter
-  optimization}, .
-
-\bibitem{successivehalving}
-K.~Jamieson and A.~Talwalkar, \emph{Non-stochastic best arm identification and
-  hyperparameter optimization},  2015.
-\newblock 10.48550/ARXIV.1502.07943.
-
-\bibitem{FAWCETT2006861}
-T.~Fawcett, \emph{An introduction to roc analysis},
-  \href{http://dx.doi.org/https://doi.org/10.1016/j.patrec.2005.10.010}{\emph{Pattern
-  Recognition Letters} {\bf 27} (2006) 861--874}.
-
 \bibitem{magnar}
 M.~Bugge, \emph{Discovery and exclusion in high energy physics},  2022.
 
@@ -82,11 +67,6 @@ M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to Quantum Field
 M.~Thomson, \emph{{Modern particle physics}}.
 \newblock Cambridge University Press, New York, 2013.
 
-\bibitem{weinberg_1995}
-S.~Weinberg, \emph{The Quantum Theory of Fields}, vol.~1.
-\newblock Cambridge University Press, 1995,
-  \href{http://dx.doi.org/10.1017/CBO9781139644167}{10.1017/CBO9781139644167}.
-
 \bibitem{feynrules}
 K.~Kumericki, \emph{Feynman diagrams for beginners},  2016.
 \newblock 10.48550/ARXIV.1602.04182.
@@ -96,6 +76,12 @@ M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
   \emph{Direct neutrino-mass measurement with sub-electronvolt sensitivity},
   \href{http://dx.doi.org/10.1038/s41567-021-01463-1}{\emph{Nature Physics}
   {\bf 18} (Feb, 2022) 160–166}.
+
+\bibitem{atlas_search_2021}
+\emph{Search for chargino--neutralino pair production in final states with
+  three leptons and missing transverse momentum in {$\sqrt{s}$} = 13 {TeV} pp
+  collisions with the {ATLAS} detector},
+  \href{http://arxiv.org/abs/2106.01676}{{\tt 2106.01676}}.
 
 \bibitem{Gramstad:1631043}
 E.~Gramstad, \emph{{Searches for Supersymmetry in Di-Lepton Final States with
@@ -124,6 +110,11 @@ T.~P.~S. Gillam, \emph{{Identifying fake leptons in ATLAS while hunting SUSY in
   8 TeV proton-proton collisions}}.
 \newblock PhD thesis, Cambridge U., 2015.
 \newblock 10.17863/CAM.16619.
+
+\bibitem{Hwang_Wu_2018}
+W.~Hwang and T.~Wu, \emph{Relativistic Quantum Mechanics and Quantum Fields:
+  Second Edition for the 21st Century}.
+\newblock World Scientific, 2018.
 
 \bibitem{reback2020pandas}
 {The pandas development team}, \emph{pandas-dev/pandas: Pandas},  Feb., 2020.

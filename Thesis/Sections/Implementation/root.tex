@@ -1,8 +1,12 @@
 \section{ROOT}
-\marginpar{Introduksjon til hva ROOT er}
+ROOT is an open-source data analysis framework used by high energy physics. It can do fast data manipulation, save and access data, 
+create graphics for publication, and even combine with high level languanges such as R and Python.
 \subsection*{N tuples}
 
-The main data structure of ROOT is the so called N tuple structure. This data structure contains all properties for each type of particle in a given event, yielding
+The data storage object in ROOT is called a TTree
+
+
+N tuple structure. This data structure contains all properties for each type of particle in a given event, yielding
 a ragged structure. 
 
 \begin{table}[H]
@@ -16,14 +20,15 @@ a ragged structure.
 \end{table}
 
 \subsection*{RDataFrame}
-\marginpar{What is it?}
-RDataFrame's main purpose is to make reading and handling of root files easier, especially in relation to modern machine learning tools and their 
-respective frameworks and environments. This is done by creating a dataframe type of structure of the root n-tuples, and then 
+RDataFrame's main purpose is to make reading and handling of ROOT files easier, especially in relation to modern machine learning tools and their 
+respective frameworks and environments. This is done by creating a dataframe type of structure of the ROOT n-tuples, and then 
 lazily\footnote{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
-apply contraints to the data. Using \hl{PyROOT}, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is a code example of how
+apply contraints to the data. Using PyROOT\footnote{\href{https://root.cern/manual/python/}{PyROOT website}}, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is a code example of how
 to create a RDataFrame object, apply a cut and then create a column for later use. Here, good leptons are defined first, denoted as "ele\_SG" and "muo\_SG". 
 A cut is then applied where we require that the number of good leptons is always 3. Finally, a column is created where the combination of type of leptons 
-in the 3 lepton system is stored, as well as creating a histogram containing the results for that given channel\footnote{A channel here refers to a certain decay channel. The standard model has several channels, and some look more alike than others. One example is the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. } 
+in the 3 lepton system is stored, as well as creating a histogram containing the results for that given channel
+\footnote{A channel here refers to a certain decay channel. The standard model has several channels, and some look more alike than others. One example is 
+the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. The pertains to simulated events only, as we cannot control what decay channels we get in the data recorded at ATLAS} 
 k. Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be applied directly using those 
 columns to create new one. More complicated variables, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
 found or calculated using C++ functions. An example of such a C++ function is shown below the python code example. 
@@ -83,7 +88,7 @@ for k in df.keys():
 \marginpar{Lange setninger?}
 In the code example above we see how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
 number of threads to use in the paralellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
-Line 11-13 creates a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
+Line 11-13 create a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
 The loop on line 15 does event selection for each channel sample, defining new variables in the RDataFrame, applying filters and creating histograms.
 Some variables are constructed using variables already in the ROOT files such as energy and mass. Through custom C++ functions
 these properties can be added to the RDataFrames. The example below shows a custom C++ function which is used in work of this thesis.
@@ -150,6 +155,6 @@ Once event selection is done, the features have been chosen and histograms have 
 drawn, the Rdataframe can be converted to a Pandas dataframe. This is a very popular 
 choice for data structure when doing data analysis in python. This is done through an 
 intermediary step of converting the RDataframe to a numpy filestructure, which then can 
-be converted to a Pandas\cite{reback2020pandas} dataframe or some other framwork.
+be converted to a Pandas\cite{reback2020pandas} dataframe or some other framework.
 The new Pandas dataframes are stored as HDF5\cite{hdf5} files to be used later. This is 
 because the HDF5 format has a very good compression ratio, and is very fast to read and write. 
