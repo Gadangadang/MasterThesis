@@ -6,7 +6,7 @@ EPOCHS = 4
 
 TYPE = "AE" #"VAE"
 SMALL = False
-LEP = "data" #"Lep2" #"Lep3", 
+LEP = "Lep2" #"Lep3", "data"
 TRAIN = True
 
 if SMALL:

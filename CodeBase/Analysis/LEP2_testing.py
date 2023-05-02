@@ -436,7 +436,8 @@ class LEP2ScaleAndPrep:
             x_train_weights = pd.DataFrame(
                 np.load(MERGE_PATH / f"Merged{megaset}_weights_train.npy")
             )
-
+            
+            
             # * Load model
             if SMALL:
 
@@ -484,10 +485,7 @@ class LEP2ScaleAndPrep:
             )
             print(" ")
 
-            write_to_file(
-                file,
-                f"Megaset {megaset} took: {(megasettime)/60:.2f}m or {(megasettime)/60/60:.2f}h\n",
-            )
+            
 
         end = time.time()
         print(
@@ -495,10 +493,7 @@ class LEP2ScaleAndPrep:
         )
         print(" ")
 
-        write_to_file(
-            file,
-            f"\nAll megasets took: {(end-start)/60:.2f}m or {(end-start)/60/60:.2f}h\n",
-        )
+        
 
     def RunInference(self):
 
@@ -823,6 +818,7 @@ class LEP2ScaleAndPrep:
         test_etmiss = []
         test_x = []
 
+        
         # * Validation inference for all megasets
         for megaset in range(self.totmegasets):
             print(f"Running inference on megabatch: {megaset}")
@@ -831,11 +827,17 @@ class LEP2ScaleAndPrep:
             MERGE_PATH = FETCH_PATH / f"MergedMB{megaset}"
 
             #* Data 15 and data 16
+            
             x_ = np.load(MERGE_PATH / f"Merged{megaset}_data15_and_16.npy")
             x_weights = np.load(MERGE_PATH / f"Merged{megaset}_data15_and_16_weights.npy")
             x_cats = np.load(MERGE_PATH / f"Merged{megaset}_data15_and_16_categories.npy")
             x_etmiss = np.load(MERGE_PATH / f"Merged{megaset}_data15_and_16_etmiss.npy")
-
+            
+            """x_ = np.load(MERGE_PATH / f"Merged{megaset}_xval.npy")
+            x_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_val.npy")
+            x_cats = np.load(MERGE_PATH / f"Merged{megaset}_categories_val.npy")
+            x_etmiss = np.load(MERGE_PATH / f"Merged{megaset}_etmiss_val.npy")
+            """
             x.append(x_)
             etmiss.append(x_etmiss)
             recon_err_back = self._inference(x_)
@@ -857,7 +859,8 @@ class LEP2ScaleAndPrep:
             test_cats.append(test_x_cats)
             test_weights.append(test_x_weights)
             test_recon_err.append(test_recon_err_back) 
-            break
+            
+            
             
         
         #* Data 15 and data 16
@@ -871,12 +874,38 @@ class LEP2ScaleAndPrep:
         
         cats = np.concatenate(cats, axis=0)
         
+        """pattern = re.compile(r"(\D+)\d*")
+        cats = np.array(
+            [
+                re.sub(pattern, r"\1", elem)
+                if any(x in elem for x in ["Zmmjets", "Zeejets"])
+                else elem
+                for elem in cats
+            ]
+        )
+        
+        print(np.unique(cats))
+        
+        
+        
+        channel_req = np.where(cats == "Zeejets")
+        etmiss = etmiss[channel_req]
+        recon_err = recon_err[channel_req]
+        x = x[channel_req]
+        weights = weights[channel_req]
+        cats = cats[channel_req]
+        """
+        
+        print(np.shape(weights), np.shape(recon_err), np.shape(cats))
+        
         #* Data 1516 mix
         test_etmiss = np.concatenate(test_etmiss, axis=0)
         test_x = np.concatenate(test_x, axis=0)
         test_recon_err = np.concatenate(test_recon_err, axis=0)
         test_weights = np.concatenate(test_weights, axis=0)
         test_cats = np.concatenate(test_cats, axis=0)
+        print("test shapes")
+        print(np.shape(test_weights), np.shape(test_recon_err), np.shape(test_cats), np.shape(test_etmiss))
         
         
         
@@ -888,11 +917,12 @@ class LEP2ScaleAndPrep:
                 recon_err,
                 weights,
                 cats,
+                histoname="Reconstruction histogram with Data 15 and 16",
                 signal=test_recon_err,
                 signal_weights=test_weights,
                 signal_cats=test_cats,
             )
-        plothisto.histogram(data_channel, sig_name=signame)
+        plothisto.histogram_data(data_channel, sig_name=signame)
 
         #* Etmiss pre cut
         
@@ -946,7 +976,7 @@ class LEP2ScaleAndPrep:
             signal_cats_cut = test_cats[error_cut_sig]
 
             etmiss_bkg = etmiss[error_cut_val]
-            etmiss_sig = self.signal_etmiss[error_cut_sig]
+            etmiss_sig = test_etmiss[error_cut_sig]
 
             small_sig = _significance_small(
                 np.sum(sig_weights_cut), np.sum(val_weights_cut)
@@ -981,7 +1011,7 @@ class LEP2ScaleAndPrep:
                 signal_cats=signal_cats_cut,
             )
             plotetmiss_cut.histogram_data(
-                self.channels, sig_name=signame, etmiss_flag=True
+                data_channel, sig_name=signame, etmiss_flag=True
             )
 
             if not isinstance(plotetmiss_cut.n_bins, int):
@@ -1013,16 +1043,13 @@ class LEP2ScaleAndPrep:
                 plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
                 plt.savefig(
                     STORE_IMG_PATH
-                    + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}_{recon_er_cut}.pdf"
+                    + f"histo/data/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}_{recon_er_cut}.pdf"
                 )
-                plt.close()
-
-            
+                plt.close() 
         
         
-        
-        
-        
+        print(np.sum(weights), np.shape(weights))
+        print(np.sum(test_weights), np.shape(test_weights))
         
 
 

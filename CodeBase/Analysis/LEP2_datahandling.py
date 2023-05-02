@@ -339,7 +339,9 @@ class DataHandling:
                 if "etmiss_val" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
 
             xtrain_etmiss = [
@@ -348,7 +350,9 @@ class DataHandling:
                 if "etmiss_train" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
 
             xtrain_etmiss = np.concatenate((xtrain_etmiss), axis=0)
@@ -361,7 +365,9 @@ class DataHandling:
                 if "x_train" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
             xtrain_weights = [
                 np.load(FETCH_PATH / filename)
@@ -369,7 +375,9 @@ class DataHandling:
                 if "weights_train" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
             xtrain_categories = [
                 np.load(FETCH_PATH / filename)
@@ -377,7 +385,9 @@ class DataHandling:
                 if "categories_train" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
 
             xvals = [
@@ -386,7 +396,9 @@ class DataHandling:
                 if "x_val" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
             xval_weights = [
                 np.load(FETCH_PATH / filename)
@@ -394,7 +406,9 @@ class DataHandling:
                 if "weights_val" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
             xval_categories = [
                 np.load(FETCH_PATH / filename)
@@ -402,19 +416,21 @@ class DataHandling:
                 if "categories_val" in filename
                 and ("data1516" not in filename
                 and "data15" not in filename
-                and "data16" not in filename)
+                and "data16" not in filename
+                and "data17" not in filename 
+                and "data18" not in filename)
             ]
             
             xtrain = np.concatenate((xtrains), axis=0)
             x_train_cats = np.concatenate((xtrain_categories), axis=0)
             x_train_weights = np.concatenate((xtrain_weights), axis=0)
-
             
-
             xval = np.concatenate((xvals), axis=0)
             x_val_cats = np.concatenate((xval_categories), axis=0)
             x_val_weights = np.concatenate((xval_weights), axis=0)
 
+            assert np.shape(xtrain)[0] == np.shape(x_train_weights)[0]
+            assert np.shape(xval)[0] == np.shape(x_val_weights)[0]
             
             print("SM MC partitioning and concatenation done")
 
@@ -515,6 +531,8 @@ class DataHandling:
                 (data15_and_16_xtrain, data15_and_16_xval), axis=0
             )
             
+            assert np.shape(data15_and_16)[0] == np.shape(data15_and_16_x_weights)[0]
+            
             print("Data 15 and data 16 partitioning and concatenation done")
 
             # * Data 1516 mix
@@ -601,6 +619,8 @@ class DataHandling:
             data1516 = np.concatenate((data1516_xtrain, data1516_xval), axis=0)
             
             
+            assert np.shape(data1516)[0] == np.shape(data1516_x_weights)[0]
+            
             print("Data 1516 mix partitioning and concatenation done")
             
             # * SM MC byte size
@@ -677,5 +697,5 @@ if __name__ == "__main__":
 
     L2 = DataHandling(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
     #L2.convertParquet()
-    #L2.createMCSubsamples()
+    L2.createMCSubsamples()
     L2.mergeMegaBatches()

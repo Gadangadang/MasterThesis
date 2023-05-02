@@ -201,26 +201,16 @@ class PlotHistogram:
         
     def histogram_data(self, channels, sig_name="nosig", bins=40, etmiss_flag=False)->None:
         
-        histo_atlas = []
-        weight_atlas_data = []
-        colors = []
+        histo_atlas = self.err_val
+        weight_atlas_data = self.err_val_weights
         
-        if LEP == "Lep2":
-            color_schemes = colors_scheme_2lep
-        elif LEP == "data":
-            color_schemes = color_schemes_data
-        else:
-            color_schemes = colors_scheme
         
-        for channel in channels:
-            condition = np.where(self.val_cats == channel)[0]
-            err = self.err_val[condition]
-            histo_atlas.append(err)
-
-            err_w = self.err_val_weights[condition]
-           
-            weight_atlas_data.append(err_w)
-            colors.append(color_schemes[channel])
+        
+        color_schemes = color_schemes_data
+       
+        
+        colors = color_schemes[channels[0]]
+       
         try:
             try:
                 sig_err = self.signal
@@ -235,13 +225,13 @@ class PlotHistogram:
         
    
 
-        sum_w = [np.sum(weight) for weight in weight_atlas_data]
-        sort_w = np.argsort(sum_w, kind="mergesort")
+        """sum_w = [np.sum(weight) for weight in weight_atlas_data]
+        sort_w = np.argsort(sum_w, kind="mergesort")"""
 
         sns.set_style("darkgrid")
         plt.rcParams["figure.figsize"] = (12, 9)
 
-        fig, ax = plt.subplots()
+        fig, (ax, ax2) = plt.subplots(2,1, gridspec_kw={'height_ratios': [3, 1]})
 
         try:
             N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
@@ -255,21 +245,21 @@ class PlotHistogram:
         
        
             
-        data_histo = np.asarray(histo_atlas, dtype=object)[sort_w]
-        we = np.asarray(weight_atlas_data, dtype=object)[sort_w]
-        colors = np.asarray(colors, dtype=object)[sort_w]
-        labels = np.asarray(channels, dtype=object)[sort_w]
+        data_histo = np.asarray(histo_atlas, dtype=object)#[sort_w]
+        we = np.asarray(weight_atlas_data, dtype=object)#[sort_w]
+        #colors = np.asarray(colors, dtype=object)#[sort_w]
+        #labels = np.asarray(channels, dtype=object)#[sort_w]
+        
+        print(colors)
         
         
-        ax.hist(
+        ns, bins, patche = ax.hist(
             data_histo,
             self.n_bins,
-            density=False,
-            stacked=False,
             alpha=0.5,
             histtype="bar",
             color=colors,
-            label=labels,
+            label=channels[0],
             weights=we,
         )
 
@@ -291,7 +281,14 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
+        
+        ax2.scatter(x, N/ns, marker="+", color="black")
+        
+        ax2.set_ylabel('Ratio (Blind/Data)', fontsize=15)
+        #ax2.set_xlabel('Log10 Reconstruction error', fontsize=25)
+        ax2.set_ylim([0.8, 1.2])
+        ax2.tick_params(axis="both", labelsize=25)
+        plt.savefig(self.path + f"histo/data/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
         plt.close()
         
         
