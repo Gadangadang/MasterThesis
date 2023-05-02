@@ -3,12 +3,9 @@
 
 The machine learning analysis was written with Keras\cite{chollet2015keras} using the Tensorflow api\cite{tensorflow-whitepaper}. 
 The machine learning structure was written using a functional structure\footnote{Functional structure uses a function call for layers, i.e. for layers a, b, then b(a) will connect the two layers, and equals a sequential link a $\to$ b. This allows for more flexible structures. More on the functional api can be found \href{https://www.tensorflow.org/guide/keras/functional}{here}.}.
-In practise, this model could just as well have been written as a Sequential model\footnote{Sequential structure adds layers in sequence, i.e. for layers a, b, c we have that a $\to$ b $\to$ c, with a strict structure. This allows for more organized code. More on sequential models can be found \href{https://www.tensorflow.org/guide/keras/sequential_model}{here}.}, 
-but at a cost of flexibility and lack of potential non-linear structure in the architecture. The code consists of one general class for
- the autoencoder, where the different testing cases are different classes inheriting from the parent class.\par
-
-
-
+In practice, this model could just as well have been written as a Sequential model\footnote{Sequential structure adds layers in sequence, i.e. for layers a, b, c we have that a $\to$ b $\to$ c, with a strict structure. This allows for more organized code. More on sequential models can be found \href{https://www.tensorflow.org/guide/keras/sequential_model}{here}.}, 
+but at a cost of flexibility and lack of the possibility for creating non-linear structure in the architecture. The code consists of one general class for
+ the autoencoder, where the different testing cases are different classes inheriting from the parent class.
 \subsection*{Construction of a neural network in Tensorflow}
 
 Using the functional structure, a general neural network in the Tensorflow API can be constructed as shown in the python code below. 
@@ -89,14 +86,14 @@ An example of the RMM matrices used in this thesis is shown in figure \ref{fig:r
     \centering
     \begin{subfigure}{.8\textwidth}
         \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_6993776_diboson4L.pdf}
-        \caption{RMM matrix for event number 6993776 from the MonteCarlo diboson4L event. Each feature is scaled based on a fit for that feature for 
+        \caption{RMM matrix for event number 6993776 from the Monte Carlo diboson4L event. Each feature is scaled based on a fit for that feature for 
         all events in the training set ($\approx 80\%$ of total MC). This event contains two ljets, one electron and two muons.}
         \label{fig:rmm_zee_event}
     \end{subfigure}
     \hfill
     \begin{subfigure}{.8\textwidth}
         \includegraphics[width=\textwidth]{Figures/rmms/rmm_event_11739638_higgs.pdf}
-        \caption{ RMM matrix for event number 11739638 from the MonteCarlo Higgs event. Each feature is scaled based on a fit for that feature for 
+        \caption{ RMM matrix for event number 11739638 from the Monte Carlo Higgs event. Each feature is scaled based on a fit for that feature for 
         all events in the training set ($\approx 80\%$ of total MC). This event contains five ljets, one bjet, one electron and two muons. }
         \label{fig:rmm_higgs_event}
     \end{subfigure}
@@ -105,7 +102,7 @@ An example of the RMM matrices used in this thesis is shown in figure \ref{fig:r
     \label{fig:rmm_singular_events}
 \end{figure}
 
-In figure \ref{fig:rmm_singular_events} we see two RMM matrices created from two different channels in the MonteCarlo samples. 
+In figure \ref{fig:rmm_singular_events} we see two RMM matrices created from two different channels in the MC samples. 
 This RMM is of type T4N5\footnote{T4 $\to$ 4 particle types: bjets, ljets, electrons and muons. N5 $\to$ 5 particles per 
 particle type. Note here that we have 5 particles only for the leptons, and 6 particles for each of the types of jets.}. 
  For easier interpretability, the gray area corresponds to a missing value, leading to so-called "islands" in the RMM matrix.
@@ -116,41 +113,45 @@ particle type. Note here that we have 5 particles only for the leptons, and 6 pa
 
 
 \subsubsection*{Setup for 3 lepton dataset}
-The 3 lepton dataset is about 96 Giga bytes of data when implementing the RMM structure for 6 b- and ljets, 5 electrons and 5 muons. The dataset 
+The 3 lepton dataset is about 96 GB of data or cirka 381873 events when implementing the RMM structure for 6 b- and ljets, 5 electrons and 5 muons. The dataset 
 is converted from a ROOT RDataframe to a Pandas dataframe\cite{reback2020pandas} for further preprocessing. Having added the channel column in 
 the dataset\footnote{This column would in a fully supervised setting be used as a target vector, but in this thesis it will only be used for legends in
 histograms and to index out certain channels in the validation and training set. }, the channel categories, weights, missing transverse energy and 
 trilepton mass\footnote{Invariant mass of three leptons. This is assured to exist from event selection in the 3 lepton dataset.} as well as the RMM structure are divided into 
-a training and validation/test set in an 80-20 split. This was done using the "$.fit\_transform()$" and "$.transform()$" functions from the 
-Scikit-learn library\cite{scikit-learn}. The training and validation/test set are then converted to numpy arrays\cite{harris2020array} for faster 
+a training and validation/test set in an 80-20 split. The split was done using the $train\_test\_split()$ function from the Scikit-learn library\cite{scikit-learn}.
+Then the data and SM MC was scaled using the MinMax scaler via the "$.fit\_transform()$" and "$.transform()$" functions from the 
+Scikit-learn library. The training and validation/test set are then converted to numpy arrays\cite{harris2020array} for faster 
 loading and easier indexing, and saved as ".npy" files. This allows for faster reuse of the arrays. 
 
 \subsubsection*{Setup via iterative training for 2 lepton dataset}
-The two lepton dataset contains about 1.5 - 2 Terra bytes of data when implementing the RMM structure for 6 
+The two lepton dataset contains about 1.5 - 2 TB of data when implementing the RMM structure for 6 
 b- and ljets, 5 electrons and 5 muons, as for the 3 lepton dataset. This is too much to hold in memory at the same time, thus it had to 
 be split into several smaller datasets, called megasets. Below is a figure visualizing the structure used. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{Figures/2lep_config/megaset_struct.jpeg}
-    \caption[Megaset structure diagram]{Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets. The more you increase the number of megasets, 
-    the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets.  }
+    \caption[Megaset structure diagram]{Megaset structure for the 2lep dataset. This figure generalises to M channels, and N megasets, 
+    where M and N does not have to be equal. The more you increase the number of megasets, 
+    the smaller each megaset will be in bytesize, but in order to keep the SM MC distribution, it is not recommended to make too small sets. 
+    In this thesis 10 megasets were created where the simulated data contained 7 channels. }
     \label{fig:2lep_struct}
 \end{figure}
 
 
 
 
-In figure \ref{fig:2lep_struct} we see a generalised dividing structure. In the case of this thesis, each channel was divided into 10 equal parts, 
-and stored in their respective folder. Pandas is not built for very large datasets since it is not running in a parallalized way. To handle this, the library
-Polars
-\footnote{Polars uses all available cores on the system and has excellent memory handling capability, see \href{https://pola-rs.github.io/polars-book/user-guide/}{Polars User Guide}}
+In figure \ref{fig:2lep_struct} we see a generalised dividing structure. Pandas is not 
+built for very large datasets since it is not running in a parallalized way. To handle this, the library
+Polars\footnote{Polars uses all available cores on the system and has excellent memory 
+handling capability, see \href{https://pola-rs.github.io/polars-book/user-guide/}{Polars User Guide}}
 \cite{ritchie_vink_2023_7744139} was used instead. When all channels were split, a merging was done combining all the channels in a given 
 megaset to a separate dataset. The selection of events from each channel was done randomly, 
 which is important, as we want to the best of our ability keep the distribution signature of the entire dataset in each megaset. If not, the model will 
 be biased towards those datasets with the most events. Once each of the megasets where merged, the training could begin in an iterative fashion. Because
-Tensorflow is statically compiled, you cannot call the fit function over and over again. Instead, the weights trained based on one megaset is stored and 
+Tensorflow is statically compiled, one cannot call the fit function over and over again. Instead, the weights trained based on one megaset is stored and 
 reloaded into a new model, thus the weights are still trained on the entire set, but in a batch like manner. 
+The implementation used in this thesis is shown in code example \ref{code:training} below.
 
 
 

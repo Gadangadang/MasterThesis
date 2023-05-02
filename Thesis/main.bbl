@@ -190,6 +190,14 @@ R.~Vink, S.~de~Gooijer, A.~Beedie, J.~van Zundert, G.~Hulselmans, C.~Grinstead
   et~al., \emph{pola-rs/polars: Python polars 0.16.14},  Mar., 2023.
 \newblock 10.5281/zenodo.7744139.
 
+\bibitem{fys5555}
+S.~Frette, \emph{{Deployment of unsupervised learning in a search for new
+  physics with ATLAS Open Data}}, .
+
+\bibitem{omalley2019kerastuner}
+T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
+  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
+
 \bibitem{kl_mse_balance}
 A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
   kullback-leibler divergence in variational autoencoders},  2020.

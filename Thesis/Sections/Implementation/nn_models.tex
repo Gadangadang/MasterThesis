@@ -22,12 +22,13 @@ LeakyReLU with $\alpha=0.3$ respectively.
     \label{fig:ae_big}
 \end{figure}
 
-Figure \ref{fig:ae_big} shows the large autoencoder. It consists of an input and output layer of 529 nodes, with three 
+Figure \ref{fig:ae_big} shows the large regular autoencoder. It consists of an input and output layer of 529 nodes, with three 
 hidden layers of 450, 300 and 200 nodes respectively in the encoder and three hidden layers of 200, 300 and 450 respectively. 
 The activation functions for the input and ouput layers are the Tanh and LeakyReLU with $\alpha=0.3$ respectively. The hidden 
 layers in the encoder have the activation functions Tanh, LeakyReLU with $\alpha=0.3$ and ReLU respectively. The hidden layers
 in the decoder have the activation functions ReLU, LeakyReLU with $\alpha=0.3$ and Tanh respectively. The latent space has 150 nodes,
-with the LeakyReLU activation function with $\alpha=0.3$.
+with the LeakyReLU activation function with $\alpha=0.3$. The activation functions as well as the number of nodes per layer were chosen based on earlier work done 
+on the ATLAS open data\cite{fys5555}, as well as some light hyperparameter testing using Keras-Tuner\cite{omalley2019kerastuner}.
 \subsection*{The variational Autoencoder}
 Below are the two models used for the variational autoencoder. 
 
@@ -54,4 +55,6 @@ In figure \ref{fig:vae_big} we have the large variational autoencoder. It consis
 hidden layers of 400, 300 and 200 nodes respectively in the encoder and three hidden layers of 200, 300 and 400 respectively. 
 The activation functions for the input and ouput layers are the ReLU and Sigmoid respectively. The hidden 
 layers in the encoder have the activation functions Tanh, ReLU, LeakyReLU with $\alpha=0.3$ respectively. The hidden layers
-in the decoder have the activation functions LeakyReLU with $\alpha=0.3$, ReLU and Tanh respectively.
+in the decoder have the activation functions LeakyReLU with $\alpha=0.3$, ReLU and Tanh respectively. The activation functions 
+as well as the number of nodes per layer were chosen based on earlier work done 
+on the ATLAS open data\cite{fys5555}, as well as some light hyperparameter testing using Keras-Tuner\cite{omalley2019kerastuner}.
