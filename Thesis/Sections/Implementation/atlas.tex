@@ -1,6 +1,7 @@
 \section{The ATLAS detector}
 The ATLAS detector comprises several main components for recording proton-proton collisions. Amongst them are the muon detectors, 
-the electromagnetic calorimeters, the hadronic calorimeters and the inner detector. 
+the electromagnetic calorimeters, the hadronic calorimeters and the inner detector. The kinematics and geometry describing the collisions are 
+written below.
 \subsection*{Kinematics and detector geometry}
 Before the data can be analysed, it has to be collected and processed in a detector. The data used in the work of this thesis 
 are generated from proton-proton collisions in the ATLAS detector at the Large Hadron Collider (LHC). The ATLAS inner detector itself is contained in a solenoid field, 
@@ -102,44 +103,48 @@ to compare overlap between Standard Model Monte Carlo events (SM MC) and ATLAS d
     \label{fig:atlas_particle_detect}
 \end{figure}
 
-The features in the dataset used in this analysis are computed with or fetched from the measured properties of the events from the 
+The features in the dataset used in this analysis are computed with or fetched from the quantities measured from the 
 detector itself. Such measured properties include the momentum, energy, angles etc., 
 all of which are either directly measured or computed based on the measurements in the 
 detector. In figure \ref{fig:atlas_particle_detect} a visualization shows how
 different particles move through the detector and how they are detected. For example, 
 energy deposits are measured using calorimeters, and the different particles 
 have calorimeters specially designed for them. Charged particles leave tracks in the 
-inner tracking device. Thus, electrons leaves tracks in the inner tracker and deposits energy 
-in the electromagnetic calorimeter, the muons leaves tracks in the inner detector and 
-deposits energy in the muon detector. The photons only deposits energy in the electromagnetic 
-calorimeter. Hadrons like protons and neutrons deposits energy in the electromagnetic and 
+inner tracking device. Thus, electrons leaves tracks in the inner tracker and deposit energy 
+in the electromagnetic calorimeter, muons leave tracks in the inner detector and 
+deposits energy in the muon detector. Photons only deposit energy in the electromagnetic 
+calorimeter. Hadrons such as protons and neutrons deposit energy in the electromagnetic and 
 hadronic calorimeters, and charged hadrons also leaves tracks in the inner tracker. This is 
 shown in figure \ref{fig:atlas_particle_detect}.\par
 
-The ATLAS detector have a few thousand selection stages before the data is stored. 
-In order to reach the highest intensity of collisions, the LHC accellerates
+The ATLAS detector has a few selection stages before the data is stored. 
+In order to reach the highest intensity of collisions, the LHC accelerates
 packets of around $10^{11}$ protons, and collides each batch every 25 nanoseconds, 
 yeilding a collision rate of 40 MHz\cite{Wang:2707056}. %\cite{Bernius:2707054}.
 
 
 
 \subsubsection*{Data preparation}
-\hl{During datagathering at the ATLAS detector, triggers on the hardware and software level select out the events that are of most interest. On the order of $99 \%$ or
- more of the recorded events are discarded, with about 1 in 40000 events being accepted, as the amount of recorded events simply as too high to realistically analyse. }
- Also, a lot of the events are of no 
- interest for new physics analysis anyway as they for example might have too little energy. Once the trigger selection is done, the data is reconstructed. This means that the objects
- in the recorded events are using software algorithms reconstructed into particles, jets, photons etc. The reconstruction is done based on the tracks and measurements
- in the detector, but it is not perfect, and can lead to fake leptons or jets. By fake, it is meant that an object might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
- Once the reconstruction is done, further slimming of the n-tuples are done. Derivations are slimmings of the n-tuples where the selection of events are further reduced 
+During data recording at the ATLAS detector, triggers on the hardware and software level select out the events\footnote{An event here is defined as a collision recorded and reconstructed.} that are of most interest. On the order of $99 \%$ or
+ more of the recorded events are discarded with about 1 in 40000 events being accepted. This is because the amount of recorded events simply are too 
+ high to realistically analyse, Also, most of the events are of no interest for new physics analysis anyway as they do not yield massive particles.
+ There are therefor no large deposits of energy or tracks with high transverse momentum. Instead, these collision fragments leave the interaction region 
+ with very small angles between their trajectory and the beam pipe. \par
+ Once the trigger selection is done, the data is reconstructed. This means that the objects in the recorded events are using software algorithms reconstructed 
+ into particles, jets, photons. The reconstruction is done based on the tracks and measurements in the detector, but it is not perfect, and can lead to fake 
+ leptons or jets. By fake, it is meant that an object might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
+ Once the reconstruction is done, further slimming of the data is done. Derivations are slimmings of the data where the selection of events are further reduced 
  to match the needs of the different analysis groups. \par 
-The SM MC go through parts of the same process as the recorded data from ATLAS. These events are first generated and then run through the detector to simulate actual events. Once that is done, the events
- can be reconstructed and go through derivations just like the proton-proton collision data, and then to be used in analysis. 
+The simulated data go through parts of the same process as the recorded data from ATLAS. These events are first generated by software that simulates the initial 
+interaction and then run through the detector to simulate the interaction of the particles with the detector and the resulting production of digital signals. 
+Since these signals mimic the real detector signals, the events can be reconstructed and go through derivations just like the proton-proton collision data, 
+and then to be used in analysis. 
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/atlas/data_col_phys.png}
     \caption[Steps from data collection to physics results]{Figure describing the steps to take for data collection at ATLAS, fetched from \href{https://indico.cern.ch/event/1159574/timetable/?view=standard}{Hybrid ATLAS Induction Day + Software Tutorial workshop}, part
     \href{https://indico.cern.ch/event/860971/contributions/3672974/attachments/1972049/3280896/Atlas_computing_data_preparation_jan20.pdf}{Computing and Data preparation}, 
-    held by S.M Wang \cite{Wang:2707056}. }
+    initially drawn by Dr. James Catmore, later held by S.M Wang \cite{Wang:2707056}. }
     \label{fig:atlas_data_col_phys}
 \end{figure}
 
@@ -156,7 +161,9 @@ collision is shown below in figure \ref{fig:cms_jets}.
     \label{fig:cms_jets}
 \end{figure}
 
-In a proton-proton collision, the quarks and gluons forms stable or unstable hadrons such that the \hl{color confinement}\footnote{Add link to a source or explanation for this.} is upheld. These particles then 
-decay to other stable hadrons that can be tracked, and these tracks are called jets. This is particularly difficult because one wants to isolate the hadrons came from the original quark in the 
-Feynman diagram. Another point to make is that some quarks are more interesting than others. For example, the b jet, coming from a b quark, is a good indicator for certain processes, 
-therefor identifying suchs particles is of huge interest. 
+In a proton-proton collision, the quarks and gluons forms stable or unstable hadrons such that the color confinement\cite{Hwang_Wu_2018} is upheld. 
+These particles then decay to other stable hadrons that can be tracked, and these collimated tracks are called jets. This is particularly difficult because 
+different definitions with different performance working points exist. Another point to make is that some quarks are of higher interest than others.
+For example, the b jet coming from a b quark are particularly interesting as they are seen in the decay of top quarks. 
+Top quarks are what is found in the majority of Higgs decays. The behavior of hadrons containing b-quakrs may be indirectly 
+sensitive to New Physics as well. 
