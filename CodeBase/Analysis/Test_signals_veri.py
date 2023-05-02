@@ -83,6 +83,12 @@ class SignalDumVeri(model):
         val_cat = self.data_structure.val_categories.to_numpy()
         sample_weight = self.data_structure.weights_train
         
+        print("  ")
+        print("Number of events")
+        print(np.sum(sample_weight) + np.sum(self.err_val))
+        
+        exit()
+        
         if TRAIN:
             self.trainModel(self.X_train, self.X_val, sample_weight)
             

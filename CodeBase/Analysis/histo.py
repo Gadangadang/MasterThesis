@@ -281,13 +281,15 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
-        
-        ax2.scatter(x, N/ns, marker="+", color="black")
-        
-        ax2.set_ylabel('Ratio (Blind/Data)', fontsize=15)
-        #ax2.set_xlabel('Log10 Reconstruction error', fontsize=25)
-        ax2.set_ylim([0.8, 1.2])
-        ax2.tick_params(axis="both", labelsize=25)
+        try:
+            ax2.scatter(x, N/ns, marker="+", color="black")
+            
+            ax2.set_ylabel('Ratio (Blind/Data)', fontsize=15)
+            #ax2.set_xlabel('Log10 Reconstruction error', fontsize=25)
+            ax2.set_ylim([0.8, 1.2])
+            ax2.tick_params(axis="both", labelsize=25)
+        except:
+            pass
         plt.savefig(self.path + f"histo/data/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
         plt.close()
         

@@ -541,6 +541,8 @@ class LEP2ScaleAndPrep:
         recon_err = []
         etmiss = []
         xvals = []
+        
+        train_weights = []
 
         # * Validation inference for all megasets
         for megaset in range(self.totmegasets):
@@ -551,6 +553,7 @@ class LEP2ScaleAndPrep:
 
             xval = np.load(MERGE_PATH / f"Merged{megaset}_xval.npy")
             x_val_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_val.npy")
+            x_train_weights = np.load(MERGE_PATH / f"Merged{megaset}_weights_train.npy")
             x_val_cats = np.load(MERGE_PATH / f"Merged{megaset}_categories_val.npy")
             etmiss_mega = np.load(MERGE_PATH / f"Merged{megaset}_etmiss_val.npy")
 
@@ -564,6 +567,7 @@ class LEP2ScaleAndPrep:
             etmiss.append(etmiss_mega)
             recon_err_back = self._inference(xval, types="MC")
 
+            train_weights.append(x_train_weights)
             val_cats.append(x_val_cats)
             val_weights.append(x_val_weights)
             recon_err.append(recon_err_back)
@@ -576,7 +580,14 @@ class LEP2ScaleAndPrep:
         etmiss = etmiss[etmiss_cut]
         xvals = np.concatenate(xvals, axis=0)[etmiss_cut]
         recon_err = np.concatenate(recon_err, axis=0)[etmiss_cut]
-        val_weights = np.concatenate(val_weights, axis=0)[etmiss_cut]
+        val_we = np.concatenate(val_weights, axis=0)
+        val_weights = val_we[etmiss_cut]
+        
+        train_weights = np.concatenate(train_weights, axis=0)
+        
+        print(f"Sum events: {np.sum(train_weights) + np.sum(val_we)}")
+        exit()
+        
         val_cats = np.concatenate(val_cats, axis=0)[etmiss_cut]
 
         pattern = re.compile(r"(\D+)\d*")
@@ -818,6 +829,7 @@ class LEP2ScaleAndPrep:
         test_etmiss = []
         test_x = []
 
+        isBSM = []
         
         # * Validation inference for all megasets
         for megaset in range(self.totmegasets):
@@ -860,12 +872,20 @@ class LEP2ScaleAndPrep:
             test_weights.append(test_x_weights)
             test_recon_err.append(test_recon_err_back) 
             
+            isBSM_test = np.load(MERGE_PATH / f"Merged{megaset}_data1516_isBSM.npy")
             
+            isBSM.append(isBSM_test)
             
+           
+
+        
         
         #* Data 15 and data 16
         etmiss = np.concatenate(etmiss, axis=0)
         x = np.concatenate(x, axis=0)
+        isBSM = np.concatenate(isBSM, axis=0)
+        
+        
         
         recon_err = np.concatenate(recon_err, axis=0)
         weights = np.concatenate(weights, axis=0)
@@ -1050,6 +1070,36 @@ class LEP2ScaleAndPrep:
         
         print(np.sum(weights), np.shape(weights))
         print(np.sum(test_weights), np.shape(test_weights))
+        
+        #* Unblinded test
+        print(np.unique(isBSM))
+        signal = np.where(isBSM == 1)
+        data = np.where(isBSM == 0)
+        
+        data_recon = test_recon_err[data]
+        data_weights = test_weights[data]
+        data_cats = test_cats[data]
+        
+        signal_recon = test_recon_err[signal]
+        signal_weights = test_weights[signal]
+        signal_cats = test_cats[signal]
+        
+        
+        signame="Unblind"
+        
+        plothisto = PlotHistogram(
+                STORE_IMG_PATH,
+                data_recon,
+                data_weights,
+                data_cats,
+                histoname="Reconstruction histogram unblinded",
+                signal=signal_recon,
+                signal_weights=signal_weights,
+                signal_cats=signal_cats,
+            )
+        plothisto.histogram_data(data_channel, sig_name=signame)
+        
+        print(np.unique(isBSM))
         
 
 
@@ -1238,6 +1288,6 @@ if __name__ == "__main__":
 
     #L2.RunTraining()
 
-    #L2.RunInference()
+    L2.RunInference()
     
-    L2.RunBlindTest()
+    #L2.RunBlindTest()
