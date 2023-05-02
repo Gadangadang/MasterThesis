@@ -100,6 +100,8 @@ class PlotHistogram:
         colors = []
         if LEP == "Lep2":
             color_schemes = colors_scheme_2lep
+        elif LEP == "data":
+            color_schemes = color_schemes_data
         else:
             color_schemes = colors_scheme
         
@@ -148,8 +150,7 @@ class PlotHistogram:
         if len(colors) != len(histo_atlas):
             colors = colors[:len(histo_atlas)]
         
-        if len(histo_atlas) < 2:
-            channels = ["Monte Carlo"]
+        
             
         
         
@@ -197,3 +198,102 @@ class PlotHistogram:
         
         plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
         plt.close()
+        
+    def histogram_data(self, channels, sig_name="nosig", bins=40, etmiss_flag=False)->None:
+        
+        histo_atlas = []
+        weight_atlas_data = []
+        colors = []
+        
+        if LEP == "Lep2":
+            color_schemes = colors_scheme_2lep
+        elif LEP == "data":
+            color_schemes = color_schemes_data
+        else:
+            color_schemes = colors_scheme
+        
+        for channel in channels:
+            condition = np.where(self.val_cats == channel)[0]
+            err = self.err_val[condition]
+            histo_atlas.append(err)
+
+            err_w = self.err_val_weights[condition]
+           
+            weight_atlas_data.append(err_w)
+            colors.append(color_schemes[channel])
+        try:
+            try:
+                sig_err = self.signal
+                sig_err_w = self.signal_weights
+            except:
+                sig_err = self.data
+                sig_err_w = self.data_weights
+        except:
+            print("No signal")
+            
+            
+        
+   
+
+        sum_w = [np.sum(weight) for weight in weight_atlas_data]
+        sort_w = np.argsort(sum_w, kind="mergesort")
+
+        sns.set_style("darkgrid")
+        plt.rcParams["figure.figsize"] = (12, 9)
+
+        fig, ax = plt.subplots()
+
+        try:
+            N, bins = np.histogram(sig_err, bins=bins, weights=sig_err_w)
+            x = (np.array(bins[0:-1]) + np.array(bins[1:])) / 2
+            ax.scatter(x, N, marker="+", label=f"{sig_name}", color="black")  # type: ignore
+            n_bins = bins
+            print("Bins: ",n_bins)
+            self.n_bins = n_bins
+        except:
+            self.n_bins = 25
+        
+       
+            
+        data_histo = np.asarray(histo_atlas, dtype=object)[sort_w]
+        we = np.asarray(weight_atlas_data, dtype=object)[sort_w]
+        colors = np.asarray(colors, dtype=object)[sort_w]
+        labels = np.asarray(channels, dtype=object)[sort_w]
+        
+        
+        ax.hist(
+            data_histo,
+            self.n_bins,
+            density=False,
+            stacked=False,
+            alpha=0.5,
+            histtype="bar",
+            color=colors,
+            label=labels,
+            weights=we,
+        )
+
+        ax.legend(prop={"size": 15})
+        if data:
+            ax.set_title(
+                self.histoname + "and ATLAS data", fontsize=25
+            )
+        else:
+            ax.set_title(
+                self.histoname , fontsize=25
+            )
+        ax.set_xlabel(self.featurename, fontsize=25)
+        ax.set_ylabel("#Events", fontsize=25)
+        if etmiss_flag:
+            ax.set_xlim([0, 1300])
+        ax.set_ylim(bottom=0.1)  # type: ignore
+        ax.set_yscale("log")
+        ax.tick_params(axis="both", labelsize=25)
+        fig.tight_layout()
+        
+        plt.savefig(self.path + f"histo/{LEP}/{TYPE}/{arc}/{SCALER}/b_data_recon_big_rm3_feats_sig_{sig_name}_{self.histotitle}.pdf")
+        plt.close()
+        
+        
+        
+        
