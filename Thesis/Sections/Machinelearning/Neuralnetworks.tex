@@ -1,6 +1,6 @@
 \section{Neural Networks}
 In the field of machine learning, statistical algorithms are commonly used for data analysis. 
-Neural networks, a specific category of such algorithms, have experienced exponential growth in 
+Neural networks, a specific category of such algorithms, have experienced growth in 
 usage in both industry and academia over the past decade. Although most of the theory behind it was 
 discovered as far back as the 1980s, the technology has only now in the last 10 to 15 years become good enough. 
 These statistical models are of extensive use in a variety of applications, ranging from image analysis to 
@@ -69,30 +69,30 @@ Some of the following subsections contains work previously done by myself and tw
     \multicolumn{3}{|l|}{All indexing starts from 1: $i,j,k,l = 1, 2, \hdots$}  \\ \hline
     \end{tabular}
     \caption[Neural network notation]{Table containing notation used for deriving the mathematical formulas for the neural 
-    network found in previous work\cite{FYSSTK}. $\#$ here refers to number of.  }
+    network found in previous work\cite{FYSSTK}. The $\#$ here refers to number of.  }
     \label{tab:notation}
 \end{center}
 \end{table}
    
 
 \subsection*{Gradient descent}
-\marginpar{Motiver for bruk av gradient descent} Let us now consider a general n-dimensional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. 
+Let us now consider a general n-dimensional problem, with parameters $\boldsymbol{\theta} = \{\theta_1, \theta_2, ..., \theta_n\}$. 
 Our objective is to find the set of $\boldsymbol{\theta}$ that minimize a cost function with respect to the data and target. 
 One way to solve this problem is using ordinary least squares. For this approach, 
-the optimal paramters $\boldsymbol{\theta_{opt}}$ are derived from minimizing the cost function, \hl{as shown here:}
+the optimal paramters $\boldsymbol{\theta_{opt}}$ are derived from minimizing the cost function, as shown here:
 \begin{equation*}
     \boldsymbol{\theta_{opt}} = (\boldsymbol{X}^T\boldsymbol{X})^{-1}\boldsymbol{X}^T\boldsymbol{t},
 \end{equation*}
 where $\boldsymbol{X}$ is the design matrix containing the data, and $\boldsymbol{t}$ is the target vector. This could however lead to a problem. 
 Suppose the design matrix is sufficiently large, then the matrix inversion will get 
-computaitonally expensive, or it might not even exist for a given $\boldsymbol{X}$. 
+computationally expensive, or it might not even exist for a given $\boldsymbol{X}$. 
 Thus, an alternative approch is to iteratively approximate the ideal parameters $\boldsymbol{\theta_{opt}}$. \par 
 Suppose we have a cost function $C(\boldsymbol{\theta})$ for a given problem. We can approximate the minimum of 
 the cost function by calculating the gradient $\nabla_{\theta}C$ with respect to $\boldsymbol{\theta}$. 
 The negative of this gradient indicates the direction for the minimum of $C$ when evaluating 
 it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSSTK}. This is formulized as follows 
 
-\begin{equation}
+\begin{equation}\label{eq:grad}
     \boldsymbol{\theta}_{i+1} = \boldsymbol{\theta}_i - \eta\nabla_{\theta}C(\boldsymbol{\theta}_i),
 \end{equation}
 
@@ -115,7 +115,10 @@ rate, shown in the middle figure. There are several algorithms that try to do wh
 the middle figure above, of which is ADAM\cite{ADAM:opti}\par 
 A modified and prefered version of gradient descent is the so-called stochastic gradient descent.
 Regular gradient descent can, for large datasets be quite slow, and is prone to getting stuck 
-in a local minimum. To circumvent this issue, mini batches are introduced. 
+in a local minimum. To circumvent this issue, mini batches are introduced. For each epoch (training step) 
+the input data is divided into M mini batches of size $m$. For each batch we compute the gradient and update the 
+unknown parameter according to equation \ref{eq:grad}. $\theta_{i+1}$ is then updated M times for each epoch. 
+This will reduce computation time as well as reduce the risk of getting stuck in local minima. \cite{FYSSTK}.
 
 
 
@@ -123,7 +126,7 @@ in a local minimum. To circumvent this issue, mini batches are introduced.
 \subsection*{Feed forwarding}
 Inference (prediction) and training both use the same feed-forward algorithm. Let's then assume that we have generated a 
 network. The network initializes the weights and biases usually with normal or uniformly distributed values, that can 
-later be adjusted. The procedure is to send the data through the network, weighting each connection according to the networks 
+later be adjusted. The procedure is to send the data through the network, weighting each connection according to the neural network's 
 architecture, and produce an output. The procedure can be summarized in the following steps\cite{FYSSTK}:
  \begin{itemize}
     \item The data is recieved by the input nodes in the network for each feature.
@@ -145,13 +148,14 @@ and $l \neq 1$, as it is not used on the input layer.
 \subsection*{Backpropagation}
 The way neural networks learn is conventionally by the use of the backpropagation algorithm, first proposed by 
 Rumelhart et al\cite{backprop}. This is a bit misleading, as the backpropagation algorithm actually only refers 
-to how to compute the gradient\cite{Goodfellow-et-al-2016}. The algorithm allows us to alter the weights and 
-biases such that we get an ideal output. Assuming a cost function $C$, we can calculate the gradient $\nabla_{w, b}C$,
-and use this to back propagate the error correction. The gradient $\nabla_{w, b}C$ comprises two derivatives.
+to how to compute the gradient with respect to the weights at each unit\cite{Goodfellow-et-al-2016}. The algorithm allows 
+us to alter the weights and biases such that we get an ideal output. Assuming a cost function $C$, we can calculate the 
+gradient $\nabla_{w, b}C$, and use this to back propagate the error correction from the last to the first layer. 
+The gradient $\nabla_{w, b}C$ comprises two derivatives.
 \begin{equation*}
     \nabla_{w, b}C = \left(\frac{\partial C}{\partial w_{i,j}^l}, \frac{\partial C}{\partial b_j^l}\right).
 \end{equation*}
-\marginpar{Note that equation start on last layer} We have to use the chain rule to calculate the derivatives, and using that the last layer is $l=L$, we get the derivative with respect to the weights as 
+We have to use the chain rule to calculate the derivatives, and using that the last layer is $l=L$, we get the derivative with respect to the weights as 
 \begin{equation*}
     \frac{\partial C}{\partial w_{i,j}^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}\frac{\partial z_j^L}{\partial w_{i,j}^L},
 \end{equation*}
@@ -168,13 +172,12 @@ where we defined that
     \sigma'(z_j^L) = \frac{\partial a_j^L}{\partial z_j^L}.
 \end{equation}
 This derivative is very easy to calculate given a specific cost function and activation function. The derivative with respect to the bias is given as follows:
-\marginpar{sjekk k index}
 \begin{equation*}
-    \frac{\partial C}{\partial b_k^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}\frac{\partial z_j^L}{\partial b_{j}^L},
+    \frac{\partial C}{\partial b_j^L} = \frac{\partial C}{\partial a_j^L}\frac{\partial a_j^L}{\partial z_j^L}\frac{\partial z_j^L}{\partial b_{j}^L},
 \end{equation*}
 which gives us the final expression as 
 \begin{equation*}
-    \frac{\partial C}{\partial b_k^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L). 
+    \frac{\partial C}{\partial b_j^L} = \frac{\partial C}{\partial a_j^L}\sigma'(z_j^L). 
 \end{equation*}
 We will now introduce a new notation, a local gradient commonly called the "error". It reflects how the rate of change of the cost function depends on the j'th node in the l'th layer.
 \begin{equation*}
@@ -216,7 +219,7 @@ Using this, we can derive a three-step formula for the backpropagation algorithm
 \begin{itemize}
     \item Compute the local gradient for the last layer, $\delta^L$.
     \item Recursively compute the local gradient for the remaining layers, $\delta^l$ for $l=L-1, L-2, ..., 1$.
-    \item Update the weights and biases for all layers, $l=1, 2, ..., L$, given the learning rate $\eta$ as shown below: 
+    \item Update the weights and biases via gradient descent\footnote{In practice one would use gradient descent with an optimizer, such as ADAgrad or ADAM as mentioned in section \ref{sec:adam}} for all layers, $l=1, 2, ..., L$, given the learning rate $\eta$ as shown below: 
 \end{itemize}
 \begin{equation*}
     w_{i,j}^{l} \leftarrow w_{i,j}^{l} - \eta \delta_j^l a_i^{l-1},
