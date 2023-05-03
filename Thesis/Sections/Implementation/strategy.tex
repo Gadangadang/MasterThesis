@@ -2,13 +2,8 @@
 The strategy used to look for anomalies in the 3 lepton + missing energy final state is presented as follows. 
 First, the SM MC and ATLAS data for training and inference are constructed with the RMM from section 
 \ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for training the neural 
-network, and the remaining $20\%$ will be used for inference. The output from the autoencoder will then be used 
-to calculate the $log_{10}$ reconstruction error, given as 
-\begin{equation}\label{eq:rec_err}
-    err = log_{10}\left[ \sum_i (x-\tilde{x})^2\right],
-\end{equation}
-where $x$ is the input data and $\tilde{x}$ is the autoencoder output. To separate the anomalies, the reconstruction 
-error of the input data will create a distribution. The hope is that the anomalous events will 
+network, and the remaining $20\%$ will be used for inference. The reconstruction error 
+from inference will then be used to separate the anomalies from background create a distribution. The hope is that the anomalous events will 
 be skewed at the right end of the reconstruction error spectrum.\par
 Standard analyses rely on what is called a signal region. The signal region is a region in the feature space in which
 the signal is expected to be enriched. These are often not inpected until all analysis selections are fixed ("blind" analysis). 

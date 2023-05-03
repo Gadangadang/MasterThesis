@@ -21,16 +21,16 @@
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational autoencoder}{41}{section.4.1}%
 \contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{45}{section.4.2}%
 \contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{53}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Final remarks on the results}{63}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{64}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Future work}{65}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{69}{chapter.5}%
-\contentsline {chapter}{Conclusion}{69}{chapter.5}%
-\contentsline {chapter}{Appendices}{71}{section*.117}%
-\contentsline {chapter}{Appendix A}{73}{appendix*.118}%
-\contentsline {section}{\numberline {A.1}Channel removal testing}{73}{section.Alph0.1}%
-\contentsline {section}{\numberline {A.2}Transverse momentum altering}{79}{section.Alph0.2}%
-\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{83}{section.Alph0.3}%
-\contentsline {section}{\numberline {A.4}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{93}{section.Alph0.4}%
-\contentsline {chapter}{Appendix B}{105}{appendix*.173}%
-\contentsline {section}{\numberline {B.1}Algorithmic implementation}{105}{section.Alph0.1}%
+\contentsline {section}{\numberline {4.4}Final remarks on the results}{61}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{61}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Future work}{62}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Conclusion}{65}{chapter.5}%
+\contentsline {chapter}{Conclusion}{65}{chapter.5}%
+\contentsline {chapter}{Appendices}{67}{section*.117}%
+\contentsline {chapter}{Appendix A}{69}{appendix*.118}%
+\contentsline {section}{\numberline {A.1}Channel removal testing}{69}{section.Alph0.1}%
+\contentsline {section}{\numberline {A.2}Transverse momentum altering}{75}{section.Alph0.2}%
+\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{79}{section.Alph0.3}%
+\contentsline {section}{\numberline {A.4}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{89}{section.Alph0.4}%
+\contentsline {chapter}{Appendix B}{101}{appendix*.173}%
+\contentsline {section}{\numberline {B.1}Algorithmic implementation}{101}{section.Alph0.1}%
