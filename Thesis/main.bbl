@@ -206,12 +206,6 @@ A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
 \bibitem{LHC_int_lum}
 {LHC}, \emph{Lhc nominal luminosity projection},  2013.
 
-\bibitem{cupy_learningsys2017}
-R.~Okuta, Y.~Unno, D.~Nishino, S.~Hido and C.~Loomis, \emph{Cupy: A
-  numpy-compatible library for nvidia gpu calculations},  in \emph{Proceedings
-  of Workshop on Machine Learning Systems (LearningSys) in The Thirty-first
-  Annual Conference on Neural Information Processing Systems (NIPS)}, 2017.
-
 \bibitem{ATL-OREACH-PUB-2020-001}
 {\scshape ATLAS Collaboration} collaboration, \emph{{Review of the 13 TeV ATLAS
   Open Data release}},  tech. rep., CERN, Geneva, Jan, 2020.

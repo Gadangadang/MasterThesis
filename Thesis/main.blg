@@ -32,45 +32,45 @@ Reallocated name_sep_char (elt_size=1) to 60000 items from 40000.
 Reallocated str_pool (elt_size=1) to 195000 items from 130000.
 Warning--empty author in atlas_search_2021
 Warning--empty author in ATL-OREACH-PUB-2020-001
-You've used 45 entries,
+You've used 44 entries,
             2188 wiz_defined-function locations,
-            783 strings with 171465 characters,
-and the built_in function-call counts, 9736 in all, are:
-= -- 845
-> -- 635
+            779 strings with 171146 characters,
+and the built_in function-call counts, 9495 in all, are:
+= -- 831
+> -- 613
 < -- 0
-+ -- 186
-- -- 141
-* -- 678
-:= -- 1470
-add.period$ -- 61
-call.type$ -- 45
-change.case$ -- 39
++ -- 180
+- -- 136
+* -- 661
+:= -- 1435
+add.period$ -- 60
+call.type$ -- 44
+change.case$ -- 38
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 412
-empty$ -- 945
-format.name$ -- 141
-if$ -- 2438
+cite$ -- 46
+duplicate$ -- 397
+empty$ -- 916
+format.name$ -- 136
+if$ -- 2378
 int.to.chr$ -- 0
-int.to.str$ -- 45
-missing$ -- 88
-newline$ -- 153
-num.names$ -- 43
-pop$ -- 219
+int.to.str$ -- 44
+missing$ -- 87
+newline$ -- 150
+num.names$ -- 42
+pop$ -- 209
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 230
+skip$ -- 228
 stack$ -- 0
 substring$ -- 262
-swap$ -- 105
+swap$ -- 104
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 2
-while$ -- 63
-width$ -- 47
-write$ -- 395
+while$ -- 62
+width$ -- 46
+write$ -- 387
 (There were 8 warnings)
