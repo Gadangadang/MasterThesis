@@ -586,7 +586,7 @@ class LEP2ScaleAndPrep:
         train_weights = np.concatenate(train_weights, axis=0)
         
         print(f"Sum events: {np.sum(train_weights) + np.sum(val_we)}")
-        exit()
+      
         
         val_cats = np.concatenate(val_cats, axis=0)[etmiss_cut]
 
@@ -777,9 +777,72 @@ class LEP2ScaleAndPrep:
                     plt.close()
 
             print(f"{signame} done!")
+            
+    def checkIsBSM(self):
+        
+        
+        try:
+            self.AE_model
+        except:
+            # * Load model
+            if TYPE == "VAE":
+                nn_model = RunVAE(data_shape=data_shape)
+                if SMALL:
+                    self.AE_model = nn_model.getModel()
 
+                else:
+                    self.AE_model = nn_model.getModelBig()
+
+            elif TYPE == "AE":
+                nn_model = RunAE(data_shape=data_shape)
+
+                if SMALL:
+
+                    self.AE_model = nn_model.getModel()
+
+                else:
+
+                    self.AE_model = nn_model.getModelBig()
+
+        if TYPE == "VAE":
+            self.AE_model.encoder.load_weights(
+                f"./checkpoints/Megabatch_checkpoint_{TYPE}_encoder_{self.checkpointname}"
+            )
+            self.AE_model.encoder.load_weights(
+                f"./checkpoints/Megabatch_checkpoint_{TYPE}_decoder_{self.checkpointname}"
+            )
+        else:
+            self.AE_model.load_weights(
+                f"./checkpoints/Megabatch_checkpoint_{TYPE}{self.checkpointname}"
+            )
+            
+        
+        
+        
+
+        isBSM = []
+        
+        # * Validation inference for all megasets
+        for megaset in range(self.totmegasets):
+            print(f"Running inference on megabatch: {megaset}")
+
+            FETCH_PATH = DATA_PATH / f"Megabatches/MB{megaset}"
+            MERGE_PATH = FETCH_PATH / f"MergedMB{megaset}"
+
+            #* Data 15 and data 16
+            
+            
+            isBSM_test = np.load(MERGE_PATH / f"Merged{megaset}_data1516_isBSM.npy")
+            
+            isBSM.append(isBSM_test)
+            
+            if megaset == 3:
+                break
+        
+        isBSM = np.concatenate(isBSM, axis=0) 
+        print(np.unique(isBSM))
     
-    def RunBlindTest(self):
+    def RunBlindTest(self, run_inference=True, create_rmm=True):
         
         
         try:
@@ -852,11 +915,13 @@ class LEP2ScaleAndPrep:
             """
             x.append(x_)
             etmiss.append(x_etmiss)
-            recon_err_back = self._inference(x_)
-
+            if run_inference:
+                
+                recon_err_back = self._inference(x_)
+                recon_err.append(recon_err_back)    
             cats.append(x_cats)
             weights.append(x_weights)
-            recon_err.append(recon_err_back)    
+            
             
             #* Data1516 mix
             test_x_ = np.load(MERGE_PATH / f"Merged{megaset}_data1516.npy")
@@ -866,15 +931,18 @@ class LEP2ScaleAndPrep:
 
             test_x.append(test_x_)
             test_etmiss.append(test_x_etmiss)
-            test_recon_err_back = self._inference(test_x_, types="signal")
-
             test_cats.append(test_x_cats)
             test_weights.append(test_x_weights)
-            test_recon_err.append(test_recon_err_back) 
+            
+            if run_inference:
+            
+                test_recon_err_back = self._inference(test_x_, types="signal")
+                test_recon_err.append(test_recon_err_back) 
             
             isBSM_test = np.load(MERGE_PATH / f"Merged{megaset}_data1516_isBSM.npy")
             
             isBSM.append(isBSM_test)
+            
             
            
 
@@ -885,224 +953,219 @@ class LEP2ScaleAndPrep:
         x = np.concatenate(x, axis=0)
         isBSM = np.concatenate(isBSM, axis=0)
         
+        signal = np.where(isBSM == 1)
+        data = np.where(isBSM == 0)
         
-        
-        recon_err = np.concatenate(recon_err, axis=0)
+        if run_inference:
+            recon_err = np.concatenate(recon_err, axis=0)
+            data_recon = test_recon_err[data]
         weights = np.concatenate(weights, axis=0)
         
-        print(np.sum(weights), np.shape(weights))
+        
         
         cats = np.concatenate(cats, axis=0)
         
-        """pattern = re.compile(r"(\D+)\d*")
-        cats = np.array(
-            [
-                re.sub(pattern, r"\1", elem)
-                if any(x in elem for x in ["Zmmjets", "Zeejets"])
-                else elem
-                for elem in cats
-            ]
-        )
         
-        print(np.unique(cats))
-        
-        
-        
-        channel_req = np.where(cats == "Zeejets")
-        etmiss = etmiss[channel_req]
-        recon_err = recon_err[channel_req]
-        x = x[channel_req]
-        weights = weights[channel_req]
-        cats = cats[channel_req]
-        """
-        
-        print(np.shape(weights), np.shape(recon_err), np.shape(cats))
         
         #* Data 1516 mix
         test_etmiss = np.concatenate(test_etmiss, axis=0)
         test_x = np.concatenate(test_x, axis=0)
-        test_recon_err = np.concatenate(test_recon_err, axis=0)
+        
+        if run_inference: 
+            test_recon_err = np.concatenate(test_recon_err, axis=0)
+            
+            
+            signal_recon = test_recon_err[signal]
+            
         test_weights = np.concatenate(test_weights, axis=0)
         test_cats = np.concatenate(test_cats, axis=0)
-        print("test shapes")
-        print(np.shape(test_weights), np.shape(test_recon_err), np.shape(test_cats), np.shape(test_etmiss))
+   
         
         
-        
-        signame = "Blind test"
-        data_channel = ["Data 15 and 16"]
-        #* Recon error plot
-        plothisto = PlotHistogram(
-                STORE_IMG_PATH,
-                recon_err,
-                weights,
-                cats,
-                histoname="Reconstruction histogram with Data 15 and 16",
-                signal=test_recon_err,
-                signal_weights=test_weights,
-                signal_cats=test_cats,
-            )
-        plothisto.histogram_data(data_channel, sig_name=signame)
-
-        #* Etmiss pre cut
-        
-        histo_tit = r"$e_T^{miss}$ distribution for Data 15 and 16 and " + f"{signame}"
-        plotetmiss = PlotHistogram(
-            STORE_IMG_PATH,
-            etmiss,
-            weights,
-            cats,
-            histoname=histo_tit,
-            featurename=r"$e_T^{miss}$",
-            histotitle=histo_tit,
-            signal=test_etmiss,
-            signal_weights=test_weights,
-            signal_cats=test_cats,
-        )
-        plotetmiss.histogram_data(data_channel, sig_name=signame, etmiss_flag=True)
-        
-        
-        #* Significance 
-        
-        small_sig = _significance_small(np.sum(test_weights), np.sum(weights))
-        big_sig = _significance_big(np.sum(test_weights), np.sum(weights))
-
-        print(" ")
-        print(
-            f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}"
-        )
-        print(" ")
-        
-        
-        median = np.median(plothisto.n_bins)
-        std = np.abs(median / 5)
-        print(f"Median recon: {median}, std recon: {std}")
-
-
-        for std_scale in range(1, 4):
-
-            recon_er_cut = median + std_scale * std
-            print(f"Recon err cut: {recon_er_cut}")
-
-            error_cut_val = np.where(recon_err > (recon_er_cut))[0]
-            error_cut_sig = np.where(test_recon_err > (recon_er_cut))[0]
-
-            print(f"val cut shape: {np.shape(error_cut_val)}")
-
-            val_weights_cut = weights[error_cut_val]
-            sig_weights_cut = test_weights[error_cut_sig]
-
-            val_cats_cut = cats[error_cut_val]
-            signal_cats_cut = test_cats[error_cut_sig]
-
-            etmiss_bkg = etmiss[error_cut_val]
-            etmiss_sig = test_etmiss[error_cut_sig]
-
-            small_sig = _significance_small(
-                np.sum(sig_weights_cut), np.sum(val_weights_cut)
-            )
-            big_sig = _significance_big(
-                np.sum(sig_weights_cut), np.sum(val_weights_cut)
-            )
-
-            print(" ")
-            print(
-                f"S: {np.sum(sig_weights_cut):.3f} | B: {np.sum(val_weights_cut):.3f}"
-            )
-            print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
-            print(" ")
-
             
-
-            etmiss_histoname = (
-                r"$e_T^{miss}$ with recon err cut of " + f"{recon_er_cut:.2f}"
-            )
-
-            plotetmiss_cut = PlotHistogram(
-                STORE_IMG_PATH,
-                etmiss_bkg,
-                val_weights_cut,
-                val_cats_cut,
-                histoname=etmiss_histoname,
-                featurename=r"$e_T^{miss}$",
-                histotitle=f"recon_errcut_{recon_er_cut:.2f}",
-                signal=etmiss_sig,
-                signal_weights=sig_weights_cut,
-                signal_cats=signal_cats_cut,
-            )
-            plotetmiss_cut.histogram_data(
-                data_channel, sig_name=signame, etmiss_flag=True
-            )
-
-            if not isinstance(plotetmiss_cut.n_bins, int):
-
-                small_sign, big_sign = bin_integrate_significance(
-                    plotetmiss_cut.n_bins,
-                    etmiss_bkg,
-                    etmiss_sig,
-                    val_weights_cut,
-                    sig_weights_cut,
-                )
-
-                plt.plot(
-                    plotetmiss_cut.n_bins,
-                    small_sign,
-                    "r-",
-                    label=r"$\sqrt{2((s+b)log(1+\frac{s}{b}) - s)}$",
-                )
-                plt.plot(
-                    plotetmiss_cut.n_bins,
-                    big_sign,
-                    "b-",
-                    label=r"$\frac{s}{\sqrt{b}}$",
-                )
-                plt.legend()
-                plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
-                plt.ylabel("Signifiance", fontsize=25)
-                plt.legend(prop={"size": 15})
-                plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
-                plt.savefig(
-                    STORE_IMG_PATH
-                    + f"histo/data/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}_{recon_er_cut}.pdf"
-                )
-                plt.close() 
+            
+        test_x_sig = test_x[signal]
         
         
-        print(np.sum(weights), np.shape(weights))
-        print(np.sum(test_weights), np.shape(test_weights))
-        
-        #* Unblinded test
-        print(np.unique(isBSM))
-        signal = np.where(isBSM == 1)
-        data = np.where(isBSM == 0)
-        
-        data_recon = test_recon_err[data]
         data_weights = test_weights[data]
         data_cats = test_cats[data]
         
-        signal_recon = test_recon_err[signal]
         signal_weights = test_weights[signal]
         signal_cats = test_cats[signal]
         
         
-        signame="Unblind"
-        
-        plothisto = PlotHistogram(
+        if run_inference:
+            signame = "Blind test"
+            data_channel = ["Data 15 and 16"]
+            #* Recon error plot
+            plothisto = PlotHistogram(
+                    STORE_IMG_PATH,
+                    recon_err,
+                    weights,
+                    cats,
+                    histoname="Reconstruction histogram with Data 15 and 16",
+                    signal=test_recon_err,
+                    signal_weights=test_weights,
+                    signal_cats=test_cats,
+                )
+            plothisto.histogram_data(data_channel, sig_name=signame)
+
+            #* Etmiss pre cut
+            
+            histo_tit = r"$e_T^{miss}$ distribution for Data 15 and 16 and " + f"{signame}"
+            plotetmiss = PlotHistogram(
                 STORE_IMG_PATH,
-                data_recon,
-                data_weights,
-                data_cats,
-                histoname="Reconstruction histogram unblinded",
-                signal=signal_recon,
-                signal_weights=signal_weights,
-                signal_cats=signal_cats,
+                etmiss,
+                weights,
+                cats,
+                histoname=histo_tit,
+                featurename=r"$e_T^{miss}$",
+                histotitle=histo_tit,
+                signal=test_etmiss,
+                signal_weights=test_weights,
+                signal_cats=test_cats,
             )
-        plothisto.histogram_data(data_channel, sig_name=signame)
-        
-        print(np.unique(isBSM))
-        
+            plotetmiss.histogram_data(data_channel, sig_name=signame, etmiss_flag=True)
+            
+            
+            #* Significance 
+            
+            small_sig = _significance_small(np.sum(test_weights), np.sum(weights))
+            big_sig = _significance_big(np.sum(test_weights), np.sum(weights))
+
+            print(" ")
+            print(
+                f"Pre cut etmiss;  Signifance small: {small_sig} | Significance big: {big_sig}"
+            )
+            print(" ")
+            
+            
+            median = -2#np.median(plothisto.n_bins)
+            std = np.abs(median / 5)
+            print(f"Median recon: {median}, increment recon: {std}")
 
 
+            for std_scale in range(1, 4):
+
+                recon_er_cut = median + std_scale * std
+                print(f"Recon err cut: {recon_er_cut}")
+
+                error_cut_val = np.where(recon_err > (recon_er_cut))[0]
+                error_cut_sig = np.where(test_recon_err > (recon_er_cut))[0]
+
+                print(f"val cut shape: {np.shape(error_cut_val)}")
+
+                val_weights_cut = weights[error_cut_val]
+                sig_weights_cut = test_weights[error_cut_sig]
+
+                val_cats_cut = cats[error_cut_val]
+                signal_cats_cut = test_cats[error_cut_sig]
+
+                etmiss_bkg = etmiss[error_cut_val]
+                etmiss_sig = test_etmiss[error_cut_sig]
+
+                small_sig = _significance_small(
+                    np.sum(sig_weights_cut), np.sum(val_weights_cut)
+                )
+                big_sig = _significance_big(
+                    np.sum(sig_weights_cut), np.sum(val_weights_cut)
+                )
+
+                print(" ")
+                print(
+                    f"S: {np.sum(sig_weights_cut):.3f} | B: {np.sum(val_weights_cut):.3f}"
+                )
+                print(f"Signifance small: {small_sig} | Significance big: {big_sig}")
+                print(" ")
+
+                
+
+                etmiss_histoname = (
+                    r"$e_T^{miss}$ with recon err cut of " + f"{recon_er_cut:.2f}"
+                )
+
+                plotetmiss_cut = PlotHistogram(
+                    STORE_IMG_PATH,
+                    etmiss_bkg,
+                    val_weights_cut,
+                    val_cats_cut,
+                    histoname=etmiss_histoname,
+                    featurename=r"$e_T^{miss}$",
+                    histotitle=f"recon_errcut_{recon_er_cut:.2f}",
+                    signal=etmiss_sig,
+                    signal_weights=sig_weights_cut,
+                    signal_cats=signal_cats_cut,
+                )
+                plotetmiss_cut.histogram_data(
+                    data_channel, sig_name=signame, etmiss_flag=True
+                )
+
+                if not isinstance(plotetmiss_cut.n_bins, int):
+
+                    small_sign, big_sign = bin_integrate_significance(
+                        plotetmiss_cut.n_bins,
+                        etmiss_bkg,
+                        etmiss_sig,
+                        val_weights_cut,
+                        sig_weights_cut,
+                    )
+
+                    plt.plot(
+                        plotetmiss_cut.n_bins,
+                        small_sign,
+                        "r-",
+                        label=r"$\sqrt{2((s+b)log(1+\frac{s}{b}) - s)}$",
+                    )
+                    plt.plot(
+                        plotetmiss_cut.n_bins,
+                        big_sign,
+                        "b-",
+                        label=r"$\frac{s}{\sqrt{b}}$",
+                    )
+                    plt.legend()
+                    plt.xlabel(r"$e_T^{miss}$ [GeV]", fontsize=25)
+                    plt.ylabel("Signifiance", fontsize=25)
+                    plt.legend(prop={"size": 15})
+                    plt.title(r"Significance as function of $e_T^{miss}$", fontsize=25)
+                    plt.savefig(
+                        STORE_IMG_PATH
+                        + f"histo/data/{TYPE}/{arc}/{SCALER}/significance_etmiss_{signame}_{recon_er_cut}.pdf"
+                    )
+                    plt.close() 
+            
+            
+            print(np.sum(weights), np.shape(weights))
+            print(np.sum(test_weights), np.shape(test_weights))
+            
+            #* Unblinded test
+            
+            
+            
+            signame="Unblind"
+            
+            plothisto_un = PlotHistogram(
+                    STORE_IMG_PATH,
+                    data_recon,
+                    data_weights,
+                    data_cats,
+                    histoname="Reconstruction histogram unblinded",
+                    signal=signal_recon,
+                    signal_weights=signal_weights,
+                    signal_cats=signal_cats,
+                )
+            plothisto_un.histogram_data(data_channel, sig_name=signame)
+            
+        
+            
+            print(f"Median recon: {median}, std recon: {std}")
+            
+        if create_rmm:
+            plRMM = plotRMM(STORE_IMG_PATH, rmm_structure, RMMSIZE)
+            plRMM.plotDfRmmMatrix(x, "data_15_and_16")
+            plRMM.plotDfRmmMatrix(test_x, "data1516_mix")
+            plRMM.plotDfRmmMatrix(test_x_sig, "signal")
+            
+            
     def _roc_curve(
         self,
         distribution_bkg,
@@ -1288,6 +1351,8 @@ if __name__ == "__main__":
 
     #L2.RunTraining()
 
-    L2.RunInference()
+    #L2.RunInference()
     
-    #L2.RunBlindTest()
+    L2.RunBlindTest(False, True)
+    
+    #L2.checkIsBSM()

@@ -212,6 +212,16 @@ def configure_samples():
             "lumi": 32988.1,
             "sqrts": 13,
         },
+        "data1516": {
+            "type": "data",
+            "leg": "Data (2015 and 2016)",
+            "f_color": kBlack,
+            "path": "data" + data_suffix,
+            "l_color": kBlack,
+            "m_type": 24,
+            "lumi": 32988.1 + 3219.56,
+            "sqrts": 13,
+        },
         "alldata": {
             "type": "data",
             "leg": "Data (2015-2018)",

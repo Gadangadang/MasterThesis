@@ -139,11 +139,11 @@ def runANA(
 
         df[k] = df[k].Define("isGoodLep", "ele_SG || muo_SG")
 
+       
         if not isData:
 
             
             
-            df[k] = df[k].Define("is2015", "RandomRunNumber <= 284500")
             df[k] = df[k].Define(
                 "is2016", "(RandomRunNumber > 284500 && RandomRunNumber < 320000)"
             )
@@ -201,12 +201,18 @@ def runANA(
                     "(eventWeight*jvtWeight*bTagWeight*scaletolumi*leptonWeight*globalDiLepTrigSF*pileupWeight)",
                 )  # *pileupWeight
         else:
-            df[k] = df[k].Define(
+            
+            """df[k] = df[k].Define(
                 "is2015", "(RunNumber >= 276262 && RunNumber <= 284484)"
             )
             df[k] = df[k].Define(
                 "is2016", "(RunNumber >= 297730 && RunNumber <= 311481)"
-            )
+            )"""
+            
+            #df[k].Define("is2015", "((!isBSM && (RunNumber >= 276262 && RunNumber <= 284484)) || (isBSM && RandomRunNumber <= 284500))")
+            df[k] = df[k].Define("is2015", "((!isBSM && (RunNumber >= 276262 && RunNumber <= 284484)) || (isBSM && RandomRunNumber <= 284500))")
+            df[k] = df[k].Define("is2016", "((!isBSM && (RunNumber >= 297730 && RunNumber <= 311481)) || (isBSM && (RandomRunNumber > 284500 && RandomRunNumber < 320000)))")
+            
             df[k] = df[k].Define(
                 "is2017", "(RunNumber >= 325713 && RunNumber <= 340453)"
             )
@@ -293,6 +299,8 @@ def runANA(
         df[k] = df[k].Filter(
             "ROOT::VecOps::Sum(lepPt[isGoodLep] > 25) >= 2", "pt cut 25"
         )
+        
+        df[k] = df[k].Filter("is2015 || is2016", "Keep 2015 and 2016 events")
         
         for nlep in ["2L"]:#,"1L"]:#,"2L"]:#,"2L"]:
             cut1 = "("
@@ -780,6 +788,21 @@ def runANA(
                 "wgt_SG",
             )
         )
+        histo_name = "isBSM"
+        histo[f"{histo_name}_%s" % (k)] = (
+            df[k]
+            .Histo1D(
+                (
+                    f"h_{histo_name}_{k}",
+                    f"h_{histo_name}_{k};;Entries",
+                    4,
+                    0,
+                    3,
+                ),
+                f"{histo_name}",
+                "wgt_SG",
+            )
+        )
         """
         k = df[k].Range(5, 30)  
         k.Filter("ele_0_charge < 0 || ele_0_charge > 0")
@@ -908,6 +931,8 @@ def get_numpy_df(df: dict, all_cols: list) -> list:
             df1.to_hdf(
                     str(df_storage) + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
                 )
+            
+        print(df1["isBSM"])
             
         print(df1.info(memory_usage="deep"))
         

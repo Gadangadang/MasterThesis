@@ -41,7 +41,7 @@ class plotRMM:
         self.path = path
         self.rmm_structure = rmm_structure
         self.N_row = N_row
-        self.onlyfiles = self.getDfNames()
+        #self.onlyfiles = self.getDfNames()
 
     def getDfNames(self) -> Tuple[str, ...]:
         """
@@ -65,7 +65,7 @@ class plotRMM:
 
         print("*** Plotting done ***")
 
-    def plotDfRmmMatrix(self, df: pd.DataFrame, process: str) -> None:
+    def plotDfRmmMatrix(self, df: pd.DataFrame, process: str, savepath=STORE_IMG_PATH) -> None:
         """_summary_
 
         Args:
@@ -130,7 +130,7 @@ class plotRMM:
         )
         fig.update_xaxes(side="top")
 
-        fig.write_image(f"../../Figures/testing/rmm/rmm_avg_{process}.pdf")
+        fig.write_image(savepath + f"/rmm/rmm_avg_{process}.pdf")
 
     def plotDfRmmMatrixNoMean(self, df: pd.DataFrame, process: str, idx: int, additional_info="", fake=False) -> None:
         """_summary_

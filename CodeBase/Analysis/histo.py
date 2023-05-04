@@ -281,12 +281,18 @@ class PlotHistogram:
         ax.tick_params(axis="both", labelsize=25)
         fig.tight_layout()
         
+        ratio = np.divide(N,
+                  ns,
+                  where=(ns != 0))
+        
+        
+        
         try:
-            ax2.scatter(x, N/ns, marker="+", color="black")
+            ax2.scatter(x, ratio, marker="+", color="black")
             
             ax2.set_ylabel('Ratio (Blind/Data)', fontsize=15)
             #ax2.set_xlabel('Log10 Reconstruction error', fontsize=25)
-            ax2.set_ylim([0.8, 1.2])
+            ax2.set_ylim([0.8, np.max(ratio)])
             ax2.tick_params(axis="both", labelsize=25)
         except:
             pass

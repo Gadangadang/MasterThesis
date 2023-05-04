@@ -247,6 +247,8 @@ class DataHandling:
 
         etmiss_val = xval["e_T_miss"].to_numpy()
         etmiss_train = xtrain["e_T_miss"].to_numpy()
+        
+        print(f"xtrain shape: {np.shape(xtrain)}")
 
         megaset = 0
         for idx_set_train, idx_set_val in zip(split_idx_train, split_idx_val):
@@ -696,6 +698,6 @@ if __name__ == "__main__":
     data_shape = 529
 
     L2 = DataHandling(DATA_PATH, True, SAVE_VAR, LOAD_VAR, lep=2, convert=True)
-    #L2.convertParquet()
+    L2.convertParquet()
     L2.createMCSubsamples()
     L2.mergeMegaBatches()
