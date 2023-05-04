@@ -190,6 +190,14 @@ R.~Vink, S.~de~Gooijer, A.~Beedie, J.~van Zundert, G.~Hulselmans, C.~Grinstead
   et~al., \emph{pola-rs/polars: Python polars 0.16.14},  Mar., 2023.
 \newblock 10.5281/zenodo.7744139.
 
+\bibitem{fys5555}
+S.~Frette, \emph{{Deployment of unsupervised learning in a search for new
+  physics with ATLAS Open Data}}, .
+
+\bibitem{omalley2019kerastuner}
+T.~O'Malley, E.~Bursztein, J.~Long, F.~Chollet, H.~Jin, L.~Invernizzi et~al.,
+  ``Kerastuner.'' \url{https://github.com/keras-team/keras-tuner}, 2019.
+
 \bibitem{kl_mse_balance}
 A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
   kullback-leibler divergence in variational autoencoders},  2020.
@@ -197,12 +205,6 @@ A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
 
 \bibitem{LHC_int_lum}
 {LHC}, \emph{Lhc nominal luminosity projection},  2013.
-
-\bibitem{cupy_learningsys2017}
-R.~Okuta, Y.~Unno, D.~Nishino, S.~Hido and C.~Loomis, \emph{Cupy: A
-  numpy-compatible library for nvidia gpu calculations},  in \emph{Proceedings
-  of Workshop on Machine Learning Systems (LearningSys) in The Thirty-first
-  Annual Conference on Neural Information Processing Systems (NIPS)}, 2017.
 
 \bibitem{ATL-OREACH-PUB-2020-001}
 {\scshape ATLAS Collaboration} collaboration, \emph{{Review of the 13 TeV ATLAS

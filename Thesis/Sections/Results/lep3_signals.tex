@@ -156,7 +156,8 @@ subplots containing the total reconstruction error distributions, the $e_T^{miss
 the $m_{lll}$ signal region and the significance as function of $e_T^{miss}$ curve respectively 
 for the shallow and deep regular autoencoder. From figures \ref{fig:AE_3lep_big_450}, 
 \ref{fig:AE_3lep_small_450}, \ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800} it is clear 
-here that the autoencoder manages to somewhat separate the signals from the background. The 
+here that the autoencoder manages to somewhat separate the peaks of the signal and background 
+distributions. Still, the distributions themselves are not separated. The 
 SUSY $800p50$ signals has the best separation of peaks, which is expected considering its 
 rather extreme tail in the $e_T^{miss}$ distribution of the signal. It is also interesting to 
 observe the slope trend in the SM MC reconstruciton error distribution. The steepness of the 
@@ -176,12 +177,7 @@ for the SM MC and the SUSY signals. They represent the signal region with the mo
 in other words, the least strict and thus the signal region with the most amount of total events, 
 both SM MC and signal. This is to illustrate the difficulty of this method since we only have the 
 reconstruction error to go on. Thus, too strict a cut will most likely eliminate all possible 
-signal events in the signal region, whereas too loose a cut and the SM MC background will dominate completely. As the final 
-state signal has 3 leptons, it was thought that there might be a resonance\footnote{A resonance 
-in this context means a peak that is significantly different from the distribution it is found 
-in, for example the Z mass resonance around 91 GeV shown in a dilepton mass histogram. } in 
-the trilepton $(m_{lll})$ distributions in the signal region. Thus, the figure below diplays 
-the $m_{lll}$ distributions for both the shallow and deep regular autoencoder for both SUSY signals. \par
+signal events in the signal region, whereas too loose a cut and the SM MC background will dominate completely.
 In figures \ref{fig:AE_3lep_big_mlll_450}, \ref{fig:AE_3lep_small_mlll_450}, \ref{fig:AE_3lep_big_mlll_800} and  
 \ref{fig:AE_3lep_small_mlll_800} we have the  $m_{lll}$ distributions in the signal 
 regions from both the shallow and deep regular 
@@ -191,7 +187,7 @@ are shown here, with the rest shown in the appendix. From these figures it is no
 in the distributions. There is also little separation between signal and background distributions in 
 the $m_{lll}$ feature, allthough there is some for the SUSY $800p50$ model. It is also 
 shown that the difference between the shallow and deep neural network architecture has little to no effect 
-here or in the $e_T^{miss}$ distributions. \marginpar{Rar setning}  \par 
+here or in the $e_T^{miss}$ distributions in terms of separation.  \par 
 In figures \ref{fig:AE_3lep_big_signi_450}, \ref{fig:AE_3lep_small_signi_450}, \ref{fig:AE_3lep_big_signi_800} and  
 \ref{fig:AE_3lep_small_signi_800} we have the significance as a function of the $e_T^{miss}$. It displays that 
 a further cut on the $e_T^{miss}$ will get an even better significance, the best case provided from the SUSY $450p300$

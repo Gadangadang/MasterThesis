@@ -4,23 +4,24 @@
 %\medskip
 
 The main goal of this thesis was to benchmark and investigate the performance and usage of
-autoencoders in beyond standard model searches. The analysis and testing was done using 
+autoencoders in BSM searches. The analysis and testing were done using 
 n-tuples from ATLAS that was converted to python dataframe structures. We argued for using 
 the Rapidity-Mass matrix as features in our input data, with 6 bjets and 6 ljets, and 6 
 of each lepton. The original goal was to test and understand the performance in the case
-where we have a 3 lepton + $e_T^{miss}$ final state. In testing it was shown that the 
+where we have a 3 lepton + $e_T^{miss}$ final state. In testing, it was shown that the 
 performance was not too impressive, thus the choice was made to use the 2 lepton + $e_T^{miss}$ dataset which 
 contains much more data. Due to the large size of the total dataset, we proposed a solution
-where the natural distribution in the total set was conserved in smaller batches, called 
+where the overall distribution in the total set was conserved in smaller batches, called 
 megasets. Several tests were deviced to benchmark the autoencoders, 
 making anomalous events by altering the $p_T$ of standard model events and testing on two 
 supersymmetric signal models. We showed that the autoencoders performance increased with 
 larger training samples, but argue for more testing as these methods are not well 
-understood yet. The performance was measured in three categories, how well it reconstructs 
-the test dataset, how much background and signal is left in the signal region, and 
-the significance it achieves when performing cuts in the signal region. It was showed that
+understood yet. The performance was measured in three categories: how well it reconstructs 
+the test dataset; how much background and signal is left in the signal region; and 
+the significance it achieves when performing cuts in the signal region. It was shown that
 for the first category, the regular autoencoder is much better than the variational autoencoder, 
-creating a slopelike shape. In the second category the regular autoencoder is much better at 
+creating a reconstruction error distribution with slope like shape pushed to the lower end. 
+In the second category the regular autoencoder is much better at 
 reducing the background, but not that much better at increasing the amount of signal. In the 
 third category the regular autoencoder performs better than the variational autoencoder. 
 It was also shown that with an increase in training data, the first category was improved 
