@@ -25,9 +25,14 @@ In the second category the regular autoencoder is much better at
 reducing the background, but not that much better at increasing the amount of signal. In the 
 third category the regular autoencoder performs better than the variational autoencoder. 
 It was also shown that with an increase in training data, the first category was improved 
-for both the regular autoencoder and the variational autoencoder. \par 
+for both the regular autoencoder and the variational autoencoder. The final test of the autoencoder 
+was a blind test with ATLAS data and BSM signals. It showed that the autoencoder, when trained on 
+the 2 lepton + $e_T^{miss}$ dataset, managed to separate out some signals from the ATLAS data. 
+This indicates that there might be a usecase for it in more rigorous analyses at ATLAS, and 
+should be better understood. \par 
 We also argue for future work and challenges with the method. Amongst other 
 issues where computational bottlenecks related to writing and loading of data from training 
 and inference. It is recommended to further investigate the RMM, as well as alter 
 the training process by physics informed or machine learning informed choices, such as a 
-weighted MSE. 
+weighted MSE. The autoencoder might perform even better with better feature engineering, and 
+this should be of focus for futher research as well. 
