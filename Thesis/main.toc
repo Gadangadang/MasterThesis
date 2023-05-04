@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {1.4}Other tools and algorithms}{10}{section.1.4}%
 \contentsline {chapter}{\numberline {2}The Standard Model and Beyond Standard Model physics}{13}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Structure and composition of the Standard Model}{14}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Beyond Standard Model physics}{16}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Beyond Standard Model (BSM) physics}{16}{section.2.2}%
 \contentsline {chapter}{\numberline {3}Implementation}{19}{chapter.3}%
 \contentsline {section}{\numberline {3.1}The ATLAS detector}{19}{section.3.1}%
 \contentsline {section}{\numberline {3.2}ROOT}{23}{section.3.2}%
@@ -23,16 +23,17 @@
 \contentsline {section}{\numberline {4.1}Non signal testing of the regular and variational autoencoder}{41}{section.4.1}%
 \contentsline {section}{\numberline {4.2}3 lepton training for bump search testing}{45}{section.4.2}%
 \contentsline {section}{\numberline {4.3}2 lepton training for bump search testing}{53}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Final remarks on the results}{63}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Challenges with the search method and tools}{64}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Future work}{65}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Conclusion}{69}{chapter.5}%
-\contentsline {chapter}{Conclusion}{69}{chapter.5}%
-\contentsline {chapter}{Appendices}{71}{section*.117}%
-\contentsline {chapter}{Appendix A}{73}{appendix*.118}%
-\contentsline {section}{\numberline {A.1}Channel removal testing}{73}{section.Alph0.1}%
-\contentsline {section}{\numberline {A.2}Transverse momentum altering}{79}{section.Alph0.2}%
-\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{83}{section.Alph0.3}%
-\contentsline {section}{\numberline {A.4}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{93}{section.Alph0.4}%
-\contentsline {chapter}{Appendix B}{105}{appendix*.173}%
-\contentsline {section}{\numberline {B.1}Algorithmic implementation}{105}{section.Alph0.1}%
+\contentsline {section}{\numberline {4.4}Blind ATLAS data sample testing}{63}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Final remarks on the results}{65}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Challenges with the search method and tools}{66}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Future work}{67}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Conclusion}{71}{chapter.5}%
+\contentsline {chapter}{Conclusion}{71}{chapter.5}%
+\contentsline {chapter}{Appendices}{73}{section*.119}%
+\contentsline {chapter}{Appendix A}{75}{appendix*.120}%
+\contentsline {section}{\numberline {A.1}Channel removal testing}{75}{section.Alph0.1}%
+\contentsline {section}{\numberline {A.2}Transverse momentum altering}{81}{section.Alph0.2}%
+\contentsline {section}{\numberline {A.3}Reconstruction error cuts for 3 leptons + $e_T^{miss}$}{85}{section.Alph0.3}%
+\contentsline {section}{\numberline {A.4}Reconstruction error cuts for 2 leptons + $e_T^{miss}$}{95}{section.Alph0.4}%
+\contentsline {chapter}{Appendix B}{107}{appendix*.175}%
+\contentsline {section}{\numberline {B.1}Algorithmic implementation}{107}{section.Alph0.1}%

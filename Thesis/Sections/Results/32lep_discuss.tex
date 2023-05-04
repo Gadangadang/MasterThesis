@@ -1,14 +1,15 @@
 \section{Final remarks on the results}
-In sections \ref{sec:nonsig}, \ref{sec:3lep} and \ref{sec:2lep} the performance 
+In sections \ref{sec:nonsig}, \ref{sec:3lep}, \ref{sec:2lep} and \ref{sec:blind_test} the performance 
 of the regular and variational autoencoder with respect to usage in BSM 
 searches has been shown through various tests. The final remarks can be summed 
-up in four points:
+up in five points:
 \begin{itemize}
     
     \item Shape of SM MC reconstruction error distribution 
     \item Dataset altering testing
     \item Megaset changes 
     \item Network architecture
+    \item Blind tests
 
 \end{itemize}
 First, it appears that the shape of the reconstruction error is more sensitive 
@@ -52,4 +53,13 @@ with three layers on each side of the latent space. The choice of layers and nod
 was somewhat arbitrary, and after inference it was also clear that really only the latent space
 was sensitive to change with respect to performance in reconstruction error. This is though 
 more related to the size of the input layer and the complexity of the data, more than 
-the number of events in the training and test set. 
+the number of events in the training and test set. \par 
+The fifth point is in regard to the blind test done with the 2 lepton + $e_T^{miss}$ trained 
+deep autoencoder. This test was done in order to see if the autoencoder could pick up on
+signals mixed with SM events in ATLAS data. 
+% In a PhD thesis or a larger research project
+% futher testing would be done to ensure that the ATLAS data did infact only contain SM events
+From the results in section \ref{sec:blind_Test} it appears that the autoencoder is able
+to some extent separate out BSM signals. This indicates that there might be use for this 
+search method and therefor more to learn about the autoncoders. Further in-depth research into 
+the method should be done to figure out its usefulness in high energy physics research. 
