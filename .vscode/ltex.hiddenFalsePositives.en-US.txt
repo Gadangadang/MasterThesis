@@ -1,2 +1,3 @@
 {"rule":"PRP_THE","sentence":"^\\Q8192 is \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q, and it a rather large batchsize.\\E$"}
 {"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIn the case of this thesis, each channel was divided into 10 equal parts, and stored in their respective folder.\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIn figure \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q the peak of the distribution is somewhat centered in the middle of the reconstruction error range forming a bell-like shape.\\E$"}

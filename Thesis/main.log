@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  3 MAY 2023 21:37
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.8.24)  4 MAY 2023 11:43
  restricted system commands enabled.
  file:line:error style messages enabled.
 **/Users/Sakarias/MasterThesis/Thesis/main.tex
@@ -2133,413 +2133,411 @@ Package luatex.def Info: Figures/VAE_testing/small/3lep/significance_etmiss_800p
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 22.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
 <Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf, id=4134, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf  used on input line 28.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
 <Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf, id=4135, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf  used on input line 34.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [53]
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 51.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf, id=4140, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf, id=4147, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf  used on input line 57.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf, id=4141, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf, id=4148, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf  used on input line 63.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [53<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf>]
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=4312, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [54<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.44.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.4360553938127363.pdf>]
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=4320, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 81.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf, id=4313, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf, id=4321, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf  used on input line 87.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf, id=4314, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf, id=4322, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf  used on input line 94.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [54<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf>]
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=4439, 867.24pt x 650.43pt>
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [55<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.72.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.7167506533614734.pdf>]
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=4450, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
-Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 113.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf, id=4440, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 112.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf, id=4451, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf>
-Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf  used on input line 119.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf, id=4441, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf  used on input line 118.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf, id=4452, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf>
-Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf  used on input line 125.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [55<./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf>] [56<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf>]
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf, id=4810, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf  used on input line 124.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [56<./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.48.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.4833711230716062.pdf>] [57<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.61.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.6117055611472277.pdf>]
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf, id=4819, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 196.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf, id=4811, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 184.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf, id=4820, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf>
-Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf  used on input line 202.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf, id=4812, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf  used on input line 190.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf, id=4821, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf>
-Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf  used on input line 208.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
+Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf  used on input line 196.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [58]
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 221.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf, id=4813, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 216.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf, id=4833, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf  used on input line 227.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf, id=4814, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf  used on input line 222.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf, id=4834, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf  used on input line 233.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [57<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf>]
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=4984, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf  used on input line 228.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [59<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.81.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.8121874101107931.pdf>]
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=5009, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
-Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 247.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf, id=4985, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 250.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf, id=5010, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf>
-Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf  used on input line 253.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf, id=4986, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf  used on input line 256.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf, id=5011, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf>
-Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf  used on input line 260.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [58<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf>]
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=5105, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf  used on input line 263.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [60<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8484803499636524.pdf>]
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf, id=5144, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 273.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf, id=5106, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 287.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf, id=5145, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf  used on input line 279.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf, id=5107, 867.24pt x 650.43pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf  used on input line 293.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf, id=5146, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>
-Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf  used on input line 285.
-(luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [59<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf>]
-
-LaTeX Warning: Reference `sec:reparameterization' on page 60 undefined on input line 313.
-
-[60<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>]) (./Sections/Results/32lep_discuss.tex) (./Sections/Results/challenges_future.tex [61]
-<Figures/atlas/LHC-nominal-lumi-projection.png, id=5483, 1051.7694pt x 710.655pt>
+Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf  used on input line 299.
+(luatex.def)             Requested size: 233.71138pt x 175.281pt.
+ [61<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.72.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.7232197345309495.pdf>] [62<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf><./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.85.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.8542149600758421.pdf>]) (./Sections/Results/32lep_discuss.tex [63]) (./Sections/Results/challenges_future.tex [64]
+<Figures/atlas/LHC-nominal-lumi-projection.png, id=5533, 1051.7694pt x 710.655pt>
 File: Figures/atlas/LHC-nominal-lumi-projection.png Graphic file (type png)
 <use Figures/atlas/LHC-nominal-lumi-projection.png>
 Package luatex.def Info: Figures/atlas/LHC-nominal-lumi-projection.png  used on input line 68.
 (luatex.def)             Requested size: 327.1945pt x 221.07066pt.
- [62] [63<./Figures/atlas/LHC-nominal-lumi-projection.png>]) (./Sections/Conclusion/Conclusion.tex [64]
+ [65<./Figures/atlas/LHC-nominal-lumi-projection.png>]) [66] (./Sections/Conclusion/Conclusion.tex [67] [68
+
+]
 Chapter 5.
-) [65
+) [69] [70
 
-] [66
-
-] [67
+] [71
 
 
-] [68] (./Sections/Appendix/Appendix2.tex
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=5532, 867.24pt x 650.43pt>
+] [72] (./Sections/Appendix/Appendix2.tex
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=5586, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf  used on input line 9.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=5533, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=5587, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf  used on input line 16.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=5534, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=5588, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf  used on input line 23.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=5535, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=5589, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf  used on input line 30.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=5536, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=5590, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf  used on input line 37.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=5537, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=5591, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf  used on input line 44.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [69
+ [73
 
 ]
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=5542, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=5597, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 59.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=5543, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=5598, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 66.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=5544, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=5599, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 73.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=5545, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=5600, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 80.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=5546, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=5601, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 87.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=5547, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=5602, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 94.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [70<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>]
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=5845, 867.24pt x 650.43pt>
+ [74<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>]
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=5899, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 108.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=5846, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=5900, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 115.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=5847, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=5901, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 122.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=5848, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=5902, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 129.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=5849, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=5903, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 136.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=5850, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=5904, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 143.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [71<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>]
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=6146, 867.24pt x 650.43pt>
+ [75<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>]
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=6201, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf  used on input line 159.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=6147, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf, id=6202, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf  used on input line 166.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=6148, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=6203, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf  used on input line 173.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=6149, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf, id=6204, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf  used on input line 180.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=6150, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=6205, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf  used on input line 187.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=6151, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf, id=6206, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf  used on input line 194.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [72<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>]
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=6446, 867.24pt x 650.43pt>
+ [76<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>]
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=6500, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 209.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=6447, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf, id=6501, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf  used on input line 216.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=6448, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=6502, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 223.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=6449, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf, id=6503, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf  used on input line 230.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=6450, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=6504, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 237.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=6451, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf, id=6505, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf  used on input line 244.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [73<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>]
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=6740, 867.24pt x 650.43pt>
+ [77<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson2l.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson3l.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_diboson4l.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_diboson4l.pdf>]
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=6795, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 258.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=6741, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf, id=6796, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf  used on input line 265.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=6742, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=6797, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 272.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=6743, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf, id=6798, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf  used on input line 279.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=6744, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=6799, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 286.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=6745, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf, id=6800, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf  used on input line 293.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [74<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>]
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7034, 867.24pt x 650.43pt>
+ [78<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Wjets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_topOther.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_triboson.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_triboson.pdf>]
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7089, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf  used on input line 310.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7035, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7090, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf  used on input line 316.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [75<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>]
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7327, 867.24pt x 650.43pt>
+ [79<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zeejets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zmmjets.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_Zttjets.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_Zttjets.pdf>]
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7382, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf  used on input line 330.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7328, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7383, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf  used on input line 336.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7329, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7384, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf  used on input line 350.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7330, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7385, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf  used on input line 356.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [76<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>]
-<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7538, 867.24pt x 650.43pt>
+ [80<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>]
+<Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7593, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf>
 Package luatex.def Info: Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf  used on input line 371.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7539, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7594, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>
 Package luatex.def Info: Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf  used on input line 377.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7540, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7595, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf  used on input line 394.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7541, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf, id=7596, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf  used on input line 400.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [77<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>]
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7750, 867.24pt x 650.43pt>
+ [81<./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/AE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf><./Figures/AE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>]
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7804, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf  used on input line 414.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7751, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf, id=7805, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf  used on input line 420.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7752, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7806, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf  used on input line 434.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7753, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf, id=7807, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf  used on input line 440.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
- [78<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>]
-<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7959, 867.24pt x 650.43pt>
+ [82<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_1.5.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_3.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_3.pdf>]
+<Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=8013, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf  used on input line 455.
 (luatex.def)             Requested size: 210.3388pt x 157.75389pt.
-<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=7960, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf, id=8014, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf  used on input line 461.
@@ -2568,57 +2566,57 @@ File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf 
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 10.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf, id=7961, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf, id=8015, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf  used on input line 16.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf, id=7962, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf, id=8016, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf  used on input line 22.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf, id=7963, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf, id=8017, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf  used on input line 28.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-[79<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>]
+[83<./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_5.pdf><./Figures/VAE_testing/small/b_data_recon_big_rm3_feats_sig_pT_7.pdf><./Figures/VAE_testing/big/b_data_recon_big_rm3_feats_sig_pT_7.pdf>]
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 41.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf, id=8171, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf, id=8226, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf  used on input line 47.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf, id=8172, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf, id=8227, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf  used on input line 53.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf, id=8173, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf, id=8228, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf  used on input line 59.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [80<./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf>]
+ [84<./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.17.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.17.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-1.1736206563802147.pdf>]
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 79.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf, id=8369, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf, id=8423, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf  used on input line 85.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf, id=8370, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf, id=8424, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf  used on input line 91.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf, id=8371, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf, id=8425, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf  used on input line 97.
@@ -2627,37 +2625,37 @@ File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pd
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 110.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf, id=8372, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf, id=8426, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf  used on input line 116.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf, id=8373, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf, id=8427, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf  used on input line 122.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf, id=8374, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf, id=8428, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf  used on input line 128.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [81<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf>]
+ [85<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-1.28.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-1.28.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-1.2800970222462997.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.95.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.95.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.9544944422260757.pdf>]
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 152.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf, id=8752, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf, id=8806, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf  used on input line 158.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf, id=8753, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf, id=8807, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf  used on input line 164.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf, id=8754, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf, id=8808, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf  used on input line 170.
@@ -2666,37 +2664,37 @@ File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pd
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 183.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf, id=8755, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf, id=8809, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf  used on input line 189.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf, id=8756, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf, id=8810, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf  used on input line 195.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf, id=8757, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf, id=8811, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf  used on input line 201.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [82<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf>]
+ [86<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-1.06.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-1.06.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-1.0567039801896674.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.78.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.78.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_450p0p0300_-0.7824137709201433.pdf>]
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 221.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf, id=9137, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf, id=9191, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf  used on input line 227.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf, id=9138, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf, id=9192, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf  used on input line 233.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf, id=9139, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf, id=9193, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf>
 Package luatex.def Info: Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf  used on input line 239.
@@ -2705,77 +2703,77 @@ File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pd
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 252.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf, id=9140, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf, id=9194, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf  used on input line 258.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf, id=9141, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf, id=9195, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf  used on input line 264.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf, id=9142, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf, id=9196, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf>
 Package luatex.def Info: Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf  used on input line 270.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [83<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf>]
+ [87<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.85.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.85.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_450p0p0300_-0.8533980148308666.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.64.pdf><./Figures/AE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.64.pdf><./Figures/AE_testing/big/3lep/significance_etmiss_800p0p050p_-0.6363296281507171.pdf>]
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 286.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf, id=9521, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf, id=9576, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf  used on input line 292.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf, id=9522, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf, id=9577, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf  used on input line 298.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf, id=9523, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf, id=9578, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf  used on input line 304.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [84<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf>]
+ [88<./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.70.pdf><./Figures/AE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.70.pdf><./Figures/AE_testing/small/3lep/significance_etmiss_800p0p050p_-0.7044693201264449.pdf>]
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 317.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf, id=9717, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf, id=9773, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf  used on input line 323.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf, id=9718, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf, id=9774, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf  used on input line 329.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf, id=9719, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf, id=9775, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf  used on input line 335.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [85<./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf>]
+ [89<./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.82.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.82.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.8226861536678497.pdf>]
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 355.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf, id=9912, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf, id=9967, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf  used on input line 361.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf, id=9913, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf, id=9968, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf  used on input line 367.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf, id=9914, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf, id=9969, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf  used on input line 373.
@@ -2784,37 +2782,37 @@ File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.p
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 386.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf, id=9915, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf, id=9970, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf  used on input line 392.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf, id=9916, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf, id=9971, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf  used on input line 398.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf, id=9917, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf, id=9972, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf  used on input line 404.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [86<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf>]
+ [90<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.80.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.80.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.7957779204248656.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.79.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.79.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.7941392653620614.pdf>]
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 428.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf, id=10297, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf, id=10352, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf  used on input line 434.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf, id=10298, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf, id=10353, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf  used on input line 440.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf, id=10299, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf, id=10354, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf  used on input line 446.
@@ -2823,37 +2821,37 @@ File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.p
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300.pdf  used on input line 459.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf, id=10300, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf, id=10355, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf  used on input line 465.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf, id=10301, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf, id=10356, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf  used on input line 471.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf, id=10302, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf, id=10357, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf  used on input line 477.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [87<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf>]
+ [91<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.69.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.69.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.6856921439167579.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.55.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.55.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_450p0p0300_-0.5484574357785665.pdf>]
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 497.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf, id=10679, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf, id=10733, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf  used on input line 503.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf, id=10680, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf, id=10734, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf  used on input line 509.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf, id=10681, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf, id=10735, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf  used on input line 515.
@@ -2862,22 +2860,22 @@ File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.p
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p.pdf  used on input line 528.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf, id=10682, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf, id=10736, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf  used on input line 534.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf, id=10683, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf, id=10737, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf  used on input line 540.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf, id=10684, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf, id=10738, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf  used on input line 546.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [88<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf>]) (./Sections/Appendix/Appendix4.tex
+ [92<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_etmiss_recon_errcut_-0.53.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_450p0p0300_mlll_recon_errcut_-0.53.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_450p0p0300_-0.530518613616577.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.53.pdf><./Figures/VAE_testing/big/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.53.pdf><./Figures/VAE_testing/big/3lep/significance_etmiss_800p0p050p_-0.529426176908041.pdf>]) (./Sections/Appendix/Appendix4.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 1.
@@ -2898,42 +2896,42 @@ File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.p
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 13.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf, id=11061, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf, id=11115, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf  used on input line 19.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf, id=11062, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf, id=11116, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf  used on input line 25.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-[89<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf>]
+[93<./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_etmiss_recon_errcut_-0.46.pdf><./Figures/VAE_testing/small/3lep/b_data_recon_big_rm3_feats_sig_800p0p050p_mlll_recon_errcut_-0.46.pdf><./Figures/VAE_testing/small/3lep/significance_etmiss_800p0p050p_-0.4571280959445052.pdf>]
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 38.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf, id=11253, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf, id=11308, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf  used on input line 44.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf, id=11254, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf, id=11309, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf  used on input line 50.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [90<./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf>]
+ [94<./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.08.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-1.0770415453595523.pdf>]
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 64.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf, id=11376, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf, id=11430, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf  used on input line 70.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf, id=11377, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf, id=11431, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf  used on input line 77.
@@ -2942,27 +2940,27 @@ File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pd
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 90.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf, id=11378, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf, id=11432, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf  used on input line 96.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf, id=11379, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf, id=11433, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf  used on input line 102.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [91<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf>]
+ [95<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-1.29.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-1.287562990021105.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.11.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-1.1125283423037047.pdf>]
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 138.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf, id=11612, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf, id=11667, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf  used on input line 144.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf, id=11613, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf, id=11668, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf  used on input line 150.
@@ -2971,27 +2969,27 @@ File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.p
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 163.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf, id=11614, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf, id=11669, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf  used on input line 169.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf, id=11615, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf, id=11670, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf  used on input line 175.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [92<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf>]
+ [96<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-1.21.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-1.2087791708604207.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.72.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_450p0p0300_-0.7180276969063684.pdf>]
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 189.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf, id=11849, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf, id=11903, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf  used on input line 195.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf, id=11850, 867.24pt x 650.43pt>
+<Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf, id=11904, 867.24pt x 650.43pt>
 File: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf Graphic file (type pdf)
 <use Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf>
 Package luatex.def Info: Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf  used on input line 202.
@@ -3000,57 +2998,57 @@ File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pd
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 215.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf, id=11851, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf, id=11905, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf  used on input line 221.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf, id=11852, 867.24pt x 650.43pt>
+<Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf, id=11906, 867.24pt x 650.43pt>
 File: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf Graphic file (type pdf)
 <use Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf>
 Package luatex.def Info: Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf  used on input line 227.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [93<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf>]
+ [97<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.86.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_450p0p0300_-0.8583753266807368.pdf><./Figures/AE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.74.pdf><./Figures/AE_testing/big/2lep/significance_etmiss_800p0p050_-0.7416855615358031.pdf>]
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 267.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf, id=12086, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf, id=12141, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf  used on input line 273.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf, id=12087, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf, id=12142, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf  used on input line 279.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [94<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf>]
+ [98<./Figures/AE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.81.pdf><./Figures/AE_testing/small/2lep/significance_etmiss_800p0p050_-0.805852780573614.pdf>]
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 292.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf, id=12205, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf, id=12260, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf  used on input line 298.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf, id=12206, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf, id=12261, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf  used on input line 304.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [95<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf>]
+ [99<./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.61.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.6091405575830948.pdf>]
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 318.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf, id=12326, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf, id=12382, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf  used on input line 324.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf, id=12327, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf, id=12383, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf  used on input line 331.
@@ -3059,27 +3057,27 @@ File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.p
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 344.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf, id=12328, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf, id=12384, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf  used on input line 350.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf, id=12329, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf, id=12385, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf  used on input line 356.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [96<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf>]
+ [100<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.64.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.6363602624727392.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.54.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.542414800898212.pdf>]
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 396.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf, id=12563, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf, id=12618, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf  used on input line 402.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf, id=12564, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf, id=12619, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf  used on input line 408.
@@ -3088,27 +3086,27 @@ File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_.pdf  used on input line 421.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf, id=12565, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf, id=12620, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf  used on input line 427.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf, id=12566, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf, id=12621, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf  used on input line 433.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [97<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf>]
+ [101<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.64.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.6406612200568815.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.41.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_450p0p0300_-0.40609370505539655.pdf>]
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 447.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf, id=12800, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf, id=12854, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf  used on input line 453.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf, id=12801, 867.24pt x 650.43pt>
+<Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf, id=12855, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf>
 Package luatex.def Info: Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf  used on input line 460.
@@ -3117,49 +3115,45 @@ File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.p
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_.pdf  used on input line 473.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf, id=12802, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf, id=12856, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf  used on input line 479.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
-<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf, id=12803, 867.24pt x 650.43pt>
+<Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf, id=12857, 867.24pt x 650.43pt>
 File: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf Graphic file (type pdf)
 <use Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf>
 Package luatex.def Info: Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf  used on input line 485.
 (luatex.def)             Requested size: 186.96625pt x 140.21686pt.
- [98<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf>]) [99<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf>] [100
+ [102<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_450p0p0300_recon_errcut_-0.42.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_450p0p0300_-0.4242401749818261.pdf><./Figures/VAE_testing/big/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.36.pdf><./Figures/VAE_testing/big/2lep/significance_etmiss_800p0p050_-0.3616098672654746.pdf>]) [103<./Figures/VAE_testing/small/2lep/b_data_recon_big_rm3_feats_sig_800p0p050_recon_errcut_-0.43.pdf><./Figures/VAE_testing/small/2lep/significance_etmiss_800p0p050_-0.4271074800379211.pdf>] [104
 
 ] (./Sections/Appendix/Appendix1.tex
 warning  (pdf backend): ignoring duplicate destination with the name 'section.Alph0.1'
-) [101] [102] (./main.bbl [103
+) [105] [106] (./main.bbl [107
 
 
 ])
 \tf@thm=\write7
 
 \openout7 = main.thm
- [104
+ [108
 
-] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
-)
+] (./main.aux))
 
 Here is how much of LuaTeX's memory you used:
- 61846 strings out of 477785
+ 61849 strings out of 477785
  1455702,2373549 words of node,token memory allocated
  2917 words of node memory still in use:
    17 hlist, 14 vlist, 2 rule, 6 disc, 6 local_par, 46 glue, 14 kern, 6 penalty, 3 margin_kern, 83 glyph, 265 attribute, 117 glue_spec, 134 attribute_list, 2 write, 10 pdf_action nodes
    avail lists: 1:19,2:36289,3:2893,4:25304,5:22631,6:161,7:38696,8:132,9:66892,10:57,11:3732,12:1
- 77990 multiletter control sequences out of 65536+600000
+ 77989 multiletter control sequences out of 65536+600000
  120 fonts using 9679815 bytes
  98i,15n,111p,1036b,1984s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono9-regular.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmonolt10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmmono8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman7-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmromanslant10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-italic.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmi9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmmib7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmr9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmsy9.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (118 pages, 6746970 bytes).
+Output written on main.pdf (122 pages, 6751130 bytes).
 
-PDF statistics: 13629 PDF objects out of 15390 (max. 8388607)
- 4403 compressed objects within 45 object streams
- 659 named destinations out of 1000 (max. 131072)
+PDF statistics: 13684 PDF objects out of 15390 (max. 8388607)
+ 4435 compressed objects within 45 object streams
+ 663 named destinations out of 1000 (max. 131072)
  296 words of extra memory for PDF output out of 10000 (max. 100000000)
 
