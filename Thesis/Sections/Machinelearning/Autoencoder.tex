@@ -1,4 +1,5 @@
 \section{Autoencoders}\label{sec:autoencder_theory}
+
 Autoencoders are a subset of neural networks. Whereas a general neural network
  in principle can take any shape, autoencoders are more restrictive.
 This restrictiveness can in its most general sense be condensed 
@@ -21,7 +22,9 @@ and comparing the decoder output to the actual image, the autoencoder can tune i
     \label{fig:ae_denoise}
 \end{figure}
 
-Mathematically this is represented as follows\cite{weng2018VAE}. Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
+\subsection{Regular autoncoder}
+Mathematically the regular autoencoder is represented as follows\cite{weng2018VAE}. 
+Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
 \begin{equation*}
     \bf{z} = g_{\phi}(\bf{x}),
 \end{equation*}    
@@ -39,7 +42,7 @@ which leads to reconstruction by copying, not training.}, thus we can use mean s
     L_{AE} (\phi,\theta) = \frac{1}{N}\sum_{i=0}^{N-1} \left(\bf{x}^{i} - f_{\theta}(g_{\phi}(\bf{x}^{i}))\right)^{2}.
 \end{equation}
 
-\section{Variational autoencoders}
+\subsection{Variational autoencoders}
 Another popular method for reconstruction is the so-called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
 one can use the variational bayesian approach for efficient approximate posterior inference, leading to the use of variational autoencoders.
 Here, contrary to regular autoencoders, the latent space is a distribution that can be sampled from. In the context of reconstruction, this means that
@@ -155,3 +158,14 @@ which then produce a latent space distribution from which the decoder can sample
 %     \mathbb{E}_{\mathcal{N}(z; \mu, \sigma^2)}[f(z)] \backsimeq  \frac{1}{L}\sum_{l=1}^L f(\mu + \sigma\epsilon^{(l)}).
 % \end{equation*}
 
+\subsection{Inference}\label{sec:ae_inference}
+As with the cost function for the autoencoder, the inference evaluation is also done by reconstruction. 
+To look for anomalies in the data, the reconstruction error will span a range of values, where the 
+lower end represents events that the autoencoder reconstructed well. The reconstruction error used 
+in the analyses is defined below. 
+\begin{equation}
+    err = log_{10} \left[ \sum_i (x_i - \tilde{x}_i)^2 \right],
+\end{equation}
+
+where $x$ is the input data and $\tilde{x}$ is the output from inference. The background and signal 
+distributions made from th reconstruction error is key to analyse the performance of the autoencoders.
