@@ -29,8 +29,8 @@ effective if used correctly.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
-    \caption[Simple diagram of a neural network]{Simple neural network diagram drawn using Draw.io. Here the blue dots are the input layer, the green dots are a hidden layer, 
-    and the red dots are the output layer. The arrows show the connections between the nodes. }
+    \caption[Simple diagram of a neural network]{Simple neural network diagram drawn using Draw.io. Here the blue dots constitute the input layer, the green dots constitute the hidden layer, 
+    and the red dots constitute the output layer. The arrows show the connections between the nodes. }
     \label{fig:nndiagram}
 \end{figure}
 
@@ -90,7 +90,7 @@ Thus, an alternative approch is to iteratively approximate the ideal parameters 
 Suppose we have a cost function $C(\boldsymbol{\theta})$ for a given problem. We can approximate the minimum of 
 the cost function by calculating the gradient $\nabla_{\theta}C$ with respect to $\boldsymbol{\theta}$. 
 The negative of this gradient indicates the direction for the minimum of $C$ when evaluating 
-it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSSTK}. This is formulized as follows 
+it in a specific point $\boldsymbol{\theta}_i$ in the parameter space \cite{FYSSTK}. This is expressed as follows 
 
 \begin{equation}\label{eq:grad}
     \boldsymbol{\theta}_{i+1} = \boldsymbol{\theta}_i - \eta\nabla_{\theta}C(\boldsymbol{\theta}_i),
@@ -109,15 +109,15 @@ With regard to the learning rate, there are only three situations to consider, s
 
 Figure \ref{fig:lr_choice} visualizes the relation between the learning rate and the cost function. 
 In the left most figure we note that the learning rate is too small. This leads to many iterations 
-before you reach a minimum. In the right most figure we note that the learning rate is too high, 
+before you reach a minimum. In the rightmost figure we note that the learning rate is too high, 
 and the result is that we get divergent behavior. Thus, the goal is to find the optimal learning 
 rate, shown in the middle figure. There are several algorithms that try to do what is shown in 
-the middle figure above, of which is ADAM\cite{ADAM:opti}\par 
+the middle figure above, one of which is ADAM\cite{ADAM:opti}\par 
 A modified and prefered version of gradient descent is the so-called stochastic gradient descent.
 Regular gradient descent can, for large datasets be quite slow, and is prone to getting stuck 
 in a local minimum. To circumvent this issue, mini batches are introduced. For each epoch (training step) 
 the input data is divided into M mini batches of size $m$. For each batch we compute the gradient and update the 
-unknown parameter according to equation \ref{eq:grad}. $\theta_{i+1}$ is then updated M times for each epoch. 
+unknown parameter according to equation \ref{eq:grad}. The parameter $\theta_{i+1}$ is then updated M times for each epoch. 
 This will reduce computation time as well as reduce the risk of getting stuck in local minima. \cite{FYSSTK}.
 
 

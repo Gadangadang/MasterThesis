@@ -1,6 +1,6 @@
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth]{Figures/SM/Standard_Model_of_Elementary_Particles.svg.png}
+    \includegraphics[width=0.7\linewidth]{Figures/SM/Standard_Model_of_Elementary_Particles.svg.png}
     \caption[The Standard Model]{The SM of elementary particles. Source \href{https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Standard_Model_of_Elementary_Particles.svg/1200px-Standard_Model_of_Elementary_Particles.svg.png}{here}. Accessed 07.10.22}
     \label{fig:smdiagram}
 \end{figure}
@@ -18,9 +18,9 @@ to Quantum Field theory" (Peskin and Schroeder, 1995)\cite{Peskin:1995ev}
  \cite{Thomson:2013zua} for a very comprehensive and up-to-date book that is easy to read and 
  understand. \par
 The SM is to physicists what the periodic table is to chemists, and is to this day the most fundamental description of 
-matter as we know it at the subatomic scale. It comprises two parent class particles, fermions which have half integer 
-spin and bosons which have full integer spin. The fermions are comprised of quarks and leptons. The model contains 
-6 leptons, 6 quarks coming in 3 colors each, 4 gauge bosons mediating the electroweak interactions $(\gamma, W^{\pm}, Z^{0})$, 
+matter as we know it at the subatomic scale. It comprises two parent class particles, fermions with half integer 
+spin and bosons with full integer spin. The model contains 
+6 leptons, 6 quarks, coming in 3 colors each, 4 gauge bosons mediating the electroweak interactions $(\gamma, W^{\pm}, Z^{0})$, 
 8 gluons behind the strong interaction and one 
 scalar Higgs explaining particle masses, all of which are shown in figure \ref{fig:smdiagram}.
 
@@ -51,6 +51,7 @@ on for the other charged fermions. It is not known wether or not the neutrinos f
 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
+\renewcommand{\arraystretch}{1.3}
 \begin{table}[H]
     
     \begin{tabular}{|ccccccc|}
@@ -65,13 +66,13 @@ on for the other charged fermions. It is not known wether or not the neutrinos f
     \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{bottom}            & \multicolumn{1}{c|}{b}               & \multicolumn{1}{c|}{$\bar{b}$}             & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{$-1/3$}  & $4180_{-30}^{+40}$                             \\ \hline
     \multicolumn{7}{|c|}{\textbf{Leptons}}                                                                                                                                                                                                                                                                               \\ \hline
     \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{1}}}                & \multicolumn{1}{c|}{electron}          & \multicolumn{1}{c|}{$e^-$}           & \multicolumn{1}{c|}{$\bar{e}^-$}           & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $0.511$                                        \\ \cline{2-7} 
-    \multicolumn{1}{|c|}{}                   & \multicolumn{1}{c|}{electron neutrino} & \multicolumn{1}{c|}{$\nu_{e}$}       & \multicolumn{1}{c|}{$\bar{\nu}_e$}         & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $<0.0000022$                                   \\ \hline
+    \multicolumn{1}{|c|}{}                   & \multicolumn{1}{c|}{electron neutrino} & \multicolumn{1}{c|}{$\nu_{e}$}       & \multicolumn{1}{c|}{$\bar{\nu}_e$}         & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $<9\dot10^{-7}$                                   \\ \hline
     \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{2}}} & \multicolumn{1}{c|}{muon}              & \multicolumn{1}{c|}{$\mu^-$}         & \multicolumn{1}{c|}{$\bar{\mu}^-$}         & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $105.7$                                        \\ \cline{2-7} 
     \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{muon neutrino}     & \multicolumn{1}{c|}{$\nu_{\mu}$}     & \multicolumn{1}{c|}{$\bar{\nu}_{\mu}$}     & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $<0.170$                                       \\ \hline
     \multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{3}}} & \multicolumn{1}{c|}{tau}               & \multicolumn{1}{c|}{$\tau$}          & \multicolumn{1}{c|}{$\bar{\tau}$}          & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{-1}              & $1776.86 \pm 0.12$                             \\ \cline{2-7} 
     \multicolumn{1}{|c|}{}                            & \multicolumn{1}{c|}{tau neutrino}      & \multicolumn{1}{c|}{$\nu_{\tau}$}    & \multicolumn{1}{c|}{$\bar{\tau}_{\tau}$}   & \multicolumn{1}{c|}{$1/2$} & \multicolumn{1}{c|}{0}               & $< 15.5$                                       \\ \hline
     \end{tabular}
-    \caption{Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass. The antiparticle for d and b also have a bar over, but it is on top of the box surrounding the letter. }
+    \caption{Table showing properties of all the fermions, including name, symbol, antiparticle, spin, charge, generation and mass. The masses were found here \cite{Patrignani:2241948} and \cite{Katrin_}.}
     \label{tab:fermion_table}
     \end{table}
 Another mystery regarding the neutrinos is the relation to antiparticles. To each particle corresponds an antiparticle, i.e. for $l^-\to l^+$, $q\to \bar{q}$, where the antiparticle 
@@ -85,8 +86,8 @@ as well as the photon can be a mediator. Note that the neutrinos can only intera
 
 \subsection*{Bosons}
 Bosons are integer number spin particles, with spin $0, 1, 2, ...$. Within bosons there are so-called elementary bosons, some 
-of which are force carriers or mediators such as the $W^{\pm}$, Z and the photon. The Higgs boson is also an elementary scalar 
-boson, but it is not a force carrier. It is the excitation of the Higgs field which is reponsible for providing masses for the 
+of which are force carriers or mediators such as the $W^{\pm}$, Z and the photon. The Higgs boson is the only elementary scalar 
+boson, but it is not a force carrier. It is the excitation of the Higgs field which is reponsible for providing masses to the 
 fermions via a process called spontaneous symmetry breaking\cite{Pich:819632}. Other bosons are so-called composite bosons, mesons 
 ($q\bar{q}$) and baryons ($qqq$) which are particles constructed by even or half integer spin. Bosons also have antiparticles, 
 where $(\gamma, g, H^{0}, Z^{0})$ are equal to their respective antiparticle, and the $W^{-} \to W^{+}$ are not equal.
@@ -125,20 +126,20 @@ and each component can be linked to a part in the Lagrangian for the system.
     };
     \end{feynman}
     \end{tikzpicture}
-    \caption[Electron scattering diagram]{Feynman diagram of muon pair production from electron scattering. Here, both Z and $\gamma$ can work as the propagator.}
+    \caption[Electron scattering diagram]{Feynman diagram of muon pair production from electron annihilation. Here, both Z and $\gamma$ can work as the propagator.}
     \label{fig:eemm_scat}
 \end{figure}
 
 In figure \ref{fig:eemm_scat} we have a Feynman diagram describing electron-positron annihilation into muon-antimuon pairs. In this thesis, all 
-diagrams will be interpreted from left to right, i.e. \hl{figure} \ref{fig:eemm_scat}.
+diagrams will be interpreted from left to right, i.e. figure \ref{fig:eemm_scat}.
 The diagram contains all the components in the Lagrangian, and arrows, curly lines and so on all have its own meaning. A straight line with 
 an arrow usually means a fermion, where the direction of the arrow tells if the particle is a particle(arrow towards the vertex) or an antiparticle (arrow away from the vertex). 
 There is often also a propagator between the left and right side of the Feynman diagram, 
-and they depend on the processes we want to study. In the diagram above we have lepton scattering, thus we can both have the photon and the 
+and they depend on the processes we want to study. In the diagram above we have lepton annihilation, thus we can both have the photon and the 
 Z-boson as a propagator. This process is called a neutral current\cite{Pich:819632}, as the total charge coming out of the interaction is 0. 
-As with neutral currents, we also have so-called charged currents, where the sum of charge is not 0. Note that we only require charge conservation,
+There are also so-called charged currents, where the sum of charge is not 0. Note that we only require charge conservation,
 thus there is nothing wrong with either having a neutral or a charged current, as long as charge conservation is preserved. \par 
-Feynman diagrams are used for both visualizing scatterings and decays. An example is provided in figure \ref{fig:mw_decay}. 
+Feynman diagrams are used for both visualizing scatterings, annihilations and decays. An example is provided in figure \ref{fig:mw_decay}. 
 
 \begin{figure}[H]
     \centering
@@ -173,7 +174,7 @@ Feynman diagrams are used for both visualizing scatterings and decays. An exampl
     \label{fig:mw_decay}
 \end{figure}
 
-In figure \ref{fig:mw_decay} we have a decay of a muon into and electron and two neutrinos through a charged current. 
+In figure \ref{fig:mw_decay} we have a decay of a muon into an electron and two neutrinos through a charged current. 
 \marginpar{Lang setning} The examples above in figure \ref{fig:eemm_scat} and \ref{fig:mw_decay} show interactions with 
 the electroweak force, but along with the electroweak interactions, are also the quantum chromodynamics (QCD), 
 responsible for interactions between quarks and gluons. A strange property of QCD,
@@ -182,7 +183,7 @@ gets stronger as the energy decreases. This is because QCD (and weak interaction
 groups\cite{Peskin:1995ev}, thus to study such interactions, one needs to create collisions at very high energies. 
 
 \subsubsection*{Proton-proton collisions}
-Proton-proton collisions require high energy to occur. During an interaction between the protons both the quarks and gluons
+During an interaction between the protons in proton-proton collisions both the quarks and gluons
 can interact as shown below:
 
 \begin{figure}[H]
@@ -279,8 +280,8 @@ can interact as shown below:
     \end{figure}
 
 In figure \ref{fig:qqbar_ll} and figure \ref{fig:ttbar_feynman_example} we have two examples of Feynman
-diagrams for possible interactions in proton-proton collisions. The first figure displays a lepton pair production
-via the Z boson or photon from quark-antiquark annihilation, and the second figure displays the $t\bar{t}$ production
+diagrams of possible interactions in proton-proton collisions. Figure \ref{fig:qqbar_ll} displays a lepton pair production
+via the Z boson or photon from quark-antiquark annihilation, and figure \ref{fig:ttbar_feynman_example} displays the $t\bar{t}$ production
 via gluon-gluon fusion. \par
 
 \subsection*{Some limitations}
@@ -299,7 +300,7 @@ in weak currents, where the mediator of the charged currents $W^{\pm}$, only int
 left-handed fermions and right-handed antifermions. In the SM, neutrinos are assumed to be massless, and the righthanded 
 neutrinos are sterile, i.e. they do not interact in the SM. \par 
 This asymmetry is strange, and hints towards new physics that perhaps can restore the parity breaking at much higher energies. 
-Another note to make is that it has been experimentally verified that the neutrinos are massive\cite{Katrin_neutrinos},
+Another note to make is that it has been experimentally verified through observation of neutrino oscillations that the neutrinos are massive\cite{Katrin_neutrinos},
 with an upper limit on the mass for the anti electron neutrino of $m_{\nu} < 0.8eVc^2$ at $90\%$ confidence level.
 This is direct experimental evidence that the SM is wrong, as the tiny masses of the neutrinos are not predicted by the SM. 
 

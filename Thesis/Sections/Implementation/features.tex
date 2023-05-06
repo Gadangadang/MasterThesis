@@ -47,9 +47,9 @@ is the transverse energy imbalance. It is defined as
 The first column in the RMM matrix, except the first element, is related to the longitudal property of the given particle. 
 It is defined as
 \begin{equation*}
-    h_L(i_n) = C(\cosh{(y)} - 1),
+    h_L(i_n) = C(\cosh{(y)} - 1).
 \end{equation*}
-\marginpar{Lang setning} where C is a constant to ensure that the average $h_L(i_n)$ values do not deviate too much from the ranges of the invariant masses 
+C is a constant to ensure that the average $h_L(i_n)$ values do not deviate too much from the ranges of the invariant masses 
 of the transverse masses, found to be $0.15$, as it ensures that rapidity ranges in the range $[-2.5, 2.5]$ produces $h_L(i_n)$ values in the 
 $[0,1]$ interval\cite{Chekanov_2019}. y is the rapidity of the particle, and $i_n$ is the particle number. 
 On the lower triangle we have the longitudal properties of the combinations of particles. Similar to $h_L(i_n)$, this property is defined as 
@@ -72,7 +72,7 @@ are well modelled by the SM MC training samples we use. As described by R. Stuar
 in, garbage out" is of key importance in computer science, and is indeed important in high energy physics. To ensure that the models 
 we train actually learn physical processes, the training set must closely rememble the data. The SM MC simulations are indeed very good, 
 but they are numerical approximations and can 
-sometimes \hl{be off}. Thus, every feature that will be used for training must be checked before being used. This is done by 
+sometimes be off. Thus, every feature that will be used for training must be checked before being used. This is done by 
 comparing the distributions of the features in the SM MC and ATLAS data. Monte Carlo simulations are based on the actual theory 
 itself, and comparisons with data taken from ATLAS and other detectors alike are neccesary to ensure that the SM background 
 events look like data. This is done by creating control regions were there with high confidense is no signatures of New Physics. 
@@ -142,7 +142,7 @@ It did not seem to work, and we proceded with the dataset. All features were che
 
 
 \subsubsection*{Triggers }\label{sec:triggers}
-\marginpar{What are triggers}
+
 The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ dataset are written below:
 
 

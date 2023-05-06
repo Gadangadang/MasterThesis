@@ -4,6 +4,23 @@
 L.~Weng, \emph{From autoencoder to beta-vae}, {\emph{lilianweng.github.io}
   (2018) }.
 
+\bibitem{Patrignani:2241948}
+{\scshape ParticleDataGroup} collaboration, C.~Patrignani, K.~Agashe,
+  G.~Aielli, C.~Amsler, M.~Antonelli, D.~M. Asner et~al., \emph{{Review of
+  Particle Physics, 2016-2017}},
+  \href{http://dx.doi.org/10.1088/1674-1137/40/10/100001}{\emph{Chin. Phys. C}
+  {\bf 40} (2016) 100001}.
+
+\bibitem{Katrin_}
+M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
+  \emph{Direct neutrino-mass measurement with sub-electronvolt sensitivity},
+  \href{http://dx.doi.org/10.1038/s41567-021-01463-1}{\emph{Nature Physics}
+  {\bf 18} (Feb, 2022) 160–166}.
+
+\bibitem{heisenberg}
+W.~Heisenberg, \emph{Across the Frontiers}.
+\newblock 1974.
+
 \bibitem{tensorflow-whitepaper}
 M.~Abadi, A.~Agarwal, P.~Barham, E.~Brevdo, Z.~Chen, C.~Citro et~al.,
   \emph{{TensorFlow}: Large-scale machine learning on heterogeneous systems},
@@ -86,12 +103,6 @@ M.~Aker, A.~Beglarian, J.~Behrens, A.~Berlev, U.~Besserer, B.~Bieringer et~al.,
 \bibitem{Gramstad:1631043}
 E.~Gramstad, \emph{{Searches for Supersymmetry in Di-Lepton Final States with
   the ATLAS Detector at √s = 7 TeV}},  2013.
-
-\bibitem{Airapetian:391176}
-{\scshape ATLAS} collaboration, A.~Airapetian, V.~Grabsky, H.~Hakopian,
-  A.~Vartapetian, B.~Dick, F.~Fares et~al., \emph{{ATLAS detector and physics
-  performance: Technical Design Report, 1}}.
-\newblock Technical design report. ATLAS. CERN, Geneva, 1999.
 
 \bibitem{green_highpt}
 D.~Green, \emph{High $p_T$ Physics at Hadron Colliders}.

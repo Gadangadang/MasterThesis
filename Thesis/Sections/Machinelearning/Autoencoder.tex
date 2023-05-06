@@ -22,7 +22,7 @@ and comparing the decoder output to the actual image, the autoencoder can tune i
     \label{fig:ae_denoise}
 \end{figure}
 
-\subsection{Regular autoncoder}
+\subsection{Regular autoencoder}
 Mathematically the regular autoencoder is represented as follows\cite{weng2018VAE}. 
 Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
 \begin{equation*}
@@ -48,7 +48,8 @@ one can use the variational bayesian approach for efficient approximate posterio
 Here, contrary to regular autoencoders, the latent space is a distribution that can be sampled from. In the context of reconstruction, this means that
 we want to create a latent space distribution based on the true distribution in the data, and use this latent space distribution to then generate
 data given that latent space. \par
-The variational autoencoder contains two neural networks. The generative model $p_{\theta}(x|z)$ is the decoder of the network.
+The variational autoencoder contains two neural networks. The generative model $p_{\theta}(x|z)$ is the decoder of the network and 
+$q_{\phi}(z|x)$ is the encoder. 
 %  $q_{\phi}(z|x)$ is the probabilistic encoder, which is used to approximate the posterior $p_{\theta}(z|x)$. We now let the prior over 
 % the latent space be a multivariate Gaussian, lacking parameters: $p_{\theta}(z) = \mathcal{N}(z;0,I)$. We also have that $p_{\theta}(x|z)$ is a multivariate Gaussian,
 % with a distribution generated from z, whilst $p_{\theta}(z|x)$ is in fact intractable. If we now assume that the true (intractable) posterior 
@@ -59,7 +60,7 @@ The variational autoencoder contains two neural networks. The generative model $
 % where the mean and standard deviation are given by the neural network. Now, we sample from the approximate posterior $z^{(i,l)} \thicksim q_{\theta}(z|x^{(i)})$
 % where $z^{(i,l)} = g_{\phi}(x^{(i)}, \epsilon^{(l)}) = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$, $\epsilon^{(l)} \thicksim \mathcal(N)(0,I)$ and $\odot$
 % is the elementwise product. 
-If both the prior $p_{\theta}(z)$ and $q_{\theta}(z|x)$ are Gaussian, the KL divergence\footnote{The KL divengence is a measure of how one probability distribution is different from a second reference propability distribution, and is related to the cost function via the marginal likelihood $log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)})$} can be computed analytically, and it 
+Under certain conditions\cite{VAE} the KL divergence\footnote{The KL divengence is a measure of how one probability distribution is different from a second reference propability distribution, and is related to the cost function via the marginal likelihood $log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)})$} can be computed analytically, and it 
 can then be showed\cite{VAE} that the variational approximate posterior is:
 
 \begin{equation}\label{eq:loss_vae}
@@ -168,4 +169,4 @@ in the analyses is defined below.
 \end{equation}
 
 where $x$ is the input data and $\tilde{x}$ is the output from inference. The background and signal 
-distributions made from th reconstruction error is key to analyse the performance of the autoencoders.
+distributions made from the reconstruction error is key to analyse the performance of the autoencoders.

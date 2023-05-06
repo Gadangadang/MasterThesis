@@ -1,37 +1,29 @@
 \section{ROOT}
 ROOT is an open-source data analysis framework used by high energy physics. It can do fast data manipulation, save and access data, 
 create graphics for publication, and even combine with high level languanges such as R and Python.
-\subsection*{N tuples}
 
-The data storage object in ROOT is called a TTree
-
-
-N tuple structure. This data structure contains all properties for each type of particle in a given event, yielding
-a ragged structure. 
-
-\begin{table}[H]
-    \begin{tabular}{|l|l|l|l|l|l|l|}
-    \cline{1-5} \cline{7-7}
-        & $jetP_T$      & $jetPhi$     & $lepP_T$             & $lepPhi$             &  & Rowlength \\ \cline{1-5} \cline{7-7} 
-    $0$ & $[120.2, 57]$ & $[1.2, 0.5]$ & $[223.3, 57.5, 9.7]$ & $[0.545, 0.2, -0.3]$ &  & 10        \\ \cline{1-5} \cline{7-7} 
-    $1$ & $[, ]$          & $[, ]$         & $[121.343, 89.323]$  & $[0.886, -0.855]$    &  & 4         \\ \cline{1-5} \cline{7-7} 
-    $2$ & $[86.112]$    & $[86.112]$   & $[57.75, 34.5]$      & $[0.33, 0.255]$      &  & 6         \\ \cline{1-5} \cline{7-7} 
-    \end{tabular}
-\end{table}
 
 \subsection*{RDataFrame}
-RDataFrame's main purpose is to make reading and handling of ROOT files easier, especially in relation to modern machine learning tools and their 
-respective frameworks and environments. This is done by creating a dataframe type of structure of the ROOT n-tuples, and then 
-lazily\footnote{In this context lazily means that the functions and or cuts are done first after all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT guidelines} for more.} 
-apply contraints to the data. Using PyROOT\footnote{\href{https://root.cern/manual/python/}{PyROOT website}}, RDataFrame can be accessed in Python, as the functionality is wrapped around a C++ class. Below is a code example of how
-to create a RDataFrame object, apply a cut and then create a column for later use. Here, good leptons are defined first, denoted as "ele\_SG" and "muo\_SG". 
-A cut is then applied where we require that the number of good leptons is always 3. Finally, a column is created where the combination of type of leptons 
-in the 3 lepton system is stored, as well as creating a histogram containing the results for that given channel
-\footnote{A channel here refers to a certain decay channel. The standard model has several channels, and some look more alike than others. One example is 
-the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. The pertains to simulated events only, as we cannot control what decay channels we get in the data recorded at ATLAS} 
-k. Notice here that if the variable already exist as a column in the dataframe, arithmetic and logic can be applied directly using those 
-columns to create new one. More complicated variables, such as the flavor combination for the leptons, or the invariant mass of two particles must be 
-found or calculated using C++ functions. An example of such a C++ function is shown below the python code example. 
+RDataFrame's main purpose is to make reading and handling of ROOT files easier, especially in 
+relation to modern machine learning tools and their respective frameworks and environments. 
+This is done by creating a dataframe type of structure of the ROOT n-tuples, and then 
+lazily\footnote{In this context lazily means that the functions and or cuts are done first after 
+all have been registered, see \href{https://root.cern/doc/master/classROOT_1_1RDataFrame.html}{ROOT 
+guidelines} for more.} apply contraints to the data. Using PyROOT
+\footnote{\href{https://root.cern/manual/python/}{PyROOT website}}, RDataFrame can be accessed in 
+Python, as the functionality is wrapped around a C++ class. Below is a code example of how
+to create a RDataFrame object, apply a cut and then create a column for later use. Here, good 
+leptons are defined first, denoted as "ele\_SG" and "muo\_SG". A cut is then applied where we 
+require that the number of good leptons is always 3. Finally, a column is created where the 
+combination of type of leptons in the 3 lepton system is stored, as well as creating a histogram 
+containing the results for that given channel\footnote{A channel here refers to a certain decay 
+channel. The simulations of the SM is divided into several channels, and some look more alike than others. One example is 
+the Higgs decay channel, with possible decays such as two photons, W bosons or Z bosons. This pertains 
+to simulated events only, as we cannot control what decay channels we get in the data recorded at ATLAS} 
+k. Notice here that if the variable already exists as a column in the dataframe, arithmetic and logic 
+can be applied directly using those columns to create new one. More complicated variables, such as 
+the flavor combination for the leptons, or the invariant mass of two particles must be found or 
+calculated using C++ functions. An example of such a C++ function is shown below the python code example. 
 
 \begin{figure}[H]
     \centering
@@ -85,10 +77,10 @@ for k in df.keys():
     \caption[RDataFrame code example]{Example of event selection done using RDataFrame.}
     \label{code:rdata}
 \end{figure}
-\marginpar{Lange setninger?}
+
 In the code example above we see how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
 number of threads to use in the paralellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
-Line 11-13 create a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
+Lines 11-13 create a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
 The loop on line 15 does event selection for each channel sample, defining new variables in the RDataFrame, applying filters and creating histograms.
 Some variables are constructed using variables already in the ROOT files such as energy and mass. Through custom C++ functions
 these properties can be added to the RDataFrames. The example below shows a custom C++ function which is used in work of this thesis.
@@ -126,7 +118,7 @@ This C++ function creates Lorentz vectors for two particles, and then returns th
 This function will be used on all the leptons in a given event. If one particle or both do not exist, the C++ function will
 return zero as the invariant mass. \par
 
-\marginpar{Legg til kodekommentarer}
+
 \begin{figure}[H]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_2}]
@@ -150,9 +142,9 @@ for k in cols:
 \end{lstlisting}
 \caption[Conversion from RDataFrame to NumPy]{Loop converting RDataFrames to NumPy structures, before being stored as HDF5 files.}
 \end{figure}
-\marginpar{Lang setning}
+
 Once event selection is done, the features have been chosen and histograms have been 
-drawn, the Rdataframe can be converted to a Pandas dataframe. This is a very popular 
+drawn, the RdataFrame can be converted to a Pandas dataframe. This is a very popular 
 choice for data structure when doing data analysis in python. This is done through an 
 intermediary step of converting the RDataframe to a numpy filestructure, which then can 
 be converted to a Pandas\cite{reback2020pandas} dataframe or some other framework.
