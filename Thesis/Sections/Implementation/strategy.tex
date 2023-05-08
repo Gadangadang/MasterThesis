@@ -3,28 +3,35 @@ The strategy used to look for anomalies in the 3 lepton + missing energy final s
 First, the SM MC and ATLAS data for training and inference are constructed with the RMM from section 
 \ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for training the neural 
 network, and the remaining $20\%$ will be used for inference. The reconstruction error 
-from inference will then be used to separate the anomalies from background create a distribution. The hope is that the anomalous events will 
-be skewed at the right end of the reconstruction error spectrum.\par
+from inference will then be used to separate the anomalies from background. The hope is that the anomalous events will 
+be skewed towards higher reconstruction errors.\par
 Standard analyses rely on what is called a signal region. The signal region is a region in the feature space in which
-the signal is expected to be enriched. These are often not inpected until all analysis selections are fixed ("blind" analysis). 
+the signal is expected to be enriched. These are often not inspected until all analysis selections are fixed ("blind" analysis). 
 We use this region to calculate the significance of a result in the search, which is 
-really the only metric that is of use. The statistical uncertainty and noise is proportional to the amount of SM MC, 
-thus with lower amounts of SM MC, the better the significance will be. Using the reconstruction error, the autoencoder 
-can create its own signal region, more specifically the areas of high reconstruction error. A cut here will then be used to 
-separate the anomalies from the SM in for example missing transverse energy, or other features of interest. \par 
+really the only metric that is of use. 
+The statistical uncertainty and noise is proportional to the amount of SM MC, 
+thus with lower amounts of SM MC, the better the significance will be. This is $a)$ 
+given that the signal does not reduce in the same (or more extreme) manner  and $b)$ 
+that one does not run out of SM MC statistics. Because then one does not have any predictive power anymore.
+Using the reconstruction error, the autoencoder 
+can create its own signal region, more specifically the areas of high reconstruction error. 
+By placing a cut at "high" reconstruction error one can look at e.g. the missing transverse energy or other 
+features of interest to see if the AE has managed to select events which have anomalous behavior (wrt. the SM) 
+in these distributions. I.e. the cut on the reconstruction error from the AE replaces the pre-selection cuts one 
+typically design in an ordinary cut-and-count analysis using traditional kinematic variables.\par 
 The signal region for the regular autoencoder models were created by calculating the median $m_{err}$ of the 
 reconstruction error. Then, 3 cuts were made, starting at $m_{err} + im_{err}/5$ for $i = 1,2,3$. This was a direct 
-result of the shape of the background reconstruction error, being a hill-like shape. The median then became a 
+result of the shape of the background reconstruction error being a hill-like shape. The median then became a 
 good place to start to remove much of the SM MC. This is however just a guess for an optimal signal region, 
 as the true signal is unknown, and the method has to be as unbiased as possible. There is however an issue to keep 
 in mind here. The method to find the cut is in some sense based on the slope shape of the SM MC reconstruction 
 error distribution, thus three cuts based on the median seems like a good choice. However, if one then uses all 
 the events in the signal region, it might be that one misses the ideal amount of background and signal to create 
 the significance. Thus, for each reconstruction error cut, there is an associated plot showing the significance 
-as a function of $e_T^{miss}$. More specifically, the function calculates from a specific bin and outwards, for all 
-bins in the $e_T^{miss}$ distribution. Thus, you can find the ideal cut, within the signal region, for where to 
+as a function of $e_T^{miss}$ for the events passing a given cut on the AE reconstruction error. The $e_T^{miss}$
+would be the final discriminating variable for where we look for deviations from the expected SM background. 
+Thus, you can find the ideal cut, within the signal region, for where to 
 choose the amount of background and signal to get a better significance.\par 
-
 Since the analysis is based on semi supervised learning, one should avoid tuning on specific signal models.
 Therefor one should also prepare a blind test. 
 % ROC curves will then be used to evaluate the binary classification ability of the autoencoder. \par 

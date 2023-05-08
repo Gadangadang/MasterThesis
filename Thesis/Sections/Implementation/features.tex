@@ -1,18 +1,18 @@
 \section{The dataset features}
 
-\subsection*{The Rapidity-Mass matrix (RMM) }\label{sec:rmm}
+\subsection*{The Rapidity-Mass matrix (RMM)}\label{sec:rmm}
 Most of the features in the analysis are elements in the Rapidity-Mass matrix (RMM) inspired by the work of Chekanov
 \cite{Chekanov_2019}. The RMM is a convenient structure to create a feature space for the dataset. It contains 
 information of various reconstructed objects and their combinations about mass, rapidity, momenta and missing transverse 
-energy, all of which are useful in searches for new physics\cite{Chekanov_2021} in HEP. One example of an analysis 
+energy, all of which are useful in searches for new physics in HEP\cite{Chekanov_2021}. One example of an analysis 
 that has used some features from the RMM is demontrated in \cite{Santos_2017}. The main reason however for 
 using this structure is the systematic layout and automated featurespace, that maintains low to no correlation between 
 the cells in the matrix, which is optimal when using neural networks. \par
-Its composition is determined as a square matrix of $1 + \sum_{i=1}^{T}N_i$ columns and rows, where T is the total 
+The RMM is determined as a square matrix of $1 + \sum_{i=1}^{T}N_i$ columns and rows, where T is the total 
 number of objects (i.e. jets, electrons etc.), and $N_i$ is the multiplicity of a given object. In the case where the 
-multiplicity of a particle is equal to the number of particles, we can denote the RMM matrix as a TmNn matrix, where m 
-is the multiplicity of T, and n is the number of particle per type. One should already here choose appropriately 
-the number of different particles and the multiplicity of each, as the computation time increases significantly 
+multiplicity of a particle is equal to the number of different particles, we can denote the RMM matrix as a TmNn matrix, where m 
+is the number of objects, and n is the multiplicity of each object. One should already here choose appropriately 
+the number of objects and the multiplicity of each, as the computation time increases significantly 
 when expanding the RMM. Each cell in the matrix contains information about either single or two particle properties. 
 It is also important to remember that each event gets its own RMM, therefor each event creates its own signature that 
 the autoencoder hopefully can learn trends from. An example of a small RMM is shown in matrix \ref{eq:rmmmatrix}.
@@ -27,14 +27,14 @@ the autoencoder hopefully can learn trends from. An example of a small RMM is sh
 \end{pmatrix}
 \end{equation}
 \newline
-In matrix \ref{eq:rmmmatrix} we have the RMM matrix for a T2N2 system, in other words we have two types of particles, jets
-\footnote{Jets here can both be b- or ljets. Ljet is defined as jets with jetdl1r < 0.665, whereas bjet77 is defined as jets with jetdl1r>=2.195. 
-jetdl1r is a machine learning output from a network trained to distinguish b- and ljets.} and electrons, where each type has two particles. 
+In matrix \ref{eq:rmmmatrix} we have the RMM matrix for a T2N2 system, in other words we have two types of objects, jets
+\footnote{Jets here can both be b- or l-jets. Ljet is defined as jets with jetdl1r < 0.665, whereas bjet77 is defined as jets with jetdl1r>=2.195. 
+jetdl1r is a machine learning output from a network trained to distinguish b- and ljets.} and electrons, and for ach ogjct we consider a multiplicity of two. 
 The matrix itself is partitioned into three parts. 
 The diagonal represents energy properties, the upper triangle represents mass properties and the lower triangle represents longitudal 
 properties related to rapidity. The diagonal has three different properties, $\boldsymbol{e_T^{miss}}$, $\boldsymbol{e_T}$ and $\delta\boldsymbol{e_T}$. 
-$\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing transverse energy for the system, which is of 
-high interest for this analysis due to the search for heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
+$\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing transverse energy of the system, which is of 
+high interest for analyses in searches for BSM physics such as heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
 
 \begin{equation}\label{eq:et}
     \boldsymbol{e_T} = \sqrt{m^2 + p_T^2}
@@ -42,27 +42,27 @@ high interest for this analysis due to the search for heavy neutrinos. $\boldsym
 but for light particles such as electrons, this can be approximated to $\boldsymbol{e_T} \approx p_T$. $\delta\boldsymbol{e_T}$ 
 is the transverse energy imbalance. It is defined as 
 \begin{equation}\label{eq:deltaet}
-    \delta\boldsymbol{e_T} = \frac{E_T(i_n-1) - E_T(i_n)}{E_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N.
+    \delta\boldsymbol{e_T} = \frac{E_T(i_{n-1}) - E_T(i_n)}{E_T(i_{n-1}) + E_T(i_n)}, \, n = 2, ..., N,
 \end{equation}
-The first column in the RMM matrix, except the first element, is related to the longitudal property of the given particle. 
-It is defined as
+where $i_n$ is the nth entry of object i. The first column in the RMM matrix, except the first element, is related to the 
+longitudal property of the given particle. It is defined as
 \begin{equation*}
-    h_L(i_n) = C(\cosh{(y)} - 1).
+    h_L(i_n) = C(\cosh{(y(i_n))} - 1).
 \end{equation*}
 C is a constant to ensure that the average $h_L(i_n)$ values do not deviate too much from the ranges of the invariant masses 
-of the transverse masses, found to be $0.15$, as it ensures that rapidity ranges in the range $[-2.5, 2.5]$ produces $h_L(i_n)$ values in the 
-$[0,1]$ interval\cite{Chekanov_2019}. y is the rapidity of the particle, and $i_n$ is the particle number. 
-On the lower triangle we have the longitudal properties of the combinations of particles. Similar to $h_L(i_n)$, this property is defined as 
+or the transverse masses, found to be $0.15$, as it ensures that rapidity ranges in the range $[-2.5, 2.5]$ produces $h_L(i_n)$ values in the 
+$[0,1]$ interval\cite{Chekanov_2019}. $y(i_n)$ is the rapidity of the particle, and $i_n$ is the particle number. 
+In the lower triangle we have the longitudal properties of the combinations of particles. Similar to $h_L(i_n)$, this property is defined as 
 \begin{equation*}
     h(i_n, j_k) = C(\cosh{(\Delta y)} - 1),
 \end{equation*}
-where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference for particle $i_n$ and $j_k$. 
+where $\Delta y = y_{i_n} - y_{j_k}$ is the rapidity difference between particle $i_n$ and $j_k$. 
 
 
-\subsection*{Tabular and sparce data}
-A consequence of using the RMM structure is that the RMM for the data and SM MC can be sparce for some events. This is due to the fact that the RMM allows for 
+\subsection*{Tabular and sparse data}
+A consequence of using the RMM structure is that the RMM for the data and SM MC can be sparse for some events. This is due to the fact that the RMM allows for 
 the variety of final states of the reconstructed events, i.e. that one event has two ljets, zero bjets, one electron and two muons, whereas another 
-event can have four ljets, three bjets and three electrons. This means that the RMM matrix for each event will have a different size, 
+event can have four ljets, three bjets and three electrons. This means that the non-zero elements of the RMM wil vary from event to event, 
 and for neural networks this is a problem. To solve this problem, Chekanov simply pads the missing values with zeros\cite{Chekanov_2019}. 
 
 \subsection*{Standard Model Monte Carlo and data comparison}\label{sec:mcdatacomp}
@@ -75,9 +75,9 @@ but they are numerical approximations and can
 sometimes be off. Thus, every feature that will be used for training must be checked before being used. This is done by 
 comparing the distributions of the features in the SM MC and ATLAS data. Monte Carlo simulations are based on the actual theory 
 itself, and comparisons with data taken from ATLAS and other detectors alike are neccesary to ensure that the SM background 
-events look like data. This is done by creating control regions were there with high confidense is no signatures of New Physics. 
+events look like data. This is done by creating control regions were there with high confidence is no signatures of New Physics. 
 This of course becomes problematic if the New Physics are embedded in the background.\par
-Now, if we compare all SM MC and ATLAS data, we would usually expect there to be a good overlap. To ensure that the SM MC actually 
+Now, if we compare all SM MC and ATLAS data, we would usually expect there to be a good agreement. To ensure that the SM MC actually 
 represents the physics, we create signal and background regions to optimize for amount of signal and amount of background. If we can 
 create a background region where we believe with very high certainty that only SM processes can occur, and we get a good match, 
 we usually conclude that the SM MC is good enough. Since the data from ATLAS used in the work for this thesis has been thoroughly 
@@ -108,7 +108,7 @@ unlabeled.
 \end{figure}
 
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between SM MC and ATLAS data, $e_T^{miss}$ 
-and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset. The $e_T^{miss}$ and $m(ele_0, ele_1)$ shwos a ratio between SM MC and ATLAS data reasonably close to 1, thus we can safely 
+and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset. The $e_T^{miss}$ and $m(ele_0, ele_1)$ shows a ratio between SM MC and ATLAS data reasonably close to 1, thus we can safely 
 move forward with the analysis. All features were checked, and can be found in the GitHub repository for this thesis at 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP3}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP3$}} under the 3lep folder. \par 
 
@@ -126,7 +126,9 @@ move forward with the analysis. All features were checked, and can be found in t
         \label{fig:mll_2lep}
     \end{subfigure}
     \hfill        
-    \caption[2 lepton + $e_T^{miss}$ Monte Carlo and ATLAS data comparison]{Comparison of the SM MC and data for the 2 lepton + $e_T^{miss}$ final state with the features $e_{T}^{miss}$ and flavor composition.
+    \caption[2 lepton + $e_T^{miss}$ Monte Carlo and ATLAS data comparison]{Comparison of the SM MC and data for the 2 lepton + $e_T^{miss}$ final 
+    state with the features $e_{T}^{miss}$ and flavor composition. In figure \ref{fig:mll_2lep} a cut on the invariant mass above 70 GeV of the leading lepton
+    pair. In some cases the first and second electron are not the leading pair, thus there will be some events in this histogram below 70 GeV. 
     }
     \label{fig:MC_Data_comp_2lep}
 \end{figure}
@@ -143,7 +145,8 @@ It did not seem to work, and we proceded with the dataset. All features were che
 
 \subsubsection*{Triggers }\label{sec:triggers}
 
-The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ dataset are written below:
+The triggers used in the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ dataset are datasets are shown in Table 
+\ref{tab:triggers2015}, \ref{tab:triggers2016}, \ref{tab:triggers2017} and \ref{tab:triggers2018} for the 2015, 2016, 2017 and 2018 data taking periods.
 
 
 \begin{table}[H]
@@ -153,7 +156,7 @@ The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 
     \hline
                           & \multicolumn{1}{c|}{Name}              \\ \hline
     \multirow{6}{*}{2015} & $HLT\_2e15\_lhvloose\_nod0\_L12EM13VH$ \\ \cline{2-2} 
-                          & $HLT\_2e12_lhloose_L12EM10VH$          \\ \cline{2-2} 
+                          & $HLT\_2e12\_lhloose\_L12EM10VH$          \\ \cline{2-2} 
                           & $HLT\_2mu10$                           \\ \cline{2-2} 
                           & $HLT\_mu18\_mu8noL1$                   \\ \cline{2-2} 
                           & $HLT\_e17\_lhloose\_mu14$              \\ \cline{2-2} 
@@ -227,9 +230,6 @@ The following triggers where implemented for the 2 lepton + $e_T^{miss}$  and 3 
     \label{tab:triggers2018}
     \end{table}
 
-
-In tables \ref{tab:triggers2015}, \ref{tab:triggers2016}, \ref{tab:triggers2017}, \ref{tab:triggers2018} we have the triggers used for
-the different data generations used for the 2 lepton + $e_T^{miss}$, i.e. the data taken from the 4 years of data collection in Run 2. 
 Each trigger is designed to detect certain base expectations in the detector, for example reconstructed leptons. In the tables above,
 the triggers are laid out, showing which were used for a given data taking year. For a more in-depth understanding of trigger, 
 it is recommended to look at the "Performance of the ATLAS Trigger System in 2015" paper\cite{triggersystem}, as well as the paper 

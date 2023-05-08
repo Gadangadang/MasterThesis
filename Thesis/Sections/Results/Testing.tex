@@ -2,9 +2,12 @@
 
 \subsection*{Channel removing}
 
-Results following removal of specific channels are shown below for the small and large autoencoders.
-The Higgs, single top and ttbar channels have been removed here, as 
-they are the most unlike the rest of the background channels. 
+Results following removal of specific channels are shown in figures \ref{fig:ae_big_channel_1} - \ref{fig:vae_big_channel_3}. The left 
+plots in the figures show the results from the small AE while the right plots show the corresponding result using the large AE.
+Figure \ref{fig:ae_big_channel_1} - \ref{fig:ae_big_channel_3} show the results where the Higgs, single 
+top and ttbar channel, respectively,  has been removed in the training of the AE. The inference of the AE is applied on the removed 
+process (shown as markers in the distributions). Figure \ref{fig:vae_big_channel_1} - \ref{fig:vae_big_channel_3} show the corresponding 
+results using a variational autoencder. These three channels were chosen since they are the most unlike the rest of the background channels. 
 
 
 \begin{figure}[H]
@@ -122,31 +125,25 @@ they are the most unlike the rest of the background channels.
     \caption[VAE | Reconstruction error using ttbar channel as signal]{Reconstruction error on validation SM MC from the small (a) and large (b) variational autoencoder. The ttbar channel has been removed from training and 
     is used as signal. No significant difference in distributions is found.  }
     \label{fig:vae_big_channel_3}
-\end{figure}
-
-In figures \ref{fig:ae_big_channel_1} to \ref{fig:vae_big_channel_3} we have the reconstruction error distributions for the SM MC using 
-Higgs, single top and ttbar as signal samples for the small (to the left) and the big (to the right) regular and variational autoencoder. 
+\end{figure} 
 It is clear from figures that the reconstruction error distributions for the removed SM channel and the remainding SM MC are very similar. 
 The same behavior is also shown for the other channels, which can found in section \ref{sec:app2} in the appendix. Although the two models did not demonstrate much separation
 of reconstruction error distributions, the regular autoencoder seems to have a more shifted pattern of reconstruction to lower 
 values than the variational autoencoder. In fact, the regular autoencoder's reconstruction error distribution peak is about 3 order of 
-magnitude lower than the variational autoencoder's error distribution peak. There could be several reasons for this, one of which could be that 
+magnitude lower than the variational autoencoder's error distribution peak along the x-axis. There could be several reasons for this, one of which could be that 
 the variational autoencoder might require more input data to approximate the distribution, as well as the fact that the balance between the KL divergence and MSE loss 
-can be difficult to handle\cite{kl_mse_balance}. The variational autoencoder is a larger and more complex model. The RMM and by extension proton-proton collisions 
-are complex, and so learning the natural distribution might require more data. This can lead to comparably poorer performance of the neural network compared to the regular autoencoder. 
+can be difficult to handle\cite{kl_mse_balance}. The variational autoencoder is a larger and more complex model. Given that the natural distributions in the data are quite complex, 
+learning the natural distribution might require more data. This can lead to comparably poorer performance of the neural network compared to the regular autoencoder. 
 It should be noted that although the three channels selected here, as well as the rest in section \ref{sec:app2} in the appendix, do not differ that much from one another, and it was not expected that the networks 
 would be able to separate the two distributions created. However, it does provide us with a baseline, as well as insight for what 
-to expect if we were to test on signals that looks a lot like some channels. 
-
-
-\newpage
+to expect if we were to test on signals that looks a lot like some background channels. 
 
 
 \subsection*{Altering of transverse momentum}
 Altering the transverse momentum of some particles would in the extreme be anomalous, and the hypothesis was that some of those trends would be
-picked up by the autoencoder. Scaling of $[1.5, 3, 5, 7, 10]$ for the transverse momentum were used. 
+picked up by the autoencoder. Scaling of k \in $[1.5, 3, 5, 7, 10]$ for the transverse momentum were used according to equation \ref{eq:deltaet_scale}. 
 A scaling of $p_T$ for the regular and variational autoencoder are shown in figures \ref{fig:ae_big_small_pt_10}
- and \ref{fig:VAE_big_small_pt_10}. The other scaling plots can be found in section \ref{sec:pt_alter} in the appendix.
+ and \ref{fig:VAE_big_small_pt_10}, respectively. The other scaling plots can be found in section \ref{sec:pt_alter} in the appendix.
 
 
 
@@ -166,8 +163,8 @@ A scaling of $p_T$ for the regular and variational autoencoder are shown in figu
     \end{subfigure}
     \hfill 
     \caption[AE | Reconstruction error $p_T$ altering of 10]{Reconstruction error on validation SM MC from the small (a) and large (b) regular autoencoder. The signal is a subsample of the validation 
-    set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The change of transverse 
-    energy has also been changed according to the scaling of transverse momentum. No significant difference in distributions is found. }
+    set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The difference in transverse energy between the objects has also been changed according to the scaling of transverse momentum. 
+    A peak is found around $10^{-1.6}$.}
     \label{fig:ae_big_small_pt_10}
 \end{figure}
 
@@ -189,8 +186,8 @@ A scaling of $p_T$ for the regular and variational autoencoder are shown in figu
     \end{subfigure}
     \hfill 
     \caption[VAE | Reconstruction error $p_T$ altering of 10]{Reconstruction error on validation SM MC from the small (a) and large (b) variational autoencoder. The signal is a subsample of the validation 
-    set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The change of transverse 
-    energy has also been changed according to the scaling of transverse momentum. No significant difference in distributions is found. }
+    set where the transverse momentum of the first electron and the first muon has been increased with a scale of $10$. The difference in transverse energy between the objects has also been changed according to the scaling of transverse momentum. 
+    A peak is found around $10^{-1.6}$.}
     \label{fig:VAE_big_small_pt_10}
 \end{figure}
 
@@ -199,8 +196,9 @@ variational autoencoder is different. The shape from the regular autoencoder is 
 to the shape from the variational autoencoder, where the peak of the distribution is around -1. From the $p_T$ altering test we also see here that the 
 variational autoencoder falls short to the regular one. It is also interesting to observe here that the high $p_T$ events are picked up as anomalous from both
 autoencoders, with both shallow and deep structure. In the regular autoencoder it is arguably even separated distributions. This is also a good sign as it 
-indicates that the network has learned which ranges the $p_T$ should be in for the 3 lepton plus missing energy final state. The most extreme case is 
-as expected in the case where the $p_T$ is multiplied by 10, and the $\delta e_T^{10}$. There is a clear separation in reconstruction error distributions for the
-signal and background for the deep regular autoencoder, and a slightly more subtle separation of reconstruction error distributions for the shallow regular autoencoder.
-In the variational autoencoder, the separation is not as clear, but the signal is still picked up as anomalous. The peaks are separated, but not to the same degree. 
+indicates that the network has learned which ranges the $p_T$ should be in for the 3 lepton plus missing energy final state. The most extreme case is, 
+as expected, in the case where the $p_T$ is multiplied by 10. There is a clear separation in reconstruction error distributions for the
+signal and background for the deep regular autoencoder, and a slightly more subtle separation of reconstruction error distributions for 
+the shallow regular autoencoder. For the variational autoencoder, the separation in figure \ref{fig:VAE_big_small_pt_10} is not as clear, 
+but the signal is still picked up as anomalous. The peaks are separated, but not to the same degree. 
 

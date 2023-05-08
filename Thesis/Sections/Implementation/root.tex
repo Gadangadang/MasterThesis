@@ -30,38 +30,47 @@ calculated using C++ functions. An example of such a C++ function is shown below
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
 import ROOT as R
 
-R.EnableImplicitMT(200)
-R.gROOT.ProcessLine(".L helperFunctions.cxx+")
-R.gSystem.AddDynamicPath(str(dynamic_path))
+R.EnableImplicitMT(200) # Enable multithreading, sets number of threads to 200 or the highest number possible if the number of threads is less than 200     
+R.gROOT.ProcessLine(".L helperFunctions.cxx+") # Load the C++ helper functions in ROOT interpreter
+R.gSystem.AddDynamicPath(str(dynamic_path)) # Add the path to the library with the helper functions to the ROOT interpreter
 R.gInterpreter.Declare(
     '#include "helperFunctions.h"'
-)  # Header with the definition of the myFilter function
+)  # Header with all helper functions
 R.gSystem.Load("helperFunctions_cxx.so")  # Library with the myFilter function
 
-df_mc = getDataFrames(mypath_mc)
-df_data = getDataFrames(mypath_data)
-df = {**df_mc, **df_data}
+df_mc = getDataFrames(mypath_mc) # Function to create a dictionary of RDataFrames for each channel in the SM MC and possible signal samples
+df_data = getDataFrames(mypath_data) # Function to create a dictionary of RDataFrames for ATLAS data
+df = {**df_mc, **df_data} # Combine the two dictionaries
 
-for k in df.keys():
 
-    # Signal leptons
+
+for k in df.keys(): #* Loop over all channels, i.e [Zeejets, ttbar, data15, ...]
+
+    # Define "good" electrons
     df[k] = df[k].Define(
         "ele_SG",
         "ele_BL && lepIsoLoose_VarRad && lepTight && (lepD0Sig <= 5 && lepD0Sig >= -5)",
-    )  
+    ) 
+    # Define "good" muons 
     df[k] = df[k].Define(
         "muo_SG",
         "muo_BL && lepIsoLoose_VarRad && (lepD0Sig <= 3 && lepD0Sig >= -3)",
     )  
+    # Define "good" leptons based on good electrons and muons
     df[k] = df[k].Define("isGoodLep", "ele_SG || muo_SG")
+
+    #* Number of good leptons
     df[k] = df[k].Define(
                 "nlep_SG", "ROOT::VecOps::Sum(ele_SG)+ROOT::VecOps::Sum(muo_SG)"
             )
 
+    #* Require exactly 3 good leptons
     df[k] = df[k].Filter("nlep_SG == 3", "3 SG leptons")
 
-    # Define flavor combination based on 
+    #* Define flavor combination based on leptons available
     df[k] = df[k].Define("flcomp", "flavourComp3L(lepFlavor[ele_SG || muo_SG])")
+
+    #* Histogram with the flavor combinations
     histo[f"flcomp_{k}" ] = df[k].Histo1D(
         (
             f"h_flcomp_{k}",
@@ -74,7 +83,9 @@ for k in df.keys():
         "wgt_SG",
     )
     \end{lstlisting}
-    \caption[RDataFrame code example]{Example of event selection done using RDataFrame.}
+    \caption[RDataFrame code example]{Example of event selection done using RDataFrame. Four example features are created here, the "good electrons", "good muons",
+    "good leptons" and flavor combination of leptons. Then a filter is applied to the RDataFrame structure, and finally a histogram is created. In section \ref{sec:algo_impl}
+    it is shown how to implement the Rapidity-Mass matrix from section \ref{sec:rmm} in event selection.}
     \label{code:rdata}
 \end{figure}
 
@@ -92,7 +103,11 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
             VecF_t &pt_j, VecF_t &eta_j, VecF_t &phi_j, VecF_t &e_j,
             int i, int j)
 {
-    /* Gets he invariant mass between two particles, be it jets or leptons */
+    /* 
+    Calculates the invariant mass between two particles.
+    If the particles are not found, or the index is out of range,
+    function returns zero, else returns the invariant mass.
+    */
 
     const auto size_i = int(pt_i.size());
     const auto size_j = int(pt_j.size());
@@ -112,7 +127,8 @@ double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
     return inv_mass;
 }
 \end{lstlisting}
-\caption[C++ function example]{Example of a C++ function used in event selection.}
+\caption[C++ function example]{Example of a C++ function used in event selection. This function is used to calculate the invariant mass between two particles.
+It takes the kinetic parameters for both particles and the index for which of the leptons available to compute for. If the particles do not exit for that event, it returns zero.  }
 \end{figure}
 This C++ function creates Lorentz vectors for two particles, and then returns the invariant mass based on the parameters sent in. 
 This function will be used on all the leptons in a given event. If one particle or both do not exist, the C++ function will
@@ -124,23 +140,30 @@ return zero as the invariant mass. \par
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_2}]
 import pandas as pd 
 
-cols = df.keys()
+def Convert_RDF_to_numpy(df, PATH_TO_STORE):
 
-for k in cols:
 
-    print(f"Transforming {k}.ROOT to numpy")
-    numpy = df[k].AsNumpy(DATAFRAME_COLS)
-    print(f"Numpy conversion done for {k}.ROOT")
-    df1 = pd.DataFrame(data=numpy)
-    print(f"Transformation done")
-    
+    cols = df.keys()
 
-    df1.to_hdf(
-        PATH_TO_STORE + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
-    )
+    for k in cols:
+
+        print(f"Transforming {k}.ROOT to numpy")
+        numpy = df[k].AsNumpy(DATAFRAME_COLS) #* DATAFRAME_COLS is a list of columns to be converted to a numpy array
+        print(f"Numpy conversion done for {k}.ROOT")
+        df1 = pd.DataFrame(data=numpy) #* Convert to pandas dataframe
+        print(f"Transformation done")
+        
+        #* Convert to HDF5
+        df1.to_hdf(
+            PATH_TO_STORE + f"/{k}_3lep_df_forML_bkg_signal_fromRDF.hdf5", "mini"
+        )
+
+        #* Flush memory for new dataframe
+        df1 = pd.DataFrame()
 
 \end{lstlisting}
-\caption[Conversion from RDataFrame to NumPy]{Loop converting RDataFrames to NumPy structures, before being stored as HDF5 files.}
+\caption[Conversion from RDataFrame to NumPy]{Loop converting RDataFrames to NumPy structures, before being stored as HDF5 files.
+Her $df[k]$ is a dictionary containing each channel, with channel name as key.}
 \end{figure}
 
 Once event selection is done, the features have been chosen and histograms have been 

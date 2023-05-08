@@ -7,19 +7,20 @@ One idea was to test the anomaly detection capability by removing one of the cha
 The idea was that some of the channels differ enough in the final states and thus in their RMM signature that
 they might be treated like anomalous data by the autoencoders. All channels were tested on as signal.
 \subsection*{Altering transverse momentum}
-Another idea for anomaly detection testing with the SM MC was to alter the transverse momentum of some of the particles. Random events were
-selected, and their transverse energy was changed, in accordance with equation \ref{eq:et}. The hope is that especially events with above 5 time 
-increase in transverse momentum should be picked up. Note that by changing the transverse momentum, the change in transverse energy also changes. 
+Another idea for anomaly detection testing with the SM MC was to alter the transverse momentum of some particles. Random events were
+selected, and their transverse energy was changed by scaling it with a factor. The hope is that especially events with atleast a scaling of 5 
+in transverse momentum should be picked up. Note that by changing the transverse momentum, the elements in the RMM related to the difference in 
+transverse energy between the objects change.
 From equation \ref{eq:deltaet} we have that a scale change k in $p_T$ yields the following new relation:
 
 \begin{equation}\label{eq:deltaet_scale}
     \delta\boldsymbol{e_T}^k = \frac{kE_T(i_n-1) - E_T(i_n)}{kE_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N.
 \end{equation}
-Thus, both the transverse energy and the change in transverse energy is changed for this test.
+Thus, both the transverse energy and the difference in transverse energy between the various objetcs are changed for this test.
 
 
 \subsection*{Signal testing}
-It is not correct to call the machine learning algorithm used in this thesis as unsupervised learning. 
+It is not correct to refer to the machine learning algorithm used in this thesis as unsupervised learning. 
 This is mostly due to the fact that we show it labeled MonteCarlo to train on, and thus essentially gives 
 the models a target to aim for. But, since we do not show the autoencoders any signals in training, it can be allowed to 
 name the learning strategy as semi-supervised learning. Because of this, one does not bias oneself too much 

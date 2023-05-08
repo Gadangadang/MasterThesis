@@ -1,1 +1,15 @@
 \chapter*{Abstract} 
+This master thesis investigates the performance and usage of autoencoders in Beyond Standard Model (BSM) searches, 
+using n-tuples from ATLAS that are converted to python dataframe structures. The Rapidity-Mass matrix is proposed 
+as the input data features, with 6 b-jets and 6 l-jets, and 5 of each lepton. The goal was to test and understand 
+the performance in the 3 lepton + $e_T^{miss}$ final state, but due to poor results, the 2 lepton + $e_T^{miss}$ 
+dataset was used instead. To deal with the large dataset size, megasets were used to conserve the overall distribution 
+in smaller batches. The autoencoders were benchmarked by creating anomalous events by altering the $p_T$ of standard 
+model events and testing on two supersymmetric signal models. The performance was measured in three categories: 
+reconstruction error, background and signal reduction, and significance when performing cuts. The regular 
+autoencoder performed better in the first and second categories, while the variational autoencoder performed slightly 
+better in the third. Increasing the training data improved the performance in all categories. A blind test 
+with ATLAS data and BSM signals showed that the autoencoder, when trained on the 2 lepton + $e_T^{miss}$ dataset, 
+managed to separate out some signals from the ATLAS data, indicating its potential use in more rigorous analyses. 
+The thesis also discusses future work and challenges, such as computational bottlenecks, further investigation of 
+the RMM, and better feature engineering.
