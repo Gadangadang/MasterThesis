@@ -34,7 +34,7 @@ Warning--empty author in atlas_search_2021
 Warning--empty author in ATL-OREACH-PUB-2020-001
 You've used 46 entries,
             2188 wiz_defined-function locations,
-            789 strings with 144690 characters,
+            789 strings with 144650 characters,
 and the built_in function-call counts, 10244 in all, are:
 = -- 905
 > -- 648
@@ -57,11 +57,11 @@ int.to.str$ -- 46
 missing$ -- 95
 newline$ -- 156
 num.names$ -- 44
-pop$ -- 219
+pop$ -- 218
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 275
+skip$ -- 276
 stack$ -- 0
 substring$ -- 292
 swap$ -- 136

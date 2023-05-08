@@ -68,8 +68,8 @@ D.~Rumelhart, G.~Hinton and R.~Williams, \emph{Learning representations by
 D.~P. Kingma and M.~Welling, \emph{Auto-encoding variational bayes},  2013.
 \newblock 10.48550/ARXIV.1312.6114.
 
-\bibitem{magnar}
-M.~Bugge, \emph{Discovery and exclusion in high energy physics},  2022.
+\bibitem{cowan}
+G.~Cowan, \emph{Statistical data analysis, lecture week 6},  2020/21.
 
 \bibitem{Pich:819632}
 A.~Pich, \emph{{The Standard Model of Electroweak Interactions; rev. version}},
@@ -218,7 +218,7 @@ A.~Asperti and M.~Trentin, \emph{Balancing reconstruction error and
 {LHC}, \emph{Lhc nominal luminosity projection},  2013.
 
 \bibitem{ATL-OREACH-PUB-2020-001}
-{\scshape ATLAS Collaboration} collaboration, \emph{{Review of the 13 TeV ATLAS
-  Open Data release}},  tech. rep., CERN, Geneva, Jan, 2020.
+{\scshape ATLAS} collaboration, \emph{{Review of the 13 TeV ATLAS Open Data
+  release}},  tech. rep., CERN, Geneva, Jan, 2020.
 
 \end{thebibliography}\endgroup
