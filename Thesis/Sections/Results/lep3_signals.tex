@@ -3,8 +3,8 @@
 
 
 To better accertain and map the usefulness of the regular and variational autoencoder in the search for 
-new physics, two MonteCarlo signals were used as test cases. They both are 3 lep +$e_T^{miss}$ final state SUSY signals,
-and thus are fit to use for testing. The two autoencoders will be tested on four metrics. 
+new physics, two MC signals were used as test cases. They are both 3 lep +$e_T^{miss}$ final state SUSY signals,
+and thus are a suitable fit to use for testing. The two autoencoders were tested on four metrics. 
 \begin{itemize}
     \item Low reconstruction error on SM MC
     \item Background to signal ratio in $e_T^{miss}$ signal region
@@ -45,11 +45,11 @@ and thus are fit to use for testing. The two autoencoders will be tested on four
     \hfill      
     \caption[3lep deep network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the deep regular autoencoder using the SUSY $450p300$. Figure \ref{fig:AE_3lep_big_450} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce the same reconstruction error shape for both background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces the same reconstruction error shape for both background and 
     signal. Figure \ref{fig:AE_3lep_big_etmiss_450} shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.56}$. Most of the background is removed, and the peaks of the SM MC and signal 
     distributions are slightly separated. Figure \ref{fig:AE_3lep_big_mlll_450} shows the $m_{lll}$ distribution for the SM MC and the SUSY signal. 
-    The shape of both distributions are too similar to destict. Figure \ref{fig:AE_3lep_big_signi_450} shows the significance as function of
+    The shape of both distributions are too similar to distinguish. Figure \ref{fig:AE_3lep_big_signi_450} shows the significance as function of
     $e_T^{miss}$. The peak is put around a cut of about 380 GeV in the $e_T^{miss}$, with a significance of around $0.7$.}
     \label{fig:AE_3lep_big_rec_sig_signi_450}
 \end{figure}
@@ -82,12 +82,12 @@ and thus are fit to use for testing. The two autoencoders will be tested on four
     \hfill      
     \caption[3lep shallow network | $450p300$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the shallow regular autoencoder using the SUSY $450p300$ model. Figure \ref{fig:AE_3lep_small_450} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce the same reconstruction error shape for both background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces the same reconstruction error shape for both background and 
     signal, but with a small separation of the peaks of the distributions. Figure \ref{fig:AE_3lep_small_etmiss_450} shows the $e_T^{miss}$ 
     distribution for the SM MC and the SUSY signal in the signal region. The signal region is made using a cut around $10^{-1.71}$. Most of 
     the background is removed, and the peaks of the SM MC and signal distributions are somewhat separated. Figure 
     \ref{fig:AE_3lep_small_mlll_450} shows the $m_{lll}$ distribution for the SM MC and the SUSY signal. 
-    The shape of both distributions are too similar to destict. Figure \ref{fig:AE_3lep_small_signi_450} shows the significance as 
+    The shape of both distributions are too similar to distinguish. Figure \ref{fig:AE_3lep_small_signi_450} shows the significance as 
     function of $e_T^{miss}$. The peak is put around a cut of about 380 GeV in the $e_T^{miss}$, with a significance of around $0.78$.}
     \label{fig:AE_3lep_small_rec_sig_signi_450}
 \end{figure}
@@ -128,7 +128,7 @@ and thus are fit to use for testing. The two autoencoders will be tested on four
     \caption[3lep deep network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the deep regular autoencoder using the SUSY $800p50$. 
     Figure \ref{fig:AE_3lep_big_800} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a mirrored reconstruction error shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a mirrored reconstruction error shape for background and 
     signal. The peaks of the two distributions are separated with two orders of magnitude in reconstruction error. Figure \ref{fig:AE_3lep_big_etmiss_800} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.27}$. Most of the background is removed, and the peaks of the SM MC and signal 
@@ -167,7 +167,7 @@ and thus are fit to use for testing. The two autoencoders will be tested on four
     \caption[3lep shallow network | $800p50$ | AE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the shallow regular autoencoder using the SUSY $800p50$. 
     Figure \ref{fig:AE_3lep_small_800} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a mirrored reconstruction error shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a mirrored reconstruction error shape for background and 
     signal. The peaks of the two distributions are separated with two orders of magnitude in reconstruction error. Figure \ref{fig:AE_3lep_small_etmiss_800} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.41}$. Most of the background is removed, and the peaks of the SM MC and signal 
@@ -185,8 +185,8 @@ for the shallow and deep regular autoencoder. From figures \ref{fig:AE_3lep_big_
 \ref{fig:AE_3lep_small_450}, \ref{fig:AE_3lep_big_800}, \ref{fig:AE_3lep_small_800} it is shown that the 
 SUSY $800p50$ signals has the best separation of peaks, which is expected considering its 
 rather extreme tail in the $e_T^{miss}$ distribution of the signal. It is interesting to 
-observe the slope trend in the SM MC reconstruciton error distribution. The steepness of the 
-slope seems to be somewhat similar for both the shallow and deep regular autoencoder, indicating 
+observe the slope in the SM MC reconstruction error distribution. The steepness of the 
+slope seems to be somewhat similar for both the shallow and deep regular autoencoders, indicating 
 at least that the difference in these two models does not differ much when it comes to performance. 
 The bulk of the events are below $10^{-2}$ reconstruction error, indicating that the autoencoder 
 has learned a lot of the internal RMM structures for the 3 lepton + $e_T^{miss}$ final state MC. \par
@@ -195,9 +195,9 @@ In figures \ref{fig:AE_3lep_big_etmiss_450}, \ref{fig:AE_3lep_small_etmiss_450},
 created for each of the SUSY models from both the shallow and deep regular autoencoder. The cuts 
 were created using the median and then iteratively increasing the error requirement, as 
 explained in section \ref{sec:strategy}. Only one of the three cuts done are shown here, the 
-rest can be found in the appendix. The histograms in figures \ref{fig:AE_3lep_big_etmiss_450}, 
+rest can be found in the appendix. The histograms in these figures \ref{fig:AE_3lep_big_etmiss_450}, 
 \ref{fig:AE_3lep_small_etmiss_450}, \ref{fig:AE_3lep_big_etmiss_800} and  
-\ref{fig:AE_3lep_small_etmiss_800} displays the $e_T^{miss}$ distribution in the signal region 
+\ref{fig:AE_3lep_small_etmiss_800} display the $e_T^{miss}$ distribution in the signal region 
 for the SM MC and the SUSY signals. They represent the signal region with the most relaxed cut, 
 in other words, the least strict and thus the signal region with the highest amount of events, 
 both SM MC and signal. This is to illustrate the difficulty of this method since we do not have 
@@ -249,7 +249,7 @@ signal with the deep autoencoder, applying a cut on the $e_T^{miss}$ around 380 
     \caption[3lep deep network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the deep variational autoencoder using the SUSY $450p300$.
     Figure \ref{fig:VAE_3lep_big_450} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a bell-shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a hill-like for background and 
     signal with little destinction. The peaks of the two distributions are not separated in reconstruction error. Figure \ref{fig:VAE_3lep_big_etmiss_450} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.10}$. Some background is removed, and the peaks of the SM MC and signal 
@@ -288,7 +288,7 @@ signal with the deep autoencoder, applying a cut on the $e_T^{miss}$ around 380 
     \caption[3lep shallow network | $450p300$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the shallow variational autoencoder using the SUSY $450p300$. 
     Figure \ref{fig:VAE_3lep_small_450} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a bell-shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a hill-like for background and 
     signal with little destinction. The peaks of the two distributions are not separated in reconstruction error. Figure \ref{fig:VAE_3lep_small_etmiss_450} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.06}$. Some background is removed, and the peaks of the SM MC and signal 
@@ -334,7 +334,7 @@ signal with the deep autoencoder, applying a cut on the $e_T^{miss}$ around 380 
     \caption[3lep deep network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the deep variational autoencoder using the SUSY $800p50$.
     Figure \ref{fig:VAE_3lep_big_800} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a bell-shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a hill-like for background and 
     signal with little destinction. The peaks of the two distributions are not separated in reconstruction error. Figure \ref{fig:VAE_3lep_big_etmiss_800} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-1.06}$. Some background is removed, and the peaks of the SM MC and signal 
@@ -373,7 +373,7 @@ signal with the deep autoencoder, applying a cut on the $e_T^{miss}$ around 380 
     \caption[3lep shallow network | $800p50$ | VAE]{Reconstruction error, $e_T^{miss}$ signal region, $m_{lll}$ signal region and significance as function of 
     $e_T^{miss}$ for the shallow variational autoencoder using the SUSY $800p50$.
     Figure \ref{fig:VAE_3lep_small_800} shows the reconstruction error 
-    distribution for the SM MC and the SUSY signal. Here the autoencoder produce a bell-shape for background and 
+    distribution for the SM MC and the SUSY signal. Here the autoencoder produces a hill-like for background and 
     signal with little destinction. The peaks of the two distributions are not separated in reconstruction error. Figure \ref{fig:VAE_3lep_small_etmiss_800} 
     shows the $e_T^{miss}$ distribution for the SM MC and the SUSY signal in the signal region. 
     The signal region is made using a cut around $10^{-0.91}$. Some background is removed, and the peaks of the SM MC and signal 
@@ -393,7 +393,7 @@ for the shallow and deep variational autoencoder. From figures \ref{fig:VAE_3lep
 autoencoder seems to struggle with differentiating between background and signal. 
 There is however a slight difference in the shape of the distributions from the shallow and 
 deep network shown in both signal test cases. The shallow has a more narrow and slightly more 
-left leaning shape, whereas the deep network has a slightly more broad distribution shifted a 
+left-skewed shape, whereas the deep network has a slightly more broad distribution shifted a 
 bit to the right. The bulk of the events for all four histograms are between $10^{-2}$ and $10^{-0.5}$ 
 reconstruction error, indicating that the autoencoder struggles to learn the internal RMM 
 structures for the 3 lepton + $e_T^{miss}$ final state MC. \par 
@@ -404,8 +404,8 @@ note that although the total reconstruction error distributions are not well sep
 signal regions show a separation in the $e_T^{miss}$ distribution. Unlike in the regular autoencoder 
 case, the variational autoencoder allows for almost two orders of magnitude more background 
 events in the signal region. This is because of the signal region definition from section 
-\ref{sec:strategy} where the median in this case for all four cases is where the peak of the 
-reconstruction error distribution for the background. Because of this we also get the peak of 
+\ref{sec:strategy} where the median for all four cases with the variational autoencoder is where in the peak of the 
+reconstruction error distribution for the background. Therefor we also get the peak of 
 the signal distributions, which is why we see so much signal in the signal region in figures 
 \ref{fig:VAE_3lep_big_etmiss_450}, \ref{fig:VAE_3lep_small_etmiss_450}, 
 \ref{fig:VAE_3lep_big_etmiss_800} and \ref{fig:VAE_3lep_small_etmiss_800}. \par 
@@ -419,10 +419,6 @@ In figures \ref{fig:VAE_3lep_big_signi_450}, \ref{fig:VAE_3lep_small_signi_450},
 \ref{fig:VAE_3lep_small_signi_800} we have the significance as a function of the $e_T^{miss}$.
 Interestingly, for the SUSY $450p300$ case, we have that both the deep and shallow 
 autoencoder manages to get a significance of around 4, which is much better than the 
-regular autoencoder which got around 0.7. For the SUSY $800p50$ signal the differenc between the significance 
+regular autoencoder which got around 0.7. For the SUSY $800p50$ signal the difference between the significance 
 from the AE and VAE was small. From these figures a further cut on the 
-$e_T^{miss}$ on around 400 GeV provided the best significance of around $4.5$. Also note the tails of 
-the significance figures, as they all contain little background and or signal and are 
-thus not of interest. 
-
-
+$e_T^{miss}$ on around 400 GeV provided the best significance of around $4.5$. 
