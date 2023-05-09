@@ -19,20 +19,24 @@ larger training samples, but argue for more testing as these methods are not wel
 understood yet. The performance was measured in three categories: how well it reconstructs 
 the test dataset; how much background and signal is left in the signal region; and 
 the significance it achieves when performing cuts in the signal region. It was shown that
-for the first category, the regular autoencoder is much better than the variational autoencoder, 
+for the reconstruction of the test dataset, the regular autoencoder is much better than the variational autoencoder, 
 creating a reconstruction error distribution with slope like shape pushed to the lower end. 
 In the second category the regular autoencoder is much better at 
-reducing the background, but not that much better at increasing the amount of signal. In the 
-third category the regular autoencoder performs better than the variational autoencoder. 
-It was also shown that with an increase in training data, the first category was improved 
+reducing the background, but not that much better at increasing the amount of signal. 
+In the second category the regular autoencoder is much better at reducing the background, 
+but struggles with increasing the amount of signal. The variational autoencoder struggled with
+reducing the background, but increased the amount of signal relative to the regular autoencoder reconstruction error. 
+On the significance test
+ the regular autoencoder performs better than the variational autoencoder. 
+It was also shown that with an increase in training data, the reconstruction of the test dataset was improved 
 for both the regular autoencoder and the variational autoencoder. The final test of the autoencoder 
 was a blind test with ATLAS data and BSM signals. It showed that the autoencoder, when trained on 
 the 2 lepton + $e_T^{miss}$ dataset, managed to separate out some signals from the ATLAS data. 
-This indicates that there might be a usecase for it in more rigorous analyses at ATLAS, and 
+This indicates that there might be an usecase for it in more rigorous analyses at ATLAS, and 
 should be better understood. \par 
 We also argue for future work and challenges with the method. Amongst other 
 issues where computational bottlenecks related to writing and loading of data from training 
 and inference. It is recommended to further investigate the RMM, as well as alter 
 the training process by physics informed or machine learning informed choices, such as a 
-weighted MSE. The autoencoder might perform even better with better feature engineering, and 
+weighted mean squared error (MSE). The autoencoder might perform even better with better feature engineering, and 
 this should be of focus for futher research as well. 

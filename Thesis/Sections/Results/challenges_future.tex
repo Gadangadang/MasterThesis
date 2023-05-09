@@ -4,7 +4,7 @@ In the previous sections, the output and results of using the autoencoder for an
 The method and results, as produced and shown in this thesis, have yielded some promising results given the nature 
 of the search method. However, it should be known what the challenges of the task actually are to truly understand 
 why the results are only promising, and not great compared to other search methods. The challenges can be divided into 
-three main points, all of which are entangled together. The three challenges are listed below. 
+three main points, all of which are tangled together. The three challenges are listed below. 
 
 \begin{itemize}
     \item Model independence
@@ -25,7 +25,7 @@ The search method is inherently
 biased as one assumes that the new physics looks like the signal, and thus do analysis, data preparation etc. with that 
 signal in mind. But we do not know, at all, what the new physics looks like, even the assumption that we are looking for 
 particles are implying a bias that might not be true. From the collisions in the detector to the analysis, there are biased descisions, 
-we cannot avoid them, but we can minimize them as much as possible, which is a goal with the search strategy in this thesis. \par
+we cannot avoid them, but we can minimize them as much as possible, which is the goal with the search strategy in this thesis. \par
 
 This leads us to the second challenge, which is reconstruction error minimization. The proposed method in this thesis is to 
 learn the signature of the SM so well, that even subtle anomalous behavior will be picked up by the analysis tool. 
@@ -45,7 +45,7 @@ possible, simply taking the average, to dictate how the autoencoder learns and u
 \section{Future work}
 
 Autoencoders and their applications to anomaly detection in high energy physics are not well understood, 
-and this thesis on scraped on some issues and attempts that needs to be done. It is a recent topic in within 
+and this thesis only scraped on some issues and attempts that needs to be done. It is a recent topic within 
 the HEP community, and consequently much work is needed to reach a better understanding of how autoencoders 
 behave with HEP data. The work done in this thesis has led to three areas of focus that should be explored more, 
 listed below. 
@@ -59,7 +59,7 @@ listed below.
 \subsection*{Computational bottlenecks}
 From sections \ref{sec:3lep} and \ref{sec:2lep} there seems to be a positive trend in increasing the amount 
 of training data for the autoencoders, both regular and variational. With a continual increase in data from 
-Run3 and onward \cite{LHC_int_lum}, so will the loading and storing time used for doing analyses increase. 
+Run3 and onward \cite{LHC_int_lum}, the loading and storing time used for doing analyses increase. 
 
 \begin{figure}[H]
     \caption[LHC nominal luminosity projections]{LHC nominal luminosity projections for the next 2 decades}
@@ -71,13 +71,15 @@ Figure \ref{fig:lhc_nom} shows the expected time periods for data collection and
 the next two decades. \par
 One bottleneck\footnote{The bottleneck problem explained here is not in regard to the recording of the events. 
 It is rather in the amount of data the analysis tools have to ingest. Figure \ref{fig:lhc_nom} is used as a tool
-to illustrate the amount that will have to be ingested. } that was discovered during the work in this thesis was the use of Pandas pre the 2.0 version release, which is 
+to illustrate the amount that will have to be ingested. } that was discovered during the work with this thesis was 
+the use of Pandas pre the 2.0 version release, which is 
 written on top of NumPy. Although Pandas has many very useful features and is the industry standard for 
 data analysis and feature engineering, it is somewhat slow. NumPy is not parallelized, thus all operations are 
-done in serial. Polars has proven useful as a replacement. Though in its early stages still, it unlike Pandas 
-has a Rust backend, which natively parallelizes. Thus, if one works with rather large datasets one should use
+done in serial. Polars has proven useful as a replacement, and was used for the megaset training. Allthough in its 
+early stages still, it unlike Pandas has a Rust backend, which natively parallelizes. Thus, if one works with rather 
+large datasets one should use
 Polars, or some other parallalized tool. Another tool used for training and inference was to store training 
-and test data post-processing in numpy arrays such that one can just load them up. NumPy makes this very simple, 
+and test data post-processing in numpy arrays such that one can just load them. NumPy makes this very simple, 
 but as mentioned above it is serial in its execution and thus takes long time for large arrays. In the 2 lepton 
 case the clear bottleneck both in processing of the training and testing data, as well as inference and training 
 of the models, was the loading and storing time using NumPy's load and save functions. Sadly there is not much 
@@ -110,7 +112,7 @@ There is a continuing battle between speed and accuracy in terms of choosing an 
 The choice of batchsize for this thesis is 8192. It is common to choose a batchsize that is a multiple of two, 
 as this is most optimized for GPU's. 8192 is $2^{13}$, and it a rather large batchsize. Allthough this allows for 
 epoch training time to be as low as less than 2 minutes for 2 lepton case and less than 1 minute for 3 lepton case,
-it does decreace the model's ability to learn more about the dataset\cite{Goodfellow-et-al-2016}. With better and faster equipment this could 
+it does decrease the model's ability to learn more about the dataset\cite{Goodfellow-et-al-2016}. With better and faster equipment this could 
 be improved whilst decreasing the batchsize. 
 
 
@@ -127,21 +129,21 @@ This thesis used the Rapidity-Mass matrix described by Chekanov\cite{Chekanov_20
 Whilst containing features that are very uncorrelated it creates a feature signature that could be used by 
 the autoencoder to learn underlying structures in the SM. There are however some aspects to discuss. 
 First, every nonexisting entry in the RMM for a given event is replaced with a zero value. This creates 
-"islands" in the RMM structure with contributes to create the signatures for the events. It is however not clear 
-how these zero values propagate through the network, and how they affect the performance and really the autoencoder's 
+"islands" in the RMM structure which contributes to create the signatures for the events. It is however not clear 
+how these zero values propagate through the network, and how they affect the performance and the autoencoder's 
 ability to learn the underlying structures in the SM. In cases where one uses tools like decision trees, 
 this is not an issue, as they can just remove the feature if it holds a certain value, but as we need a tabular and 
 rectangular shape to do the matrix multiplication that is neural network feed forwarding and backpropagation, a value
 has to be put in the missing entries, and it is not obvious or known what the choice of using zeros does. \par 
 Another choice to consider is the amount of particles in the RMM. This thesis tried allowing for 5 electrons and 5 muons, 
-and 6 b- and ljets, yeilding a total of 529 elements in the RMM. This choice was an arbitrary one, but it is not 
+and 6 b- and ljets, yielding a total of 529 elements in the RMM. This choice was an arbitrary one, but it is not 
 unreasonable to think that an even larger RMM would be more beneficial, as it contains more information. Some 
 events might have even more jets in them, or leptons. But with a larger RMM comes a larger amount of zero valued 
 features as well. And also, with a larger RMM, the memory needed for a given array increases, which in the case of
 the 2 lepton case, would mean more megasets of smaller size. The computation time, from event selection and conversion from Rdataframe to Numpy, and training 
 and inference, would increase a lot. A third point to make is that the RMM alone might not be the ideal set of features. 
-It would be interesting to test a combination of RMM and some other features, were we remove some of the features that are
-on average are zero and replace them with other useful information. If the goal is to learn the autoencoders the signature 
+It would be interesting to test a combination of RMM and some other features, where we remove some of the features that are
+on average zero and replace them with other useful information. If the goal is to learn the autoencoders the signature 
 of the SM, then it is not unreasonable to assume that more specific information would be better. It should be better understood 
 what it means to learn the signature of a channel, and of the SM as a whole. \par 
 
@@ -152,16 +154,17 @@ what it means to learn the signature of a channel, and of the SM as a whole. \pa
 \subsection*{Architecture engineering}
 The regular autoencoder appears to provide a better anomaly detection performance than the variational autoencoder. 
 The architecture is somewhat simple, given the hard task it is meant to perform. It might be possible to 
-add some more complex layer structures like CNN autoencoders or PCA to make a more complicated and better performing 
+add some more complex layer structures like convolutional neural network (CNN) autoencoders or principal component analysis (PCA) 
+to make a more complicated and better performing 
 network architecture. This is of course only speculation, and was not investigated much in depth. General trends were 
 found to vary depending on the size of the dataset, and it is not trivial that for example a deep neural network is 
-benefitial as the training sample increases. What was important though was to ensure that the latent space was large 
-enough to store enough information for the decoder. In the early attempts the latent space were set between 10 and 50 
+beneficial as the training sample increases. What was important though was to ensure that the latent space was large 
+enough to store enough information for the decoder. In the early attempts the latent space was set between 10 and 50 
 nodes, which was too little for the encoded information to be useful. As there is no clear way to find the optimal 
 architecture, an educated guess on the number of nodes were done. In theory, one can create a tunable network where 
 the number of layers and nodes in each layer are hyperparameters, but the sheer number of combinations would lead to 
-much longer computation time than what was available during this thesis. Tools like Keras-Tuner could facilitate 
-this search, but if this were a PhD thesis or a long term research project it would be benefitial with more
+much longer computation time than what was reasonable within the timescale of this thesis. Tools like Keras-Tuner could facilitate 
+this search, but if this were a PhD thesis or a long term research project it would be beneficial with more
  significant hardware or a more rigorous way to set an optimal architecture. \par
 
 % Tools like Keras-Tuner could facilitate 
@@ -175,9 +178,9 @@ calculating the error of each feature for a given event, and averaging the error
 This has its pros and cons, and should be investigated further. Suppose one has an RMM which is very sparse, 
 with 10 bjets, 10 ljets, 10 electrons, 10 muons, and 10 photons, i.e a T5N10 matrix of 2601 colums and rows. 
 In this case, one can easily assume that the RMM would be very sparse, as few if any SM events produced 
-as the current energy level as the LHC contains that many particles. Thus, one could argue that some features 
+at the current energy level at the LHC contains that many particles. Thus, one could argue that some features 
 are more important to learn correctly than others, and thus should be weighted more. It is however difficult to 
-know which features that should be in focus, as the signatures for each event's might differ, and some 
+know which features that should be in focus, as the signatures for each event might differ, and some 
 might look completely different from one another. One way to deal with this issue is to calculate 
 the average RMM for a given channel, and then see if there are general trends in the RMM for those channels. 
-Then one could perhaps weigh the most used features more than the more sparse areas. 
+Then one could perhaps weigh the most used features more than the sparser areas. 

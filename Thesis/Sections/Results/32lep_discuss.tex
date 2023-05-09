@@ -14,44 +14,43 @@ up in five points:
 \end{itemize}
 First, it appears that the shape of the reconstruction error is more sensitive 
 to the choice between variational and regular autoencoder than it is to the 
-number of training samples it uses. However, the steepness of the shape in the 
-case of the regular autoencoder increases with the increase of training data. 
-From this obervation it is reasonable to assume that to increase the ability of 
-the autoencoder to perform, one needs large amounts of training samples. This 
-is also shown in the case of the variational autoencoder, where if one increases 
+number of training samples it uses. However, the skewedness of the reconstruction error 
+produced by the regular autoencoder increases with the size of the training data. 
+From this observation it is reasonable to assume that to improve on the performance of 
+the autoencoder, large amounts of training data is needed. This 
+is also observed in the case of the variational autoencoder, where if one increases 
 the amount of training data by going from the 3 lepton + $e_T^{miss}$ case to 
-the 2 lepton + $e_T^{miss}$ case we observe the peak to move more to the left 
-end of the reconstruction error distribution. It was not well investigated 
-why the outputs of the two models are so different, but one reason could be 
+the 2 lepton + $e_T^{miss}$ case we observe a shift towards lower reconstruction error.
+It was not investigated further why the outputs of the two models are so different, but one reason could be 
 that the decoder that samples from the latent space distribution in the 
 variational autoencoder needs even more training data to get good separation. \par 
 Secondly, with the increase in training data it would be interesting to do the 
 "altering $p_T$" test, as well as some other SM MC altering tests with especially the 
 regular autoencoder. Based on the signal tests and the "altering $p_T$" test done with 
-the 3 lepton + $e_T^{miss}$ trained regular autoencoder, it is reasonable that the 
+the 3 lepton + $e_T^{miss}$ trained regular autoencoder, it is reasonable to assume that the 
 autoencoder would perform even better. Other tests could for example be to swap 
-certain features in the RMM in order to create unphysical events, or swap events from
+certain features in the RMM, or swap events from
 one decay channel with another in order to create unphysical events. Essentially, 
 by making these anomalous events and testing the autoencoder, one would get a better 
 picture on the reach and ability of the autoencoder. This is of importance given the 
 fact that the target signal or signals could in theory look very strange or perhaps 
 in some feature space very similar to the SM MC. \par 
 A third point to note is in regard to the megaset training done in the 2 lepton + 
-$e_T^{miss}$ case. An arbitrary choice of 10 megasets were chosen, but it might 
-be better to choose a larger or smaller number of megasets\footnote{As the total 
+$e_T^{miss}$ case. An arbitrary set of 10 megasets was chosen, but it might 
+have been beneficial to choose a larger or smaller number of megasets\footnote{As the total 
 amount of events would be the same, the difference with using say 20 megasets would 
 be faster loading and writing time. The batchsize for a given training session with a batch 
-would still be the same. }, and that might have an impact
+would still be the same. }, and this might have had an impact
 on how well the autoencoders learn the SM signatures. A key criterion to uphold when 
-doing that training is to ensure that the megasets, when sampled, all maintain the natural distribution of 
+doing training is to ensure that the megasets, when sampled, all maintain the natural distribution of 
 the entire training set and thus the SM. If not, the algorithm will learn
 with a bias that is not contructive. \par 
 The fourth point to draw from the results are that it appears that the results are not 
 too sensitive to the architecture of the networks. The two different architectures chosen
 were one model with only a latent space layer between the input and output layer, and a model
 with three layers on each side of the latent space. The choice of layers and nodes per layer 
-was somewhat arbitrary, and after inference it was also clear that really only the latent space
-was sensitive to change with respect to performance in reconstruction error. This is though 
+was somewhat arbitrary, and after inference it was also clear that changes to the latent space 
+affected more a change in the reconstruction error. This is though 
 more related to the size of the input layer and the complexity of the data, more than 
 the number of events in the training and test set. \par 
 The fifth point is in regard to the blind test done with the 2 lepton + $e_T^{miss}$ trained 
@@ -59,7 +58,7 @@ deep autoencoder. This test was done in order to see if the autoencoder could pi
 signals mixed with SM events in ATLAS data. 
 % In a PhD thesis or a larger research project
 % futher testing would be done to ensure that the ATLAS data did infact only contain SM events
-From the results in section \ref{sec:blind_Test} it appears that the autoencoder is able
+From the results in section \ref{sec:blind_test} it appears that the autoencoder is able
 to some extent separate out BSM signals. This indicates that there might be use for this 
 search method and therefor more to learn about the autoncoders. Further in-depth research into 
 the method should be done to figure out its usefulness in high energy physics research. 

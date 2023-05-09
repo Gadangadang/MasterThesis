@@ -54,59 +54,59 @@
 \contentsline {figure}{\numberline {4.18}{\ignorespaces 2lep shallow network | $450p300$ | AE}}{57}{figure.caption.101}%
 \contentsline {figure}{\numberline {4.19}{\ignorespaces 2lep deep network | $800p50$ | AE}}{58}{figure.caption.102}%
 \contentsline {figure}{\numberline {4.20}{\ignorespaces 2lep shallow network | $800p50$ | AE}}{59}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces 2lep deep network | $450p300$ | VAE}}{61}{figure.caption.105}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces 2lep shallow network | $450p300$ | VAE}}{62}{figure.caption.106}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces 2lep deep network | $800p50$ | VAE}}{63}{figure.caption.107}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces 2lep shallow network | $800p50$ | VAE}}{64}{figure.caption.108}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Reconstruction error blind test}}{66}{figure.caption.109}%
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Reconstruction error unblind test}}{67}{figure.caption.110}%
-\contentsline {figure}{\numberline {4.27}{\ignorespaces LHC nominal luminosity projections}}{70}{figure.caption.112}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces 2lep deep network | $450p300$ | VAE}}{60}{figure.caption.105}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces 2lep shallow network | $450p300$ | VAE}}{61}{figure.caption.106}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces 2lep deep network | $800p50$ | VAE}}{62}{figure.caption.107}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces 2lep shallow network | $800p50$ | VAE}}{63}{figure.caption.108}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Reconstruction error blind test}}{64}{figure.caption.109}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Reconstruction error unblind test}}{65}{figure.caption.110}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces LHC nominal luminosity projections}}{68}{figure.caption.112}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces AE | Channel removal, diboson2l, diboson3l, diboson4l}}{80}{figure.caption.121}%
-\contentsline {figure}{\numberline {2}{\ignorespaces AE | Channel removal, Wjets, topOther, triboson}}{81}{figure.caption.122}%
-\contentsline {figure}{\numberline {3}{\ignorespaces AE | Channel removal, Zeejets, Zmmjets, Zttjets}}{82}{figure.caption.123}%
-\contentsline {figure}{\numberline {4}{\ignorespaces VAE | Channel removal, diboson2l, diboson3l, diboson4l}}{83}{figure.caption.125}%
-\contentsline {figure}{\numberline {5}{\ignorespaces VAE | Channel removal, Wjets, topOther, triboson}}{84}{figure.caption.126}%
-\contentsline {figure}{\numberline {6}{\ignorespaces VAE | Channel removal, Zeejets, Zmmjets, Zttjets}}{85}{figure.caption.127}%
-\contentsline {figure}{\numberline {7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{86}{figure.caption.129}%
-\contentsline {figure}{\numberline {8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{86}{figure.caption.130}%
-\contentsline {figure}{\numberline {9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{87}{figure.caption.131}%
-\contentsline {figure}{\numberline {10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{87}{figure.caption.132}%
-\contentsline {figure}{\numberline {11}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{88}{figure.caption.134}%
-\contentsline {figure}{\numberline {12}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{88}{figure.caption.135}%
-\contentsline {figure}{\numberline {13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{89}{figure.caption.136}%
-\contentsline {figure}{\numberline {14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{89}{figure.caption.137}%
-\contentsline {figure}{\numberline {15}{\ignorespaces 3lep deep network | $450p300$ | AE | 2}}{90}{figure.caption.139}%
-\contentsline {figure}{\numberline {16}{\ignorespaces 3lep shallow network | $450p300$ | AE | 2}}{91}{figure.caption.140}%
-\contentsline {figure}{\numberline {17}{\ignorespaces 3lep deep network | $800p50$ | AE | 2}}{92}{figure.caption.141}%
-\contentsline {figure}{\numberline {18}{\ignorespaces 3lep shallow network | $800p50$ | AE | 2}}{93}{figure.caption.142}%
-\contentsline {figure}{\numberline {19}{\ignorespaces 3lep deep network | $450p300$ | AE | 3}}{94}{figure.caption.143}%
-\contentsline {figure}{\numberline {20}{\ignorespaces 3lep shallow network | $450p300$ | AE | 3}}{95}{figure.caption.144}%
-\contentsline {figure}{\numberline {21}{\ignorespaces 3lep deep network | $800p50$ | AE | 3}}{96}{figure.caption.145}%
-\contentsline {figure}{\numberline {22}{\ignorespaces 3lep shallow network | $800p50$ | AE | 3}}{97}{figure.caption.146}%
-\contentsline {figure}{\numberline {23}{\ignorespaces 3lep deep network | $450p300$ | VAE | 2}}{98}{figure.caption.148}%
-\contentsline {figure}{\numberline {24}{\ignorespaces 3lep shallow network | $450p300$ | VAE | 2}}{99}{figure.caption.149}%
-\contentsline {figure}{\numberline {25}{\ignorespaces 3lep deep network | $800p50$ | VAE | 2}}{100}{figure.caption.150}%
-\contentsline {figure}{\numberline {26}{\ignorespaces 3lep shallow network | $800p50$ | VAE | 2}}{101}{figure.caption.151}%
-\contentsline {figure}{\numberline {27}{\ignorespaces 3lep deep network | $450p300$ | VAE | 3}}{102}{figure.caption.152}%
-\contentsline {figure}{\numberline {28}{\ignorespaces 3lep shallow network | $450p300$ | VAE | 3}}{103}{figure.caption.153}%
-\contentsline {figure}{\numberline {29}{\ignorespaces 3lep deep network | $800p50$ | VAE | 3}}{104}{figure.caption.154}%
-\contentsline {figure}{\numberline {30}{\ignorespaces 3lep shallow network | $800p50$ | VAE | 3}}{105}{figure.caption.155}%
-\contentsline {figure}{\numberline {31}{\ignorespaces 2lep deep network | $450p300$ | AE | 2}}{106}{figure.caption.157}%
-\contentsline {figure}{\numberline {32}{\ignorespaces 2lep shallow network | $450p300$ | AE | 2}}{107}{figure.caption.158}%
-\contentsline {figure}{\numberline {33}{\ignorespaces 2lep deep network | $800p50$ | AE | 2}}{107}{figure.caption.159}%
-\contentsline {figure}{\numberline {34}{\ignorespaces 2lep shallow network | $800p50$ | AE | 2}}{108}{figure.caption.160}%
+\contentsline {figure}{\numberline {1}{\ignorespaces AE | Channel removal, diboson2l, diboson3l, diboson4l}}{78}{figure.caption.121}%
+\contentsline {figure}{\numberline {2}{\ignorespaces AE | Channel removal, Wjets, topOther, triboson}}{79}{figure.caption.122}%
+\contentsline {figure}{\numberline {3}{\ignorespaces AE | Channel removal, Zeejets, Zmmjets, Zttjets}}{80}{figure.caption.123}%
+\contentsline {figure}{\numberline {4}{\ignorespaces VAE | Channel removal, diboson2l, diboson3l, diboson4l}}{81}{figure.caption.125}%
+\contentsline {figure}{\numberline {5}{\ignorespaces VAE | Channel removal, Wjets, topOther, triboson}}{82}{figure.caption.126}%
+\contentsline {figure}{\numberline {6}{\ignorespaces VAE | Channel removal, Zeejets, Zmmjets, Zttjets}}{83}{figure.caption.127}%
+\contentsline {figure}{\numberline {7}{\ignorespaces AE | Reconstruction error $p_T$ altering of 1.5}}{84}{figure.caption.129}%
+\contentsline {figure}{\numberline {8}{\ignorespaces AE | Reconstruction error $p_T$ altering of 3}}{84}{figure.caption.130}%
+\contentsline {figure}{\numberline {9}{\ignorespaces AE | Reconstruction error $p_T$ altering of 5}}{85}{figure.caption.131}%
+\contentsline {figure}{\numberline {10}{\ignorespaces AE | Reconstruction error $p_T$ altering of 7}}{85}{figure.caption.132}%
+\contentsline {figure}{\numberline {11}{\ignorespaces VAE |Reconstruction error $p_T$ altering of 1.5}}{86}{figure.caption.134}%
+\contentsline {figure}{\numberline {12}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 3}}{86}{figure.caption.135}%
+\contentsline {figure}{\numberline {13}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 5}}{87}{figure.caption.136}%
+\contentsline {figure}{\numberline {14}{\ignorespaces VAE | Reconstruction error $p_T$ altering of 7}}{87}{figure.caption.137}%
+\contentsline {figure}{\numberline {15}{\ignorespaces 3lep deep network | $450p300$ | AE | 2}}{88}{figure.caption.139}%
+\contentsline {figure}{\numberline {16}{\ignorespaces 3lep shallow network | $450p300$ | AE | 2}}{89}{figure.caption.140}%
+\contentsline {figure}{\numberline {17}{\ignorespaces 3lep deep network | $800p50$ | AE | 2}}{90}{figure.caption.141}%
+\contentsline {figure}{\numberline {18}{\ignorespaces 3lep shallow network | $800p50$ | AE | 2}}{91}{figure.caption.142}%
+\contentsline {figure}{\numberline {19}{\ignorespaces 3lep deep network | $450p300$ | AE | 3}}{92}{figure.caption.143}%
+\contentsline {figure}{\numberline {20}{\ignorespaces 3lep shallow network | $450p300$ | AE | 3}}{93}{figure.caption.144}%
+\contentsline {figure}{\numberline {21}{\ignorespaces 3lep deep network | $800p50$ | AE | 3}}{94}{figure.caption.145}%
+\contentsline {figure}{\numberline {22}{\ignorespaces 3lep shallow network | $800p50$ | AE | 3}}{95}{figure.caption.146}%
+\contentsline {figure}{\numberline {23}{\ignorespaces 3lep deep network | $450p300$ | VAE | 2}}{96}{figure.caption.148}%
+\contentsline {figure}{\numberline {24}{\ignorespaces 3lep shallow network | $450p300$ | VAE | 2}}{97}{figure.caption.149}%
+\contentsline {figure}{\numberline {25}{\ignorespaces 3lep deep network | $800p50$ | VAE | 2}}{98}{figure.caption.150}%
+\contentsline {figure}{\numberline {26}{\ignorespaces 3lep shallow network | $800p50$ | VAE | 2}}{99}{figure.caption.151}%
+\contentsline {figure}{\numberline {27}{\ignorespaces 3lep deep network | $450p300$ | VAE | 3}}{100}{figure.caption.152}%
+\contentsline {figure}{\numberline {28}{\ignorespaces 3lep shallow network | $450p300$ | VAE | 3}}{101}{figure.caption.153}%
+\contentsline {figure}{\numberline {29}{\ignorespaces 3lep deep network | $800p50$ | VAE | 3}}{102}{figure.caption.154}%
+\contentsline {figure}{\numberline {30}{\ignorespaces 3lep shallow network | $800p50$ | VAE | 3}}{103}{figure.caption.155}%
+\contentsline {figure}{\numberline {31}{\ignorespaces 2lep deep network | $450p300$ | AE | 2}}{104}{figure.caption.157}%
+\contentsline {figure}{\numberline {32}{\ignorespaces 2lep shallow network | $450p300$ | AE | 2}}{105}{figure.caption.158}%
+\contentsline {figure}{\numberline {33}{\ignorespaces 2lep deep network | $800p50$ | AE | 2}}{106}{figure.caption.159}%
+\contentsline {figure}{\numberline {34}{\ignorespaces 2lep shallow network | $800p50$ | AE | 2}}{107}{figure.caption.160}%
 \contentsline {figure}{\numberline {35}{\ignorespaces 2lep deep network | $450p300$ | AE | 3}}{108}{figure.caption.161}%
-\contentsline {figure}{\numberline {36}{\ignorespaces 2lep shallow network | $450p300$ | AE | 3}}{109}{figure.caption.162}%
+\contentsline {figure}{\numberline {36}{\ignorespaces 2lep shallow network | $450p300$ | AE | 3}}{108}{figure.caption.162}%
 \contentsline {figure}{\numberline {37}{\ignorespaces 2lep deep network | $800p50$ | AE | 3}}{109}{figure.caption.163}%
-\contentsline {figure}{\numberline {38}{\ignorespaces 2lep shallow network | $800p50$ | AE | 3}}{110}{figure.caption.164}%
-\contentsline {figure}{\numberline {39}{\ignorespaces 2lep deep network | $450p300$ | VAE | 2}}{111}{figure.caption.166}%
-\contentsline {figure}{\numberline {40}{\ignorespaces 2lep shallow network | $450p300$ | VAE | 2}}{112}{figure.caption.167}%
-\contentsline {figure}{\numberline {41}{\ignorespaces 2lep deep network | $800p50$ | VAE | 2}}{112}{figure.caption.168}%
-\contentsline {figure}{\numberline {42}{\ignorespaces 2lep shallow network | $800p50$ | VAE | 2}}{113}{figure.caption.169}%
-\contentsline {figure}{\numberline {43}{\ignorespaces 2lep deep network | $450p300$ | VAE | 3}}{113}{figure.caption.170}%
-\contentsline {figure}{\numberline {44}{\ignorespaces 2lep shallow network | $450p300$ | VAE | 3}}{114}{figure.caption.171}%
-\contentsline {figure}{\numberline {45}{\ignorespaces 2lep deep network | $800p50$ | VAE | 3}}{114}{figure.caption.172}%
-\contentsline {figure}{\numberline {46}{\ignorespaces 2lep shallow network | $800p50$ | VAE | 3}}{115}{figure.caption.173}%
+\contentsline {figure}{\numberline {38}{\ignorespaces 2lep shallow network | $800p50$ | AE | 3}}{109}{figure.caption.164}%
+\contentsline {figure}{\numberline {39}{\ignorespaces 2lep deep network | $450p300$ | VAE | 2}}{110}{figure.caption.166}%
+\contentsline {figure}{\numberline {40}{\ignorespaces 2lep shallow network | $450p300$ | VAE | 2}}{111}{figure.caption.167}%
+\contentsline {figure}{\numberline {41}{\ignorespaces 2lep deep network | $800p50$ | VAE | 2}}{111}{figure.caption.168}%
+\contentsline {figure}{\numberline {42}{\ignorespaces 2lep shallow network | $800p50$ | VAE | 2}}{112}{figure.caption.169}%
+\contentsline {figure}{\numberline {43}{\ignorespaces 2lep deep network | $450p300$ | VAE | 3}}{112}{figure.caption.170}%
+\contentsline {figure}{\numberline {44}{\ignorespaces 2lep shallow network | $450p300$ | VAE | 3}}{113}{figure.caption.171}%
+\contentsline {figure}{\numberline {45}{\ignorespaces 2lep deep network | $800p50$ | VAE | 3}}{113}{figure.caption.172}%
+\contentsline {figure}{\numberline {46}{\ignorespaces 2lep shallow network | $800p50$ | VAE | 3}}{114}{figure.caption.173}%
 \addvspace {10\p@ }
