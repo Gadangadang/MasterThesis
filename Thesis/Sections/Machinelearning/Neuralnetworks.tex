@@ -27,7 +27,7 @@ both of which have their pros and cons compared to neural networks.} have shown 
 with using neural networks for problems of high importance. Nonetheless, they can be very 
 effective if used correctly. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/nn_diagram.jpeg}
     \caption[Simple diagram of a neural network]{Simple neural network diagram drawn using Draw.io. Here the blue dots constitute the input layer, the green dots constitute the hidden layer, 
     and the red dots constitute the output layer. The arrows show the connections between the nodes. }
@@ -41,7 +41,7 @@ Some of the following subsections contains work previously done by myself and tw
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % left fixed width
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % center fixed width
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % flush right fixed width
-\begin{table}[H]
+\begin{table}[h!]
     % \setlength{\tabcolsep}{15pt}
     \renewcommand{\arraystretch}{1.3}
     \begin{center}
@@ -100,7 +100,7 @@ where $\eta$ is a step size, also called the learning rate. The choice of $\eta$
 hyperparameters\cite{Goodfellow-et-al-2016} that can be altered, and that highly depend on the given problem. 
 With regard to the learning rate, there are only three situations to consider, shown in figure \ref{fig:lr_choice}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/lr_choice.png}
     \caption[Explaining concequence of choice of learning rate]{Figures showing different choices of learning rate for a given cost function, with respect to the tunable parameters. 
     Source: \href{https://www.jeremyjordan.me/content/images/2018/02/Screen-Shot-2018-02-24-at-11.47.09-AM.png}{Jeremy Jordan}, accessed 03.10.22.}
@@ -112,7 +112,7 @@ In the left most figure we note that the learning rate is too small. This leads 
 before you reach a minimum. In the rightmost figure we note that the learning rate is too high, 
 and the result is that we get divergent behavior. Thus, the goal is to find the optimal learning 
 rate, shown in the middle figure. There are several algorithms that try to do what is shown in 
-the middle figure above, one of which is ADAM\cite{ADAM:opti}\par 
+the middle figure above, one of which is Adaptive Moment Estimation (ADAM)\cite{ADAM:opti}.\par 
 A modified and prefered version of gradient descent is the so-called stochastic gradient descent.
 Regular gradient descent can, for large datasets be quite slow, and is prone to getting stuck 
 in a local minimum. To circumvent this issue, mini batches are introduced. For each epoch (training step) 
@@ -129,7 +129,7 @@ network. The network initializes the weights and biases usually with normal or u
 later be adjusted. The procedure is to send the data through the network, weighting each connection according to the neural network's 
 architecture, and produce an output. The procedure can be summarized in the following steps\cite{FYSSTK}:
  \begin{itemize}
-    \item The data is recieved by the input nodes in the network for each feature.
+    \item The data is received by the input nodes in the network for each feature.
     \item Each input node weights the data value according to the connection of each node in the next layer.
     \item Every node in the hidden layers sums the weighted data values and adds the bias associated to the given node. The resulting number is denoted as z. 
     \item This value z is then sent through an activation function $\sigma$, which produces the output of the node, denoted as $a = \sigma(z)$.
@@ -227,3 +227,4 @@ Using this, we can derive a three-step formula for the backpropagation algorithm
 \begin{equation*}
     b_j^l \leftarrow b_j^l - \eta \delta_j^l.
 \end{equation*}
+

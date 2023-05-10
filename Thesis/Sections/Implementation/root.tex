@@ -1,5 +1,5 @@
 \section{ROOT}
-ROOT is an open-source data analysis framework used by high energy physics. It can do fast data manipulation, save and access data, 
+ROOT is an open-source data analysis framework used in high energy physics. It can do fast data manipulation, save and access data, 
 create graphics for publication, and even combine with high level languanges such as R and Python.
 
 
@@ -14,7 +14,8 @@ guidelines} for more.} apply contraints to the data. Using PyROOT
 Python, as the functionality is wrapped around a C++ class. Below is a code example of how
 to create a RDataFrame object, apply a cut and then create a column for later use. Here, good 
 leptons are defined first, denoted as "ele\_SG" and "muo\_SG". A cut is then applied where we 
-require that the number of good leptons is always 3. Finally, a column is created where the 
+require that the number of good leptons is always 3\footnote{Final states with two leptons present wre also analysed}. 
+Finally, a column is created where the 
 combination of type of leptons in the 3 lepton system is stored, as well as creating a histogram 
 containing the results for that given channel\footnote{A channel here refers to a certain decay 
 channel. The simulations of the SM is divided into several channels, and some look more alike than others. One example is 
@@ -23,9 +24,9 @@ to simulated events only, as we cannot control what decay channels we get in the
 k. Notice here that if the variable already exists as a column in the dataframe, arithmetic and logic 
 can be applied directly using those columns to create new one. More complicated variables, such as 
 the flavor combination for the leptons, or the invariant mass of two particles must be found or 
-calculated using C++ functions. An example of such a C++ function is shown below the python code example. 
+calculated using C++ functions. An example of such a C++ function is shown in code example \ref{code:python_func_example}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example}]
 import ROOT as R
@@ -89,14 +90,14 @@ for k in df.keys(): #* Loop over all channels, i.e [Zeejets, ttbar, data15, ...]
     \label{code:rdata}
 \end{figure}
 
-In the code example above we see how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
+In the code example \ref{code:python_func_example} we see how RDataframe can be used for event selection. Line 1-9 are settings for ROOT, 
 number of threads to use in the paralellization, extra helper functions written in C++ with .h and .so files and the path to the folder.
 Lines 11-13 create a dictionary containing the ROOT RDataFrames used for event selection. These are categorized by channel name. 
 The loop on line 15 does event selection for each channel sample, defining new variables in the RDataFrame, applying filters and creating histograms.
 Some variables are constructed using variables already in the ROOT files such as energy and mass. Through custom C++ functions
-these properties can be added to the RDataFrames. The example below shows a custom C++ function which is used in work of this thesis.
+these properties can be added to the RDataFrames. Code example \ref{code:cpp_func_example} shows a custom C++ function which is used in work of this thesis.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
 \begin{lstlisting}[language=C++, style=cppstyle, label={code:cpp_func_example}]
 double getM(VecF_t &pt_i, VecF_t &eta_i, VecF_t &phi_i, VecF_t &e_i,
@@ -132,10 +133,10 @@ It takes the kinetic parameters for both particles and the index for which of th
 \end{figure}
 This C++ function creates Lorentz vectors for two particles, and then returns the invariant mass based on the parameters sent in. 
 This function will be used on all the leptons in a given event. If one particle or both do not exist, the C++ function will
-return zero as the invariant mass. \par
+return zero as the invariant mass\footnote{The invariant mass function getM is used for jet-jet, jet-lepton and lepton-lepton invariant masses}. \par
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
 \begin{lstlisting}[language=Python, style=pythonstyle, label={code:python_func_example_2}]
 import pandas as pd 
@@ -166,10 +167,10 @@ def Convert_RDF_to_numpy(df, PATH_TO_STORE):
 Her $df[k]$ is a dictionary containing each channel, with channel name as key.}
 \end{figure}
 
-Once event selection is done, the features have been chosen and histograms have been 
+Once the event selection is done, the features have been chosen and histograms have been 
 drawn, the RdataFrame can be converted to a Pandas dataframe. This is a very popular 
-choice for data structure when doing data analysis in python. This is done through an 
-intermediary step of converting the RDataframe to a numpy filestructure, which then can 
+choice for data structure when performing data analysis in python. This is done through an 
+intermediate step of converting the RDataframe to a numpy filestructure, which then can 
 be converted to a Pandas\cite{reback2020pandas} dataframe or some other framework.
 The new Pandas dataframes are stored as HDF5\cite{hdf5} files to be used later. This is 
 because the HDF5 format has a very good compression ratio, and is very fast to read and write. 

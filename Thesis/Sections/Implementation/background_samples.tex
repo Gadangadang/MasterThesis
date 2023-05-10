@@ -4,7 +4,7 @@ To look for anomalies in the 2 or 3 lepton final states we need to train on back
 This means in a sense that we want the autoencoder to learn what is expected from the SM in terms of this final state. 
 The 2 and 3 lepton + $e_T^{miss}$ background Monte Carlo contains the following channels:
 
-\begin{table}[H]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|cc|}
@@ -30,9 +30,10 @@ The 2 and 3 lepton + $e_T^{miss}$ background Monte Carlo contains the following 
 
 
 Below are three Feynamn diagrams, two of which are both represented in the 2 and 3 lepton + $e_T^{miss}$ background MonteCarlo shown in table \ref{tab:bkg_channels}. 
-The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets channels. 
+The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets channels. The $t\bar{t}$ process shown in figure \ref{fig:ttbar_feynman}
+leads to two leptons + $e_T^{miss}$ from the W-decays, as well as to two b-jets. One jet can be mis-identified as a lepton. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     
 
@@ -92,7 +93,9 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
     \label{fig:ttbar_feynman}
     \end{figure}
 
-    \begin{figure}[H]
+    The Higgs process in figure \ref{fig:higgs_feynman} can lead to four leptons. One or two leptons can be misidentified and therefor constitute a background 
+    for the 2 lepton + $e_T^{miss}$ or 3 lepton + $e_T^{miss}$ analyses.
+    \begin{figure}[h!]
         \centering
         
     \begin{tikzpicture}
@@ -138,12 +141,14 @@ The selected ones are likely Feynman diagrams for $t\bar{t}$, Higgs and Zeejets 
         };
         \end{feynman}
         \end{tikzpicture}
-        \caption[Higgs production diagram]{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically. }
+        \caption[Higgs production diagram]{Proton-proton collision showing the Higgs channel. Here the Z bosons decay leptonically, leading to a four lepton final state. }
     
         \label{fig:higgs_feynman}
         \end{figure}
         
-        \begin{figure}[H]
+        The Z + jets process in figure \ref{fig:zeejets_feynman} can lead to two leptons and two b-jets. If one or both of the jets are fakd as leptons,
+        the process constitutes a source of background for the 3 lepton + $e_T^{miss}$ or 2 lepton + $e_T^{miss}$ analysis.
+        \begin{figure}[h!]
             \centering
             
         

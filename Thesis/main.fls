@@ -912,16 +912,16 @@ INPUT ./Figures/Machinelearning/autoencoder_imagedenoising.png
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx9.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx6.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/lm/rm-lmbx8.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy5.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy7.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy5.tfm
 INPUT ./Figures/Machinelearning/vae-gaussian.png
 INPUT ./Figures/Machinelearning/vae-gaussian.png
 INPUT ./Figures/Machinelearning/vae-gaussian.png
 INPUT ./Sections/Machinelearning/other_algo.tex
 INPUT ./Sections/Machinelearning/other_algo.tex
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
+INPUT /usr/local/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT ./Sections/SM_BSM/SM.tex
 INPUT ./Sections/SM_BSM/SM.tex
 INPUT ./Figures/SM/Standard_Model_of_Elementary_Particles.svg.png
@@ -933,6 +933,8 @@ INPUT ./Sections/SM_BSM/BSM.tex
 INPUT ./Figures/susy/C1N2-WZN1N1.png
 INPUT ./Figures/susy/C1N2-WZN1N1.png
 INPUT ./Figures/susy/C1N2-WZN1N1.png
+INPUT ./Sections/Implementation/intro.tex
+INPUT ./Sections/Implementation/intro.tex
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Sections/Implementation/atlas.tex
 INPUT ./Figures/atlas/transverse_plane.png
@@ -1732,7 +1734,6 @@ INPUT ./Sections/Appendix/Appendix1.tex
 OUTPUT main.thm
 INPUT ./main.aux
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
-INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx7.pfb
 INPUT /usr/local/texlive/2022/texmf-dist/fonts/type1/public/lm/lmbx9.pfb

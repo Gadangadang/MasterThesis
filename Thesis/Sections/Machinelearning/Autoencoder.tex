@@ -7,7 +7,7 @@ into the following points:
 \begin{itemize}
     \item Same number of output categories as input categories  
     \item A latent space with smaller dimensionality than the input/output layer  
-    \item They are trained on their own input, using reconstruction as metric
+    \item The autoencoders are trained on their own input, using reconstruction as metric
 \end{itemize}
 What we end up with are two funnel shaped parts linked together. The two funnels are 
 called the encoder (left funnel) and decoder (right funnel) respectively. This architecture is not 
@@ -16,14 +16,17 @@ A good example to illustrate this is image reconstruction, illustrated in figure
 Suppose you have an image, and want to reconstruct it. By feeding the encoder an image, 
 and comparing the decoder output to the actual image, the autoencoder can tune itself to recreate the image it trained on. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/autoencoder_imagedenoising.png}
-    \caption[Conceptual autoencoder]{Figure depicting a model for an autoencoder. Here the input $\bf{x}$ is the original image, $\bf{x'}$ is a reconstructed version of $\bf{x}$, $g_{\phi}$ is the encoder, $f_{\theta}$ is the decoder, and $z$ is the latent space. Found 14.01.23 at \href{https://lilianweng.github.io/posts/2018-08-12-vae/autoencoder-architecture.png}{lilianweng.github.io} \cite{weng2018VAE}. }
+    \caption[Conceptual autoencoder]{Figure depicting a model for an autoencoder. Here the input $\bf{x}$ is the original image,
+    $\bf{x'}$ is a reconstructed version of $\bf{x}$, $g_{\phi}$ is the encoder, $f_{\theta}$ is the decoder, and $z$ is the 
+    latent space. The term bottleneck here only refers to the fact that the latent space have fewer nodes than the two funnels on 
+    either side. Found 14.01.23 at \href{https://lilianweng.github.io/posts/2018-08-12-vae}{lilianweng.github.io} \cite{weng2018VAE}. }
     \label{fig:ae_denoise}
 \end{figure}
 
-\subsection{Regular autoencoder}
-Mathematically the regular autoencoder is represented as follows\cite{weng2018VAE}. 
+\subsection*{Regular autoencoder}
+Mathematically the regular autoencoder is represented accordint to reference \cite{weng2018VAE}. 
 Using the annotations of each component in figure \ref{fig:ae_denoise} the decoded information is defined as follows 
 \begin{equation*}
     \bf{z} = g_{\phi}(\bf{x}),
@@ -34,15 +37,15 @@ and the reconstruction given as
     \bf{x'} = f_{\theta}(g_{\phi}(\bf{x})).
 \end{equation*}  
 
-The parameters $(\phi,\theta)$ are the tuneable parameters adjusted according to the loss function. In our case, the goal is
-reconstruction without copying\footnote{In some cases the autoencoder can train itself to learn the identity matrix, 
-which leads to reconstruction by copying, not training.}, thus we can use mean squared error, given as 
+To achieve $(\phi,\theta)$ are the tuneable parameters adjusted according to the loss function. In our case, the goal is
+reconstruction without copying\footnote{In some cases one can train the autoencoder to learn the identity matrix, 
+which leads to reconstruction by copying, not training.}, thus we can use the mean squared error (MSE), given as 
 
 \begin{equation}\label{eq:loss_ae}
     L_{AE} (\phi,\theta) = \frac{1}{N}\sum_{i=0}^{N-1} \left(\bf{x}^{i} - f_{\theta}(g_{\phi}(\bf{x}^{i}))\right)^{2}.
 \end{equation}
 
-\subsection{Variational autoencoders}
+\subsection*{Variational autoencoders}
 Another popular method for reconstruction is the so-called variational autoencoder. The work by Kingman and Welling \cite{VAE} showed how
 one can use the variational bayesian approach for efficient approximate posterior inference, leading to the use of variational autoencoders.
 Here, contrary to regular autoencoders, the latent space is a distribution that can be sampled from. In the context of reconstruction, this means that
@@ -60,17 +63,22 @@ $q_{\phi}(z|x)$ is the encoder.
 % where the mean and standard deviation are given by the neural network. Now, we sample from the approximate posterior $z^{(i,l)} \thicksim q_{\theta}(z|x^{(i)})$
 % where $z^{(i,l)} = g_{\phi}(x^{(i)}, \epsilon^{(l)}) = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$, $\epsilon^{(l)} \thicksim \mathcal(N)(0,I)$ and $\odot$
 % is the elementwise product. 
-Under certain conditions\cite{VAE} the KL divergence\footnote{The KL divengence is a measure of how one probability distribution is different from a second reference propability distribution, and is related to the cost function via the marginal likelihood $log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)})$} can be computed analytically, and it 
-can then be showed\cite{VAE} that the variational approximate posterior is:
+One of the ways a variational autoencoder learns is through the Kullback-Leibler (KL) divergence\cite{MR39968}. The KL divengence is a measure of how 
+one probability distribution is different from a second reference propability distribution, and is related to the cost function via the marginal likelihood
+\begin{equation}
+    log\, p_{\theta}(x^{(i)}) = D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z|x^{(i)})) + \mathcal{L}(\theta, \phi;x^{(i)}).
+\end{equation}
+Under certain conditions\cite{VAE} the 
+KL divergencecan be computed analytically, and it can then be showed\cite{VAE} that the variational approximate posterior is:
 
 \begin{equation}\label{eq:loss_vae}
-    \mathcal{L}(\theta, \phi;x^{(i)}) \simeq \frac{1}{2}\sum_{j=1}^{J}(1 + log\, ((\sigma^{(i)}_{j})^2) - (\mu^{(i)}_{j})^2 - (\sigma^{(i)}_{j})^2) +\frac{1}{L}\sum_{l=1}^{L}log\, p_{\theta}(x^{(i)}|z^{(i,l)}),
+    \mathcal{L}(\theta, \phi;x^{(i)}) \simeq \frac{1}{2}\sum_{j=1}^{J}\left(1 + log\, ((\sigma^{(i)}_{j})^2) - (\mu^{(i)}_{j})^2 - (\sigma^{(i)}_{j})^2\right) +\frac{1}{L}\sum_{l=1}^{L}log\, p_{\theta}(x^{(i)}|z^{(i,l)}),
 \end{equation}
 
-where $z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$ and $ \epsilon^{(l)} \thicksim \mathcal{N}(0,I)$. This is the 
-cost function for the variational autoencoder. 
+where $z^{(i,l)} = \mu^{(i)} + \sigma^{(i)} \odot \epsilon^{(l)}$ and $ \epsilon^{(l)} \thicksim \mathcal{N}(0,I)$. $\odot$ is the elementwise product, and $\mathcal{N}(0, I)$ is a 
+normal distribution with the identity as variance. $\mathcal{L}(\theta, \phi;x^{(i)})$ is then the cost function for the variational autoencoder. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/Machinelearning/vae-gaussian.png}
     \caption{Figure depicting a model for a variational autoencoder. Found 14.01.23 \href{https://lilianweng.github.io/posts/2018-08-12-vae/vae-gaussian.png}{here} \cite{weng2018VAE}. }
     \label{fig:vae}
@@ -159,14 +167,14 @@ which then produce a latent space distribution from which the decoder can sample
 %     \mathbb{E}_{\mathcal{N}(z; \mu, \sigma^2)}[f(z)] \backsimeq  \frac{1}{L}\sum_{l=1}^L f(\mu + \sigma\epsilon^{(l)}).
 % \end{equation*}
 
-\subsection{Inference}\label{sec:ae_inference}
+\subsection*{Inference}\label{sec:ae_inference}
 As with the cost function for the autoencoder, the inference evaluation is also done by reconstruction. 
 To look for anomalies in the data, the reconstruction error will span a range of values, where the 
 lower end represents events that the autoencoder reconstructed well. The reconstruction error used 
-in the analyses is defined below. 
-\begin{equation}
+in the analysis is defined in equation \ref{eq:reconstruction_error} 
+\begin{equation}\label{eq:reconstruction_error}
     err = log_{10} \left[ \sum_i (x_i - \tilde{x}_i)^2 \right],
 \end{equation}
 
-where $x$ is the input data and $\tilde{x}$ is the output from inference. The background and signal 
-distributions made from the reconstruction error is key to analyse the performance of the autoencoders.
+where $x$ is the input data and $\tilde{x}$ is the output from inference. The distributions produced 
+from the reconstruction error is key to analyse the performance of the autoencoders.

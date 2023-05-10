@@ -1,5 +1,5 @@
 \section{The search strategy}\label{sec:strategy}
-The strategy used to look for anomalies in the 3 lepton + missing energy final state is presented as follows. 
+The strategy used to look for anomalies in the 3 lepton + missing energy final state is presented here. 
 First, the SM MC and ATLAS data for training and inference are constructed with the RMM from section 
 \ref{sec:rmm} as features. After scaling and splitting, $80\%$ of the MC will be used for training the neural 
 network, and the remaining $20\%$ will be used for inference. The reconstruction error 
@@ -12,14 +12,14 @@ really the only metric that is of use.
 The statistical uncertainty and noise is proportional to the amount of SM MC, 
 thus with lower amounts of SM MC, the better the significance will be. This is $a)$ 
 given that the signal does not reduce in the same (or more extreme) manner  and $b)$ 
-that one does not run out of SM MC statistics. Because then one does not have any predictive power anymore.
+that one does not run out of SM MC statistics. Because otherwise one does not have any predictive power anymore.
 Using the reconstruction error, the autoencoder 
 can create its own signal region, more specifically the areas of high reconstruction error. 
 By placing a cut at "high" reconstruction error one can look at e.g. the missing transverse energy or other 
 features of interest to see if the AE has managed to select events which have anomalous behavior (wrt. the SM) 
 in these distributions. I.e. the cut on the reconstruction error from the AE replaces the pre-selection cuts one 
 typically design in an ordinary cut-and-count analysis using traditional kinematic variables.\par 
-The signal region for the regular autoencoder models were created by calculating the median $m_{err}$ of the 
+The signal regions for the regular autoencoder models were created by calculating the median $m_{err}$ of the 
 reconstruction error. Then, 3 cuts were made, starting at $m_{err} + im_{err}/5$ for $i = 1,2,3$. This was a direct 
 result of the shape of the background reconstruction error being a hill-like shape. The median then became a 
 good place to start to remove much of the SM MC. This is however just a guess for an optimal signal region, 

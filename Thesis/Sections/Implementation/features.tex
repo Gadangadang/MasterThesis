@@ -6,7 +6,7 @@ Most of the features in the analysis are elements in the Rapidity-Mass matrix (R
 information of various reconstructed objects and their combinations about mass, rapidity, momenta and missing transverse 
 energy, all of which are useful in searches for new physics in HEP\cite{Chekanov_2021}. One example of an analysis 
 that has used some features from the RMM is demontrated in \cite{Santos_2017}. The main reason however for 
-using this structure is the systematic layout and automated featurespace, that maintains low to no correlation between 
+using this structure is the systematic layout and automated feature space, that maintains low to no correlation between 
 the cells in the matrix, which is optimal when using neural networks. \par
 The RMM is determined as a square matrix of $1 + \sum_{i=1}^{T}N_i$ columns and rows, where T is the total 
 number of objects (i.e. jets, electrons etc.), and $N_i$ is the multiplicity of a given object. In the case where the 
@@ -29,12 +29,12 @@ the autoencoder hopefully can learn trends from. An example of a small RMM is sh
 \newline
 In matrix \ref{eq:rmmmatrix} we have the RMM matrix for a T2N2 system, in other words we have two types of objects, jets
 \footnote{Jets here can both be b- or l-jets. Ljet is defined as jets with jetdl1r < 0.665, whereas bjet77 is defined as jets with jetdl1r>=2.195. 
-jetdl1r is a machine learning output from a network trained to distinguish b- and ljets.} and electrons, and for ach ogjct we consider a multiplicity of two. 
+jetdl1r is a machine learning output from a network trained to distinguish b- and ljets.} and electrons, and for each object we consider a multiplicity of two. 
 The matrix itself is partitioned into three parts. 
 The diagonal represents energy properties, the upper triangle represents mass properties and the lower triangle represents longitudal 
 properties related to rapidity. The diagonal has three different properties, $\boldsymbol{e_T^{miss}}$, $\boldsymbol{e_T}$ and $\delta\boldsymbol{e_T}$. 
 $\boldsymbol{e_T^{miss}}$ is placed in the $(0,0)$ position in the matrix. It accounts for the missing transverse energy of the system, which is of 
-high interest for analyses in searches for BSM physics such as heavy neutrinos. $\boldsymbol{e_T}$ is the transverse energy defined as 
+high interest for analyses in searches for BSM physics such as heavy neutrinos or supersymmetric particles. $\boldsymbol{e_T}$ is the transverse energy defined as 
 
 \begin{equation}\label{eq:et}
     \boldsymbol{e_T} = \sqrt{m^2 + p_T^2}
@@ -70,7 +70,7 @@ and for neural networks this is a problem. To solve this problem, Chekanov simpl
 Before we can start the analysis, we need to compare the SM MC and data. This is done to ensure that the measured features used 
 are well modelled by the SM MC training samples we use. As described by R. Stuart Geiger et al. \cite{DBLP:journals/corr/abs-2107-02278}, the concept of "Garbage 
 in, garbage out" is of key importance in computer science, and is indeed important in high energy physics. To ensure that the models 
-we train actually learn physical processes, the training set must closely rememble the data. The SM MC simulations are indeed very good, 
+we train actually learn physical processes, the training set must closely resemble the data. The SM MC simulations are indeed very good, 
 but they are numerical approximations and can 
 sometimes be off. Thus, every feature that will be used for training must be checked before being used. This is done by 
 comparing the distributions of the features in the SM MC and ATLAS data. Monte Carlo simulations are based on the actual theory 
@@ -88,7 +88,7 @@ Particle physics differs here from more day-to-day machine learning as the recor
 unlabeled. 
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep3/e_T_miss_3lep.pdf}
@@ -108,11 +108,11 @@ unlabeled.
 \end{figure}
 
 In figure \ref{fig:MC_Data_comp} two features have been selected to vizualize the comparison between SM MC and ATLAS data, $e_T^{miss}$ 
-and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset. The $e_T^{miss}$ and $m(ele_0, ele_1)$ shows a ratio between SM MC and ATLAS data reasonably close to 1, thus we can safely 
+and $m(ele_0, ele_1)$ in the 3 lepton + $e_T^{miss}$ dataset\footnote{Full treatment of systematic uncertainties, which is beyond this work, covers for the apparent deviations between MC and data.}. The $e_T^{miss}$ and $m(ele_0, ele_1)$ shows a ratio between SM MC and ATLAS data reasonably close to 1, thus we can safely 
 move forward with the analysis. All features were checked, and can be found in the GitHub repository for this thesis at 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP3}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP3$}} under the 3lep folder. \par 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.6\textwidth}
         \includegraphics[width=\textwidth]{Figures/MC_Data_comp/lep2/e_T_miss_2lep.pdf}
@@ -138,7 +138,8 @@ do not satisfy the same ratio between SM MC and ATLAS data, as with the 3 lepton
 leading to a discrepency. This could be a trigger matching issue or an issue with RDataFrame. The samples were run using both C++ ROOT event selection and RDataFrame by one of the supervisors, and the 
 issue seems to only occure with RDataFrame. Therefor all results regarding the 2 lepton + $e_T^{miss}$ dataset should be interpreted with this in mind. One attempt can be shown in 
 figure \ref{fig:mll_2lep} where a cut on the invariant mass above 70 GeV of at least the two leptons with the highest energy was done to try to acommodate the trigger issue. 
-It did not seem to work, and we proceded with the dataset. All features were checked, and can be found in the GitHub repository for this thesis at 
+There is some improvement needed, but we proceded with the dataset, keeping a cut on the leading lepton pair invariant mass > 70 GeV. All features 
+were checked, and can be found in the GitHub repository for this thesis at 
 \href{https://github.com/Gadangadang/MasterThesis/tree/main}{Figures/Histo\_var\_check}\footnote{Full link: \href{https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo_var_check/LEP2}{$https://github.com/Gadangadang/MasterThesis/tree/main/Figures/histo\_var\_check/LEP2$}} under the 2lep folder.
 
 
@@ -149,7 +150,7 @@ The triggers used in the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ da
 \ref{tab:triggers2015}, \ref{tab:triggers2016}, \ref{tab:triggers2017} and \ref{tab:triggers2018} for the 2015, 2016, 2017 and 2018 data taking periods.
 
 
-\begin{table}[H]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|l|l|}
@@ -168,7 +169,7 @@ The triggers used in the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ da
 
 
 
-\begin{table}[H]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|l|l|}
@@ -191,7 +192,7 @@ The triggers used in the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ da
 
 
 
-\begin{table}[H]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|l|l|}
@@ -211,7 +212,7 @@ The triggers used in the 2 lepton + $e_T^{miss}$  and 3 lepton + $e_T^{miss}$ da
     \end{table}
 
 
-\begin{table}[H]
+\begin{table}[h!]
     \centering
     
     \begin{tabular}{|l|l|}

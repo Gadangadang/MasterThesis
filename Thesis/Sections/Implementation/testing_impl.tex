@@ -8,10 +8,10 @@ The idea was that some of the channels differ enough in the final states and thu
 they might be treated like anomalous data by the autoencoders. All channels were tested on as signal.
 \subsection*{Altering transverse momentum}
 Another idea for anomaly detection testing with the SM MC was to alter the transverse momentum of some particles. Random events were
-selected, and their transverse energy was changed by scaling it with a factor. The hope is that especially events with atleast a scaling of 5 
+selected, and their transverse energy was changed by scaling it with a factor. The hope is that especially events with at least a scaling of 5 
 in transverse momentum should be picked up. Note that by changing the transverse momentum, the elements in the RMM related to the difference in 
 transverse energy between the objects change.
-From equation \ref{eq:deltaet} we have that a scale change k in $p_T$ yields the following new relation:
+From equation \ref{eq:deltaet} we see that a scale change k in $p_T$ yields the following new relation:
 
 \begin{equation}\label{eq:deltaet_scale}
     \delta\boldsymbol{e_T}^k = \frac{kE_T(i_n-1) - E_T(i_n)}{kE_T(i_n-1) + E_T(i_n)}, \, n = 2, ..., N.
@@ -28,7 +28,8 @@ if the algorithm is tested on one or more signal samples. This type of testing c
 different categories, the open signal testing and the blind signal testing. \par 
 The open signal testing first takes a trained model that has only seen SM MC and then runs inference on both 
 SM MC and the given signal. Then the search strategy mentioned in the previous section is done on those 
-collected reconstruction error distributions. The blind signal testing is the final test, where a dataset 
+collected reconstruction error distributions. \par 
+The blind signal testing is the final test, where a dataset 
 is prepared incapsulating SM MC or ATLAS data, and one or multiple signals. The labels are kept, for verification. 
 That way, if one were to do open signal testing on many signal samples from many theories, one could 
 in principle bias oneself too much. This way one can get an unbiased measurement of the performance. 

@@ -4,7 +4,8 @@ the electromagnetic calorimeters, the hadronic calorimeters and the inner detect
 written below.
 \subsection*{Kinematics and detector geometry}
 Before the data can be analysed, it has to be collected and processed in a detector. The data used in the work of this thesis 
-are generated from proton-proton collisions in the ATLAS detector at the Large Hadron Collider (LHC). The ATLAS inner detector itself is contained in a solenoid field, 
+are generated from proton-proton collisions in the ATLAS detector at the Large Hadron Collider (LHC) during the Run 2 period from 2015 to 2018. 
+The ATLAS inner detector itself is contained in a solenoid field, 
 and the kinematic variables are measured based on the following coordinate system. The z-axis is defined to go 
 along the center axis of the solenoid, whereas the y-axis points upwards in the detector and the x-axis radialy 
 outwards from the center axis. This allows for all transverse variables to be defined in the x-y plane\cite{Gramstad:1631043}. 
@@ -12,7 +13,7 @@ From this we contruct the azimuthal and polar angles $\phi$ and $\theta$, where 
 and the polar angle $\theta$ is the angle from the z-axis, as shown in figure \ref{fig:long_trans_plane}.
 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.45\textwidth}
         \includegraphics[width=\textwidth]{Figures/atlas/transverse_plane.png}
@@ -97,7 +98,7 @@ the phase space of a single particle is uniformly distributed for both $\eta$ an
 for controls and verification of SM MC. 
 \subsection*{Data collection}
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/ATLAS Detector Schematic black particles.png}
     \caption[Detector tracking of particles]{Figure describing how particles are detected at ATLAS, fetched from \href{https://cds.cern.ch/record/2770815}{	ATLAS detector slice (and particle visualisations)}, by Sascha Mehlhase \cite{Mehlhase:2770815} . }
     \label{fig:atlas_particle_detect}
@@ -133,12 +134,12 @@ events\footnote{An event here is defined as a collision recorded and reconstruct
 most interest. Most of the intitial collisions are discarded with about 1 in 40000 events being 
 accepted. This is because the amount of recorded events simply are too 
  high to realistically analyse and store. Also, most of the events are of no interest for BSM 
- analysis anyway as they do not yield massive particles. There are therefor no large deposits 
+ searches anyway as they do not yield massive particles. There are therefor no large deposits 
  of energy or tracks with high transverse momentum. Instead, these collision fragments leave 
  the interaction region with very small angles between their trajectory and the beam pipe. \par
  Once the trigger selection is done, the data is reconstructed. This means that the objects in 
  the recorded events are being reconstructed into particles like jets and photons using advanced 
- software algorithms The reconstruction is done based on the tracks and measurements in the detector, 
+ software algorithms. The reconstruction is done based on the tracks and measurements in the detector, 
  but it is not perfect, and can lead to fake leptons or jets. By fake, it is meant that an object 
  might look like a lepton but is in reality a jet or vice versa\cite{Gillam:2015kta}.
  Once the reconstruction is done, further slimming of the data is done. Derivations are slimmings 
@@ -151,7 +152,7 @@ accepted. This is because the amount of recorded events simply are too
  be reconstructed and go through derivations just like the proton-proton collision data, 
 and then be used in analysis. 
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/data_col_phys.png}
     \caption[Steps from data collection to physics results]{Figure describing the steps to take for data collection at ATLAS, fetched from \href{https://indico.cern.ch/event/1159574/timetable/?view=standard}{Hybrid ATLAS Induction Day + Software Tutorial workshop}, part
     \href{https://indico.cern.ch/event/860971/contributions/3672974/attachments/1972049/3280896/Atlas_computing_data_preparation_jan20.pdf}{Computing and Data preparation}, 
@@ -166,7 +167,7 @@ separate easily. Quarks, however, are bound by QCD and thus cannot be seperated 
 particles. An illustration of how quarks and gluons materialise as jets during a proton-proton 
 collision is shown below in figure \ref{fig:cms_jets}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \includegraphics[width=\linewidth]{Figures/atlas/cms_Sketch_PartonParticleCaloJet.png}
     \caption[Jet produciton from pp-collisions to detector]{Figure describing how quarks and gluons are treated in the detector, and thus why we name them jets, fetched from \href{https://cms.cern/sites/default/files/field/image/Sketch_PartonParticleCaloJet.png}{the CMS webpage}. }
     \label{fig:cms_jets}
@@ -174,7 +175,7 @@ collision is shown below in figure \ref{fig:cms_jets}.
 
 In a proton-proton collision, the quarks and gluons form stable or unstable hadrons such 
 that the color confinement is upheld\cite{Hwang_Wu_2018}. These particles then decay to other stable 
-hadrons that can be tracked, and these collimated tracks are called jets. The jets are defined through
+hadrons that can be tracked, and these collimated tracks and energy deposits are called jets. The jets are defined through
 complex algorithms. Another point to make is that some quarks yield more 
 information than others. Using the properties of heavy quarks such as the b- and c-quarks and 
 their non-negligible lifetime allows us to differentiate jets containing these quarks from 
