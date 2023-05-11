@@ -322,34 +322,26 @@ The peak significance is around 0.20 at around 450 GeV.}
 \end{figure}
 
 
-In figures \ref{fig:VAE_2lep_big_rec_sig_signi_450}, \ref{fig:VAE_2lep_small_rec_sig_signi_450}, 
-\ref{fig:VAE_2lep_big_rec_sig_signi_800} and \ref{fig:VAE_2lep_small_rec_sig_signi_800} we have three 
-subplots containing the total reconstruction error distributions, the $e_T^{miss}$ signal region, 
-and the significance as function of $e_T^{miss}$ curve respectively. They were created using 
-the shallow and deep regular autoencoder with the 2 lepton + $e_T^{miss}$ dataset. \par
-In figures \ref{fig:VAE_2lep_big_450}, \ref{fig:VAE_2lep_small_450}, \ref{fig:VAE_2lep_big_800}, 
-\ref{fig:VAE_2lep_small_800} we have the reconstruction error distributions 
-for both SUSY signals for the small and large variational autoencoder. 
-The steepness here differs from the steep slope in figures 
-\ref{fig:AE_2lep_big_450}, \ref{fig:AE_2lep_small_450}, \ref{fig:AE_2lep_big_800}, 
-\ref{fig:AE_2lep_small_800}. Interestingly, we see here that the deepness of the neural 
-network here plays a role, which is different from the regular autoencoder output, where both 
-the small and large autoencoder made a steep slope shape of the SM MC reconstruction error 
+Figures \ref{fig:VAE_2lep_big_rec_sig_signi_450} - \ref{fig:VAE_2lep_small_rec_sig_signi_800} 
+the same plots as above, but now using the shallow and deep variational autoencoder with the 2 
+lepton + $e_T^{miss}$ dataset. \par
+Figures \ref{fig:VAE_2lep_big_450}, \ref{fig:VAE_2lep_small_450}, \ref{fig:VAE_2lep_big_800}, 
+\ref{fig:VAE_2lep_small_800} show the reconstruction error distributions 
+for both SUSY signals for the shallow and deep variational autoencoder. 
+Compared with the result from the regular AE we see a much steeper fall-off of the SM MC at higher 
+reconstruction error. Moreover, we observe that the deepness of the neural 
+network here seems to play a role, which is different from what we observed for the regular autoencoder 
+output where both the shallow and deep autoencoder made a steep slope shape of the SM MC reconstruction error 
 distribution. The peak of the distribution here is slightly shifted to the left for the shallow 
 autoencoder model, and slightly shifted to the right of the center with the deep autoencoder 
 model. One possible reason for this somewhat hill-like distribution could be that the 
 variational autoencoder samples from a Gaussian distribution that has yet to be trained on 
-enough data to produce a good enough error distribution. 
-% This is also supported with the fact 
-% that the shape is even more hill-like like in the 3 lepton + $e_T^{miss}$ case shown in 
-% figures \ref{fig:VAE_3lep_big_450}, \ref{fig:VAE_3lep_small_450}, \ref{fig:VAE_3lep_big_800}, 
-% \ref{fig:VAE_3lep_small_800}. It could also be that the batch size is too large, and that 
-% the model has to train on smaller batches to get a better result. 
-\par 
+enough data to produce a good enough error distribution. \par 
 
 In figures \ref{fig:VAE_2lep_big_etmiss_450}, \ref{fig:VAE_2lep_small_etmiss_450}, 
 \ref{fig:VAE_2lep_big_etmiss_800} and  \ref{fig:VAE_2lep_small_etmiss_800} 
-the $e_T^{miss}$ distribution is shown after imposing least strict cut for each signal on the reconstruction error. We see that 
+the $e_T^{miss}$ distribution is shown after imposing least strict cut for each signal on 
+the reconstruction error. We see that 
 the cuts are somewhat similar to the regular autoencoder, but with two key differences.
 First, because the peaks of the distributions from figures \ref{fig:VAE_2lep_big_450}, 
 \ref{fig:VAE_2lep_small_450}, \ref{fig:VAE_2lep_big_800}, \ref{fig:VAE_2lep_small_800} 
@@ -373,5 +365,9 @@ of bins are exceptionally smaller than the Zmmjets/Zeejets/ttbar events, by a ma
 
 
 
-
+% This is also supported with the fact 
+% that the shape is even more hill-like like in the 3 lepton + $e_T^{miss}$ case shown in 
+% figures \ref{fig:VAE_3lep_big_450}, \ref{fig:VAE_3lep_small_450}, \ref{fig:VAE_3lep_big_800}, 
+% \ref{fig:VAE_3lep_small_800}. It could also be that the batch size is too large, and that 
+% the model has to train on smaller batches to get a better result. 
 
