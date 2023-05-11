@@ -1,0 +1,36 @@
+\section{Execute summary}
+
+
+
+
+\begin{table}[h!]
+    \begin{tabular}{l|llll|llll|}
+    \cline{2-9}
+                                                                                                 & \multicolumn{4}{c|}{\textbf{3 lepton + $e_T^{miss}$}}                                                                                       & \multicolumn{4}{c|}{\textbf{2 lepton + $e_T^{miss}$}}                                                                                       \\ \hline
+    \multicolumn{1}{|l|}{Model}                                                                  & \multicolumn{1}{c|}{\textbf{AE}} & \multicolumn{1}{c|}{\textbf{AE}} & \multicolumn{1}{c|}{\textbf{VAE}} & \multicolumn{1}{c|}{\textbf{VAE}} & \multicolumn{1}{c|}{\textbf{AE}} & \multicolumn{1}{c|}{\textbf{AE}} & \multicolumn{1}{c|}{\textbf{VAE}} & \multicolumn{1}{c|}{\textbf{VAE}} \\ \hline
+    \multicolumn{1}{|l|}{Signal sample}                                                          & \multicolumn{1}{l|}{450p300}     & \multicolumn{1}{l|}{800p50}      & \multicolumn{1}{l|}{450p300}      & 800p50                            & \multicolumn{1}{l|}{450p300}     & \multicolumn{1}{l|}{800p50}      & \multicolumn{1}{l|}{450p300}      & 800p50                            \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}SR cut in \\ reconstruction\end{tabular}}    & \multicolumn{1}{l|}{$10^{-1.71}$}  & \multicolumn{1}{l|}{$10^{-1.41}$}  & \multicolumn{1}{l|}{$10^{-1.06}$}             &     \multicolumn{1}{l|}{$10^{-1.06}$}   & \multicolumn{1}{l|}{$10^{-1.72}$}  & \multicolumn{1}{l|}{$10^{-1.61}$}            & \multicolumn{1}{l|}{$10^{-0.85}$}             &      \multicolumn{1}{l|}{$10^{-0.85}$}                               \\ \hline
+    \multicolumn{1}{|l|}{\begin{tabular}[c]{@{}l@{}}Optimal cut in \\ $e_T^{miss}$ [GeV]\end{tabular}} & \multicolumn{1}{l|}{380}            & \multicolumn{1}{l|}{450}            & \multicolumn{1}{l|}{400}             &            \multicolumn{1}{l|}{480}           & \multicolumn{1}{l|}{380}            & \multicolumn{1}{l|}{400}            & \multicolumn{1}{l|}{430}             &   \multicolumn{1}{l|}{510}        \\ \hline
+    \multicolumn{1}{|l|}{Max significance}                                                       & \multicolumn{1}{l|}{0.78}            & \multicolumn{1}{l|}{0.39}            & \multicolumn{1}{l|}{4.5}             &        \multicolumn{1}{l|}{0.52}              & \multicolumn{1}{l|}{2.4}            & \multicolumn{1}{l|}{0.42}            & \multicolumn{1}{l|}{1.75}             &    \multicolumn{1}{l|}{0.21}             \\ \hline
+    \multicolumn{1}{|l|}{Architecture}                                                           & \multicolumn{1}{l|}{Shallow}            & \multicolumn{1}{l|}{Shallow}            & \multicolumn{1}{l|}{Shallow}             &        \multicolumn{1}{l|}{Deep}     & \multicolumn{1}{l|}{Shallow}     & \multicolumn{1}{l|}{Shallow}            & \multicolumn{1}{l|}{Shallow}             &    \multicolumn{1}{l|}{Shallow}             \\ \hline
+    \end{tabular}
+    \caption[Executive summary table]{Summary of the best results obtained by the regular and variational autoencoders for the 3 lepton and 2 lepton + $e_T^{miss}$ datasets}
+    \label{tab:exec_summary}
+\end{table}
+
+
+The results and discussion for the 3 lepton + $e_T^{miss}$ dataset be summarized in bullet points for the regular and variational autoencoders, respectively:
+\begin{itemize}
+    \item Better separation for high mass SUSY scenarios 
+    \item Shallow and deep architecture have similar performace for both signal samples 
+    \item In general low reconstruction error (i.e the AE's have learned well the structures of the RMM)
+    \item Shallow and deep architecture show similar results whn looking at distributions of $m_{lll}$ and $e_T^{miss}$ in the signal region 
+    \item Best significance of 0.78 is found for the low mass SUSY by cutting at < 380 GeV in $e_T^{miss}$ after requiring a reconstruction error of $10^{-1.71}$ for the shallow AE
+\end{itemize}
+
+\begin{itemize}
+    \item Worse separation in reconstruction error between SM MC and signal
+    \item Consistently hisgher reconstruction error for both signal and SM MC compared with AE 
+    \item The signal region choice for the VAE achieves a better significance although the separation in reconstruction error between SM MC and signal is worse compared with the AE
+    \item Shallow and deep VAE perform similarly in terms of obtained significance
+\end{itemize}

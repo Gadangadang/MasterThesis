@@ -1252,6 +1252,8 @@ INPUT ./Figures/AE_testing/blindtest/b_data_recon_big_rm3_feats_sig_Unblind_.pdf
 INPUT ./Figures/AE_testing/blindtest/b_data_recon_big_rm3_feats_sig_Unblind_.pdf
 INPUT ./Sections/Results/32lep_discuss.tex
 INPUT ./Sections/Results/32lep_discuss.tex
+INPUT ./Sections/Results/exec_summary.tex
+INPUT ./Sections/Results/exec_summary.tex
 INPUT ./Sections/Results/challenges_future.tex
 INPUT ./Sections/Results/challenges_future.tex
 INPUT ./Figures/atlas/LHC-nominal-lumi-projection.png

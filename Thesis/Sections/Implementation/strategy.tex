@@ -27,7 +27,8 @@ as the true signal is unknown, and the method has to be as unbiased as possible.
 in mind here. The method to find the cut is in some sense based on the slope shape of the SM MC reconstruction 
 error distribution, thus three cuts based on the median seems like a good choice. However, if one then uses all 
 the events in the signal region, it might be that one misses the ideal amount of background and signal to create 
-the significance. Thus, for each reconstruction error cut, there is an associated plot showing the significance 
+the significance\footnote{Only 20\% of the background and 100\% of the signal are used for inference. This is important 
+to know when evaluating the significance plots, as to not overinflate the results provided by the AE's and VAE's.}. Thus, for each reconstruction error cut, there is an associated plot showing the significance 
 as a function of $e_T^{miss}$ for the events passing a given cut on the AE reconstruction error. The $e_T^{miss}$
 would be the final discriminating variable for where we look for deviations from the expected SM background. 
 Thus, you can find the ideal cut, within the signal region, for where to 
