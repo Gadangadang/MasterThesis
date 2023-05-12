@@ -1,9 +1,12 @@
+\newpage
 \section{Execute summary}
 
 
+The results and discussion for the 3 lepton + $e_T^{miss}$ and 2 lepton + $e_T^{miss}$ datasets are summarized in table \ref{tab:exec_summary}, 
+and bullet points for the two dataset cases.
 
 
-\begin{table}[h!]
+\begin{table}[!htb]
     \begin{tabular}{l|llll|llll|}
     \cline{2-9}
                                                                                                  & \multicolumn{4}{c|}{\textbf{3 lepton + $e_T^{miss}$}}                                                                                       & \multicolumn{4}{c|}{\textbf{2 lepton + $e_T^{miss}$}}                                                                                       \\ \hline
@@ -17,20 +20,37 @@
     \caption[Executive summary table]{Summary of the best results obtained by the regular and variational autoencoders for the 3 lepton and 2 lepton + $e_T^{miss}$ datasets}
     \label{tab:exec_summary}
 \end{table}
+Table \ref{tab:exec_summary} provides the signal region cut in reconstruction error, the optimal cut in $e_T^{miss}$, the maximum significance and the architecture choice
+for both the AE and VAE in both the 3 lepton + $e_T^{miss}$ and 2 lepton + $e_T^{miss}$ dataset cases. 
 
-
-The results and discussion for the 3 lepton + $e_T^{miss}$ dataset be summarized in bullet points for the regular and variational autoencoders, respectively:
+\subsubsection*{3 lepton + $e_T^{miss}$ executive summary}
+AE:
 \begin{itemize}
     \item Better separation for high mass SUSY scenarios 
-    \item Shallow and deep architecture have similar performace for both signal samples 
+    \item Shallow and deep architecture have similar performace for both signal samples with reconstruction error
     \item In general low reconstruction error (i.e the AE's have learned well the structures of the RMM)
     \item Shallow and deep architecture show similar results whn looking at distributions of $m_{lll}$ and $e_T^{miss}$ in the signal region 
     \item Best significance of 0.78 is found for the low mass SUSY by cutting at < 380 GeV in $e_T^{miss}$ after requiring a reconstruction error of $10^{-1.71}$ for the shallow AE
+    \item Generally, shallow network architecture is better for maximum significance
 \end{itemize}
-
+VAE:
 \begin{itemize}
     \item Worse separation in reconstruction error between SM MC and signal
-    \item Consistently hisgher reconstruction error for both signal and SM MC compared with AE 
+    \item Consistently higher reconstruction error for both signal and SM MC compared with AE 
     \item The signal region choice for the VAE achieves a better significance although the separation in reconstruction error between SM MC and signal is worse compared with the AE
     \item Shallow and deep VAE perform similarly in terms of obtained significance
 \end{itemize}
+
+\subsubsection*{2 lepton + $e_T^{miss}$ executive summary}
+
+\begin{itemize}
+    \item The highest significance of 2.4 was found for the shallow AE on low mass signal sample, and shallow models provided highest significance in all four cases
+    \item The VAE have typically larger reconstruction error for the background\footnote{The bulk of the distribution is placed more to the higher ends of the reconstruction error compared with the regular AEs, which was the same observed behavior seen in the 3 lepton + $e_T^{miss}$ case.} leading us to think that it may require even more training data to train properly 
+    \item The AE seem to perform better than the VAEs
+    \item When going from 3 lepton + $e_T^{miss}$ to 2 lepton + $e_T^{miss}$ the performance of the VAE compared to the AE goes from being better to worse. This may be because the VAEs lacks sufficient training data to be able to reduce the background in the signal region. 
+\end{itemize}
+
+
+
+
+
