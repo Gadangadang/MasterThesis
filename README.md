@@ -20,7 +20,8 @@ The tree structure is as follows:
 |   |   `-- syst_studies
 ```
 
-CodeBase contains two folders, "Analysis" containing code for the analysis itself, and "myNtupAnalysis" with contains code for event selection. 
+CodeBase contains two folders, "Analysis" containing code for the analysis itself, and "myNtupAnalysis" with contains code for event selection. <br>
+The myNtupAnalysis folder contains premade code written by Dr. Eirik Gramstad, and modified by me for this thesis.
 
 ### Figures
 The tree structure is as follows
